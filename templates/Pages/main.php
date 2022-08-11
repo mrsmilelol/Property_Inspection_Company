@@ -23,9 +23,9 @@ $this->layout = 'front';
 <div class="slider-area">
     <div class="bend niceties preview-1">
         <div id="ensign-nivoslider-3" class="slides">
-            <?= $this->Html->image('slider/7.jpg'); ?>
-            <a href="#"> <img src="img/slider/8.jpg" alt=""/></a>
-            <?= $this->Html->image('slider/8.jpg'); ?>
+            <a><?= $this->Html->image('living-room-slider-3-1143x800.jpg'); ?> </a>
+<!--            <a>--><?//= $this->Html->image('slider/7.jpg'); ?><!-- </a>-->
+            <a><?= $this->Html->image('slider/8.jpg'); ?> </a>
         </div>
     </div>
 </div>
@@ -35,9 +35,7 @@ $this->layout = 'front';
     <div class="row">
         <div class="col-50">
             <div class="banner-image">
-                <a href="#">
-                    <img src="img/banner/16.jpg" alt="">
-                </a>
+                <a><?= $this->Html->image('banner/16.jpg'); ?> </a>
             </div>
         </div>
         <div class="col-50">

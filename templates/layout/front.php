@@ -160,8 +160,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <!-- Header Logo -->
                     <div class="header-logo">
-                        <a href="index.html" title="Goetze">
-                            <img class="img-responsive" src="img/logo.png" alt="">
+                        <a href="index.html" title="Chelsea Furniture">
+                            <?= $this->Html->image('chelsea-furniture-logo.png',
+                            ['class' =>'img-responsive']); ?>
                         </a>
                     </div>
                 </div>
