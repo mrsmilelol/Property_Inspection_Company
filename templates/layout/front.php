@@ -82,13 +82,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->css('responsive.css') ?>
     <!-- modernizr JS
     ============================================ -->
-    <script src="js/modernizr-2.8.3.min.js"></script>
-
-    <?= $this->Html->script('responsive.css') ?>
+    <?= $this->Html->script('modernizr-2.8.3.min.js') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?>
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -160,7 +157,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <!-- Header Logo -->
                     <div class="header-logo">
-                        <a href="index.html" title="Chelsea Furniture">
+                        <a href=<?= $this->Url->build(['controller'=>'Pages',
+                        'action'=>'display','main']); ?> title="Chelsea Furniture">
                             <?= $this->Html->image('chelsea-furniture-logo.png',
                             ['class' =>'img-responsive']); ?>
                         </a>
@@ -194,8 +192,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                                     <div class="cart-list">
                                         <div class="product">
                                             <div class="cart-single-product">
-                                                <a class="product-image" href="#">
-                                                    <img src="img/cart-img/1.jpg" alt="">
+                                                <a class="product-image" href=<?= $this->Url->build(['controller'=>'Pages',
+                                                    'action'=>'display','main']); ?>>
+                                                    <?= $this->Html->image('cart-img/1.jpg'); ?>
                                                 </a>
                                                 <div class="product-details">
                                                     <a href="#" class="remove">
@@ -217,8 +216,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                                                 </div>
                                             </div>
                                             <div class="cart-single-product">
-                                                <a class="product-image" href="#">
-                                                    <img src="img/cart-img/2.jpg" alt="">
+                                                <a class="product-image" href=<?= $this->Url->build(['controller'=>'Pages',
+                                                    'action'=>'display','main']); ?>>
+                                                    <?= $this->Html->image('cart-img/2.jpg'); ?>
                                                 </a>
                                                 <div class="product-details">
                                                     <a href="#" class="remove">
@@ -302,7 +302,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 													<a href="shop.html">Washing machine 4</a>
 												</span>
                                         <span class="mega-menu-img">
-													<a href="#"><img src="img/img_menu.jpg" alt="" /></a>
+                                                    <a href=<?= $this->Url->build(['controller'=>'Pages',
+                                                        'action'=>'display','main']); ?>>
+                                                        <?= $this->Html->image('img_menu.jpg'); ?>
+                                                    </a>
 												</span>
                                     </div>
                                 </li>
@@ -461,6 +464,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </div>
 <!-- Mobile Menu End -->
 
+<!-- Page Content Starts Here! -->
 <?= $this->Flash->render() ?>
 <?= $this->fetch('content') ?>
 
@@ -526,7 +530,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <div class="row">
                 <div class="footer-border-right col-lg-5 col-md-5 col-sm-6 col-xs-12 ">
                     <div class="footer-middle-content">
-                        <a href="index.html"><img src="img/logo_footer.png" alt=""></a>
+                        <a href="index.html"><?= $this->Html->image('logo_footer.png'); ?></a>
                         <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit.</p>
                         <div class="social-icon">
                             <ul>
@@ -582,7 +586,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                             </li>
                         </ul>
                         <div class="paypal">
-                            <img src="img/paypal.png" alt="">
+                            <?= $this->Html->image('paypal.png'); ?>
                         </div>
                     </div>
                 </div>
@@ -605,43 +609,47 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <!--Footer Area End-->
 <!-- jquery
 ============================================ -->
-<script src="js/jquery-1.11.3.min.js"></script>
+<?= $this->Html->script('jquery-1.11.3.min.js') ?>
 <!-- bootstrap JS
 ============================================ -->
-<script src="js/bootstrap.min.js"></script>
+<?= $this->Html->script('bootstrap.min.js') ?>
 <!-- wow JS
 ============================================ -->
-<script src="js/wow.min.js"></script>
+<?= $this->Html->script('wow.min.js') ?>
 <!-- price-slider JS
 ============================================ -->
-<script src="js/jquery-price-slider.js"></script>
+<?= $this->Html->script('jquery-price-slider.js') ?>
 <!-- jquery Venobox js
 ============================================ -->
-<script src="js/venobox.js"></script>
+<?= $this->Html->script('venobox.js') ?>
 <!-- jquery bxslider js
 ============================================ -->
-<script src="js/jquery.bxslider.min.js"></script>
+<?= $this->Html->script('jquery.bxslider.min.js') ?>
 <!-- meanmenu JS
 ============================================ -->
-<script src="js/jquery.meanmenu.js"></script>
+<?= $this->Html->script('jquery.meanmenu.js') ?>
 <!-- countdown JS
 ============================================ -->
-<script src="js/jquery.countdown.min.js"></script>
+<?= $this->Html->script('jquery.countdown.min.js') ?>
 <!-- owl.carousel JS
 ============================================ -->
-<script src="js/owl.carousel.min.js"></script>
+<?= $this->Html->script('owl.carousel.min.js') ?>
 <!-- Nivo slider js
 ============================================ -->
-<script src="lib/js/jquery.nivo.slider.js" type="text/javascript"></script>
-<script src="lib/home.js" type="text/javascript"></script>
+<!--<script src="lib/js/jquery.nivo.slider.js" type="text/javascript"></script>-->
+<!--<script src="lib/home.js" type="text/javascript"></script>-->
+<?= $this->Html->script('/webroot/lib/js/jquery.nivo.slider.js') ?>
+<?= $this->Html->script('/webroot/lib/home.js') ?>
 <!-- scrollUp JS
 ============================================ -->
-<script src="js/jquery.scrollUp.min.js"></script>
+<?= $this->Html->script('jquery.scrollUp.min.js') ?>
 <!-- plugins JS
 ============================================ -->
-<script src="js/plugins.js"></script>
+<?= $this->Html->script('plugins.js') ?>
 <!-- main JS
 ============================================ -->
-<script src="js/main.js"></script>
+<?= $this->Html->script('main.js') ?>
+
+<?= $this->fetch('script') ?>
 </body>
 </html>
