@@ -156,10 +156,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <!-- Header Logo -->
-                    <div class="header-logo">
+                    <div class="header-logo logo-main-page">
                         <a href=<?= $this->Url->build(['controller'=>'Pages',
                         'action'=>'display','main']); ?> title="Chelsea Furniture">
-                            <?= $this->Html->image('chelsea-furniture-logo.png',
+                            <?= $this->Html->image('chelsea-furniture-logo-smaller.png',
                             ['class' =>'img-responsive']); ?>
                         </a>
                     </div>
@@ -529,16 +529,19 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <div class="container">
             <div class="row">
                 <div class="footer-border-right col-lg-5 col-md-5 col-sm-6 col-xs-12 ">
-                    <div class="footer-middle-content">
-                        <a href="index.html"><?= $this->Html->image('logo_footer.png'); ?></a>
-                        <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit.</p>
+                    <div class="footer-middle-content logo-main-page">
+                        <a href="index.html"><?= $this->Html->image('chelsea-furniture-logo-smaller.png'); ?></a>
+                        <p>Chelsea Fine Furnishings is all about Service, Quality combined with a knowledgeable selection of fine furniture.
+                            At Chelsea Fine Furnishings we understand that your furniture is an extension of you and contributes to the impression you wish to make at home.
+                            We want the process of selecting and purchasing the right furniture to be as enjoyable and rewarding as possible.</p>
                         <div class="social-icon">
                             <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="https://www.facebook.com/chelsea.furnitures/"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://www.instagram.com/chelseafurniture_australia"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="https://wa.me/+61404737301"><i class="fa fa-whatsapp"></i></a></li>
+<!--                                <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>-->
+<!--                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>-->
+<!--                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>-->
                             </ul>
                         </div>
                     </div>
@@ -548,21 +551,22 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                         <h3 class="footer-widget-title">CONTACT US</h3>
                         <div class="footer-info contact">
                             <ul class="toggle-footer">
-                                <li>
-                                    <i class="fa fa-map-marker"></i>
-                                    <p>8901 Marmora Road, Glasgow D04 <br /> 89 GR, New York</p>
-                                </li>
+<!--                                <li>-->
+<!--                                    <i class="fa fa-map-marker"></i>-->
+<!--                                    <p>8901 Marmora Road, Glasgow D04 <br /> 89 GR, New York</p>-->
+<!--                                </li>-->
                                 <li>
                                     <i class="fa fa-phone"></i>
-                                    <p>Telephone: (+1) 866-540-3229 <br />Fax: (+1) 866-540-3229</p>
+<!--                                    <p>Telephone: 03 7068 0002 <br />Fax: (+1) 866-540-3229</p>-->
+                                    Telephone: 03 7068 0002
                                 </li>
                                 <li>
                                     <i class="fa fa-envelope-o"></i>
-                                    Email: admin@Bootexpert.com
+                                    Email: info@chelseafurniture.com.au
                                 </li>
                                 <li>
                                     <i class="fa fa-globe"></i>
-                                    Website: www.bootexpert.com
+                                    Website: https://chelseafurniture.com.au/
                                 </li>
                             </ul>
                         </div>
@@ -570,19 +574,15 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 hidden-sm">
                     <div class="time-area">
-                        <h3 class="footer-widget-title">OPENING TIME</h3>
+                        <h3 class="footer-widget-title">TRADING HOURS</h3>
                         <ul class="toggle-footer">
                             <li>
                                 <span class="pull-left">Monday - Friday</span>
-                                <span class="pull-right">9:00 - 22:00</span>
+                                <span class="pull-right">9am - 6pm</span>
                             </li>
                             <li>
-                                <span class="pull-left">Saturday</span>
-                                <span class="pull-right">10:00 - 24:00</span>
-                            </li>
-                            <li>
-                                <span class="pull-left">Sunday</span>
-                                <span class="pull-right">12:00 - 24:00</span>
+                                <span class="pull-left">Saturday - Sunday</span>
+                                <span class="pull-right">10am - 5pm</span>
                             </li>
                         </ul>
                         <div class="paypal">

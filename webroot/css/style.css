@@ -185,6 +185,10 @@ body {
 .header-logo > a {
   display: inline-block;
 }
+
+.logo-main-page {
+    object-fit: scale-down;
+}
 /*----------------------------------------*/
 /*  2.2	Main menu area CSS
 /*----------------------------------------*/
@@ -288,6 +292,7 @@ transition: all 300ms ease-in 0s;}
 .mainmenu ul li ul.sub-menu li {
   display: block;
   transition: all 0.3s ease 0s;
+    color: #ffffff;
 }
 /*----------------------------------------*/
 /*  2.3	Mobile Menu CSS
