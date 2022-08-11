@@ -19,65 +19,76 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <!doctype html>
 <html class="no-js" lang="">
 <head>
-    <meta charset="utf-8">
+    <?= $this->Html->charset() ?>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Home Five || Goetze</title>
+
+    <?= $this->Html->meta('icon') ?>
+    <title><?= $this->fetch('title') ?></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
     ============================================ -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+
     <!-- Google Fonts
     ============================================ -->
     <link href='https://fonts.googleapis.com/css?family=Poppins:400,500,700,300,600' rel='stylesheet' type='text/css'>
     <!-- Bootstrap CSS
     ============================================ -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <?= $this->Html->css('bootstrap.min.css') ?>
     <!-- Font Awesome CSS
     ============================================ -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <?= $this->Html->css('font-awesome.min.css') ?>
     <!-- Stroke 7 Icon CSS
     ============================================ -->
-    <link rel="stylesheet" href="css/pe-icon-7-stroke.css">
+    <?= $this->Html->css('pe-icon-7-stroke.css') ?>
     <!-- owl.carousel CSS
     ============================================ -->
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/owl.theme.css">
-    <link rel="stylesheet" href="css/owl.transitions.css">
+    <?= $this->Html->css('owl.carousel.css') ?>
+    <?= $this->Html->css('owl.theme.css') ?>
+    <?= $this->Html->css('owl.transitions.css') ?>
     <!-- nivo slider CSS
     ============================================ -->
-    <link rel="stylesheet" href="lib/css/nivo-slider.css" type="text/css" />
-    <link rel="stylesheet" href="lib/css/preview.css" type="text/css" media="screen" />
+<!--    <link rel="stylesheet" href="lib/css/nivo-slider.css" type="text/css" />-->
+    <?= $this->Html->css('/lib/css/nivo-slider.css') ?>
+<!--    <link rel="stylesheet" href="lib/css/preview.css" type="text/css" media="screen" />-->
+    <?= $this->Html->css('/lib/css/preview.css') ?>
     <!-- jquery-ui CSS
     ============================================ -->
-    <link rel="stylesheet" href="css/jquery-ui.css">
+    <?= $this->Html->css('jquery-ui.css') ?>
     <!-- meanmenu CSS
     ============================================ -->
-    <link rel="stylesheet" href="css/meanmenu.min.css">
+    <?= $this->Html->css('meanmenu.min.css') ?>
     <!-- animate CSS
     ============================================ -->
-    <link rel="stylesheet" href="css/animate.css">
+    <?= $this->Html->css('animate.css') ?>
     <!-- bxslider CSS
     ============================================ -->
-    <link rel="stylesheet" href="css/jquery.bxslider.css">
+    <?= $this->Html->css('jquery.bxslider.css') ?>
     <!-- Venobox CSS
     ============================================ -->
-    <link rel="stylesheet" href="css/venobox.css" media="screen" />
+    <?= $this->Html->css('venobox.css') ?>
     <!-- normalize CSS
     ============================================ -->
-    <link rel="stylesheet" href="css/normalize.css">
+    <?= $this->Html->css('normalize.css') ?>
     <!-- main CSS
     ============================================ -->
-    <link rel="stylesheet" href="css/main.css">
+    <?= $this->Html->css('main.css') ?>
     <!-- style CSS
     ============================================ -->
-    <link rel="stylesheet" href="style.css">
+    <?= $this->Html->css('style.css') ?>
     <!-- responsive CSS
     ============================================ -->
-    <link rel="stylesheet" href="css/responsive.css">
+    <?= $this->Html->css('responsive.css') ?>
     <!-- modernizr JS
     ============================================ -->
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="js/modernizr-2.8.3.min.js"></script>
+
+    <?= $this->Html->script('responsive.css') ?>
+
+    <?= $this->fetch('meta') ?>
+    <?= $this->fetch('css') ?>
+    <?= $this->fetch('script') ?>
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -448,106 +459,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </div>
 </div>
 <!-- Mobile Menu End -->
-<!--Slider Area Start-->
-<div class="slider-area">
-    <div class="bend niceties preview-1">
-        <div id="ensign-nivoslider-3" class="slides">
-            <a href="#"><img src="img/slider/7.jpg" alt=""/></a>
-            <a href="#"> <img src="img/slider/8.jpg" alt=""/></a>
-        </div>
-    </div>
-</div>
-<!--Slider Area End-->
-<!--Banner Area Start-->
-<div class="banner-area5">
-    <div class="row">
-        <div class="col-50">
-            <div class="banner-image">
-                <a href="#">
-                    <img src="img/banner/16.jpg" alt="">
-                </a>
-            </div>
-        </div>
-        <div class="col-50">
-            <div class="banner-image">
-                <a href="#">
-                    <img src="img/banner/17.jpg" alt="">
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-100">
-            <div class="banner-image">
-                <a href="#">
-                    <img src="img/banner/18.jpg" alt="">
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-50">
-            <div class="banner-image">
-                <a href="#">
-                    <img src="img/banner/19.jpg" alt="">
-                </a>
-            </div>
-        </div>
-        <div class="col-50">
-            <div class="banner-image">
-                <a href="#">
-                    <img src="img/banner/20.jpg" alt="">
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-<!--Banner Area End-->
-<!--Brand Area Start-->
-<div class="brand-area section-padding2">
-    <div class="container">
-        <div class="row">
-            <div class="brand-list">
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><img src="img/brand/1.jpg" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><img src="img/brand/2.jpg" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><img src="img/brand/3.jpg" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><img src="img/brand/4.jpg" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><img src="img/brand/5.jpg" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><img src="img/brand/6.jpg" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><img src="img/brand/7.jpg" alt=""></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--Brand Area End-->
+
+<?= $this->Flash->render() ?>
+<?= $this->fetch('content') ?>
+
 <!--Footer Area Start-->
 <div class="footer-area">
     <!--Footer Top Area Start-->
@@ -689,7 +604,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <!--Footer Area End-->
 <!-- jquery
 ============================================ -->
-<script src="js/vendor/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-1.11.3.min.js"></script>
 <!-- bootstrap JS
 ============================================ -->
 <script src="js/bootstrap.min.js"></script>

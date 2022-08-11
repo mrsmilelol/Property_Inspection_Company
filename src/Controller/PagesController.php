@@ -70,4 +70,11 @@ class PagesController extends AppController
             throw new NotFoundException();
         }
     }
+
+    public function main()
+    {
+//        $this->loadModel('Products');
+//        $Pro = $this->QuoteRequests->find()->contain(['InspectionTiers']);
+//        $this->set(compact('quoteRequests'));
+    }
 }
