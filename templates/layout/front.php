@@ -170,7 +170,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                         <div class="header-bottom-right-inner">
                             <ul>
                                 <li>
-                                    <a class="cart-toggler search-icon" href="#">
+                                    <a class="cart-toggler search-icon to-search-icon" href="#">
                                         <i class="fa fa-search"></i>
                                     </a>
                                     <div class="header-bottom-search">
