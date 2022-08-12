@@ -18,10 +18,9 @@ class ProductsController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Categories', 'ProductInventories'],
-        ];
-        $products = $this->paginate($this->Products);
+        //not sure if this line is correct (followed the tutorial)
+
+        $products = $this->Products->find()->contain(['Categories','ProductInventories']);
 
         $this->set(compact('products'));
     }
