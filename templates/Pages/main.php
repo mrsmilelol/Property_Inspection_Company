@@ -23,9 +23,14 @@ $this->layout = 'front';
 <div class="slider-area">
     <div class="bend niceties preview-1">
         <div id="ensign-nivoslider-3" class="slides">
-            <?= $this->Html->image('slider/7.jpg'); ?>
-            <a href="#"> <img src="img/slider/8.jpg" alt=""/></a>
-            <?= $this->Html->image('slider/8.jpg'); ?>
+            <a><?= $this->Html->image('slider/living-room-slider-3-1143x800.jpg'); ?> </a>
+            <a><?= $this->Html->image('slider/dining-room-slider-1-1143x800.jpg'); ?> </a>
+            <a><?= $this->Html->image('slider/bedroom-slider-1143x800.jpg'); ?> </a>
+            <a><?= $this->Html->image('slider/home-office-slider-2-1143x800.jpg'); ?> </a>
+            <a><?= $this->Html->image('slider/rugs-slider-1-1143x800.jpg'); ?> </a>
+            <a><?= $this->Html->image('slider/accessories-slider-1143x800.jpg'); ?> </a>
+            <a><?= $this->Html->image('slider/lighting-slider-1143x800.jpg'); ?> </a>
+            <a><?= $this->Html->image('slider/entertainment-slider-1143x800.jpg'); ?> </a>
         </div>
     </div>
 </div>
@@ -35,15 +40,13 @@ $this->layout = 'front';
     <div class="row">
         <div class="col-50">
             <div class="banner-image">
-                <a href="#">
-                    <img src="img/banner/16.jpg" alt="">
-                </a>
+                <a><?= $this->Html->image('banner/16.jpg'); ?> </a>
             </div>
         </div>
         <div class="col-50">
             <div class="banner-image">
                 <a href="#">
-                    <img src="img/banner/17.jpg" alt="">
+                    <?= $this->Html->image('banner/17.jpg'); ?>
                 </a>
             </div>
         </div>
@@ -52,7 +55,7 @@ $this->layout = 'front';
         <div class="col-100">
             <div class="banner-image">
                 <a href="#">
-                    <img src="img/banner/18.jpg" alt="">
+                    <?= $this->Html->image('banner/18.jpg'); ?>
                 </a>
             </div>
         </div>
@@ -61,14 +64,14 @@ $this->layout = 'front';
         <div class="col-50">
             <div class="banner-image">
                 <a href="#">
-                    <img src="img/banner/19.jpg" alt="">
+                    <?= $this->Html->image('banner/19.jpg'); ?>
                 </a>
             </div>
         </div>
         <div class="col-50">
             <div class="banner-image">
                 <a href="#">
-                    <img src="img/banner/20.jpg" alt="">
+                    <?= $this->Html->image('banner/20.jpg'); ?>
                 </a>
             </div>
         </div>
@@ -82,37 +85,37 @@ $this->layout = 'front';
             <div class="brand-list">
                 <div class="col-md-12">
                     <div class="single-brand">
-                        <a href="http://bootexperts.com/"><img src="img/brand/1.jpg" alt=""></a>
+                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/1.jpg'); ?></a>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="single-brand">
-                        <a href="http://bootexperts.com/"><img src="img/brand/2.jpg" alt=""></a>
+                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/2.jpg'); ?></a>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="single-brand">
-                        <a href="http://bootexperts.com/"><img src="img/brand/3.jpg" alt=""></a>
+                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/3.jpg'); ?></a>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="single-brand">
-                        <a href="http://bootexperts.com/"><img src="img/brand/4.jpg" alt=""></a>
+                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/4.jpg'); ?></a>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="single-brand">
-                        <a href="http://bootexperts.com/"><img src="img/brand/5.jpg" alt=""></a>
+                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/5.jpg'); ?></a>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="single-brand">
-                        <a href="http://bootexperts.com/"><img src="img/brand/6.jpg" alt=""></a>
+                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/6.jpg'); ?></a>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="single-brand">
-                        <a href="http://bootexperts.com/"><img src="img/brand/7.jpg" alt=""></a>
+                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/7.jpg'); ?></a>
                     </div>
                 </div>
             </div>

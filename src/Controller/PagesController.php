@@ -77,4 +77,25 @@ class PagesController extends AppController
 //        $Pro = $this->QuoteRequests->find()->contain(['InspectionTiers']);
 //        $this->set(compact('quoteRequests'));
     }
+
+    public function shop()
+    {
+//        $this->loadModel('Products');
+//        $Pro = $this->QuoteRequests->find()->contain(['InspectionTiers']);
+//        $this->set(compact('quoteRequests'));
+    }
+
+    public function product()
+    {
+//        $this->loadModel('Products');
+//        $Pro = $this->QuoteRequests->find()->contain(['InspectionTiers']);
+//        $this->set(compact('quoteRequests'));
+    }
+
+    public function about()
+    {
+//        $this->loadModel('Products');
+//        $Pro = $this->QuoteRequests->find()->contain(['InspectionTiers']);
+//        $this->set(compact('quoteRequests'));
+    }
 }

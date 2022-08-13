@@ -25,7 +25,7 @@ class CategoriesController extends AppController
 
         $this->set(compact('categories'));
     }
-
+//comment
     /**
      * View method
      *

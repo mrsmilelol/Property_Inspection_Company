@@ -82,13 +82,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->css('responsive.css') ?>
     <!-- modernizr JS
     ============================================ -->
-    <script src="js/modernizr-2.8.3.min.js"></script>
-
-    <?= $this->Html->script('responsive.css') ?>
+    <?= $this->Html->script('modernizr-2.8.3.min.js') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?>
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -159,9 +156,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <!-- Header Logo -->
-                    <div class="header-logo">
-                        <a href="index.html" title="Goetze">
-                            <img class="img-responsive" src="img/logo.png" alt="">
+                    <div class="header-logo logo-main-page">
+                        <a href=<?= $this->Url->build(['controller'=>'Pages',
+                        'action'=>'display','main']); ?> title="Chelsea Furniture">
+                            <?= $this->Html->image('chelsea-furniture-logo-smaller.png',
+                            ['class' =>'img-responsive']); ?>
                         </a>
                     </div>
                 </div>
@@ -171,7 +170,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                         <div class="header-bottom-right-inner">
                             <ul>
                                 <li>
-                                    <a class="cart-toggler search-icon" href="#">
+                                    <a class="cart-toggler search-icon to-search-icon" href="#">
                                         <i class="fa fa-search"></i>
                                     </a>
                                     <div class="header-bottom-search">
@@ -193,8 +192,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                                     <div class="cart-list">
                                         <div class="product">
                                             <div class="cart-single-product">
-                                                <a class="product-image" href="#">
-                                                    <img src="img/cart-img/1.jpg" alt="">
+                                                <a class="product-image" href=<?= $this->Url->build(['controller'=>'Pages',
+                                                    'action'=>'display','main']); ?>>
+                                                    <?= $this->Html->image('cart-img/1.jpg'); ?>
                                                 </a>
                                                 <div class="product-details">
                                                     <a href="#" class="remove">
@@ -216,8 +216,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                                                 </div>
                                             </div>
                                             <div class="cart-single-product">
-                                                <a class="product-image" href="#">
-                                                    <img src="img/cart-img/2.jpg" alt="">
+                                                <a class="product-image" href=<?= $this->Url->build(['controller'=>'Pages',
+                                                    'action'=>'display','main']); ?>>
+                                                    <?= $this->Html->image('cart-img/2.jpg'); ?>
                                                 </a>
                                                 <div class="product-details">
                                                     <a href="#" class="remove">
@@ -301,7 +302,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 													<a href="shop.html">Washing machine 4</a>
 												</span>
                                         <span class="mega-menu-img">
-													<a href="#"><img src="img/img_menu.jpg" alt="" /></a>
+                                                    <a href=<?= $this->Url->build(['controller'=>'Pages',
+                                                        'action'=>'display','main']); ?>>
+                                                        <?= $this->Html->image('img_menu.jpg'); ?>
+                                                    </a>
 												</span>
                                     </div>
                                 </li>
@@ -460,6 +464,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </div>
 <!-- Mobile Menu End -->
 
+<!-- Page Content Starts Here! -->
 <?= $this->Flash->render() ?>
 <?= $this->fetch('content') ?>
 
@@ -524,16 +529,19 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <div class="container">
             <div class="row">
                 <div class="footer-border-right col-lg-5 col-md-5 col-sm-6 col-xs-12 ">
-                    <div class="footer-middle-content">
-                        <a href="index.html"><img src="img/logo_footer.png" alt=""></a>
-                        <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit.</p>
+                    <div class="footer-middle-content logo-main-page">
+                        <a href="index.html"><?= $this->Html->image('chelsea-furniture-logo-smaller.png'); ?></a>
+                        <p>Chelsea Fine Furnishings is all about Service, Quality combined with a knowledgeable selection of fine furniture.
+                            At Chelsea Fine Furnishings we understand that your furniture is an extension of you and contributes to the impression you wish to make at home.
+                            We want the process of selecting and purchasing the right furniture to be as enjoyable and rewarding as possible.</p>
                         <div class="social-icon">
                             <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="https://www.facebook.com/chelsea.furnitures/"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://www.instagram.com/chelseafurniture_australia"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="https://wa.me/+61404737301"><i class="fa fa-whatsapp"></i></a></li>
+<!--                                <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>-->
+<!--                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>-->
+<!--                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>-->
                             </ul>
                         </div>
                     </div>
@@ -543,21 +551,22 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                         <h3 class="footer-widget-title">CONTACT US</h3>
                         <div class="footer-info contact">
                             <ul class="toggle-footer">
-                                <li>
-                                    <i class="fa fa-map-marker"></i>
-                                    <p>8901 Marmora Road, Glasgow D04 <br /> 89 GR, New York</p>
-                                </li>
+<!--                                <li>-->
+<!--                                    <i class="fa fa-map-marker"></i>-->
+<!--                                    <p>8901 Marmora Road, Glasgow D04 <br /> 89 GR, New York</p>-->
+<!--                                </li>-->
                                 <li>
                                     <i class="fa fa-phone"></i>
-                                    <p>Telephone: (+1) 866-540-3229 <br />Fax: (+1) 866-540-3229</p>
+<!--                                    <p>Telephone: 03 7068 0002 <br />Fax: (+1) 866-540-3229</p>-->
+                                    Telephone: 03 7068 0002
                                 </li>
                                 <li>
                                     <i class="fa fa-envelope-o"></i>
-                                    Email: admin@Bootexpert.com
+                                    Email: info@chelseafurniture.com.au
                                 </li>
                                 <li>
                                     <i class="fa fa-globe"></i>
-                                    Website: www.bootexpert.com
+                                    Website: https://chelseafurniture.com.au/
                                 </li>
                             </ul>
                         </div>
@@ -565,23 +574,19 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 hidden-sm">
                     <div class="time-area">
-                        <h3 class="footer-widget-title">OPENING TIME</h3>
+                        <h3 class="footer-widget-title">TRADING HOURS</h3>
                         <ul class="toggle-footer">
                             <li>
                                 <span class="pull-left">Monday - Friday</span>
-                                <span class="pull-right">9:00 - 22:00</span>
+                                <span class="pull-right">9am - 6pm</span>
                             </li>
                             <li>
-                                <span class="pull-left">Saturday</span>
-                                <span class="pull-right">10:00 - 24:00</span>
-                            </li>
-                            <li>
-                                <span class="pull-left">Sunday</span>
-                                <span class="pull-right">12:00 - 24:00</span>
+                                <span class="pull-left">Saturday - Sunday</span>
+                                <span class="pull-right">10am - 5pm</span>
                             </li>
                         </ul>
                         <div class="paypal">
-                            <img src="img/paypal.png" alt="">
+                            <?= $this->Html->image('paypal.png'); ?>
                         </div>
                     </div>
                 </div>
@@ -604,43 +609,47 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <!--Footer Area End-->
 <!-- jquery
 ============================================ -->
-<script src="js/jquery-1.11.3.min.js"></script>
+<?= $this->Html->script('jquery-1.11.3.min.js') ?>
 <!-- bootstrap JS
 ============================================ -->
-<script src="js/bootstrap.min.js"></script>
+<?= $this->Html->script('bootstrap.min.js') ?>
 <!-- wow JS
 ============================================ -->
-<script src="js/wow.min.js"></script>
+<?= $this->Html->script('wow.min.js') ?>
 <!-- price-slider JS
 ============================================ -->
-<script src="js/jquery-price-slider.js"></script>
+<?= $this->Html->script('jquery-price-slider.js') ?>
 <!-- jquery Venobox js
 ============================================ -->
-<script src="js/venobox.js"></script>
+<?= $this->Html->script('venobox.js') ?>
 <!-- jquery bxslider js
 ============================================ -->
-<script src="js/jquery.bxslider.min.js"></script>
+<?= $this->Html->script('jquery.bxslider.min.js') ?>
 <!-- meanmenu JS
 ============================================ -->
-<script src="js/jquery.meanmenu.js"></script>
+<?= $this->Html->script('jquery.meanmenu.js') ?>
 <!-- countdown JS
 ============================================ -->
-<script src="js/jquery.countdown.min.js"></script>
+<?= $this->Html->script('jquery.countdown.min.js') ?>
 <!-- owl.carousel JS
 ============================================ -->
-<script src="js/owl.carousel.min.js"></script>
+<?= $this->Html->script('owl.carousel.min.js') ?>
 <!-- Nivo slider js
 ============================================ -->
-<script src="lib/js/jquery.nivo.slider.js" type="text/javascript"></script>
-<script src="lib/home.js" type="text/javascript"></script>
+<!--<script src="lib/js/jquery.nivo.slider.js" type="text/javascript"></script>-->
+<!--<script src="lib/home.js" type="text/javascript"></script>-->
+<?= $this->Html->script('/webroot/lib/js/jquery.nivo.slider.js') ?>
+<?= $this->Html->script('/webroot/lib/home.js') ?>
 <!-- scrollUp JS
 ============================================ -->
-<script src="js/jquery.scrollUp.min.js"></script>
+<?= $this->Html->script('jquery.scrollUp.min.js') ?>
 <!-- plugins JS
 ============================================ -->
-<script src="js/plugins.js"></script>
+<?= $this->Html->script('plugins.js') ?>
 <!-- main JS
 ============================================ -->
-<script src="js/main.js"></script>
+<?= $this->Html->script('main.js') ?>
+
+<?= $this->fetch('script') ?>
 </body>
 </html>

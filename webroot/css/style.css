@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------------
 
-    Template Name: Goetze Mega Store Responsive HTML5 Template. 
+    Template Name: Goetze Mega Store Responsive HTML5 Template.
     Template URI: http://bootexperts.com
     Description: This is html5 template
     Author: BootExperts
@@ -16,7 +16,7 @@
 		2.2	Main menu area CSS
 		2.3	Mobile Menu CSS
 		2.4	Header Bottom Right
-	3.	Slider Area  	
+	3.	Slider Area
 	4.	Section Area CSS
 	5.	Service Area
 	6.	Featured Area CSS
@@ -30,13 +30,13 @@
 	14.	Footer Area CSS
 		14.1	Footer Top CSS
 		14.2	Footer Bottom
-	15.	scrollUp	
+	15.	scrollUp
 	16.	Home Page 2
 	17.	Home Page 3
 		17.1	News letter 2 CSS
-	18.	Home Page 4	
+	18.	Home Page 4
 		18.1	Featured Area 4 CSS
-	19.	Home Page 5	
+	19.	Home Page 5
 	20.	Single Product Page
 	21.	product-details tab
 	22.	Breadcrumb CSS
@@ -75,7 +75,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: "Poppins",sans-serif;
   font-weight: 500;
   line-height: 1.1;
-  margin: 0 0 10px;  
+  margin: 0 0 10px;
 }
 a {color: #777777;transition: all 0.3s ease 0s;text-decoration:none;}
 a:hover {
@@ -105,7 +105,7 @@ body {
 /*  2.	Header Area CSS
 /*----------------------------------------*/
 .header-default {
-  color: #6e6e6e;
+  color: #fcfafa;
   font-size: 12px;
   line-height: 40px;
 }
@@ -114,6 +114,12 @@ body {
 }
 .header-area .header-top {
   border-bottom: 1px solid #d3d3d3;
+    background-color: #100f0f;
+}
+
+.header-area .header-bottom {
+    border-bottom: 1px solid #d3d3d3;
+    background-color: #100f0f;
 }
 /*----------------------------------------*/
 /*  2.1	Header Top CSS
@@ -124,7 +130,7 @@ body {
 }
 .header-user-info a {
   border-left: 1px solid #f1f2f2;
-  color: #252525;
+  color: #fcfafa;
   font-size: 12px;
   line-height: 20px;
   padding-left: 14px;
@@ -140,7 +146,7 @@ body {
   color: #c38749;
 }
 .block-toggle {
-  color: #252525;
+  color: #fcfafa;
   font-size: 12px;
   padding: 10px 0;
   position: relative;
@@ -174,9 +180,14 @@ body {
 .header-logo {
   padding: 30px 0;
   text-align: center;
+    background-color: #100f0f;
 }
 .header-logo > a {
   display: inline-block;
+}
+
+.logo-main-page {
+    object-fit: scale-down;
 }
 /*----------------------------------------*/
 /*  2.2	Main menu area CSS
@@ -186,7 +197,7 @@ body {
   text-align: center;
 }
 .mainmenu ul li{display:inline-block;position:relative}
-.mainmenu ul li a{color: #252525;
+.mainmenu ul li a{color: #fcfafa;
 display: block;
 font-family: "Poppins",sans-serif;
 font-size: 14px;
@@ -281,6 +292,7 @@ transition: all 300ms ease-in 0s;}
 .mainmenu ul li ul.sub-menu li {
   display: block;
   transition: all 0.3s ease 0s;
+    color: #ffffff;
 }
 /*----------------------------------------*/
 /*  2.3	Mobile Menu CSS
@@ -328,12 +340,21 @@ transition: all 300ms ease-in 0s;}
   display: inline-block;
     position: relative;
 }
+.search-icon i {
+    background-color: #ffffff;
+}
+.to-search-icon i {
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    background-color: #777777;
+}
 .mini-cart-icon i {
-  border: 2px solid #c38749;
-  color: #c38749;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+    background-color: #c38749;
 }
 .mini-cart-icon span {
-  background: rgba(0, 0, 0, 0) url("img/icon_cart.png") no-repeat scroll left top;
+  background: rgba(0, 0, 0, 0) url('../img/icon_cart.png') no-repeat scroll left top;
   color: #ffffff;
   display: block !important;
   font-size: 12px;
@@ -491,7 +512,7 @@ transition: all 300ms ease-in 0s;}
   color: #9c9b9b;
 }
 .header-bottom-right .header-bottom-search form {
-  border: 2px solid #353535;
+  border: 2px solid #fcfafa;
   float: left;
   width: 100%;
 }
@@ -523,7 +544,7 @@ transition: all 300ms ease-in 0s;}
 .header-bottom-right .header-bottom-search input {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
   border: medium none;
-  color: #9c9c9c;
+  color: #100f0f;
   float: left;
   font-size: 13px;
   font-weight: 300;
@@ -532,7 +553,7 @@ transition: all 300ms ease-in 0s;}
   width: 70%;
 }
 /*----------------------------------------*/
-/*  3.	Slider Area  
+/*  3.	Slider Area
 /*----------------------------------------*/
 .nivo-directionNav {
   display: none;
@@ -558,10 +579,10 @@ transition: all 300ms ease-in 0s;}
    color: #262b32;
   font-size: 24px;
   font-weight: 600;
-  text-transform: uppercase;   
+  text-transform: uppercase;
 }
 .section-title h4::after {
-  background: rgba(0, 0, 0, 0) url("img/icon_title.png") no-repeat scroll center top;
+  background: rgba(0, 0, 0, 0) url('../img/icon_title.png') no-repeat scroll center top;
   bottom: -27px;
   content: "";
   display: block;
@@ -1998,7 +2019,7 @@ ul.tab-menu li.active i {
 .shop-select select {
   -moz-appearance: none;
   -moz-user-select: none;
-  background: #fbfbfb url("img/select-icon.png") no-repeat scroll right center;
+  background: #fbfbfb url('../img/select-icon.png') no-repeat scroll right center;
   border-color: #dddddd -moz-use-text-color #dddddd #dddddd;
   border-style: solid none solid solid;
   border-width: 1px medium 1px 1px;
@@ -2177,13 +2198,13 @@ button.show-pagi {
   width: 21px;
 }
 .wishlist-share ul li a.facebook {
-  background: rgba(0, 0, 0, 0) url("img/social/facebook.png") no-repeat scroll 0 0;
+  background: rgba(0, 0, 0, 0) url('../img/social/facebook.png') no-repeat scroll 0 0;
 }
 .wishlist-share ul li a.twitter {
-  background: rgba(0, 0, 0, 0) url("img/social/twitter.png") no-repeat scroll 0 0;
+  background: rgba(0, 0, 0, 0) url('../img/social/twitter.png') no-repeat scroll 0 0;
 }
 .wishlist-share ul li a.pinterest {
-  background: rgba(0, 0, 0, 0) url("img/social/pinterest.jpg") no-repeat scroll 0 0;
+  background: rgba(0, 0, 0, 0) url('../img/social/pinterest.jpg') no-repeat scroll 0 0;
 }
 .wishlist-share ul li a.googleplus {
   background: rgba(0, 0, 0, 0) url("img/social/googleplus.jpg") no-repeat scroll 0 0;
@@ -2544,11 +2565,11 @@ h1.heading-title {
   text-transform: uppercase;
 }
 .contact-form-box fieldset {
-  background: rgba(0, 0, 0, 0) url("img/form-contact-shadow.png") no-repeat scroll center bottom / contain ;
+  background: rgba(0, 0, 0, 0) url('../img/form-contact-shadow.png') no-repeat scroll center bottom / contain ;
   padding: 0 20px 42px;
 }
 .contact-form-box {
-  background: #ffffff url("img/contact-form.png") repeat-x scroll 0 0;
+  background: #ffffff url('../img/contact-form.png') repeat-x scroll 0 0;
   box-shadow: 0 5px 13px rgba(0, 0, 0, 0.17);
   margin: 0 0 30px;
   padding: 23px 0 0;
@@ -2631,7 +2652,7 @@ div.uploader span.filename {
   width: 160px;
 }
 div.uploader span.action {
-  background: rgba(0, 0, 0, 0) url("img/button.png") repeat scroll 0 0;
+  background: rgba(0, 0, 0, 0) url('../img/button.png') repeat scroll 0 0;
   color: #ffffff;
   cursor: pointer;
   display: inline;
