@@ -14,6 +14,11 @@
  * @var \App\View\AppView $this
  */
 
+/**
+ * @var \App\View\AppView $this
+ * @var \App\Model\Entity\Product $product
+ */
+
 $cakeDescription = 'CakePHP: the rapid development php framework';
 $this->layout = 'front';
 ?>
