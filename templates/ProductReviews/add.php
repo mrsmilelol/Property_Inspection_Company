@@ -5,30 +5,23 @@
  * @var \Cake\Collection\CollectionInterface|string[] $users
  * @var \Cake\Collection\CollectionInterface|string[] $products
  */
+$formTemplate= [
+    'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
+    'label' => '<label{{attrs}} class="form-label">{{text}}</label>',
+    'input' => '<input type="{{type}}" name="{{name}}" class="form-control"{{attrs}}/>',
+];
+$this->Form->setTemplates($formTemplate);
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Product Reviews'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="productReviews form content">
-            <?= $this->Form->create($productReview) ?>
-            <fieldset>
-                <legend><?= __('Add Product Review') ?></legend>
-                <?php
+<h1 class="h3 mb-0 text-gray-800"><?= __('Add new review') ?></h1>
+<?= $this->Form->create($productReview) ?>
+                    <?php
                     echo $this->Form->control('user_id', ['options' => $users, 'empty' => true]);
                     echo $this->Form->control('product_id', ['options' => $products, 'empty' => true]);
                     echo $this->Form->control('description');
                     echo $this->Form->control('rating');
-                    echo $this->Form->control('created_at');
-                    echo $this->Form->control('modified_at');
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
-        </div>
-    </div>
-</div>
+                    //echo $this->Form->control('created_at');
+                    //echo $this->Form->control('modified_at');
+                    ?>
+<br>
+<?= $this->Form->button(__('Submit'),['class' => 'btn btn-primary']) ?>
+<?= $this->Form->end() ?>

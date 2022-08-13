@@ -18,11 +18,7 @@ class ShoppingSessionsController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Users', 'Products'],
-        ];
-        $shoppingSessions = $this->paginate($this->ShoppingSessions);
-
+        $shoppingSessions = $this->ShoppingSessions->find()->contain(['Users','Products']);
         $this->set(compact('shoppingSessions'));
     }
 
