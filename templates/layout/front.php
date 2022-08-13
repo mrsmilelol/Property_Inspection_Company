@@ -349,7 +349,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                                         <li><a href="checkout.html">Checkout</a></li>
                                         <li><a href="contact.html">Contact Us</a></li>
                                         <li><a href="product-simple.html">Product Details</a></li>
-                                        <li><a href="shop.html">Shop</a></li>
+                                        <li><a href="<?= $this->Url->build(['controller'=>'Pages', 'action'=>'shop','']); ?>">Shop</a></li>
                                         <li><a href="wishlist.html">Wishlist</a></li>
                                         <li><a href="404.html">404 Error</a></li>
                                     </ul>

@@ -26,7 +26,7 @@ $this->layout = 'front';
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="breadcrumb-single">
                     <ul class="breadcrumbs">
-                        <li><a href="index.html" title="Return to Home">
+                        <li><a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'main'])?>" title="Return to Home">
                                 <i class="fa fa-home"></i>
                                 Home
                             </a></li>
@@ -68,7 +68,7 @@ $this->layout = 'front';
                                 <a href="#" title="Cancel"><i class="fa fa-remove pull-right"></i></a>
                             </li>
                             <li>
-                                Price: £ 36.09 - £ 61.00
+                                Price: AU$ 36.09 - AU$ 61.00
                             </li>
                         </ul>
                     </aside>
@@ -204,14 +204,16 @@ $this->layout = 'front';
                 <div class="clearfix"></div>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="grid">
+                        <!-- Product display -->
                         <div class="row">
+                            <?= $this->fetch('content') ?>
                             <div class="col-xs-12 col-sm-6 col-md-4 first-in-line first-item-of-tablet-line first-item-of-mobile-line">
                                 <div class="single-product">
                                     <!--product Content-->
                                     <div class="product-img-content">
                                         <!--Product Image-->
                                         <div class="product-img">
-                                            <a href="product-simple.html" title="Printed Dress">
+                                            <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'product'])?>" title="Printed Dress">
                                                 <a><?= $this->Html->image('featured/1.jpg'); ?> </a>
                                             </a>
                                         </div>
@@ -227,7 +229,7 @@ $this->layout = 'front';
                                         </div>
                                     </div>
                                     <div class="product-content">
-                                        <h5><a href="product-simple.html" title="Printed Dress">Printed Dress</a></h5>
+                                        <h5><a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'product'])?>" title="Printed Dress">Printed Dress</a></h5>
                                         <!--Product Rating-->
                                         <div class="rating-icon">
                                             <i class="fa fa-star"></i>
@@ -249,7 +251,7 @@ $this->layout = 'front';
                                     <div class="product-img-content">
                                         <!--Product Image-->
                                         <div class="product-img">
-                                            <a href="product-simple.html" title="Printed Summer Dress">
+                                            <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'product'])?>" title="Printed Summer Dress">
                                                 <a><?= $this->Html->image('featured/2.jpg'); ?> </a>
                                             </a>
                                         </div>
@@ -266,7 +268,7 @@ $this->layout = 'front';
                                         </div>
                                     </div>
                                     <div class="product-content">
-                                        <h5><a href="product-simple.html" title="Printed Summer Dress">Printed Summer Dress</a></h5>
+                                        <h5><a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'product'])?>" title="Printed Summer Dress">Printed Summer Dress</a></h5>
                                         <!--Product Rating-->
                                         <div class="rating-icon">
                                             <i class="fa fa-star"></i>
@@ -305,7 +307,7 @@ $this->layout = 'front';
                                         </div>
                                     </div>
                                     <div class="product-content">
-                                        <h5><a href="product-simple.html" title="Printed Summer Dress">Printed Summer Dress</a></h5>
+                                        <h5><a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'product'])?>" title="Printed Summer Dress">Printed Summer Dress</a></h5>
                                         <!--Product Rating-->
                                         <div class="rating-icon">
                                             <i class="fa fa-star"></i>
