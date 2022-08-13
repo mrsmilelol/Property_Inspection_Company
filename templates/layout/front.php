@@ -100,8 +100,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <div class="header-default pull-left">
-                        <p>Default Welcome Msg!</p>
+                    <div class="header-default pull-left social-icon">
+<!--                        <p>Default Welcome Msg!</p>-->
+                        <ul>
+                        <li><a href="https://www.facebook.com/chelsea.furnitures/"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://www.instagram.com/chelseafurniture_australia"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="https://wa.me/+61404737301"><i class="fa fa-whatsapp"></i></a></li>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-12">
@@ -156,7 +161,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <!-- Header Logo -->
-                    <div class="header-logo logo-main-page">
+                    <div class="header-logo logo-main-page pull-left">
                         <a href=<?= $this->Url->build(['controller'=>'Pages',
                         'action'=>'display','main']); ?> title="Chelsea Furniture">
                             <?= $this->Html->image('chelsea-furniture-logo-smaller.png',
@@ -353,6 +358,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                                         <li><a href="wishlist.html">Wishlist</a></li>
                                         <li><a href="404.html">404 Error</a></li>
                                     </ul>
+                                </li>
+                                <li>
+                                    <a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'about']); ?>>About Us</a>
                                 </li>
                                 <li><a href="contact.html">Contact</a></li>
                             </ul>
