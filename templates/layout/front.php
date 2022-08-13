@@ -100,8 +100,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <div class="header-default pull-left">
-                        <p>Default Welcome Msg!</p>
+                    <div class="header-default pull-left social-icon">
+<!--                        <p>Default Welcome Msg!</p>-->
+                        <ul>
+                        <li><a href="https://www.facebook.com/chelsea.furnitures/"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://www.instagram.com/chelseafurniture_australia"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="https://wa.me/+61404737301"><i class="fa fa-whatsapp"></i></a></li>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-12">
@@ -156,7 +161,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <!-- Header Logo -->
-                    <div class="header-logo logo-main-page">
+                    <div class="header-logo logo-main-page pull-left">
                         <a href=<?= $this->Url->build(['controller'=>'Pages',
                         'action'=>'display','main']); ?> title="Chelsea Furniture">
                             <?= $this->Html->image('chelsea-furniture-logo-smaller.png',
@@ -347,14 +352,16 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                                         <li><a href="blog-details.html">Blog Details</a></li>
                                         <li><a href="cart.html">Cart</a></li>
                                         <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="contact.html">Contact Us</a></li>
                                         <li><a href="product-simple.html">Product Details</a></li>
-                                        <li><a href="shop.html">Shop</a></li>
+                                        <li><a href="<?= $this->Url->build(['controller'=>'Pages', 'action'=>'shop','']); ?>">Shop</a></li>
                                         <li><a href="wishlist.html">Wishlist</a></li>
                                         <li><a href="404.html">404 Error</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li>
+                                    <a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'about']); ?>>About Us</a>
+                                </li>
+                                <li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'contact']); ?>>Contact Us</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -440,7 +447,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                                     <li><a href="blog-details.html">Blog Details</a></li>
                                     <li><a href="cart.html">Cart</a></li>
                                     <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
                                     <li><a href="product-simple.html">Product Details</a></li>
                                     <li><a href="shop.html">Shop</a></li>
                                     <li><a href="wishlist.html">Wishlist</a></li>
@@ -493,7 +499,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                             <li><a href="shop.html">New products</a></li>
                             <li><a href="shop.html">Best sellers</a></li>
                             <li><a href="shop.html">Our stores</a></li>
-                            <li><a href="contact.html">Contact us</a></li>
+                            <li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'contact']); ?>>Contact us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -531,7 +537,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <div class="footer-border-right col-lg-5 col-md-5 col-sm-6 col-xs-12 ">
                     <div class="footer-middle-content logo-main-page">
                         <a href="index.html"><?= $this->Html->image('chelsea-furniture-logo-smaller.png'); ?></a>
-                        <p>Chelsea Fine Furnishings is all about Service, Quality combined with a knowledgeable selection of fine furniture.
+                        <p>Chelsea Fine Furnishings is all about service and quality, combined with a knowledgeable selection of fine furniture.
                             At Chelsea Fine Furnishings we understand that your furniture is an extension of you and contributes to the impression you wish to make at home.
                             We want the process of selecting and purchasing the right furniture to be as enjoyable and rewarding as possible.</p>
                         <div class="social-icon">
