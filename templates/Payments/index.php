@@ -16,12 +16,12 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
         <thead>
         <tr>
                     <th><?= h('ID') ?></th>
-                    <th><?= h('User_id') ?></th>
-                    <th><?= h('Payment_type') ?></th>
+                    <th><?= h('User ID') ?></th>
+                    <th><?= h('Payment Type') ?></th>
                     <th><?= h('Provider') ?></th>
-                    <th><?= h('Account_no') ?></th>
-                    <th><?= h('Security_no') ?></th>
-                    <th><?= h('Expiry_date') ?></th>
+                    <th><?= h('Account Number') ?></th>
+                    <th><?= h('Security Number') ?></th>
+                    <th><?= h('Expiry date') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>

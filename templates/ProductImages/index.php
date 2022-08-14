@@ -16,7 +16,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
         <thead>
         <tr>
                     <th data-visible="false"><?= h('id') ?></th>
-                    <th><?= h('Product_id') ?></th>
+                    <th><?= h('Product_Name') ?></th>
                     <th><?= h('Description') ?></th>
                     <th data-visible="false"><?= h('created_at') ?></th>
                     <th data-visible="false"><?= h('modified_at') ?></th>

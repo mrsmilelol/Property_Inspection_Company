@@ -20,8 +20,8 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             <thead>
                 <tr>
                     <th data-visible="false"><?= h('id') ?></th>
-                    <th><?= h('Category_Name') ?></th>
-                    <th><?= h('Product_Quantity') ?></th>
+                    <th><?= h('Category Name') ?></th>
+                    <th><?= h('Product Quantity') ?></th>
                     <th><?= h('Name') ?></th>
                     <th><?= h('Description') ?></th>
                     <th><?= h('Price') ?></th>

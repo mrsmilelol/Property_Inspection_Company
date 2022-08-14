@@ -16,8 +16,8 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
         <thead>
                 <tr>
                     <th data-visible="false"><?= h('ID') ?></th>
-                    <th><?= h('User_id') ?></th>
-                    <th><?= h('Product_id') ?></th>
+                    <th><?= h('User ID') ?></th>
+                    <th><?= h('Product ID') ?></th>
                     <th><?= h('Description') ?></th>
                     <th><?= h('User Rating') ?></th>
                     <th data-visible="false"><?= h('created_at') ?></th>
