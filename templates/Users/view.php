@@ -3,22 +3,15 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\User $user
  */
+echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
+echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New User'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
+
     <div class="column-responsive column-80">
         <div class="users view content">
-            <h3><?= h($user->id) ?></h3>
-            <table>
-                <tr>
+            <h3><?= h($user->username) ?></h3>
+            <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
+            <tr>
                     <th><?= __('Username') ?></th>
                     <td><?= h($user->username) ?></td>
                 </tr>
@@ -55,12 +48,13 @@
                     <td><?= h($user->modified_at) ?></td>
                 </tr>
             </table>
+            <br>
             <div class="related">
                 <h4><?= __('Related Orders') ?></h4>
                 <?php if (!empty($user->orders)) : ?>
                 <div class="table-responsive">
-                    <table>
-                        <tr>
+                    <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
+                    <tr>
                             <th><?= __('Id') ?></th>
                             <th><?= __('User Id') ?></th>
                             <th><?= __('Total') ?></th>
@@ -86,12 +80,13 @@
                 </div>
                 <?php endif; ?>
             </div>
+            <br>
             <div class="related">
                 <h4><?= __('Related Payments') ?></h4>
                 <?php if (!empty($user->payments)) : ?>
                 <div class="table-responsive">
-                    <table>
-                        <tr>
+                    <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
+                    <tr>
                             <th><?= __('Id') ?></th>
                             <th><?= __('User Id') ?></th>
                             <th><?= __('Payment Type') ?></th>
@@ -125,12 +120,13 @@
                 </div>
                 <?php endif; ?>
             </div>
+            <br>
             <div class="related">
                 <h4><?= __('Related Product Reviews') ?></h4>
                 <?php if (!empty($user->product_reviews)) : ?>
                 <div class="table-responsive">
-                    <table>
-                        <tr>
+                    <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
+                    <tr>
                             <th><?= __('Id') ?></th>
                             <th><?= __('User Id') ?></th>
                             <th><?= __('Product Id') ?></th>
@@ -160,12 +156,13 @@
                 </div>
                 <?php endif; ?>
             </div>
+            <br>
             <div class="related">
                 <h4><?= __('Related Shopping Sessions') ?></h4>
                 <?php if (!empty($user->shopping_sessions)) : ?>
                 <div class="table-responsive">
-                    <table>
-                        <tr>
+                    <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
+                    <tr>
                             <th><?= __('Id') ?></th>
                             <th><?= __('User Id') ?></th>
                             <th><?= __('Product Id') ?></th>
@@ -193,12 +190,13 @@
                 </div>
                 <?php endif; ?>
             </div>
+            <br>
             <div class="related">
                 <h4><?= __('Related User Addresses') ?></h4>
                 <?php if (!empty($user->user_addresses)) : ?>
                 <div class="table-responsive">
-                    <table>
-                        <tr>
+                    <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
+                    <tr>
                             <th><?= __('Id') ?></th>
                             <th><?= __('User Id') ?></th>
                             <th><?= __('Address Line 1') ?></th>
@@ -236,4 +234,8 @@
             </div>
         </div>
     </div>
-</div>
+<script>
+    $(document).ready( function () {
+        $('#userTable').DataTable();
+    } );
+</script>

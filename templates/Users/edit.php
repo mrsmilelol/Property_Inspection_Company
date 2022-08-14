@@ -4,24 +4,16 @@
  * @var \App\Model\Entity\User $user
  * @var string[]|\Cake\Collection\CollectionInterface $userTypes
  */
+
+$formTemplate= [
+    'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
+    'label' => '<label{{attrs}} class="form-label">{{text}}</label>',
+    'input' => '<input type="{{type}}" name="{{name}}" class="form-control"{{attrs}}/>',
+];
+$this->Form->setTemplates($formTemplate);
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $user->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'class' => 'side-nav-item']
-            ) ?>
-            <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="users form content">
-            <?= $this->Form->create($user) ?>
-            <fieldset>
-                <legend><?= __('Edit User') ?></legend>
+<h1 class="h3 mb-0 text-gray-800"><?= __('Edit user') ?></h1>
+<?= $this->Form->create($user) ?>
                 <?php
                     echo $this->Form->control('username');
                     echo $this->Form->control('password');
@@ -33,9 +25,6 @@
                     echo $this->Form->control('created_at');
                     echo $this->Form->control('modified_at');
                 ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
-        </div>
-    </div>
-</div>
+                <br>
+                <?= $this->Form->button(__('Submit'),['class' => 'btn btn-primary']) ?>
+                <?= $this->Form->end() ?>

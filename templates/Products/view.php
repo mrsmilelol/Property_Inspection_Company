@@ -3,18 +3,19 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Product $product
  */
+echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
+echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
 ?>
-
         <div class="products view content">
-            <h3><?= h($product->name) ?></h3>
-            <table>
-                <tr>
+            <h3 ><?= h($product->name) ?></h3>
+            <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
+            <tr>
                     <th><?= __('Category') ?></th>
-                    <td><?= $product->has('category') ? $this->Html->link($product->category->id, ['controller' => 'Categories', 'action' => 'view', $product->category->id]) : '' ?></td>
+                    <td><?= $product->has('category') ? $this->Html->link($product->category->description, ['controller' => 'Categories', 'action' => 'view', $product->category->id]) : '' ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Product Inventory') ?></th>
-                    <td><?= $product->has('product_inventory') ? $this->Html->link($product->product_inventory->id, ['controller' => 'ProductInventories', 'action' => 'view', $product->product_inventory->id]) : '' ?></td>
+                    <td><?= $product->has('product_inventory') ? $this->Html->link($product->product_inventory->product_name, ['controller' => 'ProductInventories', 'action' => 'view', $product->product_inventory->id]) : '' ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Name') ?></th>
@@ -57,12 +58,13 @@
                     <td><?= h($product->modified_at) ?></td>
                 </tr>
             </table>
+            <br>
             <div class="related">
                 <h4><?= __('Related Order Items') ?></h4>
                 <?php if (!empty($product->order_items)) : ?>
                 <div class="table-responsive">
-                    <table>
-                        <tr>
+                    <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
+                    <tr>
                             <th><?= __('Id') ?></th>
                             <th><?= __('Order Id') ?></th>
                             <th><?= __('Product Id') ?></th>
@@ -90,12 +92,13 @@
                 </div>
                 <?php endif; ?>
             </div>
+            <br>
             <div class="related">
                 <h4><?= __('Related Product Categories') ?></h4>
                 <?php if (!empty($product->product_categories)) : ?>
                 <div class="table-responsive">
-                    <table>
-                        <tr>
+                    <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
+                    <tr>
                             <th><?= __('Id') ?></th>
                             <th><?= __('Category Id') ?></th>
                             <th><?= __('Product Id') ?></th>
@@ -104,7 +107,7 @@
                         <?php foreach ($product->product_categories as $productCategories) : ?>
                         <tr>
                             <td><?= h($productCategories->id) ?></td>
-                            <td><?= h($productCategories->category_id) ?></td>
+                            <td><?= h($productCategories->category) ?></td>
                             <td><?= h($productCategories->product_id) ?></td>
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['controller' => 'ProductCategories', 'action' => 'view', $productCategories->id]) ?>
@@ -117,12 +120,13 @@
                 </div>
                 <?php endif; ?>
             </div>
+            <br>
             <div class="related">
                 <h4><?= __('Related Product Images') ?></h4>
                 <?php if (!empty($product->product_images)) : ?>
                 <div class="table-responsive">
-                    <table>
-                        <tr>
+                    <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
+                    <tr>
                             <th><?= __('Id') ?></th>
                             <th><?= __('Product Id') ?></th>
                             <th><?= __('Description') ?></th>
@@ -148,12 +152,13 @@
                 </div>
                 <?php endif; ?>
             </div>
+            <br>
             <div class="related">
                 <h4><?= __('Related Product Reviews') ?></h4>
                 <?php if (!empty($product->product_reviews)) : ?>
                 <div class="table-responsive">
-                    <table>
-                        <tr>
+                    <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
+                    <tr>
                             <th><?= __('Id') ?></th>
                             <th><?= __('User Id') ?></th>
                             <th><?= __('Product Id') ?></th>
@@ -183,12 +188,13 @@
                 </div>
                 <?php endif; ?>
             </div>
+            <br>
             <div class="related">
                 <h4><?= __('Related Shopping Sessions') ?></h4>
                 <?php if (!empty($product->shopping_sessions)) : ?>
                 <div class="table-responsive">
-                    <table>
-                        <tr>
+                    <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
+                    <tr>
                             <th><?= __('Id') ?></th>
                             <th><?= __('User Id') ?></th>
                             <th><?= __('Product Id') ?></th>
@@ -217,5 +223,9 @@
                 <?php endif; ?>
             </div>
         </div>
-    </div>
-</div>
+<script>
+    $(document).ready( function () {
+        $('#productTable').DataTable();
+    } );
+</script>
+

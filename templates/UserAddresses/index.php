@@ -3,24 +3,28 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\UserAddress[]|\Cake\Collection\CollectionInterface $userAddresses
  */
+echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
+echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
 ?>
 <div class="userAddresses index content">
-    <?= $this->Html->link(__('New User Address'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('User Addresses') ?></h3>
-    <div class="table-responsive">
-        <table>
-            <thead>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"><?= __('User Addresses') ?></h1>
+        <a href="<?= $this->Url->build(['action' => 'add']) ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                class="fas fa-plus fa-sm text-white-50"></i> New products</a>
+    </div>
+    <table class="table table-bordered" id="userAddresses" width="100%" cellspacing="0">
+        <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('user_id') ?></th>
-                    <th><?= $this->Paginator->sort('address_line_1') ?></th>
-                    <th><?= $this->Paginator->sort('address_line_2') ?></th>
-                    <th><?= $this->Paginator->sort('city') ?></th>
-                    <th><?= $this->Paginator->sort('country') ?></th>
-                    <th><?= $this->Paginator->sort('state') ?></th>
-                    <th><?= $this->Paginator->sort('postcode') ?></th>
-                    <th><?= $this->Paginator->sort('created_at') ?></th>
-                    <th><?= $this->Paginator->sort('modified_at') ?></th>
+                    <th data-visible="false"><?= h('id') ?></th>
+                    <th><?= h('User_id') ?></th>
+                    <th><?= h('Address_line_1') ?></th>
+                    <th><?= h('Address_line_2') ?></th>
+                    <th><?= h('City') ?></th>
+                    <th><?= h('Country') ?></th>
+                    <th><?= h('State') ?></th>
+                    <th><?= h('Postcode') ?></th>
+                    <th data-visible="false"><?= h('created_at') ?></th>
+                    <th data-visible="false"><?= h('modified_at') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -28,7 +32,7 @@
                 <?php foreach ($userAddresses as $userAddress): ?>
                 <tr>
                     <td><?= $this->Number->format($userAddress->id) ?></td>
-                    <td><?= $userAddress->has('user') ? $this->Html->link($userAddress->user->id, ['controller' => 'Users', 'action' => 'view', $userAddress->user->id]) : '' ?></td>
+                    <td><?= $userAddress->has('user') ? $this->Html->link($userAddress->user->username, ['controller' => 'Users', 'action' => 'view', $userAddress->user->id]) : '' ?></td>
                     <td><?= h($userAddress->address_line_1) ?></td>
                     <td><?= h($userAddress->address_line_2) ?></td>
                     <td><?= h($userAddress->city) ?></td>
@@ -46,15 +50,9 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-    </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
-    </div>
+        <script>
+            $(document).ready( function () {
+                $('#userAddresses').DataTable();
+            } );
+        </script>
 </div>

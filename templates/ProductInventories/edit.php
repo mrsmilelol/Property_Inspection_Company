@@ -3,33 +3,21 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\ProductInventory $productInventory
  */
+$formTemplate= [
+    'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
+    'label' => '<label{{attrs}} class="form-label">{{text}}</label>',
+    'input' => '<input type="{{type}}" name="{{name}}" class="form-control"{{attrs}}/>',
+];
+$this->Form->setTemplates($formTemplate);
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $productInventory->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $productInventory->id), 'class' => 'side-nav-item']
-            ) ?>
-            <?= $this->Html->link(__('List Product Inventories'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="productInventories form content">
-            <?= $this->Form->create($productInventory) ?>
-            <fieldset>
-                <legend><?= __('Edit Product Inventory') ?></legend>
-                <?php
+<h1 class="h3 mb-0 text-gray-800"><?= __('Edit product inventory') ?></h1>
+<?= $this->Form->create($productInventory) ?>
+                    <?php
                     echo $this->Form->control('product_name');
                     echo $this->Form->control('product_quantity');
-                    echo $this->Form->control('created_at');
-                    echo $this->Form->control('modified_at');
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
-        </div>
-    </div>
-</div>
+                    //echo $this->Form->control('created_at');
+                    //echo $this->Form->control('modified_at');
+                    ?>
+<br>
+<?= $this->Form->button(__('Submit'),['class' => 'btn btn-primary']) ?>
+<?= $this->Form->end() ?>

@@ -3,22 +3,15 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Category $category
  */
+echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
+echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
 ?>
 <div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Category'), ['action' => 'edit', $category->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Category'), ['action' => 'delete', $category->id], ['confirm' => __('Are you sure you want to delete # {0}?', $category->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Categories'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Category'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
     <div class="column-responsive column-80">
         <div class="categories view content">
             <h3><?= h($category->id) ?></h3>
-            <table>
-                <tr>
+            <table class="table table-bordered" id="categoryTable" width="100%" cellspacing="0">
+            <tr>
                     <th><?= __('Parent Category') ?></th>
                     <td><?= $category->has('parent_category') ? $this->Html->link($category->parent_category->id, ['controller' => 'Categories', 'action' => 'view', $category->parent_category->id]) : '' ?></td>
                 </tr>
@@ -43,8 +36,8 @@
                 <h4><?= __('Related Categories') ?></h4>
                 <?php if (!empty($category->child_categories)) : ?>
                 <div class="table-responsive">
-                    <table>
-                        <tr>
+                    <table class="table table-bordered" id="categoryTable" width="100%" cellspacing="0">
+                    <tr>
                             <th><?= __('Id') ?></th>
                             <th><?= __('Parent Id') ?></th>
                             <th><?= __('Description') ?></th>
@@ -74,8 +67,8 @@
                 <h4><?= __('Related Product Categories') ?></h4>
                 <?php if (!empty($category->product_categories)) : ?>
                 <div class="table-responsive">
-                    <table>
-                        <tr>
+                    <table class="table table-bordered" id="categoryTable" width="100%" cellspacing="0">
+                    <tr>
                             <th><?= __('Id') ?></th>
                             <th><?= __('Category Id') ?></th>
                             <th><?= __('Product Id') ?></th>
@@ -101,8 +94,8 @@
                 <h4><?= __('Related Products') ?></h4>
                 <?php if (!empty($category->products)) : ?>
                 <div class="table-responsive">
-                    <table>
-                        <tr>
+                    <table class="table table-bordered" id="categoryTable" width="100%" cellspacing="0">
+                    <tr>
                             <th><?= __('Id') ?></th>
                             <th><?= __('Category Id') ?></th>
                             <th><?= __('Inventory Id') ?></th>
@@ -144,4 +137,9 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready( function () {
+            $('#categoryTable').DataTable();
+        } );
+    </script>
 </div>

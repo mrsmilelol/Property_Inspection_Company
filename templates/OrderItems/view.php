@@ -3,22 +3,14 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\OrderItem $orderItem
  */
+echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
+echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Order Item'), ['action' => 'edit', $orderItem->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Order Item'), ['action' => 'delete', $orderItem->id], ['confirm' => __('Are you sure you want to delete # {0}?', $orderItem->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Order Items'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Order Item'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
     <div class="column-responsive column-80">
         <div class="orderItems view content">
             <h3><?= h($orderItem->id) ?></h3>
-            <table>
-                <tr>
+            <table class="table table-bordered" id="orderItemsTable" width="100%" cellspacing="0">
+            <tr>
                     <th><?= __('Order') ?></th>
                     <td><?= $orderItem->has('order') ? $this->Html->link($orderItem->order->id, ['controller' => 'Orders', 'action' => 'view', $orderItem->order->id]) : '' ?></td>
                 </tr>
@@ -45,4 +37,8 @@
             </table>
         </div>
     </div>
-</div>
+<script>
+    $(document).ready( function () {
+        $('#orderItemsTable').DataTable();
+    } );
+</script>

@@ -3,22 +3,14 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\ProductReview $productReview
  */
+echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
+echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Product Review'), ['action' => 'edit', $productReview->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Product Review'), ['action' => 'delete', $productReview->id], ['confirm' => __('Are you sure you want to delete # {0}?', $productReview->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Product Reviews'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Product Review'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
     <div class="column-responsive column-80">
         <div class="productReviews view content">
-            <h3><?= h($productReview->id) ?></h3>
-            <table>
-                <tr>
+            <h3><?= h($productReview->product->name) ?></h3>
+            <table class="table table-bordered" id="productReviewsTable" width="100%" cellspacing="0">
+            <tr>
                     <th><?= __('User') ?></th>
                     <td><?= $productReview->has('user') ? $this->Html->link($productReview->user->id, ['controller' => 'Users', 'action' => 'view', $productReview->user->id]) : '' ?></td>
                 </tr>
@@ -49,4 +41,9 @@
             </table>
         </div>
     </div>
-</div>
+    <script>
+        $(document).ready( function () {
+            $('#productReviewsTable').DataTable();
+        } );
+    </script>
+

@@ -20,8 +20,7 @@
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
 
-    <?= $this->Html->script('/vendor/jquery/jquery.min.js') ?>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 </head>
@@ -37,7 +36,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= $this->Url->build('/') ?>">
             <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
+                <i class="fas fa-toolbox"></i>
             </div>
             <div class="sidebar-brand-text mx-3">Chelsea Furniture</div>
         </a>
@@ -64,20 +63,36 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-cog"></i>
+                <i class="fas fa-fw fa-chair"></i>
                 <span>Product management</span>
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Custom Components:</h6>
+                    <h6 class="collapse-header">Product menu:</h6>
                     <a class="collapse-item" href="<?= $this->Url->build('/') ?>">Products</a>
                     <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'Categories','action'=>'index']) ?>">Categories</a>
                     <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'ProductCategories','action'=>'index']) ?>">Product Categories</a>
                     <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'ProductInventories','action'=>'index']) ?>">Inventories</a>
                     <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'ProductImages','action'=>'index']) ?>">Images</a>
-                    <a class="collapse-item" href="cards.html">Reviews</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'ProductReviews','action'=>'index']) ?>">Reviews</a>
+                </div>
+            </div>
+        </li>
 
-
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePayments"
+               aria-expanded="true" aria-controls="collapsePayments">
+                <i class="fas fa-fw fa-user"></i>
+                <span>User management</span>
+            </a>
+            <div id="collapsePayments" class="collapse" aria-labelledby="headingUtilities"
+                 data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">User menu:</h6>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'Users','action'=>'index']) ?>">Users</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'UserTypes','action'=>'index']) ?>">User Types</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'UserAddresses','action'=>'index']) ?>">User Addresses</a>
                 </div>
             </div>
         </li>
@@ -86,17 +101,34 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                aria-expanded="true" aria-controls="collapseUtilities">
-                <i class="fas fa-fw fa-wrench"></i>
-                <span>Utilities</span>
+                <i class="fas fa-fw fa-credit-card"></i>
+                <span>Payments</span>
             </a>
             <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Custom Utilities:</h6>
-                    <a class="collapse-item" href="utilities-color.html">Colors</a>
-                    <a class="collapse-item" href="utilities-border.html">Borders</a>
-                    <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                    <a class="collapse-item" href="utilities-other.html">Other</a>
+                    <h6 class="collapse-header">Payment menu:</h6>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'Payments','action'=>'index']) ?>">Payments</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'ShoppingSessions','action'=>'index']) ?>">Shopping Sessions</a>
+
+                </div>
+            </div>
+        </li>
+
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrders"
+               aria-expanded="true" aria-controls="collapseOrderss">
+                <i class="fas fa-fw fa-box"></i>
+                <span>Orders</span>
+            </a>
+            <div id="collapseOrders" class="collapse" aria-labelledby="headingUtilities"
+                 data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Order menu:</h6>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'Orders','action'=>'index']) ?>">Orders</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'OrderItems','action'=>'index']) ?>">Ordered items</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'Stores','action'=>'index']) ?>">Stores</a>
                 </div>
             </div>
         </li>
@@ -104,48 +136,6 @@
         <!-- Divider -->
         <hr class="sidebar-divider">
 
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Addons
-        </div>
-
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-               aria-expanded="true" aria-controls="collapsePages">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>Pages</span>
-            </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Login Screens:</h6>
-                    <a class="collapse-item" href="login.html">Login</a>
-                    <a class="collapse-item" href="register.html">Register</a>
-                    <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                    <div class="collapse-divider"></div>
-                    <h6 class="collapse-header">Other Pages:</h6>
-                    <a class="collapse-item" href="404.html">404 Page</a>
-                    <a class="collapse-item" href="blank.html">Blank Page</a>
-                </div>
-            </div>
-        </li>
-
-        <!-- Nav Item - Charts -->
-        <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Charts</span></a>
-        </li>
-
-        <!-- Nav Item - Tables -->
-        <li class="nav-item">
-            <a class="nav-link" href="tables.html">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Tables</span></a>
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
 
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
@@ -195,57 +185,6 @@
                                     </div>
                                 </div>
                             </form>
-                        </div>
-                    </li>
-
-                    <!-- Nav Item - Alerts -->
-                    <li class="nav-item dropdown no-arrow mx-1">
-                        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-bell fa-fw"></i>
-                            <!-- Counter - Alerts -->
-                            <span class="badge badge-danger badge-counter">3+</span>
-                        </a>
-                        <!-- Dropdown - Alerts -->
-                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                             aria-labelledby="alertsDropdown">
-                            <h6 class="dropdown-header">
-                                Alerts Center
-                            </h6>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="mr-3">
-                                    <div class="icon-circle bg-primary">
-                                        <i class="fas fa-file-alt text-white"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="small text-gray-500">December 12, 2019</div>
-                                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="mr-3">
-                                    <div class="icon-circle bg-success">
-                                        <i class="fas fa-donate text-white"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="small text-gray-500">December 7, 2019</div>
-                                    $290.29 has been deposited into your account!
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="mr-3">
-                                    <div class="icon-circle bg-warning">
-                                        <i class="fas fa-exclamation-triangle text-white"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="small text-gray-500">December 2, 2019</div>
-                                    Spending Alert: We've noticed unusually high spending for your account.
-                                </div>
-                            </a>
-                            <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                         </div>
                     </li>
 

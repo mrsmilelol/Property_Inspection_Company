@@ -3,24 +3,16 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\ShoppingSession $shoppingSession
  */
+echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
+echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Shopping Session'), ['action' => 'edit', $shoppingSession->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Shopping Session'), ['action' => 'delete', $shoppingSession->id], ['confirm' => __('Are you sure you want to delete # {0}?', $shoppingSession->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Shopping Sessions'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Shopping Session'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
     <div class="column-responsive column-80">
         <div class="shoppingSessions view content">
             <h3><?= h($shoppingSession->id) ?></h3>
-            <table>
-                <tr>
+            <table class="table table-bordered" id="shoppingSessionTable" width="100%" cellspacing="0">
+            <tr>
                     <th><?= __('User') ?></th>
-                    <td><?= $shoppingSession->has('user') ? $this->Html->link($shoppingSession->user->id, ['controller' => 'Users', 'action' => 'view', $shoppingSession->user->id]) : '' ?></td>
+                    <td><?= $shoppingSession->has('user') ? $this->Html->link($shoppingSession->user->username, ['controller' => 'Users', 'action' => 'view', $shoppingSession->user->id]) : '' ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Product') ?></th>
@@ -45,4 +37,8 @@
             </table>
         </div>
     </div>
-</div>
+<script>
+    $(document).ready( function () {
+        $('#shoppingSessionTable').DataTable();
+    } );
+</script>
