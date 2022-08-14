@@ -23,6 +23,7 @@
 
 use Cake\Routing\Route\DashedRoute;
 use Cake\Routing\RouteBuilder;
+use Cake\Routing\Router;
 
 return static function (RouteBuilder $routes) {
     /*
@@ -72,7 +73,7 @@ return static function (RouteBuilder $routes) {
          */
         $builder->fallbacks();
     });
-
+    Router::url(['controller' => 'Products', 'action' => 'shop', 'shop']);
     /*
      * If you need a different set of middleware or none at all,
      * open new scope and define routes there.
