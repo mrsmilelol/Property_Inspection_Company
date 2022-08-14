@@ -271,18 +271,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                     <div class="mainmenu">
                         <nav>
                             <ul>
-                                <li class="expand"><a href="index.html">Home</a>
-                                    <!-- DropDown Menu -->
-                                    <ul class="restrain sub-menu">
-                                        <li class="sub-menu-title"><a href="#">Home Pages</a></li>
-                                        <li><a href="index-2.html">Home Version 2</a></li>
-                                        <li><a href="index-3.html">Home Version 3</a></li>
-                                        <li><a href="index-4.html">Home Version 4</a></li>
-                                        <li><a href="index-5.html">Home Version 5</a></li>
-                                        <li><a href="index-6.html">Home Version 6</a></li>
-                                    </ul>
+                                <li><a href="<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','main']); ?>">Home</a>
                                 </li>
-                                <li><a href="shop.html">Bedroom</a>
+                                <li><a href="<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','shop']); ?>">Bedroom</a>
                                     <!-- Mega Menu Four Column -->
                                     <div class="mega-menu">
 												<span>
@@ -307,14 +298,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 													<a href="shop.html">Washing machine 4</a>
 												</span>
                                         <span class="mega-menu-img">
-                                                    <a href=<?= $this->Url->build(['controller'=>'Pages',
-                                                        'action'=>'display','main']); ?>>
+                                                    <a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','main']); ?>>
                                                         <?= $this->Html->image('img_menu.jpg'); ?>
                                                     </a>
 												</span>
                                     </div>
                                 </li>
-                                <li><a href="shop.html">Livingroom</a>
+                                <li><a href="<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','shop']); ?>">Livingroom</a>
                                     <!-- Mege Menu Two Column -->
                                     <div class="mega-menu two-column">
 												<span>
@@ -333,7 +323,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 												</span>
                                     </div>
                                 </li>
-                                <li class="expand"><a href="shop.html">Lighting</a>
+                                <li class="expand"><a href="<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','shop']); ?>">Lighting</a>
                                     <!-- DropDown Menu -->
                                     <ul class="restrain sub-menu">
                                         <li class="sub-menu-title"><a href="#">Categories 01</a></li>

@@ -16,7 +16,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
         <thead>
         <tr>
                     <th><?= h('ID') ?></th>
-                    <th><?= h('Parent_id') ?></th>
+                    <th><?= h('Parent Category') ?></th>
                     <th><?= h('Subcategory') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
@@ -25,7 +25,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <?php foreach ($categories as $category): ?>
                 <tr>
                     <td><?= $this->Number->format($category->id) ?></td>
-                    <td><?= $category->has('parent_category') ? $this->Html->link($category->parent_category->id, ['controller' => 'Categories', 'action' => 'view', $category->parent_category->id]) : '' ?></td>
+                    <td><?= $category->has('parent_category') ? $this->Html->link($category->parent_category->description, ['controller' => 'Categories', 'action' => 'view', $category->parent_category->id]) : '' ?></td>
                     <td><?= h($category->description) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $category->id]) ?>
