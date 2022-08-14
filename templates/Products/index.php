@@ -20,8 +20,8 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             <thead>
                 <tr>
                     <th data-visible="false"><?= h('id') ?></th>
-                    <th><?= h('Category_id') ?></th>
-                    <th><?= h('Inventory_id') ?></th>
+                    <th><?= h('Category_Name') ?></th>
+                    <th><?= h('Product_Quantity') ?></th>
                     <th><?= h('Name') ?></th>
                     <th><?= h('Description') ?></th>
                     <th><?= h('Price') ?></th>
@@ -37,7 +37,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <tr>
                     <td><?= $this->Number->format($product->id) ?></td>
                     <td><?= $product->has('category') ? $this->Html->link($product->category->description, ['controller' => 'Categories', 'action' => 'view', $product->category->id]) : '' ?></td>
-                    <td><?= $product->has('product_inventory') ? $this->Html->link($product->product_inventory->product_name, ['controller' => 'ProductInventories', 'action' => 'view', $product->product_inventory->id]) : '' ?></td>
+                    <td><?= $product->has('product_inventory') ? $this->Html->link($product->product_inventory->product_quantity, ['controller' => 'ProductInventories', 'action' => 'view', $product->product_inventory->id]) : '' ?></td>
                     <td><?= h($product->name) ?></td>
                     <td><?= h($product->description) ?></td>
                     <td><?= $this->Number->format($product->price) ?></td>

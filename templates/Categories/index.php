@@ -16,7 +16,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
         <thead>
         <tr>
                     <th><?= h('ID') ?></th>
-                    <th><?= h('Parent_id') ?></th>
+                    <th><?= h('Parent_Category_id') ?></th>
                     <th><?= h('Subcategory') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
