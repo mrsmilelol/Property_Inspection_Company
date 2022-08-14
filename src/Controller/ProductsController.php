@@ -7,6 +7,7 @@ namespace App\Controller;
  * Products Controller
  *
  * @property \App\Model\Table\ProductsTable $Products
+ * @property \App\Model\Table\ProductImagesTable $ProductImages
  * @method \App\Model\Entity\Product[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
 class ProductsController extends AppController
@@ -48,16 +49,28 @@ class ProductsController extends AppController
      */
     public function add()
     {
+        $this->loadModel('ProductImages');
         $product = $this->Products->newEmptyEntity();
         if ($this->request->is('post')) {
             $product = $this->Products->patchEntity($product, $this->request->getData());
             if ($this->Products->save($product)) {
                 $this->Flash->success(__('The product has been saved.'));
+                $images = $this->request->getData('image_file');
+                foreach ($images as $image){
+                    $fileName = $image->getClientFilename();
+                    if(!empty($fileName)) {
+                        $targetPath = WWW_ROOT.'img'.DS.$fileName;
+                        $productImage = $this->ProductImages->newEmptyEntity();
+                        $image->moveTo($targetPath);
+                        $productImage->product_id = $product->id;
+                        $productImage->description = $fileName;
+                        $this->ProductImages->save($productImage);
+                    }
+                }
+                return $this->redirect(['action' => 'index']);}
+                $this->Flash->error(__('The product could not be saved. Please, try again.'));
 
-                return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The product could not be saved. Please, try again.'));
-        }
         $categories = $this->Products->Categories->find('list', ['limit' => 200])->all();
         $productInventories = $this->Products->ProductInventories->find('list', ['limit' => 200])->all();
         $this->set(compact('product', 'categories', 'productInventories'));

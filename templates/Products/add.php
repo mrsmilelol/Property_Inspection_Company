@@ -4,6 +4,7 @@
  * @var \App\Model\Entity\Product $product
  * @var \Cake\Collection\CollectionInterface|string[] $categories
  * @var \Cake\Collection\CollectionInterface|string[] $productInventories
+ * @var \Cake\Collection\CollectionInterface|string[] $productImages
  */
 //debug($this->Form->getTemplates());
 $formTemplate= [
@@ -16,7 +17,7 @@ $formTemplate= [
 $this->Form->setTemplates($formTemplate);
 ?>
 <h1 class="h3 mb-0 text-gray-800"><?= __('Add new product') ?></h1>
-<?= $this->Form->create($product) ?>
+<?= $this->Form->create($product,array('type' => 'file')) ?>
         <?php
             echo $this->Form->control('category_id', ['options' => $categories, 'empty' => true]);
             echo $this->Form->control('inventory_id', ['options' => $productInventories, 'empty' => true]);
@@ -27,6 +28,7 @@ $this->Form->setTemplates($formTemplate);
             echo $this->Form->control('brand');
             echo $this->Form->control('style');
             echo $this->Form->control('colour');
+            echo $this->Form->file('image_file. ', array('type'=>'file','multiple'=>'multiple'));
             //echo $this->Form->control('created_at');
             //echo $this->Form->control('modified_at');
         ?>
