@@ -3,27 +3,21 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\UserType $userType
  */
+$formTemplate= [
+    'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
+    'label' => '<label{{attrs}} class="form-label">{{text}}</label>',
+    'input' => '<input type="{{type}}" name="{{name}}" class="form-control"{{attrs}}/>',
+];
+$this->Form->setTemplates($formTemplate);
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List User Types'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="userTypes form content">
-            <?= $this->Form->create($userType) ?>
-            <fieldset>
-                <legend><?= __('Add User Type') ?></legend>
+<h1 class="h3 mb-0 text-gray-800"><?= __('Add new review') ?></h1>
+<?= $this->Form->create($userType) ?>
                 <?php
                     echo $this->Form->control('name');
-                    echo $this->Form->control('created_at');
-                    echo $this->Form->control('modified_at');
+                    //echo $this->Form->control('created_at');
+                    //echo $this->Form->control('modified_at');
                 ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
-        </div>
-    </div>
-</div>
+<br>
+<?= $this->Form->button(__('Submit'),['class' => 'btn btn-primary']) ?>
+<?= $this->Form->end() ?>
+

@@ -3,23 +3,25 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Payment[]|\Cake\Collection\CollectionInterface $payments
  */
+echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
+echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
 ?>
 <div class="payments index content">
-    <?= $this->Html->link(__('New Payment'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Payments') ?></h3>
-    <div class="table-responsive">
-        <table>
-            <thead>
-                <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('user_id') ?></th>
-                    <th><?= $this->Paginator->sort('payment_type') ?></th>
-                    <th><?= $this->Paginator->sort('provider') ?></th>
-                    <th><?= $this->Paginator->sort('account_no') ?></th>
-                    <th><?= $this->Paginator->sort('security_no') ?></th>
-                    <th><?= $this->Paginator->sort('expiry_date') ?></th>
-                    <th><?= $this->Paginator->sort('created_at') ?></th>
-                    <th><?= $this->Paginator->sort('modified_at') ?></th>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"><?= __('Payments') ?></h1>
+        <a href="<?= $this->Url->build(['action' => 'add']) ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                class="fas fa-plus fa-sm text-white-50"></i> New payments</a>
+    </div>
+    <table class="table table-bordered" id="payments" width="100%" cellspacing="0">
+        <thead>
+        <tr>
+                    <th><?= h('ID') ?></th>
+                    <th><?= h('User_id') ?></th>
+                    <th><?= h('Payment_type') ?></th>
+                    <th><?= h('Provider') ?></th>
+                    <th><?= h('Account_no') ?></th>
+                    <th><?= h('Security_no') ?></th>
+                    <th><?= h('Expiry_date') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -27,14 +29,12 @@
                 <?php foreach ($payments as $payment): ?>
                 <tr>
                     <td><?= $this->Number->format($payment->id) ?></td>
-                    <td><?= $payment->has('user') ? $this->Html->link($payment->user->id, ['controller' => 'Users', 'action' => 'view', $payment->user->id]) : '' ?></td>
+                    <td><?= $payment->has('user') ? $this->Html->link($payment->user->username, ['controller' => 'Users', 'action' => 'view', $payment->user->id]) : '' ?></td>
                     <td><?= h($payment->payment_type) ?></td>
                     <td><?= h($payment->provider) ?></td>
                     <td><?= $this->Number->format($payment->account_no) ?></td>
                     <td><?= $this->Number->format($payment->security_no) ?></td>
                     <td><?= $this->Number->format($payment->expiry_date) ?></td>
-                    <td><?= h($payment->created_at) ?></td>
-                    <td><?= h($payment->modified_at) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $payment->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $payment->id]) ?>
@@ -44,15 +44,9 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-    </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
-    </div>
+    <script>
+        $(document).ready( function () {
+            $('#payments').DataTable();
+        } );
+    </script>
 </div>

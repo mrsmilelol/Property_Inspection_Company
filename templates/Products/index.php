@@ -3,10 +3,12 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Product[]|\Cake\Collection\CollectionInterface $products
  */
+echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
+echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
 
-echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet', ['block' => true]);
-echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
-echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
+//echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet', ['block' => true]);
+//echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
+//echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
 ?>
 <div class="products index content">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -14,20 +16,19 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
         <a href="<?= $this->Url->build(['action' => 'add']) ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-plus fa-sm text-white-50"></i> New products</a>
     </div>
-    <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <table class="table table-bordered" id="products" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th><?= h('category_id') ?></th>
-                    <th><?= h('id') ?></th>
-                    <th><?= h('inventory_id') ?></th>
-                    <th><?= h('name') ?></th>
-                    <th><?= h('description') ?></th>
-                    <th><?= h('price') ?></th>
-                    <th><?= h('material') ?></th>
-                    <th><?= h('brand') ?></th>
-                    <th><?= h('style') ?></th>
-                    <th><?= h('colour') ?></th>
+                    <th data-visible="false"><?= h('id') ?></th>
+                    <th><?= h('Category_id') ?></th>
+                    <th><?= h('Inventory_id') ?></th>
+                    <th><?= h('Name') ?></th>
+                    <th><?= h('Description') ?></th>
+                    <th><?= h('Price') ?></th>
+                    <th><?= h('Material') ?></th>
+                    <th><?= h('Brand') ?></th>
+                    <th><?= h('Style') ?></th>
+                    <th><?= h('Colour') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -35,8 +36,8 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                 <?php foreach ($products as $product): ?>
                 <tr>
                     <td><?= $this->Number->format($product->id) ?></td>
-                    <td><?= $product->has('category') ? $this->Html->link($product->category->id, ['controller' => 'Categories', 'action' => 'view', $product->category->id]) : '' ?></td>
-                    <td><?= $product->has('product_inventory') ? $this->Html->link($product->product_inventory->id, ['controller' => 'ProductInventories', 'action' => 'view', $product->product_inventory->id]) : '' ?></td>
+                    <td><?= $product->has('category') ? $this->Html->link($product->category->description, ['controller' => 'Categories', 'action' => 'view', $product->category->id]) : '' ?></td>
+                    <td><?= $product->has('product_inventory') ? $this->Html->link($product->product_inventory->product_name, ['controller' => 'ProductInventories', 'action' => 'view', $product->product_inventory->id]) : '' ?></td>
                     <td><?= h($product->name) ?></td>
                     <td><?= h($product->description) ?></td>
                     <td><?= $this->Number->format($product->price) ?></td>
@@ -53,10 +54,9 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                 <?php endforeach; ?>
             </tbody>
         </table>
-    </div>
     <script>
-        $(document).ready(function(){
-            $('#dataTable').DataTable();
-        });
+        $(document).ready( function () {
+            $('#products').DataTable();
+        } );
     </script>
 </div>

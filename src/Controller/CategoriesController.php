@@ -23,6 +23,8 @@ class CategoriesController extends AppController
         ];
         $categories = $this->paginate($this->Categories);
 
+        $categories = $this->Categories->find()->contain(['ParentCategories']);
+
         $this->set(compact('categories'));
     }
 //comment

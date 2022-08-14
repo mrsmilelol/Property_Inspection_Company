@@ -3,22 +3,14 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\ProductInventory $productInventory
  */
+echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
+echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Product Inventory'), ['action' => 'edit', $productInventory->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Product Inventory'), ['action' => 'delete', $productInventory->id], ['confirm' => __('Are you sure you want to delete # {0}?', $productInventory->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Product Inventories'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Product Inventory'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
     <div class="column-responsive column-80">
         <div class="productInventories view content">
-            <h3><?= h($productInventory->id) ?></h3>
-            <table>
-                <tr>
+            <h3><?= h($productInventory->product_name) ?></h3>
+            <table class="table table-bordered" id="productInventoryTable" width="100%" cellspacing="0">
+            <tr>
                     <th><?= __('Product Name') ?></th>
                     <td><?= h($productInventory->product_name) ?></td>
                 </tr>
@@ -41,4 +33,9 @@
             </table>
         </div>
     </div>
-</div>
+    <script>
+        $(document).ready( function () {
+            $('#productInventoryTable').DataTable();
+        } );
+    </script>
+

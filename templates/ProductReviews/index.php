@@ -3,21 +3,25 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\ProductReview[]|\Cake\Collection\CollectionInterface $productReviews
  */
+echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
+echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
 ?>
 <div class="productReviews index content">
-    <?= $this->Html->link(__('New Product Review'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Product Reviews') ?></h3>
-    <div class="table-responsive">
-        <table>
-            <thead>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"><?= __('Product Reviews') ?></h1>
+        <a href="<?= $this->Url->build(['action' => 'add']) ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                class="fas fa-plus fa-sm text-white-50"></i> New review</a>
+    </div>
+    <table class="table table-bordered" id="productReviews" width="100%" cellspacing="0">
+        <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('user_id') ?></th>
-                    <th><?= $this->Paginator->sort('product_id') ?></th>
-                    <th><?= $this->Paginator->sort('description') ?></th>
-                    <th><?= $this->Paginator->sort('rating') ?></th>
-                    <th><?= $this->Paginator->sort('created_at') ?></th>
-                    <th><?= $this->Paginator->sort('modified_at') ?></th>
+                    <th data-visible="false"><?= h('ID') ?></th>
+                    <th><?= h('User_id') ?></th>
+                    <th><?= h('Product_id') ?></th>
+                    <th><?= h('Description') ?></th>
+                    <th><?= h('User Rating') ?></th>
+                    <th data-visible="false"><?= h('created_at') ?></th>
+                    <th data-visible="false"><?= h('modified_at') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -40,15 +44,10 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-    </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
-    </div>
+
+    <script>
+        $(document).ready( function () {
+            $('#productReviews').DataTable();
+        } );
+    </script>
 </div>

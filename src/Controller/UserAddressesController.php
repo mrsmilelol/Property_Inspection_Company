@@ -18,11 +18,7 @@ class UserAddressesController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Users'],
-        ];
-        $userAddresses = $this->paginate($this->UserAddresses);
-
+        $userAddresses = $this->UserAddresses->find()->contain(['Users']);
         $this->set(compact('userAddresses'));
     }
 
