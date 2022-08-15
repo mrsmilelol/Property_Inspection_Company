@@ -32,11 +32,13 @@ class ProductsController extends AppController
      */
     public function view($id = null)
     {
+        $this->loadModel('ProductImages');
+        $productImages = $this->ProductImages->findByProductId($id)->all()->toArray();
         $product = $this->Products->get($id, [
             'contain' => ['Categories', 'ProductInventories', 'OrderItems', 'ProductCategories', 'ProductImages', 'ProductReviews', 'ShoppingSessions'],
         ]);
 
-        $this->set(compact('product'));
+        $this->set(compact('product','productImages'));
     }
 
     /**
@@ -83,7 +85,7 @@ class ProductsController extends AppController
     public function edit($id = null)
     {
         $product = $this->Products->get($id, [
-            'contain' => [],
+            'contain' => ['Categories', 'ProductInventories', 'OrderItems', 'ProductCategories', 'ProductImages', 'ProductReviews', 'ShoppingSessions'],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $product = $this->Products->patchEntity($product, $this->request->getData());
@@ -117,5 +119,16 @@ class ProductsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+    public function shop()
+    {
+        $this->loadModel('ProductImages');
+        $products = $this->Products->find()->all()->toArray();
+        $productImages = $this->ProductImages->find()->select(['product_id','description'])
+            ->distinct(['product_id'])->toArray();
+//        $test->select(['product_id','description'])
+//            ->distinct(['product_id']);
+        $this->set(compact('products','productImages'));
+        $this->render('shop');
     }
 }
