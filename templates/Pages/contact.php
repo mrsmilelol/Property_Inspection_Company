@@ -35,6 +35,17 @@ $this->layout = 'front';
                         </li>
                         <li>Contact</li>
                     </ul>
+                    <div class="fl_right">
+                        <ul class="nospace faico clear">
+                            <li><a class="faicon-facebook" href=" "><i class="fa fa-facebook"></i></ a></li>
+                            <li><a class="faicon-pinterest" href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></ a></li>
+                            <li><a class="faicon-twitter" href="https://twitter.com/?lang=zh"><i class="fa fa-twitter"></i></ a></li>
+                            <li><a class="faicon-dribble" href="https://dribbble.com/"><i class="fa fa-dribbble"></i></ a></li>
+                            <li><a class="faicon-linkedin" href="https://www.linkedin.com/login"><i class="fa fa-linkedin"></i></ a></li>
+                            <li><a class="faicon-google-plus" href="https://myaccount.google.com/profile"><i class="fa fa-google-plus"></i></ a></li>
+                            <li><a class="faicon-rss" href="https://fontawesome.com/v4/icon/rss"><i class="fa fa-rss"></i></ a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -67,7 +78,19 @@ $this->layout = 'front';
                                                         <p><span style="color: #333333;"><strong>Email: </strong></span>info@chelseafurniture.com.au</p>
                                                         <p><span style="color: #333333;"><strong>Phone: </strong>037068 0002</span></p>
                                                     </div>
+<!--                                                    <div class="fl_right">-->
+<!--                                                        <ul class="nospace faico clear">-->
+<!--                                                            <li><a class="faicon-facebook" href=" "><i class="fa fa-facebook"></i></ a></li>-->
+<!--                                                            <li><a class="faicon-pinterest" href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></ a></li>-->
+<!--                                                            <li><a class="faicon-twitter" href="https://twitter.com/?lang=zh"><i class="fa fa-twitter"></i></ a></li>-->
+<!--                                                            <li><a class="faicon-dribble" href="https://dribbble.com/"><i class="fa fa-dribbble"></i></ a></li>-->
+<!--                                                            <li><a class="faicon-linkedin" href="https://www.linkedin.com/login"><i class="fa fa-linkedin"></i></ a></li>-->
+<!--                                                            <li><a class="faicon-google-plus" href="https://myaccount.google.com/profile"><i class="fa fa-google-plus"></i></ a></li>-->
+<!--                                                            <li><a class="faicon-rss" href="https://fontawesome.com/v4/icon/rss"><i class="fa fa-rss"></i></ a></li>-->
+<!--                                                        </ul>-->
+<!--                                                    </div>-->
                                                 </div></div></div></div>
+
 <!--                                    <div class="wd-social-icons  woodmart-social-icons icons-design-bordered icons-size-default color-scheme-dark social-follow social-form-circle wd-off-anim wpb_animate_when_almost_visible wpb_flipInX flipInX wd-anim-name_flipInX wd-rs-62455e17b86ae text-left">-->
 <!--                                        <a rel="noopener noreferrer nofollow" href="https://www.facebook.com/chelsea.furnitures/" target="_blank" class=" wd-social-icon social-facebook" aria-label="Facebook social link">-->
 <!--                                            <span class="wd-icon"></span>-->
@@ -90,9 +113,11 @@ $this->layout = 'front';
                                     <div id="wd-624559407424c" class="wd-text-block wd-wpb reset-last-child wd-rs-624559407424c wd-width-100 text-center vc_custom_1648712028623">
                                         <p>Do you have any questions about our services and products? We&#8217;ll be happy to help you.</p>
                                     </div>
+                                    <button>
                                     <div id="wd-624fd1c8a47e4" class=" wd-rs-624fd1c8a47e4  wd-button-wrapper woodmart-button-wrapper wd-off-anim wpb_animate_when_almost_visible wpb_flipInY flipInY wd-anim-name_flipInY text-center">
                                         <a href="tel:0370680002" title="Call Us Now !" class="btn btn-scheme-light btn-scheme-hover-dark btn-style-3d btn-style-semi-round btn-size-extra-large">Call Us Now !</a>
                                     </div>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -103,7 +128,7 @@ $this->layout = 'front';
                                         <div class="wpb_wrapper">
                                             <div class="wpb_map_wraper">
                                                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3147.8605334907706!2d145.11741161584735!3d-37.91032244734883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad66ac30cb98f31%3A0x9d94eccb268997bc!2s1680%20Dandenong%20Rd%2C%20Oakleigh%20East%20VIC%203166!5e0!3m2!1sen!2sau!4v1648712699658!5m2!1sen!2sau"
-                                                        width="400" height="300" style="border:0;"
+                                                        align="right" width="500" height="600" style="border:0;"
                                                         allowfullscreen loading="lazy"
                                                         referrerpolicy="no-referrer-when-downgrade">
                                                 </iframe>
