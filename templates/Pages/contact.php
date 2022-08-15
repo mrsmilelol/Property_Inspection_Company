@@ -68,20 +68,20 @@ $this->layout = 'front';
                                                         <p><span style="color: #333333;"><strong>Phone: </strong>037068 0002</span></p>
                                                     </div>
                                                 </div></div></div></div>
-                                    <div class="wd-social-icons  woodmart-social-icons icons-design-bordered icons-size-default color-scheme-dark social-follow social-form-circle wd-off-anim wpb_animate_when_almost_visible wpb_flipInX flipInX wd-anim-name_flipInX wd-rs-62455e17b86ae text-left">
-                                        <a rel="noopener noreferrer nofollow" href="https://www.facebook.com/chelsea.furnitures/" target="_blank" class=" wd-social-icon social-facebook" aria-label="Facebook social link">
-                                            <span class="wd-icon"></span>
-                                        </a>
-                                        <a rel="noopener noreferrer nofollow" href="https://www.instagram.com/chelseafurniture_australia" target="_blank" class=" wd-social-icon social-instagram" aria-label="Instagram social link">
-                                            <span class="wd-icon"></span>
-                                        </a>
-                                        <a rel="noopener noreferrer nofollow" href="https://wa.me/+61404737301" target="_blank" class="whatsapp-desktop  wd-social-icon social-whatsapp" aria-label="WhatsApp social link">
-                                            <span class="wd-icon"></span>
-                                        </a>
-                                        <a rel="noopener noreferrer nofollow" href="https://wa.me/+61404737301" target="_blank" class="whatsapp-mobile  wd-social-icon social-whatsapp" aria-label="WhatsApp social link">
-                                            <span class="wd-icon"></span>
-                                        </a>
-                                    </div>
+<!--                                    <div class="wd-social-icons  woodmart-social-icons icons-design-bordered icons-size-default color-scheme-dark social-follow social-form-circle wd-off-anim wpb_animate_when_almost_visible wpb_flipInX flipInX wd-anim-name_flipInX wd-rs-62455e17b86ae text-left">-->
+<!--                                        <a rel="noopener noreferrer nofollow" href="https://www.facebook.com/chelsea.furnitures/" target="_blank" class=" wd-social-icon social-facebook" aria-label="Facebook social link">-->
+<!--                                            <span class="wd-icon"></span>-->
+<!--                                        </a>-->
+<!--                                        <a rel="noopener noreferrer nofollow" href="https://www.instagram.com/chelseafurniture_australia" target="_blank" class=" wd-social-icon social-instagram" aria-label="Instagram social link">-->
+<!--                                            <span class="wd-icon"></span>-->
+<!--                                        </a>-->
+<!--                                        <a rel="noopener noreferrer nofollow" href="https://wa.me/+61404737301" target="_blank" class="whatsapp-desktop  wd-social-icon social-whatsapp" aria-label="WhatsApp social link">-->
+<!--                                            <span class="wd-icon"></span>-->
+<!--                                        </a>-->
+<!--                                        <a rel="noopener noreferrer nofollow" href="https://wa.me/+61404737301" target="_blank" class="whatsapp-mobile  wd-social-icon social-whatsapp" aria-label="WhatsApp social link">-->
+<!--                                            <span class="wd-icon"></span>-->
+<!--                                        </a>-->
+<!--                                    </div>-->
                                     <div id="wd-62455e09de21f" class="title-wrapper wd-wpb set-mb-s reset-last-child  wd-rs-62455e09de21f wd-title-color-primary wd-title-style-default wd-width-100 text-left vc_custom_1648713232008 wd-underline-colored">
                                         <div class="liner-continer">
                                             <h4 class="woodmart-title-container title  wd-font-weight- wd-fontsize-l" ><u>CONTACT</u> US</h4>
