@@ -35,17 +35,17 @@ $this->layout = 'front';
                         </li>
                         <li>Contact</li>
                     </ul>
-                    <div class="fl_right">
-                        <ul class="nospace faico clear">
-                            <li><a class="faicon-facebook" href=" "><i class="fa fa-facebook"></i></ a></li>
-                            <li><a class="faicon-pinterest" href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></ a></li>
-                            <li><a class="faicon-twitter" href="https://twitter.com/?lang=zh"><i class="fa fa-twitter"></i></ a></li>
-                            <li><a class="faicon-dribble" href="https://dribbble.com/"><i class="fa fa-dribbble"></i></ a></li>
-                            <li><a class="faicon-linkedin" href="https://www.linkedin.com/login"><i class="fa fa-linkedin"></i></ a></li>
-                            <li><a class="faicon-google-plus" href="https://myaccount.google.com/profile"><i class="fa fa-google-plus"></i></ a></li>
-                            <li><a class="faicon-rss" href="https://fontawesome.com/v4/icon/rss"><i class="fa fa-rss"></i></ a></li>
-                        </ul>
-                    </div>
+<!--                    <div class="fl_right">-->
+<!--                        <ul class="nospace faico clear">-->
+<!--                            <li><a class="faicon-facebook" href=" "><i class="fa fa-facebook"></i></ a></li>-->
+<!--                            <li><a class="faicon-pinterest" href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></ a></li>-->
+<!--                            <li><a class="faicon-twitter" href="https://twitter.com/?lang=zh"><i class="fa fa-twitter"></i></ a></li>-->
+<!--                            <li><a class="faicon-dribble" href="https://dribbble.com/"><i class="fa fa-dribbble"></i></ a></li>-->
+<!--                            <li><a class="faicon-linkedin" href="https://www.linkedin.com/login"><i class="fa fa-linkedin"></i></ a></li>-->
+<!--                            <li><a class="faicon-google-plus" href="https://myaccount.google.com/profile"><i class="fa fa-google-plus"></i></ a></li>-->
+<!--                            <li><a class="faicon-rss" href="https://fontawesome.com/v4/icon/rss"><i class="fa fa-rss"></i></ a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
                 </div>
             </div>
         </div>
@@ -62,7 +62,9 @@ $this->layout = 'front';
                     <div class="vc_row wpb_row vc_row-fluid vc_custom_1648710086425 wd-rs-624551c31e088"><div class="wpb_column vc_column_container vc_col-sm-6 vc_col-lg-4 vc_col-md-4 wd-alignment-left wd-rs-61261191a5446"><div class="vc_column-inner vc_custom_1629884819677"><div class="wpb_wrapper">
                                     <div id="wd-62c81a12e4417" class="title-wrapper wd-wpb set-mb-s reset-last-child  wd-rs-62c81a12e4417 wd-title-color-primary wd-title-style-default wd-width-100 text-left wd-off-anim wpb_animate_when_almost_visible wpb_flipInX flipInX wd-anim-name_flipInX vc_custom_1657281050020 wd-underline-colored">
                                         <div class="liner-continer">
-                                            <h1 class="woodmart-title-container title  wd-font-weight- wd-fontsize-l" ><u>OUR</u> ADDRESS</h1>
+                                            <h1 class="woodmart-title-container title  wd-font-weight- wd-fontsize-l" ><u>OUR  ADDRESS</u></h1>
+<!--                                            <h1 class="underlined" ><u>OUR ADDRESS</u></h1>-->
+
                                         </div>
                                     </div>
                                     <div class="vc_row wpb_row vc_inner vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper">			<div class="info-box-wrapper">
@@ -128,7 +130,7 @@ $this->layout = 'front';
                                         <div class="wpb_wrapper">
                                             <div class="wpb_map_wraper">
                                                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3147.8605334907706!2d145.11741161584735!3d-37.91032244734883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad66ac30cb98f31%3A0x9d94eccb268997bc!2s1680%20Dandenong%20Rd%2C%20Oakleigh%20East%20VIC%203166!5e0!3m2!1sen!2sau!4v1648712699658!5m2!1sen!2sau"
-                                                        align="right" width="500" height="600" style="border:0;"
+                                                        align="right" width="800" height="1000" style="border:0;"
                                                         allowfullscreen loading="lazy"
                                                         referrerpolicy="no-referrer-when-downgrade">
                                                 </iframe>
