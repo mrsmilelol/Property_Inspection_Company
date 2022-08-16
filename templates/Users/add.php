@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\User $user
  * @var \Cake\Collection\CollectionInterface|string[] $userTypes
  */
-$formTemplate= [
+$formTemplate = [
     'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
     'label' => '<label{{attrs}} class="form-label">{{text}}</label>',
     'input' => '<input type="{{type}}" name="{{name}}" class="form-control"{{attrs}}/>',
@@ -21,10 +21,10 @@ $this->Form->setTemplates($formTemplate);
                     echo $this->Form->control('phone');
                     echo $this->Form->control('email');
                     echo $this->Form->control('user_type_id', ['options' => $userTypes, 'empty' => true]);
-                    echo $this->Form->control('created_at');
-                    echo $this->Form->control('modified_at');
+                    //echo $this->Form->control('created_at', ['type' => 'hidden']);
+                    //echo $this->Form->control('modified_at', ['type' => 'hidden']);
                 ?>
 <br>
-<?= $this->Form->button(__('Submit'),['class' => 'btn btn-primary']) ?>
+<?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
 <?= $this->Form->end() ?>
 
