@@ -24,6 +24,13 @@ $this->Form->setTemplates($formTemplate);
                     echo $this->Form->control('brand');
                     echo $this->Form->control('style');
                     echo $this->Form->control('colour');
+                    echo $this->Form->control('units_in_stock');
+                    echo $this->Form->control('size');
+                    echo $this->Form->control('weight');
+                    echo $this->Form->control('finish');
+                    echo $this->Form->control('wholesale_price');
+                    echo $this->Form->control('sale_price');
+                    echo $this->Form->control('manufacturing');
                     //echo $this->Form->control('created_at');
                     //echo $this->Form->control('modified_at');
                 ?>

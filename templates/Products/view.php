@@ -10,14 +10,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
         <div class="products view content">
             <h3 ><?= h($product->name) ?></h3>
             <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
-            <tr>
-                    <th><?= __('Category') ?></th>
-                    <td><?= $product->has('category') ? $this->Html->link($product->category->description, ['controller' => 'Categories', 'action' => 'view', $product->category->id]) : '' ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Product Inventory') ?></th>
-                    <td><?= $product->has('product_inventory') ? $this->Html->link($product->product_inventory->product_name, ['controller' => 'ProductInventories', 'action' => 'view', $product->product_inventory->id]) : '' ?></td>
-                </tr>
                 <tr>
                     <th><?= __('Name') ?></th>
                     <td><?= h($product->name) ?></td>
@@ -25,6 +17,18 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <tr>
                     <th><?= __('Description') ?></th>
                     <td><?= h($product->description) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Price') ?></th>
+                    <td><?= $this->Number->format($product->price) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Sale Price') ?></th>
+                    <td><?= $this->Number->format($product->sale_price) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Wholesale price') ?></th>
+                    <td><?= $this->Number->format($product->wholesale_price) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Material') ?></th>
@@ -47,8 +51,20 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <td><?= $this->Number->format($product->id) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Price') ?></th>
-                    <td><?= $this->Number->format($product->price) ?></td>
+                    <th><?= __('Units in stock') ?></th>
+                    <td><?= $this->Number->format($product->units_in_stock) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Size') ?></th>
+                    <td><?= $this->Number->format($product->size) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Weight') ?></th>
+                    <td><?= $this->Number->format($product->weight) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Finish') ?></th>
+                    <td><?= $this->Number->format($product->finish) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Created At') ?></th>
