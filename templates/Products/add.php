@@ -28,6 +28,7 @@ $this->Form->setTemplates($formTemplate);
                     echo $this->Form->control('wholesale_price');
                     echo $this->Form->control('sale_price');
                     echo $this->Form->control('manufacturing');
+                    echo $this->Form->file('image_file. ', array('type'=>'file','multiple'=>'multiple'));
                     //echo $this->Form->control('created_at');
                     //echo $this->Form->control('modified_at');
                 ?>
