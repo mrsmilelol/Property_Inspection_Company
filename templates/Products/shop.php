@@ -211,16 +211,16 @@ $this->layout = 'front';
                         <div class="row">
                             <?= $this->fetch('content') ?>
                             <div class="col-xs-12 col-sm-6 col-md-4 first-in-line first-item-of-tablet-line first-item-of-mobile-line">
-                                <?php for ($x = 0; $x <= count($products); $x+=3):?>
+                                <?php for ($x = 0; $x <= count($products)-1; $x+=3):?>
                                 <div class="single-product">
                                     <!--product Content-->
                                     <div class="product-img-content">
                                         <!--Product Image-->
                                         <div class="product-img">
                                             <?php foreach ($productImages as $productImage):?>
-                                                <?php if ($productImage->product_id=$products[$x]->id):?>
+                                                <?php if ($productImage->product_id==$products[$x]->id):?>
                                                     <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'product'])?>" title="Printed Dress">
-                                                        <a><?= $this->Html->image($productImage->description,['alt' => 'CakePHP','class' => 'img-fluid','width' => 200, 'height' => 200]);?> </a>
+                                                        <a><?= $this->Html->image($productImage->description,['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
                                                     </a>
                                                 <?php endif; ?>
                                             <?php endforeach;?>
@@ -255,15 +255,19 @@ $this->layout = 'front';
                                 <?php endfor?>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-4 last-item-of-tablet-line">
-                                <?php for ($x = 2; $x <= count($products); $x+=3):?>
+                                <?php for ($x = 1; $x <= count($products)-1; $x+=3):?>
                                     <div class="single-product">
                                         <!--product Content-->
                                         <div class="product-img-content">
                                             <!--Product Image-->
                                             <div class="product-img">
-                                                <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'product'])?>" title="Printed Dress">
-                                                    <a><?= $this->Html->image('featured/1.jpg'); ?> </a>
-                                                </a>
+                                                <?php foreach ($productImages as $productImage):?>
+                                                    <?php if ($productImage->product_id==$products[$x]->id):?>
+                                                        <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'product'])?>" title="Printed Dress">
+                                                            <a><?= $this->Html->image($productImage->description,['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
+                                                        </a>
+                                                    <?php endif; ?>
+                                                <?php endforeach;?>
                                             </div>
                                             <span class="new-label">New</span>
                                             <!--Product Action-->
@@ -295,15 +299,19 @@ $this->layout = 'front';
                                 <?php endfor; ?>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-4 last-in-line first-item-of-tablet-line last-item-of-mobile-line">
-                                <?php for ($x = 3; $x <= count($products); $x+=3):?>
+                                <?php for ($x = 2; $x <= count($products)-1; $x+=3):?>
                                     <div class="single-product">
                                         <!--product Content-->
                                         <div class="product-img-content">
                                             <!--Product Image-->
                                             <div class="product-img">
-                                                <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'product'])?>" title="Printed Dress">
-                                                    <a><?= $this->Html->image('featured/1.jpg'); ?> </a>
-                                                </a>
+                                                <?php foreach ($productImages as $productImage):?>
+                                                    <?php if ($productImage->product_id==$products[$x]->id):?>
+                                                        <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'product'])?>" title="Printed Dress">
+                                                            <a><?= $this->Html->image($productImage->description,['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
+                                                        </a>
+                                                    <?php endif; ?>
+                                                <?php endforeach;?>
                                             </div>
                                             <span class="new-label">New</span>
                                             <!--Product Action-->
