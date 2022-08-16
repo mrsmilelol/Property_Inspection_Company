@@ -15,8 +15,8 @@ $this->Form->setTemplates($formTemplate);
 <h1 class="h3 mb-0 text-gray-800"><?= __('Edit product') ?></h1>
 <?= $this->Form->create($product) ?>
                 <?php
-                    echo $this->Form->control('category_id', ['options' => $categories, 'empty' => true]);
-                    echo $this->Form->control('inventory_id', ['options' => $productInventories, 'empty' => true]);
+                    //echo $this->Form->control('category_id', ['options' => $categories, 'empty' => true]);
+                    //echo $this->Form->control('inventory_id', ['options' => $productInventories, 'empty' => true]);
                     echo $this->Form->control('name');
                     echo $this->Form->control('description');
                     echo $this->Form->control('price');
