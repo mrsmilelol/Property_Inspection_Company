@@ -11,7 +11,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
 //echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
 ?>
 <div class="card shadow mb-4">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4 card-header">
+    <div class="d-sm-flex align-items-center justify-content-between card-header">
         <h1 class="h3 mb-0 text-gray-800"><?= __('Products') ?></h1>
         <a href="<?= $this->Url->build(['action' => 'add']) ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-plus fa-sm text-white-50"></i> Add new product</a>

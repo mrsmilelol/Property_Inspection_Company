@@ -7,7 +7,7 @@ echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css
 echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
 ?>
 <div class="card shadow mb-4">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4 card-header">
+    <div class="d-sm-flex align-items-center justify-content-between card-header">
         <h1 class="h3 mb-0 text-gray-800"><?= __('Payments') ?></h1>
         <a href="<?= $this->Url->build(['action' => 'add']) ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-plus fa-sm text-white-50"></i> Add new user payment</a>
@@ -17,13 +17,13 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             <table class="table table-bordered" id="products" width="100%" cellspacing="0">
                 <thead>
                 <tr>
-                    <th><?= h('ID') ?></th>
-                    <th><?= h('User ID') ?></th>
-                    <th><?= h('Payment Type') ?></th>
-                    <th><?= h('Provider') ?></th>
-                    <th><?= h('Account Number') ?></th>
-                    <th><?= h('Security Number') ?></th>
-                    <th><?= h('Expiry date') ?></th>
+                    <th><?= h('id') ?></th>
+                    <th><?= h('order_id') ?></th>
+                    <th><?= h('payment_type') ?></th>
+                    <th><?= h('provider') ?></th>
+                    <th><?= h('account_no') ?></th>
+                    <th><?= h('security_no') ?></th>
+                    <th><?= h('expiry_date') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
                 </thead>
@@ -31,7 +31,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <?php foreach ($payments as $payment): ?>
                     <tr>
                         <td><?= $this->Number->format($payment->id) ?></td>
-                        <td><?= $payment->has('user') ? $this->Html->link($payment->user->username, ['controller' => 'Users', 'action' => 'view', $payment->user->id]) : '' ?></td>
+                        <td><?= $payment->has('order') ? $this->Html->link($payment->order->id, ['controller' => 'Orders', 'action' => 'view', $payment->order->id]) : '' ?></td>
                         <td><?= h($payment->payment_type) ?></td>
                         <td><?= h($payment->provider) ?></td>
                         <td><?= $this->Number->format($payment->account_no) ?></td>
