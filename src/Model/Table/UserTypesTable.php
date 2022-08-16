@@ -58,7 +58,7 @@ class UserTypesTable extends Table
     {
         $validator
             ->scalar('name')
-            ->maxLength('name', 64)
+            ->maxLength('name', 32)
             ->requirePresence('name', 'create')
             ->notEmptyString('name');
 

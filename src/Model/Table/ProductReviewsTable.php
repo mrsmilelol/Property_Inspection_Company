@@ -70,7 +70,7 @@ class ProductReviewsTable extends Table
 
         $validator
             ->scalar('description')
-            ->maxLength('description', 64)
+            ->maxLength('description', 256)
             ->allowEmptyString('description');
 
         $validator

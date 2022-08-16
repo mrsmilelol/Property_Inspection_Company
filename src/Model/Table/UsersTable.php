@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -15,7 +14,6 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\ProductReviewsTable&\Cake\ORM\Association\HasMany $ProductReviews
  * @property \App\Model\Table\ShoppingSessionsTable&\Cake\ORM\Association\HasMany $ShoppingSessions
  * @property \App\Model\Table\UserAddressesTable&\Cake\ORM\Association\HasMany $UserAddresses
- *
  * @method \App\Model\Entity\User newEmptyEntity()
  * @method \App\Model\Entity\User newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\User[] newEntities(array $data, array $options = [])
@@ -70,7 +68,7 @@ class UsersTable extends Table
     {
         $validator
             ->scalar('username')
-            ->maxLength('username', 64)
+            ->maxLength('username', 16)
             ->requirePresence('username', 'create')
             ->notEmptyString('username');
 
@@ -82,24 +80,27 @@ class UsersTable extends Table
 
         $validator
             ->scalar('firstname')
-            ->maxLength('firstname', 64)
+            ->maxLength('firstname', 16)
             ->requirePresence('firstname', 'create')
             ->notEmptyString('firstname');
 
         $validator
             ->scalar('lastname')
-            ->maxLength('lastname', 64)
+            ->maxLength('lastname', 16)
             ->requirePresence('lastname', 'create')
             ->notEmptyString('lastname');
 
         $validator
             ->scalar('phone')
-            ->maxLength('phone', 64)
+            ->maxLength('phone', 17)
             ->requirePresence('phone', 'create')
-            ->notEmptyString('phone');
+            ->notEmptyString('phone')
+            ->numeric('phone')
+            ->regex('phone', '/^(?:\+?61|0)[2-478](?:[ -]?[0-9]){8}$/', 'Invalid mobile number, try +61413062555');
 
         $validator
             ->email('email')
+            ->lengthBetween('email', [6,32])
             ->requirePresence('email', 'create')
             ->notEmptyString('email');
 

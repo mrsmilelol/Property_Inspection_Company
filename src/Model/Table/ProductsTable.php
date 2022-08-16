@@ -74,7 +74,7 @@ class ProductsTable extends Table
     {
         $validator
             ->scalar('name')
-            ->maxLength('name', 64)
+            ->maxLength('name', 32)
             ->requirePresence('name', 'create')
             ->notEmptyString('name');
 
@@ -90,25 +90,25 @@ class ProductsTable extends Table
 
         $validator
             ->scalar('material')
-            ->maxLength('material', 64)
+            ->maxLength('material', 16)
             ->requirePresence('material', 'create')
             ->notEmptyString('material');
 
         $validator
             ->scalar('brand')
-            ->maxLength('brand', 64)
+            ->maxLength('brand', 16)
             ->requirePresence('brand', 'create')
             ->notEmptyString('brand');
 
         $validator
             ->scalar('style')
-            ->maxLength('style', 64)
+            ->maxLength('style', 16)
             ->requirePresence('style', 'create')
             ->notEmptyString('style');
 
         $validator
             ->scalar('colour')
-            ->maxLength('colour', 64)
+            ->maxLength('colour', 16)
             ->requirePresence('colour', 'create')
             ->notEmptyString('colour');
 
@@ -119,7 +119,7 @@ class ProductsTable extends Table
 
         $validator
             ->scalar('size')
-            ->maxLength('size', 64)
+            ->maxLength('size', 16)
             ->requirePresence('size', 'create')
             ->notEmptyString('size');
 
@@ -130,7 +130,7 @@ class ProductsTable extends Table
 
         $validator
             ->scalar('finish')
-            ->maxLength('finish', 64)
+            ->maxLength('finish', 16)
             ->allowEmptyString('finish');
 
         $validator
@@ -143,7 +143,7 @@ class ProductsTable extends Table
 
         $validator
             ->scalar('manufacturing')
-            ->maxLength('manufacturing', 64)
+            ->maxLength('manufacturing', 32)
             ->allowEmptyString('manufacturing');
 
         $validator

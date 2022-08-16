@@ -6,10 +6,12 @@
 echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
 echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
 ?>
-    <div class="column-responsive column-80">
-        <div class="orderItems view content">
-            <h3><?= h($orderItem->id) ?></h3>
-            <table class="table table-bordered" id="orderItemsTable" width="100%" cellspacing="0">
+<div class="card shadow mb-4">
+    <div class="d-sm-flex align-items-center justify-content-between card-header">
+        <h1 class="h3 mb-0 text-gray-800"><?= h($orderItem->id) ?></h1>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
             <tr>
                     <th><?= __('Order') ?></th>
                     <td><?= $orderItem->has('order') ? $this->Html->link($orderItem->order->id, ['controller' => 'Orders', 'action' => 'view', $orderItem->order->id]) : '' ?></td>
