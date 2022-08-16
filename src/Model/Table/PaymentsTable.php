@@ -11,6 +11,8 @@ use Cake\Validation\Validator;
 /**
  * Payments Model
  *
+ * @property \App\Model\Table\OrdersTable&\Cake\ORM\Association\BelongsTo $Orders
+ *
  * @method \App\Model\Entity\Payment newEmptyEntity()
  * @method \App\Model\Entity\Payment newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\Payment[] newEntities(array $data, array $options = [])

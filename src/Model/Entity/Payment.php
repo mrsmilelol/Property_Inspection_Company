@@ -18,7 +18,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $created_at
  * @property \Cake\I18n\FrozenTime $modified_at
  *
- * @property \App\Model\Entity\User $user
+ * @property \App\Model\Entity\Order $order
  */
 class Payment extends Entity
 {
@@ -40,6 +40,6 @@ class Payment extends Entity
         'expiry_date' => true,
         'created_at' => true,
         'modified_at' => true,
-        'user' => true,
+        'order' => true,
     ];
 }

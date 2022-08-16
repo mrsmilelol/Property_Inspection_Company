@@ -14,8 +14,9 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $created_at
  * @property \Cake\I18n\FrozenTime $modified_at
  *
- * @property \App\Model\Entity\User $user
+ * @property \App\Model\Entity\ShoppingSession $shopping_session
  * @property \App\Model\Entity\OrderItem[] $order_items
+ * @property \App\Model\Entity\Payment[] $payments
  */
 class Order extends Entity
 {
@@ -33,7 +34,8 @@ class Order extends Entity
         'total' => true,
         'created_at' => true,
         'modified_at' => true,
-        'user' => true,
+        'shopping_session' => true,
         'order_items' => true,
+        'payments' => true,
     ];
 }

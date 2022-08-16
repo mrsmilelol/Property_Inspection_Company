@@ -11,7 +11,9 @@ use Cake\Validation\Validator;
 /**
  * Orders Model
  *
+ * @property \App\Model\Table\ShoppingSessionsTable&\Cake\ORM\Association\BelongsTo $ShoppingSessions
  * @property \App\Model\Table\OrderItemsTable&\Cake\ORM\Association\HasMany $OrderItems
+ * @property \App\Model\Table\PaymentsTable&\Cake\ORM\Association\HasMany $Payments
  *
  * @method \App\Model\Entity\Order newEmptyEntity()
  * @method \App\Model\Entity\Order newEntity(array $data, array $options = [])

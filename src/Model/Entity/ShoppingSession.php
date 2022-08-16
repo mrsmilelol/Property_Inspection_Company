@@ -17,6 +17,7 @@ use Cake\ORM\Entity;
  *
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Product $product
+ * @property \App\Model\Entity\Order[] $orders
  */
 class ShoppingSession extends Entity
 {
@@ -37,5 +38,6 @@ class ShoppingSession extends Entity
         'modified_at' => true,
         'user' => true,
         'product' => true,
+        'orders' => true,
     ];
 }

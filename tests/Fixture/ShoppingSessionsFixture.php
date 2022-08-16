@@ -23,8 +23,8 @@ class ShoppingSessionsFixture extends TestFixture
                 'user_id' => 1,
                 'product_id' => 1,
                 'quantity' => 1,
-                'created_at' => 1660625877,
-                'modified_at' => 1660625877,
+                'created_at' => 1660627765,
+                'modified_at' => 1660627765,
             ],
         ];
         parent::init();

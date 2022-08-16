@@ -34,8 +34,8 @@ class ProductsFixture extends TestFixture
                 'wholesale_price' => 1,
                 'sale_price' => 1,
                 'manufacturing' => 'Lorem ipsum dolor sit amet',
-                'created_at' => 1660625875,
-                'modified_at' => 1660625875,
+                'created_at' => 1660627764,
+                'modified_at' => 1660627764,
             ],
         ];
         parent::init();

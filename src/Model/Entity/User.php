@@ -20,8 +20,6 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $modified_at
  *
  * @property \App\Model\Entity\UserType $user_type
- * @property \App\Model\Entity\Order[] $orders
- * @property \App\Model\Entity\Payment[] $payments
  * @property \App\Model\Entity\ProductReview[] $product_reviews
  * @property \App\Model\Entity\ShoppingSession[] $shopping_sessions
  * @property \App\Model\Entity\UserAddress[] $user_addresses
@@ -48,8 +46,6 @@ class User extends Entity
         'created_at' => true,
         'modified_at' => true,
         'user_type' => true,
-        'orders' => true,
-        'payments' => true,
         'product_reviews' => true,
         'shopping_sessions' => true,
         'user_addresses' => true,

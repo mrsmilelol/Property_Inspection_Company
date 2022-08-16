@@ -13,6 +13,7 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
  * @property \App\Model\Table\ProductsTable&\Cake\ORM\Association\BelongsTo $Products
+ * @property \App\Model\Table\OrdersTable&\Cake\ORM\Association\HasMany $Orders
  *
  * @method \App\Model\Entity\ShoppingSession newEmptyEntity()
  * @method \App\Model\Entity\ShoppingSession newEntity(array $data, array $options = [])

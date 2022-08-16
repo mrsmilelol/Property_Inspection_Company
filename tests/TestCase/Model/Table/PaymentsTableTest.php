@@ -25,7 +25,7 @@ class PaymentsTableTest extends TestCase
      */
     protected $fixtures = [
         'app.Payments',
-        'app.Users',
+        'app.Orders',
     ];
 
     /**

@@ -26,8 +26,8 @@ class PaymentsFixture extends TestFixture
                 'account_no' => 1,
                 'security_no' => 1,
                 'expiry_date' => 1,
-                'created_at' => 1660625839,
-                'modified_at' => 1660625839,
+                'created_at' => 1660627760,
+                'modified_at' => 1660627760,
             ],
         ];
         parent::init();
