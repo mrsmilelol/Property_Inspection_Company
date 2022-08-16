@@ -16,8 +16,8 @@ use Cake\ORM\Entity;
  * @property string $phone
  * @property string $email
  * @property int|null $user_type_id
- * @property \Cake\I18n\FrozenTime|null $created_at
- * @property \Cake\I18n\FrozenTime|null $modified_at
+ * @property \Cake\I18n\FrozenTime $created_at
+ * @property \Cake\I18n\FrozenTime $modified_at
  *
  * @property \App\Model\Entity\UserType $user_type
  * @property \App\Model\Entity\Order[] $orders

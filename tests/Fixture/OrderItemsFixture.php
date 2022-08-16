@@ -23,8 +23,8 @@ class OrderItemsFixture extends TestFixture
                 'order_id' => 1,
                 'product_id' => 1,
                 'quantity' => 1,
-                'created_at' => 1660108328,
-                'modified_at' => 1660108328,
+                'created_at' => 1660625833,
+                'modified_at' => 1660625833,
             ],
         ];
         parent::init();

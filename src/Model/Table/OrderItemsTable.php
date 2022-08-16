@@ -75,11 +75,11 @@ class OrderItemsTable extends Table
 
         $validator
             ->dateTime('created_at')
-            ->allowEmptyDateTime('created_at');
+            ->notEmptyDateTime('created_at');
 
         $validator
             ->dateTime('modified_at')
-            ->allowEmptyDateTime('modified_at');
+            ->notEmptyDateTime('modified_at');
 
         return $validator;
     }

@@ -12,8 +12,6 @@ use Cake\Validation\Validator;
  * Users Model
  *
  * @property \App\Model\Table\UserTypesTable&\Cake\ORM\Association\BelongsTo $UserTypes
- * @property \App\Model\Table\OrdersTable&\Cake\ORM\Association\HasMany $Orders
- * @property \App\Model\Table\PaymentsTable&\Cake\ORM\Association\HasMany $Payments
  * @property \App\Model\Table\ProductReviewsTable&\Cake\ORM\Association\HasMany $ProductReviews
  * @property \App\Model\Table\ShoppingSessionsTable&\Cake\ORM\Association\HasMany $ShoppingSessions
  * @property \App\Model\Table\UserAddressesTable&\Cake\ORM\Association\HasMany $UserAddresses
@@ -50,12 +48,6 @@ class UsersTable extends Table
 
         $this->belongsTo('UserTypes', [
             'foreignKey' => 'user_type_id',
-        ]);
-        $this->hasMany('Orders', [
-            'foreignKey' => 'user_id',
-        ]);
-        $this->hasMany('Payments', [
-            'foreignKey' => 'user_id',
         ]);
         $this->hasMany('ProductReviews', [
             'foreignKey' => 'user_id',
@@ -117,11 +109,11 @@ class UsersTable extends Table
 
         $validator
             ->dateTime('created_at')
-            ->allowEmptyDateTime('created_at');
+            ->notEmptyDateTime('created_at');
 
         $validator
             ->dateTime('modified_at')
-            ->allowEmptyDateTime('modified_at');
+            ->notEmptyDateTime('modified_at');
 
         return $validator;
     }

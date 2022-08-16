@@ -18,7 +18,11 @@ class OrderItemsController extends AppController
      */
     public function index()
     {
-        $orderItems = $this->OrderItems->find()->contain(['Orders','Products']);
+        $this->paginate = [
+            'contain' => ['Orders', 'Products'],
+        ];
+        $orderItems = $this->paginate($this->OrderItems);
+
         $this->set(compact('orderItems'));
     }
 

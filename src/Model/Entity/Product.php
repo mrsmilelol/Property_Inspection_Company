@@ -9,8 +9,6 @@ use Cake\ORM\Entity;
  * Product Entity
  *
  * @property int $id
- * @property int|null $category_id
- * @property int|null $inventory_id
  * @property string $name
  * @property string|null $description
  * @property int $price
@@ -18,8 +16,15 @@ use Cake\ORM\Entity;
  * @property string $brand
  * @property string $style
  * @property string $colour
- * @property \Cake\I18n\FrozenTime|null $created_at
- * @property \Cake\I18n\FrozenTime|null $modified_at
+ * @property int $units_in_stock
+ * @property string $size
+ * @property int $weight
+ * @property string|null $finish
+ * @property int|null $wholesale_price
+ * @property int|null $sale_price
+ * @property string|null $manufacturing
+ * @property \Cake\I18n\FrozenTime $created_at
+ * @property \Cake\I18n\FrozenTime $modified_at
  *
  * @property \App\Model\Entity\Category $category
  * @property \App\Model\Entity\ProductInventory $product_inventory
@@ -41,8 +46,6 @@ class Product extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
-        'category_id' => true,
-        'inventory_id' => true,
         'name' => true,
         'description' => true,
         'price' => true,
@@ -50,6 +53,13 @@ class Product extends Entity
         'brand' => true,
         'style' => true,
         'colour' => true,
+        'units_in_stock' => true,
+        'size' => true,
+        'weight' => true,
+        'finish' => true,
+        'wholesale_price' => true,
+        'sale_price' => true,
+        'manufacturing' => true,
         'created_at' => true,
         'modified_at' => true,
         'category' => true,

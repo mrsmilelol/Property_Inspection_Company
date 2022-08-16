@@ -11,8 +11,8 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property int|null $parent_id
  * @property string $description
- * @property \Cake\I18n\FrozenTime|null $created_at
- * @property \Cake\I18n\FrozenTime|null $modified_at
+ * @property \Cake\I18n\FrozenTime $created_at
+ * @property \Cake\I18n\FrozenTime $modified_at
  *
  * @property \App\Model\Entity\Category $parent_category
  * @property \App\Model\Entity\Category[] $child_categories

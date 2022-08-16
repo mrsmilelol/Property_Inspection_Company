@@ -21,8 +21,8 @@ class UserTypesFixture extends TestFixture
             [
                 'id' => 1,
                 'name' => 'Lorem ipsum dolor sit amet',
-                'created_at' => 1660108357,
-                'modified_at' => 1660108357,
+                'created_at' => 1660625899,
+                'modified_at' => 1660625899,
             ],
         ];
         parent::init();

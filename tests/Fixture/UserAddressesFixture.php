@@ -27,8 +27,8 @@ class UserAddressesFixture extends TestFixture
                 'country' => 'Lorem ipsum dolor sit amet',
                 'state' => 'Lorem ipsum dolor sit amet',
                 'postcode' => 'Lorem ipsum dolor sit amet',
-                'created_at' => 1660108371,
-                'modified_at' => 1660108371,
+                'created_at' => 1660625882,
+                'modified_at' => 1660625882,
             ],
         ];
         parent::init();

@@ -11,8 +11,6 @@ use Cake\Validation\Validator;
 /**
  * Payments Model
  *
- * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
- *
  * @method \App\Model\Entity\Payment newEmptyEntity()
  * @method \App\Model\Entity\Payment newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\Payment[] newEntities(array $data, array $options = [])
@@ -43,8 +41,8 @@ class PaymentsTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('Users', [
-            'foreignKey' => 'user_id',
+        $this->belongsTo('Orders', [
+            'foreignKey' => 'order_id',
         ]);
     }
 
@@ -57,8 +55,8 @@ class PaymentsTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->integer('user_id')
-            ->allowEmptyString('user_id');
+            ->integer('order_id')
+            ->allowEmptyString('order_id');
 
         $validator
             ->scalar('payment_type')
@@ -89,11 +87,11 @@ class PaymentsTable extends Table
 
         $validator
             ->dateTime('created_at')
-            ->allowEmptyDateTime('created_at');
+            ->notEmptyDateTime('created_at');
 
         $validator
             ->dateTime('modified_at')
-            ->allowEmptyDateTime('modified_at');
+            ->notEmptyDateTime('modified_at');
 
         return $validator;
     }
@@ -107,7 +105,7 @@ class PaymentsTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-        $rules->add($rules->existsIn('user_id', 'Users'), ['errorField' => 'user_id']);
+        $rules->add($rules->existsIn('order_id', 'Orders'), ['errorField' => 'order_id']);
 
         return $rules;
     }
