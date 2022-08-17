@@ -36,7 +36,9 @@ $this->Form->setTemplates($formTemplate);
                         echo $this->Form->control('finish');
                         echo $this->Form->control('manufacturing');
                         echo $this->Form->control('wholesale_price');
-                        echo $this->Form->control('customer price');
+                        echo $this->Form->control('price', [
+                            'label' => [
+                                'text' => 'Customer Price']]);
                         echo $this->Form->control('sale_price');
                         echo $this->Form->file('image_file. ', ['type' => 'file','multiple' => 'multiple']);
                         //echo $this->Form->control('created_at');

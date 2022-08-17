@@ -114,6 +114,25 @@ class ProductsController extends AppController
     }
 
     /**
+     * Details method
+     *
+     * @param string|null $id Product id.
+     * @return \Cake\Http\Response|null|void Renders view
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function detail($id = null)
+    {
+        $this->loadModel('ProductImages');
+        $productImages = $this->ProductImages->findByProductId($id)->all()->toArray();
+
+        $product = $this->Products->get($id, [
+            'contain' => ['OrderItems', 'ProductCategories', 'ProductImages', 'ProductReviews', 'ShoppingSessions'],
+        ]);
+
+        $this->set(compact('product','productImages'));
+    }
+
+    /**
      * Delete method
      *
      * @param string|null $id Product id.
