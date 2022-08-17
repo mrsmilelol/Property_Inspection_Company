@@ -115,8 +115,7 @@ class ProductsController extends AppController
     {
         $this->loadModel('ProductImages');
         $products = $this->Products->find()->all()->toArray();
-        $productImages = $this->ProductImages->find()->select(['product_id','description'])
-            ->distinct(['product_id'])->toArray();
+        $productImages = $this->ProductImages->find()->toArray();
         $this->set(compact('products','productImages'));
         $this->render('shop');
     }
