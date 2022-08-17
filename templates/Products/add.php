@@ -7,6 +7,7 @@
  * @var \Cake\Collection\CollectionInterface|string[] $displayCategory
  * @var \Cake\Collection\CollectionInterface|string[] $productInventories
  * @var \Cake\Collection\CollectionInterface|string[] $productImages
+ * @var \Cake\Collection\CollectionInterface|string[] $displayCategory
  */
 
 //debug($this->Form->getTemplates());

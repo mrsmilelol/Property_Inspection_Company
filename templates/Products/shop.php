@@ -281,7 +281,7 @@ $this->layout = 'front';
                                             </div>
                                         </div>
                                         <div class="product-content">
-                                            <h5><a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'product',$products[$x]->id])?>" title="product "><?= $products[$x]->name ?></a></h5>
+                                            <h5><a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="product "><?= $products[$x]->name ?></a></h5>
                                             <!--Product Rating-->
                                             <div class="rating-icon">
                                                 <i class="fa fa-star"></i>
@@ -307,7 +307,7 @@ $this->layout = 'front';
                                             <div class="product-img">
                                                 <?php foreach ($productImages as $productImage):?>
                                                     <?php if ($productImage->product_id==$products[$x]->id):?>
-                                                        <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'product',$products[$x]->id])?>" title="Printed Dress">
+                                                        <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="Printed Dress">
                                                             <a><?= $this->Html->image($productImage->description,['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
                                                         </a>
                                                     <?php endif; ?>
@@ -325,7 +325,7 @@ $this->layout = 'front';
                                             </div>
                                         </div>
                                         <div class="product-content">
-                                            <h5><a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'product',$products[$x]->id])?>" title="product "><?= $products[$x]->name ?></a></h5>
+                                            <h5><a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="product "><?= $products[$x]->name ?></a></h5>
                                             <!--Product Rating-->
                                             <div class="rating-icon">
                                                 <i class="fa fa-star"></i>

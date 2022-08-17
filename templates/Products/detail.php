@@ -56,27 +56,13 @@ $this->layout = 'front';
                     <div id="content-eleyas">
                         <div id="my-tab-content" class="tab-content">
                             <div class="tab-pane active" id="view1">
-                                <a class="venobox" href="img/blog/single/1.jpg" data-gall="gallery" title=""><?= $this->Html->image('blog/single/1.jpg'); ?><span>View larger<i class="fa fa-search-plus"></i></span></a>
-                            </div>
-                            <div class="tab-pane" id="view2">
-                                <a class="venobox" href="img/blog/single/2.jpg" data-gall="gallery" title=""><?= $this->Html->image('blog/single/2.jpg'); ?><span>View larger<i class="fa fa-search-plus"></i></span></a>
-                            </div>
-                            <div class="tab-pane" id="view3">
-                                <a class="venobox" href="img/blog/single/3.jpg" data-gall="gallery" title=""><?= $this->Html->image('blog/single/3.jpg'); ?><span>View larger<i class="fa fa-search-plus"></i></span></a>
-                            </div>
-                            <div class="tab-pane" id="view4">
-                                <a class="venobox" href="img/blog/single/4.jpg" data-gall="gallery" title=""><?= $this->Html->image('blog/single/4.jpg'); ?><span>View larger<i class="fa fa-search-plus"></i></span></a>
+                                <a class="venobox" href="<?php "img/" . $productImages[0]->description."/" ?>" data-gall="gallery" title=""><?= $this->Html->image($productImages[0]->description,['alt' => 'CakePHP','class' => 'img-fluid']); ?><span>View larger<i class="fa fa-search-plus"></i></span></a>
                             </div>
                         </div>
                         <div id="viewproduct" class="nav nav-tabs product-view bxslider" data-tabs="tabs">
-                            <div class="pro-view active"><a href="#view1" data-toggle="tab"><?= $this->Html->image('blog/single/s1.jpg'); ?></a></div>
-                            <div class="pro-view"><a href="#view2" data-toggle="tab"><?= $this->Html->image('blog/single/s2.jpg'); ?></a></div>
-                            <div class="pro-view"><a href="#view3" data-toggle="tab"><?= $this->Html->image('blog/single/s3.jpg'); ?></a></div>
-                            <div class="pro-view"><a href="#view4" data-toggle="tab"><?= $this->Html->image('blog/single/s4.jpg'); ?></a></div>
-                            <div class="pro-view"><a href="#view1" data-toggle="tab"><?= $this->Html->image('blog/single/s1.jpg'); ?></a></div>
-                            <div class="pro-view"><a href="#view2" data-toggle="tab"><?= $this->Html->image('blog/single/s2.jpg'); ?></a></div>
-                            <div class="pro-view"><a href="#view3" data-toggle="tab"><?= $this->Html->image('blog/single/s3.jpg'); ?></a></div>
-                            <div class="pro-view"><a href="#view4" data-toggle="tab"><?= $this->Html->image('blog/single/s4.jpg'); ?></a></div>
+                            <?php for ($x = 1; $x <= count($productImages)-1; $x++): ?>
+                            <div class="pro-view active"><a href="#view1" data-toggle="tab"><?= $this->Html->image($productImages[$x]->description,['alt' => 'CakePHP','class' => 'img-fluid','height' => 80,'width'=>106]); ?></a></div>
+                            <?php endfor ?>
                         </div>
                         <!-- BX Slider Navigation -->
                         <div class="outside">
