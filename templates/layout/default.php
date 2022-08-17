@@ -212,7 +212,6 @@
 
             </nav>
             <!-- End of Topbar -->
-            <?= $this->Flash->render() ?>
             <!-- Begin Page Content -->
             <div class="container-fluid">
                 <?= $this->Flash->render() ?>
