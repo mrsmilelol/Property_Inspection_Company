@@ -198,35 +198,35 @@
                                             <?php endfor; ?>
                                     </div>
                                 </li>
-                                <li><a href="<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','shop']); ?>">Livingroom</a>
-                                    <!-- Mege Menu Two Column -->
-                                    <div class="mega-menu two-column">
-												<span>
-													<a class="mega-title" href="#">Categories 01</a>
-													<a href="shop.html">Washing machine 1</a>
-													<a href="shop.html">Washing machine 2</a>
-													<a href="shop.html">Washing machine 3</a>
-													<a href="shop.html">Washing machine 4</a>
-												</span>
-                                        <span>
-													<a class="mega-title" href="#">Categories 02</a>
-													<a href="shop.html">Washing machine 1</a>
-													<a href="shop.html">Washing machine 2</a>
-													<a href="shop.html">Washing machine 3</a>
-													<a href="shop.html">Washing machine 4</a>
-												</span>
-                                    </div>
-                                </li>
-                                <li class="expand"><a href="<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','shop']); ?>">Lighting</a>
-                                    <!-- DropDown Menu -->
-                                    <ul class="restrain sub-menu">
-                                        <li class="sub-menu-title"><a href="#">Categories 01</a></li>
-                                        <li><a href="shop.html">Washing machine 1</a></li>
-                                        <li><a href="shop.html">Washing machine 2</a></li>
-                                        <li><a href="shop.html">Washing machine 3</a></li>
-                                        <li><a href="shop.html">Washing machine 4</a></li>
-                                    </ul>
-                                </li>
+<!--                                <li><a href="--><?//= $this->Url->build(['controller'=>'Pages', 'action'=>'display','shop']); ?><!--">Livingroom</a>-->
+<!--                                    <!-- Mege Menu Two Column -->-->
+<!--                                    <div class="mega-menu two-column">-->
+<!--												<span>-->
+<!--													<a class="mega-title" href="#">Categories 01</a>-->
+<!--													<a href="shop.html">Washing machine 1</a>-->
+<!--													<a href="shop.html">Washing machine 2</a>-->
+<!--													<a href="shop.html">Washing machine 3</a>-->
+<!--													<a href="shop.html">Washing machine 4</a>-->
+<!--												</span>-->
+<!--                                        <span>-->
+<!--													<a class="mega-title" href="#">Categories 02</a>-->
+<!--													<a href="shop.html">Washing machine 1</a>-->
+<!--													<a href="shop.html">Washing machine 2</a>-->
+<!--													<a href="shop.html">Washing machine 3</a>-->
+<!--													<a href="shop.html">Washing machine 4</a>-->
+<!--												</span>-->
+<!--                                    </div>-->
+<!--                                </li>-->
+<!--                                <li class="expand"><a href="--><?//= $this->Url->build(['controller'=>'Pages', 'action'=>'display','shop']); ?><!--">Lighting</a>-->
+<!--                                    <!-- DropDown Menu -->-->
+<!--                                    <ul class="restrain sub-menu">-->
+<!--                                        <li class="sub-menu-title"><a href="#">Categories 01</a></li>-->
+<!--                                        <li><a href="shop.html">Washing machine 1</a></li>-->
+<!--                                        <li><a href="shop.html">Washing machine 2</a></li>-->
+<!--                                        <li><a href="shop.html">Washing machine 3</a></li>-->
+<!--                                        <li><a href="shop.html">Washing machine 4</a></li>-->
+<!--                                    </ul>-->
+<!--                                </li>-->
                                 <?php
                                 for($x = 0; $x <= count($categories)-1; $x++): if ($categories[$x]->id > 1 and $categories[$x]->parent_id == null): ?>
                                     <?php $saved_id = $categories[$x]->id; ?>
