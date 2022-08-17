@@ -53,7 +53,6 @@ class ProductsController extends AppController
         $this->loadModel('ProductImages');
         $product = $this->Products->newEmptyEntity();
         $categories = $this->Categories->find('all',['conditions' => ['Categories.parent_id IS NOT' => null]])->toArray();
-        $subcategories = $this->Categories->find('all',['conditions' => ['Categories.parent_id IS NOT' => null]])->toArray();
         if ($this->request->is('post')) {
             $product = $this->Products->patchEntity($product, $this->request->getData());
             if ($this->Products->save($product)) {
