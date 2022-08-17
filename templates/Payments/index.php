@@ -17,13 +17,13 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             <table class="table table-bordered" id="products" width="100%" cellspacing="0">
                 <thead>
                 <tr>
-                    <th><?= h('id') ?></th>
-                    <th><?= h('order_id') ?></th>
-                    <th><?= h('payment_type') ?></th>
-                    <th><?= h('provider') ?></th>
-                    <th><?= h('account_no') ?></th>
-                    <th><?= h('security_no') ?></th>
-                    <th><?= h('expiry_date') ?></th>
+                    <th><?= h('ID') ?></th>
+                    <th><?= h('Order ID') ?></th>
+                    <th><?= h('Payment type') ?></th>
+                    <th><?= h('Provider') ?></th>
+                    <th><?= h('Account no.') ?></th>
+                    <th><?= h('Security no.') ?></th>
+                    <th><?= h('Expiry date') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
                 </thead>

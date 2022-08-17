@@ -3,6 +3,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Product $product
  * @var \Cake\Collection\CollectionInterface|string[] $categories
+ * @var \Cake\Collection\CollectionInterface|string[] $subcategories
  * @var \Cake\Collection\CollectionInterface|string[] $productInventories
  * @var \Cake\Collection\CollectionInterface|string[] $productImages
  */
@@ -22,14 +23,18 @@ $this->Form->setTemplates($formTemplate);
     <div class="card-body">
         <table class="table table-bordered" id="products" width="100%" cellspacing="0">
             <?= $this->Form->create($product, ['type' => 'file']) ?>
+<!--            <div><label>Categories</label></div>-->
+<!--                    --><?php
+//                        foreach ($categories as $category):
+//                            echo $this->Form->radio('category_id', ['value' => $category['parent_id']]);
+//                        endforeach;?>
             <div><label>Categories</label></div>
-                    <?php
-                        foreach ($categories as $category):
-                            echo $this->Form->radio('category_id', ['value' => $category['parent_id']]);
-                        endforeach;?>
-            <div><label>Subcategories</label></div>
                     <?php foreach ($categories as $category):
-                            echo $this->Form->select('category_description', ['value' => $category['description']],['multiple'=>'checkbox']);
+                        foreach ($subcategories as $subcategory):
+                            if ($category->id == $subcategory->parent_id):
+                            echo $this->Form->select('category_description', ['value' => $category['description'] . " " .$subcategory['description']],['multiple'=>'checkbox']);
+                            endif;
+                        endforeach;
                         endforeach;
                         //echo $this->Form->control('inventory_id', ['options' => $productInventories, 'empty' => true]);
                         echo $this->Form->control('name');
@@ -58,3 +63,4 @@ $this->Form->setTemplates($formTemplate);
         </table>
     </div>
 </div>
+
