@@ -49,8 +49,10 @@ class ProductsController extends AppController
      */
     public function add()
     {
+        $this->loadModel('Categories');
         $this->loadModel('ProductImages');
         $product = $this->Products->newEmptyEntity();
+        $categories = $this->Categories->find('all',['conditions' => ['Categories.parent_id IS NOT' => null]])->toArray();
         if ($this->request->is('post')) {
             $product = $this->Products->patchEntity($product, $this->request->getData());
             if ($this->Products->save($product)) {
@@ -72,7 +74,7 @@ class ProductsController extends AppController
             }
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
         }
-        $categories = $this->Products->ProductCategories->find('list', ['limit' => 200])->all();
+//        $categories = $this->Products->ProductCategories->find('list', ['limit' => 200])->all();
         $this->set(compact('product', 'categories'));
     }
 
@@ -107,8 +109,6 @@ class ProductsController extends AppController
         $products = $this->Products->find()->all()->toArray();
         $productImages = $this->ProductImages->find()->select(['product_id','description'])
             ->distinct(['product_id'])->toArray();
-//        $test->select(['product_id','description'])
-//            ->distinct(['product_id']);
         $this->set(compact('products','productImages'));
         $this->render('shop');
     }
