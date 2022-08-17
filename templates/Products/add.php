@@ -9,7 +9,6 @@
  * @var \Cake\Collection\CollectionInterface|string[] $productImages
  */
 
-
 //debug($this->Form->getTemplates());
 $formTemplate = [
     'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
@@ -41,12 +40,13 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
                             endif;
                         endforeach;
                     endforeach;*/
-                    echo $this->Form->input('category_id',
-                        array(
-                            "type" => "select",
+                    echo $this->Form->input(
+                        'category_id',
+                        [
+                            'type' => 'select',
                             'multiple' => true,
-                            "options" => $displayCategory
-                        )
+                            'options' => $displayCategory,
+                        ]
                     );
                         //echo $this->Form->control('inventory_id', ['options' => $productInventories, 'empty' => true]);
                         echo $this->Form->control('name');
@@ -75,4 +75,10 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
         </table>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('#category_id').select2();
+    });
+</script>
 
