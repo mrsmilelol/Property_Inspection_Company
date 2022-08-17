@@ -198,7 +198,6 @@
                                             <?php endfor; ?>
                                     </div>
                                 </li>
-
                                 <li><a href="<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','shop']); ?>">Livingroom</a>
                                     <!-- Mege Menu Two Column -->
                                     <div class="mega-menu two-column">
