@@ -20,11 +20,11 @@ $this->Form->setTemplates($formTemplate);
             <?= $this->Form->create($payment) ?>
                 <?php
                     echo $this->Form->control('order_id', ['options' => $orders, 'empty' => true]);
-                    echo $this->Form->control('payment_type');
+                    echo $this->Form->control('payment_type', ['label'=>'Payment type']);
                     echo $this->Form->control('provider');
-                    echo $this->Form->control('account_no');
-                    echo $this->Form->control('security_no');
-                    echo $this->Form->control('expiry_date');
+                    echo $this->Form->control('account_no', ['label'=>'Account no.']);
+                    echo $this->Form->control('security_no', ['label'=>'Security no.']);
+                    echo $this->Form->control('expiry_date', ['label'=>'Expiry date']);
                     //echo $this->Form->control('created_at');
                     //echo $this->Form->control('modified_at');
                 ?>

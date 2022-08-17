@@ -13,13 +13,16 @@ $this->Form->setTemplates($formTemplate);
 ?>
 <div class="card shadow mb-4">
     <div class="d-sm-flex align-items-center justify-content-between card-header">
-        <h1 class="h3 mb-0 text-gray-800"><?= __('Edit category') ?></h1>
+        <h1 class="h3 mb-0 text-gray-800"><?= __('Edit order') ?></h1>
     </div>
     <div class="card-body">
         <table class="table table-bordered" id="products" width="100%" cellspacing="0">
             <?= $this->Form->create($order) ?>
                 <?php
-                    echo $this->Form->control('shopping_session_id', ['options' => $shoppingSessions, 'empty' => true]);
+                    echo $this->Form->control('shopping_session_id', [
+                        'options' => $shoppingSessions,
+                        'empty' => true,
+                        'label'=>'Shopping session ID']);
                     echo $this->Form->control('total');
                     //echo $this->Form->control('created_at');
                     //echo $this->Form->control('modified_at');

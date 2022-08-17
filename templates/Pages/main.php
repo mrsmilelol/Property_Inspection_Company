@@ -36,92 +36,92 @@ $this->layout = 'front';
 </div>
 <!--Slider Area End-->
 <!--Banner Area Start-->
-<div class="banner-area5">
-    <div class="row">
-        <div class="col-50">
-            <div class="banner-image">
-                <a><?= $this->Html->image('banner/16.jpg'); ?> </a>
-            </div>
-        </div>
-        <div class="col-50">
-            <div class="banner-image">
-                <a href="#">
-                    <?= $this->Html->image('banner/17.jpg'); ?>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-100">
-            <div class="banner-image">
-                <a href="#">
-                    <?= $this->Html->image('banner/18.jpg'); ?>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-50">
-            <div class="banner-image">
-                <a href="#">
-                    <?= $this->Html->image('banner/19.jpg'); ?>
-                </a>
-            </div>
-        </div>
-        <div class="col-50">
-            <div class="banner-image">
-                <a href="#">
-                    <?= $this->Html->image('banner/20.jpg'); ?>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
+<!--<div class="banner-area5">-->
+<!--    <div class="row">-->
+<!--        <div class="col-50">-->
+<!--            <div class="banner-image">-->
+<!--                <a>--><!--<?//= $this->Html->image('banner/16.jpg'); ?>--><!-- </a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col-50">-->
+<!--            <div class="banner-image">-->
+<!--                <a href="#">-->
+<!--                    --><!--<?//= $this->Html->image('banner/17.jpg'); ?>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="row">-->
+<!--        <div class="col-100">-->
+<!--            <div class="banner-image">-->
+<!--                <a href="#">-->
+<!--                    --><!--<?//= $this->Html->image('banner/18.jpg'); ?>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="row">-->
+<!--        <div class="col-50">-->
+<!--            <div class="banner-image">-->
+<!--                <a href="#">-->
+<!--                    --><!--<?//= $this->Html->image('banner/19.jpg'); ?>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col-50">-->
+<!--            <div class="banner-image">-->
+<!--                <a href="#">-->
+<!--                    --><!--<?//= $this->Html->image('banner/20.jpg'); ?>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <!--Banner Area End-->
 <!--Brand Area Start-->
-<div class="brand-area section-padding2">
-    <div class="container">
-        <div class="row">
-            <div class="brand-list">
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/1.jpg'); ?></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/2.jpg'); ?></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/3.jpg'); ?></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/4.jpg'); ?></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/5.jpg'); ?></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/6.jpg'); ?></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/7.jpg'); ?></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<!--<div class="brand-area section-padding2">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="brand-list">-->
+<!--                <div class="col-md-12">-->
+<!--                    <div class="single-brand">-->
+<!--                        <a href="http://bootexperts.com/">--><!--<?//= $this->Html->image('brand/1.jpg'); ?>--><!--</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-12">-->
+<!--                    <div class="single-brand">-->
+<!--                        <a href="http://bootexperts.com/">--><!--<?//= $this->Html->image('brand/2.jpg'); ?>--><!--</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-12">-->
+<!--                    <div class="single-brand">-->
+<!--                        <a href="http://bootexperts.com/">--><!--<?//= $this->Html->image('brand/3.jpg'); ?>--><!--</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-12">-->
+<!--                    <div class="single-brand">-->
+<!--                        <a href="http://bootexperts.com/">--><!--<?//= $this->Html->image('brand/4.jpg'); ?>--><!--</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-12">-->
+<!--                    <div class="single-brand">-->
+<!--                        <a href="http://bootexperts.com/">--><!--<?//= $this->Html->image('brand/5.jpg'); ?>--><!--</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-12">-->
+<!--                    <div class="single-brand">-->
+<!--                        <a href="http://bootexperts.com/">--><!--<?//= $this->Html->image('brand/6.jpg'); ?>--><!--</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-12">-->
+<!--                    <div class="single-brand">-->
+<!--                        <a href="http://bootexperts.com/">--><!--<?//= $this->Html->image('brand/7.jpg'); ?>--><!--</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <!--Brand Area End-->
 
 </body>

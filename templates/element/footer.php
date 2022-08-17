@@ -1,59 +1,59 @@
 <!--Footer Area Start-->
 <div class="footer-area">
     <!--Footer Top Area Start-->
-    <div class="footer-top section-padding2">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-4 col-md-3">
-                    <div class="footer-top-menu">
-                        <h3 class="footer-widget-title">Categories</h3>
-                        <ul class="toggle-footer">
-                            <li><a href="shop.html">Bedroom</a></li>
-                            <li><a href="shop.html">Livingroom</a></li>
-                            <li><a href="shop.html">Lighting</a></li>
-                            <li><a href="shop.html">Accessories</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-4 col-md-3">
-                    <div class="footer-top-menu">
-                        <h3 class="footer-widget-title">Information</h3>
-                        <ul class="toggle-footer">
-                            <li><a href="shop.html">Specials</a></li>
-                            <li><a href="shop.html">New products</a></li>
-                            <li><a href="shop.html">Best sellers</a></li>
-                            <li><a href="shop.html">Our stores</a></li>
-                            <li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'contact']); ?>>Contact us</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-4 col-md-3">
-                    <div class="footer-top-menu">
-                        <h3 class="footer-widget-title">My account</h3>
-                        <ul class="toggle-footer">
-                            <li><a href="#">My orders</a></li>
-                            <li><a href="#">My credit slips</a></li>
-                            <li><a href="#">My addresses</a></li>
-                            <li><a href="#">My personal info</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-3 col-md-3 hidden-sm">
-                    <div class="footer-top-menu">
-                        <h3 class="footer-widget-title">EXTRAS</h3>
-                        <ul class="toggle-footer">
-                            <li><a href="#">Orders & Returns</a></li>
-                            <li><a href="#">Search Terms</a></li>
-                            <li><a href="#">Advance Search</a></li>
-                            <li><a href="#">Affiliates</a></li>
-                            <li><a href="#">Group Sales</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Footer Top Area Start-->
+<!--    <div class="footer-top section-padding2">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                <div class="col-xs-12 col-sm-4 col-md-3">-->
+<!--                    <div class="footer-top-menu">-->
+<!--                        <h3 class="footer-widget-title">Categories</h3>-->
+<!--                        <ul class="toggle-footer">-->
+<!--                            <li><a href="shop.html">Bedroom</a></li>-->
+<!--                            <li><a href="shop.html">Livingroom</a></li>-->
+<!--                            <li><a href="shop.html">Lighting</a></li>-->
+<!--                            <li><a href="shop.html">Accessories</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-xs-12 col-sm-4 col-md-3">-->
+<!--                    <div class="footer-top-menu">-->
+<!--                        <h3 class="footer-widget-title">Information</h3>-->
+<!--                        <ul class="toggle-footer">-->
+<!--                            <li><a href="shop.html">Specials</a></li>-->
+<!--                            <li><a href="shop.html">New products</a></li>-->
+<!--                            <li><a href="shop.html">Best sellers</a></li>-->
+<!--                            <li><a href="shop.html">Our stores</a></li>-->
+<!--                            <li><a href=--><!--<?//= $this->Url->build(['controller'=>'Pages', 'action'=>'contact']); ?>--><!-- >Contact us</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-xs-12 col-sm-4 col-md-3">-->
+<!--                    <div class="footer-top-menu">-->
+<!--                        <h3 class="footer-widget-title">My account</h3>-->
+<!--                        <ul class="toggle-footer">-->
+<!--                            <li><a href="#">My orders</a></li>-->
+<!--                            <li><a href="#">My credit slips</a></li>-->
+<!--                            <li><a href="#">My addresses</a></li>-->
+<!--                            <li><a href="#">My personal info</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-xs-12 col-sm-3 col-md-3 hidden-sm">-->
+<!--                    <div class="footer-top-menu">-->
+<!--                        <h3 class="footer-widget-title">EXTRAS</h3>-->
+<!--                        <ul class="toggle-footer">-->
+<!--                            <li><a href="#">Orders & Returns</a></li>-->
+<!--                            <li><a href="#">Search Terms</a></li>-->
+<!--                            <li><a href="#">Advance Search</a></li>-->
+<!--                            <li><a href="#">Affiliates</a></li>-->
+<!--                            <li><a href="#">Group Sales</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <!--Footer Top Area End-->
     <!--Footer Middle Area Start-->
     <div class="footer-middle section-padding2">
         <div class="container">
@@ -129,7 +129,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <p>Copyright <a href="http://bootexperts.com/" target="_blank">BootExperts</a> All rights reserved.</p>
+                    <p>Copyright <a href="#" target="_blank">Chelsea Furniture</a> All rights reserved.</p>
                 </div>
             </div>
         </div>

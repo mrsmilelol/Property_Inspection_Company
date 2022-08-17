@@ -52,7 +52,7 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
                         //echo $this->Form->control('inventory_id', ['options' => $productInventories, 'empty' => true]);
                         echo $this->Form->control('name');
                         echo $this->Form->control('description');
-                        echo $this->Form->control('units_in_stock');
+                        echo $this->Form->control('units_in_stock', ['label'=>'Units in stock']);
                         echo $this->Form->control('material');
                         echo $this->Form->control('brand');
                         echo $this->Form->control('style');
@@ -60,17 +60,20 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
                         echo $this->Form->control('size');
                         echo $this->Form->control('weight');
                         echo $this->Form->control('finish');
-                        echo $this->Form->control('manufacturing');
-                        echo $this->Form->control('wholesale_price');
+                        echo $this->Form->control('manufacturing', ['label'=>'Manufacturer']);
                         echo $this->Form->control('price', [
                             'label' => [
-                                'text' => 'Customer Price']]);
-                        echo $this->Form->control('sale_price');
-                        echo $this->Form->file('image_file. ', ['type' => 'file','multiple' => 'multiple']);
+                                'text' => 'Normal price']]);
+                        echo $this->Form->control('sale_price', ['label'=>'Sale price']);
+                        echo $this->Form->control('wholesale_price', ['label'=>'Wholesale price']);
+                        echo $this->Form->label('Product images', 'Product images');
+                        ?>
+                        <br>
+                        <?php echo $this->Form->file('image_file. ', ['type' => 'file','multiple' => 'multiple']);
                         //echo $this->Form->control('created_at');
                         //echo $this->Form->control('modified_at');
                         ?>
-            <br>
+            <p><br></p>
             <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
             <?= $this->Form->end() ?>
         </table>

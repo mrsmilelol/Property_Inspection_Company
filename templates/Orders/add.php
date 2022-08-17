@@ -19,7 +19,10 @@ $this->Form->setTemplates($formTemplate);
         <table class="table table-bordered" id="products" width="100%" cellspacing="0">
             <?= $this->Form->create($order) ?>
                 <?php
-                    echo $this->Form->control('shopping_session_id', ['options' => $shoppingSessions, 'empty' => true]);
+                    echo $this->Form->control('shopping_session_id', [
+                        'options' => $shoppingSessions,
+                        'empty' => true,
+                        'label'=>'Shopping session ID']);
                     echo $this->Form->control('total');
                     //echo $this->Form->control('created_at');
                     //echo $this->Form->control('modified_at');

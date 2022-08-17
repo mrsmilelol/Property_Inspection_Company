@@ -32,7 +32,7 @@ $this->layout = 'front';
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="breadcrumb-single">
                     <ul class="breadcrumbs">
-                        <li><a href="index.html" title="Return to Home">
+                        <li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','main']); ?>> title="Return to Home">
                                 <i class="fa fa-home"></i>
                                 Home
                             </a></li>
@@ -104,13 +104,13 @@ $this->layout = 'front';
                     <ul class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="active"><a href="#more-info" aria-controls="more-info" role="tab" data-toggle="tab">MORE INFO</a></li>
                         <li role="presentation"><a href="#data" aria-controls="data" role="tab" data-toggle="tab">DATA SHEET</a></li>
-                        <li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">REVIEWS</a></li>
+<!--                        <li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">REVIEWS</a></li>-->
                     </ul>
                 </div>
                 <div class="clearfix"></div>
                 <div class="tab-content review">
                     <div role="tabpanel" class="tab-pane active" id="more-info">
-                        <p>- Manufacturing: <?= h($product->manufacturing) ?></p>
+                        <p>- Manufacturer: <?= h($product->manufacturing) ?></p>
                         <p>- Style: <?= h($product->style) ?></p>
                         <p>- Finish: <?= h($product->finish) ?></p>
                         <p>- Colour: <?= h($product->colour) ?></p>
@@ -130,11 +130,11 @@ $this->layout = 'front';
                             </tbody>
                         </table>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="reviews">
-                        <div id="product-comments-block-tab">
-                            <a href="#" class="comment-btn"><span>Be the first to write your review!</span></a>
-                        </div>
-                    </div>
+<!--                    <div role="tabpanel" class="tab-pane" id="reviews">-->
+<!--                        <div id="product-comments-block-tab">-->
+<!--                            <a href="#" class="comment-btn"><span>Be the first to write your review!</span></a>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </div>
             </div>
         </div>

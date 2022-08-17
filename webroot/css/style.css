@@ -114,6 +114,7 @@ body {
 }
 .header-area .header-top {
   border-bottom: 1px solid #d3d3d3;
+    /*border-bottom: 1px solid #3b3b3b;*/
     background-color: #100f0f;
 }
 
@@ -1127,7 +1128,10 @@ form.search-box {
 /*  14.	Footer Area CSS
 /*----------------------------------------*/
 .footer-area {
-  background: #2F2F2F;
+  /*background: #2F2F2F;*/
+    border-bottom: 1px solid #dddddd;
+    border-top: 1px solid #dddddd;
+    background-color: #100f0f;
 }
 /*----------------------------------------*/
 /*  14.1	Footer Top CSS
@@ -1185,6 +1189,7 @@ h3.footer-widget-title {
 }
 .footer-middle {
   border-top: 1px solid #3b3b3b;
+    /*border-top: 1px solid #dddddd;*/
   overflow: hidden;
 }
 .footer-border-right {

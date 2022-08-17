@@ -13,11 +13,11 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
     <div class="card-body">
         <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
             <tr>
-                <th><?= __('Shopping Session') ?></th>
+                <th><?= __('Shopping session') ?></th>
                 <td><?= $order->has('shopping_session') ? $this->Html->link($order->shopping_session->id, ['controller' => 'ShoppingSessions', 'action' => 'view', $order->shopping_session->id]) : '' ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Id') ?></th>
+                    <th><?= __('ID') ?></th>
                     <td><?= $this->Number->format($order->id) ?></td>
                 </tr>
                 <tr>
@@ -25,27 +25,27 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <td><?= $this->Number->format($order->total) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Created At') ?></th>
+                    <th><?= __('Created at') ?></th>
                     <td><?= h($order->created_at) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Modified At') ?></th>
+                    <th><?= __('Modified at') ?></th>
                     <td><?= h($order->modified_at) ?></td>
                 </tr>
             </table>
             <br>
             <div class="related">
-                <h4><?= __('Related Order Items') ?></h4>
+                <h4><?= __('Related order items') ?></h4>
                 <?php if (!empty($order->order_items)) : ?>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="ordersTable" width="100%" cellspacing="0">
                     <tr>
-                            <th><?= __('Id') ?></th>
-                            <th><?= __('Order Id') ?></th>
-                            <th><?= __('Product Id') ?></th>
+                            <th><?= __('ID') ?></th>
+                            <th><?= __('Order ID') ?></th>
+                            <th><?= __('Product ID') ?></th>
                             <th><?= __('Quantity') ?></th>
-                            <th><?= __('Created At') ?></th>
-                            <th><?= __('Modified At') ?></th>
+                            <th><?= __('Created at') ?></th>
+                            <th><?= __('Modified at') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($order->order_items as $orderItems) : ?>
