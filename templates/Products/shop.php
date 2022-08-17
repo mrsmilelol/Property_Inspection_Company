@@ -217,13 +217,13 @@ $this->layout = 'front';
                                     <div class="product-img-content">
                                         <!--Product Image-->
                                         <div class="product-img">
-                                            <?php foreach ($productImages as $productImage):?>
-                                                <?php if ($productImage->product_id==$products[$x]->id):?>
+                                            <?php for ($y = 0; $y <= count($productImages)-1; $y++):?>
+                                                <?php if ($productImages[$y]->product_id==$products[$x]->id and $productImages[$y]['product_id'] != $productImages[$y+1]['product_id']):?>
                                                     <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="Printed Dress">
-                                                        <a><?= $this->Html->image($productImage->description,['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
+                                                        <a><?= $this->Html->image($productImages[$y]->description,['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
                                                     </a>
                                                 <?php endif; ?>
-                                            <?php endforeach;?>
+                                            <?php endfor;?>
                                         </div>
                                         <span class="new-label">New</span>
                                         <!--Product Action-->
@@ -261,13 +261,13 @@ $this->layout = 'front';
                                         <div class="product-img-content">
                                             <!--Product Image-->
                                             <div class="product-img">
-                                                <?php foreach ($productImages as $productImage):?>
-                                                    <?php if ($productImage->product_id==$products[$x]->id):?>
-                                                        <a href="<?= $this->Url->build(['controller' => 'Product', 'action' => 'detail',$products[$x]->id])?>" title="Printed Dress">
-                                                            <a><?= $this->Html->image($productImage->description,['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
+                                                <?php for ($y = 0; $y <= count($productImages)-1; $y++):?>
+                                                    <?php if ($productImages[$y]->product_id==$products[$x]->id and $productImages[$y]['product_id'] != $productImages[$y+1]['product_id']):?>
+                                                        <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="Printed Dress">
+                                                            <a><?= $this->Html->image($productImages[$y]->description,['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
                                                         </a>
                                                     <?php endif; ?>
-                                                <?php endforeach;?>
+                                                <?php endfor;?>
                                             </div>
                                             <span class="new-label">New</span>
                                             <!--Product Action-->
@@ -305,13 +305,13 @@ $this->layout = 'front';
                                         <div class="product-img-content">
                                             <!--Product Image-->
                                             <div class="product-img">
-                                                <?php foreach ($productImages as $productImage):?>
-                                                    <?php if ($productImage->product_id==$products[$x]->id):?>
+                                                <?php for ($y = 0; $y <= count($productImages)-1; $y++):?>
+                                                    <?php if ($productImages[$y]->product_id==$products[$x]->id and $productImages[$y]['product_id'] != $productImages[$y-1]['product_id']):?>
                                                         <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="Printed Dress">
-                                                            <a><?= $this->Html->image($productImage->description,['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
+                                                            <a><?= $this->Html->image($productImages[$y]->description,['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
                                                         </a>
                                                     <?php endif; ?>
-                                                <?php endforeach;?>
+                                                <?php endfor;?>
                                             </div>
                                             <span class="new-label">New</span>
                                             <!--Product Action-->
