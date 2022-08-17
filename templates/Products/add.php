@@ -4,10 +4,12 @@
  * @var \App\Model\Entity\Product $product
  * @var \Cake\Collection\CollectionInterface|string[] $categories
  * @var \Cake\Collection\CollectionInterface|string[] $subcategories
+ * @var \Cake\Collection\CollectionInterface|string[] $displayCategory
  * @var \Cake\Collection\CollectionInterface|string[] $productInventories
  * @var \Cake\Collection\CollectionInterface|string[] $productImages
  * @var \Cake\Collection\CollectionInterface|string[] $displayCategory
  */
+
 //debug($this->Form->getTemplates());
 $formTemplate = [
     'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
@@ -16,6 +18,8 @@ $formTemplate = [
     'radioContainer' => '<div class="form-radio">{{content}}</div>',
 ];
 $this->Form->setTemplates($formTemplate);
+echo $this->Html->css('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css', ['block' => true]);
+echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', ['block' => true]);
 ?>
 <div class="card shadow mb-4">
     <div class="d-sm-flex align-items-center justify-content-between card-header">
@@ -30,8 +34,21 @@ $this->Form->setTemplates($formTemplate);
 //                            echo $this->Form->radio('category_id', ['value' => $category['parent_id']]);
 //                        endforeach;?>
             <div><label>Categories</label></div>
-                    <?php
-                        echo $this->Form->input('category_id',['options'=>$displayCategory,'multiple'=>true,'type'=>'select']);
+                    <?php /*foreach ($categories as $category) :
+                        foreach ($subcategories as $subcategory) :
+                            if ($category->id == $subcategory->parent_id) :
+                                echo $this->Form->select('category_description', ['value' => $category['description'] . ' ' . $subcategory['description']], ['multiple' => 'checkbox']);
+                            endif;
+                        endforeach;
+                    endforeach;*/
+                    echo $this->Form->input(
+                        'category_id',
+                        [
+                            'type' => 'select',
+                            'multiple' => true,
+                            'options' => $displayCategory,
+                        ]
+                    );
                         //echo $this->Form->control('inventory_id', ['options' => $productInventories, 'empty' => true]);
                         echo $this->Form->control('name');
                         echo $this->Form->control('description');
@@ -59,4 +76,10 @@ $this->Form->setTemplates($formTemplate);
         </table>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('#category_id').select2();
+    });
+</script>
 
