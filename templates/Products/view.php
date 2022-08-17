@@ -89,11 +89,12 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             </tr>
 
         </table>
+        <br>
         <div class="related">
             <h4><?= __('Related Order Items') ?></h4>
             <?php if (!empty($product->order_items)) : ?>
                 <div class="table-responsive">
-                    <table>
+                    <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <tr>
                             <th><?= __('Id') ?></th>
                             <th><?= __('Order Id') ?></th>
@@ -126,7 +127,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             <h4><?= __('Related Product Categories') ?></h4>
             <?php if (!empty($product->product_categories)) : ?>
                 <div class="table-responsive">
-                    <table>
+                    <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <tr>
                             <th><?= __('Id') ?></th>
                             <th><?= __('Category Id') ?></th>
@@ -153,7 +154,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             <h4><?= __('Related Product Reviews') ?></h4>
             <?php if (!empty($product->product_reviews)) : ?>
                 <div class="table-responsive">
-                    <table>
+                    <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <tr>
                             <th><?= __('Id') ?></th>
                             <th><?= __('User Id') ?></th>
