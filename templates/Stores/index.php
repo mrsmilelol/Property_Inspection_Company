@@ -46,7 +46,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $store->id]) ?>
                             <?= $this->Html->link(__('Edit'), ['action' => 'edit', $store->id]) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $store->id], ['confirm' => __('Are you sure you want to delete # {0}?', $store->id)]) ?>
                         </td>
                     </tr>
                     <?php endforeach; ?>

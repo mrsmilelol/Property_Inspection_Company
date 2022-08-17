@@ -73,6 +73,8 @@
                     <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Categories','action' => 'index']) ?>">Categories</a>
                     <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'ProductImages','action' => 'index']) ?>">Images</a>
                     <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'ProductReviews','action' => 'index']) ?>">Reviews</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'ProductCategories','action' => 'index']) ?>">Product Categories</a>
+
                 </div>
             </div>
         </li>
@@ -113,7 +115,7 @@
             </div>
         </li>
 
-        <!-- Nav Item - Utilities Collapse Menu -->
+a        <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrders"
                aria-expanded="true" aria-controls="collapseOrderss">

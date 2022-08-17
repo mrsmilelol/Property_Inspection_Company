@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\Category[]|\Cake\Collection\CollectionInterface $categories
  */
 echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
-echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
+echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js', ['block' => true]);
 ?>
     <!-- Page Heading -->
     <div class="card shadow mb-4">
@@ -25,7 +25,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($categories as $category): ?>
+                        <?php foreach ($categories as $category) : ?>
                         <tr>
                             <td><?= $this->Number->format($category->id) ?></td>
                             <td><?= $category->has('parent_category') ? $this->Html->link($category->parent_category->description, ['controller' => 'Categories', 'action' => 'view', $category->parent_category->id]) : '' ?></td>
