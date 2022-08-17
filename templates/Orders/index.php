@@ -18,9 +18,9 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             <table class="table table-bordered" id="products" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th><?= h('id') ?></th>
-                        <th><?= h('shopping_session_id') ?></th>
-                        <th><?= h('total') ?></th>
+                        <th><?= h('ID') ?></th>
+                        <th><?= h('Shopping session ID') ?></th>
+                        <th><?= h('Total') ?></th>
                         <th data-visible="false"><?= h('created_at') ?></th>
                         <th data-visible="false"><?= h('modified_at') ?></th>
                         <th class="actions"><?= __('Actions') ?></th>

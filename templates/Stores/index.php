@@ -23,7 +23,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                         <th><?= h('City') ?></th>
                         <th><?= h('Country') ?></th>
                         <th><?= h('State') ?></th>
-                        <th><?= h('Post_code') ?></th>
+                        <th><?= h('Postcode') ?></th>
                         <th><?= h('Phone') ?></th>
                         <th data-visible="false"><?= h('created_at') ?></th>
                         <th data-visible="false"><?= h('modified_at') ?></th>
