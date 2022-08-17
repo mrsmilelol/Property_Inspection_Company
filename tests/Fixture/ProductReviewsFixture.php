@@ -24,8 +24,8 @@ class ProductReviewsFixture extends TestFixture
                 'product_id' => 1,
                 'description' => 'Lorem ipsum dolor sit amet',
                 'rating' => 1,
-                'created_at' => 1660108406,
-                'modified_at' => 1660108406,
+                'created_at' => 1660627763,
+                'modified_at' => 1660627763,
             ],
         ];
         parent::init();

@@ -9,13 +9,14 @@ use Cake\ORM\Entity;
  * Order Entity
  *
  * @property int $id
- * @property int|null $user_id
+ * @property int|null $shopping_session_id
  * @property int $total
- * @property \Cake\I18n\FrozenTime|null $created_at
- * @property \Cake\I18n\FrozenTime|null $modified_at
+ * @property \Cake\I18n\FrozenTime $created_at
+ * @property \Cake\I18n\FrozenTime $modified_at
  *
- * @property \App\Model\Entity\User $user
+ * @property \App\Model\Entity\ShoppingSession $shopping_session
  * @property \App\Model\Entity\OrderItem[] $order_items
+ * @property \App\Model\Entity\Payment[] $payments
  */
 class Order extends Entity
 {
@@ -29,11 +30,12 @@ class Order extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
-        'user_id' => true,
+        'shopping_session_id' => true,
         'total' => true,
         'created_at' => true,
         'modified_at' => true,
-        'user' => true,
+        'shopping_session' => true,
         'order_items' => true,
+        'payments' => true,
     ];
 }

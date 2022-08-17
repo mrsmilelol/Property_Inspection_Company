@@ -6,16 +6,18 @@
 echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
 echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
 ?>
-    <div class="column-responsive column-80">
-        <div class="payments view content">
-            <h3><?= h($payment->id) ?></h3>
-            <table class="table table-bordered" id="paymentTable" width="100%" cellspacing="0">
+<div class="card shadow mb-4">
+    <div class="d-sm-flex align-items-center justify-content-between card-header">
+        <h1 class="h3 mb-0 text-gray-800"><?= h($payment->id) ?></h1>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
             <tr>
-                    <th><?= __('User') ?></th>
-                    <td><?= $payment->has('user') ? $this->Html->link($payment->user->username, ['controller' => 'Users', 'action' => 'view', $payment->user->id]) : '' ?></td>
+                <th><?= __('Order') ?></th>
+                <td><?= $payment->has('order') ? $this->Html->link($payment->order->id, ['controller' => 'Orders', 'action' => 'view', $payment->order->id]) : '' ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Payment Type') ?></th>
+                    <th><?= __('Payment type') ?></th>
                     <td><?= h($payment->payment_type) ?></td>
                 </tr>
                 <tr>
@@ -23,27 +25,27 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <td><?= h($payment->provider) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Id') ?></th>
+                    <th><?= __('ID') ?></th>
                     <td><?= $this->Number->format($payment->id) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Account No') ?></th>
+                    <th><?= __('Account no.') ?></th>
                     <td><?= $this->Number->format($payment->account_no) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Security No') ?></th>
+                    <th><?= __('Security no.') ?></th>
                     <td><?= $this->Number->format($payment->security_no) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Expiry Date') ?></th>
+                    <th><?= __('Expiry date') ?></th>
                     <td><?= $this->Number->format($payment->expiry_date) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Created At') ?></th>
+                    <th><?= __('Created at') ?></th>
                     <td><?= h($payment->created_at) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Modified At') ?></th>
+                    <th><?= __('Modified at') ?></th>
                     <td><?= h($payment->modified_at) ?></td>
                 </tr>
             </table>

@@ -27,8 +27,8 @@ class StoresFixture extends TestFixture
                 'state' => 'Lorem ipsum dolor sit amet',
                 'post_code' => 'Lorem ipsum dolor sit amet',
                 'phone' => 'Lorem ipsum dolor sit amet',
-                'created_at' => 1660108418,
-                'modified_at' => 1660108418,
+                'created_at' => 1660627767,
+                'modified_at' => 1660627767,
             ],
         ];
         parent::init();

@@ -18,7 +18,11 @@ class PaymentsController extends AppController
      */
     public function index()
     {
-        $payments = $this->Payments->find()->contain(['Users']);
+        $this->paginate = [
+            'contain' => ['Orders'],
+        ];
+        $payments = $this->paginate($this->Payments);
+
         $this->set(compact('payments'));
     }
 
@@ -32,7 +36,7 @@ class PaymentsController extends AppController
     public function view($id = null)
     {
         $payment = $this->Payments->get($id, [
-            'contain' => ['Users'],
+            'contain' => ['Orders'],
         ]);
 
         $this->set(compact('payment'));
@@ -55,8 +59,8 @@ class PaymentsController extends AppController
             }
             $this->Flash->error(__('The payment could not be saved. Please, try again.'));
         }
-        $users = $this->Payments->Users->find('list', ['limit' => 200])->all();
-        $this->set(compact('payment', 'users'));
+        $orders = $this->Payments->Orders->find('list', ['limit' => 200])->all();
+        $this->set(compact('payment', 'orders'));
     }
 
     /**
@@ -80,8 +84,8 @@ class PaymentsController extends AppController
             }
             $this->Flash->error(__('The payment could not be saved. Please, try again.'));
         }
-        $users = $this->Payments->Users->find('list', ['limit' => 200])->all();
-        $this->set(compact('payment', 'users'));
+        $orders = $this->Payments->Orders->find('list', ['limit' => 200])->all();
+        $this->set(compact('payment', 'orders'));
     }
 
     /**

@@ -13,6 +13,7 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
  * @property \App\Model\Table\ProductsTable&\Cake\ORM\Association\BelongsTo $Products
+ * @property \App\Model\Table\OrdersTable&\Cake\ORM\Association\HasMany $Orders
  *
  * @method \App\Model\Entity\ShoppingSession newEmptyEntity()
  * @method \App\Model\Entity\ShoppingSession newEntity(array $data, array $options = [])
@@ -50,6 +51,9 @@ class ShoppingSessionsTable extends Table
         $this->belongsTo('Products', [
             'foreignKey' => 'product_id',
         ]);
+        $this->hasMany('Orders', [
+            'foreignKey' => 'shopping_session_id',
+        ]);
     }
 
     /**
@@ -74,11 +78,11 @@ class ShoppingSessionsTable extends Table
 
         $validator
             ->dateTime('created_at')
-            ->allowEmptyDateTime('created_at');
+            ->notEmptyDateTime('created_at');
 
         $validator
             ->dateTime('modified_at')
-            ->allowEmptyDateTime('modified_at');
+            ->notEmptyDateTime('modified_at');
 
         return $validator;
     }

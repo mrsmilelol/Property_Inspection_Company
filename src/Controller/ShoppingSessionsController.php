@@ -18,7 +18,11 @@ class ShoppingSessionsController extends AppController
      */
     public function index()
     {
-        $shoppingSessions = $this->ShoppingSessions->find()->contain(['Users','Products']);
+        $this->paginate = [
+            'contain' => ['Users', 'Products'],
+        ];
+        $shoppingSessions = $this->paginate($this->ShoppingSessions);
+
         $this->set(compact('shoppingSessions'));
     }
 
@@ -32,7 +36,7 @@ class ShoppingSessionsController extends AppController
     public function view($id = null)
     {
         $shoppingSession = $this->ShoppingSessions->get($id, [
-            'contain' => ['Users', 'Products'],
+            'contain' => ['Users', 'Products', 'Orders'],
         ]);
 
         $this->set(compact('shoppingSession'));

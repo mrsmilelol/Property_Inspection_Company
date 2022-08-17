@@ -14,7 +14,6 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\CategoriesTable&\Cake\ORM\Association\BelongsTo $ParentCategories
  * @property \App\Model\Table\CategoriesTable&\Cake\ORM\Association\HasMany $ChildCategories
  * @property \App\Model\Table\ProductCategoriesTable&\Cake\ORM\Association\HasMany $ProductCategories
- * @property \App\Model\Table\ProductsTable&\Cake\ORM\Association\HasMany $Products
  *
  * @method \App\Model\Entity\Category newEmptyEntity()
  * @method \App\Model\Entity\Category newEntity(array $data, array $options = [])
@@ -57,9 +56,6 @@ class CategoriesTable extends Table
         $this->hasMany('ProductCategories', [
             'foreignKey' => 'category_id',
         ]);
-        $this->hasMany('Products', [
-            'foreignKey' => 'category_id',
-        ]);
     }
 
     /**
@@ -76,17 +72,17 @@ class CategoriesTable extends Table
 
         $validator
             ->scalar('description')
-            ->maxLength('description', 64)
+            ->maxLength('description', 128)
             ->requirePresence('description', 'create')
             ->notEmptyString('description');
 
         $validator
             ->dateTime('created_at')
-            ->allowEmptyDateTime('created_at');
+            ->notEmptyDateTime('created_at');
 
         $validator
             ->dateTime('modified_at')
-            ->allowEmptyDateTime('modified_at');
+            ->notEmptyDateTime('modified_at');
 
         return $validator;
     }

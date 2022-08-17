@@ -23,11 +23,9 @@ class CategoriesController extends AppController
         ];
         $categories = $this->paginate($this->Categories);
 
-        $categories = $this->Categories->find()->contain(['ParentCategories']);
-
         $this->set(compact('categories'));
     }
-//comment
+
     /**
      * View method
      *
@@ -38,7 +36,7 @@ class CategoriesController extends AppController
     public function view($id = null)
     {
         $category = $this->Categories->get($id, [
-            'contain' => ['ParentCategories', 'ChildCategories', 'ProductCategories', 'Products'],
+            'contain' => ['ParentCategories', 'ChildCategories', 'ProductCategories'],
         ]);
 
         $this->set(compact('category'));

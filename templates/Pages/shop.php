@@ -58,20 +58,6 @@ $this->layout = 'front';
                     <p>Catalog</p>
                 </aside>
                 <div class="left-widget-content  indicator-banner">
-                    <aside class="enabled-filters widget">
-                        <h3 class="widget-subtitle">Enabled filters:</h3>
-                        <ul>
-                            <li>Size: S
-                                <a href="#" title="Cancel"><i class="fa fa-remove pull-right"></i></a>
-                            </li>
-                            <li>Color: Beige
-                                <a href="#" title="Cancel"><i class="fa fa-remove pull-right"></i></a>
-                            </li>
-                            <li>
-                                Price: AU$ 36.09 - AU$ 61.00
-                            </li>
-                        </ul>
-                    </aside>
                     <aside class="left-widget-price widget">
                         <h3 class="widget-subtitle">Price</h3>
                         <div class="info-widget">

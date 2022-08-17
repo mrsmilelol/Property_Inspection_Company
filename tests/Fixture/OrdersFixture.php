@@ -20,10 +20,10 @@ class OrdersFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'user_id' => 1,
+                'shopping_session_id' => 1,
                 'total' => 1,
-                'created_at' => 1660108317,
-                'modified_at' => 1660108317,
+                'created_at' => 1660627759,
+                'modified_at' => 1660627759,
             ],
         ];
         parent::init();

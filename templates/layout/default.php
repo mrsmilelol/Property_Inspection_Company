@@ -34,7 +34,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= $this->Url->build('/') ?>">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','main']) ?>">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-toolbox"></i>
             </div>
@@ -70,11 +70,9 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Product menu:</h6>
                     <a class="collapse-item" href="<?= $this->Url->build('/') ?>">Products</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'Categories','action'=>'index']) ?>">Categories</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'ProductCategories','action'=>'index']) ?>">Product Categories</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'ProductInventories','action'=>'index']) ?>">Inventories</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'ProductImages','action'=>'index']) ?>">Images</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'ProductReviews','action'=>'index']) ?>">Reviews</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Categories','action' => 'index']) ?>">Categories</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'ProductImages','action' => 'index']) ?>">Images</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'ProductReviews','action' => 'index']) ?>">Reviews</a>
                 </div>
             </div>
         </li>
@@ -90,9 +88,9 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">User menu:</h6>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'Users','action'=>'index']) ?>">Users</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'UserTypes','action'=>'index']) ?>">User Types</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'UserAddresses','action'=>'index']) ?>">User Addresses</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Users','action' => 'index']) ?>">Users</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'UserTypes','action' => 'index']) ?>">User Types</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'UserAddresses','action' => 'index']) ?>">User Addresses</a>
                 </div>
             </div>
         </li>
@@ -108,8 +106,8 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Payment menu:</h6>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'Payments','action'=>'index']) ?>">Payments</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'ShoppingSessions','action'=>'index']) ?>">Shopping Sessions</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Payments','action' => 'index']) ?>">Payments</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'ShoppingSessions','action' => 'index']) ?>">Shopping Sessions</a>
 
                 </div>
             </div>
@@ -126,9 +124,9 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Order menu:</h6>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'Orders','action'=>'index']) ?>">Orders</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'OrderItems','action'=>'index']) ?>">Ordered items</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller'=>'Stores','action'=>'index']) ?>">Stores</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Orders','action' => 'index']) ?>">Orders</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'OrderItems','action' => 'index']) ?>">Ordered items</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Stores','action' => 'index']) ?>">Stores</a>
                 </div>
             </div>
         </li>
@@ -193,28 +191,27 @@
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin Profile</span>
-                            <?=$this->Html->image('undraw_profile.svg',['class' => 'img-profile rounded-circle']) ?>
+                            <?=$this->Html->image('undraw_profile.svg', ['class' => 'img-profile rounded-circle']) ?>
                         </a>
                         <!-- Dropdown - User Information -->
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                             aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Settings
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Logout
-                            </a>
-                        </div>
+<!--                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"-->
+<!--                             aria-labelledby="userDropdown">-->
+<!--                            <a class="dropdown-item" href="#">-->
+<!--                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>-->
+<!--                                Settings-->
+<!--                            </a>-->
+<!--                            <div class="dropdown-divider"></div>-->
+<!--                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">-->
+<!--                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>-->
+<!--                                Logout-->
+<!--                            </a>-->
+<!--                        </div>-->
                     </li>
 
                 </ul>
 
             </nav>
             <!-- End of Topbar -->
-
             <!-- Begin Page Content -->
             <div class="container-fluid">
                 <?= $this->Flash->render() ?>
@@ -231,7 +228,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2021</span>
+                    <span>Copyright &copy; Chelsea Furniture 2022</span>
                 </div>
             </div>
         </footer>
