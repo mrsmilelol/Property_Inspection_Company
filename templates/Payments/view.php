@@ -17,7 +17,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <td><?= $payment->has('order') ? $this->Html->link($payment->order->id, ['controller' => 'Orders', 'action' => 'view', $payment->order->id]) : '' ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Payment Type') ?></th>
+                    <th><?= __('Payment type') ?></th>
                     <td><?= h($payment->payment_type) ?></td>
                 </tr>
                 <tr>
@@ -25,27 +25,27 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <td><?= h($payment->provider) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Id') ?></th>
+                    <th><?= __('ID') ?></th>
                     <td><?= $this->Number->format($payment->id) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Account No') ?></th>
+                    <th><?= __('Account no.') ?></th>
                     <td><?= $this->Number->format($payment->account_no) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Security No') ?></th>
+                    <th><?= __('Security no.') ?></th>
                     <td><?= $this->Number->format($payment->security_no) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Expiry Date') ?></th>
+                    <th><?= __('Expiry date') ?></th>
                     <td><?= $this->Number->format($payment->expiry_date) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Created At') ?></th>
+                    <th><?= __('Created at') ?></th>
                     <td><?= h($payment->created_at) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Modified At') ?></th>
+                    <th><?= __('Modified at') ?></th>
                     <td><?= h($payment->modified_at) ?></td>
                 </tr>
             </table>

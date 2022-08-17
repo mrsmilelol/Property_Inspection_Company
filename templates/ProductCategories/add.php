@@ -12,7 +12,7 @@ $formTemplate= [
 ];
 $this->Form->setTemplates($formTemplate);
 ?>
-<h1 class="h3 mb-0 text-gray-800"><?= __('Add new Product Category') ?></h1>
+<h1 class="h3 mb-0 text-gray-800"><?= __('Add new product category') ?></h1>
 <?= $this->Form->create($productCategory) ?>
                 <?php
                     echo $this->Form->control('category_id', ['options' => $categories, 'empty' => true]);

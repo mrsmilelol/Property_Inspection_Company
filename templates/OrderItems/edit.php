@@ -12,7 +12,7 @@ $formTemplate= [
 ];
 $this->Form->setTemplates($formTemplate);
 ?>
-<h1 class="h3 mb-0 text-gray-800"><?= __('Edit item order') ?></h1>
+<h1 class="h3 mb-0 text-gray-800"><?= __('Edit order item') ?></h1>
 <?= $this->Form->create($orderItem) ?>
                 <?php
                     echo $this->Form->control('order_id', ['options' => $orders, 'empty' => true]);

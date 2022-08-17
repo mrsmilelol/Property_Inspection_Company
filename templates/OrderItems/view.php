@@ -21,7 +21,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <td><?= $orderItem->has('product') ? $this->Html->link($orderItem->product->name, ['controller' => 'Products', 'action' => 'view', $orderItem->product->id]) : '' ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Id') ?></th>
+                    <th><?= __('ID') ?></th>
                     <td><?= $this->Number->format($orderItem->id) ?></td>
                 </tr>
                 <tr>
@@ -29,11 +29,11 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <td><?= $this->Number->format($orderItem->quantity) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Created At') ?></th>
+                    <th><?= __('Created at') ?></th>
                     <td><?= h($orderItem->created_at) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Modified At') ?></th>
+                    <th><?= __('Modified at') ?></th>
                     <td><?= h($orderItem->modified_at) ?></td>
                 </tr>
             </table>

@@ -172,7 +172,8 @@
 <!--                        </div>-->
 <!--                    </div>-->
 <!--                </div>-->
-                <div class="col-lg-9 col-md-7 col-sm-12 col-xs-12">
+<!--                <div class="col-lg-9 col-md-7 col-sm-12 col-xs-12">-->
+                <div class="col-lg-11 col-md-7 col-sm-12 col-xs-12">
                     <!-- Main Menu -->
                     <div class="mainmenu">
                         <nav>
@@ -269,86 +270,44 @@
                 <div class="mobile-menu">
                     <nav id="dropdown">
                         <ul>
-                            <li><a href="index.html">Home</a>
+                            <li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','main']); ?>>Home</a></li>
+                            <li><a href=<?= $this->Url->build(['controller'=>'Categories', 'action'=>'view', 1]); ?>>Styles</a>
                                 <ul>
-                                    <li><a href="index.html">Home Version 1</a></li>
-                                    <li><a href="index-2.html">Home Version 2</a></li>
-                                    <li><a href="index-3.html">Home Version 3</a></li>
-                                    <li><a href="index-4.html">Home Version 4</a></li>
-                                    <li><a href="index-5.html">Home Version 5</a></li>
-                                    <li><a href="index-6.html">Home Version 6</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="shop.html">Bedroom</a>
-                                <ul>
-                                    <li><a href="#">Categories 01</a>
+                                    <?php for($x = 0; $x <= count($categories)-1; $x++): if ($categories[$x]->parent_id == 1): ?>
+                                        <?php $saved_id = $categories[$x]->id; ?>
+                                    <li><a href=<?= $this->Url->build(['controller'=>'Categories',
+                                            'action'=> 'view', $categories[$x]->id]); ?>><?= h($categories[$x]->description) ?></a>
                                         <ul>
-                                            <li><a href="shop.html">Washing machine 1</a></li>
-                                            <li><a href="shop.html">Washing machine 2</a></li>
-                                            <li><a href="shop.html">Washing machine 3</a></li>
-                                            <li><a href="shop.html">Washing machine 4</a></li>
+                                            <?php foreach ($categories as $subcategory): if ($subcategory->parent_id == $saved_id):  ?>
+                                            <li><a href=<?= $this->Url->build(['controller' => 'Categories',
+                                                    'action' => 'view', $subcategory->id]); ?>><?= h($subcategory->description) ?></a></li>
+                                            <?php endif; ?>
+                                            <?php endforeach; ?>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Categories 02</a>
-                                        <ul>
-                                            <li><a href="shop.html">Washing machine 1</a></li>
-                                            <li><a href="shop.html">Washing machine 2</a></li>
-                                            <li><a href="shop.html">Washing machine 3</a></li>
-                                            <li><a href="shop.html">Washing machine 4</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Categories 03</a>
-                                        <ul>
-                                            <li><a href="shop.html">Washing machine 1</a></li>
-                                            <li><a href="shop.html">Washing machine 2</a></li>
-                                            <li><a href="shop.html">Washing machine 3</a></li>
-                                            <li><a href="shop.html">Washing machine 4</a></li>
-                                        </ul>
-                                    </li>
+                                    <?php endif; ?>
+                                    <?php endfor; ?>
                                 </ul>
                             </li>
-                            <li><a href="shop.html">Livingroom</a>
-                                <ul>
-                                    <li><a href="#">Categories 01</a>
-                                        <ul>
-                                            <li><a href="shop.html">Washing machine 1</a></li>
-                                            <li><a href="shop.html">Washing machine 2</a></li>
-                                            <li><a href="shop.html">Washing machine 3</a></li>
-                                            <li><a href="shop.html">Washing machine 4</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Categories 02</a>
-                                        <ul>
-                                            <li><a href="shop.html">Washing machine 1</a></li>
-                                            <li><a href="shop.html">Washing machine 2</a></li>
-                                            <li><a href="shop.html">Washing machine 3</a></li>
-                                            <li><a href="shop.html">Washing machine 4</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Pages</a>
-                                <ul>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="account.html">Account</a></li>
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="blog-details.html">Blog Details</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="product-simple.html">Product Details</a></li>
-                                    <li><a href="shop.html">Shop</a></li>
-                                    <li><a href="wishlist.html">Wishlist</a></li>
-                                    <li><a href="404.html">404 Error</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="shop.html">Lighting</a>
-                                <ul>
-                                    <li><a href="shop.html">Washing machine 1</a></li>
-                                    <li><a href="shop.html">Washing machine 2</a></li>
-                                    <li><a href="shop.html">Washing machine 3</a></li>
-                                    <li><a href="shop.html">Washing machine 4</a></li>
-                                </ul>
-                            </li>
+                            <?php
+                            for($x = 0; $x <= count($categories)-1; $x++): if ($categories[$x]->id > 1 and $categories[$x]->parent_id == null): ?>
+                                <?php $saved_id = $categories[$x]->id; ?>
+                                <li><a href=<?= $this->Url->build(['controller'=>'Categories',
+                                        'action'=> 'view', $categories[$x]->id]); ?>><?= h($categories[$x]->description) ?></a>
+                                    <!-- DropDown Menu -->
+                                    <ul>
+                                        <?php foreach ($categories as $subcategory): if ($subcategory->parent_id == $saved_id):  ?>
+                                            <li><a href=<?= $this->Url->build(['controller' => 'Categories',
+                                                    'action' => 'view', $subcategory->id]); ?>><?= h($subcategory->description) ?></a>
+                                            </li>
+                                        <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </li>
+                            <?php endif; ?>
+                            <?php endfor; ?>
+                            <li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','about']); ?>>About Us</a></li>
+                            <li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','contact']); ?>>Contact Us</a></li>
                         </ul>
                     </nav>
                 </div>

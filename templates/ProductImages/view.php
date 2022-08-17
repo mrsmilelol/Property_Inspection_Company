@@ -22,15 +22,15 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <td><?= h($productImage->description) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Id') ?></th>
+                    <th><?= __('ID') ?></th>
                     <td><?= $this->Number->format($productImage->id) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Created At') ?></th>
+                    <th><?= __('Created at') ?></th>
                     <td><?= h($productImage->created_at) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Modified At') ?></th>
+                    <th><?= __('Modified at') ?></th>
                     <td><?= h($productImage->modified_at) ?></td>
                 </tr>
             </table>

@@ -46,11 +46,11 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <td><?= h($product->finish) ?></td>
             </tr>
             <tr>
-                <th><?= __('Manufacturing') ?></th>
+                <th><?= __('Manufacturer') ?></th>
                 <td><?= h($product->manufacturing) ?></td>
             </tr>
             <tr>
-                <th><?= __('Id') ?></th>
+                <th><?= __('ID') ?></th>
                 <td><?= $this->Number->format($product->id) ?></td>
             </tr>
             <tr>
@@ -58,7 +58,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <td><?= $this->Number->format($product->price) ?></td>
             </tr>
             <tr>
-                <th><?= __('Units In Stock') ?></th>
+                <th><?= __('Units in stock') ?></th>
                 <td><?= $this->Number->format($product->units_in_stock) ?></td>
             </tr>
             <tr>
@@ -66,12 +66,12 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <td><?= $this->Number->format($product->weight) ?></td>
             </tr>
             <tr>
-                <th><?= __('Wholesale Price') ?></th>
-                <td><?= $product->wholesale_price === null ? '' : $this->Number->format($product->wholesale_price) ?></td>
+                <th><?= __('Sale price') ?></th>
+                <td><?= $product->sale_price === null ? '' : $this->Number->format($product->sale_price) ?></td>
             </tr>
             <tr>
-                <th><?= __('Sale Price') ?></th>
-                <td><?= $product->sale_price === null ? '' : $this->Number->format($product->sale_price) ?></td>
+                <th><?= __('Wholesale price') ?></th>
+                <td><?= $product->wholesale_price === null ? '' : $this->Number->format($product->wholesale_price) ?></td>
             </tr>
             <tr>
                 <th><?= __('Images') ?></th>
@@ -80,11 +80,11 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     } ?></td>
             </tr>
             <tr>
-                <th><?= __('Created At') ?></th>
+                <th><?= __('Created at') ?></th>
                 <td><?= h($product->created_at) ?></td>
             </tr>
             <tr>
-                <th><?= __('Modified At') ?></th>
+                <th><?= __('Modified at') ?></th>
                 <td><?= h($product->modified_at) ?></td>
             </tr>
 

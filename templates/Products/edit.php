@@ -24,35 +24,35 @@ $this->Form->setTemplates($formTemplate);
                     //echo $this->Form->control('inventory_id', ['options' => $productInventories, 'empty' => true]);
                     echo $this->Form->control('name');
                     echo $this->Form->control('description');
-                    echo $this->Form->control('price');
+                    echo $this->Form->control('price', ['label'=>'Normal price']);
                     echo $this->Form->control('material');
                     echo $this->Form->control('brand');
                     echo $this->Form->control('style');
                     echo $this->Form->control('colour');
-                    echo $this->Form->control('units_in_stock');
+                    echo $this->Form->control('units_in_stock', ['label'=>'Units in stock']);
                     echo $this->Form->control('size');
                     echo $this->Form->control('weight');
                     echo $this->Form->control('finish');
-                    echo $this->Form->control('wholesale_price');
-                    echo $this->Form->control('sale_price');
-                    echo $this->Form->control('manufacturing');
+                    echo $this->Form->control('sale_price', ['label'=>'Sale price']);
+                    echo $this->Form->control('wholesale_price', ['label'=>'Wholesale price']);
+                    echo $this->Form->control('manufacturing', ['label'=>'Manufacturer']);
                     //echo $this->Form->control('created_at');
                     //echo $this->Form->control('modified_at');
                 ?>
 <br>
 <br>
-<div class="related">
-    <h4><?= __('Related Order Items') ?></h4>
+<div class="related card">
+    <h4><?= __('Related order items') ?></h4>
     <?php if (!empty($product->order_items)) : ?>
         <div class="table-responsive">
             <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                 <tr>
-                    <th><?= __('Id') ?></th>
-                    <th><?= __('Order Id') ?></th>
-                    <th><?= __('Product Id') ?></th>
+                    <th><?= __('ID') ?></th>
+                    <th><?= __('Order ID') ?></th>
+                    <th><?= __('Product ID') ?></th>
                     <th><?= __('Quantity') ?></th>
-                    <th><?= __('Created At') ?></th>
-                    <th><?= __('Modified At') ?></th>
+                    <th><?= __('Created at') ?></th>
+                    <th><?= __('Modified at') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
                 <?php foreach ($product->order_items as $orderItems) : ?>
@@ -76,14 +76,14 @@ $this->Form->setTemplates($formTemplate);
 </div>
 <br>
 <div class="related">
-    <h4><?= __('Related Product Categories') ?></h4>
+    <h4><?= __('Related product categories') ?></h4>
     <?php if (!empty($product->product_categories)) : ?>
         <div class="table-responsive">
             <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                 <tr>
-                    <th><?= __('Id') ?></th>
-                    <th><?= __('Category Id') ?></th>
-                    <th><?= __('Product Id') ?></th>
+                    <th><?= __('ID') ?></th>
+                    <th><?= __('Category ID') ?></th>
+                    <th><?= __('Product ID') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
                 <?php foreach ($product->product_categories as $productCategories) : ?>
@@ -104,16 +104,16 @@ $this->Form->setTemplates($formTemplate);
 </div>
 <br>
 <div class="related">
-    <h4><?= __('Related Product Images') ?></h4>
+    <h4><?= __('Related product images') ?></h4>
     <?php if (!empty($product->product_images)) : ?>
         <div class="table-responsive">
             <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                 <tr>
-                    <th><?= __('Id') ?></th>
-                    <th><?= __('Product Id') ?></th>
+                    <th><?= __('ID') ?></th>
+                    <th><?= __('Product ID') ?></th>
                     <th><?= __('Description') ?></th>
-                    <th><?= __('Created At') ?></th>
-                    <th><?= __('Modified At') ?></th>
+                    <th><?= __('Created at') ?></th>
+                    <th><?= __('Modified at') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
                 <?php foreach ($product->product_images as $productImages) : ?>
@@ -136,18 +136,18 @@ $this->Form->setTemplates($formTemplate);
 </div>
 <br>
 <div class="related">
-    <h4><?= __('Related Product Reviews') ?></h4>
+    <h4><?= __('Related product reviews') ?></h4>
     <?php if (!empty($product->product_reviews)) : ?>
         <div class="table-responsive">
             <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                 <tr>
-                    <th><?= __('Id') ?></th>
-                    <th><?= __('User Id') ?></th>
-                    <th><?= __('Product Id') ?></th>
+                    <th><?= __('ID') ?></th>
+                    <th><?= __('User ID') ?></th>
+                    <th><?= __('Product ID') ?></th>
                     <th><?= __('Description') ?></th>
                     <th><?= __('Rating') ?></th>
-                    <th><?= __('Created At') ?></th>
-                    <th><?= __('Modified At') ?></th>
+                    <th><?= __('Created at') ?></th>
+                    <th><?= __('Modified at') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
                 <?php foreach ($product->product_reviews as $productReviews) : ?>
@@ -172,17 +172,17 @@ $this->Form->setTemplates($formTemplate);
 </div>
 <br>
 <div class="related">
-    <h4><?= __('Related Shopping Sessions') ?></h4>
+    <h4><?= __('Related shopping sessions') ?></h4>
     <?php if (!empty($product->shopping_sessions)) : ?>
         <div class="table-responsive">
             <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                 <tr>
-                    <th><?= __('Id') ?></th>
-                    <th><?= __('User Id') ?></th>
-                    <th><?= __('Product Id') ?></th>
+                    <th><?= __('ID') ?></th>
+                    <th><?= __('User ID') ?></th>
+                    <th><?= __('Product ID') ?></th>
                     <th><?= __('Quantity') ?></th>
-                    <th><?= __('Created At') ?></th>
-                    <th><?= __('Modified At') ?></th>
+                    <th><?= __('Created at') ?></th>
+                    <th><?= __('Modified at') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
                 <?php foreach ($product->shopping_sessions as $shoppingSessions) : ?>

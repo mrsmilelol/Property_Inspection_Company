@@ -13,7 +13,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
     <div class="card-body">
         <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
             <tr>
-                    <th><?= __('Parent Category') ?></th>
+                    <th><?= __('Parent category') ?></th>
                     <td><?= $category->has('parent_category') ? $this->Html->link($category->parent_category->id, ['controller' => 'Categories', 'action' => 'view', $category->parent_category->id]) : '' ?></td>
                 </tr>
                 <tr>
@@ -21,29 +21,29 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <td><?= h($category->description) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Id') ?></th>
+                    <th><?= __('ID') ?></th>
                     <td><?= $this->Number->format($category->id) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Created At') ?></th>
+                    <th><?= __('Created at') ?></th>
                     <td><?= h($category->created_at) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Modified At') ?></th>
+                    <th><?= __('Modified at') ?></th>
                     <td><?= h($category->modified_at) ?></td>
                 </tr>
             </table>
             <div class="related">
-                <h4><?= __('Related Categories') ?></h4>
+                <h4><?= __('Related categories') ?></h4>
                 <?php if (!empty($category->child_categories)) : ?>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="categoryTable" width="100%" cellspacing="0">
                     <tr>
-                            <th><?= __('Id') ?></th>
-                            <th><?= __('Parent Id') ?></th>
+                            <th><?= __('ID') ?></th>
+                            <th><?= __('Parent ID') ?></th>
                             <th><?= __('Description') ?></th>
                             <th><?= __('Created At') ?></th>
-                            <th><?= __('Modified At') ?></th>
+                            <th><?= __('Modified at') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($category->child_categories as $childCategories) : ?>
@@ -65,14 +65,14 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <?php endif; ?>
             </div>
             <div class="related">
-                <h4><?= __('Related Product Categories') ?></h4>
+                <h4><?= __('Related product categories') ?></h4>
                 <?php if (!empty($category->product_categories)) : ?>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="categoryTable" width="100%" cellspacing="0">
                     <tr>
-                            <th><?= __('Id') ?></th>
-                            <th><?= __('Category Id') ?></th>
-                            <th><?= __('Product Id') ?></th>
+                            <th><?= __('ID') ?></th>
+                            <th><?= __('Category ID') ?></th>
+                            <th><?= __('Product ID') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($category->product_categories as $productCategories) : ?>
@@ -92,14 +92,14 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <?php endif; ?>
             </div>
             <div class="related">
-                <h4><?= __('Related Products') ?></h4>
+                <h4><?= __('Related products') ?></h4>
                 <?php if (!empty($category->products)) : ?>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="categoryTable" width="100%" cellspacing="0">
                     <tr>
-                            <th><?= __('Id') ?></th>
-                            <th><?= __('Category Id') ?></th>
-                            <th><?= __('Inventory Id') ?></th>
+                            <th><?= __('ID') ?></th>
+                            <th><?= __('Category ID') ?></th>
+                            <th><?= __('Inventory ID') ?></th>
                             <th><?= __('Name') ?></th>
                             <th><?= __('Description') ?></th>
                             <th><?= __('Price') ?></th>
@@ -107,8 +107,8 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                             <th><?= __('Brand') ?></th>
                             <th><?= __('Style') ?></th>
                             <th><?= __('Colour') ?></th>
-                            <th><?= __('Created At') ?></th>
-                            <th><?= __('Modified At') ?></th>
+                            <th><?= __('Created at') ?></th>
+                            <th><?= __('Modified at') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($category->products as $products) : ?>
