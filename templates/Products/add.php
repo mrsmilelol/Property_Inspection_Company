@@ -4,6 +4,7 @@
  * @var \App\Model\Entity\Product $product
  * @var \Cake\Collection\CollectionInterface|string[] $categories
  * @var \Cake\Collection\CollectionInterface|string[] $subcategories
+ * @var \Cake\Collection\CollectionInterface|string[] $displayCategory
  * @var \Cake\Collection\CollectionInterface|string[] $productInventories
  * @var \Cake\Collection\CollectionInterface|string[] $productImages
  */
@@ -29,13 +30,20 @@ $this->Form->setTemplates($formTemplate);
 //                            echo $this->Form->radio('category_id', ['value' => $category['parent_id']]);
 //                        endforeach;?>
             <div><label>Categories</label></div>
-                    <?php foreach ($categories as $category) :
+                    <?php /*foreach ($categories as $category) :
                         foreach ($subcategories as $subcategory) :
                             if ($category->id == $subcategory->parent_id) :
                                 echo $this->Form->select('category_description', ['value' => $category['description'] . ' ' . $subcategory['description']], ['multiple' => 'checkbox']);
                             endif;
                         endforeach;
-                    endforeach;
+                    endforeach;*/
+                    echo $this->Form->input('category_id',
+                        array(
+                            "type" => "select",
+                            'multiple' => true,
+                            "options" => $displayCategory
+                        )
+                    );
                         //echo $this->Form->control('inventory_id', ['options' => $productInventories, 'empty' => true]);
                         echo $this->Form->control('name');
                         echo $this->Form->control('description');
