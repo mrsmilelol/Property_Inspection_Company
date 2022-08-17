@@ -7,6 +7,8 @@
  * @var \Cake\Collection\CollectionInterface|string[] $productInventories
  * @var \Cake\Collection\CollectionInterface|string[] $productImages
  */
+
+
 //debug($this->Form->getTemplates());
 $formTemplate = [
     'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
@@ -15,6 +17,8 @@ $formTemplate = [
     'radioContainer' => '<div class="form-radio">{{content}}</div>',
 ];
 $this->Form->setTemplates($formTemplate);
+echo $this->Html->css('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css', ['block' => true]);
+echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', ['block' => true]);
 ?>
 <div class="card shadow mb-4">
     <div class="d-sm-flex align-items-center justify-content-between card-header">
