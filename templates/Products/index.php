@@ -58,7 +58,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                         <td><?= h($product->sale_price) ?></td>
                         <td><?= h($product->manufacturing) ?></td>
                         <td class="actions">
-                            <?= $this->Html->link(__('View'), ['action' => 'detail', $product->id]) ?>
+                            <?= $this->Html->link(__('View'), ['action' => 'view', $product->id]) ?>
                             <?= $this->Html->link(__('Edit'), ['action' => 'edit', $product->id]) ?>
                             <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $product->id], ['confirm' => __('Are you sure you want to delete # {0}?', $product->id)]) ?>
                         </td>
