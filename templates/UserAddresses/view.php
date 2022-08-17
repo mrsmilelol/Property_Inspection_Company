@@ -6,10 +6,12 @@
 echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
 echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
 ?>
-    <div class="column-responsive column-80">
-        <div class="userAddresses view content">
-            <h3><?= h($userAddress->user->username) ?></h3>
-            <table class="table table-bordered" id="userAddressTable" width="100%" cellspacing="0">
+<div class="card shadow mb-4">
+    <div class="d-sm-flex align-items-center justify-content-between card-header">
+        <h1 class="h3 mb-0 text-gray-800"><?= h($userAddress->user->username) ?></h1>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
             <tr>
                     <th><?= __('User') ?></th>
                     <td><?= $userAddress->has('user') ? $this->Html->link($userAddress->user->id, ['controller' => 'Users', 'action' => 'view', $userAddress->user->id]) : '' ?></td>

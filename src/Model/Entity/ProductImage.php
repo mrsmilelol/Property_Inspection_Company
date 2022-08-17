@@ -11,8 +11,8 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property int|null $product_id
  * @property string|null $description
- * @property \Cake\I18n\FrozenTime|null $created_at
- * @property \Cake\I18n\FrozenTime|null $modified_at
+ * @property \Cake\I18n\FrozenTime $created_at
+ * @property \Cake\I18n\FrozenTime $modified_at
  *
  * @property \App\Model\Entity\Product $product
  */

@@ -12,8 +12,13 @@ $formTemplate= [
 ];
 $this->Form->setTemplates($formTemplate);
 ?>
-<h1 class="h3 mb-0 text-gray-800"><?= __('Add new review') ?></h1>
-<?= $this->Form->create($productReview) ?>
+<div class="card shadow mb-4">
+    <div class="d-sm-flex align-items-center justify-content-between card-header">
+        <h1 class="h3 mb-0 text-gray-800"><?= __('Add new product review') ?></h1>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered" id="products" width="100%" cellspacing="0">
+            <?= $this->Form->create($productReview) ?>
                     <?php
                     echo $this->Form->control('user_id', ['options' => $users, 'empty' => true]);
                     echo $this->Form->control('product_id', ['options' => $products, 'empty' => true]);
@@ -22,6 +27,9 @@ $this->Form->setTemplates($formTemplate);
                     //echo $this->Form->control('created_at');
                     //echo $this->Form->control('modified_at');
                     ?>
-<br>
-<?= $this->Form->button(__('Submit'),['class' => 'btn btn-primary']) ?>
-<?= $this->Form->end() ?>
+            <br>
+            <?= $this->Form->button(__('Submit'),['class' => 'btn btn-primary']) ?>
+            <?= $this->Form->end() ?>
+        </table>
+    </div>
+</div>

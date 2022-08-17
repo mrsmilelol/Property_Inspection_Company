@@ -52,46 +52,49 @@ class StoresTable extends Table
     {
         $validator
             ->scalar('address')
-            ->maxLength('address', 64)
+            ->maxLength('address', 32)
             ->allowEmptyString('address');
 
         $validator
             ->scalar('suburb')
-            ->maxLength('suburb', 64)
+            ->maxLength('suburb', 16)
             ->allowEmptyString('suburb');
 
         $validator
             ->scalar('city')
-            ->maxLength('city', 64)
+            ->maxLength('city', 16)
             ->allowEmptyString('city');
 
         $validator
             ->scalar('country')
-            ->maxLength('country', 64)
+            ->maxLength('country', 16)
             ->allowEmptyString('country');
 
         $validator
             ->scalar('state')
-            ->maxLength('state', 64)
+            ->maxLength('state', 3)
             ->allowEmptyString('state');
 
         $validator
             ->scalar('post_code')
-            ->maxLength('post_code', 64)
+            ->maxLength('post_code', 4)
             ->allowEmptyString('post_code');
 
         $validator
             ->scalar('phone')
-            ->maxLength('phone', 64)
-            ->allowEmptyString('phone');
+            ->maxLength('phone', 17)
+            ->requirePresence('phone', 'create')
+            ->notEmptyString('phone')
+            ->numeric('phone')
+            ->regex('phone', '/^(?:\+?61|0)[2-478](?:[ -]?[0-9]){8}$/', 'Invalid mobile number, try +61413062555');
 
         $validator
             ->dateTime('created_at')
-            ->allowEmptyDateTime('created_at');
+            ->notEmptyDateTime('created_at');
 
         $validator
             ->dateTime('modified_at')
-            ->allowEmptyDateTime('modified_at');
+            ->notEmptyDateTime('modified_at');
 
         return $validator;
     }

@@ -6,15 +6,17 @@
 echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
 echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
 ?>
-<div class="shoppingSessions index content">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+<div class="card shadow mb-4">
+    <div class="d-sm-flex align-items-center justify-content-between card-header">
         <h1 class="h3 mb-0 text-gray-800"><?= __('Shopping Sessions') ?></h1>
         <a href="<?= $this->Url->build(['action' => 'add']) ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-plus fa-sm text-white-50"></i> New shopping sessions</a>
+                class="fas fa-plus fa-sm text-white-50"></i> Add new user session</a>
     </div>
-    <table class="table table-bordered" id="shoppingSessions" width="100%" cellspacing="0">
-        <thead>
-        <tr>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="products" width="100%" cellspacing="0">
+                <thead>
+                <tr>
                     <th><?= h('ID') ?></th>
                     <th><?= h('User_id') ?></th>
                     <th><?= h('Product_id') ?></th>
@@ -37,10 +39,13 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 </tr>
                 <?php endforeach; ?>
             </tbody>
-        </table>
-        <script>
-            $(document).ready( function () {
-                $('#shoppingSessions').DataTable();
-            } );
-        </script>
+            </table>
+        </div>
+    </div>
 </div>
+<!-- /.container-fluid -->
+<script>
+    $(document).ready( function () {
+        $('#products').DataTable();
+    } );
+</script>

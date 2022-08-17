@@ -9,16 +9,16 @@ use Cake\ORM\Entity;
  * Payment Entity
  *
  * @property int $id
- * @property int|null $user_id
+ * @property int|null $order_id
  * @property string $payment_type
  * @property string $provider
  * @property int $account_no
  * @property int $security_no
  * @property int $expiry_date
- * @property \Cake\I18n\FrozenTime|null $created_at
- * @property \Cake\I18n\FrozenTime|null $modified_at
+ * @property \Cake\I18n\FrozenTime $created_at
+ * @property \Cake\I18n\FrozenTime $modified_at
  *
- * @property \App\Model\Entity\User $user
+ * @property \App\Model\Entity\Order $order
  */
 class Payment extends Entity
 {
@@ -32,7 +32,7 @@ class Payment extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
-        'user_id' => true,
+        'order_id' => true,
         'payment_type' => true,
         'provider' => true,
         'account_no' => true,
@@ -40,6 +40,6 @@ class Payment extends Entity
         'expiry_date' => true,
         'created_at' => true,
         'modified_at' => true,
-        'user' => true,
+        'order' => true,
     ];
 }

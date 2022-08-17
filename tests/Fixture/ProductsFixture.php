@@ -20,8 +20,6 @@ class ProductsFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'category_id' => 1,
-                'inventory_id' => 1,
                 'name' => 'Lorem ipsum dolor sit amet',
                 'description' => 'Lorem ipsum dolor sit amet',
                 'price' => 1,
@@ -29,8 +27,15 @@ class ProductsFixture extends TestFixture
                 'brand' => 'Lorem ipsum dolor sit amet',
                 'style' => 'Lorem ipsum dolor sit amet',
                 'colour' => 'Lorem ipsum dolor sit amet',
-                'created_at' => 1660108233,
-                'modified_at' => 1660108233,
+                'units_in_stock' => 1,
+                'size' => 'Lorem ipsum dolor sit amet',
+                'weight' => 1,
+                'finish' => 'Lorem ipsum dolor sit amet',
+                'wholesale_price' => 1,
+                'sale_price' => 1,
+                'manufacturing' => 'Lorem ipsum dolor sit amet',
+                'created_at' => 1660627764,
+                'modified_at' => 1660627764,
             ],
         ];
         parent::init();

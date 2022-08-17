@@ -6,13 +6,15 @@
 echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
 echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
 ?>
-    <div class="column-responsive column-80">
-        <div class="payments view content">
-            <h3><?= h($payment->id) ?></h3>
-            <table class="table table-bordered" id="paymentTable" width="100%" cellspacing="0">
+<div class="card shadow mb-4">
+    <div class="d-sm-flex align-items-center justify-content-between card-header">
+        <h1 class="h3 mb-0 text-gray-800"><?= h($payment->id) ?></h1>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
             <tr>
-                    <th><?= __('User') ?></th>
-                    <td><?= $payment->has('user') ? $this->Html->link($payment->user->username, ['controller' => 'Users', 'action' => 'view', $payment->user->id]) : '' ?></td>
+                <th><?= __('Order') ?></th>
+                <td><?= $payment->has('order') ? $this->Html->link($payment->order->id, ['controller' => 'Orders', 'action' => 'view', $payment->order->id]) : '' ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Payment Type') ?></th>

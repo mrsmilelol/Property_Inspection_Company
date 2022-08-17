@@ -16,8 +16,8 @@ use Cake\ORM\Entity;
  * @property string|null $state
  * @property string|null $post_code
  * @property string|null $phone
- * @property \Cake\I18n\FrozenTime|null $created_at
- * @property \Cake\I18n\FrozenTime|null $modified_at
+ * @property \Cake\I18n\FrozenTime $created_at
+ * @property \Cake\I18n\FrozenTime $modified_at
  */
 class Store extends Entity
 {

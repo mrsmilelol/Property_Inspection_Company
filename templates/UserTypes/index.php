@@ -6,15 +6,17 @@
 echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
 echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
 ?>
-<div class="userTypes index content">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800"><?= __('User Types') ?></h1>
+<div class="card shadow mb-4">
+    <div class="d-sm-flex align-items-center justify-content-between card-header">
+        <h1 class="h3 mb-0 text-gray-800"><?= __('User types') ?></h1>
         <a href="<?= $this->Url->build(['action' => 'add']) ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-plus fa-sm text-white-50"></i> New products</a>
+                class="fas fa-plus fa-sm text-white-50"></i> Add new user type</a>
     </div>
-    <table class="table table-bordered" id="userTypes" width="100%" cellspacing="0">
-        <thead>
-        <tr>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="products" width="100%" cellspacing="0">
+                <thead>
+                <tr>
                     <th data-visible="false"><?= h('id') ?></th>
                     <th><?= h('Role') ?></th>
                     <th><?= h('created_at') ?></th>
@@ -37,10 +39,13 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 </tr>
                 <?php endforeach; ?>
             </tbody>
-        </table>
-    <script>
-        $(document).ready( function () {
-            $('#userTypes').DataTable();
-        } );
-    </script>
+            </table>
+        </div>
+    </div>
 </div>
+<!-- /.container-fluid -->
+<script>
+    $(document).ready( function () {
+        $('#products').DataTable();
+    } );
+</script>

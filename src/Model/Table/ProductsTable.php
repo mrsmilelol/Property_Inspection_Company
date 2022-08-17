@@ -11,8 +11,6 @@ use Cake\Validation\Validator;
 /**
  * Products Model
  *
- * @property \App\Model\Table\CategoriesTable&\Cake\ORM\Association\BelongsTo $Categories
- * @property \App\Model\Table\ProductInventoriesTable&\Cake\ORM\Association\BelongsTo $ProductInventories
  * @property \App\Model\Table\OrderItemsTable&\Cake\ORM\Association\HasMany $OrderItems
  * @property \App\Model\Table\ProductCategoriesTable&\Cake\ORM\Association\HasMany $ProductCategories
  * @property \App\Model\Table\ProductImagesTable&\Cake\ORM\Association\HasMany $ProductImages
@@ -49,12 +47,6 @@ class ProductsTable extends Table
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('Categories', [
-            'foreignKey' => 'category_id',
-        ]);
-        $this->belongsTo('ProductInventories', [
-            'foreignKey' => 'inventory_id',
-        ]);
         $this->hasMany('OrderItems', [
             'foreignKey' => 'product_id',
         ]);
@@ -81,16 +73,8 @@ class ProductsTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->integer('category_id')
-            ->allowEmptyString('category_id');
-
-        $validator
-            ->integer('inventory_id')
-            ->allowEmptyString('inventory_id');
-
-        $validator
             ->scalar('name')
-            ->maxLength('name', 64)
+            ->maxLength('name', 32)
             ->requirePresence('name', 'create')
             ->notEmptyString('name');
 
@@ -106,51 +90,70 @@ class ProductsTable extends Table
 
         $validator
             ->scalar('material')
-            ->maxLength('material', 64)
+            ->maxLength('material', 16)
             ->requirePresence('material', 'create')
             ->notEmptyString('material');
 
         $validator
             ->scalar('brand')
-            ->maxLength('brand', 64)
+            ->maxLength('brand', 16)
             ->requirePresence('brand', 'create')
             ->notEmptyString('brand');
 
         $validator
             ->scalar('style')
-            ->maxLength('style', 64)
+            ->maxLength('style', 16)
             ->requirePresence('style', 'create')
             ->notEmptyString('style');
 
         $validator
             ->scalar('colour')
-            ->maxLength('colour', 64)
+            ->maxLength('colour', 16)
             ->requirePresence('colour', 'create')
             ->notEmptyString('colour');
 
         $validator
+            ->integer('units_in_stock')
+            ->requirePresence('units_in_stock', 'create')
+            ->notEmptyString('units_in_stock');
+
+        $validator
+            ->scalar('size')
+            ->maxLength('size', 16)
+            ->requirePresence('size', 'create')
+            ->notEmptyString('size');
+
+        $validator
+            ->integer('weight')
+            ->requirePresence('weight', 'create')
+            ->notEmptyString('weight');
+
+        $validator
+            ->scalar('finish')
+            ->maxLength('finish', 16)
+            ->allowEmptyString('finish');
+
+        $validator
+            ->integer('wholesale_price')
+            ->allowEmptyString('wholesale_price');
+
+        $validator
+            ->integer('sale_price')
+            ->allowEmptyString('sale_price');
+
+        $validator
+            ->scalar('manufacturing')
+            ->maxLength('manufacturing', 32)
+            ->allowEmptyString('manufacturing');
+
+        $validator
             ->dateTime('created_at')
-            ->allowEmptyDateTime('created_at');
+            ->notEmptyDateTime('created_at');
 
         $validator
             ->dateTime('modified_at')
-            ->allowEmptyDateTime('modified_at');
+            ->notEmptyDateTime('modified_at');
 
         return $validator;
-    }
-
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules): RulesChecker
-    {
-        $rules->add($rules->existsIn('category_id', 'Categories'), ['errorField' => 'category_id']);
-        $rules->add($rules->existsIn('inventory_id', 'ProductInventories'), ['errorField' => 'inventory_id']);
-
-        return $rules;
     }
 }

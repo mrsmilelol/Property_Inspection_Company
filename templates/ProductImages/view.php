@@ -7,10 +7,12 @@ echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css
 echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
 ?>
 
-    <div class="column-responsive column-80">
-        <div class="productImages view content">
-            <h3><?= h($productImage->product->name) ?></h3>
-            <table class="table table-bordered" id="productImageTable" width="100%" cellspacing="0">
+<div class="card shadow mb-4">
+    <div class="d-sm-flex align-items-center justify-content-between card-header">
+        <h1 class="h3 mb-0 text-gray-800"><?= h($productImage->product->name) ?></h1>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
             <tr>
                     <th><?= __('Product') ?></th>
                     <td><?= $productImage->has('product') ? $this->Html->link($productImage->product->name, ['controller' => 'Products', 'action' => 'view', $productImage->product->id]) : '' ?></td>

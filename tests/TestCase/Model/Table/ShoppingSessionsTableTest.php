@@ -27,6 +27,7 @@ class ShoppingSessionsTableTest extends TestCase
         'app.ShoppingSessions',
         'app.Users',
         'app.Products',
+        'app.Orders',
     ];
 
     /**

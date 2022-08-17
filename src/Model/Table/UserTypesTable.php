@@ -58,17 +58,17 @@ class UserTypesTable extends Table
     {
         $validator
             ->scalar('name')
-            ->maxLength('name', 64)
+            ->maxLength('name', 32)
             ->requirePresence('name', 'create')
             ->notEmptyString('name');
 
         $validator
             ->dateTime('created_at')
-            ->allowEmptyDateTime('created_at');
+            ->notEmptyDateTime('created_at');
 
         $validator
             ->dateTime('modified_at')
-            ->allowEmptyDateTime('modified_at');
+            ->notEmptyDateTime('modified_at');
 
         return $validator;
     }

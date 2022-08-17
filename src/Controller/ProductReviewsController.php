@@ -18,7 +18,11 @@ class ProductReviewsController extends AppController
      */
     public function index()
     {
-        $productReviews = $this->ProductReviews->find()->contain(['Users','Products']);
+        $this->paginate = [
+            'contain' => ['Users', 'Products'],
+        ];
+        $productReviews = $this->paginate($this->ProductReviews);
+
         $this->set(compact('productReviews'));
     }
 

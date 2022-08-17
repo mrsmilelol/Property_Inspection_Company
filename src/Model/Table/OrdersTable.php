@@ -11,8 +11,9 @@ use Cake\Validation\Validator;
 /**
  * Orders Model
  *
- * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
+ * @property \App\Model\Table\ShoppingSessionsTable&\Cake\ORM\Association\BelongsTo $ShoppingSessions
  * @property \App\Model\Table\OrderItemsTable&\Cake\ORM\Association\HasMany $OrderItems
+ * @property \App\Model\Table\PaymentsTable&\Cake\ORM\Association\HasMany $Payments
  *
  * @method \App\Model\Entity\Order newEmptyEntity()
  * @method \App\Model\Entity\Order newEntity(array $data, array $options = [])
@@ -44,10 +45,13 @@ class OrdersTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('Users', [
-            'foreignKey' => 'user_id',
+        $this->belongsTo('ShoppingSessions', [
+            'foreignKey' => 'shopping_session_id',
         ]);
         $this->hasMany('OrderItems', [
+            'foreignKey' => 'order_id',
+        ]);
+        $this->hasMany('Payments', [
             'foreignKey' => 'order_id',
         ]);
     }
@@ -61,8 +65,8 @@ class OrdersTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->integer('user_id')
-            ->allowEmptyString('user_id');
+            ->integer('shopping_session_id')
+            ->allowEmptyString('shopping_session_id');
 
         $validator
             ->integer('total')
@@ -71,11 +75,11 @@ class OrdersTable extends Table
 
         $validator
             ->dateTime('created_at')
-            ->allowEmptyDateTime('created_at');
+            ->notEmptyDateTime('created_at');
 
         $validator
             ->dateTime('modified_at')
-            ->allowEmptyDateTime('modified_at');
+            ->notEmptyDateTime('modified_at');
 
         return $validator;
     }
@@ -89,7 +93,7 @@ class OrdersTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-        $rules->add($rules->existsIn('user_id', 'Users'), ['errorField' => 'user_id']);
+        $rules->add($rules->existsIn('shopping_session_id', 'ShoppingSessions'), ['errorField' => 'shopping_session_id']);
 
         return $rules;
     }
