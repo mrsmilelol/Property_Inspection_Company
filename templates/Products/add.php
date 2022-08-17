@@ -21,8 +21,11 @@ $this->Form->setTemplates($formTemplate);
     <div class="card-body">
         <table class="table table-bordered" id="products" width="100%" cellspacing="0">
             <?= $this->Form->create($product, ['type' => 'file']) ?>
+            <div><label>Categories</label></div>
                     <?php
-                        //echo $this->Form->control('category_id', ['options' => $categories, 'empty' => true]);
+                        foreach ($categories as $category):
+                            echo $this->Form->radio('category_id', ['value' => $category['parent_id']]);
+                        endforeach;
                         //echo $this->Form->control('inventory_id', ['options' => $productInventories, 'empty' => true]);
                         echo $this->Form->control('name');
                         echo $this->Form->control('description');
