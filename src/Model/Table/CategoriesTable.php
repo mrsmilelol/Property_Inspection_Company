@@ -13,6 +13,7 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\CategoriesTable&\Cake\ORM\Association\BelongsTo $ParentCategories
  * @property \App\Model\Table\CategoriesTable&\Cake\ORM\Association\HasMany $ChildCategories
+ * @property \App\Model\Table\ProductsTable&\Cake\ORM\Association\BelongsToMany $Products
  *
  * @method \App\Model\Entity\Category newEmptyEntity()
  * @method \App\Model\Entity\Category newEntity(array $data, array $options = [])

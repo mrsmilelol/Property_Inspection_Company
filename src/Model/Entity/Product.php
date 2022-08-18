@@ -27,10 +27,10 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $modified_at
  *
  * @property \App\Model\Entity\OrderItem[] $order_items
- * @property \App\Model\Entity\ProductCategory[] $product_categories
  * @property \App\Model\Entity\ProductImage[] $product_images
  * @property \App\Model\Entity\ProductReview[] $product_reviews
  * @property \App\Model\Entity\ShoppingSession[] $shopping_sessions
+ * @property \App\Model\Entity\Category[] $categories
  */
 class Product extends Entity
 {
@@ -61,9 +61,9 @@ class Product extends Entity
         'created_at' => true,
         'modified_at' => true,
         'order_items' => true,
-        'product_categories' => true,
         'product_images' => true,
         'product_reviews' => true,
         'shopping_sessions' => true,
+        'categories' => true,
     ];
 }

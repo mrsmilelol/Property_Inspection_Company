@@ -22,8 +22,8 @@ class CategoriesFixture extends TestFixture
                 'id' => 1,
                 'parent_id' => 1,
                 'description' => 'Lorem ipsum dolor sit amet',
-                'created_at' => 1660784450,
-                'modified_at' => 1660784450,
+                'created_at' => 1660784833,
+                'modified_at' => 1660784833,
             ],
         ];
         parent::init();
