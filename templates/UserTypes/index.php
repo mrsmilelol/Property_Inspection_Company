@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\UserType[]|\Cake\Collection\CollectionInterface $userTypes
  */
 echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
-echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
+echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js', ['block' => true]);
 ?>
 <div class="card shadow mb-4">
     <div class="d-sm-flex align-items-center justify-content-between card-header">
@@ -25,7 +25,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($userTypes as $userType): ?>
+                <?php foreach ($userTypes as $userType) : ?>
                 <tr>
                     <td><?= $this->Number->format($userType->id) ?></td>
                     <td><?= h($userType->name) ?></td>
@@ -34,7 +34,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $userType->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $userType->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $userType->id], ['confirm' => __('Are you sure you want to delete # {0}?', $userType->id)]) ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>

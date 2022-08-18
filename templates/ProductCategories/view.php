@@ -6,11 +6,12 @@
 echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
 echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
 ?>
-
-    <div class="column-responsive column-80">
-        <div class="productCategories view content">
-            <h3><?= h($productCategory->id) ?></h3>
-            <table class="table table-bordered" id="productCategoryTable" width="100%" cellspacing="0">
+<div class="card shadow mb-4">
+    <div class="d-sm-flex align-items-center justify-content-between card-header">
+        <h1 class="h3 mb-0 text-gray-800"><?= h($productCategory->id) ?></h1>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
             <tr>
                     <th><?= __('Category') ?></th>
                     <td><?= $productCategory->has('category') ? $this->Html->link($productCategory->category->id, ['controller' => 'Categories', 'action' => 'view', $productCategory->category->id]) : '' ?></td>
@@ -23,8 +24,9 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <th><?= __('ID') ?></th>
                     <td><?= $this->Number->format($productCategory->id) ?></td>
                 </tr>
-            </table>
-        </div>
+        </table>
+    </div>
+
 
     <script>
         $(document).ready( function () {

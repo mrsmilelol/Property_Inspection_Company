@@ -113,11 +113,13 @@ class ProductsController extends AppController
 
     public function shop()
     {
-        $this->loadModel('ProductImages');
-        $products = $this->Products->find()->all()->toArray();
-        $productImages = $this->ProductImages->find()->select(['product_id','description'])
-            ->distinct(['product_id'])->toArray();
-        $this->set(compact('products','productImages'));
+//        $this->loadModel('ProductImages');
+        $products = $this->Products->find()
+            ->contain(['ProductImages'])
+            ->all()->toArray();
+        //$productImages = $this->ProductImages->find()->select(['product_id','description'])
+//            ->distinct(['product_id'])->toArray();
+        $this->set(compact('products'));
         $this->render('shop');
     }
 

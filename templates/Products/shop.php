@@ -217,13 +217,9 @@ $this->layout = 'front';
                                     <div class="product-img-content">
                                         <!--Product Image-->
                                         <div class="product-img">
-                                            <?php foreach ($productImages as $productImage):?>
-                                                <?php if ($productImage->product_id==$products[$x]->id):?>
-                                                    <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="Printed Dress">
-                                                        <a><?= $this->Html->image($productImage->description,['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
-                                                    </a>
-                                                <?php endif; ?>
-                                            <?php endforeach;?>
+                                                <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="Printed Dress">
+                                                    <a><?= $this->Html->image($products[$x]['product_images'][0]->description,['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
+                                                </a>
                                         </div>
                                         <span class="new-label">New</span>
                                         <!--Product Action-->
@@ -261,13 +257,9 @@ $this->layout = 'front';
                                         <div class="product-img-content">
                                             <!--Product Image-->
                                             <div class="product-img">
-                                                <?php foreach ($productImages as $productImage):?>
-                                                    <?php if ($productImage->product_id==$products[$x]->id):?>
-                                                        <a href="<?= $this->Url->build(['controller' => 'Product', 'action' => 'detail',$products[$x]->id])?>" title="Printed Dress">
-                                                            <a><?= $this->Html->image($productImage->description,['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
-                                                        </a>
-                                                    <?php endif; ?>
-                                                <?php endforeach;?>
+                                                <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="Printed Dress">
+                                                    <a><?= $this->Html->image($products[$x]['product_images'][0]->description,['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
+                                                </a>
                                             </div>
                                             <span class="new-label">New</span>
                                             <!--Product Action-->
@@ -305,13 +297,9 @@ $this->layout = 'front';
                                         <div class="product-img-content">
                                             <!--Product Image-->
                                             <div class="product-img">
-                                                <?php foreach ($productImages as $productImage):?>
-                                                    <?php if ($productImage->product_id==$products[$x]->id):?>
-                                                        <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="Printed Dress">
-                                                            <a><?= $this->Html->image($productImage->description,['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
-                                                        </a>
-                                                    <?php endif; ?>
-                                                <?php endforeach;?>
+                                                <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="Printed Dress">
+                                                    <a><?= $this->Html->image($products[$x]['product_images'][0]->description,['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
+                                                </a>
                                             </div>
                                             <span class="new-label">New</span>
                                             <!--Product Action-->
