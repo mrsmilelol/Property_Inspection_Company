@@ -36,7 +36,7 @@ class ProductsController extends AppController
         $productImages = $this->ProductImages->findByProductId($id)->all()->toArray();
 
         $product = $this->Products->get($id, [
-            'contain' => ['OrderItems', 'ProductCategories', 'ProductImages', 'ProductReviews', 'ShoppingSessions'],
+            'contain' => ['OrderItems', 'ProductImages', 'ProductReviews', 'ShoppingSessions'],
         ]);
 
         $this->set(compact('product','productImages'));
@@ -138,7 +138,7 @@ class ProductsController extends AppController
         $productImages = $this->ProductImages->findByProductId($id)->all()->toArray();
 
         $product = $this->Products->get($id, [
-            'contain' => ['OrderItems', 'ProductCategories', 'ProductImages', 'ProductReviews', 'ShoppingSessions'],
+            'contain' => ['OrderItems', 'ProductImages', 'ProductReviews', 'ShoppingSessions'],
         ]);
 
         $this->set(compact('product','productImages'));

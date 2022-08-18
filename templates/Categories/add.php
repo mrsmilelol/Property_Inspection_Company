@@ -3,6 +3,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Category $category
  * @var \Cake\Collection\CollectionInterface|string[] $parentCategories
+ * @var \Cake\Collection\CollectionInterface|string[] $products
  */
 $formTemplate = [
     'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
@@ -21,6 +22,7 @@ $this->Form->setTemplates($formTemplate);
                 <?php
                     echo $this->Form->control('parent_id', ['options' => $parentCategories, 'empty' => true]);
                     echo $this->Form->control('description');
+                    echo $this->Form->control('products._ids', ['options' => $products]);
                     //echo $this->Form->control('created_at');
                     //echo $this->Form->control('modified_at');
                 ?>
