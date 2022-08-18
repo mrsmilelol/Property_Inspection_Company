@@ -24,10 +24,11 @@ class ProductsControllerTest extends TestCase
     protected $fixtures = [
         'app.Products',
         'app.OrderItems',
-        'app.ProductCategories',
         'app.ProductImages',
         'app.ProductReviews',
         'app.ShoppingSessions',
+        'app.Categories',
+        'app.CategoriesProducts',
     ];
 
     /**

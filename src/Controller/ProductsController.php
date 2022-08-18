@@ -49,10 +49,12 @@ class ProductsController extends AppController
      */
     public function add()
     {
-        $this->loadModel('Categories');
+
         $this->loadModel('ProductImages');
         $product = $this->Products->newEmptyEntity();
-        $categories = $this->Categories->find('all',['conditions' => ['Categories.parent_id IS' => null]])->toArray();
+        $categories = $this->Products->Categories->find('list', ['conditions'=>['Categories.parent_id IS' => null],'limit' => 200])->all();
+        $subcategories = $this->Products->Categories->find('list', ['conditions'=>['Categories.parent_id IS NOT' => null],'limit' => 200])->all();
+        /*$categories = $this->Categories->find('all',['conditions' => ['Categories.parent_id IS' => null]])->toArray();
         $subcategories = $this->Categories->find('all',['conditions' => ['Categories.parent_id IS NOT' => null]])->toArray();
         foreach ($categories as $category) :
             foreach ($subcategories as $subcategory) :
@@ -60,7 +62,7 @@ class ProductsController extends AppController
                      $displayCategory[]= $category['description'] . ' ' . $subcategory['description'];
                 endif;
             endforeach;
-        endforeach;
+        endforeach;*/
         if ($this->request->is('post')) {
             $product = $this->Products->patchEntity($product, $this->request->getData());
             if ($this->Products->save($product)) {
