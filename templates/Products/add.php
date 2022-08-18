@@ -4,7 +4,6 @@
  * @var \App\Model\Entity\Product $product
  * @var \Cake\Collection\CollectionInterface|string[] $categories
  * @var \Cake\Collection\CollectionInterface|string[] $subcategories
- * @var \Cake\Collection\CollectionInterface|string[] $displayCategory
  * @var \Cake\Collection\CollectionInterface|string[] $productInventories
  * @var \Cake\Collection\CollectionInterface|string[] $productImages
  * @var \Cake\Collection\CollectionInterface|string[] $displayCategory
@@ -46,7 +45,8 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
                         [
                             'type' => 'select',
                             'multiple' => true,
-                            'options' => $displayCategory,
+                            'options' => $categories,
+                            'class' => 'category_multisselect',
                         ]
                     );
                         //echo $this->Form->control('inventory_id', ['options' => $productInventories, 'empty' => true]);
@@ -82,7 +82,7 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
 
 <script>
     $(document).ready(function() {
-        $('#category_id').select2();
+        $('.category_multisselect').select2();
     });
 </script>
 
