@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\Category $category
  * @var \Cake\Collection\CollectionInterface|string[] $parentCategories
  */
-$formTemplate= [
+$formTemplate = [
     'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
     'label' => '<label{{attrs}} class="form-label">{{text}}</label>',
     'input' => '<input type="{{type}}" name="{{name}}" class="form-control"{{attrs}}/>',
@@ -25,7 +25,7 @@ $this->Form->setTemplates($formTemplate);
                     //echo $this->Form->control('modified_at');
                 ?>
             <br>
-            <?= $this->Form->button(__('Submit'),['class' => 'btn btn-primary']) ?>
+            <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
             <?= $this->Form->end() ?>
         </table>
     </div>
