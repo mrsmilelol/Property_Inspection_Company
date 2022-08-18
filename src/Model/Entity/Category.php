@@ -14,8 +14,8 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $created_at
  * @property \Cake\I18n\FrozenTime $modified_at
  *
- * @property \App\Model\Entity\ParentCategory $parent_category
- * @property \App\Model\Entity\ChildCategory[] $child_categories
+ * @property \App\Model\Entity\Category $parent_category
+ * @property \App\Model\Entity\Category[] $child_categories
  * @property \App\Model\Entity\ProductCategory[] $product_categories
  */
 class Category extends Entity

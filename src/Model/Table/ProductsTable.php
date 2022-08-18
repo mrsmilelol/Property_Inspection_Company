@@ -12,7 +12,6 @@ use Cake\Validation\Validator;
  * Products Model
  *
  * @property \App\Model\Table\OrderItemsTable&\Cake\ORM\Association\HasMany $OrderItems
- * @property \App\Model\Table\ProductCategoriesTable&\Cake\ORM\Association\HasMany $ProductCategories
  * @property \App\Model\Table\ProductImagesTable&\Cake\ORM\Association\HasMany $ProductImages
  * @property \App\Model\Table\ProductReviewsTable&\Cake\ORM\Association\HasMany $ProductReviews
  * @property \App\Model\Table\ShoppingSessionsTable&\Cake\ORM\Association\HasMany $ShoppingSessions
@@ -50,9 +49,6 @@ class ProductsTable extends Table
         $this->hasMany('OrderItems', [
             'foreignKey' => 'product_id',
         ]);
-        $this->hasMany('ProductCategories', [
-            'foreignKey' => 'product_id',
-        ]);
         $this->hasMany('ProductImages', [
             'foreignKey' => 'product_id',
         ]);
@@ -61,6 +57,11 @@ class ProductsTable extends Table
         ]);
         $this->hasMany('ShoppingSessions', [
             'foreignKey' => 'product_id',
+        ]);
+        $this->belongsToMany('Categories', [
+            'foreignKey' => 'product_id',
+            'targetForeignKey' => 'category_id',
+            'joinTable' => 'categories_products',
         ]);
     }
 
@@ -74,7 +75,7 @@ class ProductsTable extends Table
     {
         $validator
             ->scalar('name')
-            ->maxLength('name', 32)
+            ->maxLength('name', 64)
             ->requirePresence('name', 'create')
             ->notEmptyString('name');
 
@@ -90,25 +91,25 @@ class ProductsTable extends Table
 
         $validator
             ->scalar('material')
-            ->maxLength('material', 16)
+            ->maxLength('material', 64)
             ->requirePresence('material', 'create')
             ->notEmptyString('material');
 
         $validator
             ->scalar('brand')
-            ->maxLength('brand', 16)
+            ->maxLength('brand', 64)
             ->requirePresence('brand', 'create')
             ->notEmptyString('brand');
 
         $validator
             ->scalar('style')
-            ->maxLength('style', 16)
+            ->maxLength('style', 64)
             ->requirePresence('style', 'create')
             ->notEmptyString('style');
 
         $validator
             ->scalar('colour')
-            ->maxLength('colour', 16)
+            ->maxLength('colour', 64)
             ->requirePresence('colour', 'create')
             ->notEmptyString('colour');
 
@@ -119,7 +120,7 @@ class ProductsTable extends Table
 
         $validator
             ->scalar('size')
-            ->maxLength('size', 16)
+            ->maxLength('size', 64)
             ->requirePresence('size', 'create')
             ->notEmptyString('size');
 
@@ -130,7 +131,7 @@ class ProductsTable extends Table
 
         $validator
             ->scalar('finish')
-            ->maxLength('finish', 16)
+            ->maxLength('finish', 64)
             ->allowEmptyString('finish');
 
         $validator
@@ -143,7 +144,7 @@ class ProductsTable extends Table
 
         $validator
             ->scalar('manufacturing')
-            ->maxLength('manufacturing', 32)
+            ->maxLength('manufacturing', 64)
             ->allowEmptyString('manufacturing');
 
         $validator

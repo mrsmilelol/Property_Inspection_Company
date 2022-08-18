@@ -13,7 +13,6 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\CategoriesTable&\Cake\ORM\Association\BelongsTo $ParentCategories
  * @property \App\Model\Table\CategoriesTable&\Cake\ORM\Association\HasMany $ChildCategories
- * @property \App\Model\Table\ProductCategoriesTable&\Cake\ORM\Association\HasMany $ProductCategories
  *
  * @method \App\Model\Entity\Category newEmptyEntity()
  * @method \App\Model\Entity\Category newEntity(array $data, array $options = [])
@@ -53,8 +52,10 @@ class CategoriesTable extends Table
             'className' => 'Categories',
             'foreignKey' => 'parent_id',
         ]);
-        $this->hasMany('ProductCategories', [
+        $this->belongsToMany('Products', [
             'foreignKey' => 'category_id',
+            'targetForeignKey' => 'product_id',
+            'joinTable' => 'categories_products',
         ]);
     }
 
@@ -72,7 +73,7 @@ class CategoriesTable extends Table
 
         $validator
             ->scalar('description')
-            ->maxLength('description', 128)
+            ->maxLength('description', 64)
             ->requirePresence('description', 'create')
             ->notEmptyString('description');
 
