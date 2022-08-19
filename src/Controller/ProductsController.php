@@ -52,9 +52,9 @@ class ProductsController extends AppController
 
         $this->loadModel('ProductImages');
         $product = $this->Products->newEmptyEntity();
-        $categories = $this->Products->Categories->find('list', ['limit' => 200])->all();
-        //$categories = $this->Products->Categories->find('list', ['conditions'=>['Categories.parent_id IS' => null],'limit' => 200])->all();
-        //$subcategories = $this->Products->Categories->find('list', ['conditions'=>['Categories.parent_id IS NOT' => null],'limit' => 200])->all();
+//        $categories = $this->Products->Categories->find('list', ['limit' => 200])->all();
+        $categories = $this->Products->Categories->find('list', ['conditions'=>['Categories.parent_id IS' => null],'limit' => 200])->all();
+        $subcategories = $this->Products->Categories->find('list', ['conditions'=>['Categories.parent_id IS NOT' => null],'limit' => 200])->all();
         /*$categories = $this->Categories->find('all',['conditions' => ['Categories.parent_id IS' => null]])->toArray();
         $subcategories = $this->Categories->find('all',['conditions' => ['Categories.parent_id IS NOT' => null]])->toArray();
         foreach ($categories as $category) :
@@ -86,7 +86,7 @@ class ProductsController extends AppController
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
         }
 //        $categories = $this->Products->ProductCategories->find('list', ['limit' => 200])->all();
-        $this->set(compact('product', 'categories'));
+        $this->set(compact('product', 'categories','subcategories'));
     }
 
     /**
@@ -124,7 +124,6 @@ class ProductsController extends AppController
         //$productImages = $this->ProductImages->find()->select(['product_id','description'])
 //            ->distinct(['product_id'])->toArray();
         $this->set(compact('products'));
-        $this->render('shop');
     }
 
     /**
