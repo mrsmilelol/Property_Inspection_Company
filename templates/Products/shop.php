@@ -13,7 +13,6 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Product[]|\Cake\Collection\CollectionInterface $products
- * @var string[]|\Cake\Collection\CollectionInterface $productImages
  */
 
 $cakeDescription = 'CakePHP: the rapid development php framework';
