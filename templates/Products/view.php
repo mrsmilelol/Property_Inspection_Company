@@ -54,7 +54,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <td><?= $this->Number->format($product->id) ?></td>
             </tr>
             <tr>
-                <th><?= __('Price') ?></th>
+                <th><?= __('Normal price') ?></th>
                 <td><?= $this->Number->format($product->price) ?></td>
             </tr>
             <tr>
@@ -91,17 +91,17 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
         </table>
         <br>
         <div class="related">
-            <h4><?= __('Related Order Items') ?></h4>
+            <h4><?= __('Related order items') ?></h4>
             <?php if (!empty($product->order_items)) : ?>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <tr>
-                            <th><?= __('Id') ?></th>
-                            <th><?= __('Order Id') ?></th>
-                            <th><?= __('Product Id') ?></th>
+                            <th><?= __('ID') ?></th>
+                            <th><?= __('Order ID') ?></th>
+                            <th><?= __('Product ID') ?></th>
                             <th><?= __('Quantity') ?></th>
-                            <th><?= __('Created At') ?></th>
-                            <th><?= __('Modified At') ?></th>
+                            <th><?= __('Created at') ?></th>
+                            <th><?= __('Modified at') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($product->order_items as $orderItems) : ?>
@@ -124,16 +124,16 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             <?php endif; ?>
         </div>
         <div class="related">
-            <h4><?= __('Related Categories') ?></h4>
+            <h4><?= __('Related categories') ?></h4>
             <?php if (!empty($product->categories)) : ?>
                 <div class="table-responsive">
                     <table>
                         <tr>
-                            <th><?= __('Id') ?></th>
-                            <th><?= __('Parent Id') ?></th>
+                            <th><?= __('ID') ?></th>
+                            <th><?= __('Parent ID') ?></th>
                             <th><?= __('Description') ?></th>
-                            <th><?= __('Created At') ?></th>
-                            <th><?= __('Modified At') ?></th>
+                            <th><?= __('Created at') ?></th>
+                            <th><?= __('Modified at') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($product->categories as $categories) : ?>
@@ -155,18 +155,18 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             <?php endif; ?>
         </div>
         <div class="related">
-            <h4><?= __('Related Product Reviews') ?></h4>
+            <h4><?= __('Related product reviews') ?></h4>
             <?php if (!empty($product->product_reviews)) : ?>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <tr>
-                            <th><?= __('Id') ?></th>
-                            <th><?= __('User Id') ?></th>
-                            <th><?= __('Product Id') ?></th>
+                            <th><?= __('ID') ?></th>
+                            <th><?= __('User ID') ?></th>
+                            <th><?= __('Product ID') ?></th>
                             <th><?= __('Description') ?></th>
                             <th><?= __('Rating') ?></th>
-                            <th><?= __('Created At') ?></th>
-                            <th><?= __('Modified At') ?></th>
+                            <th><?= __('Created at') ?></th>
+                            <th><?= __('Modified at') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($product->product_reviews as $productReviews) : ?>
