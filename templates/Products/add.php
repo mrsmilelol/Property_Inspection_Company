@@ -3,10 +3,8 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Product $product
  * @var \Cake\Collection\CollectionInterface|string[] $categories
- * @var \Cake\Collection\CollectionInterface|string[] $subcategories
  * @var \Cake\Collection\CollectionInterface|string[] $productInventories
  * @var \Cake\Collection\CollectionInterface|string[] $productImages
- * @var \Cake\Collection\CollectionInterface|string[] $displayCategory
  */
 
 //debug($this->Form->getTemplates());
@@ -30,7 +28,7 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
 
                     <?php
                         echo $this->Form->control('categories._ids', ['options' => $categories, 'class' => 'category_MultiSelect']);
-                        echo $this->Form->control('categories._ids', ['options' => $subcategories, 'class' => 'category_MultiSelect']);
+                        //echo $this->Form->control('categories._ids', ['options' => $subcategories, 'class' => 'category_MultiSelect']);
                         //echo $this->Form->control('inventory_id', ['options' => $productInventories, 'empty' => true]);
                         echo $this->Form->control('name');
                         echo $this->Form->control('description');
