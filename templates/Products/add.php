@@ -29,8 +29,8 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
             <?= $this->Form->create($product, ['type' => 'file']) ?>
 
                     <?php
-                        echo $this->Form->control('categories._ids', ['options' => $categories, 'class'=>'category_MultiSelect']);
-                        echo $this->Form->control('categories._ids', ['options' => $subcategories, 'label'=>'Sub Category']);
+                        echo $this->Form->control('categories._ids', ['options' => $categories, 'class' => 'category_MultiSelect']);
+                        echo $this->Form->control('categories._ids', ['options' => $subcategories, 'class' => 'category_MultiSelect']);
                         //echo $this->Form->control('inventory_id', ['options' => $productInventories, 'empty' => true]);
                         echo $this->Form->control('name');
                         echo $this->Form->control('description');
@@ -64,7 +64,7 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
 
 <script>
     $(document).ready(function() {
-        $('.category_multisselect').select2();
+        $('.category_MultiSelect').select2();
     });
 </script>
 
