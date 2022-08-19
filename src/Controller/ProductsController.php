@@ -98,7 +98,7 @@ class ProductsController extends AppController
     public function edit($id = null)
     {
         $product = $this->Products->get($id, [
-            'contain' => ['OrderItems', 'ProductCategories',
+            'contain' => ['OrderItems', 'Categories',
                 'ProductImages', 'ProductReviews', 'ShoppingSessions'],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -110,7 +110,8 @@ class ProductsController extends AppController
             }
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
         }
-        $this->set(compact('product'));
+        $categories = $this->Products->Categories->find('list', ['limit' => 200])->all();
+        $this->set(compact('product','categories'));
     }
 
     public function shop()
