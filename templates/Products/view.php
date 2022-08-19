@@ -124,25 +124,29 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             <?php endif; ?>
         </div>
         <div class="related">
-            <h4><?= __('Related Product Categories') ?></h4>
-            <?php if (!empty($product->product_categories)) : ?>
+            <h4><?= __('Related Categories') ?></h4>
+            <?php if (!empty($product->categories)) : ?>
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
+                    <table>
                         <tr>
                             <th><?= __('Id') ?></th>
-                            <th><?= __('Category Id') ?></th>
-                            <th><?= __('Product Id') ?></th>
+                            <th><?= __('Parent Id') ?></th>
+                            <th><?= __('Description') ?></th>
+                            <th><?= __('Created At') ?></th>
+                            <th><?= __('Modified At') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
-                        <?php foreach ($product->product_categories as $productCategories) : ?>
+                        <?php foreach ($product->categories as $categories) : ?>
                             <tr>
-                                <td><?= h($productCategories->id) ?></td>
-                                <td><?= h($productCategories->category_id) ?></td>
-                                <td><?= h($productCategories->product_id) ?></td>
+                                <td><?= h($categories->id) ?></td>
+                                <td><?= h($categories->parent_id) ?></td>
+                                <td><?= h($categories->description) ?></td>
+                                <td><?= h($categories->created_at) ?></td>
+                                <td><?= h($categories->modified_at) ?></td>
                                 <td class="actions">
-                                    <?= $this->Html->link(__('View'), ['controller' => 'ProductCategories', 'action' => 'view', $productCategories->id]) ?>
-                                    <?= $this->Html->link(__('Edit'), ['controller' => 'ProductCategories', 'action' => 'edit', $productCategories->id]) ?>
-                                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'ProductCategories', 'action' => 'delete', $productCategories->id], ['confirm' => __('Are you sure you want to delete # {0}?', $productCategories->id)]) ?>
+                                    <?= $this->Html->link(__('View'), ['controller' => 'Categories', 'action' => 'view', $categories->id]) ?>
+                                    <?= $this->Html->link(__('Edit'), ['controller' => 'Categories', 'action' => 'edit', $categories->id]) ?>
+                                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Categories', 'action' => 'delete', $categories->id], ['confirm' => __('Are you sure you want to delete # {0}?', $categories->id)]) ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

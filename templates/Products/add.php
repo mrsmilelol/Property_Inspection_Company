@@ -27,28 +27,10 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
     <div class="card-body">
         <table class="table table-bordered" id="products" width="100%" cellspacing="0">
             <?= $this->Form->create($product, ['type' => 'file']) ?>
-<!--            <div><label>Categories</label></div>-->
-<!--                    --><?php
-//                        foreach ($categories as $category):
-//                            echo $this->Form->radio('category_id', ['value' => $category['parent_id']]);
-//                        endforeach;?>
-            <div><label>Categories</label></div>
-                    <?php /*foreach ($categories as $category) :
-                        foreach ($subcategories as $subcategory) :
-                            if ($category->id == $subcategory->parent_id) :
-                                echo $this->Form->select('category_description', ['value' => $category['description'] . ' ' . $subcategory['description']], ['multiple' => 'checkbox']);
-                            endif;
-                        endforeach;
-                    endforeach;*/
-                    echo $this->Form->input(
-                        'category_id',
-                        [
-                            'type' => 'select',
-                            'multiple' => true,
-                            'options' => $categories,
-                            'class' => 'category_multisselect',
-                        ]
-                    );
+
+                    <?php
+                        echo $this->Form->control('categories._ids', ['options' => $categories->toArray(), 'class' => 'category_select_main', 'id' => 'select_category_main', 'style' => 'width:300px']);
+                        echo $this->Form->control('categories._ids', ['options' => $subcategories->toArray(), 'class' => 'category_select_sub', 'id' => 'select_category_sub', 'style' => 'width:300px']);
                         //echo $this->Form->control('inventory_id', ['options' => $productInventories, 'empty' => true]);
                         echo $this->Form->control('name');
                         echo $this->Form->control('description');
@@ -82,7 +64,13 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
 
 <script>
     $(document).ready(function() {
-        $('.category_multisselect').select2();
+        $('.category_select_main').select2();
+        $('.category_select_sub').select2();
     });
 </script>
 
+<style>
+    .select2-container {
+        display: block;
+    }
+</style>

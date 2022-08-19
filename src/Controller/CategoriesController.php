@@ -36,7 +36,7 @@ class CategoriesController extends AppController
     public function view($id = null)
     {
         $category = $this->Categories->get($id, [
-            'contain' => ['ParentCategories', 'ChildCategories', 'ProductCategories'],
+            'contain' => ['ParentCategories', 'Products', 'ChildCategories'],
         ]);
 
         $this->set(compact('category'));
@@ -60,7 +60,8 @@ class CategoriesController extends AppController
             $this->Flash->error(__('The category could not be saved. Please, try again.'));
         }
         $parentCategories = $this->Categories->ParentCategories->find('list', ['limit' => 200])->all();
-        $this->set(compact('category', 'parentCategories'));
+        $products = $this->Categories->Products->find('list', ['limit' => 200])->all();
+        $this->set(compact('category', 'parentCategories', 'products'));
     }
 
     /**
@@ -73,7 +74,7 @@ class CategoriesController extends AppController
     public function edit($id = null)
     {
         $category = $this->Categories->get($id, [
-            'contain' => [],
+            'contain' => ['Products'],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $category = $this->Categories->patchEntity($category, $this->request->getData());
@@ -85,7 +86,8 @@ class CategoriesController extends AppController
             $this->Flash->error(__('The category could not be saved. Please, try again.'));
         }
         $parentCategories = $this->Categories->ParentCategories->find('list', ['limit' => 200])->all();
-        $this->set(compact('category', 'parentCategories'));
+        $products = $this->Categories->Products->find('list', ['limit' => 200])->all();
+        $this->set(compact('category', 'parentCategories', 'products'));
     }
 
     /**

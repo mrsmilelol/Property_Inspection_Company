@@ -36,7 +36,7 @@ class ProductsController extends AppController
         $productImages = $this->ProductImages->findByProductId($id)->all()->toArray();
 
         $product = $this->Products->get($id, [
-            'contain' => ['OrderItems', 'ProductCategories', 'ProductImages', 'ProductReviews', 'ShoppingSessions'],
+            'contain' => ['OrderItems', 'ProductImages', 'ProductReviews', 'ShoppingSessions'],
         ]);
 
         $this->set(compact('product','productImages'));
@@ -49,10 +49,13 @@ class ProductsController extends AppController
      */
     public function add()
     {
-        $this->loadModel('Categories');
+
         $this->loadModel('ProductImages');
         $product = $this->Products->newEmptyEntity();
-        $categories = $this->Categories->find('all',['conditions' => ['Categories.parent_id IS' => null]])->toArray();
+        $categories = $this->Products->Categories->find('list', ['limit' => 200])->all();
+        //$categories = $this->Products->Categories->find('list', ['conditions'=>['Categories.parent_id IS' => null],'limit' => 200])->all();
+        //$subcategories = $this->Products->Categories->find('list', ['conditions'=>['Categories.parent_id IS NOT' => null],'limit' => 200])->all();
+        /*$categories = $this->Categories->find('all',['conditions' => ['Categories.parent_id IS' => null]])->toArray();
         $subcategories = $this->Categories->find('all',['conditions' => ['Categories.parent_id IS NOT' => null]])->toArray();
         foreach ($categories as $category) :
             foreach ($subcategories as $subcategory) :
@@ -60,7 +63,7 @@ class ProductsController extends AppController
                      $displayCategory[]= $category['description'] . ' ' . $subcategory['description'];
                 endif;
             endforeach;
-        endforeach;
+        endforeach;*/
         if ($this->request->is('post')) {
             $product = $this->Products->patchEntity($product, $this->request->getData());
             if ($this->Products->save($product)) {
@@ -83,7 +86,7 @@ class ProductsController extends AppController
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
         }
 //        $categories = $this->Products->ProductCategories->find('list', ['limit' => 200])->all();
-        $this->set(compact('product', 'categories','subcategories'));
+        $this->set(compact('product', 'categories'));
     }
 
     /**
@@ -96,7 +99,7 @@ class ProductsController extends AppController
     public function edit($id = null)
     {
         $product = $this->Products->get($id, [
-            'contain' => ['OrderItems', 'ProductCategories',
+            'contain' => ['OrderItems', 'Categories',
                 'ProductImages', 'ProductReviews', 'ShoppingSessions'],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -108,7 +111,8 @@ class ProductsController extends AppController
             }
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
         }
-        $this->set(compact('product'));
+        $categories = $this->Products->Categories->find('list', ['limit' => 200])->all();
+        $this->set(compact('product','categories'));
     }
 
     public function shop()
@@ -136,7 +140,7 @@ class ProductsController extends AppController
         $productImages = $this->ProductImages->findByProductId($id)->all()->toArray();
 
         $product = $this->Products->get($id, [
-            'contain' => ['OrderItems', 'ProductCategories', 'ProductImages', 'ProductReviews', 'ShoppingSessions'],
+            'contain' => ['OrderItems', 'ProductImages', 'ProductReviews', 'ShoppingSessions'],
         ]);
 
         $this->set(compact('product','productImages'));
