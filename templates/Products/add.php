@@ -29,8 +29,9 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
             <?= $this->Form->create($product, ['type' => 'file']) ?>
 
                     <?php
-                        echo $this->Form->control('categories._ids', ['options' => $categories->toArray(), 'class' => 'category_select_main', 'id' => 'select_category_main', 'style' => 'width:300px']);
-                        echo $this->Form->control('categories._ids', ['options' => $subcategories->toArray(), 'class' => 'category_select_sub', 'id' => 'select_category_sub', 'style' => 'width:300px']);
+                        echo $this->Form->control('categories._ids', ['options' => $categories, 'class' => 'category_select_main', 'id' => 'select_category_main', 'style' => 'width:300px']);
+                        //echo $this->Form->control('categories._ids', ['options' => $categories->toArray(), 'class' => 'category_select_main', 'id' => 'select_category_main', 'style' => 'width:300px']);
+                        //echo $this->Form->control('categories._ids', ['options' => $subcategories->toArray(), 'class' => 'category_select_sub', 'id' => 'select_category_sub', 'style' => 'width:300px', 'label'=>'Sub Category']);
                         //echo $this->Form->control('inventory_id', ['options' => $productInventories, 'empty' => true]);
                         echo $this->Form->control('name');
                         echo $this->Form->control('description');
