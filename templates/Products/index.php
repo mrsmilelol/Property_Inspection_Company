@@ -30,8 +30,8 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <th><?= h('Style') ?></th>
                     <th data-visible="false"><?= h('Colour') ?></th>
                     <th><?= h('Units in stock') ?></th>
-                    <th data-visible="false"><?= h('Size') ?></th>
-                    <th data-visible="false"><?= h('Weight') ?>
+                    <th data-visible="false"><?= h('Size (cm)') ?></th>
+                    <th data-visible="false"><?= h('Weight (kg)') ?>
                     <th data-visible="false"><?= h('Finish') ?></th>
                     <th><?= h('Sale price') ?></th>
                     <th data-visible="false"><?= h('Wholesale price') ?></th>
