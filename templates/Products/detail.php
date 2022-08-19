@@ -120,11 +120,11 @@ $this->layout = 'front';
                         <table class="table-data-sheet">
                             <tbody>
                             <tr class="odd">
-                                <td>Size</td>
+                                <td>Size (cm)</td>
                                 <td><?= h($product->size) ?></td>
                             </tr>
                             <tr class="even">
-                                <td>Weight</td>
+                                <td>Weight (kg)</td>
                                 <td><?= h($product->weight) ?></td>
                             </tr>
                             </tbody>

@@ -38,7 +38,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <td><?= h($product->colour) ?></td>
             </tr>
             <tr>
-                <th><?= __('Size') ?></th>
+                <th><?= __('Size (cm)') ?></th>
                 <td><?= h($product->size) ?></td>
             </tr>
             <tr>
@@ -62,7 +62,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <td><?= $this->Number->format($product->units_in_stock) ?></td>
             </tr>
             <tr>
-                <th><?= __('Weight') ?></th>
+                <th><?= __('Weight (kg)') ?></th>
                 <td><?= $this->Number->format($product->weight) ?></td>
             </tr>
             <tr>
