@@ -327,7 +327,7 @@ $this->layout = 'front';
                                         </div>
                                         <!--Product Price-->
                                         <div class="product-price">
-                                            <span class="new-price"><?= $this->number->currency($products[$x]->price) ?></span>
+                                            <span class="new-price"><?=  $this->Number->currency($products[$x]->price) ?></span>
                                         </div>
                                     </div>
                                 </div>
