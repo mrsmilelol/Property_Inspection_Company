@@ -60,7 +60,6 @@ $this->layout = 'front';
                     <p>Catalog</p>
                 </aside>
                 <div class="left-widget-content  indicator-banner">
-
                     <aside class="left-widget-price widget">
                         <h3 class="widget-subtitle">Price</h3>
                         <div class="info-widget">
@@ -71,6 +70,21 @@ $this->layout = 'front';
                                 </div>
                                 <div id="slider-range"></div>
                             </div>
+                        </div>
+                    </aside>
+                    <aside class="left-widget-size widget">
+                        <h3 class="widget-subtitle">Stock Status</h3>
+                        <div class="widget-info">
+                            <ul>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">On Sale</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">In Stock</a>
+                                </li>
+                            </ul>
                         </div>
                     </aside>
                     <aside class="left-widget-size widget">
@@ -87,46 +101,140 @@ $this->layout = 'front';
                                 </li>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">CHELSEA FURNITURE (3)</a>
+                                    <a href="#">CHELSEA FURNITURE (27)</a>
                                 </li>
                             </ul>
                         </div>
                     </aside>
                     <aside class="left-widget-color widget">
-                        <h3 class="widget-subtitle">Color</h3>
+                        <h3 class="widget-subtitle">Style</h3>
                         <div class="widget-info">
                             <ul>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">Beige (4)</a>
+                                    <a href="#">Arch Salvage (9)</a>
                                 </li>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">White (5)</a>
+                                    <a href="#">Architrave (17)</a>
                                 </li>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">Yellow (3)</a>
+                                    <a href="#">Charme (6)</a>
                                 </li>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">Pink (3)</a>
+                                    <a href="#">Giovanna (2)</a>
                                 </li>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">Black (3)</a>
+                                    <a href="#">Old world (21)</a>
                                 </li>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">Blue (3)</a>
+                                    <a href="#">Passage (20)</a>
                                 </li>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">Green (3)</a>
+                                    <a href="#">Malibu Crest (26)</a>
                                 </li>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">Orange (3)</a>
+                                    <a href="#">Mia Bella (11)</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Mia Bella (11)</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Bader (2)</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">New Empaire (3)</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Pearly (2)</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Princess (2)</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Ruby (1)</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">SG Plush (2)</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Shayan (3)</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Sina (2)</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Venues (2)</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </aside>
+                    <aside class="left-widget-size widget">
+                        <h3 class="widget-subtitle">Material</h3>
+                        <div class="widget-info">
+                            <ul>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Wood</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Metal</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Gold</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </aside>
+                    <aside class="left-widget-size widget">
+                        <h3 class="widget-subtitle">Colour</h3>
+                        <div class="widget-info">
+                            <ul>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Red</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Blue</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Brown</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">White</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Purple</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Grey</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Gold</a>
                                 </li>
                             </ul>
                         </div>
