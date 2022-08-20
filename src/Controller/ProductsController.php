@@ -86,7 +86,7 @@ class ProductsController extends AppController
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
         }
 //        $categories = $this->Products->ProductCategories->find('list', ['limit' => 200])->all();
-        $this->set(compact('product', 'categories','subcategories'));
+        $this->set(compact('product', 'categories'));
     }
 
     /**
