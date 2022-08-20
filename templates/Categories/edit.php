@@ -22,9 +22,9 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
         <table class="table table-bordered" id="products" width="100%" cellspacing="0">
             <?= $this->Form->create($category) ?>
                 <?php
-                    echo $this->Form->control('parent_id', ['options' => $parentCategories,'class' => 'category_select_main', 'id' => 'select_category_main', 'style' => 'width:300px', 'empty' => true]);
+                    echo $this->Form->control('parent_id', ['options' => $parentCategories, 'empty' => true]);
                     echo $this->Form->control('description');
-                    echo $this->Form->control('products._ids', ['options' => $products]);
+                    echo $this->Form->control('products._ids', ['options' => $products,'class' => 'category_select_main', 'id' => 'select_category_main', 'style' => 'width:600px',]);
                     //echo $this->Form->control('created_at');
                     //echo $this->Form->control('modified_at');
                 ?>
@@ -40,3 +40,8 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
         $('.category_select_sub').select2();
     });
 </script>
+<style>
+    .select2-container {
+        display: block;
+    }
+</style>
