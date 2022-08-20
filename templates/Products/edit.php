@@ -43,8 +43,8 @@ $this->Form->setTemplates($formTemplate);
                     //echo $this->Form->control('modified_at');
                 ?>
         </table>
-<br>
-<br>
+        <br>
+        <br>
         <div class="related">
             <h4><?= __('Related order items') ?></h4>
             <?php if (!empty($product->order_items)) : ?>
@@ -78,138 +78,145 @@ $this->Form->setTemplates($formTemplate);
                 </div>
             <?php endif; ?>
         </div>
-<br>
-<div class="related">
-    <h4><?= __('Related product categories') ?></h4>
-    <?php if (!empty($product->categories)) : ?>
-        <div class="table-responsive">
-            <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
-                <tr>
-                    <th><?= __('ID') ?></th>
-                    <th><?= __('Category ID') ?></th>
-                    <th><?= __('Product ID') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
-                </tr>
-                <?php foreach ($product->categories as $categories) : ?>
-                    <tr>
-                        <td><?= h($categories->id) ?></td>
-                        <td><?= h($categories->parent_id) ?></td>
-                        <td><?= h($categories->description) ?></td>
-                        <td class="actions">
-                            <?= $this->Html->link(__('View'), ['controller' => 'Categories', 'action' => 'view', $categories->id]) ?>
-                            <?= $this->Html->link(__('Edit'), ['controller' => 'Categories', 'action' => 'edit', $categories->id]) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['controller' => 'Categories', 'action' => 'delete', $categories->id], ['confirm' => __('Are you sure you want to delete # {0}?', $categories->id)]) ?>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </table>
+        <br>
+        <div class="related">
+            <h4><?= __('Related product categories') ?></h4>
+            <?php if (!empty($product->categories)) : ?>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
+                        <tr>
+                            <th><?= __('ID') ?></th>
+                            <th><?= __('Category ID') ?></th>
+                            <th><?= __('Product ID') ?></th>
+                            <th class="actions"><?= __('Actions') ?></th>
+                        </tr>
+                        <?php foreach ($product->categories as $categories) : ?>
+                            <tr>
+                                <td><?= h($categories->id) ?></td>
+                                <td><?= h($categories->parent_id) ?></td>
+                                <td><?= h($categories->description) ?></td>
+                                <td class="actions">
+                                    <?= $this->Html->link(__('View'), ['controller' => 'Categories', 'action' => 'view', $categories->id]) ?>
+                                    <?= $this->Html->link(__('Edit'), ['controller' => 'Categories', 'action' => 'edit', $categories->id]) ?>
+<!--                                    --><!--<?//= $this->Form->postLink(__('Delete'),
+//                                        ['controller' => 'Categories', 'action' => 'delete', $categories->id],
+//                                        ['confirm' => __('Are you sure you want to delete # {0}?', $categories->id)])
+//                                    ?>-->
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+            <?php endif; ?>
         </div>
-    <?php endif; ?>
-</div>
-<br>
-<div class="related">
-    <h4><?= __('Related product images') ?></h4>
-    <?php if (!empty($product->product_images)) : ?>
-        <div class="table-responsive">
-            <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
-                <tr>
-                    <th><?= __('ID') ?></th>
-                    <th><?= __('Product ID') ?></th>
-                    <th><?= __('Image') ?></th>
-                    <th><?= __('Created at') ?></th>
-                    <th><?= __('Modified at') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
-                </tr>
-                <?php foreach ($product->product_images as $productImages) : ?>
-                    <tr>
-                        <td><?= h($productImages->id) ?></td>
-                        <td><?= h($productImages->product_id) ?></td>
-                        <td><?= $this->Html->image($productImages->description,['alt' => 'CakePHP','class' => 'img-fluid','height'=>'200','width'=>'200']);?></td>
-                        <td><?= h($productImages->created_at) ?></td>
-                        <td><?= h($productImages->modified_at) ?></td>
-                        <td class="actions">
-                            <?= $this->Html->link(__('View'), ['controller' => 'ProductImages', 'action' => 'view', $productImages->id]) ?>
-                            <?= $this->Html->link(__('Edit'), ['controller' => 'ProductImages', 'action' => 'edit', $productImages->id]) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['controller' => 'ProductImages', 'action' => 'delete', $productImages->id], ['confirm' => __('Are you sure you want to delete # {0}?', $productImages->id)]) ?>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </table>
+        <br>
+        <div class="related">
+            <h4><?= __('Related product images') ?></h4>
+            <?php if (!empty($product->product_images)) : ?>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
+                        <tr>
+                            <th><?= __('ID') ?></th>
+                            <th><?= __('Product ID') ?></th>
+                            <th><?= __('Image') ?></th>
+                            <th><?= __('Created at') ?></th>
+                            <th><?= __('Modified at') ?></th>
+                            <th class="actions"><?= __('Actions') ?></th>
+                        </tr>
+                        <?php foreach ($product->product_images as $productImages) : ?>
+                        <tr>
+                            <td><?= h($productImages->id) ?></td>
+                            <td><?= h($productImages->product_id) ?></td>
+                            <td><?= $this->Html->image($productImages->description,['alt' => 'CakePHP','class' => 'img-fluid','height'=>'200','width'=>'200']);?></td>
+                            <td><?= h($productImages->created_at) ?></td>
+                            <td><?= h($productImages->modified_at) ?></td>
+                            <td class="actions">
+                                <?= $this->Html->link(__('View'), ['controller' => 'ProductImages', 'action' => 'view', $productImages->id]) ?>
+<!--                                --><!--<?//= $this->Html->link(__('Edit'),
+//                                    ['controller' => 'ProductImages', 'action' => 'edit', $productImages->id])
+//                                ?>-->
+<!--                                --><!--<?//= $this->Form->postLink(__('Delete'),
+//                                    ['controller' => 'ProductImages', 'action' => 'delete', $productImages->id],
+//                                    ['confirm' => __('Are you sure you want to delete # {0}?', $productImages->id)])
+//                                ?>-->
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </table>
+                </div>
+            <?php endif; ?>
         </div>
-    <?php endif; ?>
-</div>
-<br>
-<div class="related">
-    <h4><?= __('Related product reviews') ?></h4>
-    <?php if (!empty($product->product_reviews)) : ?>
-        <div class="table-responsive">
-            <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
-                <tr>
-                    <th><?= __('ID') ?></th>
-                    <th><?= __('User ID') ?></th>
-                    <th><?= __('Product ID') ?></th>
-                    <th><?= __('Description') ?></th>
-                    <th><?= __('Rating') ?></th>
-                    <th><?= __('Created at') ?></th>
-                    <th><?= __('Modified at') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
-                </tr>
-                <?php foreach ($product->product_reviews as $productReviews) : ?>
-                    <tr>
-                        <td><?= h($productReviews->id) ?></td>
-                        <td><?= h($productReviews->user_id) ?></td>
-                        <td><?= h($productReviews->product_id) ?></td>
-                        <td><?= h($productReviews->description) ?></td>
-                        <td><?= h($productReviews->rating) ?></td>
-                        <td><?= h($productReviews->created_at) ?></td>
-                        <td><?= h($productReviews->modified_at) ?></td>
-                        <td class="actions">
-                            <?= $this->Html->link(__('View'), ['controller' => 'ProductReviews', 'action' => 'view', $productReviews->id]) ?>
-                            <?= $this->Html->link(__('Edit'), ['controller' => 'ProductReviews', 'action' => 'edit', $productReviews->id]) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['controller' => 'ProductReviews', 'action' => 'delete', $productReviews->id], ['confirm' => __('Are you sure you want to delete # {0}?', $productReviews->id)]) ?>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </table>
+        <br>
+        <div class="related">
+            <h4><?= __('Related product reviews') ?></h4>
+            <?php if (!empty($product->product_reviews)) : ?>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
+                        <tr>
+                            <th><?= __('ID') ?></th>
+                            <th><?= __('User ID') ?></th>
+                            <th><?= __('Product ID') ?></th>
+                            <th><?= __('Description') ?></th>
+                            <th><?= __('Rating') ?></th>
+                            <th><?= __('Created at') ?></th>
+                            <th><?= __('Modified at') ?></th>
+                            <th class="actions"><?= __('Actions') ?></th>
+                        </tr>
+                        <?php foreach ($product->product_reviews as $productReviews) : ?>
+                        <tr>
+                            <td><?= h($productReviews->id) ?></td>
+                            <td><?= h($productReviews->user_id) ?></td>
+                            <td><?= h($productReviews->product_id) ?></td>
+                            <td><?= h($productReviews->description) ?></td>
+                            <td><?= h($productReviews->rating) ?></td>
+                            <td><?= h($productReviews->created_at) ?></td>
+                            <td><?= h($productReviews->modified_at) ?></td>
+                            <td class="actions">
+                                <?= $this->Html->link(__('View'), ['controller' => 'ProductReviews', 'action' => 'view', $productReviews->id]) ?>
+                                <?= $this->Html->link(__('Edit'), ['controller' => 'ProductReviews', 'action' => 'edit', $productReviews->id]) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'ProductReviews', 'action' => 'delete', $productReviews->id], ['confirm' => __('Are you sure you want to delete # {0}?', $productReviews->id)]) ?>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+            <?php endif; ?>
         </div>
-    <?php endif; ?>
-</div>
-<br>
-<div class="related">
-    <h4><?= __('Related shopping sessions') ?></h4>
-    <?php if (!empty($product->shopping_sessions)) : ?>
-        <div class="table-responsive">
-            <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
-                <tr>
-                    <th><?= __('ID') ?></th>
-                    <th><?= __('User ID') ?></th>
-                    <th><?= __('Product ID') ?></th>
-                    <th><?= __('Quantity') ?></th>
-                    <th><?= __('Created at') ?></th>
-                    <th><?= __('Modified at') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
-                </tr>
-                <?php foreach ($product->shopping_sessions as $shoppingSessions) : ?>
-                    <tr>
-                        <td><?= h($shoppingSessions->id) ?></td>
-                        <td><?= h($shoppingSessions->user_id) ?></td>
-                        <td><?= h($shoppingSessions->product_id) ?></td>
-                        <td><?= h($shoppingSessions->quantity) ?></td>
-                        <td><?= h($shoppingSessions->created_at) ?></td>
-                        <td><?= h($shoppingSessions->modified_at) ?></td>
-                        <td class="actions">
-                            <?= $this->Html->link(__('View'), ['controller' => 'ShoppingSessions', 'action' => 'view', $shoppingSessions->id]) ?>
-                            <?= $this->Html->link(__('Edit'), ['controller' => 'ShoppingSessions', 'action' => 'edit', $shoppingSessions->id]) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['controller' => 'ShoppingSessions', 'action' => 'delete', $shoppingSessions->id], ['confirm' => __('Are you sure you want to delete # {0}?', $shoppingSessions->id)]) ?>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </table>
+        <br>
+        <div class="related">
+            <h4><?= __('Related shopping sessions') ?></h4>
+            <?php if (!empty($product->shopping_sessions)) : ?>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
+                        <tr>
+                            <th><?= __('ID') ?></th>
+                            <th><?= __('User ID') ?></th>
+                            <th><?= __('Product ID') ?></th>
+                            <th><?= __('Quantity') ?></th>
+                            <th><?= __('Created at') ?></th>
+                            <th><?= __('Modified at') ?></th>
+                            <th class="actions"><?= __('Actions') ?></th>
+                        </tr>
+                        <?php foreach ($product->shopping_sessions as $shoppingSessions) : ?>
+                            <tr>
+                                <td><?= h($shoppingSessions->id) ?></td>
+                                <td><?= h($shoppingSessions->user_id) ?></td>
+                                <td><?= h($shoppingSessions->product_id) ?></td>
+                                <td><?= h($shoppingSessions->quantity) ?></td>
+                                <td><?= h($shoppingSessions->created_at) ?></td>
+                                <td><?= h($shoppingSessions->modified_at) ?></td>
+                                <td class="actions">
+                                    <?= $this->Html->link(__('View'), ['controller' => 'ShoppingSessions', 'action' => 'view', $shoppingSessions->id]) ?>
+                                    <?= $this->Html->link(__('Edit'), ['controller' => 'ShoppingSessions', 'action' => 'edit', $shoppingSessions->id]) ?>
+                                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'ShoppingSessions', 'action' => 'delete', $shoppingSessions->id], ['confirm' => __('Are you sure you want to delete # {0}?', $shoppingSessions->id)]) ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+            <?php endif; ?>
         </div>
-    <?php endif; ?>
-</div>
-            <?= $this->Form->button(__('Submit'),['class' => 'btn btn-primary']) ?>
-            <?= $this->Form->end() ?>
-        </table>
+        <?= $this->Form->button(__('Submit'),['class' => 'btn btn-primary']) ?>
+        <?= $this->Form->end() ?>
     </div>
 </div>
