@@ -1,4 +1,4 @@
-w<?php
+<?php
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Product $product
@@ -62,8 +62,8 @@ $this->Form->setTemplates($formTemplate);
                                 <td><?= h($orderItems->order_id) ?></td>
                                 <td><?= h($orderItems->product_id) ?></td>
                                 <td><?= h($orderItems->quantity) ?></td>
-                                <td><?= h($orderItems->created_at) ?></td>
-                                <td><?= h($orderItems->modified_at) ?></td>
+                                <th data-visible="false"><?= h($orderItems->created_at) ?></td>
+                                <th data-visible="false"><?= h($orderItems->modified_at) ?></td>
                                 <td class="actions">
                                     <?= $this->Html->link(__('View'), ['controller' => 'OrderItems', 'action' => 'view', $orderItems->id]) ?>
                                     <?= $this->Html->link(__('Edit'), ['controller' => 'OrderItems', 'action' => 'edit', $orderItems->id]) ?>
@@ -92,8 +92,6 @@ $this->Form->setTemplates($formTemplate);
                         <td><?= h($categories->id) ?></td>
                         <td><?= h($categories->parent_id) ?></td>
                         <td><?= h($categories->description) ?></td>
-                        <td><?= h($categories->created_at) ?></td>
-                        <td><?= h($categories->modified_at) ?></td>
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['controller' => 'Categories', 'action' => 'view', $categories->id]) ?>
                             <?= $this->Html->link(__('Edit'), ['controller' => 'Categories', 'action' => 'edit', $categories->id]) ?>
@@ -115,8 +113,6 @@ $this->Form->setTemplates($formTemplate);
                     <th><?= __('ID') ?></th>
                     <th><?= __('Product ID') ?></th>
                     <th><?= __('Description') ?></th>
-                    <th><?= __('Created at') ?></th>
-                    <th><?= __('Modified at') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
                 <?php foreach ($product->product_images as $productImages) : ?>
@@ -124,8 +120,6 @@ $this->Form->setTemplates($formTemplate);
                         <td><?= h($productImages->id) ?></td>
                         <td><?= h($productImages->product_id) ?></td>
                         <td><?= h($productImages->description) ?></td>
-                        <td><?= h($productImages->created_at) ?></td>
-                        <td><?= h($productImages->modified_at) ?></td>
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['controller' => 'ProductImages', 'action' => 'view', $productImages->id]) ?>
                             <?= $this->Html->link(__('Edit'), ['controller' => 'ProductImages', 'action' => 'edit', $productImages->id]) ?>
