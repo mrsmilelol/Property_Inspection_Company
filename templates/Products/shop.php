@@ -60,20 +60,7 @@ $this->layout = 'front';
                     <p>Catalog</p>
                 </aside>
                 <div class="left-widget-content  indicator-banner">
-                    <aside class="enabled-filters widget">
-                        <h3 class="widget-subtitle">Enabled filters:</h3>
-                        <ul>
-                            <li>Size: S
-                                <a href="#" title="Cancel"><i class="fa fa-remove pull-right"></i></a>
-                            </li>
-                            <li>Color: Beige
-                                <a href="#" title="Cancel"><i class="fa fa-remove pull-right"></i></a>
-                            </li>
-                            <li>
-                                Price: AU$ 36.09 - AU$ 61.00
-                            </li>
-                        </ul>
-                    </aside>
+
                     <aside class="left-widget-price widget">
                         <h3 class="widget-subtitle">Price</h3>
                         <div class="info-widget">
@@ -87,20 +74,20 @@ $this->layout = 'front';
                         </div>
                     </aside>
                     <aside class="left-widget-size widget">
-                        <h3 class="widget-subtitle">Size</h3>
+                        <h3 class="widget-subtitle">Brand</h3>
                         <div class="widget-info">
                             <ul>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">S (4)</a>
+                                    <a href="#">A.R.T (86)</a>
                                 </li>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">M (5)</a>
+                                    <a href="#">AMINI (41)</a>
                                 </li>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">L (3)</a>
+                                    <a href="#">CHELSEA FURNITURE (3)</a>
                                 </li>
                             </ul>
                         </div>
