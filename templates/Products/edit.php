@@ -30,8 +30,8 @@ $this->Form->setTemplates($formTemplate);
                     echo $this->Form->control('style');
                     echo $this->Form->control('colour');
                     echo $this->Form->control('units_in_stock', ['label'=>'Units in stock']);
-                    echo $this->Form->control('size');
-                    echo $this->Form->control('weight');
+                    echo $this->Form->control('size', ['label'=>'Size (cm) (e.g. w-122.682 x d-122.7 x h-45.72)']);
+                    echo $this->Form->control('weight', ['label'=>'Weight (kg)']);
                     echo $this->Form->control('finish');
                     echo $this->Form->control('sale_price', ['label'=>'Sale price']);
                     echo $this->Form->control('wholesale_price', ['label'=>'Wholesale price']);
@@ -39,41 +39,42 @@ $this->Form->setTemplates($formTemplate);
                     //echo $this->Form->control('created_at');
                     //echo $this->Form->control('modified_at');
                 ?>
+        </table>
 <br>
 <br>
-<div class="related card">
-    <h4><?= __('Related order items') ?></h4>
-    <?php if (!empty($product->order_items)) : ?>
-        <div class="table-responsive">
-            <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
-                <tr>
-                    <th><?= __('ID') ?></th>
-                    <th><?= __('Order ID') ?></th>
-                    <th><?= __('Product ID') ?></th>
-                    <th><?= __('Quantity') ?></th>
-                    <th><?= __('Created at') ?></th>
-                    <th><?= __('Modified at') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
-                </tr>
-                <?php foreach ($product->order_items as $orderItems) : ?>
-                    <tr>
-                        <td><?= h($orderItems->id) ?></td>
-                        <td><?= h($orderItems->order_id) ?></td>
-                        <td><?= h($orderItems->product_id) ?></td>
-                        <td><?= h($orderItems->quantity) ?></td>
-                        <td><?= h($orderItems->created_at) ?></td>
-                        <td><?= h($orderItems->modified_at) ?></td>
-                        <td class="actions">
-                            <?= $this->Html->link(__('View'), ['controller' => 'OrderItems', 'action' => 'view', $orderItems->id]) ?>
-                            <?= $this->Html->link(__('Edit'), ['controller' => 'OrderItems', 'action' => 'edit', $orderItems->id]) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['controller' => 'OrderItems', 'action' => 'delete', $orderItems->id], ['confirm' => __('Are you sure you want to delete # {0}?', $orderItems->id)]) ?>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </table>
+        <div class="related">
+            <h4><?= __('Related order items') ?></h4>
+            <?php if (!empty($product->order_items)) : ?>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
+                     <tr>
+                            <th><?= __('ID') ?></th>
+                            <th><?= __('Order ID') ?></th>
+                            <th><?= __('Product ID') ?></th>
+                            <th><?= __('Quantity') ?></th>
+                            <th><?= __('Created at') ?></th>
+                            <th><?= __('Modified at') ?></th>
+                            <th class="actions"><?= __('Actions') ?></th>
+                        </tr>
+                        <?php foreach ($product->order_items as $orderItems) : ?>
+                            <tr>
+                                <td><?= h($orderItems->id) ?></td>
+                                <td><?= h($orderItems->order_id) ?></td>
+                                <td><?= h($orderItems->product_id) ?></td>
+                                <td><?= h($orderItems->quantity) ?></td>
+                                <td><?= h($orderItems->created_at) ?></td>
+                                <td><?= h($orderItems->modified_at) ?></td>
+                                <td class="actions">
+                                    <?= $this->Html->link(__('View'), ['controller' => 'OrderItems', 'action' => 'view', $orderItems->id]) ?>
+                                    <?= $this->Html->link(__('Edit'), ['controller' => 'OrderItems', 'action' => 'edit', $orderItems->id]) ?>
+                                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'OrderItems', 'action' => 'delete', $orderItems->id], ['confirm' => __('Are you sure you want to delete # {0}?', $orderItems->id)]) ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+            <?php endif; ?>
         </div>
-    <?php endif; ?>
-</div>
 <br>
 <div class="related">
     <h4><?= __('Related product categories') ?></h4>
