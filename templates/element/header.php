@@ -179,6 +179,7 @@
                         <nav>
                             <ul>
                                 <li><a href="<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','main']); ?>">Home</a>
+                                <li><a href="<?= $this->Url->build(['controller'=>'Products', 'action'=>'shop']); ?>">Shop</a>
                                 </li>
                                 <li><a href="<?= $this->Url->build(['controller'=>'Categories', 'action'=>'view', 1]); ?>">Styles</a>
                                     <!-- Mega Menu Four Column -->
