@@ -33,17 +33,6 @@ $this->layout = 'front';
                                 Home
                             </a></li>
                         <li>
-                            <span>></span>
-                        </li>
-                        <li><a href="index.html" title="Lighting">Lighting</a></li>
-                        <li>
-                            <span>></span>
-                        </li>
-                        <li><a href="index.html" title="Categories 01">Categories 01</a></li>
-                        <li>
-                            <span>></span>
-                        </li>
-                        <li>Washing machine 1</li>
                     </ul>
                 </div>
             </div>
@@ -250,7 +239,7 @@ $this->layout = 'front';
                 <a><?= $this->Html->image('shop.jpg'); ?> </a>
                 <h1 class="page-heading section-padding2">
                     <span class="cat-name pull-left">Bedroom </span>
-                    <span class="heading-counter pull-right">There are 7 products.</span>
+                    <span class="heading-counter pull-right">There are 2 products.</span>
                 </h1>
                 <div class="shop-item-filter">
                     <div class="shop-tab clearfix">
@@ -433,51 +422,7 @@ $this->layout = 'front';
     </div>
 </div>
 <!-- All Product Side Bar Area End -->
-<!--Brand Area Start-->
-<div class="brand-area section-padding2">
-    <div class="container">
-        <div class="row">
-            <div class="brand-list">
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/1.jpg'); ?></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/2.jpg'); ?></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/3.jpg'); ?></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/4.jpg'); ?></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/5.jpg'); ?></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/6.jpg'); ?></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/7.jpg'); ?></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--Brand Area End-->
+
 <!--Quickview Product Start -->
 <div id="quickview-wrapper">
     <!-- Modal -->

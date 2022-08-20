@@ -79,14 +79,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                         echo $this->Html->image($productImage->description, ['alt' => 'CakePHP','class' => 'img-fluid','width' => 200, 'height' => 200]);
                     } ?></td>
             </tr>
-            <tr>
-                <th><?= __('Created at') ?></th>
-                <td><?= h($product->created_at) ?></td>
-            </tr>
-            <tr>
-                <th><?= __('Modified at') ?></th>
-                <td><?= h($product->modified_at) ?></td>
-            </tr>
 
         </table>
         <br>
@@ -100,8 +92,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                             <th><?= __('Order ID') ?></th>
                             <th><?= __('Product ID') ?></th>
                             <th><?= __('Quantity') ?></th>
-                            <th><?= __('Created at') ?></th>
-                            <th><?= __('Modified at') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($product->order_items as $orderItems) : ?>
@@ -110,8 +100,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                                 <td><?= h($orderItems->order_id) ?></td>
                                 <td><?= h($orderItems->product_id) ?></td>
                                 <td><?= h($orderItems->quantity) ?></td>
-                                <td><?= h($orderItems->created_at) ?></td>
-                                <td><?= h($orderItems->modified_at) ?></td>
                                 <td class="actions">
                                     <?= $this->Html->link(__('View'), ['controller' => 'OrderItems', 'action' => 'view', $orderItems->id]) ?>
                                     <?= $this->Html->link(__('Edit'), ['controller' => 'OrderItems', 'action' => 'edit', $orderItems->id]) ?>
@@ -132,8 +120,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                             <th><?= __('ID') ?></th>
                             <th><?= __('Parent ID') ?></th>
                             <th><?= __('Description') ?></th>
-                            <th><?= __('Created at') ?></th>
-                            <th><?= __('Modified at') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($product->categories as $categories) : ?>
@@ -141,8 +127,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                                 <td><?= h($categories->id) ?></td>
                                 <td><?= h($categories->parent_id) ?></td>
                                 <td><?= h($categories->description) ?></td>
-                                <td><?= h($categories->created_at) ?></td>
-                                <td><?= h($categories->modified_at) ?></td>
                                 <td class="actions">
                                     <?= $this->Html->link(__('View'), ['controller' => 'Categories', 'action' => 'view', $categories->id]) ?>
                                     <?= $this->Html->link(__('Edit'), ['controller' => 'Categories', 'action' => 'edit', $categories->id]) ?>
@@ -165,8 +149,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                             <th><?= __('Product ID') ?></th>
                             <th><?= __('Description') ?></th>
                             <th><?= __('Rating') ?></th>
-                            <th><?= __('Created at') ?></th>
-                            <th><?= __('Modified at') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($product->product_reviews as $productReviews) : ?>
@@ -176,8 +158,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                                 <td><?= h($productReviews->product_id) ?></td>
                                 <td><?= h($productReviews->description) ?></td>
                                 <td><?= h($productReviews->rating) ?></td>
-                                <td><?= h($productReviews->created_at) ?></td>
-                                <td><?= h($productReviews->modified_at) ?></td>
                                 <td class="actions">
                                     <?= $this->Html->link(__('View'), ['controller' => 'ProductReviews', 'action' => 'view', $productReviews->id]) ?>
                                     <?= $this->Html->link(__('Edit'), ['controller' => 'ProductReviews', 'action' => 'edit', $productReviews->id]) ?>
