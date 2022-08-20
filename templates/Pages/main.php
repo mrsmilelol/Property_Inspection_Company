@@ -23,14 +23,11 @@ $this->layout = 'front';
 <div class="slider-area">
     <div class="bend niceties preview-1">
         <div id="ensign-nivoslider-3" class="slides">
-            <a><?= $this->Html->image('slider/living-room-1143x800.jpg'); ?> </a>
-            <a><?= $this->Html->image('slider/dining-room-1-1143x800.jpg'); ?> </a>
-            <a><?= $this->Html->image('slider/bedroom-1143x800.jpg'); ?> </a>
-            <a><?= $this->Html->image('slider/home-office-1143x800.jpg'); ?> </a>
-            <a><?= $this->Html->image('slider/rugs-1-1143x800.jpg'); ?> </a>
-            <a><?= $this->Html->image('slider/accessories-1143x800.jpg'); ?> </a>
-            <a><?= $this->Html->image('slider/lighting-slider-1143x800.jpg'); ?> </a>
-            <a><?= $this->Html->image('slider/entertainment-1143x800.jpg'); ?> </a>
+            <a><?= $this->Html->image('slider/living-room-1000x530.jpg'); ?> </a>
+            <a><?= $this->Html->image('slider/dining-room-1-1000x530.jpg'); ?> </a>
+            <a><?= $this->Html->image('slider/bedroom-1000x530.jpg'); ?> </a>
+            <a><?= $this->Html->image('slider/home-office-1000x530.jpg'); ?> </a>
+            <a><?= $this->Html->image('slider/lighting-slider-1000x530.jpg'); ?> </a>
         </div>
     </div>
 </div>

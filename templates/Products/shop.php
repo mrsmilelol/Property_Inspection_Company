@@ -33,17 +33,6 @@ $this->layout = 'front';
                                 Home
                             </a></li>
                         <li>
-                            <span>></span>
-                        </li>
-                        <li><a href="index.html" title="Lighting">Lighting</a></li>
-                        <li>
-                            <span>></span>
-                        </li>
-                        <li><a href="index.html" title="Categories 01">Categories 01</a></li>
-                        <li>
-                            <span>></span>
-                        </li>
-                        <li>Washing machine 1</li>
                     </ul>
                 </div>
             </div>
@@ -60,20 +49,6 @@ $this->layout = 'front';
                     <p>Catalog</p>
                 </aside>
                 <div class="left-widget-content  indicator-banner">
-                    <aside class="enabled-filters widget">
-                        <h3 class="widget-subtitle">Enabled filters:</h3>
-                        <ul>
-                            <li>Size: S
-                                <a href="#" title="Cancel"><i class="fa fa-remove pull-right"></i></a>
-                            </li>
-                            <li>Color: Beige
-                                <a href="#" title="Cancel"><i class="fa fa-remove pull-right"></i></a>
-                            </li>
-                            <li>
-                                Price: AU$ 36.09 - AU$ 61.00
-                            </li>
-                        </ul>
-                    </aside>
                     <aside class="left-widget-price widget">
                         <h3 class="widget-subtitle">Price</h3>
                         <div class="info-widget">
@@ -87,59 +62,168 @@ $this->layout = 'front';
                         </div>
                     </aside>
                     <aside class="left-widget-size widget">
-                        <h3 class="widget-subtitle">Size</h3>
+                        <h3 class="widget-subtitle">Stock Status</h3>
                         <div class="widget-info">
                             <ul>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">S (4)</a>
+                                    <a href="#">On Sale</a>
                                 </li>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">M (5)</a>
+                                    <a href="#">In Stock</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </aside>
+                    <aside class="left-widget-size widget">
+                        <h3 class="widget-subtitle">Brand</h3>
+                        <div class="widget-info">
+                            <ul>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">A.R.T (86)</a>
                                 </li>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">L (3)</a>
+                                    <a href="#">AMINI (41)</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">CHELSEA FURNITURE (27)</a>
                                 </li>
                             </ul>
                         </div>
                     </aside>
                     <aside class="left-widget-color widget">
-                        <h3 class="widget-subtitle">Color</h3>
+                        <h3 class="widget-subtitle">Style</h3>
                         <div class="widget-info">
                             <ul>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">Beige (4)</a>
+                                    <a href="#">Arch Salvage (9)</a>
                                 </li>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">White (5)</a>
+                                    <a href="#">Architrave (17)</a>
                                 </li>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">Yellow (3)</a>
+                                    <a href="#">Charme (6)</a>
                                 </li>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">Pink (3)</a>
+                                    <a href="#">Giovanna (2)</a>
                                 </li>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">Black (3)</a>
+                                    <a href="#">Old world (21)</a>
                                 </li>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">Blue (3)</a>
+                                    <a href="#">Passage (20)</a>
                                 </li>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">Green (3)</a>
+                                    <a href="#">Malibu Crest (26)</a>
                                 </li>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">Orange (3)</a>
+                                    <a href="#">Mia Bella (11)</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Mia Bella (11)</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Bader (2)</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">New Empaire (3)</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Pearly (2)</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Princess (2)</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Ruby (1)</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">SG Plush (2)</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Shayan (3)</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Sina (2)</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Venues (2)</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </aside>
+                    <aside class="left-widget-size widget">
+                        <h3 class="widget-subtitle">Material</h3>
+                        <div class="widget-info">
+                            <ul>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Wood</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Metal</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Gold</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </aside>
+                    <aside class="left-widget-size widget">
+                        <h3 class="widget-subtitle">Colour</h3>
+                        <div class="widget-info">
+                            <ul>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Red</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Blue</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Brown</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">White</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Purple</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Grey</a>
+                                </li>
+                                <li>
+                                    <input type="checkbox">
+                                    <a href="#">Gold</a>
                                 </li>
                             </ul>
                         </div>
@@ -147,15 +231,15 @@ $this->layout = 'front';
                 </div>
                 <div class="banner-image">
                     <a href="#">
-                        <a><?= $this->Html->image('banner/28.jpg'); ?> </a>
+                        <a><?= $this->Html->image('shop2.jpg'); ?> </a>
                     </a>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-9">
-                <a><?= $this->Html->image('bedroom.jpg'); ?> </a>
+                <a><?= $this->Html->image('shop.jpg'); ?> </a>
                 <h1 class="page-heading section-padding2">
                     <span class="cat-name pull-left">Bedroom </span>
-                    <span class="heading-counter pull-right">There are 7 products.</span>
+                    <span class="heading-counter pull-right">There are 2 products.</span>
                 </h1>
                 <div class="shop-item-filter">
                     <div class="shop-tab clearfix">
@@ -240,10 +324,11 @@ $this->layout = 'front';
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
+
                                         </div>
                                         <!--Product Price-->
                                         <div class="product-price">
-                                            <span class="new-price"><?= $this->number->currency($products[$x]->price) ?></span>
+                                            <span class="new-price"><?=  $this->Number->currency($products[$x]->price) ?></span>
                                         </div>
                                     </div>
                                 </div>
@@ -337,51 +422,7 @@ $this->layout = 'front';
     </div>
 </div>
 <!-- All Product Side Bar Area End -->
-<!--Brand Area Start-->
-<div class="brand-area section-padding2">
-    <div class="container">
-        <div class="row">
-            <div class="brand-list">
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/1.jpg'); ?></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/2.jpg'); ?></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/3.jpg'); ?></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/4.jpg'); ?></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/5.jpg'); ?></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/6.jpg'); ?></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="http://bootexperts.com/"><?= $this->Html->image('brand/7.jpg'); ?></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--Brand Area End-->
+
 <!--Quickview Product Start -->
 <div id="quickview-wrapper">
     <!-- Modal -->
