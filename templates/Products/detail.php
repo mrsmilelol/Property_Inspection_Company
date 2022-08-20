@@ -32,7 +32,7 @@ $this->layout = 'front';
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="breadcrumb-single">
                     <ul class="breadcrumbs">
-                        <li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','main']); ?>> title="Return to Home">
+                        <li><a href=<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display','main']); ?>>
                                 <i class="fa fa-home"></i>
                                 Home
                             </a></li>
@@ -54,14 +54,26 @@ $this->layout = 'front';
             <div class="col-lg-4 col-md-4 col-sm-5">
                 <div class="single-product-image">
                     <div id="content-eleyas">
+<!--                        <div id="my-tab-content" class="tab-content">-->
+<!--                            <div class="tab-pane active" id="view1">-->
+<!--                                <a class="venobox" href="--><!--<?php //'img/' . $productImages[0]->description . '/' ?>--><!--" data-gall="gallery" title="">-->
+<!--                                    --><!--<?//= $this->Html->image($productImages[0]->description,
+//                                        ['alt' => 'CakePHP','class' => 'img-fluid']);
+//                                    ?>-->
+<!--                                    <span>View larger-->
+<!--                                        <i class="fa fa-search-plus"></i>-->
+<!--                                    </span>-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <div id="my-tab-content" class="tab-content">
-                            <div class="tab-pane active" id="view1">
-                                <a class="venobox" href="<?php "img/" . $productImages[0]->description."/" ?>" data-gall="gallery" title=""><?= $this->Html->image($productImages[0]->description,['alt' => 'CakePHP','class' => 'img-fluid']); ?><span>View larger<i class="fa fa-search-plus"></i></span></a>
+                            <div class="tab-pane active">
+                                <a class="venobox" href="#" title=""><?= $this->Html->image($productImages[0]->description, ['alt' => 'CakePHP','class' => 'img-fluid']); ?></a>
                             </div>
                         </div>
                         <div id="viewproduct" class="nav nav-tabs product-view bxslider" data-tabs="tabs">
-                            <?php for ($x = 1; $x <= count($productImages)-1; $x++): ?>
-                            <div class="pro-view active"><a href="#view1" data-toggle="tab"><?= $this->Html->image($productImages[$x]->description,['alt' => 'CakePHP','class' => 'img-fluid','height' => 80,'width'=>106]); ?></a></div>
+                            <?php for ($x = 1; $x <= count($productImages) - 1; $x++) : ?>
+                            <div class="pro-view active"><a href="#view1" data-toggle="tab"><?= $this->Html->image($productImages[$x]->description, ['alt' => 'CakePHP','class' => 'img-fluid','height' => 80,'width' => 106]); ?></a></div>
                             <?php endfor ?>
                         </div>
                         <!-- BX Slider Navigation -->
@@ -77,24 +89,26 @@ $this->layout = 'front';
                     <h2><?= h($product->name) ?></h2>
                     <div class="media-body">
                         <p class="media-body-title">AUD $<?= h($product->price) ?><span> tax incl.</span></p>
-                        <p><label>Reference: </label> <span>demo_2</span></p>
+                        <p> Brand: <?= h($product->brand) ?></p>
+                        <p> Style: <?= h($product->style) ?></p>
+
                     </div>
                     <div class="pd-description">
                         <p><?= h($product->description) ?></p>
                     </div>
 
-                    <div class="product-attributes clearfix">
-								<span id="quantity-wanted-p" class="pull-left">
-									<span class="dec qtybutton">-</span>
-									<input type="text" class="cart-plus-minus-box" value="1">
-									<span class="inc qtybutton">+</span>
-								</span>
-                        <span>
-									<a href="cart.html" class="cart-btn">
-									<i class="fa fa-shopping-cart"></i>
-									<span>Add to Cart</span></a>
-								</span>
-                    </div>
+<!--                    <div class="product-attributes clearfix">-->
+<!--                                <span id="quantity-wanted-p" class="pull-left">-->
+<!--                                    <span class="dec qtybutton">-</span>-->
+<!--                                    <input type="text" class="cart-plus-minus-box" value="1">-->
+<!--                                    <span class="inc qtybutton">+</span>-->
+<!--                                </span>-->
+<!--                        <span>-->
+<!--                                    <a href="cart.html" class="cart-btn">-->
+<!--                                    <i class="fa fa-shopping-cart"></i>-->
+<!--                                    <span>Add to Cart</span></a>-->
+<!--                                </span>-->
+<!--                    </div>-->
                 </div>
             </div>
         </div>
@@ -111,10 +125,8 @@ $this->layout = 'front';
                 <div class="tab-content review">
                     <div role="tabpanel" class="tab-pane active" id="more-info">
                         <p>- Manufacturer: <?= h($product->manufacturing) ?></p>
-                        <p>- Style: <?= h($product->style) ?></p>
                         <p>- Finish: <?= h($product->finish) ?></p>
                         <p>- Colour: <?= h($product->colour) ?></p>
-                        <p>- Brand: <?= h($product->brand) ?></p>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="data">
                         <table class="table-data-sheet">

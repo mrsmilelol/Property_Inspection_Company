@@ -56,7 +56,10 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['controller' => 'Categories', 'action' => 'view', $childCategories->id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['controller' => 'Categories', 'action' => 'edit', $childCategories->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Categories', 'action' => 'delete', $childCategories->id], ['confirm' => __('Are you sure you want to delete # {0}?', $childCategories->id)]) ?>
+<!--                                --><!--<?//= $this->Form->postLink(__('Delete'),
+//                                    ['controller' => 'Categories', 'action' => 'delete', $childCategories->id],
+//                                    ['confirm' => __('Are you sure you want to delete # {0}?', $childCategories->id)])
+//                                ?>-->
                             </td>
                         </tr>
                         <?php endforeach; ?>
@@ -112,7 +115,10 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                                 <td class="actions">
                                     <?= $this->Html->link(__('View'), ['controller' => 'Products', 'action' => 'view', $products->id]) ?>
                                     <?= $this->Html->link(__('Edit'), ['controller' => 'Products', 'action' => 'edit', $products->id]) ?>
-                                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Products', 'action' => 'delete', $products->id], ['confirm' => __('Are you sure you want to delete # {0}?', $products->id)]) ?>
+<!--                                    --><!--<?//= $this->Form->postLink(__('Delete'),
+//                                        ['controller' => 'Products', 'action' => 'delete', $products->id],
+//                                        ['confirm' => __('Are you sure you want to delete # {0}?', $products->id)])
+//                                    ?>-->
                                 </td>
                             </tr>
                         <?php endforeach; ?>

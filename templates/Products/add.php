@@ -29,7 +29,7 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
             <?= $this->Form->create($product, ['type' => 'file']) ?>
 
                     <?php
-                        echo $this->Form->control('categories._ids', ['options' => $categories, 'class' => 'category_select_main', 'id' => 'select_category_main', 'style' => 'width:300px']);
+                        echo $this->Form->control('categories._ids', ['options' => $categories, 'class' => 'category_select_main', 'id' => 'select_category_main', 'style' => 'width:600px']);
                         //echo $this->Form->control('categories._ids', ['options' => $categories->toArray(), 'class' => 'category_select_main', 'id' => 'select_category_main', 'style' => 'width:300px']);
                         //echo $this->Form->control('categories._ids', ['options' => $subcategories->toArray(), 'class' => 'category_select_sub', 'id' => 'select_category_sub', 'style' => 'width:300px', 'label'=>'Sub Category']);
                         //echo $this->Form->control('inventory_id', ['options' => $productInventories, 'empty' => true]);
@@ -52,7 +52,7 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
                         echo $this->Form->label('Product images', 'Product images');
                         ?>
                         <br>
-                        <?php echo $this->Form->file('image_file. ', ['type' => 'file','multiple' => 'multiple']);
+                        <?php echo $this->Form->file('image_file. ', ['type' => 'file','multiple' => 'multiple','required'=>true]);
                         //echo $this->Form->control('created_at');
                         //echo $this->Form->control('modified_at');
                         ?>
@@ -62,14 +62,12 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
         </table>
     </div>
 </div>
-
 <script>
     $(document).ready(function() {
         $('.category_select_main').select2();
         $('.category_select_sub').select2();
     });
 </script>
-
 <style>
     .select2-container {
         display: block;
