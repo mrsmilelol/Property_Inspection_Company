@@ -52,9 +52,9 @@ class ProductsController extends AppController
 
         $this->loadModel('ProductImages');
         $product = $this->Products->newEmptyEntity();
-//        $categories = $this->Products->Categories->find('list', ['limit' => 200])->all();
-        $categories = $this->Products->Categories->find('list', ['conditions'=>['Categories.parent_id IS' => null],'limit' => 200])->all();
-        $subcategories = $this->Products->Categories->find('list', ['conditions'=>['Categories.parent_id IS NOT' => null],'limit' => 200])->all();
+        $categories = $this->Products->Categories->find('list', ['limit' => 200])->all();
+        //$categories = $this->Products->Categories->find('list', ['conditions'=>['Categories.parent_id IS' => null],'limit' => 200])->all();
+        //$subcategories = $this->Products->Categories->find('list', ['conditions'=>['Categories.parent_id IS NOT' => null],'limit' => 200])->all();
         /*$categories = $this->Categories->find('all',['conditions' => ['Categories.parent_id IS' => null]])->toArray();
         $subcategories = $this->Categories->find('all',['conditions' => ['Categories.parent_id IS NOT' => null]])->toArray();
         foreach ($categories as $category) :

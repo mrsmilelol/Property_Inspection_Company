@@ -335,6 +335,7 @@ $this->layout = 'front';
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
+
                                         </div>
                                         <!--Product Price-->
                                         <div class="product-price">
