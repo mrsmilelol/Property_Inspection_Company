@@ -4,6 +4,7 @@
  * @var \App\Model\Entity\Product $product
  * @var string[]|\Cake\Collection\CollectionInterface $categories
  * @var string[]|\Cake\Collection\CollectionInterface $productInventories
+ * @var string[]|\Cake\Collection\CollectionInterface $productImages
  */
 $formTemplate= [
     'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
@@ -18,7 +19,7 @@ $this->Form->setTemplates($formTemplate);
     </div>
     <div class="card-body">
         <table class="table table-bordered" id="products" width="100%" cellspacing="0">
-            <?= $this->Form->create($product) ?>
+            <?= $this->Form->create($product, ['type' => 'file']) ?>
                 <?php
                     //echo $this->Form->control('category_id', ['options' => $categories, 'empty' => true]);
                     //echo $this->Form->control('inventory_id', ['options' => $productInventories, 'empty' => true]);
@@ -35,7 +36,9 @@ $this->Form->setTemplates($formTemplate);
                     echo $this->Form->control('finish');
                     echo $this->Form->control('sale_price', ['label'=>'Sale price']);
                     echo $this->Form->control('wholesale_price', ['label'=>'Wholesale price']);
-                    echo $this->Form->control('manufacturing', ['label'=>'Manufacturer']);
+                    echo $this->Form->control('manufacturing', ['label'=>'Manufacturer']);?>
+            <br>
+                    <?php echo $this->Form->file('image_file. ', ['type' => 'file', 'multiple' => 'multiple']);
                     //echo $this->Form->control('created_at');
                     //echo $this->Form->control('modified_at');
                 ?>
@@ -112,14 +115,18 @@ $this->Form->setTemplates($formTemplate);
                 <tr>
                     <th><?= __('ID') ?></th>
                     <th><?= __('Product ID') ?></th>
-                    <th><?= __('Description') ?></th>
+                    <th><?= __('Image') ?></th>
+                    <th><?= __('Created at') ?></th>
+                    <th><?= __('Modified at') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
                 <?php foreach ($product->product_images as $productImages) : ?>
                     <tr>
                         <td><?= h($productImages->id) ?></td>
                         <td><?= h($productImages->product_id) ?></td>
-                        <td><?= h($productImages->description) ?></td>
+                        <td><?= $this->Html->image($productImages->description,['alt' => 'CakePHP','class' => 'img-fluid','height'=>'200','width'=>'200']);?></td>
+                        <td><?= h($productImages->created_at) ?></td>
+                        <td><?= h($productImages->modified_at) ?></td>
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['controller' => 'ProductImages', 'action' => 'view', $productImages->id]) ?>
                             <?= $this->Html->link(__('Edit'), ['controller' => 'ProductImages', 'action' => 'edit', $productImages->id]) ?>

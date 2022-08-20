@@ -98,21 +98,36 @@ class ProductsController extends AppController
      */
     public function edit($id = null)
     {
+        $this->loadModel('ProductImages');
         $product = $this->Products->get($id, [
             'contain' => ['OrderItems', 'Categories',
                 'ProductImages', 'ProductReviews', 'ShoppingSessions'],
         ]);
+        $productImages = $this->Products->get($id, [
+            'contain' => ['ProductImages']])->toArray();
         if ($this->request->is(['patch', 'post', 'put'])) {
             $product = $this->Products->patchEntity($product, $this->request->getData());
             if ($this->Products->save($product)) {
                 $this->Flash->success(__('The product has been saved.'));
+                $images = $this->request->getData('image_file');
+                foreach ($images as $image) {
+                    $fileName = $image->getClientFilename();
+                    if (!empty($fileName)) {
+                        $targetPath = WWW_ROOT . 'img' . DS . $fileName;
+                        $productImage = $this->ProductImages->newEmptyEntity();
+                        $image->moveTo($targetPath);
+                        $productImage->product_id = $product->id;
+                        $productImage->description = $fileName;
+                        $this->ProductImages->save($productImage);
+                    }
+                }
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
         }
         $categories = $this->Products->Categories->find('list', ['limit' => 200])->all();
-        $this->set(compact('product','categories'));
+        $this->set(compact('product','categories','productImages'));
     }
 
     public function shop()
