@@ -152,7 +152,7 @@ $this->layout = 'front';
                 </div>
             </div>
             <div class="col-xs-12 col-sm-9">
-                <a><?= $this->Html->image('bedroom.jpg'); ?> </a>
+                <a><?= $this->Html->image('shop.jpg'); ?> </a>
                 <h1 class="page-heading section-padding2">
                     <span class="cat-name pull-left">Bedroom </span>
                     <span class="heading-counter pull-right">There are 7 products.</span>
