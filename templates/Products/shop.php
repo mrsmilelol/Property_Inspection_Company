@@ -231,7 +231,7 @@ $this->layout = 'front';
                 </div>
                 <div class="banner-image">
                     <a href="#">
-                        <a><?= $this->Html->image('banner/28.jpg'); ?> </a>
+                        <a><?= $this->Html->image('shop2.jpg'); ?> </a>
                     </a>
                 </div>
             </div>
