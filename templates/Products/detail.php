@@ -67,8 +67,9 @@ $this->layout = 'front';
 <!--                            </div>-->
 <!--                        </div>-->
                         <div id="my-tab-content" class="tab-content">
-                            <div class="tab-pane active">
-                                <a class="venobox" href="#" title=""><?= $this->Html->image($productImages[0]->description, ['alt' => 'CakePHP','class' => 'img-fluid']); ?></a>
+                            <div class="tab-pane active" id="view1">
+                                <a class="venobox" href="<?php 'img/' . $productImages[0]->description . '/' ?>" data-gall="gallery" title=""><?= $this->Html->image($productImages[0]->description, ['alt' => 'CakePHP','class' => 'img-fluid']); ?>
+                                    </a>
                             </div>
                         </div>
                         <div id="viewproduct" class="nav nav-tabs product-view bxslider" data-tabs="tabs">
@@ -97,18 +98,18 @@ $this->layout = 'front';
                         <p><?= h($product->description) ?></p>
                     </div>
 
-<!--                    <div class="product-attributes clearfix">-->
-<!--                                <span id="quantity-wanted-p" class="pull-left">-->
-<!--                                    <span class="dec qtybutton">-</span>-->
-<!--                                    <input type="text" class="cart-plus-minus-box" value="1">-->
-<!--                                    <span class="inc qtybutton">+</span>-->
-<!--                                </span>-->
-<!--                        <span>-->
-<!--                                    <a href="cart.html" class="cart-btn">-->
-<!--                                    <i class="fa fa-shopping-cart"></i>-->
-<!--                                    <span>Add to Cart</span></a>-->
-<!--                                </span>-->
-<!--                    </div>-->
+                    <div class="product-attributes clearfix">
+                                <span id="quantity-wanted-p" class="pull-left">
+                                    <span class="dec qtybutton">-</span>
+                                    <input type="text" class="cart-plus-minus-box" value="1">
+                                    <span class="inc qtybutton">+</span>
+                                </span>
+                        <span>
+                                    <a href="cart.html" class="cart-btn">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span>Add to Cart</span></a>
+                                </span>
+                    </div>
                 </div>
             </div>
         </div>
