@@ -56,7 +56,8 @@ $this->layout = 'front';
                     <div id="content-eleyas">
                         <div id="my-tab-content" class="tab-content">
                             <div class="tab-pane active" id="view1">
-                                <a class="venobox" href="<?php 'img/' . $productImages[0]->description . '/' ?>" data-gall="gallery" title=""><?= $this->Html->image($productImages[0]->description, ['alt' => 'CakePHP','class' => 'img-fluid']); ?><span>View larger<i class="fa fa-search-plus"></i></span></a>
+                                <a class="venobox" href="<?php 'img/' . $productImages[0]->description . '/' ?>" data-gall="gallery" title=""><?= $this->Html->image($productImages[0]->description, ['alt' => 'CakePHP','class' => 'img-fluid']); ?>
+                                    </a>
                             </div>
                         </div>
                         <div id="viewproduct" class="nav nav-tabs product-view bxslider" data-tabs="tabs">
