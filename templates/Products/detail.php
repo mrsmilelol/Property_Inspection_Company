@@ -54,6 +54,18 @@ $this->layout = 'front';
             <div class="col-lg-4 col-md-4 col-sm-5">
                 <div class="single-product-image">
                     <div id="content-eleyas">
+<!--                        <div id="my-tab-content" class="tab-content">-->
+<!--                            <div class="tab-pane active" id="view1">-->
+<!--                                <a class="venobox" href="--><!--<?php //'img/' . $productImages[0]->description . '/' ?>--><!--" data-gall="gallery" title="">-->
+<!--                                    --><!--<?//= $this->Html->image($productImages[0]->description,
+//                                        ['alt' => 'CakePHP','class' => 'img-fluid']);
+//                                    ?>-->
+<!--                                    <span>View larger-->
+<!--                                        <i class="fa fa-search-plus"></i>-->
+<!--                                    </span>-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <div id="my-tab-content" class="tab-content">
                             <div class="tab-pane active" id="view1">
                                 <a class="venobox" href="<?php 'img/' . $productImages[0]->description . '/' ?>" data-gall="gallery" title=""><?= $this->Html->image($productImages[0]->description, ['alt' => 'CakePHP','class' => 'img-fluid']); ?>
