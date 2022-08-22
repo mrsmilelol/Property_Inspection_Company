@@ -72,7 +72,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             <h4><?= __('Related products') ?></h4>
             <?php if (!empty($category->products)) : ?>
                 <div class="table-responsive">
-                    <table>
+                    <table class="table table-bordered" id="categoryTable" width="100%" cellspacing="0">
                         <tr>
                             <th><?= __('ID') ?></th>
                             <th><?= __('Name') ?></th>
