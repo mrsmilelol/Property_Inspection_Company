@@ -88,7 +88,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <div class="table-responsive">
                     <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <tr>
-                            <th><?= __('ID') ?></th>
+                            <th data-visible="false"><?= __('ID') ?></th>
                             <th><?= __('Order ID') ?></th>
                             <th><?= __('Product ID') ?></th>
                             <th><?= __('Quantity') ?></th>
@@ -103,7 +103,10 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                                 <td class="actions">
                                     <?= $this->Html->link(__('View'), ['controller' => 'OrderItems', 'action' => 'view', $orderItems->id]) ?>
                                     <?= $this->Html->link(__('Edit'), ['controller' => 'OrderItems', 'action' => 'edit', $orderItems->id]) ?>
-                                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'OrderItems', 'action' => 'delete', $orderItems->id], ['confirm' => __('Are you sure you want to delete # {0}?', $orderItems->id)]) ?>
+<!--                                    --><!--<?//= $this->Form->postLink(__('Delete'),
+//                                        ['controller' => 'OrderItems', 'action' => 'delete', $orderItems->id],
+//                                        ['confirm' => __('Are you sure you want to delete # {0}?', $orderItems->id)])
+//                                    ?>-->
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -117,7 +120,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <div class="table-responsive">
                     <table>
                         <tr>
-                            <th><?= __('ID') ?></th>
+                            <th data-visible="false"><?= __('ID') ?></th>
                             <th><?= __('Parent ID') ?></th>
                             <th><?= __('Description') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
@@ -130,7 +133,10 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                                 <td class="actions">
                                     <?= $this->Html->link(__('View'), ['controller' => 'Categories', 'action' => 'view', $categories->id]) ?>
                                     <?= $this->Html->link(__('Edit'), ['controller' => 'Categories', 'action' => 'edit', $categories->id]) ?>
-                                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Categories', 'action' => 'delete', $categories->id], ['confirm' => __('Are you sure you want to delete # {0}?', $categories->id)]) ?>
+<!--                                    --><!--<?//= $this->Form->postLink(__('Delete'),
+//                                        ['controller' => 'Categories', 'action' => 'delete', $categories->id],
+//                                        ['confirm' => __('Are you sure you want to delete # {0}?', $categories->id)])
+//                                    ?>-->
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -144,7 +150,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <div class="table-responsive">
                     <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <tr>
-                            <th><?= __('ID') ?></th>
+                            <th data-visible="false"><?= __('ID') ?></th>
                             <th><?= __('User ID') ?></th>
                             <th><?= __('Product ID') ?></th>
                             <th><?= __('Description') ?></th>

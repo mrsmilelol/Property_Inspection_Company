@@ -46,9 +46,9 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="<?= $this->Url->build('/') ?>">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
+            <a class="nav-link" href="<?= $this->Url->build(['controller'=>'Products', 'action'=>'shop']) ?>">
+                <i class="fas fa-fw fa-store-alt"></i>
+                <span>Shop</span></a>
         </li>
 
         <!-- Divider -->
@@ -71,7 +71,7 @@
                     <h6 class="collapse-header">Product menu:</h6>
                     <a class="collapse-item" href="<?= $this->Url->build('/') ?>">Products</a>
                     <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Categories','action' => 'index']) ?>">Categories</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'ProductImages','action' => 'index']) ?>">Images</a>
+<!--                    <a class="collapse-item" href="--><!--<?//= $this->Url->build(['controller' => 'ProductImages','action' => 'index']) ?>--><!--">Images</a>-->
 <!--                    <a class="collapse-item" href="--><!--<?//= $this->Url->build(['controller' => 'ProductReviews','action' => 'index']) ?>--><!--">Reviews</a>-->
                 </div>
             </div>
