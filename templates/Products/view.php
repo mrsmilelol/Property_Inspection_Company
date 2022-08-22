@@ -88,7 +88,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <div class="table-responsive">
                     <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <tr>
-                            <th><?= __('ID') ?></th>
+                            <th data-visible="false"><?= __('ID') ?></th>
                             <th><?= __('Order ID') ?></th>
                             <th><?= __('Product ID') ?></th>
                             <th><?= __('Quantity') ?></th>
@@ -120,7 +120,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <div class="table-responsive">
                     <table>
                         <tr>
-                            <th><?= __('ID') ?></th>
+                            <th data-visible="false"><?= __('ID') ?></th>
                             <th><?= __('Parent ID') ?></th>
                             <th><?= __('Description') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
@@ -150,7 +150,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <div class="table-responsive">
                     <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <tr>
-                            <th><?= __('ID') ?></th>
+                            <th data-visible="false"><?= __('ID') ?></th>
                             <th><?= __('User ID') ?></th>
                             <th><?= __('Product ID') ?></th>
                             <th><?= __('Description') ?></th>
