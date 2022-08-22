@@ -12,6 +12,8 @@ $formTemplate= [
     'input' => '<input type="{{type}}" name="{{name}}" class="form-control"{{attrs}}/>',
 ];
 $this->Form->setTemplates($formTemplate);
+echo $this->Html->css('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css', ['block' => true]);
+echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', ['block' => true]);
 ?>
 <div class="card shadow mb-4">
     <div class="d-sm-flex align-items-center justify-content-between card-header">
@@ -23,6 +25,7 @@ $this->Form->setTemplates($formTemplate);
                 <?php
                     //echo $this->Form->control('category_id', ['options' => $categories, 'empty' => true]);
                     //echo $this->Form->control('inventory_id', ['options' => $productInventories, 'empty' => true]);
+                    echo $this->Form->control('categories._ids', ['options' => $categories,'class' => 'category_select_main', 'id' => 'select_category_main', 'style' => 'width:600px']);
                     echo $this->Form->control('name');
                     echo $this->Form->control('description');
                     echo $this->Form->control('price', ['label'=>'Normal price']);
@@ -220,3 +223,14 @@ $this->Form->setTemplates($formTemplate);
         <?= $this->Form->end() ?>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('.category_select_main').select2();
+    });
+</script>
+<style>
+    .select2-container {
+        display: block;
+    }
+</style>
