@@ -19,7 +19,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <table class="table table-bordered" id="products" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th><?= h('ID') ?></th>
+                            <th data-visible="false"><?= h('ID') ?></th>
                             <th><?= h('Parent category') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
