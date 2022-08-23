@@ -21,9 +21,9 @@ class CategoriesController extends AppController
         $this->paginate = [
             'contain' => ['ParentCategories'],
         ];
-        $categories = $this->paginate($this->Categories);
-
-        $this->set(compact('categories'));
+        $categories = $this->paginate($this->Categories->find('all')->where(['Categories.parent_id IS'=>null]));
+        $subcategories = $this->paginate($this->Categories->find('all')->where(['Categories.parent_id IS NOT'=>null]));
+        $this->set(compact('categories','subcategories'));
     }
 
     /**
@@ -62,6 +62,29 @@ class CategoriesController extends AppController
         $parentCategories = $this->Categories->ParentCategories->find('list', ['limit' => 200])->all();
         $products = $this->Categories->Products->find('list', ['limit' => 200])->all();
         $this->set(compact('category', 'parentCategories', 'products'));
+    }
+
+    /**
+     * AddSub method
+     *
+     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
+     */
+    public function sub()
+    {
+        $category = $this->Categories->newEmptyEntity();
+        $categories = $this->Categories->find('list')->where(['Categories.parent_id IS'=>null]);
+        if ($this->request->is('post')) {
+            $category = $this->Categories->patchEntity($category, $this->request->getData());
+            if ($this->Categories->save($category)) {
+                $this->Flash->success(__('The category has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The category could not be saved. Please, try again.'));
+        }
+        $parentCategories = $this->Categories->ParentCategories->find('list', ['limit' => 200])->all();
+        $products = $this->Categories->Products->find('list', ['limit' => 200])->all();
+        $this->set(compact('category', 'parentCategories', 'products','categories'));
     }
 
     /**
