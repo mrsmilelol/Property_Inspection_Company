@@ -1,8 +1,6 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Category $category
- * @var \App\Model\Entity\Category $categories
  * @var \Cake\Collection\CollectionInterface|string[] $parentCategories
  * @var \Cake\Collection\CollectionInterface|string[] $products
  */
@@ -23,7 +21,7 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
         <table class="table table-bordered" id="products" width="100%" cellspacing="0">
             <?= $this->Form->create($category) ?>
             <?php
-            echo $this->Form->control('parent_id', ['options' => $categories, 'label' => 'Parent Category']);
+            echo $this->Form->control('parent_id', ['options' => $parentCategories, 'label' => 'Parent Category']);
             echo $this->Form->control('description', ['label' => 'Sub Category Name']);
             echo $this->Form->control('products._ids', ['options' => $products,'class' => 'category_select_main', 'id' => 'select_category_main', 'style' => 'width:600px',]);
             //echo $this->Form->control('created_at');

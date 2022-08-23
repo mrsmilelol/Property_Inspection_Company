@@ -65,14 +65,14 @@ class CategoriesController extends AppController
     }
 
     /**
-     * AddSub method
+     * Add Subcategories method
      *
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
     public function sub()
     {
         $category = $this->Categories->newEmptyEntity();
-        $categories = $this->Categories->find('list')->where(['Categories.parent_id IS'=>null]);
+
         if ($this->request->is('post')) {
             $category = $this->Categories->patchEntity($category, $this->request->getData());
             if ($this->Categories->save($category)) {
@@ -82,9 +82,9 @@ class CategoriesController extends AppController
             }
             $this->Flash->error(__('The category could not be saved. Please, try again.'));
         }
-        $parentCategories = $this->Categories->ParentCategories->find('list', ['limit' => 200])->all();
+        $parentCategories = $this->Categories->find('list')->where(['Categories.parent_id IS'=>null]);
         $products = $this->Categories->Products->find('list', ['limit' => 200])->all();
-        $this->set(compact('category', 'parentCategories', 'products','categories'));
+        $this->set(compact('category', 'parentCategories', 'products'));
     }
 
     /**
@@ -108,7 +108,33 @@ class CategoriesController extends AppController
             }
             $this->Flash->error(__('The category could not be saved. Please, try again.'));
         }
-        $parentCategories = $this->Categories->ParentCategories->find('list', ['limit' => 200])->all();
+        $parentCategories = $this->Categories->find('list')->where(['Categories.parent_id IS'=>null]);
+        $products = $this->Categories->Products->find('list', ['limit' => 200])->all();
+        $this->set(compact('category', 'parentCategories', 'products'));
+    }
+
+    /**
+     * Edit subcategories method
+     *
+     * @param string|null $id Category id.
+     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function editsub($id = null)
+    {
+        $category = $this->Categories->get($id, [
+            'contain' => ['Products'],
+        ]);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $category = $this->Categories->patchEntity($category, $this->request->getData());
+            if ($this->Categories->save($category)) {
+                $this->Flash->success(__('The category has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The category could not be saved. Please, try again.'));
+        }
+        $parentCategories = $this->Categories->find('list')->where(['Categories.parent_id IS'=>null]);
         $products = $this->Categories->Products->find('list', ['limit' => 200])->all();
         $this->set(compact('category', 'parentCategories', 'products'));
     }

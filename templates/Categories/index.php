@@ -70,7 +70,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                         <td><?= h($subcategory->description) ?></td>
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $subcategory->id]) ?>
-                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $subcategory->id]) ?>
+                            <?= $this->Html->link(__('Edit'), ['action' => 'editsub', $subcategory->id]) ?>
                             <!--                                --><!--<?//= $this->Form->postLink(__('Delete'),
                             //                                    ['action' => 'delete', $category->id],
                             //                                    ['confirm' => __('Are you sure you want to delete # {0}?', $category->id)])
