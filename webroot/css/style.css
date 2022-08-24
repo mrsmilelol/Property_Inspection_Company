@@ -113,14 +113,14 @@ body {
   margin: 0;
 }
 .header-area .header-top {
-  border-bottom: 1px solid #100f0f;
+  border-bottom: 1px solid #d3d3d3;
     /*border-bottom: 1px solid #3b3b3b;*/
-    background-color: #d3d3d3;
+    background-color: #100f0f;
 }
 
 .header-area .header-bottom {
-    border-bottom: 1px solid #100f0f;
-    background-color: #d3d3d3;
+    border-bottom: 1px solid #d3d3d3;
+    background-color: #100f0f;
 }
 /*----------------------------------------*/
 /*  2.1	Header Top CSS
@@ -198,7 +198,7 @@ body {
   text-align: center;
 }
 .mainmenu ul li{display:inline-block;position:relative}
-.mainmenu ul li a{color: #100f0f;
+.mainmenu ul li a{color: #fcfafa;
 display: block;
 font-family: "Poppins",sans-serif;
 font-size: 14px;
@@ -1159,7 +1159,7 @@ h3.footer-widget-title {
   overflow: hidden;
 }
 .social-icon ul li {
-  color: #100f0f;
+  color: #ddd;
   display: inline;
   float: left;
   font-size: 13px;
@@ -1170,9 +1170,9 @@ h3.footer-widget-title {
   padding: 11px 0;
 }
 .social-icon ul li a {
-  border: 1px solid #100f0f;
+  border: 1px solid #dddddd;
   border-radius: 100%;
-  color: #100f0f;
+  color: #dddddd;
   display: block;
   height: 35px;
   line-height: 35px;
@@ -1184,7 +1184,7 @@ h3.footer-widget-title {
   color: #c37c3d;
 }
 .toggle-footer li a {
-  color: #100f0f;
+  color: #dddddd;
   font-size: 13px;
 }
 .footer-middle {
@@ -1206,13 +1206,13 @@ h3.footer-widget-title {
   width: 100%;
 }
 .toggle-footer li {
-  color: #100f0f;
+  color: #dddddd;
   font-size: 12px;
   font-weight: 300;
   line-height: 35px;
 }
 .contact-area .footer-info ul li {
-  color: #100f0f;
+  color: #dddddd;
   font-size: 13px;
   font-weight: 300;
   line-height: 35px;
@@ -1221,7 +1221,7 @@ h3.footer-widget-title {
 .contact-area .footer-info.contact i {
   border: 2px solid #74797f;
   border-radius: 100%;
-  color: #100f0f;
+  color: #ffffff;
   display: inline-block;
   font-size: 14px;
   height: 35px;
@@ -1237,7 +1237,7 @@ h3.footer-widget-title {
   margin: 0;
 }
 .contact-area .footer-info p {
-  color: #100f0f;
+  color: #dddddd;
   font-weight: 300;
   line-height: 30px;
 }
@@ -1249,7 +1249,7 @@ h3.footer-widget-title {
   padding: 15px 0;
 }
 .footer-bottom-area p {
-  color: #100f0f;
+  color: #ddd;
   font-size: 13px;
   font-weight: 300;
   margin: 0;
