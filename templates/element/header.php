@@ -181,7 +181,7 @@
                                 <li><a href="<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','main']); ?>">Home</a>
                                 <li><a href="<?= $this->Url->build(['controller'=>'Products', 'action'=>'shop']); ?>">Shop</a>
                                 </li>
-                                <li><a href="<?= $this->Url->build(['controller'=>'Categories', 'action'=>'view', 1]); ?>">Styles</a>
+                                <li><a href="<?= $this->Url->build(['controller'=>'Categories', 'action'=>'list', 1]); ?>">Styles</a>
                                     <!-- Mega Menu Four Column -->
                                     <div class="mega-menu two-column">
                                         <?php $categories = $categories->toArray();
@@ -189,10 +189,10 @@
                                         <?php $saved_id = $categories[$x]->id; ?>
                                         <span>
                                             <a class="mega-title" href=<?= $this->Url->build(['controller'=>'Categories',
-                                                'action'=> 'view', $categories[$x]->id]); ?>><?= h($categories[$x]->description) ?></a>
+                                                'action'=> 'list', $categories[$x]->id]); ?>><?= h($categories[$x]->description) ?></a>
                                                 <?php foreach ($categories as $subcategory): if ($subcategory->parent_id == $saved_id):  ?>
                                                 <a href=<?= $this->Url->build(['controller' => 'Categories',
-                                                    'action' => 'view', $subcategory->id]); ?>><?= h($subcategory->description) ?></a>
+                                                    'action' => 'list', $subcategory->id]); ?>><?= h($subcategory->description) ?></a>
                                                 <?php endif; ?>
                                                 <?php endforeach; ?>
                                         </span>
@@ -234,12 +234,12 @@
                                 for($x = 0; $x <= count($categories)-1; $x++): if ($categories[$x]->id > 1 and $categories[$x]->parent_id == null): ?>
                                     <?php $saved_id = $categories[$x]->id; ?>
                                 <li class="expand"><a href=<?= $this->Url->build(['controller'=>'Categories',
-                                        'action'=> 'view', $categories[$x]->id]); ?>><?= h($categories[$x]->description) ?></a>
+                                        'action'=> 'list', $categories[$x]->id]); ?>><?= h($categories[$x]->description) ?></a>
                                     <!-- DropDown Menu -->
                                     <ul class="restrain sub-menu">
                                         <?php foreach ($categories as $subcategory): if ($subcategory->parent_id == $saved_id):  ?>
                                         <li><a href=<?= $this->Url->build(['controller' => 'Categories',
-                                                'action' => 'view', $subcategory->id]); ?>><?= h($subcategory->description) ?></a>
+                                                'action' => 'list', $subcategory->id]); ?>><?= h($subcategory->description) ?></a>
                                         </li>
                                         <?php endif; ?>
                                         <?php endforeach; ?>
