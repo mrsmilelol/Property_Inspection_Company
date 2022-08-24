@@ -13,6 +13,7 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Product[]|\Cake\Collection\CollectionInterface $products
+ * @var \App\Model\Entity\Category $category
  */
 
 $cakeDescription = 'CakePHP: the rapid development php framework';
@@ -238,8 +239,8 @@ $this->layout = 'front';
             <div class="col-xs-12 col-sm-9">
                 <a><?= $this->Html->image('shop.jpg'); ?> </a>
                 <h1 class="page-heading section-padding2">
-                    <span class="cat-name pull-left">Bedroom </span>
-                    <span class="heading-counter pull-right">There are 2 products.</span>
+                    <span class="cat-name pull-left"><?= h($category->description) ?> </span>
+                    <span class="heading-counter pull-right">There is/are <?= h(count($category->products)) ?> product(s) within this category.</span>
                 </h1>
                 <div class="shop-item-filter">
                     <div class="shop-tab clearfix">
@@ -294,7 +295,7 @@ $this->layout = 'front';
                         <div class="row">
                             <?= $this->fetch('content') ?>
                             <div class="col-xs-12 col-sm-6 col-md-4 first-in-line first-item-of-tablet-line first-item-of-mobile-line">
-                                <?php for ($x = 0; $x <= count($products)-1; $x+=3):?>
+                                <?php for ($x = 0; $x <= count($category->products)-1; $x+=3):?>
                                 <div class="single-product">
                                     <!--product Content-->
                                     <div class="product-img-content">
@@ -334,7 +335,7 @@ $this->layout = 'front';
                                 <?php endfor?>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-4 last-item-of-tablet-line">
-                                <?php for ($x = 1; $x <= count($products)-1; $x+=3):?>
+                                <?php for ($x = 1; $x <= count($category->products)-1; $x+=3):?>
                                     <div class="single-product">
                                         <!--product Content-->
                                         <div class="product-img-content">
@@ -407,7 +408,7 @@ $this->layout = 'front';
                                             </div>
                                             <!--Product Price-->
                                             <div class="product-price">
-                                                <span class="new-price"><?= $this->number->currency($products[$x]->price) ?></span>
+                                                <span class="new-price"><?= $this->Number->currency($products[$x]->price) ?></span>
                                             </div>
                                         </div>
                                     </div>

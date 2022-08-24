@@ -16,7 +16,7 @@ use Cake\ORM\Entity;
  *
  * @property \App\Model\Entity\ParentCategory $parent_category
  * @property \App\Model\Entity\ChildCategory[] $child_categories
- * @property \App\Model\Entity\ProductCategory[] $product_categories
+ * @property \App\Model\Entity\Product[] $products
  */
 class Category extends Entity
 {
@@ -36,6 +36,6 @@ class Category extends Entity
         'modified_at' => true,
         'parent_category' => true,
         'child_categories' => true,
-        'product_categories' => true,
+        'products' => true,
     ];
 }

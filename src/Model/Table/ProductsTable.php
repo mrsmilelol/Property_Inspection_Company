@@ -12,10 +12,10 @@ use Cake\Validation\Validator;
  * Products Model
  *
  * @property \App\Model\Table\OrderItemsTable&\Cake\ORM\Association\HasMany $OrderItems
- * @property \App\Model\Table\ProductCategoriesTable&\Cake\ORM\Association\HasMany $ProductCategories
  * @property \App\Model\Table\ProductImagesTable&\Cake\ORM\Association\HasMany $ProductImages
  * @property \App\Model\Table\ProductReviewsTable&\Cake\ORM\Association\HasMany $ProductReviews
  * @property \App\Model\Table\ShoppingSessionsTable&\Cake\ORM\Association\HasMany $ShoppingSessions
+ * @property \App\Model\Table\CategoriesTable&\Cake\ORM\Association\BelongsToMany $Categories
  *
  * @method \App\Model\Entity\Product newEmptyEntity()
  * @method \App\Model\Entity\Product newEntity(array $data, array $options = [])
@@ -50,9 +50,6 @@ class ProductsTable extends Table
         $this->hasMany('OrderItems', [
             'foreignKey' => 'product_id',
         ]);
-        $this->hasMany('ProductCategories', [
-            'foreignKey' => 'product_id',
-        ]);
         $this->hasMany('ProductImages', [
             'foreignKey' => 'product_id',
         ]);
@@ -61,6 +58,11 @@ class ProductsTable extends Table
         ]);
         $this->hasMany('ShoppingSessions', [
             'foreignKey' => 'product_id',
+        ]);
+        $this->belongsToMany('Categories', [
+            'foreignKey' => 'product_id',
+            'targetForeignKey' => 'category_id',
+            'joinTable' => 'categories_products',
         ]);
     }
 
@@ -74,7 +76,7 @@ class ProductsTable extends Table
     {
         $validator
             ->scalar('name')
-            ->maxLength('name', 32)
+            ->maxLength('name', 64)
             ->requirePresence('name', 'create')
             ->notEmptyString('name');
 
@@ -86,29 +88,37 @@ class ProductsTable extends Table
         $validator
             ->integer('price')
             ->requirePresence('price', 'create')
-            ->notEmptyString('price');
+            ->notEmptyString('price')
+            ->add('price','priceValue',[
+                'rule'=>function ($value, array $context) {
+                    if ($value > 0) {
+                        return true;
+                    }
+                    return 'Price must be over $0.';
+                }
+            ]);
 
         $validator
             ->scalar('material')
-            ->maxLength('material', 16)
+            ->maxLength('material', 64)
             ->requirePresence('material', 'create')
             ->notEmptyString('material');
 
         $validator
             ->scalar('brand')
-            ->maxLength('brand', 16)
+            ->maxLength('brand', 64)
             ->requirePresence('brand', 'create')
             ->notEmptyString('brand');
 
         $validator
             ->scalar('style')
-            ->maxLength('style', 16)
+            ->maxLength('style', 64)
             ->requirePresence('style', 'create')
             ->notEmptyString('style');
 
         $validator
             ->scalar('colour')
-            ->maxLength('colour', 16)
+            ->maxLength('colour', 64)
             ->requirePresence('colour', 'create')
             ->notEmptyString('colour');
 
@@ -119,7 +129,7 @@ class ProductsTable extends Table
 
         $validator
             ->scalar('size')
-            ->maxLength('size', 16)
+            ->maxLength('size', 64)
             ->requirePresence('size', 'create')
             ->notEmptyString('size');
 
@@ -130,20 +140,36 @@ class ProductsTable extends Table
 
         $validator
             ->scalar('finish')
-            ->maxLength('finish', 16)
+            ->maxLength('finish', 64)
             ->allowEmptyString('finish');
 
         $validator
             ->integer('wholesale_price')
-            ->allowEmptyString('wholesale_price');
+            ->allowEmptyString('wholesale_price')
+            ->add('wholesale_price','priceValue',[
+                'rule'=>function ($value, array $context) {
+                    if ($value > 0 and $value < $context['data']['price']) {
+                        return true;
+                    }
+                    return 'Wholesale price must be over $0 but less than the normal price.';
+                }
+            ]);
 
         $validator
             ->integer('sale_price')
-            ->allowEmptyString('sale_price');
+            ->allowEmptyString('sale_price')
+            ->add('sale_price','priceValue',[
+                'rule'=>function ($value, array $context) {
+                    if ($value > 0 and $value < $context['data']['price']) {
+                        return true;
+                    }
+                    return 'Sale price must be over $0 but less than the normal price.';
+                }
+            ]);
 
         $validator
             ->scalar('manufacturing')
-            ->maxLength('manufacturing', 32)
+            ->maxLength('manufacturing', 64)
             ->allowEmptyString('manufacturing');
 
         $validator

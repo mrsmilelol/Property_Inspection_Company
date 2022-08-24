@@ -24,18 +24,18 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <th data-visible="false"><?= h('id') ?></th>
                     <th><?= h('Name') ?></th>
                     <th><?= h('Description') ?></th>
-                    <th><?= h('Price') ?></th>
+                    <th><?= h('Normal price') ?></th>
                     <th><?= h('Material') ?></th>
                     <th><?= h('Brand') ?></th>
                     <th><?= h('Style') ?></th>
                     <th data-visible="false"><?= h('Colour') ?></th>
                     <th><?= h('Units in stock') ?></th>
-                    <th data-visible="false"><?= h('Size') ?></th>
-                    <th data-visible="false"><?= h('Weight') ?>
+                    <th data-visible="false"><?= h('Size (cm)') ?></th>
+                    <th data-visible="false"><?= h('Weight (kg)') ?>
                     <th data-visible="false"><?= h('Finish') ?></th>
-                    <th data-visible="false"><?= h('Wholesale price') ?></th>
                     <th><?= h('Sale price') ?></th>
-                    <th data-visible="false"><?= h('Manufacturing') ?></th>
+                    <th data-visible="false"><?= h('Wholesale price') ?></th>
+                    <th data-visible="false"><?= h('Manufacturer') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
                 </thead>
@@ -54,13 +54,12 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                         <td><?= h($product->size) ?></td>
                         <td><?= h($product->weight) ?></td>
                         <td><?= h($product->finish) ?></td>
-                        <td><?= h($product->wholesale_price) ?></td>
                         <td><?= h($product->sale_price) ?></td>
+                        <td><?= h($product->wholesale_price) ?></td>
                         <td><?= h($product->manufacturing) ?></td>
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $product->id]) ?>
                             <?= $this->Html->link(__('Edit'), ['action' => 'edit', $product->id]) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $product->id], ['confirm' => __('Are you sure you want to delete # {0}?', $product->id)]) ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>

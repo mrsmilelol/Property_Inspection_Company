@@ -16,18 +16,18 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
 ?>
 <div class="card shadow mb-4">
     <div class="d-sm-flex align-items-center justify-content-between card-header">
-        <h1 class="h3 mb-0 text-gray-800"><?= __('Edit parent category') ?></h1>
+        <h1 class="h3 mb-0 text-gray-800"><?= __('Edit subcategory') ?></h1>
     </div>
     <div class="card-body">
         <table class="table table-bordered" id="products" width="100%" cellspacing="0">
             <?= $this->Form->create($category) ?>
-                <?php
-                    //echo $this->Form->control('parent_id', ['options' => $parentCategories, 'empty' => true]);
-                    echo $this->Form->control('description', ['label'=>'Parent category name']);
-                    echo $this->Form->control('products._ids', ['options' => $products,'class' => 'category_select_main', 'id' => 'select_category_main', 'style' => 'width:600px',]);
-                    //echo $this->Form->control('created_at');
-                    //echo $this->Form->control('modified_at');
-                ?>
+            <?php
+            echo $this->Form->control('parent_id', ['options' => $parentCategories, 'empty' => true, 'label' => 'Parent category']);
+            echo $this->Form->control('description', ['label'=>'Subcategory name']);
+            echo $this->Form->control('products._ids', ['options' => $products,'class' => 'category_select_main', 'id' => 'select_category_main', 'style' => 'width:600px',]);
+            //echo $this->Form->control('created_at');
+            //echo $this->Form->control('modified_at');
+            ?>
             <br>
             <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
             <?= $this->Form->end() ?>
