@@ -99,6 +99,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <?= $this->Flash->render() ?>
 <?= $this->fetch('content') ?>
 
+<?= $this->element('contact') ?>
+
 <?= $this->element('footer') ?>
 <!-- jquery
 ============================================ -->

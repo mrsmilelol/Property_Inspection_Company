@@ -251,7 +251,6 @@
                                 <li>
                                     <a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'about']); ?>>About Us</a>
                                 </li>
-                                <li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'contact']); ?>>Contact Us</a></li>
                             </ul>
                         </nav>
                     </div>
