@@ -158,4 +158,18 @@ class CategoriesController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function list($id=null)
+    {
+//        $this->loadModel('Categories');
+        $category = $this->Categories->get($id, [
+            'contain' => ['ParentCategories', 'Products', 'ChildCategories'],
+        ]);
+        $parentCategories = $this->Categories->find('list');
+        $products = $this->Categories->Products->find()
+            //->where(['Categories.parent_id IS'=>null]))
+            ->contain(['ProductImages'])
+            ->all()->toArray();
+        $this->set(compact('category', 'parentCategories', 'products'));
+    }
 }

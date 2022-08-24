@@ -10,9 +10,9 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
     <!-- Page Heading -->
     <div class="card shadow mb-4">
         <div class="d-sm-flex align-items-center justify-content-between card-header">
-            <h1 class="h3 mb-0 text-gray-800"><?= __('Parent Categories') ?></h1>
+            <h1 class="h3 mb-0 text-gray-800"><?= __('Parent categories') ?></h1>
             <a href="<?= $this->Url->build(['action' => 'add']) ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                    class="fas fa-plus fa-sm text-white-50"></i> Add new category</a>
+                    class="fas fa-plus fa-sm text-white-50"></i> Add new parent category</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -47,9 +47,9 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
 
 <div class="card shadow mb-4">
     <div class="d-sm-flex align-items-center justify-content-between card-header">
-        <h1 class="h3 mb-0 text-gray-800"><?= __('Sub Categories') ?></h1>
+        <h1 class="h3 mb-0 text-gray-800"><?= __('Subcategories') ?></h1>
         <a href="<?= $this->Url->build(['controller'=>'Categories','action' => 'sub']) ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-plus fa-sm text-white-50"></i> Add new sub category</a>
+                class="fas fa-plus fa-sm text-white-50"></i> Add new subcategory</a>
     </div>
     <div class="card-body">
         <div class="table-responsive">

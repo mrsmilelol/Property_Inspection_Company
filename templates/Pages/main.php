@@ -120,6 +120,7 @@ $this->layout = 'front';
 <!--    </div>-->
 <!--</div>-->
 <!--Brand Area End-->
+<?= $this->element('contact') ?>
 
 </body>
 </html>
