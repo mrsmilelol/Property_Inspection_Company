@@ -47,11 +47,11 @@ $this->layout = 'front';
 <!--    </div>-->
 <!--</div>-->
 
-<div class="contact-us-area section-padding2">
+<div class="contact-us-area section-padding2 black-area">
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-sm-12 col-xs-12 pull-left">
-                <div class="about-page-cntent">
+                <div class="contact-page-cntent">
                     <h3>Our address</h3>
                     <p>1680 Dandenong Rd, Oakleigh East VIC 3166</p>
                     <p>(Melbourne)</p>
@@ -60,14 +60,14 @@ $this->layout = 'front';
                     <p>Email: info@chelseafurniture.com.au</p>
                     <p>Telephone: 03 7068 0002</p>
                 </div>
-                <div class="social-icon">
+                <div class="white-social-icon">
                     <ul>
                         <li><a href="https://www.facebook.com/chelsea.furnitures/"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="https://www.instagram.com/chelseafurniture_australia"><i class="fa fa-instagram"></i></a></li>
                         <li><a href="https://wa.me/+61404737301"><i class="fa fa-whatsapp"></i></a></li>
                     </ul>
                 </div>
-                <div class="about-page-cntent">
+                <div class="contact-page-cntent">
                     <p><br></p>
                     <p>Do you have any questions about our <br>
                         services and products? We will be happy <br> to help you.</p>

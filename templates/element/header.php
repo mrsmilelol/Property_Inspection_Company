@@ -67,10 +67,10 @@
             <div class="row">
                 <div class="col-lg-1 col-md-3 col-sm-6 col-xs-12">
                     <!-- Header Logo -->
-                    <div class="header-logo logo-main-page pull-left">
+                    <div class="header-logo logo-main-page">
                         <a href=<?= $this->Url->build(['controller'=>'Pages',
                             'action'=>'display','main']); ?> title="Chelsea Furniture">
-                        <?= $this->Html->image('chelsea-furniture-logo-smaller.png',
+                        <?= $this->Html->image('chelsea-furniture-logo-w102h105.png',
                             ['class' =>'img-responsive']); ?>
                         </a>
                     </div>
