@@ -21,9 +21,9 @@ class CategoriesController extends AppController
         $this->paginate = [
             'contain' => ['ParentCategories'],
         ];
-        $categories = $this->paginate($this->Categories);
-
-        $this->set(compact('categories'));
+        $categories = $this->paginate($this->Categories->find('all')->where(['Categories.parent_id IS'=>null]));
+        $subcategories = $this->paginate($this->Categories->find('all')->where(['Categories.parent_id IS NOT'=>null]));
+        $this->set(compact('categories','subcategories'));
     }
 
     /**
@@ -65,6 +65,29 @@ class CategoriesController extends AppController
     }
 
     /**
+     * Add Subcategories method
+     *
+     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
+     */
+    public function sub()
+    {
+        $category = $this->Categories->newEmptyEntity();
+
+        if ($this->request->is('post')) {
+            $category = $this->Categories->patchEntity($category, $this->request->getData());
+            if ($this->Categories->save($category)) {
+                $this->Flash->success(__('The category has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The category could not be saved. Please, try again.'));
+        }
+        $parentCategories = $this->Categories->find('list')->where(['Categories.parent_id IS'=>null]);
+        $products = $this->Categories->Products->find('list', ['limit' => 200])->all();
+        $this->set(compact('category', 'parentCategories', 'products'));
+    }
+
+    /**
      * Edit method
      *
      * @param string|null $id Category id.
@@ -85,7 +108,33 @@ class CategoriesController extends AppController
             }
             $this->Flash->error(__('The category could not be saved. Please, try again.'));
         }
-        $parentCategories = $this->Categories->ParentCategories->find('list', ['limit' => 200])->all();
+        $parentCategories = $this->Categories->find('list')->where(['Categories.parent_id IS'=>null]);
+        $products = $this->Categories->Products->find('list', ['limit' => 200])->all();
+        $this->set(compact('category', 'parentCategories', 'products'));
+    }
+
+    /**
+     * Edit subcategories method
+     *
+     * @param string|null $id Category id.
+     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function editsub($id = null)
+    {
+        $category = $this->Categories->get($id, [
+            'contain' => ['Products'],
+        ]);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $category = $this->Categories->patchEntity($category, $this->request->getData());
+            if ($this->Categories->save($category)) {
+                $this->Flash->success(__('The category has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The category could not be saved. Please, try again.'));
+        }
+        $parentCategories = $this->Categories->find('list')->where(['Categories.parent_id IS'=>null]);
         $products = $this->Categories->Products->find('list', ['limit' => 200])->all();
         $this->set(compact('category', 'parentCategories', 'products'));
     }
