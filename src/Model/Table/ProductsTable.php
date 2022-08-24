@@ -88,7 +88,15 @@ class ProductsTable extends Table
         $validator
             ->integer('price')
             ->requirePresence('price', 'create')
-            ->notEmptyString('price');
+            ->notEmptyString('price')
+            ->add('price','priceValue',[
+                'rule'=>function ($value, array $context) {
+                    if ($value > 0) {
+                        return true;
+                    }
+                    return 'Price must be over $0.';
+                }
+            ]);
 
         $validator
             ->scalar('material')
@@ -137,11 +145,27 @@ class ProductsTable extends Table
 
         $validator
             ->integer('wholesale_price')
-            ->allowEmptyString('wholesale_price');
+            ->allowEmptyString('wholesale_price')
+            ->add('wholesale_price','priceValue',[
+                'rule'=>function ($value, array $context) {
+                    if ($value > 0 and $value < $context['data']['price']) {
+                        return true;
+                    }
+                    return 'Wholesale price must be over $0 but less than the normal price.';
+                }
+            ]);
 
         $validator
             ->integer('sale_price')
-            ->allowEmptyString('sale_price');
+            ->allowEmptyString('sale_price')
+            ->add('sale_price','priceValue',[
+                'rule'=>function ($value, array $context) {
+                    if ($value > 0 and $value < $context['data']['price']) {
+                        return true;
+                    }
+                    return 'Sale price must be over $0 but less than the normal price.';
+                }
+            ]);
 
         $validator
             ->scalar('manufacturing')
