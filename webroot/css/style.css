@@ -113,14 +113,15 @@ body {
   margin: 0;
 }
 .header-area .header-top {
-  border-bottom: 1px solid #d3d3d3;
+  border-bottom: 1px solid #100f0f;
     /*border-bottom: 1px solid #3b3b3b;*/
-    background-color: #100f0f;
+    /*border-bottom: 1px solid #d3d3d3;*/
+    background-color: #ffffff;
 }
 
 .header-area .header-bottom {
-    border-bottom: 1px solid #d3d3d3;
-    background-color: #100f0f;
+    border-bottom: 1px solid #100f0f;
+    background-color: #ffffff;
 }
 /*----------------------------------------*/
 /*  2.1	Header Top CSS
@@ -198,7 +199,7 @@ body {
   text-align: center;
 }
 .mainmenu ul li{display:inline-block;position:relative}
-.mainmenu ul li a{color: #fcfafa;
+.mainmenu ul li a{color: #100f0f;
 display: block;
 font-family: "Poppins",sans-serif;
 font-size: 14px;
@@ -1129,9 +1130,9 @@ form.search-box {
 /*----------------------------------------*/
 .footer-area {
   /*background: #2F2F2F;*/
-    border-bottom: 1px solid #dddddd;
-    border-top: 1px solid #dddddd;
-    background-color: #100f0f;
+    border-bottom: 1px solid #100f0f;
+    border-top: 1px solid #100f0f;
+    background-color: #ffffff;
 }
 /*----------------------------------------*/
 /*  14.1	Footer Top CSS
@@ -1148,7 +1149,7 @@ h3.footer-widget-title {
   display: inline-block;
 }
 .footer-middle-content p {
-  color: #ddd;
+  color: #100f0f;
   font-size: 13px;
   font-weight: 300;
   line-height: 22px;
@@ -1159,7 +1160,7 @@ h3.footer-widget-title {
   overflow: hidden;
 }
 .social-icon ul li {
-  color: #ddd;
+  color: #100f0f;
   display: inline;
   float: left;
   font-size: 13px;
@@ -1170,9 +1171,9 @@ h3.footer-widget-title {
   padding: 11px 0;
 }
 .social-icon ul li a {
-  border: 1px solid #dddddd;
+  border: 1px solid #100f0f;
   border-radius: 100%;
-  color: #dddddd;
+  color: #100f0f;
   display: block;
   height: 35px;
   line-height: 35px;
@@ -1183,8 +1184,70 @@ h3.footer-widget-title {
   border-color: #c38748;
   color: #c37c3d;
 }
+.brown-social-icon ul {
+    margin: 0;
+    overflow: hidden;
+}
+.brown-social-icon ul li {
+    color: #100f0f;
+    display: inline;
+    float: left;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 35px;
+    margin-right: 10px;
+    overflow: hidden;
+    padding: 11px 0;
+}
+.brown-social-icon ul li a {
+    /*border: 1px solid #100f0f;*/
+    border: 1px solid #c38748;
+    border-radius: 100%;
+    /*color: #100f0f;*/
+    color: #c37c3d;
+    display: block;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    width: 35px;
+}
+.brown-social-icon ul li a:hover {
+    border-color: #c38748;
+    color: #c37c3d;
+}
+.white-social-icon ul {
+    margin: 0;
+    overflow: hidden;
+}
+.white-social-icon ul li {
+    color: #100f0f;
+    display: inline;
+    float: left;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 35px;
+    margin-right: 10px;
+    overflow: hidden;
+    padding: 11px 0;
+}
+.white-social-icon ul li a {
+    /*border: 1px solid #100f0f;*/
+    border: 1px solid #ffffff;
+    border-radius: 100%;
+    /*color: #100f0f;*/
+    color: #ffffff;
+    display: block;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    width: 35px;
+}
+.white-social-icon ul li a:hover {
+    border-color: #c38748;
+    color: #c37c3d;
+}
 .toggle-footer li a {
-  color: #dddddd;
+  color: #100f0f;
   font-size: 13px;
 }
 .footer-middle {
@@ -1206,13 +1269,13 @@ h3.footer-widget-title {
   width: 100%;
 }
 .toggle-footer li {
-  color: #dddddd;
+  color: #100f0f;
   font-size: 12px;
   font-weight: 300;
   line-height: 35px;
 }
 .contact-area .footer-info ul li {
-  color: #dddddd;
+  color: #100f0f;
   font-size: 13px;
   font-weight: 300;
   line-height: 35px;
@@ -1221,7 +1284,7 @@ h3.footer-widget-title {
 .contact-area .footer-info.contact i {
   border: 2px solid #74797f;
   border-radius: 100%;
-  color: #ffffff;
+  color: #100f0f;
   display: inline-block;
   font-size: 14px;
   height: 35px;
@@ -1237,7 +1300,7 @@ h3.footer-widget-title {
   margin: 0;
 }
 .contact-area .footer-info p {
-  color: #dddddd;
+  color: #100f0f;
   font-weight: 300;
   line-height: 30px;
 }
@@ -1249,7 +1312,7 @@ h3.footer-widget-title {
   padding: 15px 0;
 }
 .footer-bottom-area p {
-  color: #ddd;
+  color: #100f0f;
   font-size: 13px;
   font-weight: 300;
   margin: 0;
@@ -1338,6 +1401,10 @@ h3.footer-widget-title {
 /*----------------------------------------*/
 .featured-area4 .featured-product-list3 .old-price {
   color: #ffffff;
+}
+.col-10 {
+    float: left;
+    width: 10%;
 }
 .col-50 {
   float: left;
@@ -2553,6 +2620,26 @@ p.submit {
 /*----------------------------------------*/
 /*  31.	Contact Us CSS
 /*----------------------------------------*/
+.black-area {
+    border-bottom: 1px solid #100f0f;
+    background-color: #100f0f;
+}
+.contact-page-cntent p {
+    /*color: #444;*/
+    color: #FFFFFF;
+    font-weight: 300;
+}
+.contact-page-cntent h3 {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: medium none;
+    /*color: #333333;*/
+    color: #FFFFFF;
+    font-size: 21px;
+    font-weight: 600;
+    margin: 0 0 20px;
+    padding: 0;
+    text-transform: uppercase;
+}
 h1.heading-title {
   border-bottom: 1px solid #d6d4d4;
   font: 600 18px/22px "Open Sans",sans-serif;

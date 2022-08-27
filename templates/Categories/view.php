@@ -42,7 +42,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                             <th><?= __('ID') ?></th>
                             <th><?= __('Parent ID') ?></th>
                             <th><?= __('Description') ?></th>
-                            <th><?= __('Created At') ?></th>
+                            <th><?= __('Created at') ?></th>
                             <th><?= __('Modified at') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>

@@ -54,7 +54,7 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
                 <div class="table-responsive">
                     <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                      <tr>
-                            <th><?= __('ID') ?></th>
+                            <th data-visible="false"><?= __('ID') ?></th>
                             <th><?= __('Order ID') ?></th>
                             <th><?= __('Product ID') ?></th>
                             <th><?= __('Quantity') ?></th>
@@ -88,7 +88,7 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
                 <div class="table-responsive">
                     <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <tr>
-                            <th><?= __('ID') ?></th>
+                            <th data-visible="false"><?= __('ID') ?></th>
                             <th><?= __('Category ID') ?></th>
                             <th><?= __('Product ID') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
@@ -119,7 +119,7 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
                 <div class="table-responsive">
                     <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <tr>
-                            <th><?= __('ID') ?></th>
+                            <th data-visible="false"><?= __('ID') ?></th>
                             <th><?= __('Product ID') ?></th>
                             <th><?= __('Image') ?></th>
                             <th><?= __('Created at') ?></th>
@@ -156,7 +156,7 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
                 <div class="table-responsive">
                     <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <tr>
-                            <th><?= __('ID') ?></th>
+                            <th data-visible="false"><?= __('ID') ?></th>
                             <th><?= __('User ID') ?></th>
                             <th><?= __('Product ID') ?></th>
                             <th><?= __('Description') ?></th>
@@ -192,7 +192,7 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
                 <div class="table-responsive">
                     <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <tr>
-                            <th><?= __('ID') ?></th>
+                            <th data-visible="false"><?= __('ID') ?></th>
                             <th><?= __('User ID') ?></th>
                             <th><?= __('Product ID') ?></th>
                             <th><?= __('Quantity') ?></th>
@@ -202,7 +202,7 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
                         </tr>
                         <?php foreach ($product->shopping_sessions as $shoppingSessions) : ?>
                             <tr>
-                                <td><?= h($shoppingSessions->id) ?></td>
+                                <td data-visible="false"><?= h($shoppingSessions->id) ?></td>
                                 <td><?= h($shoppingSessions->user_id) ?></td>
                                 <td><?= h($shoppingSessions->product_id) ?></td>
                                 <td><?= h($shoppingSessions->quantity) ?></td>
