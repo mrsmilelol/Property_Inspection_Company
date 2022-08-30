@@ -1,7 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Controller\Admin;
+
+use App\Controller\AppController;
+use function App\Controller\__;
+use const DS;
+use const WWW_ROOT;
 
 /**
  * Products Controller
