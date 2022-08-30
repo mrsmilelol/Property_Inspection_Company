@@ -78,6 +78,11 @@ return static function (RouteBuilder $routes) {
         $routes->fallbacks(DashedRoute::class);
     });
 
+    $routes->prefix('Wholesale', function (RouteBuilder $routes) {
+        $routes->connect('/', ['controller' => 'Products', 'action' => 'shop']);
+        $routes->fallbacks(DashedRoute::class);
+    });
+
     Router::url(['controller' => 'Products', 'action' => 'shop', 'shop']);
     /*
      * If you need a different set of middleware or none at all,
