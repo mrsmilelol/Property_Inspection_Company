@@ -22,9 +22,10 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <th><?= h('Username') ?></th>
                     <th><?= h('First name') ?></th>
                     <th><?= h('Last name') ?></th>
-                    <th><?= h('Phone') ?></th>
+                    <th data-visible="false"><?= h('Phone') ?></th>
                     <th><?= h('Email') ?></th>
                     <th><?= h('Role') ?></th>
+                    <th><?= h('Change Status') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
                 </thead>
@@ -38,6 +39,23 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                         <td><?= h($user->phone) ?></td>
                         <td><?= h($user->email) ?></td>
                         <td><?= $user->has('user_type') ? $this->Html->link($user->user_type->name, ['controller' => 'UserTypes', 'action' => 'view', $user->user_type->id]) : '' ?></td>
+
+                        <td>
+                            <?php if ($user->status == 1) : ?>
+                                <?= $this->Form->postLink(
+                                    __('Deactivate'),
+                                    ['action' => 'userStatus', $user->id, $user->status],
+                                    ['block' => true, 'confirm' => __('Are you sure you want to deactivate this user # {0}?', $user->id)]
+                                ) ?>
+                            <?php else : ?>
+                                <?= $this->Form->postLink(
+                                    __('Activate'),
+                                    ['action' => 'userStatus', $user->id, $user->status],
+                                    ['block' => true, 'confirm' => __('Are you sure you want to activate this user # {0}?', $user->id)]
+                                ) ?>
+                            <?php endif; ?>
+                        </td>
+
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
                             <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
@@ -46,6 +64,8 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <?php endforeach; ?>
                 </tbody>
             </table>
+            <?= $this->Form->end() ?>
+            <?= $this->fetch('postLink'); ?>
         </div>
     </div>
 </div>
