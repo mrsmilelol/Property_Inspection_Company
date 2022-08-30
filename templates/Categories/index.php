@@ -53,7 +53,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="products" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="products2" width="100%" cellspacing="0">
                 <thead>
                 <tr>
                     <th><?= h('ID') ?></th>
@@ -71,10 +71,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $subcategory->id]) ?>
                             <?= $this->Html->link(__('Edit'), ['action' => 'editsub', $subcategory->id]) ?>
-                            <!--                                --><!--<?//= $this->Form->postLink(__('Delete'),
-                            //                                    ['action' => 'delete', $category->id],
-                            //                                    ['confirm' => __('Are you sure you want to delete # {0}?', $category->id)])
-                            //                                ?>-->
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -87,5 +83,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
     <script>
         $(document).ready( function () {
             $('#products').DataTable();
+            $('#products2').DataTable();
         } );
     </script>

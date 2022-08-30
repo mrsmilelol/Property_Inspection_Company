@@ -20,6 +20,7 @@ class CategoriesController extends AppController
     {
         $this->paginate = [
             'contain' => ['ParentCategories'],
+            'limit' => 200
         ];
         $categories = $this->paginate($this->Categories->find('all')->where(['Categories.parent_id IS' => null]));
         $subcategories = $this->paginate($this->Categories->find('all')->where(['Categories.parent_id IS NOT' => null]));
