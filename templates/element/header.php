@@ -15,8 +15,8 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-9 col-md-9 col-sm-12">
-                    <div class="header-top-right pull-right">
+<!--                <div class="col-lg-9 col-md-9 col-sm-12">-->
+<!--                    <div class="header-top-right pull-right">-->
 <!--                        <div class="currencies-block-top block-toggle pull-left">-->
 <!--                            <div class="current">-->
 <!--                                <span>GBP</span>-->
@@ -37,32 +37,26 @@
 <!--                                <li><a href="#" title="Arabic(Arabic)">Arabic(Arabic)</a></li>-->
 <!--                            </ul>-->
 <!--                        </div>-->
-                        <div class="header-user-info pull-right">
-                            <a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','about']); ?>>
-                                About Us
-                            </a>
-                            <a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','contact']); ?>>
-                                Contact Us
-                            </a>
-                            <a href="my-account.html" title="My account">
-                                <i class="fa fa-user"></i>
-                                My account
-                            </a>
-                            <a href="wishlist.html" title="My wishlist">
-                                <i class="fa fa-heart"></i>
-                                My wishlist
-                            </a>
-                            <a href="#" title="My wishlist">
-                                <i class="fa fa-unlock-alt"></i>
-                                Sign in
-                            </a>
-                            <a href="#" title="My wishlist">
-                                <i class="fa fa-share-square-o"></i>
-                                Check out
-                            </a>
-                        </div>
-                    </div>
-                </div>
+<!--                        <div class="header-user-info pull-right">-->
+<!--                            <a href="my-account.html" title="My account">-->
+<!--                                <i class="fa fa-user"></i>-->
+<!--                                My account-->
+<!--                            </a>-->
+<!--                            <a href="wishlist.html" title="My wishlist">-->
+<!--                                <i class="fa fa-heart"></i>-->
+<!--                                My wishlist-->
+<!--                            </a>-->
+<!--                            <a href="#" title="My wishlist">-->
+<!--                                <i class="fa fa-unlock-alt"></i>-->
+<!--                                Sign in-->
+<!--                            </a>-->
+<!--                            <a href="#" title="My wishlist">-->
+<!--                                <i class="fa fa-share-square-o"></i>-->
+<!--                                Check out-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
     </div>
@@ -82,103 +76,103 @@
                     </div>
                 </div>
                 <!--Header Bottom Right Start-->
-                <div class="col-lg-2 col-md-1  col-sm-6 col-xs-11 header-right-inner">
-                    <div class="header-bottom-right pull-right">
-                        <div class="header-bottom-right-inner">
-                            <ul>
-                                <li>
-                                    <a class="cart-toggler search-icon to-search-icon" href="#">
-                                        <i class="fa fa-search"></i>
-                                    </a>
-                                    <div class="header-bottom-search">
-                                        <form class="search-box" action="#" method="POST">
-                                            <div>
-                                                <input type="text" value="" placeholder="Search" autocomplete="off">
-                                                <button class="btn btn-search" type="submit">
-                                                    <i class="fa fa-search"></i>
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a class="cart-toggler mini-cart-icon" href="#">
-                                        <i class="fa fa-shopping-cart"></i>
-                                        <span>2</span>
-                                    </a>
-                                    <div class="cart-list">
-                                        <div class="product">
-                                            <div class="cart-single-product">
-                                                <a class="product-image" href=<?= $this->Url->build(['controller'=>'Pages',
-                                                    'action'=>'display','main']); ?>
-                                                    <?= $this->Html->image('cart-img/1.jpg'); ?>
-                                                </a>
-                                                <div class="product-details">
-                                                    <a href="#" class="remove">
-                                                        <i class="fa fa-times-circle"></i>
-                                                    </a>
-                                                    <div class="product-name">
-                                                                <span class="quantity-formated">
-                                                                    <span class="quantity">1</span>
-                                                                    X
-                                                                </span>
-                                                        <a href="#" class="cart-block-product-name" title="Faded Short Sleeves T-shirt">Faded...</a>
-                                                    </div>
-                                                    <div class="product-atributes">
-                                                        <a href="#" title="Product detail">S, Orange</a>
-                                                    </div>
-                                                    <div class="prices">
-                                                        <span class="price">£ 16.84</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="cart-single-product">
-                                                <a class="product-image" href=<?= $this->Url->build(['controller'=>'Pages',
-                                                    'action'=>'display','main']); ?>
-                                                    <?= $this->Html->image('cart-img/2.jpg'); ?>
-                                                </a>
-                                                <div class="product-details">
-                                                    <a href="#" class="remove">
-                                                        <i class="fa fa-times-circle"></i>
-                                                    </a>
-                                                    <div class="product-name">
-                                                                <span class="quantity-formated">
-                                                                    <span class="quantity">2</span>
-                                                                    X
-                                                                </span>
-                                                        <a href="#" class="cart-block-product-name" title="Faded Short Sleeves T-shirt">Printed Dr...</a>
-                                                    </div>
-                                                    <div class="product-atributes">
-                                                        <a href="#" title="Product detail">S, Orange</a>
-                                                    </div>
-                                                    <div class="prices">
-                                                        <span class="price">£ 64.23</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cart-prices">
-                                            <div class="cart-prices-line first-line"></div>
-                                            <div class="cart-prices-line last-line">
-                                                <span>Total</span>
-                                                <span class="price pull-right">£ 48.04</span>
-                                            </div>
-                                        </div>
-                                        <p class="cart-buttons">
-                                            <a class="btn btn-default button-small" href="#" title="Check out">
-                                                        <span>
-                                                            Check out
-                                                            <i class="fa fa-angle-right"></i>
-                                                        </span>
-                                            </a>
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-9 col-md-7 col-sm-12 col-xs-12">
+<!--                <div class="col-lg-2 col-md-1  col-sm-6 col-xs-11 header-right-inner">-->
+<!--                    <div class="header-bottom-right pull-right">-->
+<!--                        <div class="header-bottom-right-inner">-->
+<!--                            <ul>-->
+<!--                                <li>-->
+<!--                                    <a class="cart-toggler search-icon to-search-icon" href="#">-->
+<!--                                        <i class="fa fa-search"></i>-->
+<!--                                    </a>-->
+<!--                                    <div class="header-bottom-search">-->
+<!--                                        <form class="search-box" action="#" method="POST">-->
+<!--                                            <div>-->
+<!--                                                <input type="text" value="" placeholder="Search" autocomplete="off">-->
+<!--                                                <button class="btn btn-search" type="submit">-->
+<!--                                                    <i class="fa fa-search"></i>-->
+<!--                                                </button>-->
+<!--                                            </div>-->
+<!--                                        </form>-->
+<!--                                    </div>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a class="cart-toggler mini-cart-icon" href="#">-->
+<!--                                        <i class="fa fa-shopping-cart"></i>-->
+<!--                                        <span>2</span>-->
+<!--                                    </a>-->
+<!--                                    <div class="cart-list">-->
+<!--                                        <div class="product">-->
+<!--                                            <div class="cart-single-product">-->
+<!--                                                <a class="product-image" href=--><!--<?//= $this->Url->build(['controller'=>'Pages',
+//                                                    'action'=>'display','main']); ?>-->
+<!--                                                    --><!--<?//= $this->Html->image('cart-img/1.jpg'); ?>-->
+<!--                                                </a>-->
+<!--                                                <div class="product-details">-->
+<!--                                                    <a href="#" class="remove">-->
+<!--                                                        <i class="fa fa-times-circle"></i>-->
+<!--                                                    </a>-->
+<!--                                                    <div class="product-name">-->
+<!--                                                                <span class="quantity-formated">-->
+<!--                                                                    <span class="quantity">1</span>-->
+<!--                                                                    X-->
+<!--                                                                </span>-->
+<!--                                                        <a href="#" class="cart-block-product-name" title="Faded Short Sleeves T-shirt">Faded...</a>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="product-atributes">-->
+<!--                                                        <a href="#" title="Product detail">S, Orange</a>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="prices">-->
+<!--                                                        <span class="price">£ 16.84</span>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="cart-single-product">-->
+<!--                                                <a class="product-image" href=--><!--<?//= $this->Url->build(['controller'=>'Pages',
+//                                                    'action'=>'display','main']); ?>-->
+<!--                                                    --><!--<?//= $this->Html->image('cart-img/2.jpg'); ?>-->
+<!--                                                </a>-->
+<!--                                                <div class="product-details">-->
+<!--                                                    <a href="#" class="remove">-->
+<!--                                                        <i class="fa fa-times-circle"></i>-->
+<!--                                                    </a>-->
+<!--                                                    <div class="product-name">-->
+<!--                                                                <span class="quantity-formated">-->
+<!--                                                                    <span class="quantity">2</span>-->
+<!--                                                                    X-->
+<!--                                                                </span>-->
+<!--                                                        <a href="#" class="cart-block-product-name" title="Faded Short Sleeves T-shirt">Printed Dr...</a>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="product-atributes">-->
+<!--                                                        <a href="#" title="Product detail">S, Orange</a>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="prices">-->
+<!--                                                        <span class="price">£ 64.23</span>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="cart-prices">-->
+<!--                                            <div class="cart-prices-line first-line"></div>-->
+<!--                                            <div class="cart-prices-line last-line">-->
+<!--                                                <span>Total</span>-->
+<!--                                                <span class="price pull-right">£ 48.04</span>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <p class="cart-buttons">-->
+<!--                                            <a class="btn btn-default button-small" href="#" title="Check out">-->
+<!--                                                        <span>-->
+<!--                                                            Check out-->
+<!--                                                            <i class="fa fa-angle-right"></i>-->
+<!--                                                        </span>-->
+<!--                                            </a>-->
+<!--                                        </p>-->
+<!--                                    </div>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-lg-9 col-md-7 col-sm-12 col-xs-12">-->
                 <div class="col-lg-11 col-md-7 col-sm-12 col-xs-12">
                     <!-- Main Menu -->
                     <div class="mainmenu">
@@ -207,6 +201,35 @@
                                     </div>
                                 </li>
 
+<!--                                <li><a href="--><!--<?//= $this->Url->build(['controller'=>'Pages', 'action'=>'display','shop']); ?>">Livingroom</a>-->
+                                    <!-- Mege Menu Two Column -->
+<!--                                    <div class="mega-menu two-column">-->
+<!--												<span>-->
+<!--													<a class="mega-title" href="#">Categories 01</a>-->
+<!--													<a href="shop.html">Washing machine 1</a>-->
+<!--													<a href="shop.html">Washing machine 2</a>-->
+<!--													<a href="shop.html">Washing machine 3</a>-->
+<!--													<a href="shop.html">Washing machine 4</a>-->
+<!--												</span>-->
+<!--                                        <span>-->
+<!--													<a class="mega-title" href="#">Categories 02</a>-->
+<!--													<a href="shop.html">Washing machine 1</a>-->
+<!--													<a href="shop.html">Washing machine 2</a>-->
+<!--													<a href="shop.html">Washing machine 3</a>-->
+<!--													<a href="shop.html">Washing machine 4</a>-->
+<!--												</span>-->
+<!--                                    </div>-->
+<!--                                </li>-->
+<!--                                <li class="expand"><a href="--><!--<?//= $this->Url->build(['controller'=>'Pages', 'action'=>'display','shop']); ?>">Lighting</a>-->
+                                    <!-- DropDown Menu -->
+<!--                                    <ul class="restrain sub-menu">-->
+<!--                                        <li class="sub-menu-title"><a href="#">Categories 01</a></li>-->
+<!--                                        <li><a href="shop.html">Washing machine 1</a></li>-->
+<!--                                        <li><a href="shop.html">Washing machine 2</a></li>-->
+<!--                                        <li><a href="shop.html">Washing machine 3</a></li>-->
+<!--                                        <li><a href="shop.html">Washing machine 4</a></li>-->
+<!--                                    </ul>-->
+<!--                                </li>-->
                                 <?php
                                 for($x = 0; $x <= count($categories)-1; $x++): if ($categories[$x]->id > 1 and $categories[$x]->parent_id == null): ?>
                                     <?php $saved_id = $categories[$x]->id; ?>
@@ -225,9 +248,9 @@
                                 <?php endif; ?>
                                 <?php endfor; ?>
 
-<!--                                <li>-->
-<!--                                    <a href=--><!--<?//= $this->Url->build(['controller'=>'Pages', 'action'=>'about']); ?>--><!--About Us</a>-->
-<!--                                </li>-->
+                                <li>
+                                    <a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'about']); ?>>About Us</a>
+                                </li>
                             </ul>
                         </nav>
                     </div>
@@ -283,8 +306,8 @@
                                 </li>
                             <?php endif; ?>
                             <?php endfor; ?>
-                            <!--<li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','about']); ?>>About Us</a></li>
-                            <li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','contact']); ?>>Contact Us</a></li>-->
+                            <li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','about']); ?>>About Us</a></li>
+                            <li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','contact']); ?>>Contact Us</a></li>
                         </ul>
                     </nav>
                 </div>
