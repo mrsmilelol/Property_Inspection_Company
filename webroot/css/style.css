@@ -131,8 +131,8 @@ body {
   text-align: center;
 }
 .header-user-info a {
-  border-left: 1px solid #100f0f;
-  color: #100f0f;
+  border-left: 1px solid #f1f2f2;
+  color: #fcfafa;
   font-size: 12px;
   line-height: 20px;
   padding-left: 14px;
@@ -148,14 +148,14 @@ body {
   color: #c38749;
 }
 .block-toggle {
-  color: #100f0f;
+  color: #fcfafa;
   font-size: 12px;
   padding: 10px 0;
   position: relative;
   text-transform: uppercase;
 }
 .block-toggle .current {
-  border-left: 1px solid #100f0f;
+  border-left: 1px solid #f1f2f2;
   cursor: pointer;
   line-height: 20px;
   padding: 0 15px;
