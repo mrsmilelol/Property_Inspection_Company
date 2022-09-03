@@ -11,7 +11,6 @@ use Cake\Validation\Validator;
 /**
  * Products Model
  *
- * @property \App\Model\Table\OrderItemsTable&\Cake\ORM\Association\HasMany $OrderItems
  * @property \App\Model\Table\ProductImagesTable&\Cake\ORM\Association\HasMany $ProductImages
  * @property \App\Model\Table\ProductReviewsTable&\Cake\ORM\Association\HasMany $ProductReviews
  * @property \App\Model\Table\ShoppingSessionsTable&\Cake\ORM\Association\HasMany $ShoppingSessions
@@ -47,8 +46,8 @@ class ProductsTable extends Table
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
-        $this->hasMany('OrderItems', [
-            'foreignKey' => 'product_id',
+        $this->belongsTo('Styles', [
+            'foreignKey' => 'style_id',
         ]);
         $this->hasMany('ProductImages', [
             'foreignKey' => 'product_id',
@@ -63,6 +62,11 @@ class ProductsTable extends Table
             'foreignKey' => 'product_id',
             'targetForeignKey' => 'category_id',
             'joinTable' => 'categories_products',
+        ]);
+        $this->belongsToMany('Orders', [
+            'foreignKey' => 'product_id',
+            'targetForeignKey' => 'order_id',
+            'joinTable' => 'orders_products',
         ]);
     }
 
@@ -111,10 +115,8 @@ class ProductsTable extends Table
             ->notEmptyString('brand');
 
         $validator
-            ->scalar('style')
-            ->maxLength('style', 64)
-            ->requirePresence('style', 'create')
-            ->notEmptyString('style');
+            ->integer('style_id')
+            ->allowEmptyString('style_id');
 
         $validator
             ->scalar('colour')

@@ -16,6 +16,8 @@ use Cake\ORM\Entity;
  * @property string $phone
  * @property string $email
  * @property int|null $user_type_id
+ * @property string|null $token
+ * @property int $status
  * @property \Cake\I18n\FrozenTime $created_at
  * @property \Cake\I18n\FrozenTime $modified_at
  *
@@ -43,6 +45,8 @@ class User extends Entity
         'phone' => true,
         'email' => true,
         'user_type_id' => true,
+        'token' => true,
+        'status' => true,
         'created_at' => true,
         'modified_at' => true,
         'user_type' => true,
@@ -58,5 +62,6 @@ class User extends Entity
      */
     protected $_hidden = [
         'password',
+        'token',
     ];
 }
