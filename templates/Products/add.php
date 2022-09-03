@@ -2,6 +2,7 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Product $product
+ * @var \Cake\Collection\CollectionInterface|string[] $styles
  * @var \Cake\Collection\CollectionInterface|string[] $categories
  * @var \Cake\Collection\CollectionInterface|string[] $subcategories
  * @var \Cake\Collection\CollectionInterface|string[] $productInventories
@@ -38,7 +39,7 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
                         echo $this->Form->control('units_in_stock', ['label' => 'Units in stock']);
                         echo $this->Form->control('material');
                         echo $this->Form->control('brand');
-                        echo $this->Form->control('style');
+                        echo $this->Form->control('style_id', ['options' => $styles, 'empty' => true]);
                         echo $this->Form->control('colour');
                         echo $this->Form->control('size', ['label'=>'Size (cm) (e.g. w-122.682 x d-122.7 x h-45.72)']);
                         echo $this->Form->control('weight', ['label'=>'Weight (kg)']);

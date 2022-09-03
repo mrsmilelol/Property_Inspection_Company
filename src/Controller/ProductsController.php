@@ -36,7 +36,7 @@ class ProductsController extends AppController
         $productImages = $this->ProductImages->findByProductId($id)->all()->toArray();
 
         $product = $this->Products->get($id, [
-            'contain' => ['OrderItems', 'ProductImages', 'ProductReviews', 'ShoppingSessions'],
+            'contain' => ['Styles','OrderItems', 'ProductImages', 'ProductReviews', 'ShoppingSessions'],
         ]);
 
         $this->set(compact('product','productImages'));
@@ -86,7 +86,8 @@ class ProductsController extends AppController
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
         }
 //        $categories = $this->Products->ProductCategories->find('list', ['limit' => 200])->all();
-        $this->set(compact('product', 'categories'));
+        $styles = $this->Products->Styles->find('list', ['limit' => 200])->all();
+        $this->set(compact('product', 'categories','styles'));
     }
 
     /**
@@ -127,7 +128,8 @@ class ProductsController extends AppController
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
         }
         $categories = $this->Products->Categories->find('list', ['limit' => 200])->all();
-        $this->set(compact('product','categories','productImages'));
+        $styles = $this->Products->Styles->find('list', ['limit' => 200])->all();
+        $this->set(compact('product','categories','productImages','styles'));
     }
 
     public function shop()

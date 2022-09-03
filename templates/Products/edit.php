@@ -2,6 +2,7 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Product $product
+ * @var string[]|\Cake\Collection\CollectionInterface $styles
  * @var string[]|\Cake\Collection\CollectionInterface $categories
  * @var string[]|\Cake\Collection\CollectionInterface $productInventories
  * @var string[]|\Cake\Collection\CollectionInterface $productImages
@@ -31,7 +32,7 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
                     echo $this->Form->control('price', ['label'=>'Normal price']);
                     echo $this->Form->control('material');
                     echo $this->Form->control('brand');
-                    echo $this->Form->control('style');
+                    echo $this->Form->control('style_id', ['options' => $styles, 'empty' => true]);
                     echo $this->Form->control('colour');
                     echo $this->Form->control('units_in_stock', ['label'=>'Units in stock']);
                     echo $this->Form->control('size', ['label'=>'Size (cm) (e.g. w-122.682 x d-122.7 x h-45.72)']);

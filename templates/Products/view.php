@@ -31,7 +31,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             </tr>
             <tr>
                 <th><?= __('Style') ?></th>
-                <td><?= h($product->style) ?></td>
+                <td><?= $product->has('style') ? $this->Html->link($product->style->id, ['controller' => 'Styles', 'action' => 'view', $product->style->id]) : '' ?></td>
             </tr>
             <tr>
                 <th><?= __('Colour') ?></th>
