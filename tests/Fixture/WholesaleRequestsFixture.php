@@ -20,7 +20,7 @@ class WholesaleRequestsFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'business_name' => 1,
+                'business_name' => 'Lorem ipsum dolor sit amet',
                 'abn' => 'Lorem ipsum dolor sit amet',
                 'address_line_1' => 'Lorem ipsum dolor sit amet',
                 'address_line_2' => 'Lorem ipsum dolor sit amet',
@@ -29,8 +29,8 @@ class WholesaleRequestsFixture extends TestFixture
                 'payment_method' => 'Lorem ipsum dolor sit amet',
                 'message' => 'Lorem ipsum dolor sit amet',
                 'status' => 1,
-                'created_at' => 1662189222,
-                'modified_at' => 1662189222,
+                'created_at' => 1662190975,
+                'modified_at' => 1662190975,
             ],
         ];
         parent::init();

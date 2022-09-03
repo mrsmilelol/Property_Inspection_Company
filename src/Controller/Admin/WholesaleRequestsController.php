@@ -1,7 +1,8 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Controller\Admin;
+
 
 /**
  * WholesaleRequests Controller
@@ -46,6 +47,7 @@ class WholesaleRequestsController extends AppController
      */
     public function add()
     {
+        $this->loadModel('WholesaleRequests');
         $wholesaleRequest = $this->WholesaleRequests->newEmptyEntity();
         if ($this->request->is('post')) {
             $wholesaleRequest = $this->WholesaleRequests->patchEntity($wholesaleRequest, $this->request->getData());

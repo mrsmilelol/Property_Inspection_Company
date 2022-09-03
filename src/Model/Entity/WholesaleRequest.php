@@ -9,7 +9,7 @@ use Cake\ORM\Entity;
  * WholesaleRequest Entity
  *
  * @property int $id
- * @property int $business_name
+ * @property string $business_name
  * @property string $abn
  * @property string $address_line_1
  * @property string|null $address_line_2

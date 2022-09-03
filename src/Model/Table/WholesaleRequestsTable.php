@@ -51,7 +51,8 @@ class WholesaleRequestsTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->integer('business_name')
+            ->scalar('business_name')
+            ->maxLength('business_name', 64)
             ->requirePresence('business_name', 'create')
             ->notEmptyString('business_name');
 
