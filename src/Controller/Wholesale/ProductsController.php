@@ -3,10 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controller\Wholesale;
 
-use App\Controller\AppController;
-use function App\Controller\__;
-use const DS;
-use const WWW_ROOT;
+//use function App\Controller\__;
+//use const DS;
+//use const WWW_ROOT;
 
 /**
  * Products Controller

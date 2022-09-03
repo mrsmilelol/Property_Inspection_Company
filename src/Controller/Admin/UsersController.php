@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
-use App\Controller\Admin\AppController;
+use Cake\Event\EventInterface;
 use Cake\Mailer\Mailer;
 use function __;
 
@@ -16,6 +16,15 @@ use function __;
  */
 class UsersController extends AppController
 {
+
+    public function beforeFilter(EventInterface $event)
+    {
+        parent::beforeFilter($event);
+        // for all controllers in our application, make index and view
+        // actions public, skipping the authentication check.
+        $this->Authentication->addUnauthenticatedActions(['login', 'add']);
+    }
+
     /**
      * Index method
      *
@@ -41,7 +50,7 @@ class UsersController extends AppController
     public function initialize(): void
     {
         parent::initialize();
-        $this->Authentication->allowUnauthenticated(['login','passwordReset','edit']);
+        $this->Authentication->allowUnauthenticated(['login', 'passwordReset', 'edit']);
     }
 
     /**
@@ -187,7 +196,7 @@ class UsersController extends AppController
     {
         $this->request->allowMethod(['post']);
         //get user id from Users
-        $user = $this ->Users->get($id);
+        $user = $this->Users->get($id);
         //change user status
         if ($status == 1) {
             $user->status = 0;
@@ -240,7 +249,7 @@ class UsersController extends AppController
                 if ($result) {
                     $this->Flash->success('Reset password link has been sent to your email (' . $email . '), please check your email.');
                 } else {
-                    $this ->Flash->error('Error, unable to send email.');
+                    $this->Flash->error('Error, unable to send email.');
                 }
             }
         }
