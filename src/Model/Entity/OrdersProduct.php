@@ -6,7 +6,7 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * OrderItem Entity
+ * OrdersProduct Entity
  *
  * @property int $id
  * @property int|null $order_id
@@ -18,7 +18,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Order $order
  * @property \App\Model\Entity\Product $product
  */
-class OrderItem extends Entity
+class OrdersProduct extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().

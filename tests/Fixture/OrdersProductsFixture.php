@@ -6,9 +6,9 @@ namespace App\Test\Fixture;
 use Cake\TestSuite\Fixture\TestFixture;
 
 /**
- * OrdersFixture
+ * OrdersProductsFixture
  */
-class OrdersFixture extends TestFixture
+class OrdersProductsFixture extends TestFixture
 {
     /**
      * Init method
@@ -20,10 +20,11 @@ class OrdersFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'shopping_session_id' => 1,
-                'total' => 1,
-                'created_at' => 1662173736,
-                'modified_at' => 1662173736,
+                'order_id' => 1,
+                'product_id' => 1,
+                'quantity' => 1,
+                'created_at' => 1662173667,
+                'modified_at' => 1662173667,
             ],
         ];
         parent::init();
