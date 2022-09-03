@@ -97,9 +97,9 @@ class WholesaleRequestsTable extends Table
             ->allowEmptyString('message');
 
         $validator
-            ->boolean('status')
-            ->requirePresence('status', 'create')
-            ->notEmptyString('status');
+            ->scalar('status')
+            ->maxLength('status', 64)
+            ->allowEmptyString('status');
 
         $validator
             ->dateTime('created_at')

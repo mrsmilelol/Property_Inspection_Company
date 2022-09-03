@@ -28,9 +28,9 @@ class WholesaleRequestsFixture extends TestFixture
                 'business_type' => 'Lorem ipsum dolor sit amet',
                 'payment_method' => 'Lorem ipsum dolor sit amet',
                 'message' => 'Lorem ipsum dolor sit amet',
-                'status' => 1,
-                'created_at' => 1662190975,
-                'modified_at' => 1662190975,
+                'status' => 'Lorem ipsum dolor sit amet',
+                'created_at' => 1662203177,
+                'modified_at' => 1662203177,
             ],
         ];
         parent::init();

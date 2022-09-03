@@ -62,6 +62,27 @@ class WholesaleRequestsController extends AppController
     }
 
     /**
+     * Add method
+     *
+     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
+     */
+    public function request()
+    {
+        $this->loadModel('WholesaleRequests');
+        $wholesaleRequest = $this->WholesaleRequests->newEmptyEntity();
+        if ($this->request->is('post')) {
+            $wholesaleRequest = $this->WholesaleRequests->patchEntity($wholesaleRequest, $this->request->getData());
+            if ($this->WholesaleRequests->save($wholesaleRequest)) {
+                $this->Flash->success(__('The wholesale request has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The wholesale request could not be saved. Please, try again.'));
+        }
+        $this->set(compact('wholesaleRequest'));
+    }
+
+    /**
      * Edit method
      *
      * @param string|null $id Wholesale Request id.

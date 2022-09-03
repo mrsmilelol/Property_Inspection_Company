@@ -91,6 +91,7 @@
                     <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Users','action' => 'index']) ?>">Users</a>
                     <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'UserTypes','action' => 'index']) ?>">User Types</a>
                     <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'UserAddresses','action' => 'index']) ?>">User Addresses</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'WholesaleRequests','action' => 'index']) ?>">Wholesale request</a>
                 </div>
             </div>
         </li>

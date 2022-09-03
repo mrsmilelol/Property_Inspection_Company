@@ -17,7 +17,7 @@ use Cake\ORM\Entity;
  * @property string $business_type
  * @property string $payment_method
  * @property string|null $message
- * @property bool $status
+ * @property string|null $status
  * @property \Cake\I18n\FrozenTime $created_at
  * @property \Cake\I18n\FrozenTime $modified_at
  */

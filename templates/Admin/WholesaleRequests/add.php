@@ -3,19 +3,24 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\WholesaleRequest $wholesaleRequest
  */
+
+$formTemplate = [
+    'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
+    'label' => '<label{{attrs}} class="form-label">{{text}}</label>',
+    'input' => '<input type="{{type}}" name="{{name}}" class="form-control"{{attrs}}/>',
+    'radioContainer' => '<div class="form-radio">{{content}}</div>',
+];
+$this->Form->setTemplates($formTemplate);
+
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Wholesale Requests'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="wholesaleRequests form content">
+<div class="card shadow mb-4">
+    <div class="d-sm-flex align-items-center justify-content-between card-header">
+        <h1 class="h3 mb-0 text-gray-800"><?= __('Create Wholesale request') ?></h1>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered" id="products" width="100%" cellspacing="0">
             <?= $this->Form->create($wholesaleRequest) ?>
             <fieldset>
-                <legend><?= __('Add Wholesale Request') ?></legend>
                 <?php
                     echo $this->Form->control('business_name');
                     echo $this->Form->control('abn');
@@ -25,12 +30,13 @@
                     echo $this->Form->control('business_type');
                     echo $this->Form->control('payment_method');
                     echo $this->Form->control('message');
-                    echo $this->Form->control('status');
-                    echo $this->Form->control('created_at');
-                    echo $this->Form->control('modified_at');
+                    //echo $this->Form->control('status');
+                    //echo $this->Form->control('created_at');
+                    //echo $this->Form->control('modified_at');
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <br>
+            <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>
