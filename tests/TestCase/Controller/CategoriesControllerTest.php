@@ -3,14 +3,13 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\CategoriesController;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
 
 /**
  * App\Controller\CategoriesController Test Case
  *
- * @uses \App\Controller\CategoriesController
+ * @uses \App\Controller\Admin\CategoriesController
  */
 class CategoriesControllerTest extends TestCase
 {
@@ -31,7 +30,7 @@ class CategoriesControllerTest extends TestCase
      * Test index method
      *
      * @return void
-     * @uses \App\Controller\CategoriesController::index()
+     * @uses \App\Controller\Admin\CategoriesController::index()
      */
     public function testIndex(): void
     {
@@ -42,7 +41,7 @@ class CategoriesControllerTest extends TestCase
      * Test view method
      *
      * @return void
-     * @uses \App\Controller\CategoriesController::view()
+     * @uses \App\Controller\Admin\CategoriesController::view()
      */
     public function testView(): void
     {
@@ -53,7 +52,7 @@ class CategoriesControllerTest extends TestCase
      * Test add method
      *
      * @return void
-     * @uses \App\Controller\CategoriesController::add()
+     * @uses \App\Controller\Admin\CategoriesController::add()
      */
     public function testAdd(): void
     {
@@ -64,7 +63,7 @@ class CategoriesControllerTest extends TestCase
      * Test edit method
      *
      * @return void
-     * @uses \App\Controller\CategoriesController::edit()
+     * @uses \App\Controller\Admin\CategoriesController::edit()
      */
     public function testEdit(): void
     {
@@ -75,7 +74,7 @@ class CategoriesControllerTest extends TestCase
      * Test delete method
      *
      * @return void
-     * @uses \App\Controller\CategoriesController::delete()
+     * @uses \App\Controller\Admin\CategoriesController::delete()
      */
     public function testDelete(): void
     {

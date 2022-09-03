@@ -34,7 +34,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','main']) ?>">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display','main']) ?>">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-toolbox"></i>
             </div>
@@ -46,7 +46,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="<?= $this->Url->build(['controller'=>'Products', 'action'=>'shop']) ?>">
+            <a class="nav-link" href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'shop']) ?>">
                 <i class="fas fa-fw fa-store-alt"></i>
                 <span>Shop</span></a>
         </li>
@@ -69,15 +69,15 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Product menu:</h6>
-                    <a class="collapse-item" href="<?= $this->Url->build('/') ?>">Products</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Products','action' => 'index']) ?>">Products</a>
                     <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Categories','action' => 'index']) ?>">Categories</a>
-<!--                    <a class="collapse-item" href="--><!--<?//= $this->Url->build(['controller' => 'ProductImages','action' => 'index']) ?>--><!--">Images</a>-->
-<!--                    <a class="collapse-item" href="--><!--<?//= $this->Url->build(['controller' => 'ProductReviews','action' => 'index']) ?>--><!--">Reviews</a>-->
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'ProductImages','action' => 'index']) ?>">Images</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'ProductReviews','action' => 'index']) ?>">Reviews</a>
                 </div>
             </div>
         </li>
 
-        <!-- Nav Item - Utilities Collapse Menu -->
+<!--         Nav Item - Utilities Collapse Menu-->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePayments"
                aria-expanded="true" aria-controls="collapsePayments">
@@ -88,14 +88,14 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">User menu:</h6>
-                    <a class="collapse-item" href=<?= $this->Url->build(['controller' => 'Users','action' => 'index']) ?>>Users</a>
-                    <a class="collapse-item" href=<?= $this->Url->build(['controller' => 'UserTypes','action' => 'index']) ?>>User Types</a>
-                    <a class="collapse-item" href=<?= $this->Url->build(['controller' => 'UserAddresses','action' => 'index']) ?>>User Addresses</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Users','action' => 'index']) ?>">Users</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'UserTypes','action' => 'index']) ?>">User Types</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'UserAddresses','action' => 'index']) ?>">User Addresses</a>
                 </div>
             </div>
         </li>
 
-        <!-- Nav Item - Utilities Collapse Menu -->
+<!--         Nav Item - Utilities Collapse Menu-->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                aria-expanded="true" aria-controls="collapseUtilities">
@@ -106,14 +106,14 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Payment menu:</h6>
-                    <a class="collapse-item" href=<?= $this->Url->build(['controller' => 'Payments','action' => 'index']) ?>>Payments</a>
-                    <a class="collapse-item" href=<?= $this->Url->build(['controller' => 'ShoppingSessions','action' => 'index']) ?>>Shopping Sessions</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Payments','action' => 'index']) ?>">Payments</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'ShoppingSessions','action' => 'index']) ?>">Shopping Sessions</a>
 
                 </div>
             </div>
         </li>
 
-        <!-- Nav Item - Utilities Collapse Menu -->
+<!--         Nav Item - Utilities Collapse Menu-->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrders"
                aria-expanded="true" aria-controls="collapseOrderss">
@@ -124,15 +124,15 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Order menu:</h6>
-                    <a class="collapse-item" href=<?= $this->Url->build(['controller' => 'Orders','action' => 'index']) ?>>Orders</a>
-                    <a class="collapse-item" href=<?= $this->Url->build(['controller' => 'OrderItems','action' => 'index']) ?>>Ordered items</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Orders','action' => 'index']) ?>">Orders</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'OrderItems','action' => 'index']) ?>">Ordered items</a>
                 </div>
             </div>
         </li>
 
-        <!-- Nav Item - Utilities Collapse Menu -->
+<!--         Nav Item - Utilities Collapse Menu-->
         <li class="nav-item">
-            <a class="nav-link collapsed" href=<?= $this->Url->build(['controller' => 'Stores','action' => 'index']) ?>
+            <a class="nav-link collapsed" href="<?= $this->Url->build(['controller' => 'Stores','action' => 'index']) ?>"
                aria-expanded="true" aria-controls="collapseOrderss">
                 <i class="fas fa-fw fa-store"></i>
                 <span>Stores</span>
@@ -201,7 +201,7 @@
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin Profile</span>
                             <?=$this->Html->image('undraw_profile.svg', ['class' => 'img-profile rounded-circle']) ?>
                         </a>
-                        <!-- Dropdown - User Information -->
+<!--                         Dropdown - User Information-->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
                             <a class="dropdown-item" href="#">
@@ -267,7 +267,8 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <a class="btn btn-primary" href="<?= $this->Url->build(['controller' => 'users','action' => 'logout']) ?>">Logout</a>
+
             </div>
         </div>
     </div>

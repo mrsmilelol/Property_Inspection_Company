@@ -1,7 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Controller\Wholesale;
+
+//use function App\Controller\__;
+//use const DS;
+//use const WWW_ROOT;
 
 /**
  * Products Controller
