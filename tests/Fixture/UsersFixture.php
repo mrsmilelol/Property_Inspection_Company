@@ -29,8 +29,8 @@ class UsersFixture extends TestFixture
                 'user_type_id' => 1,
                 'token' => 'Lorem ipsum dolor sit amet',
                 'status' => 1,
-                'created_at' => 1662174542,
-                'modified_at' => 1662174542,
+                'created_at' => 1662208880,
+                'modified_at' => 1662208880,
             ],
         ];
         parent::init();

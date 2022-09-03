@@ -27,6 +27,7 @@ $this->Form->setTemplates($formTemplate);
                     echo $this->Form->control('address_line_1');
                     echo $this->Form->control('address_line_2');
                     echo $this->Form->control('phone');
+                    echo $this->Form->control('email');
                     echo $this->Form->control('business_type');
                     echo $this->Form->control('payment_method');
                     echo $this->Form->control('message');

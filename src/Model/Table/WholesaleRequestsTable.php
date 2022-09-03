@@ -40,6 +40,10 @@ class WholesaleRequestsTable extends Table
         $this->setTable('wholesale_requests');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
+
+        $this->belongsTo('Users', [
+            'foreignKey' => 'user_id',
+        ]);
     }
 
     /**
@@ -50,6 +54,10 @@ class WholesaleRequestsTable extends Table
      */
     public function validationDefault(Validator $validator): Validator
     {
+        $validator
+            ->integer('user_id')
+            ->allowEmptyString('user_id');
+
         $validator
             ->scalar('business_name')
             ->maxLength('business_name', 64)
@@ -78,6 +86,11 @@ class WholesaleRequestsTable extends Table
             ->maxLength('phone', 64)
             ->requirePresence('phone', 'create')
             ->notEmptyString('phone');
+
+        $validator
+            ->email('email')
+            ->requirePresence('email', 'create')
+            ->notEmptyString('email');
 
         $validator
             ->scalar('business_type')
@@ -110,5 +123,19 @@ class WholesaleRequestsTable extends Table
             ->notEmptyDateTime('modified_at');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        $rules->add($rules->existsIn('user_id', 'Users'), ['errorField' => 'user_id']);
+
+        return $rules;
     }
 }

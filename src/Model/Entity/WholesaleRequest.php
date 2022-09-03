@@ -9,11 +9,13 @@ use Cake\ORM\Entity;
  * WholesaleRequest Entity
  *
  * @property int $id
+ * @property int|null $user_id
  * @property string $business_name
  * @property string $abn
  * @property string $address_line_1
  * @property string|null $address_line_2
  * @property string $phone
+ * @property string $email
  * @property string $business_type
  * @property string $payment_method
  * @property string|null $message
@@ -33,11 +35,13 @@ class WholesaleRequest extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
+        'user_id' => true,
         'business_name' => true,
         'abn' => true,
         'address_line_1' => true,
         'address_line_2' => true,
         'phone' => true,
+        'email' => true,
         'business_type' => true,
         'payment_method' => true,
         'message' => true,
