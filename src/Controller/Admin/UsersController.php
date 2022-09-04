@@ -141,7 +141,7 @@ class UsersController extends AppController
     }
 
     /**
-     * Add Wholesale method
+     * Add Wholesale account method
      *
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
@@ -159,7 +159,10 @@ class UsersController extends AppController
         $user->phone = $wholesaleRequest->phone;
 
         $this->Users->save($user);
-        return $this->redirect(['controller'=>'Users','action' => 'index']);
+        $userId = $user->id;
+        $session = $this->request->getSession();
+        $session->write('User.id', $userId);
+        return $this->redirect(['controller'=>'WholesaleRequests','action' => 'addUser',$id]);
     }
 
     /**

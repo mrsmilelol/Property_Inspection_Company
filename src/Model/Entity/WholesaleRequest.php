@@ -36,6 +36,7 @@ class WholesaleRequest extends Entity
      */
     protected $_accessible = [
         'user_id' => true,
+        'user'=>true,
         'business_name' => true,
         'abn' => true,
         'address_line_1' => true,
