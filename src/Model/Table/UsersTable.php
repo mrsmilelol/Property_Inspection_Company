@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -14,6 +15,7 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\ProductReviewsTable&\Cake\ORM\Association\HasMany $ProductReviews
  * @property \App\Model\Table\ShoppingSessionsTable&\Cake\ORM\Association\HasMany $ShoppingSessions
  * @property \App\Model\Table\UserAddressesTable&\Cake\ORM\Association\HasMany $UserAddresses
+ *
  * @method \App\Model\Entity\User newEmptyEntity()
  * @method \App\Model\Entity\User newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\User[] newEntities(array $data, array $options = [])
@@ -56,6 +58,9 @@ class UsersTable extends Table
         $this->hasMany('UserAddresses', [
             'foreignKey' => 'user_id',
         ]);
+        $this->hasMany('WholesaleRequests', [
+            'foreignKey' => 'user_id',
+        ]);
     }
 
     /**
@@ -68,7 +73,7 @@ class UsersTable extends Table
     {
         $validator
             ->scalar('username')
-            ->maxLength('username', 16)
+            ->maxLength('username', 64)
             ->requirePresence('username', 'create')
             ->notEmptyString('username');
 
@@ -80,33 +85,38 @@ class UsersTable extends Table
 
         $validator
             ->scalar('firstname')
-            ->maxLength('firstname', 16)
+            ->maxLength('firstname', 64)
             ->requirePresence('firstname', 'create')
             ->notEmptyString('firstname');
 
         $validator
             ->scalar('lastname')
-            ->maxLength('lastname', 16)
+            ->maxLength('lastname', 64)
             ->requirePresence('lastname', 'create')
             ->notEmptyString('lastname');
 
         $validator
             ->scalar('phone')
-            ->maxLength('phone', 17)
+            ->maxLength('phone', 64)
             ->requirePresence('phone', 'create')
-            ->notEmptyString('phone')
-            ->numeric('phone')
-            ->regex('phone', '/^(?:\+?61|0)[2-478](?:[ -]?[0-9]){8}$/', 'Invalid mobile number, try +61413062555');
+            ->notEmptyString('phone');
 
         $validator
             ->email('email')
-            ->lengthBetween('email', [6,32])
             ->requirePresence('email', 'create')
             ->notEmptyString('email');
 
         $validator
             ->integer('user_type_id')
             ->allowEmptyString('user_type_id');
+
+        $validator
+            ->scalar('token')
+            ->maxLength('token', 255)
+            ->allowEmptyString('token');
+
+        $validator
+            ->notEmptyString('status');
 
         $validator
             ->dateTime('created_at')

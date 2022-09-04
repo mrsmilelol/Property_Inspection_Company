@@ -3,14 +3,13 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\UserTypesController;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
 
 /**
  * App\Controller\UserTypesController Test Case
  *
- * @uses \App\Controller\UserTypesController
+ * @uses \App\Controller\Admin\UserTypesController
  */
 class UserTypesControllerTest extends TestCase
 {
@@ -30,7 +29,7 @@ class UserTypesControllerTest extends TestCase
      * Test index method
      *
      * @return void
-     * @uses \App\Controller\UserTypesController::index()
+     * @uses \App\Controller\Admin\UserTypesController::index()
      */
     public function testIndex(): void
     {
@@ -41,7 +40,7 @@ class UserTypesControllerTest extends TestCase
      * Test view method
      *
      * @return void
-     * @uses \App\Controller\UserTypesController::view()
+     * @uses \App\Controller\Admin\UserTypesController::view()
      */
     public function testView(): void
     {
@@ -52,7 +51,7 @@ class UserTypesControllerTest extends TestCase
      * Test add method
      *
      * @return void
-     * @uses \App\Controller\UserTypesController::add()
+     * @uses \App\Controller\Admin\UserTypesController::add()
      */
     public function testAdd(): void
     {
@@ -63,7 +62,7 @@ class UserTypesControllerTest extends TestCase
      * Test edit method
      *
      * @return void
-     * @uses \App\Controller\UserTypesController::edit()
+     * @uses \App\Controller\Admin\UserTypesController::edit()
      */
     public function testEdit(): void
     {
@@ -74,7 +73,7 @@ class UserTypesControllerTest extends TestCase
      * Test delete method
      *
      * @return void
-     * @uses \App\Controller\UserTypesController::delete()
+     * @uses \App\Controller\Admin\UserTypesController::delete()
      */
     public function testDelete(): void
     {

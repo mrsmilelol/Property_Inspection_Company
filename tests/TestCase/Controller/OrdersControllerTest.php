@@ -3,14 +3,13 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\OrdersController;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
 
 /**
  * App\Controller\OrdersController Test Case
  *
- * @uses \App\Controller\OrdersController
+ * @uses \App\Controller\Admin\OrdersController
  */
 class OrdersControllerTest extends TestCase
 {
@@ -32,7 +31,7 @@ class OrdersControllerTest extends TestCase
      * Test index method
      *
      * @return void
-     * @uses \App\Controller\OrdersController::index()
+     * @uses \App\Controller\Admin\OrdersController::index()
      */
     public function testIndex(): void
     {
@@ -43,7 +42,7 @@ class OrdersControllerTest extends TestCase
      * Test view method
      *
      * @return void
-     * @uses \App\Controller\OrdersController::view()
+     * @uses \App\Controller\Admin\OrdersController::view()
      */
     public function testView(): void
     {
@@ -54,7 +53,7 @@ class OrdersControllerTest extends TestCase
      * Test add method
      *
      * @return void
-     * @uses \App\Controller\OrdersController::add()
+     * @uses \App\Controller\Admin\OrdersController::add()
      */
     public function testAdd(): void
     {
@@ -65,7 +64,7 @@ class OrdersControllerTest extends TestCase
      * Test edit method
      *
      * @return void
-     * @uses \App\Controller\OrdersController::edit()
+     * @uses \App\Controller\Admin\OrdersController::edit()
      */
     public function testEdit(): void
     {
@@ -76,7 +75,7 @@ class OrdersControllerTest extends TestCase
      * Test delete method
      *
      * @return void
-     * @uses \App\Controller\OrdersController::delete()
+     * @uses \App\Controller\Admin\OrdersController::delete()
      */
     public function testDelete(): void
     {

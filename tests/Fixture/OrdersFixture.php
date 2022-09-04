@@ -22,8 +22,8 @@ class OrdersFixture extends TestFixture
                 'id' => 1,
                 'shopping_session_id' => 1,
                 'total' => 1,
-                'created_at' => 1660627759,
-                'modified_at' => 1660627759,
+                'created_at' => 1662173736,
+                'modified_at' => 1662173736,
             ],
         ];
         parent::init();

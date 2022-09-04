@@ -3,14 +3,13 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\ProductReviewsController;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
 
 /**
  * App\Controller\ProductReviewsController Test Case
  *
- * @uses \App\Controller\ProductReviewsController
+ * @uses \App\Controller\Admin\ProductReviewsController
  */
 class ProductReviewsControllerTest extends TestCase
 {
@@ -31,7 +30,7 @@ class ProductReviewsControllerTest extends TestCase
      * Test index method
      *
      * @return void
-     * @uses \App\Controller\ProductReviewsController::index()
+     * @uses \App\Controller\Admin\ProductReviewsController::index()
      */
     public function testIndex(): void
     {
@@ -42,7 +41,7 @@ class ProductReviewsControllerTest extends TestCase
      * Test view method
      *
      * @return void
-     * @uses \App\Controller\ProductReviewsController::view()
+     * @uses \App\Controller\Admin\ProductReviewsController::view()
      */
     public function testView(): void
     {
@@ -53,7 +52,7 @@ class ProductReviewsControllerTest extends TestCase
      * Test add method
      *
      * @return void
-     * @uses \App\Controller\ProductReviewsController::add()
+     * @uses \App\Controller\Admin\ProductReviewsController::add()
      */
     public function testAdd(): void
     {
@@ -64,7 +63,7 @@ class ProductReviewsControllerTest extends TestCase
      * Test edit method
      *
      * @return void
-     * @uses \App\Controller\ProductReviewsController::edit()
+     * @uses \App\Controller\Admin\ProductReviewsController::edit()
      */
     public function testEdit(): void
     {
@@ -75,7 +74,7 @@ class ProductReviewsControllerTest extends TestCase
      * Test delete method
      *
      * @return void
-     * @uses \App\Controller\ProductReviewsController::delete()
+     * @uses \App\Controller\Admin\ProductReviewsController::delete()
      */
     public function testDelete(): void
     {

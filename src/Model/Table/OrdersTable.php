@@ -12,7 +12,6 @@ use Cake\Validation\Validator;
  * Orders Model
  *
  * @property \App\Model\Table\ShoppingSessionsTable&\Cake\ORM\Association\BelongsTo $ShoppingSessions
- * @property \App\Model\Table\OrderItemsTable&\Cake\ORM\Association\HasMany $OrderItems
  * @property \App\Model\Table\PaymentsTable&\Cake\ORM\Association\HasMany $Payments
  *
  * @method \App\Model\Entity\Order newEmptyEntity()
@@ -48,11 +47,13 @@ class OrdersTable extends Table
         $this->belongsTo('ShoppingSessions', [
             'foreignKey' => 'shopping_session_id',
         ]);
-        $this->hasMany('OrderItems', [
-            'foreignKey' => 'order_id',
-        ]);
         $this->hasMany('Payments', [
             'foreignKey' => 'order_id',
+        ]);
+        $this->belongsToMany('Products', [
+            'foreignKey' => 'order_id',
+            'targetForeignKey' => 'product_id',
+            'joinTable' => 'orders_products',
         ]);
     }
 
