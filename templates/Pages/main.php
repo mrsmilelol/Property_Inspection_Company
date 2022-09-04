@@ -23,11 +23,16 @@ $this->layout = 'front';
 <div class="slider-area">
     <div class="bend niceties preview-1">
         <div id="ensign-nivoslider-3" class="slides">
-            <a><?= $this->Html->image('slider/living-room-1000x530.jpg'); ?> </a>
-            <a><?= $this->Html->image('slider/dining-room-1-1000x530.jpg'); ?> </a>
-            <a><?= $this->Html->image('slider/bedroom-1000x530.jpg'); ?> </a>
-            <a><?= $this->Html->image('slider/home-office-1000x530.jpg'); ?> </a>
-            <a><?= $this->Html->image('slider/lighting-slider-1000x530.jpg'); ?> </a>
+            <a><?= $this->Html->image('slider/MalibuCrest_BR_PanelBed-1000x700.png'); ?> </a>
+            <a><?= $this->Html->image('slider/MalibuCrest_LR2_UP.png'); ?> </a>
+            <a><?= $this->Html->image('slider/233142-2802_RS1-2.png'); ?> </a>
+            <a><?= $this->Html->image('slider/architrave-trestle-dining-table-2.png'); ?> </a>
+            <a><?= $this->Html->image('slider/4.png'); ?> </a>
+            <a><?= $this->Html->image('slider/passage-end-table-2.png'); ?> </a>
+            <a><?= $this->Html->image('slider/passage-sofa-media-console-table-2.png'); ?> </a>
+            <a><?= $this->Html->image('slider/6-1.png'); ?> </a>
+            <a><?= $this->Html->image('slider/old-world-2-1.png'); ?> </a>
+            <a><?= $this->Html->image('slider/passage-bedside-chest-2.png'); ?> </a>
         </div>
     </div>
 </div>
