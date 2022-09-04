@@ -3,14 +3,13 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\ProductImagesController;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
 
 /**
  * App\Controller\ProductImagesController Test Case
  *
- * @uses \App\Controller\ProductImagesController
+ * @uses \App\Controller\Admin\ProductImagesController
  */
 class ProductImagesControllerTest extends TestCase
 {
@@ -30,7 +29,7 @@ class ProductImagesControllerTest extends TestCase
      * Test index method
      *
      * @return void
-     * @uses \App\Controller\ProductImagesController::index()
+     * @uses \App\Controller\Admin\ProductImagesController::index()
      */
     public function testIndex(): void
     {
@@ -41,7 +40,7 @@ class ProductImagesControllerTest extends TestCase
      * Test view method
      *
      * @return void
-     * @uses \App\Controller\ProductImagesController::view()
+     * @uses \App\Controller\Admin\ProductImagesController::view()
      */
     public function testView(): void
     {
@@ -52,7 +51,7 @@ class ProductImagesControllerTest extends TestCase
      * Test add method
      *
      * @return void
-     * @uses \App\Controller\ProductImagesController::add()
+     * @uses \App\Controller\Admin\ProductImagesController::add()
      */
     public function testAdd(): void
     {
@@ -63,7 +62,7 @@ class ProductImagesControllerTest extends TestCase
      * Test edit method
      *
      * @return void
-     * @uses \App\Controller\ProductImagesController::edit()
+     * @uses \App\Controller\Admin\ProductImagesController::edit()
      */
     public function testEdit(): void
     {
@@ -74,7 +73,7 @@ class ProductImagesControllerTest extends TestCase
      * Test delete method
      *
      * @return void
-     * @uses \App\Controller\ProductImagesController::delete()
+     * @uses \App\Controller\Admin\ProductImagesController::delete()
      */
     public function testDelete(): void
     {

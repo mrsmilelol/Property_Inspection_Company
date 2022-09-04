@@ -3,14 +3,13 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\UserAddressesController;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
 
 /**
  * App\Controller\UserAddressesController Test Case
  *
- * @uses \App\Controller\UserAddressesController
+ * @uses \App\Controller\Admin\UserAddressesController
  */
 class UserAddressesControllerTest extends TestCase
 {
@@ -30,7 +29,7 @@ class UserAddressesControllerTest extends TestCase
      * Test index method
      *
      * @return void
-     * @uses \App\Controller\UserAddressesController::index()
+     * @uses \App\Controller\Admin\UserAddressesController::index()
      */
     public function testIndex(): void
     {
@@ -41,7 +40,7 @@ class UserAddressesControllerTest extends TestCase
      * Test view method
      *
      * @return void
-     * @uses \App\Controller\UserAddressesController::view()
+     * @uses \App\Controller\Admin\UserAddressesController::view()
      */
     public function testView(): void
     {
@@ -52,7 +51,7 @@ class UserAddressesControllerTest extends TestCase
      * Test add method
      *
      * @return void
-     * @uses \App\Controller\UserAddressesController::add()
+     * @uses \App\Controller\Admin\UserAddressesController::add()
      */
     public function testAdd(): void
     {
@@ -63,7 +62,7 @@ class UserAddressesControllerTest extends TestCase
      * Test edit method
      *
      * @return void
-     * @uses \App\Controller\UserAddressesController::edit()
+     * @uses \App\Controller\Admin\UserAddressesController::edit()
      */
     public function testEdit(): void
     {
@@ -74,7 +73,7 @@ class UserAddressesControllerTest extends TestCase
      * Test delete method
      *
      * @return void
-     * @uses \App\Controller\UserAddressesController::delete()
+     * @uses \App\Controller\Admin\UserAddressesController::delete()
      */
     public function testDelete(): void
     {

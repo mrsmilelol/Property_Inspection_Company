@@ -27,8 +27,10 @@ class UsersFixture extends TestFixture
                 'phone' => 'Lorem ipsum dolor sit amet',
                 'email' => 'Lorem ipsum dolor sit amet',
                 'user_type_id' => 1,
-                'created_at' => 1660627770,
-                'modified_at' => 1660627770,
+                'token' => 'Lorem ipsum dolor sit amet',
+                'status' => 1,
+                'created_at' => 1662208880,
+                'modified_at' => 1662208880,
             ],
         ];
         parent::init();

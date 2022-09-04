@@ -72,6 +72,17 @@ return static function (RouteBuilder $routes) {
          */
         $builder->fallbacks();
     });
+
+    $routes->prefix('Admin', function (RouteBuilder $routes) {
+        $routes->connect('/', ['controller' => 'Users', 'action' => 'index']);
+        $routes->fallbacks(DashedRoute::class);
+    });
+
+    $routes->prefix('Wholesale', function (RouteBuilder $routes) {
+        $routes->connect('/', ['controller' => 'Products', 'action' => 'shop']);
+        $routes->fallbacks(DashedRoute::class);
+    });
+
     Router::url(['controller' => 'Products', 'action' => 'shop', 'shop']);
     /*
      * If you need a different set of middleware or none at all,
