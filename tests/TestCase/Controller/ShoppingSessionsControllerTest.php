@@ -3,14 +3,13 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\ShoppingSessionsController;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
 
 /**
  * App\Controller\ShoppingSessionsController Test Case
  *
- * @uses \App\Controller\ShoppingSessionsController
+ * @uses \App\Controller\Admin\ShoppingSessionsController
  */
 class ShoppingSessionsControllerTest extends TestCase
 {
@@ -32,7 +31,7 @@ class ShoppingSessionsControllerTest extends TestCase
      * Test index method
      *
      * @return void
-     * @uses \App\Controller\ShoppingSessionsController::index()
+     * @uses \App\Controller\Admin\ShoppingSessionsController::index()
      */
     public function testIndex(): void
     {
@@ -43,7 +42,7 @@ class ShoppingSessionsControllerTest extends TestCase
      * Test view method
      *
      * @return void
-     * @uses \App\Controller\ShoppingSessionsController::view()
+     * @uses \App\Controller\Admin\ShoppingSessionsController::view()
      */
     public function testView(): void
     {
@@ -54,7 +53,7 @@ class ShoppingSessionsControllerTest extends TestCase
      * Test add method
      *
      * @return void
-     * @uses \App\Controller\ShoppingSessionsController::add()
+     * @uses \App\Controller\Admin\ShoppingSessionsController::add()
      */
     public function testAdd(): void
     {
@@ -65,7 +64,7 @@ class ShoppingSessionsControllerTest extends TestCase
      * Test edit method
      *
      * @return void
-     * @uses \App\Controller\ShoppingSessionsController::edit()
+     * @uses \App\Controller\Admin\ShoppingSessionsController::edit()
      */
     public function testEdit(): void
     {
@@ -76,7 +75,7 @@ class ShoppingSessionsControllerTest extends TestCase
      * Test delete method
      *
      * @return void
-     * @uses \App\Controller\ShoppingSessionsController::delete()
+     * @uses \App\Controller\Admin\ShoppingSessionsController::delete()
      */
     public function testDelete(): void
     {
