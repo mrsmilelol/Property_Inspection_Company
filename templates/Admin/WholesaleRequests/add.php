@@ -11,7 +11,7 @@ $formTemplate = [
     'radioContainer' => '<div class="form-radio">{{content}}</div>',
 ];
 $this->Form->setTemplates($formTemplate);
-
+$this->layout = 'logged_out';
 ?>
 <div class="card shadow mb-4">
     <div class="d-sm-flex align-items-center justify-content-between card-header">

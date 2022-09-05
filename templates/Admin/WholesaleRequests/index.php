@@ -18,13 +18,9 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             <thead>
                 <tr>
                     <th data-visible="false"><?= h('id') ?></th>
+                    <th><?= h('Account No') ?></th>
                     <th><?= h('Business Name') ?></th>
-                    <th><?= h('ABN') ?></th>
-                    <th><?= h('Address') ?></th>
-                    <th><?= h('Phone') ?></th>
                     <th><?= h('Business Type') ?></th>
-                    <th><?= h('Payment Method') ?></th>
-                    <th data-visible="false"><?= h('Message') ?></th>
                     <th data-visible="false"><?= h('Status') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
@@ -33,18 +29,14 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <?php foreach ($wholesaleRequests as $wholesaleRequest): ?>
                 <tr>
                     <td><?= $this->Number->format($wholesaleRequest->id) ?></td>
-                    <td><?= $this->Number->format($wholesaleRequest->business_name) ?></td>
-                    <td><?= h($wholesaleRequest->abn) ?></td>
-                    <td><?= h($wholesaleRequest->address_line_1) ?></td>
-                    <td><?= h($wholesaleRequest->phone) ?></td>
+                    <td><?= $wholesaleRequest->user_id ?></td>
+                    <td><?= h($wholesaleRequest->business_name) ?></td>
                     <td><?= h($wholesaleRequest->business_type) ?></td>
-                    <td><?= h($wholesaleRequest->payment_method) ?></td>
-                    <td><?= h($wholesaleRequest->message) ?></td>
                     <td><?= h($wholesaleRequest->status) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $wholesaleRequest->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $wholesaleRequest->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $wholesaleRequest->id], ['confirm' => __('Are you sure you want to delete # {0}?', $wholesaleRequest->id)]) ?>
+
                     </td>
                 </tr>
                 <?php endforeach; ?>
