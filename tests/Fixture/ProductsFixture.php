@@ -25,6 +25,7 @@ class ProductsFixture extends TestFixture
                 'price' => 1,
                 'material' => 'Lorem ipsum dolor sit amet',
                 'brand' => 'Lorem ipsum dolor sit amet',
+                'style' => 'Lorem ipsum dolor sit amet',
                 'colour' => 'Lorem ipsum dolor sit amet',
                 'units_in_stock' => 1,
                 'size' => 'Lorem ipsum dolor sit amet',
@@ -33,9 +34,8 @@ class ProductsFixture extends TestFixture
                 'wholesale_price' => 1,
                 'sale_price' => 1,
                 'manufacturing' => 'Lorem ipsum dolor sit amet',
-                'style_id' => 1,
-                'created_at' => 1662174568,
-                'modified_at' => 1662174568,
+                'created_at' => 1660784786,
+                'modified_at' => 1660784786,
             ],
         ];
         parent::init();

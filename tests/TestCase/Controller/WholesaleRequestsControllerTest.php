@@ -3,16 +3,16 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\StylesController;
+use App\Controller\WholesaleRequestsController;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Controller\StylesController Test Case
+ * App\Controller\WholesaleRequestsController Test Case
  *
- * @uses \App\Controller\StylesController
+ * @uses \App\Controller\WholesaleRequestsController
  */
-class StylesControllerTest extends TestCase
+class WholesaleRequestsControllerTest extends TestCase
 {
     use IntegrationTestTrait;
 
@@ -22,15 +22,14 @@ class StylesControllerTest extends TestCase
      * @var array<string>
      */
     protected $fixtures = [
-        'app.Styles',
-        'app.Products',
+        'app.WholesaleRequests',
     ];
 
     /**
      * Test index method
      *
      * @return void
-     * @uses \App\Controller\StylesController::index()
+     * @uses \App\Controller\WholesaleRequestsController::index()
      */
     public function testIndex(): void
     {
@@ -41,7 +40,7 @@ class StylesControllerTest extends TestCase
      * Test view method
      *
      * @return void
-     * @uses \App\Controller\StylesController::view()
+     * @uses \App\Controller\WholesaleRequestsController::view()
      */
     public function testView(): void
     {
@@ -52,7 +51,7 @@ class StylesControllerTest extends TestCase
      * Test add method
      *
      * @return void
-     * @uses \App\Controller\StylesController::add()
+     * @uses \App\Controller\WholesaleRequestsController::add()
      */
     public function testAdd(): void
     {
@@ -63,7 +62,7 @@ class StylesControllerTest extends TestCase
      * Test edit method
      *
      * @return void
-     * @uses \App\Controller\StylesController::edit()
+     * @uses \App\Controller\WholesaleRequestsController::edit()
      */
     public function testEdit(): void
     {
@@ -74,7 +73,7 @@ class StylesControllerTest extends TestCase
      * Test delete method
      *
      * @return void
-     * @uses \App\Controller\StylesController::delete()
+     * @uses \App\Controller\WholesaleRequestsController::delete()
      */
     public function testDelete(): void
     {

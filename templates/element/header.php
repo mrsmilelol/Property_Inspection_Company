@@ -76,7 +76,7 @@
                     <div class="header-logo logo-main-page">
                         <a href=<?= $this->Url->build(['controller'=>'Pages',
                             'action'=>'display','main']); ?> title="Chelsea Furniture">
-                        <?= $this->Html->image('chelsea-furniture-logo-w102h105.png',
+                        <?= $this->Html->image('Logo-circle.png',
                             ['class' =>'img-responsive']); ?>
                         </a>
                     </div>
@@ -184,7 +184,7 @@
                     <div class="mainmenu">
                         <nav>
                             <ul>
-                                <li><a href="<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','main']); ?>">Home</a>
+<!--                                <li><a href="--><!--<?//= $this->Url->build(['controller'=>'Pages', 'action'=>'display','main']); ?>--><!--">Home</a>-->
                                 <li><a href="<?= $this->Url->build(['controller'=>'Products', 'action'=>'shop']); ?>">Shop</a>
                                 </li>
                                 <li><a href="<?= $this->Url->build(['controller'=>'Categories', 'action'=>'list', 1]); ?>">Styles</a>

@@ -58,6 +58,9 @@ class UsersTable extends Table
         $this->hasMany('UserAddresses', [
             'foreignKey' => 'user_id',
         ]);
+        $this->hasMany('WholesaleRequests', [
+            'foreignKey' => 'user_id',
+        ]);
     }
 
     /**

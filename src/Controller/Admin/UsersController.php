@@ -141,6 +141,31 @@ class UsersController extends AppController
     }
 
     /**
+     * Add Wholesale account method
+     *
+     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
+     */
+    public function addWholesale($id=null)
+    {
+        $user = $this->Users->newEmptyEntity();
+        //$this->loadModel("WholesaleRequests");
+        $wholesaleRequest = $this->fetchTable('WholesaleRequests')->get($id);
+        $user->user_type = $this->Users->UserTypes->get(2);
+        $user->email = $wholesaleRequest->email;
+        $user->username = $wholesaleRequest->email;
+        $user->lastname = $wholesaleRequest->business_name;
+        $user->firstname = $wholesaleRequest->business_name;
+        $user->password = $wholesaleRequest->email;
+        $user->phone = $wholesaleRequest->phone;
+
+        $this->Users->save($user);
+        $userId = $user->id;
+        $session = $this->request->getSession();
+        $session->write('User.id', $userId);
+        return $this->redirect(['controller'=>'WholesaleRequests','action' => 'addUser',$id]);
+    }
+
+    /**
      * Edit method
      *
      * @param string|null $id User id.

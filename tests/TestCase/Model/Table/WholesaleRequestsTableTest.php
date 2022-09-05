@@ -3,20 +3,20 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\StylesTable;
+use App\Model\Table\WholesaleRequestsTable;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\StylesTable Test Case
+ * App\Model\Table\WholesaleRequestsTable Test Case
  */
-class StylesTableTest extends TestCase
+class WholesaleRequestsTableTest extends TestCase
 {
     /**
      * Test subject
      *
-     * @var \App\Model\Table\StylesTable
+     * @var \App\Model\Table\WholesaleRequestsTable
      */
-    protected $Styles;
+    protected $WholesaleRequests;
 
     /**
      * Fixtures
@@ -24,8 +24,7 @@ class StylesTableTest extends TestCase
      * @var array<string>
      */
     protected $fixtures = [
-        'app.Styles',
-        'app.Products',
+        'app.WholesaleRequests',
     ];
 
     /**
@@ -36,8 +35,8 @@ class StylesTableTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $config = $this->getTableLocator()->exists('Styles') ? [] : ['className' => StylesTable::class];
-        $this->Styles = $this->getTableLocator()->get('Styles', $config);
+        $config = $this->getTableLocator()->exists('WholesaleRequests') ? [] : ['className' => WholesaleRequestsTable::class];
+        $this->WholesaleRequests = $this->getTableLocator()->get('WholesaleRequests', $config);
     }
 
     /**
@@ -47,7 +46,7 @@ class StylesTableTest extends TestCase
      */
     protected function tearDown(): void
     {
-        unset($this->Styles);
+        unset($this->WholesaleRequests);
 
         parent::tearDown();
     }
@@ -56,7 +55,7 @@ class StylesTableTest extends TestCase
      * Test validationDefault method
      *
      * @return void
-     * @uses \App\Model\Table\StylesTable::validationDefault()
+     * @uses \App\Model\Table\WholesaleRequestsTable::validationDefault()
      */
     public function testValidationDefault(): void
     {
