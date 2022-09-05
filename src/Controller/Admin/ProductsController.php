@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 
 //use App\Controller\Wholesale\AppController;
 //use function App\Controller\__;
+use function __;
 use const DS;
 use const WWW_ROOT;
 

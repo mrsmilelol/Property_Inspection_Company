@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace App\Controller\Wholesale;
 
 use Cake\Controller\Controller;
+use Cake\Event\EventInterface;
 
 /**
  * Application Controller
@@ -53,11 +54,16 @@ class AppController extends Controller
         //$this->loadComponent('FormProtection');
     }
 
-    public function beforeFilter(\Cake\Event\EventInterface $event)
+    public function beforeFilter(EventInterface $event)
     {
-        parent::beforeFilter($event);
-        // for all controllers in our application, make index and view
-        // actions public, skipping the authentication check.
-        $this->Authentication->addUnauthenticatedActions(['login','add']);
+        // Only apply redirect rule when user is actually logged in
+        if ($loggedin_user = $this->Authentication->getIdentity()) {
+            //If user is not on login or logout page, check their role
+            if ($loggedin_user->user_type_id != null && $loggedin_user->user_type_id != 2 || 1) {
+                // the user is not an admin
+                $this->Flash->error("You're a regular customer");
+                $this->redirect(['prefix' => 'Wholesale', 'controller' => 'Products', 'action' => 'shop']);
+            }
+        }
     }
 }
