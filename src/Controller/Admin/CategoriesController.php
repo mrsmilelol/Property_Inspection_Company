@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Controller\Wholesale\AppController;
-use function App\Controller\__;
+//use function App\Controller\__;
 
 /**
  * Categories Controller
@@ -57,7 +57,7 @@ class CategoriesController extends AppController
         if ($this->request->is('post')) {
             $category = $this->Categories->patchEntity($category, $this->request->getData());
             if ($this->Categories->save($category)) {
-                //$this->Flash->success(__('The category has been saved.'));
+                $this->Flash->success(__('The category has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
