@@ -112,9 +112,6 @@ class UsersTable extends Table
             ->maxLength('token', 255)
             ->allowEmptyString('token');
 
-        $validator
-            ->requirePresence('status', 'create')
-            ->notEmptyString('status');
 
         $validator
             ->dateTime('created_at')
