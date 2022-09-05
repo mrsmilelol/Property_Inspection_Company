@@ -14,6 +14,7 @@ use Cake\ORM\Entity;
  * @property int $price
  * @property string $material
  * @property string $brand
+ * @property string $style
  * @property string $colour
  * @property int $units_in_stock
  * @property string $size
@@ -22,11 +23,11 @@ use Cake\ORM\Entity;
  * @property int|null $wholesale_price
  * @property int|null $sale_price
  * @property string|null $manufacturing
- * @property int|null $style_id
  * @property \Cake\I18n\FrozenTime $created_at
  * @property \Cake\I18n\FrozenTime $modified_at
  *
- * @property \App\Model\Entity\OrderItem[] $order_items
+ * @property \App\Model\Entity\Order[] $orders
+ * @property \App\Model\Entity\Order[] $orders_products
  * @property \App\Model\Entity\ProductImage[] $product_images
  * @property \App\Model\Entity\ProductReview[] $product_reviews
  * @property \App\Model\Entity\ShoppingSession[] $shopping_sessions
@@ -49,6 +50,7 @@ class Product extends Entity
         'price' => true,
         'material' => true,
         'brand' => true,
+        'style' => true,
         'colour' => true,
         'units_in_stock' => true,
         'size' => true,
@@ -57,7 +59,6 @@ class Product extends Entity
         'wholesale_price' => true,
         'sale_price' => true,
         'manufacturing' => true,
-        'style_id' => true,
         'created_at' => true,
         'modified_at' => true,
         'order_items' => true,
