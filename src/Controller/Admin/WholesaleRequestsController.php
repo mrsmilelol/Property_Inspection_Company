@@ -58,10 +58,31 @@ class WholesaleRequestsController extends AppController
             $wholesaleRequest->status = "Not Approved";
             if ($this->WholesaleRequests->save($wholesaleRequest)) {
 
+                $mailer = new Mailer();
+                $mailer
+                    ->setEmailFormat('html')
+                    ->setTo($wholesaleRequest->email)
+                    //->setTo('contactreceiver@billgong.monash-ie.me')
+                    ->setFrom('website@monash.edu')
+                    ->setSubject('Your wholesale application has been sent for review')
+                    ->viewBuilder()
+                    ->disableAutoLayout()
+                    ->setTemplate('wholesale_request');
+
+                $mailer->setViewVars([
+                    'firstname' => $wholesaleRequest->first_name,
+                    'lastname' => $wholesaleRequest->last_name,
+                    'business_name' => $wholesaleRequest->business_name,
+                    'abn' => $wholesaleRequest->abn,
+                    'phone' => $wholesaleRequest->phone,
+                    'email'=> $wholesaleRequest->email
+                ]);
+                $mailer->deliver();
+
                 //$this->redirect(['controller'=>'Users','action'=>'addWholesale',$wholesaleRequest->id]);
                 $this->Flash->success(__('The wholesale request has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller'=>'WholesaleRequests','action' => 'add','prefix'=>'Admin']);
             }
             $this->Flash->error(__('The wholesale request could not be saved. Please, try again.'));
         }
@@ -109,7 +130,27 @@ class WholesaleRequestsController extends AppController
             if ($this->WholesaleRequests->save($wholesaleRequest)) {
 
                 $this->redirect(['controller' => 'Users', 'action' => 'addWholesale', $wholesaleRequest->id]);
-                $this->Flash->success(__('The wholesale request has been saved.'));
+                $mailer = new Mailer();
+                $mailer
+                    ->setEmailFormat('html')
+                    ->setTo($wholesaleRequest->email)
+                    //->setTo('contactreceiver@billgong.monash-ie.me')
+                    ->setFrom('website@monash.edu')
+                    ->setSubject('Your wholesale application has been approved')
+                    ->viewBuilder()
+                    ->disableAutoLayout()
+                    ->setTemplate('wholesale_approve');
+
+                $mailer->setViewVars([
+                    'firstname' => $wholesaleRequest->first_name,
+                    'lastname' => $wholesaleRequest->last_name,
+                    'business_name' => $wholesaleRequest->business_name,
+                    'abn' => $wholesaleRequest->abn,
+                    'phone' => $wholesaleRequest->phone,
+                    'email'=> $wholesaleRequest->email
+                ]);
+                $this->Flash->success(__('The wholesale request has been approved.'));
+                $mailer->deliver();
 
                 return $this->redirect(['action' => 'index']);
             }
@@ -125,14 +166,44 @@ class WholesaleRequestsController extends AppController
             'contain' => [],
         ]);
         //$this->validate($wholesaleRequest->status);
-        $wholesaleRequest->status = "Rejected";
-        if ($this->WholesaleRequests->save($wholesaleRequest)) {
+        $status = $wholesaleRequest->status;
 
-            $this->Flash->success(__('The wholesale request has been rejected.'));
-
-            return $this->redirect(['action' => 'index']);
+        if (strcmp($status, "Rejected")==0) {
+            $this->Flash->error(__('The request has been rejected'));
+            return $this->redirect(['controller'=>'wholesaleRequests','action' => 'index']);
         }
-        $this->Flash->error(__('The wholesale request could not be saved. Please, try again.'));
+        elseif (strcmp($status, "Approved")==0 ){
+            $this->Flash->error(__('The quote request has already been approved.'));
+            return $this->redirect(['controller'=>'wholesaleRequests','action' => 'index']);;
+        }
+        else {
+            $wholesaleRequest->status = "Rejected";
+            if ($this->WholesaleRequests->save($wholesaleRequest)) {
+
+                $mailer = new Mailer();
+                $mailer
+                    ->setEmailFormat('html')
+                    ->setTo($wholesaleRequest->email)
+                    //->setTo('contactreceiver@billgong.monash-ie.me')
+                    ->setFrom('website@monash.edu')
+                    ->setSubject('Your wholesale application has been sent for review')
+                    ->viewBuilder()
+                    ->disableAutoLayout()
+                    ->setTemplate('wholesale_rejected');
+
+                $mailer->setViewVars([
+                    'firstname' => $wholesaleRequest->first_name,
+                    'lastname' => $wholesaleRequest->last_name,
+                ]);
+                $mailer->deliver();
+
+                $this->Flash->success(__('The wholesale request has been rejected.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The wholesale request could not be saved. Please, try again.'));
+        }
+
 
 
     }
