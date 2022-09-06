@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controller\Customer;
 
 use App\Controller\Wholesale\AppController;
+use Cake\Event\EventInterface;
 use function App\Controller\__;
 
 /**
@@ -14,6 +15,13 @@ use function App\Controller\__;
  */
 class CategoriesController extends AppController
 {
+    public function beforeFilter(EventInterface $event)
+    {
+        parent::beforeFilter($event);
+        // for all controllers in our application, make index and view
+        // actions public, skipping the authentication check.
+        $this->Authentication->addUnauthenticatedActions(['index', 'view','add','sub','edit','editsub','delete','list']);
+    }
     /**
      * Index method
      *
