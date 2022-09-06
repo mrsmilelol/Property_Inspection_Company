@@ -27,14 +27,14 @@
 
 <body class="bg-gradient-primary">
 
-<div class="container">
+<div class="container" style="padding-top: 12%;">
 
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
         <div class="col-xl-10 col-lg-12 col-md-9">
 
-            <div class="card o-hidden border-0 shadow-lg my-5">
+
                 <div class="card-body p-0">
                     <!-- Main Content -->
                     <div id="content">
@@ -47,7 +47,6 @@
                     </div>
                     <!-- End of Main Content -->
                 </div>
-            </div>
         </div>
     </div>
     <!-- Footer -->
