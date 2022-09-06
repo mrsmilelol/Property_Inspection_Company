@@ -238,8 +238,8 @@ $this->layout = 'front';
             <div class="col-xs-12 col-sm-9">
                 <a><?= $this->Html->image('shop.jpg'); ?> </a>
                 <h1 class="page-heading section-padding2">
-                    <span class="cat-name pull-left">Bedroom </span>
-                    <span class="heading-counter pull-right">There are 2 products.</span>
+                    <span class="cat-name pull-left">Shop </span>
+                    <span class="heading-counter pull-right">There is/are <?= h(count($products)) ?> product(s).</span>
                 </h1>
                 <div class="shop-item-filter">
                     <div class="shop-tab clearfix">
