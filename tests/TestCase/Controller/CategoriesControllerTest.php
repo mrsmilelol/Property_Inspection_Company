@@ -9,7 +9,7 @@ use Cake\TestSuite\TestCase;
 /**
  * App\Controller\CategoriesController Test Case
  *
- * @uses \App\Controller\Admin\CategoriesController
+ * @uses \App\Controller\CategoriesController
  */
 class CategoriesControllerTest extends TestCase
 {
@@ -30,7 +30,7 @@ class CategoriesControllerTest extends TestCase
      * Test index method
      *
      * @return void
-     * @uses \App\Controller\Admin\CategoriesController::index()
+     * @uses \App\Controller\CategoriesController::index()
      */
     public function testIndex(): void
     {
@@ -41,7 +41,7 @@ class CategoriesControllerTest extends TestCase
      * Test view method
      *
      * @return void
-     * @uses \App\Controller\Admin\CategoriesController::view()
+     * @uses \App\Controller\CategoriesController::view()
      */
     public function testView(): void
     {
@@ -52,7 +52,7 @@ class CategoriesControllerTest extends TestCase
      * Test add method
      *
      * @return void
-     * @uses \App\Controller\Admin\CategoriesController::add()
+     * @uses \App\Controller\CategoriesController::add()
      */
     public function testAdd(): void
     {
@@ -63,7 +63,7 @@ class CategoriesControllerTest extends TestCase
      * Test edit method
      *
      * @return void
-     * @uses \App\Controller\Admin\CategoriesController::edit()
+     * @uses \App\Controller\CategoriesController::edit()
      */
     public function testEdit(): void
     {
@@ -74,7 +74,7 @@ class CategoriesControllerTest extends TestCase
      * Test delete method
      *
      * @return void
-     * @uses \App\Controller\Admin\CategoriesController::delete()
+     * @uses \App\Controller\CategoriesController::delete()
      */
     public function testDelete(): void
     {

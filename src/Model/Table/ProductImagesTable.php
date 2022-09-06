@@ -62,7 +62,7 @@ class ProductImagesTable extends Table
 
         $validator
             ->scalar('description')
-            ->maxLength('description', 64)
+            ->maxLength('description', 255)
             ->allowEmptyString('description');
 
         $validator

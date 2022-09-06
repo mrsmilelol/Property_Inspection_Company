@@ -4,23 +4,31 @@
  * @var \App\Model\Entity\WholesaleRequest $wholesaleRequest
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Wholesale Request'), ['action' => 'edit', $wholesaleRequest->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Wholesale Request'), ['action' => 'delete', $wholesaleRequest->id], ['confirm' => __('Are you sure you want to delete # {0}?', $wholesaleRequest->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Wholesale Requests'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Wholesale Request'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="wholesaleRequests view content">
-            <h3><?= h($wholesaleRequest->id) ?></h3>
-            <table>
+<div class="card shadow mb-4">
+    <div class="d-sm-flex align-items-center justify-content-between card-header">
+        <h1 class="h3 mb-0 text-gray-800"><?= h($wholesaleRequest->business_name) ?></h1>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
+                <tr>
+                    <th><?= __('User') ?></th>
+                    <td><?= $wholesaleRequest->has('user') ? $this->Html->link($wholesaleRequest->user->id, ['controller' => 'Users', 'action' => 'view', $wholesaleRequest->user->id]) : '' ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Business Name') ?></th>
+                    <td><?= h($wholesaleRequest->business_name) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Website') ?></th>
+                    <td><?= h($wholesaleRequest->website) ?></td>
+                </tr>
                 <tr>
                     <th><?= __('Abn') ?></th>
                     <td><?= h($wholesaleRequest->abn) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Business Phone') ?></th>
+                    <td><?= h($wholesaleRequest->business_phone) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Address Line 1') ?></th>
@@ -31,28 +39,36 @@
                     <td><?= h($wholesaleRequest->address_line_2) ?></td>
                 </tr>
                 <tr>
+                    <th><?= __('First Name') ?></th>
+                    <td><?= h($wholesaleRequest->first_name) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Last Name') ?></th>
+                    <td><?= h($wholesaleRequest->last_name) ?></td>
+                </tr>
+                <tr>
                     <th><?= __('Phone') ?></th>
                     <td><?= h($wholesaleRequest->phone) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Business Type') ?></th>
-                    <td><?= h($wholesaleRequest->business_type) ?></td>
+                    <th><?= __('Email') ?></th>
+                    <td><?= h($wholesaleRequest->email) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Payment Method') ?></th>
-                    <td><?= h($wholesaleRequest->payment_method) ?></td>
+                    <th><?= __('Position') ?></th>
+                    <td><?= h($wholesaleRequest->position) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Message') ?></th>
                     <td><?= h($wholesaleRequest->message) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Id') ?></th>
-                    <td><?= $this->Number->format($wholesaleRequest->id) ?></td>
+                    <th><?= __('Status') ?></th>
+                    <td><?= h($wholesaleRequest->status) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Business Name') ?></th>
-                    <td><?= $this->Number->format($wholesaleRequest->business_name) ?></td>
+                    <th><?= __('Id') ?></th>
+                    <td><?= $this->Number->format($wholesaleRequest->id) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Created At') ?></th>
@@ -62,11 +78,20 @@
                     <th><?= __('Modified At') ?></th>
                     <td><?= h($wholesaleRequest->modified_at) ?></td>
                 </tr>
-                <tr>
-                    <th><?= __('Status') ?></th>
-                    <td><?= $wholesaleRequest->status ? __('Yes') : __('No'); ?></td>
-                </tr>
             </table>
+        <?= $this->Html->link(
+            'Approve',
+            ['controller' => 'WholesaleRequests', 'action' => 'approve',$wholesaleRequest->id],
+            ['class' => 'btn btn-primary']
+            );
+        ?>
+        <?= $this->Html->link(
+            'Reject',
+            ['controller' => 'WholesaleRequests', 'action' => 'reject',$wholesaleRequest->id],
+            ['class' => 'btn btn-primary'],
+        );
+        ?>
         </div>
+
     </div>
 </div>
