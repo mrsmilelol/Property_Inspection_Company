@@ -23,16 +23,20 @@
                 <legend><?= __('Edit Wholesale Request') ?></legend>
                 <?php
                     echo $this->Form->control('business_name');
+                    echo $this->Form->control('website');
                     echo $this->Form->control('abn');
+                    echo $this->Form->control('business_phone');
                     echo $this->Form->control('address_line_1');
                     echo $this->Form->control('address_line_2');
+                    echo $this->Form->control('first_name');
+                    echo $this->Form->control('last_name');
                     echo $this->Form->control('phone');
-                    echo $this->Form->control('business_type');
-                    echo $this->Form->control('payment_method');
+                    echo $this->Form->control('email');
+                    echo $this->Form->control('position');
                     echo $this->Form->control('message');
-                    echo $this->Form->control('status');
-                    echo $this->Form->control('created_at');
-                    echo $this->Form->control('modified_at');
+                    //echo $this->Form->control('status');
+                    //echo $this->Form->control('created_at');
+                    //echo $this->Form->control('modified_at');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

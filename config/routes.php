@@ -79,7 +79,12 @@ return static function (RouteBuilder $routes) {
     });
 
     $routes->prefix('Wholesale', function (RouteBuilder $routes) {
-        $routes->connect('/', ['controller' => 'Products', 'action' => 'shop']);
+        $routes->connect('/', ['controller' => 'Pages', 'action' => 'main']);
+        $routes->fallbacks(DashedRoute::class);
+    });
+
+    $routes->prefix('Customer', function (RouteBuilder $routes) {
+        $routes->connect('/', ['controller' => 'Pages', 'action' => 'main']);
         $routes->fallbacks(DashedRoute::class);
     });
 

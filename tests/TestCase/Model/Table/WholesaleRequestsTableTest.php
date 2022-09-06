@@ -25,6 +25,7 @@ class WholesaleRequestsTableTest extends TestCase
      */
     protected $fixtures = [
         'app.WholesaleRequests',
+        'app.Users',
     ];
 
     /**
@@ -58,6 +59,17 @@ class WholesaleRequestsTableTest extends TestCase
      * @uses \App\Model\Table\WholesaleRequestsTable::validationDefault()
      */
     public function testValidationDefault(): void
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     * @uses \App\Model\Table\WholesaleRequestsTable::buildRules()
+     */
+    public function testBuildRules(): void
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

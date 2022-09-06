@@ -40,7 +40,7 @@ class ProductsController extends AppController
         $productImages = $this->ProductImages->findByProductId($id)->all()->toArray();
 
         $product = $this->Products->get($id, [
-            'contain' => ['Styles','OrderItems', 'ProductImages', 'ProductReviews', 'ShoppingSessions'],
+            'contain' => ['OrdersProducts', 'ProductImages', 'ProductReviews', 'ShoppingSessions', 'Orders','Categories'],
         ]);
 
         $this->set(compact('product','productImages'));
@@ -90,8 +90,7 @@ class ProductsController extends AppController
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
         }
 //        $categories = $this->Products->ProductCategories->find('list', ['limit' => 200])->all();
-        $styles = $this->Products->Styles->find('list', ['limit' => 200])->all();
-        $this->set(compact('product', 'categories','styles'));
+        $this->set(compact('product', 'categories'));
     }
 
     /**
@@ -105,7 +104,7 @@ class ProductsController extends AppController
     {
         $this->loadModel('ProductImages');
         $product = $this->Products->get($id, [
-            'contain' => ['OrderItems', 'Categories',
+            'contain' => ['Orders', 'Categories', 'OrdersProducts',
                 'ProductImages', 'ProductReviews', 'ShoppingSessions'],
         ]);
         $productImages = $this->Products->get($id, [
@@ -132,8 +131,7 @@ class ProductsController extends AppController
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
         }
         $categories = $this->Products->Categories->find('list', ['limit' => 200])->all();
-        $styles = $this->Products->Styles->find('list', ['limit' => 200])->all();
-        $this->set(compact('product','categories','productImages','styles'));
+        $this->set(compact('product','categories','productImages'));
     }
 
     public function shop()
@@ -160,7 +158,7 @@ class ProductsController extends AppController
         $productImages = $this->ProductImages->findByProductId($id)->all()->toArray();
 
         $product = $this->Products->get($id, [
-            'contain' => ['OrderItems', 'ProductImages', 'ProductReviews', 'ShoppingSessions'],
+            'contain' => ['Orders', 'OrderProducts', 'Categories', 'ProductImages', 'ProductReviews', 'ShoppingSessions'],
         ]);
 
         $this->set(compact('product','productImages'));

@@ -11,6 +11,8 @@ use Cake\Validation\Validator;
 /**
  * WholesaleRequests Model
  *
+ * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
+ *
  * @method \App\Model\Entity\WholesaleRequest newEmptyEntity()
  * @method \App\Model\Entity\WholesaleRequest newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\WholesaleRequest[] newEntities(array $data, array $options = [])
@@ -65,10 +67,21 @@ class WholesaleRequestsTable extends Table
             ->notEmptyString('business_name');
 
         $validator
+            ->scalar('website')
+            ->maxLength('website', 64)
+            ->allowEmptyString('website');
+
+        $validator
             ->scalar('abn')
             ->maxLength('abn', 64)
             ->requirePresence('abn', 'create')
             ->notEmptyString('abn');
+
+        $validator
+            ->scalar('business_phone')
+            ->maxLength('business_phone', 64)
+            ->requirePresence('business_phone', 'create')
+            ->notEmptyString('business_phone');
 
         $validator
             ->scalar('address_line_1')
@@ -82,6 +95,18 @@ class WholesaleRequestsTable extends Table
             ->allowEmptyString('address_line_2');
 
         $validator
+            ->scalar('first_name')
+            ->maxLength('first_name', 64)
+            ->requirePresence('first_name', 'create')
+            ->notEmptyString('first_name');
+
+        $validator
+            ->scalar('last_name')
+            ->maxLength('last_name', 64)
+            ->requirePresence('last_name', 'create')
+            ->notEmptyString('last_name');
+
+        $validator
             ->scalar('phone')
             ->maxLength('phone', 64)
             ->requirePresence('phone', 'create')
@@ -93,16 +118,10 @@ class WholesaleRequestsTable extends Table
             ->notEmptyString('email');
 
         $validator
-            ->scalar('business_type')
-            ->maxLength('business_type', 64)
-            ->requirePresence('business_type', 'create')
-            ->notEmptyString('business_type');
-
-        $validator
-            ->scalar('payment_method')
-            ->maxLength('payment_method', 64)
-            ->requirePresence('payment_method', 'create')
-            ->notEmptyString('payment_method');
+            ->scalar('position')
+            ->maxLength('position', 64)
+            ->requirePresence('position', 'create')
+            ->notEmptyString('position');
 
         $validator
             ->scalar('message')
