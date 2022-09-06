@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 
 //use App\Controller\Wholesale\AppController;
 use function __;
+use Cake\Mailer\Mailer;
 /**
  * WholesaleRequests Controller
  *
@@ -92,17 +93,64 @@ class WholesaleRequestsController extends AppController
         $wholesaleRequest = $this->WholesaleRequests->get($id, [
             'contain' => [],
         ]);
-        $wholesaleRequest->status = "Approved";
+
+        $status = $wholesaleRequest->status;
+        if (strcmp($status, "Rejected")==0) {
+            $this->Flash->error(__('The request has been rejected'));
+            return $this->redirect(['controller'=>'wholesaleRequests','action' => 'index']);
+        }
+        elseif (strcmp($status, "Approved")==0 ){
+            $this->Flash->error(__('The quote request has already been approved.'));
+            return $this->redirect(['controller'=>'wholesaleRequests','action' => 'index']);;
+        }
+        else {
+            $wholesaleRequest->status = "Approved";
+
+            if ($this->WholesaleRequests->save($wholesaleRequest)) {
+
+                $this->redirect(['controller' => 'Users', 'action' => 'addWholesale', $wholesaleRequest->id]);
+                $this->Flash->success(__('The wholesale request has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The wholesale request could not be saved. Please, try again.'));
+
+            $wholesaleRequest->status = "Not Approved";
+        }
+
+    }
+
+    public function reject($id=null){
+        $wholesaleRequest = $this->WholesaleRequests->get($id, [
+            'contain' => [],
+        ]);
+        //$this->validate($wholesaleRequest->status);
+        $wholesaleRequest->status = "Rejected";
         if ($this->WholesaleRequests->save($wholesaleRequest)) {
 
-            $this->redirect(['controller'=>'Users','action'=>'addWholesale',$wholesaleRequest->id]);
-            $this->Flash->success(__('The wholesale request has been saved.'));
+            $this->Flash->success(__('The wholesale request has been rejected.'));
 
             return $this->redirect(['action' => 'index']);
         }
         $this->Flash->error(__('The wholesale request could not be saved. Please, try again.'));
 
-        $wholesaleRequest->status = "Approved";
+
+    }
+
+    /**
+     * private validate method to validate the status before approve the quote
+     * @param $status
+     * @return \Cake\Http\Response|void|null renders view if validate unsuccessful.
+     */
+    private function validate($status) {
+        if (strcmp($status, "Rejected")==0) {
+            $this->Flash->error(__('The request has been rejected'));
+            return $this->redirect(['controller'=>'wholesaleRequests','action' => 'index']);
+        }
+        elseif (strcmp($status, "Approved")==0 ){
+            $this->Flash->error(__('The quote request has already been approved.'));
+            return;
+        }
 
     }
 

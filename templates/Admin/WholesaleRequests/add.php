@@ -13,6 +13,7 @@ $formTemplate = [
 $this->Form->setTemplates($formTemplate);
 $this->layout = 'logged_out';
 ?>
+<div class="container" style="padding-top: 12%;">
 <div class="card shadow mb-4">
     <div class="d-sm-flex align-items-center justify-content-between card-header">
         <h1 class="h3 mb-0 text-gray-800"><?= __('Create Wholesale request') ?></h1>

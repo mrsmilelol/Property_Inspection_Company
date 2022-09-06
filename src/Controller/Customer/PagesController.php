@@ -33,14 +33,14 @@ use Cake\View\Exception\MissingTemplateException;
  */
 class PagesController extends AppController
 {
-
     public function beforeFilter(EventInterface $event)
     {
         parent::beforeFilter($event);
         // for all controllers in our application, make index and view
         // actions public, skipping the authentication check.
-        $this->Authentication->addUnauthenticatedActions(['about','contact','home','main','product','shop']);
+        $this->Authentication->addUnauthenticatedActions(['display', 'about','contact','home','main','product','shop','detail']);
     }
+
     /**
      * Displays a view
      *
@@ -108,6 +108,4 @@ class PagesController extends AppController
 //        $Pro = $this->QuoteRequests->find()->contain(['InspectionTiers']);
 //        $this->set(compact('quoteRequests'));
     }
-
-
 }
