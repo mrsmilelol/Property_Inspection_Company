@@ -62,7 +62,7 @@ class AppController extends Controller
             if ($loggedin_user->user_type_id != null && $loggedin_user->user_type_id == 3) {
                 // the user is not an admin
                 $this->Flash->error("You're a regular customer");
-                $this->redirect(['prefix' => 'Wholesale', 'controller' => 'Products', 'action' => 'shop']);
+                $this->redirect(['prefix' => 'Customer', 'controller' => 'Products', 'action' => 'shop']);
             }
         }
     }

@@ -22,6 +22,7 @@ class CategoriesController extends AppController
         // actions public, skipping the authentication check.
         $this->Authentication->addUnauthenticatedActions(['index', 'view','add','sub','edit','editsub','delete','list']);
     }
+
     /**
      * Index method
      *
@@ -31,7 +32,7 @@ class CategoriesController extends AppController
     {
         $this->paginate = [
             'contain' => ['ParentCategories'],
-            'limit' => 200
+            'limit' => 200,
         ];
         $categories = $this->paginate($this->Categories->find('all')->where(['Categories.parent_id IS' => null]));
         $subcategories = $this->paginate($this->Categories->find('all')->where(['Categories.parent_id IS NOT' => null]));

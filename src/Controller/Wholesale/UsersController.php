@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Controller\Admin;
+namespace App\Controller\Wholesale;
 
 use Cake\Event\EventInterface;
 use Cake\Mailer\Mailer;
@@ -99,7 +99,7 @@ class UsersController extends AppController
         if ($result->isValid()) {
             $this->Authentication->logout();
 
-            return $this->redirect(['prefix' =>'Admin', 'controller' => 'Users', 'action' => 'login']);
+            return $this->redirect(['controller' => 'Users', 'action' => 'login']);
         }
     }
 
