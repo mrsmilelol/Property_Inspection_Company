@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 
 //use App\Controller\Wholesale\AppController;
 use function __;
+
 /**
  * WholesaleRequests Controller
  *
@@ -54,9 +55,8 @@ class WholesaleRequestsController extends AppController
         if ($this->request->is('post')) {
             $wholesaleRequest = $this->WholesaleRequests->patchEntity($wholesaleRequest, $this->request->getData());
             //updating the status
-            $wholesaleRequest->status = "Not Approved";
+            $wholesaleRequest->status = 'Not Approved';
             if ($this->WholesaleRequests->save($wholesaleRequest)) {
-
                 //$this->redirect(['controller'=>'Users','action'=>'addWholesale',$wholesaleRequest->id]);
                 $this->Flash->success(__('The wholesale request has been saved.'));
 
@@ -75,9 +75,8 @@ class WholesaleRequestsController extends AppController
         if ($this->request->is('post')) {
             $wholesaleRequest = $this->WholesaleRequests->patchEntity($wholesaleRequest, $this->request->getData());
             //updating the status
-            $wholesaleRequest->status = "Not Approved";
+            $wholesaleRequest->status = 'Not Approved';
             if ($this->WholesaleRequests->save($wholesaleRequest)) {
-
                 //$this->redirect(['controller'=>'Users','action'=>'addWholesale',$wholesaleRequest->id]);
                 $this->Flash->success(__('The wholesale request has been saved.'));
 
@@ -88,25 +87,25 @@ class WholesaleRequestsController extends AppController
         $this->set(compact('wholesaleRequest'));
     }
 
-    public function approve($id=null){
+    public function approve($id = null)
+    {
         $wholesaleRequest = $this->WholesaleRequests->get($id, [
             'contain' => [],
         ]);
-        $wholesaleRequest->status = "Approved";
+        $wholesaleRequest->status = 'Approved';
         if ($this->WholesaleRequests->save($wholesaleRequest)) {
-
-            $this->redirect(['controller'=>'Users','action'=>'addWholesale',$wholesaleRequest->id]);
+            $this->redirect(['controller' => 'Users','action' => 'addWholesale',$wholesaleRequest->id]);
             $this->Flash->success(__('The wholesale request has been saved.'));
 
             return $this->redirect(['action' => 'index']);
         }
         $this->Flash->error(__('The wholesale request could not be saved. Please, try again.'));
 
-        $wholesaleRequest->status = "Approved";
-
+        $wholesaleRequest->status = 'Approved';
     }
 
-    public function addUser($id=null){
+    public function addUser($id = null)
+    {
         $this->loadModel('WholesaleRequests');
         $wholesaleRequest = $this->WholesaleRequests->get($id, [
             'contain' => [],
@@ -115,10 +114,8 @@ class WholesaleRequestsController extends AppController
         $wholesaleRequest->user_id = $user_id;
         $this->WholesaleRequests->save($wholesaleRequest);
 
-        return $this->redirect(['action'=>'index']);
+        return $this->redirect(['action' => 'index']);
     }
-
-
 
     /**
      * Edit method

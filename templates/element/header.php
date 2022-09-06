@@ -44,22 +44,21 @@
                             <a href=<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display','contact']); ?>>
                                 Contact Us
                             </a>
-                            <a href="my-account.html" title="My account">
-                                <i class="fa fa-user"></i>
-                                My account
-                            </a>
                             <a href="wishlist.html" title="My wishlist">
                                 <i class="fa fa-heart"></i>
                                 My wishlist
                             </a>
-                            <a href="#" title="My wishlist">
-                                <i class="fa fa-unlock-alt"></i>
-                                <a href=<?= $this->Url->build(['prefix' => 'Admin','controller' => 'users', 'action' => 'login']); ?>>
-                                Sign in
+                            <a href=<?= $this->Url->build(['prefix' => 'Admin','controller' => 'users', 'action' => 'login']); ?>>
+                                <i class="fa fa-user"></i>
+                                Log In
                             </a>
-                            <a href="#" title="My wishlist">
-                                <i class="fa fa-share-square-o"></i>
-                                Check out
+                            <a href=<?= $this->Url->build(['prefix' => 'Admin','controller' => 'users', 'action' => 'signUp']); ?>>
+                                <i class="fa fa-unlock-alt"></i>
+                                Sign up
+                            </a>
+                            <a href=<?= $this->Url->build(['prefix' => 'Admin','controller' => 'users', 'action' => 'logout']); ?>>
+                            <i class="fa fa-share-square-o"></i>
+                                Log out
                             </a>
                         </div>
                     </div>
