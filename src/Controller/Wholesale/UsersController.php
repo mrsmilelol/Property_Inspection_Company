@@ -76,7 +76,7 @@ class UsersController extends AppController
             // redirect to /quote-requests after login success
             $redirect = $this->request->getQuery('redirect', [
                 'controller' => 'Products',
-                'action' => 'index',
+                'action' => 'shop',
             ]);
 
             return $this->redirect($redirect);
