@@ -108,11 +108,12 @@ $this->layout = 'front';
                                     <input type="text" class="cart-plus-minus-box" value="1">
                                     <span class="inc qtybutton">+</span>
                                 </span>
-                        <span>
-                                    <a href="cart.html" class="cart-btn">
-                                    <i class="fa fa-shopping-cart"></i>
-                                    <span>Add to Cart</span></a>
-                                </span>
+                        <p>
+                            <?php echo $this->Form->create(NULL,['url' => ['controller' => 'products', 'action' => 'addToCart']]);?>
+                            <?php echo $this->Form->hidden('id', ['type' => 'hidden', 'value' => $product->id])?>
+                            <?php echo $this->Form->submit('Add to cart',array('class'=>'btn-success btn btn-lg'));?>
+                            <?php echo $this->Form->end();?>
+                        </p>
                     </div>
                 </div>
             </div>
