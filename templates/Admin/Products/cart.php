@@ -16,8 +16,7 @@
 
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Product $product
- * @var string[]|\Cake\Collection\CollectionInterface $productImages
+ * @var string[]|\Cake\Collection\CollectionInterface $orderItems
  */
 
 $cakeDescription = 'CakePHP: the rapid development php framework';
@@ -91,10 +90,11 @@ $this->layout = 'front';
                             </tr>
                         </thead>
                         <tbody>
+                        <?php foreach($orderItems['Orderitems'] as $orderItem): ?>
                             <tr>
                                 <td><a href="product-details.html"><img src="assets/images/cart-assets/images/1.webp" alt="" /></a></td>
-                                <td><a href="product-details.html">Exclusive Shoes</a></td>
-                                <td>£165.00</td>
+                                <td><a href="product-details.html"><?= $orderItem['name']?></a></td>
+                                <td><?= $this->Number->currency($orderItem['price'])?></td>
                                 <td>
                                     <div class="cart-quantity product-quantity">
                                         <button class="dec qtybtn">-</button>
@@ -102,24 +102,11 @@ $this->layout = 'front';
                                         <button class="inc qtybtn">+</button>
                                     </div>
                                 </td>
-                                <td>£165.00</td>
-                                <td><a href="#"><i class="fa fa-times"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="product-details.html"><img src="assets/images/cart-assets/images/2.webp" alt="" /></a></td>
-                                <td><a href="product-details.html">Summer Cap</a></td>
-                                <td>£50.00</td>
-                                <td>
-                                    <div class="cart-quantity product-quantity">
-                                        <button class="dec qtybtn">-</button>
-                                        <input type="text" value="1">
-                                        <button class="inc qtybtn">+</button>
-                                    </div>
-                                </td>
-                                <td>£165.00</td>
+                                <td><?=$this->Number->currency($orderItem['price'])?></td>
                                 <td><a href="#"><i class="fa fa-times"></i></a></td>
                             </tr>
                         </tbody>
+                        <?php endforeach; ?>
                     </table>
                 </div>
 
@@ -153,8 +140,12 @@ $this->layout = 'front';
                                 <table class="table table-borderless text-end mb-0">
                                     <tbody>
                                         <tr>
+                                            <?php $subtotal=0;
+                                            foreach($orderItems['Orderitems'] as $orderItem):
+                                                $subtotal = $subtotal+$orderItem['price'];
+                                            endforeach;?>
                                             <th>Subtotal</th>
-                                            <td><strong>£215.00</strong></td>
+                                            <td><strong><?= $this->Number->currency($subtotal) ?></strong></td>
                                         </tr>
                                         <tr>
                                             <th>Shipping</th>
@@ -167,7 +158,7 @@ $this->layout = 'front';
                                         </tr>
                                         <tr>
                                             <th class="h5">Total</th>
-                                            <td class="h5"><strong>£215.00</strong></td>
+                                            <td class="h5"><strong><?= $this->Number->currency($subtotal) ?></strong></td>
                                         </tr>
                                     </tbody>
                                     <tfoot>
@@ -184,6 +175,7 @@ $this->layout = 'front';
 			</div>
 		</div>
 		<!--Cart Main Area End-->
+
 
 		<!-- back To Top Product-->
         <button id="scrollUp">

@@ -172,6 +172,8 @@ class ProductsController extends AppController
 
         $shop = $this->Cart->getcart();
 
+        debug($this->getRequest()->getSession()->read('shop'));
+
         $this->set(compact('product','productImages','shop'));
     }
 
@@ -229,8 +231,8 @@ class ProductsController extends AppController
 
     public function cart()
     {
-        $shop = $this->Cart->getcart();
-        $this->set(compact('shop'));
+        $orderItems = $this->Cart->getcart();
+        $this->set(compact('orderItems'));
     }
 
 ////////////////////////////////////////////////////////////////////////////////
