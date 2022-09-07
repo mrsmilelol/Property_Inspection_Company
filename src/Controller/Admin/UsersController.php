@@ -123,14 +123,31 @@ class UsersController extends AppController
     public function add()
     {
         $user = $this->Users->newEmptyEntity();
+
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+            $userTable = TableRegistry::getTableLocator()->get('Users');
+
+            $firstname = $this->request->getData('firstname');
+            $lastname = $this->request->getData('lastname');
+            $email = $this->request->getData('email');
+            $token = Security::hash(Security::randomBytes(32));
+            $user = $userTable->newEntity($this->request->getData());
+
+            if ($userTable->save($user)) {
+                $user->firstname = $firstname;
+                $user->lastname = $lastname;
+                $user->email = $email;
+                $user->token = $token;
+                $user->status = '1';
+                $user->verified = '1';
+                $this->Flash->success(__('The account has been added.'));
+                $userTable->save($user);
+                return $this->redirect(['prefix' => 'Admin','action' => 'login']);
+            } else {
+                $this->Flash->error(__('Registration failed, please try again.'));
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
         $userTypes = $this->Users->UserTypes->find('list', ['limit' => 200])->all();
         $this->set(compact('user', 'userTypes'));
