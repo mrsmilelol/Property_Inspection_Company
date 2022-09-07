@@ -131,7 +131,15 @@ class ProductsTable extends Table
         $validator
             ->integer('units_in_stock')
             ->requirePresence('units_in_stock', 'create')
-            ->notEmptyString('units_in_stock');
+            ->notEmptyString('units_in_stock')
+            ->add('units_in_stock','unitsValue',[
+            'rule'=>function ($value, array $context) {
+                if ($value > 0) {
+                    return true;
+                }
+                return 'The no. of units in stock must be over 0.';
+            }
+            ]);
 
         $validator
             ->scalar('size')
@@ -142,7 +150,15 @@ class ProductsTable extends Table
         $validator
             ->integer('weight')
             ->requirePresence('weight', 'create')
-            ->notEmptyString('weight');
+            ->notEmptyString('weight')
+            ->add('weight','weightValue',[
+                'rule'=>function ($value, array $context) {
+                    if ($value > 0) {
+                        return true;
+                    }
+                    return 'The weight must be over 0 kg.';
+                }
+            ]);
 
         $validator
             ->scalar('finish')

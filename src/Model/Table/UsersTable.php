@@ -15,7 +15,6 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\ProductReviewsTable&\Cake\ORM\Association\HasMany $ProductReviews
  * @property \App\Model\Table\ShoppingSessionsTable&\Cake\ORM\Association\HasMany $ShoppingSessions
  * @property \App\Model\Table\UserAddressesTable&\Cake\ORM\Association\HasMany $UserAddresses
- *
  * @method \App\Model\Entity\User newEmptyEntity()
  * @method \App\Model\Entity\User newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\User[] newEntities(array $data, array $options = [])
@@ -43,7 +42,7 @@ class UsersTable extends Table
         parent::initialize($config);
 
         $this->setTable('users');
-        $this->setDisplayField('id');
+        $this->setDisplayField('username');
         $this->setPrimaryKey('id');
 
         $this->belongsTo('UserTypes', [
@@ -73,33 +72,36 @@ class UsersTable extends Table
     {
         $validator
             ->scalar('username')
-            ->maxLength('username', 64)
+            ->maxLength('username', 16)
             ->requirePresence('username', 'create')
             ->notEmptyString('username');
 
         $validator
             ->scalar('password')
-            ->maxLength('password', 64)
+            ->maxLength('password', 128)
             ->requirePresence('password', 'create')
             ->notEmptyString('password');
+            //->regex('password', "^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$", 'Password must have minimum eight characters, at least one letter and one number');
 
         $validator
             ->scalar('firstname')
-            ->maxLength('firstname', 64)
+            ->maxLength('firstname', 32)
             ->requirePresence('firstname', 'create')
             ->notEmptyString('firstname');
 
         $validator
             ->scalar('lastname')
-            ->maxLength('lastname', 64)
+            ->maxLength('lastname', 32)
             ->requirePresence('lastname', 'create')
             ->notEmptyString('lastname');
 
         $validator
             ->scalar('phone')
-            ->maxLength('phone', 64)
+            ->maxLength('phone', 17)
             ->requirePresence('phone', 'create')
-            ->notEmptyString('phone');
+            ->notEmptyString('phone')
+            ->numeric('phone')
+            ->regex('phone', '/^(?:\+?61|0)[2-478](?:[ -]?[0-9]){8}$/', 'Invalid mobile number, try +61413062555');
 
         $validator
             ->email('email')
@@ -114,7 +116,6 @@ class UsersTable extends Table
             ->scalar('token')
             ->maxLength('token', 255)
             ->allowEmptyString('token');
-
 
         $validator
             ->dateTime('created_at')
@@ -141,5 +142,16 @@ class UsersTable extends Table
         $rules->add($rules->existsIn('user_type_id', 'UserTypes'), ['errorField' => 'user_type_id']);
 
         return $rules;
+    }
+
+    public function findAuth(Query $query, array $options)
+    {
+        $query->where([
+            'OR' => [
+                'username' => $options['username'],
+                'email' => $options['username'],
+            ]], [], true);
+
+        return $query;
     }
 }

@@ -2605,7 +2605,8 @@ p.submit button#submitlogin {
   background: #282828 none repeat scroll 0 0;
   border: medium none;
   color: #ffffff;
-  padding: 0;
+  /*padding: 0;*/
+    padding: 10px;
 }
 p.submit button#submitlogin span {
   color: #ffffff;
@@ -2786,17 +2787,25 @@ div.uploader span.action {
   width: 100%;
 }
 .form-control {
+    background: #ffffff none repeat scroll 0 0;
+    border: 1px solid #e5e5e5;
+    height: 30px;
+    margin: 0 0 14px;
+    outline: 0 none;
+    padding: 0 0 0 10px;
+    width: 100%;
+    /*all below ones are the original for form-control*/
   -moz-appearance: none;
-  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-  border: 0 none;
+  /*background: rgba(0, 0, 0, 0) none repeat scroll 0 0;*/
+  /*border: 0 none;*/
   border-radius: 0;
-  color: #666666;
+  /*color: #666666;*/
   cursor: pointer;
   font-size: 12px;
-  height: 27px;
+  /*height: 27px;*/
   max-width: 197px;
-  outline: 0 none;
-  padding: 0 23px 0 5px;
+  /*outline: 0 none;*/
+  /*padding: 0 23px 0 5px;*/
   text-shadow: 0 1px 0 #ffffff;
 }
 .contact-us-area form.contact-form-box fieldset p {

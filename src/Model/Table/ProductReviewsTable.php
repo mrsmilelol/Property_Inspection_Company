@@ -76,7 +76,15 @@ class ProductReviewsTable extends Table
         $validator
             ->integer('rating')
             ->requirePresence('rating', 'create')
-            ->notEmptyString('rating');
+            ->notEmptyString('rating')
+            ->add('rating','ratingValue',[
+                'rule'=>function ($value, array $context) {
+                    if ($value >= 0 and $value <= 5) {
+                        return true;
+                    }
+                    return 'The rating must be between 0 and 5.';
+                }
+            ]);
 
         $validator
             ->dateTime('created_at')

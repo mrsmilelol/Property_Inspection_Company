@@ -238,8 +238,8 @@ $this->layout = 'front';
             <div class="col-xs-12 col-sm-9">
                 <a><?= $this->Html->image('shop.jpg'); ?> </a>
                 <h1 class="page-heading section-padding2">
-                    <span class="cat-name pull-left">Bedroom </span>
-                    <span class="heading-counter pull-right">There are 2 products.</span>
+                    <span class="cat-name pull-left">Shop </span>
+                    <span class="heading-counter pull-right">There is/are <?= h(count($products)) ?> product(s).</span>
                 </h1>
                 <div class="shop-item-filter">
                     <div class="shop-tab clearfix">
@@ -305,6 +305,9 @@ $this->layout = 'front';
                                                 </a>
                                         </div>
                                         <span class="new-label">New</span>
+                                        <?php if ($this->Number->currency($products[$x]->sale_price) !== null and $this->Number->toPercentage($products[$x]->sale_price) > 0): ?>
+                                            <span class="sale-label">Sale!</span>
+                                        <?php endif; ?>
                                         <!--Product Action-->
                                         <div class="product-action">
                                             <a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
@@ -326,9 +329,16 @@ $this->layout = 'front';
                                             <i class="fa fa-star"></i>
                                         </div>
                                         <!--Product Price-->
+                                        <?php if ($this->Number->currency($products[$x]->sale_price) !== null and $this->Number->toPercentage($products[$x]->sale_price) > 0): ?>
+                                        <div class="product-price">
+                                            <span class="new-price"><?=  $this->Number->currency($products[$x]->sale_price) ?></span>
+                                            <span class="old-price"><?=  $this->Number->currency($products[$x]->price) ?></span>
+                                        </div>
+                                        <?php else: ?>
                                         <div class="product-price">
                                             <span class="new-price"><?=  $this->Number->currency($products[$x]->price) ?></span>
                                         </div>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                                 <?php endfor?>
@@ -345,6 +355,9 @@ $this->layout = 'front';
                                                 </a>
                                             </div>
                                             <span class="new-label">New</span>
+                                            <?php if ($this->Number->currency($products[$x]->sale_price) !== null and $this->Number->toPercentage($products[$x]->sale_price) > 0): ?>
+                                                <span class="sale-label">Sale!</span>
+                                            <?php endif; ?>
                                             <!--Product Action-->
                                             <div class="product-action">
                                                 <a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
@@ -366,9 +379,16 @@ $this->layout = 'front';
                                                 <i class="fa fa-star"></i>
                                             </div>
                                             <!--Product Price-->
-                                            <div class="product-price">
-                                                <span class="new-price"><?= $this->Number->currency($products[$x]->price) ?></span>
-                                            </div>
+                                            <?php if ($this->Number->currency($products[$x]->sale_price) !== null and $this->Number->toPercentage($products[$x]->sale_price) > 0): ?>
+                                                <div class="product-price">
+                                                    <span class="new-price"><?=  $this->Number->currency($products[$x]->sale_price) ?></span>
+                                                    <span class="old-price"><?=  $this->Number->currency($products[$x]->price) ?></span>
+                                                </div>
+                                            <?php else: ?>
+                                                <div class="product-price">
+                                                    <span class="new-price"><?=  $this->Number->currency($products[$x]->price) ?></span>
+                                                </div>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
                                 <?php endfor; ?>
@@ -385,6 +405,9 @@ $this->layout = 'front';
                                                 </a>
                                             </div>
                                             <span class="new-label">New</span>
+                                            <?php if ($this->Number->currency($products[$x]->sale_price) !== null and $this->Number->toPercentage($products[$x]->sale_price) > 0): ?>
+                                                <span class="sale-label">Sale!</span>
+                                            <?php endif; ?>
                                             <!--Product Action-->
                                             <div class="product-action">
                                                 <a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
@@ -406,9 +429,16 @@ $this->layout = 'front';
                                                 <i class="fa fa-star"></i>
                                             </div>
                                             <!--Product Price-->
-                                            <div class="product-price">
-                                                <span class="new-price"><?= $this->number->currency($products[$x]->price) ?></span>
-                                            </div>
+                                            <?php if ($this->Number->currency($products[$x]->sale_price) !== null and $this->Number->toPercentage($products[$x]->sale_price) > 0): ?>
+                                                <div class="product-price">
+                                                    <span class="new-price"><?=  $this->Number->currency($products[$x]->sale_price) ?></span>
+                                                    <span class="old-price"><?=  $this->Number->currency($products[$x]->price) ?></span>
+                                                </div>
+                                            <?php else: ?>
+                                                <div class="product-price">
+                                                    <span class="new-price"><?=  $this->Number->currency($products[$x]->price) ?></span>
+                                                </div>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
                                 <?php endfor?>
