@@ -42,19 +42,6 @@ class UsersController extends AppController
     }
 
     /**
-     * Initialize method
-     *
-     * allowUnauthenticated - specifies pages which can be accessed without user authentication
-     *
-     * @return \Cake\Http\Response|null|void Renders view
-     */
-    public function initialize(): void
-    {
-        parent::initialize();
-        $this->Authentication->allowUnauthenticated(['login', 'passwordReset', 'edit']);
-    }
-
-    /**
      * User login method, checks if user exists inside the database then checks whether user status is valid
      * If everything is valid user is being redirected to the Quote Request page
      *
@@ -172,7 +159,7 @@ class UsersController extends AppController
                 $user->token = $token;
                 $user->status = '0';
                 $user->verified = '0';
-                $this->Flash->success(__('The user has been registered.'));
+                $this->Flash->success(__('Please check your email to verify the account.'));
                 $mailer = new Mailer();
                 //$mailer->setTransport('html'); //your email configuration name
                 $userTable->save($user);

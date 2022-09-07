@@ -17,13 +17,6 @@ use function __;
 class UsersController extends AppController
 {
 
-    public function beforeFilter(EventInterface $event)
-    {
-        parent::beforeFilter($event);
-        // for all controllers in our application, make index and view
-        // actions public, skipping the authentication check.
-        $this->Authentication->addUnauthenticatedActions(['login','signUp','verification','logout','passwordReset']);
-    }
 
     /**
      * Index method
@@ -50,7 +43,7 @@ class UsersController extends AppController
     public function initialize(): void
     {
         parent::initialize();
-        $this->Authentication->allowUnauthenticated(['login', 'passwordReset', 'edit']);
+        $this->Authentication->allowUnauthenticated(['login', 'passwordReset']);
     }
 
     /**

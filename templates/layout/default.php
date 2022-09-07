@@ -71,8 +71,6 @@
                     <h6 class="collapse-header">Product menu:</h6>
                     <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Products','action' => 'index']) ?>">Products</a>
                     <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Categories','action' => 'index']) ?>">Categories</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'ProductImages','action' => 'index']) ?>">Images</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'ProductReviews','action' => 'index']) ?>">Reviews</a>
                 </div>
             </div>
         </li>
