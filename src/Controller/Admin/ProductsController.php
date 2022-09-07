@@ -5,6 +5,13 @@ namespace App\Controller\Admin;
 
 //use App\Controller\Wholesale\AppController;
 //use function App\Controller\__;
+use Cake\Controller\ComponentRegistry;
+use Cake\Database\Connection;
+use Cake\Database\Driver;
+use Cake\Database\Driver\Mysql;
+use Cake\Event\EventManagerInterface;
+use Cake\Http\Response;
+use Cake\Http\ServerRequest;
 use function __;
 use const DS;
 use const WWW_ROOT;
@@ -13,10 +20,28 @@ use const WWW_ROOT;
  * Products Controller
  *
  * @property \App\Model\Table\ProductsTable $Products
+ * @property \App\Model\Table\CategoriesTable $Categories
  * @method \App\Model\Entity\Product[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
 class ProductsController extends AppController
 {
+
+    private $conn;
+
+    public function __construct(?ServerRequest $request = null, ?Response $response = null, ?string $name = null, ?EventManagerInterface $eventManager = null, ?ComponentRegistry $components = null)
+    {
+        parent::__construct($request, $response, $name, $eventManager, $components);
+        $driver = new Mysql([
+            'database' => 'chelseafurniture',
+            'username' => 'root',
+            'password' => 'root',
+        ]);
+        $conn = new Connection([
+            'driver' => $driver,
+        ]);
+        $this->conn = $conn;
+    }
+
     /**
      * Index method
      *
@@ -87,7 +112,7 @@ class ProductsController extends AppController
                     }
                 }
 
-                    return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
         }
@@ -139,12 +164,73 @@ class ProductsController extends AppController
     public function shop()
     {
 //        $this->loadModel('ProductImages');
-        $products = $this->Products->find()
-            ->contain(['ProductImages'])
-            ->all()->toArray();
+        $param = $_GET;
+        $ids = $param['checks']??'';
+        $price = $param['price']??'';
+        if (!empty($price)){
+            $price = str_replace('£','',$price);
+            $price = str_replace('+','',$price);
+            $price = explode('-',$price);
+            $min_p = $price[0];
+            $max_p = $price[1];
+        }
+
+        $sql = "SELECT a.*,b.description as img from products as a
+left join product_images as b on a.id = b.product_id
+LEFT JOIN categories_products as c on c.product_id = a.id
+left join categories as d on d.id = c.category_id;";
+
+        if (!empty($ids) && !empty($price)){
+            $sql = "SELECT a.*,b.description as img from products as a
+left join product_images as b on a.id = b.product_id
+LEFT JOIN categories_products as c on c.product_id = a.id
+left join categories as d on d.id = c.category_id where d.id in (".$ids.") and a.price BETWEEN ".$min_p." and ".$max_p.";";
+        }else{
+            if (!empty($ids)){
+                $sql = "SELECT a.*,b.description as img from products as a
+left join product_images as b on a.id = b.product_id
+LEFT JOIN categories_products as c on c.product_id = a.id
+left join categories as d on d.id = c.category_id where d.id in (".$ids.");";
+            }
+
+            if (!empty($price)){
+                $sql = "SELECT a.*,b.description as img from products as a
+left join product_images as b on a.id = b.product_id
+LEFT JOIN categories_products as c on c.product_id = a.id
+left join categories as d on d.id = c.category_id where a.price BETWEEN ".$min_p." and ".$max_p.";";
+            }
+
+
+        }
+        $products = $this->conn->execute($sql);
+        $products = $products->fetchAll('assoc');
+//        var_dump($products);
+//        $products = $this->Products->find()
+//            ->contain(['ProductImages'])
+//            ->all()->toArray();
+//        print_r($products);
+        $this->loadModel('Categories');
+        $class_list = $this->Categories->find()->all()->toArray();
+        $new_list = array();
+        if (!empty($class_list)){
+            foreach ($class_list as $key=>$val){
+                if (empty($val['parent_id'])){
+                    $new_list[$val['id']]=['p_name'=>$val['description']];
+                }
+            }
+
+            foreach ($new_list as $keys=>$vals){
+                foreach ($class_list as $k=>$v){
+                    if ($keys == $v['parent_id']){
+                        $new_list[$keys]['child'][$v['id']]=$v['description'];
+                    }
+                }
+            }
+
+        }
         //$productImages = $this->ProductImages->find()->select(['product_id','description'])
 //            ->distinct(['product_id'])->toArray();
-        $this->set(compact('products'));
+        $this->set(compact('products','new_list'));
     }
 
     /**
@@ -184,5 +270,20 @@ class ProductsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+
+    /**
+     *
+     */
+    public function shopSearch()
+    {
+        $this->render('test');
+        $ids = $this->request->getData('ids');
+//        $this->response = $this->response->withType('application/json');
+        $this->request->allowMethod(['get']);
+//        return $this->response;
+        echo 123;
+        exit;
     }
 }
