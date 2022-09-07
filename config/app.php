@@ -228,7 +228,7 @@ return [
      */
     'EmailTransport' => [
         'default' => [
-            'className' => 'Debug',
+            'className' => MailTransport::class,
                 //MailTransport::class,
             /*
              * The keys host, port, timeout, username, password, client and tls

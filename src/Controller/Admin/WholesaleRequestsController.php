@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 //use App\Controller\Wholesale\AppController;
+use Cake\Event\EventInterface;
 use function __;
 use Cake\Mailer\Mailer;
 /**
@@ -14,6 +15,14 @@ use Cake\Mailer\Mailer;
  */
 class WholesaleRequestsController extends AppController
 {
+
+    public function beforeFilter(EventInterface $event)
+    {
+        parent::beforeFilter($event);
+        // for all controllers in our application, make index and view
+        // actions public, skipping the authentication check.
+        $this->Authentication->addUnauthenticatedActions(['add']);
+    }
     /**
      * Index method
      *

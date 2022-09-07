@@ -23,7 +23,7 @@ class UsersController extends AppController
         parent::beforeFilter($event);
         // for all controllers in our application, make index and view
         // actions public, skipping the authentication check.
-        $this->Authentication->addUnauthenticatedActions(['login', 'add','signUp','verification']);
+        $this->Authentication->addUnauthenticatedActions(['login','signUp','verification','logout','passwordReset','editPassword']);
     }
 
     /**
@@ -39,19 +39,6 @@ class UsersController extends AppController
         $users = $this->paginate($this->Users);
 
         $this->set(compact('users'));
-    }
-
-    /**
-     * Initialize method
-     *
-     * allowUnauthenticated - specifies pages which can be accessed without user authentication
-     *
-     * @return \Cake\Http\Response|null|void Renders view
-     */
-    public function initialize(): void
-    {
-        parent::initialize();
-        $this->Authentication->allowUnauthenticated(['login', 'passwordReset', 'edit']);
     }
 
     /**
@@ -74,12 +61,12 @@ class UsersController extends AppController
 
                 return $this->redirect(['controller' => 'Users', 'action' => 'login']);
             }
-//            if ($user['verified'] == 0) {
-//                $this->Authentication->logout();
-//                $this->Flash->error('Sorry, your account is not verified.');
-//
-//                return $this->redirect(['controller' => 'Users', 'action' => 'login']);
-//            }
+            if ($user['verified'] == 0) {
+                $this->Authentication->logout();
+                $this->Flash->error('Sorry, your account is not verified.');
+
+                return $this->redirect(['controller' => 'Users', 'action' => 'login']);
+            }
             // redirect to /quote-requests after login success
             $redirect = $this->request->getQuery('redirect', [
                 'controller' => 'Products',
@@ -106,6 +93,8 @@ class UsersController extends AppController
         if ($result->isValid()) {
             $this->Authentication->logout();
 
+            return $this->redirect(['prefix' => 'Admin', 'controller' => 'Users', 'action' => 'login']);
+        } else {
             return $this->redirect(['prefix' => 'Admin', 'controller' => 'Users', 'action' => 'login']);
         }
     }
@@ -134,40 +123,35 @@ class UsersController extends AppController
     public function add()
     {
         $user = $this->Users->newEmptyEntity();
+
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
 
+            $userTable = TableRegistry::getTableLocator()->get('Users');
+
+            $firstname = $this->request->getData('firstname');
+            $lastname = $this->request->getData('lastname');
+            $email = $this->request->getData('email');
+            $token = Security::hash(Security::randomBytes(32));
+            $user = $userTable->newEntity($this->request->getData());
+
+            if ($userTable->save($user)) {
+                $user->firstname = $firstname;
+                $user->lastname = $lastname;
+                $user->email = $email;
+                $user->token = $token;
+                $user->status = '1';
+                $user->verified = '1';
+                $this->Flash->success(__('The account has been added.'));
+                $userTable->save($user);
                 return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error(__('Registration failed, please try again.'));
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
         $userTypes = $this->Users->UserTypes->find('list', ['limit' => 200])->all();
         $this->set(compact('user', 'userTypes'));
     }
-
-//    /**
-//     * Add method
-//     *
-//     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
-//     */
-//    public function signUp()
-//    {
-//        $user = $this->Users->newEmptyEntity();
-//        if ($this->request->is('post')) {
-//            $user->user_type = $this->Users->UserTypes->get(3);
-//            $user = $this->Users->patchEntity($user, $this->request->getData());
-//            if ($this->Users->save($user)) {
-//                $this->Flash->success(__('The user has been saved.'));
-//
-//                return $this->redirect(['action' => 'login']);
-//            }
-//            $this->Flash->error(__('The user could not be saved. Please, try again.'));
-//        }
-//        $userTypes = $this->Users->UserTypes->find('list', ['limit' => 200])->all();
-//        $this->set(compact('user', 'userTypes'));
-//    }
 
     public function signUp()
     {
@@ -192,7 +176,7 @@ class UsersController extends AppController
                 $user->token = $token;
                 $user->status = '0';
                 $user->verified = '0';
-                $this->Flash->success(__('The user has been registered.'));
+                $this->Flash->success(__('Please check your email to verify the account.'));
                 $mailer = new Mailer();
                 //$mailer->setTransport('html'); //your email configuration name
                 $userTable->save($user);
@@ -228,7 +212,7 @@ class UsersController extends AppController
         $userTable = TableRegistry::getTableLocator()->get('Users');
         $verify = $userTable->find('all')->where(['token' => $token])->first();
         $verify->verified = '1';
-        $verify->status = '1';
+        $verify->status = 1;
         $userTable->save($verify);
         $this->Flash->success(__('Your email has been verified, and please login now.'));
 
@@ -245,6 +229,7 @@ class UsersController extends AppController
         $user = $this->Users->newEmptyEntity();
         //$this->loadModel("WholesaleRequests");
         $wholesaleRequest = $this->fetchTable('WholesaleRequests')->get($id);
+        $token = Security::hash(Security::randomBytes(32));
         $user->user_type = $this->Users->UserTypes->get(2);
         $user->email = $wholesaleRequest->email;
         $user->username = $wholesaleRequest->email;
@@ -252,6 +237,9 @@ class UsersController extends AppController
         $user->firstname = $wholesaleRequest->business_name;
         $user->password = $wholesaleRequest->email;
         $user->phone = $wholesaleRequest->phone;
+        $user->token = $token;
+        $user->verified = 1;
+        $user->status = 1;
 
         $this->Users->save($user);
         $userId = $user->id;
@@ -332,6 +320,21 @@ class UsersController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+    public function editPassword($token)
+    {
+        if ($this->request->is('post')) {
+            $newPass = $this->request->getData('password');
+            $userTable = TableRegistry::getTableLocator()->get('Users');
+            $user = $userTable->find('all')->where(['token' => $token])->first();
+            $user->password = $newPass;
+            if ($userTable->save($user)) {
+                $this->Flash->success('Password successfully reset. Please login using your new password');
+
+                return $this->redirect(['action' => 'login']);
+            }
+        }
+    }
+
     /**
      * passwordReset uses the provided email to check for the user record inside the database
      * if user was found generates password reset email and sends it to the email provided by the user
@@ -343,34 +346,43 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             //retrieve user email
             $email = $this->request->getData('email');
-            //check if the email correspond with the user inside the database
+            $token = Security::hash(Security::randomBytes(25));
             $user = $this->Users->findByEmail($this->request->getData('email'))->first();
+            //check if the email correspond with the user inside the database
+            $userTable = TableRegistry::getTableLocator()->get('Users');
             //if there is no record of the user throw an error
+            if ($email == null) {
+                $this->Flash->error(__('Please insert your email address'));
+            }
+
             if (is_null($user)) {
                 $this->Flash->error('This email is invalid.');
             } else {
-                //Create a new instance of the Mailer class
-                $emailReset = new Mailer('default');
-                $emailReset
-                    ->setEmailFormat('html')
-                    ->setFrom('emailtestingfit3178@gmail.com')
-                    ->setTo($user->email)
-                    ->setSubject('Forgot Password Reset')
-                    ->viewBuilder()
-                    ->disableAutoLayout()
-                    ->setTemplate('password');
-                //pass the user id via email
-                $emailReset->setViewVars([
-                    'userId' => $user->id,
-                ]);
-                //send the email
-                $result = $emailReset->deliver();
+                $user->token = $token;
+                if ($userTable->save($user)) {
+                    //Create a new instance of the Mailer class
+                    $emailReset = new Mailer('default');
+                    $emailReset
+                        ->setEmailFormat('html')
+                        ->setFrom('emailtestingfit3178@gmail.com')
+                        ->setTo($user->email)
+                        ->setSubject('Forgot Password Reset')
+                        ->viewBuilder()
+                        ->disableAutoLayout()
+                        ->setTemplate('password');
+                    //pass the user id via email
+                    $emailReset->setViewVars([
+                        'token' => $token,
+                    ]);
+                    //send the email
+                    $result = $emailReset->deliver();
 
-                //Error handling
-                if ($result) {
-                    $this->Flash->success('Reset password link has been sent to your email (' . $email . '), please check your email.');
-                } else {
-                    $this->Flash->error('Error, unable to send email.');
+                    //Error handling
+                    if ($result) {
+                        $this->Flash->success('Reset password link has been sent to your email (' . $email . '), please check your email.');
+                    } else {
+                        $this->Flash->error('Error, unable to send email.');
+                    }
                 }
             }
         }

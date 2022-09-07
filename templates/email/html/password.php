@@ -381,7 +381,7 @@ endforeach;
                                                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                                         <tbody>
                                                         <tr>
-                                                            <td> <a href="<?= $this->Url->build(['controller'=> 'Users', 'action'=>'edit', $userId], ['fullBase' => true]); ?>">Please click to reset password</a> </td>
+                                                            <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'edit_password','prefix' => 'Admin', $token], ['fullBase' => true]);?>">Reset password</a>
                                                         </tr>
                                                         </tbody>
                                                     </table>
@@ -390,7 +390,7 @@ endforeach;
                                             </tbody>
                                         </table>
                                         <p>Please DO NOT reply to this email, as it is automatically generated.</p>
-                                        <p>Majestic Property Inspections</p>
+                                        <p>Chelsea Furniture</p>
                                     </td>
                                 </tr>
                             </table>
@@ -406,7 +406,7 @@ endforeach;
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                         <tr>
                             <td class="content-block">
-                                <span class="apple-link">Copyright <?= date("Y")?> Majestic Property Inspections. All rights reserved</span>
+                                <span class="apple-link">Copyright <?= date("Y")?> Chelsea Furniture. All rights reserved</span>
                                 <!--                                <br> Don't like these emails? <a href="#">Unsubscribe</a>.-->
                             </td>
                         </tr>

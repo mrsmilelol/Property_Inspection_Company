@@ -16,7 +16,12 @@ $this->layout = 'logged_out';
 <div class="container" style="padding-top: 12%;">
 <div class="card shadow mb-4">
     <div class="d-sm-flex align-items-center justify-content-between card-header">
-        <h1 class="h3 mb-0 text-gray-800"><?= __('Create Wholesale request') ?></h1>
+        <h1 class="h3 mb-0 text-gray-800"><?= __('Application for wholesale account') ?></h1>
+        <?= $this->Html->link(
+            'Home',
+            ['prefix'=>'Customer','controller' => 'Pages', 'action' => 'main'],
+            ['class' => 'btn btn-primary btn-group']
+        );?>
     </div>
     <div class="card-body">
         <table class="table table-bordered" id="products" width="100%" cellspacing="0">
@@ -42,11 +47,6 @@ $this->layout = 'logged_out';
             </fieldset>
             <br>
             <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary btn-group']) ?>
-            <?= $this->Html->link(
-                'Back',
-                ['controller' => 'WholesaleRequests', 'action' => 'index'],
-                ['class' => 'btn btn-primary btn-group']
-            );?>
             <?= $this->Form->end() ?>
         </div>
     </div>
