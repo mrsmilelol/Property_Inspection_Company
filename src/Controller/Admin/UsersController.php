@@ -5,6 +5,8 @@ namespace App\Controller\Admin;
 
 use Cake\Event\EventInterface;
 use Cake\Mailer\Mailer;
+use Cake\ORM\TableRegistry;
+use Cake\Utility\Security;
 use function __;
 
 /**
@@ -16,13 +18,12 @@ use function __;
  */
 class UsersController extends AppController
 {
-
     public function beforeFilter(EventInterface $event)
     {
         parent::beforeFilter($event);
         // for all controllers in our application, make index and view
         // actions public, skipping the authentication check.
-        $this->Authentication->addUnauthenticatedActions(['login', 'add','signUp']);
+        $this->Authentication->addUnauthenticatedActions(['login', 'add','signUp','verification']);
     }
 
     /**
@@ -73,6 +74,12 @@ class UsersController extends AppController
 
                 return $this->redirect(['controller' => 'Users', 'action' => 'login']);
             }
+//            if ($user['verified'] == 0) {
+//                $this->Authentication->logout();
+//                $this->Flash->error('Sorry, your account is not verified.');
+//
+//                return $this->redirect(['controller' => 'Users', 'action' => 'login']);
+//            }
             // redirect to /quote-requests after login success
             $redirect = $this->request->getQuery('redirect', [
                 'controller' => 'Products',
@@ -99,7 +106,7 @@ class UsersController extends AppController
         if ($result->isValid()) {
             $this->Authentication->logout();
 
-            return $this->redirect(['prefix' =>'Admin', 'controller' => 'Users', 'action' => 'login']);
+            return $this->redirect(['prefix' => 'Admin', 'controller' => 'Users', 'action' => 'login']);
         }
     }
 
@@ -140,26 +147,92 @@ class UsersController extends AppController
         $this->set(compact('user', 'userTypes'));
     }
 
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
-     */
+//    /**
+//     * Add method
+//     *
+//     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
+//     */
+//    public function signUp()
+//    {
+//        $user = $this->Users->newEmptyEntity();
+//        if ($this->request->is('post')) {
+//            $user->user_type = $this->Users->UserTypes->get(3);
+//            $user = $this->Users->patchEntity($user, $this->request->getData());
+//            if ($this->Users->save($user)) {
+//                $this->Flash->success(__('The user has been saved.'));
+//
+//                return $this->redirect(['action' => 'login']);
+//            }
+//            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+//        }
+//        $userTypes = $this->Users->UserTypes->find('list', ['limit' => 200])->all();
+//        $this->set(compact('user', 'userTypes'));
+//    }
+
     public function signUp()
     {
         $user = $this->Users->newEmptyEntity();
-        if ($this->request->is('post')) {
-            $user->user_type = $this->Users->UserTypes->get(3);
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
 
-                return $this->redirect(['action' => 'login']);
+        if ($this->request->is('post')) {
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+
+            $userTable = TableRegistry::getTableLocator()->get('Users');
+
+            $firstname = $this->request->getData('firstname');
+            $lastname = $this->request->getData('lastname');
+            $email = $this->request->getData('email');
+            $token = Security::hash(Security::randomBytes(32));
+            $user = $userTable->newEntity($this->request->getData());
+
+            if ($userTable->save($user)) {
+                $user->user_type = $this->Users->UserTypes->get(3);
+                $user->firstname = $firstname;
+                $user->lastname = $lastname;
+                $user->email = $email;
+                $user->token = $token;
+                $user->status = '0';
+                $user->verified = '0';
+                $this->Flash->success(__('The user has been registered.'));
+                $mailer = new Mailer();
+                //$mailer->setTransport('html'); //your email configuration name
+                $userTable->save($user);
+                $mailer
+                    ->setEmailFormat('html')
+                    ->setTo($email)
+                    ->setFrom('website@monash.edu')
+                    ->setSubject('Verify New Account')
+                    ->viewBuilder()
+                    ->disableAutoLayout()
+                    ->setTemplate('account_verification');
+
+                $mailer->setViewVars([
+                    'firstname' => $lastname,
+                    'lastname' => $firstname,
+                    'token' => $token,
+                ]);
+                //$mailStatus = $mailer->deliver();
+                //debug($mailStatus);
+                $mailer->deliver();
+
+                return $this->redirect(['prefix' => 'Admin','action' => 'login']);
+            } else {
+                $this->Flash->error(__('Registration failed, please try again.'));
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
         $userTypes = $this->Users->UserTypes->find('list', ['limit' => 200])->all();
         $this->set(compact('user', 'userTypes'));
+    }
+
+    public function verification($token)
+    {
+        $userTable = TableRegistry::getTableLocator()->get('Users');
+        $verify = $userTable->find('all')->where(['token' => $token])->first();
+        $verify->verified = '1';
+        $verify->status = '1';
+        $userTable->save($verify);
+        $this->Flash->success(__('Your email has been verified, and please login now.'));
+
+        return $this->redirect(['controller' => 'Users', 'action' => 'login']);
     }
 
     /**
@@ -167,7 +240,7 @@ class UsersController extends AppController
      *
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
-    public function addWholesale($id=null)
+    public function addWholesale($id = null)
     {
         $user = $this->Users->newEmptyEntity();
         //$this->loadModel("WholesaleRequests");
@@ -184,7 +257,8 @@ class UsersController extends AppController
         $userId = $user->id;
         $session = $this->request->getSession();
         $session->write('User.id', $userId);
-        return $this->redirect(['controller'=>'WholesaleRequests','action' => 'addUser',$id]);
+
+        return $this->redirect(['controller' => 'WholesaleRequests','action' => 'addUser',$id]);
     }
 
     /**
