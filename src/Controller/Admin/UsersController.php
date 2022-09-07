@@ -16,7 +16,6 @@ use function __;
  */
 class UsersController extends AppController
 {
-
     public function beforeFilter(EventInterface $event)
     {
         parent::beforeFilter($event);
@@ -99,7 +98,7 @@ class UsersController extends AppController
         if ($result->isValid()) {
             $this->Authentication->logout();
 
-            return $this->redirect(['prefix' =>'Admin', 'controller' => 'Users', 'action' => 'login']);
+            return $this->redirect(['prefix' => 'Admin', 'controller' => 'Users', 'action' => 'login']);
         }
     }
 
@@ -167,7 +166,7 @@ class UsersController extends AppController
      *
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
-    public function addWholesale($id=null)
+    public function addWholesale($id = null)
     {
         $user = $this->Users->newEmptyEntity();
         //$this->loadModel("WholesaleRequests");
@@ -184,7 +183,8 @@ class UsersController extends AppController
         $userId = $user->id;
         $session = $this->request->getSession();
         $session->write('User.id', $userId);
-        return $this->redirect(['controller'=>'WholesaleRequests','action' => 'addUser',$id]);
+
+        return $this->redirect(['controller' => 'WholesaleRequests','action' => 'addUser',$id]);
     }
 
     /**
