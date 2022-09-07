@@ -7,39 +7,39 @@ class CartComponent extends Component {
 
     public function getcart()
     {
-        return $this->request->session()->read('Shop');
+        return $this->getController()->getRequest()->getSession()->read('Shop');
     }
 
 ////////////////////////////////////////////////////////////////////////////////
 
     public function cart()
     {
-        $shop = $this->getcart();
-        // print_r($shop);
-        $quantity = 0;
-        $subtotal = 0;
-        $total = 0;
-        $order_item_count = 0;
-        // $order = $shop['Order'];
-        if (count($shop['Orderproducts']) > 0) {
-            foreach ($shop['Orderproducts'] as $item) {
-                $quantity += $item['quantity'];
-                $subtotal += $item['subtotal'];
-                $total += $item['subtotal'];
-                $order_item_count++;
-            }
-            $order['order_item_count'] = $order_item_count;
-            $order['quantity'] = $quantity;
-            $order['subtotal'] = sprintf('%01.2f', $subtotal);
-            $order['total'] = sprintf('%01.2f', $total);
-
-            $this->request->session()->write('Shop.Order', $order);
-            return true;
-        }
-        else {
-            $this->clear();
-            return false;
-        }
+//        $shop = $this->getcart();
+//        // print_r($shop);
+//        $quantity = 0;
+//        $subtotal = 0;
+//        $total = 0;
+//        $order_item_count = 0;
+//        // $order = $shop['Order'];
+//        if (count($shop['Orderitems']) > 0) {
+//            foreach ($shop['Orderitems'] as $item) {
+//                $quantity += $item['quantity'];
+//                $subtotal += $item['subtotal'];
+//                $total += $item['subtotal'];
+//                $order_item_count++;
+//            }
+//            $order['order_item_count'] = $order_item_count;
+//            $order['quantity'] = $quantity;
+//            $order['subtotal'] = sprintf('%01.2f', $subtotal);
+//            $order['total'] = sprintf('%01.2f', $total);
+//
+//            $this->getController()->getRequest()->getSession()->write('Shop.Order', $order);
+//            return true;
+//        }
+//        else {
+//            $this->clear();
+//            return false;
+//        }
     }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -67,7 +67,7 @@ class CartComponent extends Component {
             'price' => sprintf('%01.2f', $product->price),
         ];
 
-        $this->request->getSession()->write('Shop.Orderitems.' . $id, $data);
+        $this->getController()->getRequest()->getSession()->write('Shop.Orderitems.' . $id, $data);
 
         $this->cart();
 
@@ -76,9 +76,9 @@ class CartComponent extends Component {
 ////////////////////////////////////////////////////////////////////////////////
 
     public function remove($id) {
-        if($this->request->session()->read('Shop.Orderproducts.' . $id)) {
+        if($this->getController()->getRequest()->getSession()->read('Shop.Orderproducts.' . $id)) {
             $product = $this->request->session()->read('Shop.Orderproducts.' . $id);
-            $this->request->session()->delete('Shop.Orderproducts.' . $id);
+            $this->getController()->getRequest()->getSession()->delete('Shop.Orderproducts.' . $id);
             $this->cart();
             return $product;
         }
@@ -89,6 +89,6 @@ class CartComponent extends Component {
 
     public function clear()
     {
-        $this->request->session()->delete('Shop');
+        $this->getController()->getRequest()->getSession()->delete('Shop');
     }
 }

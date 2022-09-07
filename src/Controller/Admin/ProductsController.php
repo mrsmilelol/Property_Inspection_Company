@@ -170,7 +170,9 @@ class ProductsController extends AppController
             'contain' => ['Orders', 'OrdersProducts', 'Categories', 'ProductImages', 'ProductReviews', 'ShoppingSessions'],
         ]);
 
-        $this->set(compact('product','productImages'));
+        $shop = $this->Cart->getcart();
+
+        $this->set(compact('product','productImages','shop'));
     }
 
     /**
@@ -189,7 +191,6 @@ class ProductsController extends AppController
         } else {
             $this->Flash->error(__('The product could not be deleted. Please, try again.'));
         }
-
         return $this->redirect(['action' => 'index']);
     }
 
