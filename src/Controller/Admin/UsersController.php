@@ -217,7 +217,7 @@ class UsersController extends AppController
      * @param $status
      * @return \Cake\Http\Response|null|void Redirects to index.
      */
-    public function userStatus($id = null, $status)
+    public function userStatus($id = null, $status=1)
     {
         $this->request->allowMethod(['post']);
         //get user id from Users
