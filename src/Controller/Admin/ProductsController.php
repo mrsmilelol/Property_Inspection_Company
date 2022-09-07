@@ -37,7 +37,7 @@ class ProductsController extends AppController
             'password' => 'root',
         ]);
         $conn = new Connection([
-            'driver' => Mysql::class,
+            'driver' => $driver,
         ]);
         $this->conn = $conn;
     }

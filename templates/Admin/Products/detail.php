@@ -32,10 +32,10 @@ $this->layout = 'front';
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="breadcrumb-single">
                     <ul class="breadcrumbs">
-                        <li>< a href= >Url->build(['controller' => 'Pages', 'action' => 'display','main']); ?>>
+                        <li><a href= >Url->build(['controller' => 'Pages', 'action' => 'display','main']); ?>>
                             <i class="fa fa-home"></i>
                             Home
-                        </ a></li>
+                        </a></li>
                         <li>
                             <span>></span>
                         </li>
@@ -68,13 +68,13 @@ $this->layout = 'front';
                         <!--                        </div>-->
                         <div id="my-tab-content" class="tab-content">
                             <div class="tab-pane active" id="view1">
-                                <a class="venobox" href="<?php echo '/img/' . $productImages[0]->description ?>" data-gall="gallery" title=""><?= $this->Html->image($productImages[0]->description, ['alt' => 'CakePHP','class' => 'img-fluid']); ?>
+                                <a class="venobox" href="<?php echo '/img/' . $productImages[0]->description ?>" data-gall="gallery" title=""><?= $this->Html->image($productImages[0]->description, ['alt' => 'CakePHP','class' => 'img-fluid']);?>
                                 </ a>
                             </div>
                         </div>
                         <div id="viewproduct" class="nav nav-tabs product-view bxslider" data-tabs="tabs">
                             <?php for ($x = 1; $x <= count($productImages) - 1; $x++) : ?>
-                            <div class="pro-view active">< a href="#view1" data-toggle="tab"><?= $this->Html->image($productImages[$x]->description, ['alt' => 'CakePHP','class' => 'img-fluid','height' => 80,'width' => 106]); ?></ a></div>
+                            <div class="pro-view active">< a href="#view1" data-toggle="tab"><?= $this->Html->image($productImages[$x]->description, ['alt' => 'CakePHP','class' => 'img-fluid','height' => 80,'width' => 106]); ?></a></div>
                         <?php endfor ?>
                     </div>
                     <!-- BX Slider Navigation -->
@@ -105,9 +105,9 @@ $this->layout = 'front';
                                     <span class="inc qtybutton">+</span>
                                 </span>
                     <span>
-                                    < a href="cart.html" class="cart-btn">
+                                    <a href="cart.html" class="cart-btn">
                                     <i class="fa fa-shopping-cart"></i>
-                                    <span>Add to Cart</span></ a>
+                                    <span>Add to Cart</span></a>
                     </span>
                 </div>
             </div>
@@ -118,7 +118,7 @@ $this->layout = 'front';
             <div class="p-details-tab">
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active">< a href="#more-info" aria-controls="more-info" role="tab" data-toggle="tab">MORE INFO</ a></li>
-                    <li role="presentation">< a href="#data" aria-controls="data" role="tab" data-toggle="tab">DATA SHEET</ a></li>
+                    <li role="presentation"><a href="#data" aria-controls="data" role="tab" data-toggle="tab">DATA SHEET</a></li>
                     <!--                        <li role="presentation">< a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">REVIEWS</ a></li>-->
                 </ul>
             </div>
