@@ -374,8 +374,7 @@ endforeach;
                                     <td>
                                         <p>Hi <?= h($firstname . ' ' . $lastname . ',') ?></p>
                                         <p>Please click the link below to verify your account - </p>
-                                        <p><?= h("http://localhost/myCake4/users/verification/' . $token . '") ?>Verification Email</p>
-                                        <a href="http://localhost/myCake4/users/verification/'.$token.'">Verification Email</a>
+                                        <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'verification','prefix' => 'Admin', $token], ['fullBase' => true]);?>">Verification Email</a>
 
                                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                                             <tbody>

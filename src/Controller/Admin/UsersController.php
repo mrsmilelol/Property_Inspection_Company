@@ -206,11 +206,12 @@ class UsersController extends AppController
                     ->setTemplate('account_verification');
 
                 $mailer->setViewVars([
-                    'firstname' => $user->first_name,
-                    'lastname' => $user->last_name,
-                    'randomString' => $user->token,
+                    'firstname' => $lastname,
+                    'lastname' => $firstname,
+                    'token' => $token,
                 ]);
                 //$mailStatus = $mailer->deliver();
+                //debug($mailStatus);
                 $mailer->deliver();
 
                 return $this->redirect(['prefix' => 'Admin','action' => 'login']);
@@ -225,7 +226,7 @@ class UsersController extends AppController
     public function verification($token)
     {
         $userTable = TableRegistry::getTableLocator()->get('Users');
-        $verify = $userTable->findAll()->where(['token' => $token])->first();
+        $verify = $userTable->find('all')->where(['token' => $token])->first();
         $verify->verified = '1';
         $verify->status = '1';
         $userTable->save($verify);
