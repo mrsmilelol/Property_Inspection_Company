@@ -15,7 +15,6 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\ProductReviewsTable&\Cake\ORM\Association\HasMany $ProductReviews
  * @property \App\Model\Table\ShoppingSessionsTable&\Cake\ORM\Association\HasMany $ShoppingSessions
  * @property \App\Model\Table\UserAddressesTable&\Cake\ORM\Association\HasMany $UserAddresses
- *
  * @method \App\Model\Entity\User newEmptyEntity()
  * @method \App\Model\Entity\User newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\User[] newEntities(array $data, array $options = [])
@@ -104,7 +103,6 @@ class UsersTable extends Table
             ->numeric('phone')
             ->regex('phone', '/^(?:\+?61|0)[2-478](?:[ -]?[0-9]){8}$/', 'Invalid mobile number, try +61413062555');
 
-
         $validator
             ->email('email')
             ->requirePresence('email', 'create')
@@ -118,7 +116,6 @@ class UsersTable extends Table
             ->scalar('token')
             ->maxLength('token', 255)
             ->allowEmptyString('token');
-
 
         $validator
             ->dateTime('created_at')
@@ -145,5 +142,16 @@ class UsersTable extends Table
         $rules->add($rules->existsIn('user_type_id', 'UserTypes'), ['errorField' => 'user_type_id']);
 
         return $rules;
+    }
+
+    public function findAuth(Query $query, array $options)
+    {
+        $query->where([
+            'OR' => [
+                'username' => $options['username'],
+                'email' => $options['username'],
+            ]], [], true);
+
+        return $query;
     }
 }

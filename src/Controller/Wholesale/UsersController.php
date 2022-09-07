@@ -22,7 +22,7 @@ class UsersController extends AppController
         parent::beforeFilter($event);
         // for all controllers in our application, make index and view
         // actions public, skipping the authentication check.
-        $this->Authentication->addUnauthenticatedActions(['login', 'add','signUp']);
+        $this->Authentication->addUnauthenticatedActions(['login','signUp','verification','logout','passwordReset']);
     }
 
     /**
@@ -258,47 +258,47 @@ class UsersController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    /**
-     * passwordReset uses the provided email to check for the user record inside the database
-     * if user was found generates password reset email and sends it to the email provided by the user
-     *
-     * @return \Cake\Http\Response|null|void Redirects to index.
-     */
-    public function passwordReset()
-    {
-        if ($this->request->is('post')) {
-            //retrieve user email
-            $email = $this->request->getData('email');
-            //check if the email correspond with the user inside the database
-            $user = $this->Users->findByEmail($this->request->getData('email'))->first();
-            //if there is no record of the user throw an error
-            if (is_null($user)) {
-                $this->Flash->error('This email is invalid.');
-            } else {
-                //Create a new instance of the Mailer class
-                $emailReset = new Mailer('default');
-                $emailReset
-                    ->setEmailFormat('html')
-                    ->setFrom('emailtestingfit3178@gmail.com')
-                    ->setTo($user->email)
-                    ->setSubject('Forgot Password Reset')
-                    ->viewBuilder()
-                    ->disableAutoLayout()
-                    ->setTemplate('password');
-                //pass the user id via email
-                $emailReset->setViewVars([
-                    'userId' => $user->id,
-                ]);
-                //send the email
-                $result = $emailReset->deliver();
-
-                //Error handling
-                if ($result) {
-                    $this->Flash->success('Reset password link has been sent to your email (' . $email . '), please check your email.');
-                } else {
-                    $this->Flash->error('Error, unable to send email.');
-                }
-            }
-        }
-    }
+//    /**
+//     * passwordReset uses the provided email to check for the user record inside the database
+//     * if user was found generates password reset email and sends it to the email provided by the user
+//     *
+//     * @return \Cake\Http\Response|null|void Redirects to index.
+//     */
+//    public function passwordReset()
+//    {
+//        if ($this->request->is('post')) {
+//            //retrieve user email
+//            $email = $this->request->getData('email');
+//            //check if the email correspond with the user inside the database
+//            $user = $this->Users->findByEmail($this->request->getData('email'))->first();
+//            //if there is no record of the user throw an error
+//            if (is_null($user)) {
+//                $this->Flash->error('This email is invalid.');
+//            } else {
+//                //Create a new instance of the Mailer class
+//                $emailReset = new Mailer('default');
+//                $emailReset
+//                    ->setEmailFormat('html')
+//                    ->setFrom('emailtestingfit3178@gmail.com')
+//                    ->setTo($user->email)
+//                    ->setSubject('Forgot Password Reset')
+//                    ->viewBuilder()
+//                    ->disableAutoLayout()
+//                    ->setTemplate('password');
+//                //pass the user id via email
+//                $emailReset->setViewVars([
+//                    'userId' => $user->id,
+//                ]);
+//                //send the email
+//                $result = $emailReset->deliver();
+//
+//                //Error handling
+//                if ($result) {
+//                    $this->Flash->success('Reset password link has been sent to your email (' . $email . '), please check your email.');
+//                } else {
+//                    $this->Flash->error('Error, unable to send email.');
+//                }
+//            }
+//        }
+//    }
 }
