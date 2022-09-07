@@ -374,8 +374,6 @@ endforeach;
                                     <td>
                                         <p>Hi <?= h($firstname . ' ' . $lastname . ',') ?></p>
                                         <p>Please click the link below to verify your account - </p>
-                                        <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'verification','prefix' => 'Admin', $token], ['fullBase' => true]);?>">Verification Email</a>
-
                                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                                             <tbody>
                                             <tr>
@@ -383,7 +381,7 @@ endforeach;
                                                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                                         <tbody>
                                                         <tr>
-                                                            <td> <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'login','prefix' => 'Wholesale'], ['fullBase' => true]); ?>">Please click to the login page</a> </td>
+                                                            <td> <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'verification','prefix' => 'Admin', $token], ['fullBase' => true]);?>">Verify your account</a> </td>
                                                         </tr>
                                                         </tbody>
                                                     </table>

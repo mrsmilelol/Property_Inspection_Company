@@ -61,5 +61,4 @@ class AppController extends Controller
         // actions public, skipping the authentication check.
         $this->Authentication->addUnauthenticatedActions(['display', 'about','contact','home','main','product','shop','detail']);
     }
-
 }
