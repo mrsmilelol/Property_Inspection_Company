@@ -179,26 +179,26 @@ class ProductsController extends AppController
         $sql = "SELECT a.*,b.description as img from products as a
 left join product_images as b on a.id = b.product_id
 LEFT JOIN categories_products as c on c.product_id = a.id
-left join categories as d on d.id = c.category_id;";
+left join categories as d on d.id = c.category_id group by a.id;";
 
         if (!empty($ids) && !empty($price)){
         $sql = "SELECT a.*,b.description as img from products as a
 left join product_images as b on a.id = b.product_id
 LEFT JOIN categories_products as c on c.product_id = a.id
-left join categories as d on d.id = c.category_id where d.id in (".$ids.") and a.price BETWEEN ".$min_p." and ".$max_p.";";
+left join categories as d on d.id = c.category_id where d.id in (".$ids.") and a.price BETWEEN ".$min_p." and ".$max_p." group by a.id;";
         }else{
             if (!empty($ids)){
                 $sql = "SELECT a.*,b.description as img from products as a
 left join product_images as b on a.id = b.product_id
 LEFT JOIN categories_products as c on c.product_id = a.id
-left join categories as d on d.id = c.category_id where d.id in (".$ids.");";
+left join categories as d on d.id = c.category_id where d.id in (".$ids.") group by a.id;";
             }
 
             if (!empty($price)){
                 $sql = "SELECT a.*,b.description as img from products as a
 left join product_images as b on a.id = b.product_id
 LEFT JOIN categories_products as c on c.product_id = a.id
-left join categories as d on d.id = c.category_id where a.price BETWEEN ".$min_p." and ".$max_p.";";
+left join categories as d on d.id = c.category_id where a.price BETWEEN ".$min_p." and ".$max_p." group by a.id;";
             }
 
 
