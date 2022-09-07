@@ -119,7 +119,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             <h4><?= __('Related categories') ?></h4>
             <?php if (!empty($product->categories)) : ?>
                 <div class="table-responsive">
-                    <table>
+                    <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <tr>
                             <th data-visible="false"><?= __('ID') ?></th>
                             <th><?= __('Parent ID') ?></th>

@@ -91,7 +91,7 @@ class UserAddressesTable extends Table
 
         $validator
             ->scalar('postcode')
-            ->maxLength('postcode', 64)
+            ->maxLength('postcode', 4)
             ->requirePresence('postcode', 'create')
             ->notEmptyString('postcode');
 
