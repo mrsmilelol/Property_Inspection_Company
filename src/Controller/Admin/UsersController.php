@@ -107,6 +107,8 @@ class UsersController extends AppController
             $this->Authentication->logout();
 
             return $this->redirect(['prefix' => 'Admin', 'controller' => 'Users', 'action' => 'login']);
+        } else {
+            return $this->redirect(['prefix' => 'Admin', 'controller' => 'Users', 'action' => 'login']);
         }
     }
 
