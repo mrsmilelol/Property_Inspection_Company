@@ -144,7 +144,7 @@ class UsersController extends AppController
                 $user->verified = '1';
                 $this->Flash->success(__('The account has been added.'));
                 $userTable->save($user);
-                return $this->redirect(['prefix' => 'Admin','action' => 'login']);
+                return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('Registration failed, please try again.'));
             }
