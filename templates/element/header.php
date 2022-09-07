@@ -38,6 +38,20 @@
 <!--                            </ul>-->
 <!--                        </div>-->
                         <div class="header-user-info pull-right">
+                            <?php
+//                            debug($_SERVER['REQUEST_URI']);
+//                            exit;
+                            $url_parts = parse_url($_SERVER['REQUEST_URI']);
+                            $path_parts=explode('/', $url_parts['path']);
+                            /*debug($path_parts[2]);
+                            exit;*/
+                            ?>
+                            <?php if ($path_parts[2] == 'admin') : ?>
+                                <a href=<?= $this->Url->build(['controller' => 'Products','action' => 'index']) ?>>
+                                    <i class="fa fa-home"></i>
+                                    Back to Dashboard
+                                </a>
+                            <?php endif; ?>
                             <a href=<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display','about']); ?>>
                                 About Us
                             </a>
