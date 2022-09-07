@@ -212,6 +212,7 @@ class UsersController extends AppController
         $user = $this->Users->newEmptyEntity();
         //$this->loadModel("WholesaleRequests");
         $wholesaleRequest = $this->fetchTable('WholesaleRequests')->get($id);
+        $token = Security::hash(Security::randomBytes(32));
         $user->user_type = $this->Users->UserTypes->get(2);
         $user->email = $wholesaleRequest->email;
         $user->username = $wholesaleRequest->email;
@@ -219,6 +220,9 @@ class UsersController extends AppController
         $user->firstname = $wholesaleRequest->business_name;
         $user->password = $wholesaleRequest->email;
         $user->phone = $wholesaleRequest->phone;
+        $user->token = $token;
+        $user->verified = 1;
+        $user->status = 1;
 
         $this->Users->save($user);
         $userId = $user->id;
