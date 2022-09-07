@@ -70,16 +70,16 @@ class AppController extends Controller
         // Only apply redirect rule when user is actually logged in
         if ($loggedin_user = $this->Authentication->getIdentity()) {
             //If user is not on login or logout page, check their role
-            if ($loggedin_user->user_type_id != null && $loggedin_user->user_type_id == 2) {
+            if ($loggedin_user->user_type_id != null && $loggedin_user->user_type_id != 1) {
                 // the user is not an admin
-                $this->Flash->error('You do not have admin access');
+                $this->Flash->error('You are a wholesale user');
                 $this->redirect(['prefix' => 'Wholesale', 'controller' => 'Products', 'action' => 'shop']);
             }
-            if ($loggedin_user->user_type_id != null && $loggedin_user->user_type_id == 3) {
-                // the user is not an admin
-                $this->Flash->error('You do not have admin access');
-                $this->redirect(['prefix' => 'Customer', 'controller' => 'Products', 'action' => 'shop']);
-            }
+//            if ($loggedin_user->user_type_id != null && $loggedin_user->user_type_id == 3) {
+//                // the user is not an admin
+//                $this->Flash->error('You are a regular customer');
+//                $this->redirect(['prefix' => 'Customer', 'controller' => 'Products', 'action' => 'shop']);
+//            }
         }
     }
 }
