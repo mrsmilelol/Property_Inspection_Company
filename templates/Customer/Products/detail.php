@@ -89,7 +89,11 @@ $this->layout = 'front';
                 <div class="pd-center-column">
                     <h2><?= h($product->name) ?></h2>
                     <div class="media-body">
-                        <p class="media-body-title">AUD $<?= h($product->wholesale_price) ?><span> tax incl.</span></p>
+                        <?php if ($product->sale_price !== null and $product->sale_price > 0): ?>
+                            <p class="media-body-title">AUD <?= $this->Number->currency(h($product->sale_price)) ?><span> tax incl.</span></p>
+                        <?php else: ?>
+                            <p class="media-body-title">AUD <?= $this->Number->currency(h($product->price)) ?><span> tax incl.</span></p>
+                        <?php endif; ?>
                         <p> Brand: <?= h($product->brand) ?></p>
                         <p> Style: <?= h($product->style) ?></p>
 
