@@ -47,6 +47,16 @@ class AppController extends Controller
         $this->loadComponent('Flash');
         // Add this line to check authentication result and lock your site
         $this->loadComponent('Authentication.Authentication');
+        $this->loadComponent('Auth', [ //load Auth component
+            'authenticate' => [
+                'Form' => [
+                    'finder' => 'auth',
+                ],
+            ],
+        ]);
+
+        $this->Auth->allow(['login','add','forgotpassword','resetpassword','verification']);
+        $this->set('firstname', $this->Auth->user('firstname'));
 
         /*
          * Enable the following component for recommended CakePHP form protection settings.
