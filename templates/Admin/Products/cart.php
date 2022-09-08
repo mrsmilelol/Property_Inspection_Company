@@ -103,7 +103,8 @@ $this->layout = 'front';
                                     </div>
                                 </td>
                                 <td><?=$this->Number->currency($orderItem['price'])?></td>
-                                <td><a href="#"><i class="fa fa-times"></i></a></td>
+                                <td><?php echo $this->Html->link('<i class="fa fa-trash"></i>', ['controller' => 'products', 'action' => 'removeProduct', $orderItem['product_id']], ['class' => 'btn btn-secondary btn-sm', 'escape' => false]); ?></div>
+            </div></td>
                             </tr>
                         </tbody>
                         <?php endforeach; ?>
@@ -115,7 +116,8 @@ $this->layout = 'front';
                     <div class="col-md-8 col-sm-7 col-xs-12 mb-30">
                         <div class="d-flex flex-wrap mb-n2">
                             <input type="submit" value="Update Cart" class="me-3 mb-2">
-                            <a class="btn mb-2" href="#">Continue Shopping</a>
+                            <a class="btn mb-2" href="<?= $this->Url->build(['controller' => 'products',
+                                'action' => 'shop']); ?>">Continue Shopping</a>
                         </div>
                         <div class="coupon mt-4">
                             <h6>Coupon</h6>
