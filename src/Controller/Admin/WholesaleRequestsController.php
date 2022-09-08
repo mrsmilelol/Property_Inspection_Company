@@ -21,7 +21,7 @@ class WholesaleRequestsController extends AppController
         parent::beforeFilter($event);
         // for all controllers in our application, make index and view
         // actions public, skipping the authentication check.
-        $this->Authentication->addUnauthenticatedActions(['add']);
+        $this->Authentication->addUnauthenticatedActions(['request','add']);
     }
     /**
      * Index method
@@ -109,10 +109,31 @@ class WholesaleRequestsController extends AppController
             $wholesaleRequest->status = "Not Approved";
             if ($this->WholesaleRequests->save($wholesaleRequest)) {
 
+                $mailer = new Mailer();
+                $mailer
+                    ->setEmailFormat('html')
+                    ->setTo($wholesaleRequest->email)
+                    //->setTo('contactreceiver@billgong.monash-ie.me')
+                    ->setFrom('website@monash.edu')
+                    ->setSubject('Your wholesale application has been sent for review')
+                    ->viewBuilder()
+                    ->disableAutoLayout()
+                    ->setTemplate('wholesale_request');
+
+                $mailer->setViewVars([
+                    'firstname' => $wholesaleRequest->first_name,
+                    'lastname' => $wholesaleRequest->last_name,
+                    'business_name' => $wholesaleRequest->business_name,
+                    'abn' => $wholesaleRequest->abn,
+                    'phone' => $wholesaleRequest->phone,
+                    'email'=> $wholesaleRequest->email
+                ]);
+                $mailer->deliver();
+
                 //$this->redirect(['controller'=>'Users','action'=>'addWholesale',$wholesaleRequest->id]);
                 $this->Flash->success(__('The wholesale request has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller'=>'WholesaleRequests','action' => 'add','prefix'=>'Admin']);
             }
             $this->Flash->error(__('The wholesale request could not be saved. Please, try again.'));
         }

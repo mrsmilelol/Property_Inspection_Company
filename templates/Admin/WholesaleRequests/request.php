@@ -124,7 +124,7 @@ $this->layout = 'front';
     <div class="container align-items-center">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="heading-title"><?= __('Create Wholesale request') ?></h1>
+                <h1 class="heading-title"><?= __('Apply for wholesale account') ?></h1>
             </div>
             <div class="account-details">
                 <div class="col-lg-6 col-md-6 col-sm-6">
@@ -135,14 +135,17 @@ $this->layout = 'front';
                         <fieldset>
                             <?php
                             echo $this->Form->control('business_name', ['label'=>'Business name']);
+                            echo $this->Form->control('website');
                             echo $this->Form->control('abn', ['label'=>'ABN']);
+                            echo $this->Form->control('business_phone');
                             echo $this->Form->control('address_line_1', ['label'=>'Address line 1']);
                             echo $this->Form->control('address_line_2', ['label'=>'Address line 2']);
+                            echo $this->Form->control('first_name',['label'=>'Contact person firstname']);
+                            echo $this->Form->control('last_name',['label'=>'Contact person lastname']);
                             echo $this->Form->control('phone');
                             echo $this->Form->control('email');
-                            echo $this->Form->control('business_type', ['label'=>'Business type']);
-                            echo $this->Form->control('payment_method', ['label'=>'Payment method']);
-                            echo $this->Form->control('message');
+                            echo $this->Form->control('position');
+                            echo $this->Form->control('message',['label'=>'Additional information', 'type' => 'textarea','class'=>"col-md-8 col-12 mb-20"]);
                             //echo $this->Form->control('status');
                             //echo $this->Form->control('created_at');
                             //echo $this->Form->control('modified_at');

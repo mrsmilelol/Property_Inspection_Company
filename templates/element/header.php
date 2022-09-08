@@ -52,6 +52,9 @@
                                     Back to Dashboard
                                 </a>
                             <?php endif; ?>
+                            <a href=<?= $this->Url->build(['prefix'=>'Admin','controller' => 'WholesaleRequests', 'action' => 'request']); ?>>
+                                Wholesale Application
+                            </a>
                             <a href=<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display','about']); ?>>
                                 About Us
                             </a>
