@@ -183,7 +183,8 @@ class WholesaleRequestsController extends AppController
                 ]);
                 $this->Flash->success(__('The wholesale request has been approved.'));
                 $mailerApprove->deliver();
-
+                $session = $this->request->getSession();
+                $session->write('Wholesale.id', $id);
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The wholesale request could not be saved. Please, try again.'));
@@ -257,14 +258,20 @@ class WholesaleRequestsController extends AppController
 
     }
 
-    public function addUser($id=null){
+    public function addUser($user_id=null){
+        $wholesale_id =$this->request->getSession()->read('Wholesale.id');
         $this->loadModel('WholesaleRequests');
-        $wholesaleRequest = $this->WholesaleRequests->get($id, [
+        $wholesaleRequest = $this->WholesaleRequests->get($wholesale_id, [
             'contain' => [],
         ]);
-        $user_id = $this->request->getSession()->read('User.id');
-        $wholesaleRequest->user_id = $user_id;
-        $this->WholesaleRequests->save($wholesaleRequest);
+        if($user_id != null) {
+            $wholesaleRequest->user_id = $user_id;
+            $this->WholesaleRequests->save($wholesaleRequest);
+        }
+        else {
+            $this->Flash->error(__('The user cannot be added.'));
+        }
+
 
         return $this->redirect(['action'=>'index']);
     }

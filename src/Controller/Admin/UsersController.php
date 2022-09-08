@@ -249,10 +249,11 @@ class UsersController extends AppController
 
         $this->Users->save($user);
         $userId = $user->id;
-        $session = $this->request->getSession();
-        $session->write('User.id', $userId);
+        //$session = $this->request->getSession();
+        //$session->write('User.id', $userId);
+        //debug($status);
 
-        return $this->redirect(['controller' => 'WholesaleRequests','action' => 'addUser',$id]);
+        return $this->redirect(['prefix'=>'Admin','controller' => 'WholesaleRequests','action' => 'addUser',$userId]);
     }
 
     /**
