@@ -62,7 +62,7 @@ $this->layout = 'front';
         <div class="breadcrumbs-area">
             <div class="container">
                 <ul class="breadcrumbs">
-                    <li><a href="index.html"><i class="fa fa-home"></i>Home</a></li>
+                    <li><a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'main'])?>"><i class="fa fa-home"></i>Home</a></li>
                     <li class="active">Shopping Cart</li>
                 </ul>
             </div>
@@ -165,7 +165,7 @@ $this->layout = 'front';
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <td colspan="2" class="pb-0"><a class="btn" href="checkout.html">Proceed to Checkout</a></td>
+                                            <td colspan="2" class="pb-0"><a class="btn" href="#">Proceed to Checkout</a></td>
                                         </tr>
                                     </tfoot>
                                 </table>
