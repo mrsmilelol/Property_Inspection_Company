@@ -219,7 +219,7 @@ class WholesaleRequestsController extends AppController
                     ->setTo($wholesaleRequest->email)
                     //->setTo('contactreceiver@billgong.monash-ie.me')
                     ->setFrom('emailtestingfit3178@gmail.com')
-                    ->setSubject('Your wholesale application has been sent for review')
+                    ->setSubject('Your wholesale application has been rejected')
                     ->viewBuilder()
                     ->disableAutoLayout()
                     ->setTemplate('wholesale_rejected');
