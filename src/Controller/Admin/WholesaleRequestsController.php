@@ -72,7 +72,7 @@ class WholesaleRequestsController extends AppController
                     ->setEmailFormat('html')
                     ->setTo($wholesaleRequest->email)
                     //->setTo('contactreceiver@billgong.monash-ie.me')
-                    ->setFrom('website@monash.edu')
+                    ->setFrom('emailtestingfit3178@gmail.com')
                     ->setSubject('Your wholesale application has been sent for review')
                     ->viewBuilder()
                     ->disableAutoLayout()
@@ -109,18 +109,18 @@ class WholesaleRequestsController extends AppController
             $wholesaleRequest->status = "Not Approved";
             if ($this->WholesaleRequests->save($wholesaleRequest)) {
 
-                $mailer = new Mailer('default');
-                $mailer
+                $mailerRequest = new Mailer('default');
+                $mailerRequest
                     ->setEmailFormat('html')
                     ->setTo($wholesaleRequest->email)
                     //->setTo('contactreceiver@billgong.monash-ie.me')
-                    ->setFrom('website@monash.edu')
+                    ->setFrom('emailtestingfit3178@gmail.com')
                     ->setSubject('Your wholesale application has been sent for review')
                     ->viewBuilder()
                     ->disableAutoLayout()
                     ->setTemplate('wholesale_request');
 
-                $mailer->setViewVars([
+                $mailerRequest->setViewVars([
                     'firstname' => $wholesaleRequest->first_name,
                     'lastname' => $wholesaleRequest->last_name,
                     'business_name' => $wholesaleRequest->business_name,
@@ -128,7 +128,9 @@ class WholesaleRequestsController extends AppController
                     'phone' => $wholesaleRequest->phone,
                     'email'=> $wholesaleRequest->email
                 ]);
-                $mailer->deliver();
+                $mailerRequest->deliver();
+
+
 
                 //$this->redirect(['controller'=>'Users','action'=>'addWholesale',$wholesaleRequest->id]);
                 $this->Flash->success(__('The wholesale request has been saved.'));
@@ -160,18 +162,18 @@ class WholesaleRequestsController extends AppController
             if ($this->WholesaleRequests->save($wholesaleRequest)) {
 
                 $this->redirect(['controller' => 'Users', 'action' => 'addWholesale', $wholesaleRequest->id]);
-                $mailer = new Mailer('default');
-                $mailer
+                $mailerApprove = new Mailer('default');
+                $mailerApprove
                     ->setEmailFormat('html')
                     ->setTo($wholesaleRequest->email)
                     //->setTo('contactreceiver@billgong.monash-ie.me')
-                    ->setFrom('website@monash.edu')
+                    ->setFrom('emailtestingfit3178@gmail.com')
                     ->setSubject('Your wholesale application has been approved')
                     ->viewBuilder()
                     ->disableAutoLayout()
                     ->setTemplate('wholesale_approve');
 
-                $mailer->setViewVars([
+                $mailerApprove->setViewVars([
                     'firstname' => $wholesaleRequest->first_name,
                     'lastname' => $wholesaleRequest->last_name,
                     'business_name' => $wholesaleRequest->business_name,
@@ -180,7 +182,7 @@ class WholesaleRequestsController extends AppController
                     'email'=> $wholesaleRequest->email
                 ]);
                 $this->Flash->success(__('The wholesale request has been approved.'));
-                $mailer->deliver();
+                $mailerApprove->deliver();
 
                 return $this->redirect(['action' => 'index']);
             }
@@ -210,22 +212,22 @@ class WholesaleRequestsController extends AppController
             $wholesaleRequest->status = "Rejected";
             if ($this->WholesaleRequests->save($wholesaleRequest)) {
 
-                $mailer = new Mailer('default');
-                $mailer
+                $mailerReject = new Mailer('default');
+                $mailerReject
                     ->setEmailFormat('html')
                     ->setTo($wholesaleRequest->email)
                     //->setTo('contactreceiver@billgong.monash-ie.me')
-                    ->setFrom('website@monash.edu')
+                    ->setFrom('emailtestingfit3178@gmail.com')
                     ->setSubject('Your wholesale application has been sent for review')
                     ->viewBuilder()
                     ->disableAutoLayout()
                     ->setTemplate('wholesale_rejected');
 
-                $mailer->setViewVars([
+                $mailerReject->setViewVars([
                     'firstname' => $wholesaleRequest->first_name,
                     'lastname' => $wholesaleRequest->last_name,
                 ]);
-                $mailer->deliver();
+                $mailerReject->deliver();
 
                 $this->Flash->success(__('The wholesale request has been rejected.'));
 

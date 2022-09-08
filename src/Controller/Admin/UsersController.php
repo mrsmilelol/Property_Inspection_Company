@@ -140,8 +140,8 @@ class UsersController extends AppController
                 $user->lastname = $lastname;
                 $user->email = $email;
                 $user->token = $token;
-                $user->status = '1';
-                $user->verified = '1';
+                //$user->status = '1';
+                //$user->verified = '1';
                 $this->Flash->success(__('The account has been added.'));
                 $userTable->save($user);
                 return $this->redirect(['action' => 'index']);
@@ -184,7 +184,7 @@ class UsersController extends AppController
                     ->setEmailFormat('html')
                     ->setFrom('emailtestingfit3178@gmail.com')
                     ->setTo($email)
-                    ->setSubject('Forgot Password Reset')
+                    ->setSubject('Account Verification')
                     ->viewBuilder()
                     ->disableAutoLayout()
                     ->setTemplate('account_verification');
@@ -199,7 +199,7 @@ class UsersController extends AppController
                 $emailStatus = $emailSignUp->deliver();
                 //Error handling
                 if ($emailStatus) {
-                    $this->Flash->success('Reset password link has been sent to your email (' . $email . '), please check your email.');
+                    $this->Flash->success('Account Activation link has been sent to your email (' . $email . '), please check your email.');
                 } else {
                     $this->Flash->error('Error, unable to send email.');
                 }

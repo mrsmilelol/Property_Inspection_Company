@@ -44,7 +44,7 @@ class WholesaleRequestsController extends AppController
                     ->setEmailFormat('html')
                     ->setTo($wholesaleRequest->email)
                     //->setTo('contactreceiver@billgong.monash-ie.me')
-                    ->setFrom('website@monash.edu')
+                    ->setFrom('emailtestingfit3178@gmail.com')
                     ->setSubject('Your wholesale application has been sent for review')
                     ->viewBuilder()
                     ->disableAutoLayout()
@@ -58,10 +58,15 @@ class WholesaleRequestsController extends AppController
                     'phone' => $wholesaleRequest->phone,
                     'email'=> $wholesaleRequest->email
                 ]);
-                $mailer->deliver();
+                $requestStatus = $mailer->deliver();
+                if ($requestStatus) {
+                    $this->Flash->success('Your application has been sent for review');
+                } else {
+                    $this->Flash->error('Error, unable to send email.');
+                }
 
                 //$this->redirect(['controller'=>'Users','action'=>'addWholesale',$wholesaleRequest->id]);
-                $this->Flash->success(__('The wholesale request has been saved.'));
+                //$this->Flash->success(__('The wholesale request has been saved.'));
 
                 return $this->redirect(['prefix'=>'Customer','controller'=>'Pages','action' => 'display','main']);
             }
