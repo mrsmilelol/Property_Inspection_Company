@@ -204,4 +204,10 @@ class ProductsTable extends Table
 
         return $validator;
     }
+
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        $rules->add($rules->validCount('categories', 1, '>=', 'Please select at least 1 category.'));
+        return $rules;
+    }
 }

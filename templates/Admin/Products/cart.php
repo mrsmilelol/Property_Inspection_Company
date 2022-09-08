@@ -62,7 +62,7 @@ $this->layout = 'front';
         <div class="breadcrumbs-area">
             <div class="container">
                 <ul class="breadcrumbs">
-                    <li><a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'main'])?>"><i class="fa fa-home"></i>Home</a></li>
+                    <li><a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'main'])?> "><i class="fa fa-home"></i>Home</a></li>
                     <li class="active">Shopping Cart</li>
                 </ul>
             </div>
@@ -81,7 +81,6 @@ $this->layout = 'front';
                     <table class="table table-bordered mb-30">
                         <thead>
                             <tr>
-                                <th>Image</th>
                                 <th>Product</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
@@ -92,8 +91,7 @@ $this->layout = 'front';
                         <tbody>
                         <?php foreach($orderItems['Orderitems'] as $orderItem): ?>
                             <tr>
-                                <td><a href="product-details.html"><img src="assets/images/cart-assets/images/1.webp" alt="" /></a></td>
-                                <td><a href="product-details.html"><?= $orderItem['name']?></a></td>
+                                <td><a href="<?= $this->Url->build(['controller' => 'products', 'action' => 'detail',$orderItem['product_id']])?>"><?= $orderItem['name']?></a></td>
                                 <td><?= $this->Number->currency($orderItem['price'])?></td>
                                 <td>
                                     <div class="cart-quantity product-quantity">
@@ -115,22 +113,22 @@ $this->layout = 'front';
 
                     <div class="col-md-8 col-sm-7 col-xs-12 mb-30">
                         <div class="d-flex flex-wrap mb-n2">
-                            <input type="submit" value="Update Cart" class="me-3 mb-2">
+<!--                            <input type="submit" value="Update Cart" class="me-3 mb-2">-->
                             <a class="btn mb-2" href="<?= $this->Url->build(['controller' => 'products',
                                 'action' => 'shop']); ?>">Continue Shopping</a>
                         </div>
-                        <div class="coupon mt-4">
-                            <h6>Coupon</h6>
-                            <p>Enter your coupon code if you have one.</p>
-                            <div class="row mb-n20">
-                                <div class="col-xl-4 col-lg-5 col-md-6 col-12 mb-20">
-                                    <input type="text" placeholder="Coupon code">
-                                </div>
-                                <div class="col-md-6 col-12 mb-20">
-                                    <input type="submit" value="Apply Coupon">
-                                </div>
-                            </div>
-                        </div>
+<!--                        <div class="coupon mt-4">-->
+<!--                            <h6>Coupon</h6>-->
+<!--                            <p>Enter your coupon code if you have one.</p>-->
+<!--                            <div class="row mb-n20">-->
+<!--                                <div class="col-xl-4 col-lg-5 col-md-6 col-12 mb-20">-->
+<!--                                    <input type="text" placeholder="Coupon code">-->
+<!--                                </div>-->
+<!--                                <div class="col-md-6 col-12 mb-20">-->
+<!--                                    <input type="submit" value="Apply Coupon">-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
 
                     <div class="col-md-4 col-sm-5 col-xs-12 mb-30">
@@ -146,18 +144,18 @@ $this->layout = 'front';
                                             foreach($orderItems['Orderitems'] as $orderItem):
                                                 $subtotal = $subtotal+$orderItem['price'];
                                             endforeach;?>
-                                            <th>Subtotal</th>
-                                            <td><strong><?= $this->Number->currency($subtotal) ?></strong></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Shipping</th>
-                                            <td>
-                                                <ul>
-                                                    <li><label class="checkbox"><input type="radio" />Flat Rate: <strong>£7.00</strong></label></li>
-                                                    <li><label class="checkbox"><input type="radio" />Free Shipping</label></li>
-                                                </ul>
-                                            </td>
-                                        </tr>
+<!--                                            <th>Subtotal</th>-->
+<!--                                            <td><strong>--><!--</strong></td>-->
+<!--                                        </tr>-->
+<!--                                        <tr>-->
+<!--                                            <th>Shipping</th>-->
+<!--                                            <td>-->
+<!--                                                <ul>-->
+<!--                                                    <li><label class="checkbox"><input type="radio" />Flat Rate: <strong>£7.00</strong></label></li>-->
+<!--                                                    <li><label class="checkbox"><input type="radio" />Free Shipping</label></li>-->
+<!--                                                </ul>-->
+<!--                                            </td>-->
+<!--                                        </tr>-->
                                         <tr>
                                             <th class="h5">Total</th>
                                             <td class="h5"><strong><?= $this->Number->currency($subtotal) ?></strong></td>
