@@ -52,6 +52,9 @@
                                     Back to Dashboard
                                 </a>
                             <?php endif; ?>
+                            <a href=<?= $this->Url->build(['prefix'=>'Customer','controller' => 'WholesaleRequests', 'action' => 'request']); ?>>
+                                Wholesale Application
+                            </a>
                             <a href=<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display','about']); ?>>
                                 About Us
                             </a>
@@ -118,15 +121,16 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <a class="cart-toggler mini-cart-icon" href="#">
+                                    <a class="cart-toggler mini-cart-icon" href="<?= $this->Url->build(['controller' => 'products',
+                                        'action' => 'cart']); ?>">
                                         <i class="fa fa-shopping-cart"></i>
                                         <span>2</span>
                                     </a>
                                     <div class="cart-list">
                                         <div class="product">
                                             <div class="cart-single-product">
-                                                <a class="product-image" href=<?= $this->Url->build(['controller' => 'Pages',
-                                                    'action' => 'display','main']); ?>
+                                                <a class="product-image" href=<?= $this->Url->build(['controller' => 'products',
+                                                    'action' => 'cart']); ?>
                                                     <?= $this->Html->image('cart-img/1.jpg'); ?>
                                                 </a>
                                                 <div class="product-details">
