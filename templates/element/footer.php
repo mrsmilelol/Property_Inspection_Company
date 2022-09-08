@@ -46,7 +46,7 @@
                             <li><a href="#">Search Terms</a></li>
                             <li><a href="#">Advance Search</a></li>
                             <li><a href="#">Affiliates</a></li>
-                            <li><a href="<?= $this->Url->build(['prefix'=>'Admin','controller'=>'WholesaleRequests', 'action'=>'add']); ?>">Wholesale Application</a></li>
+                            <li><a href="<?= $this->Url->build(['prefix'=>'Admin','controller'=>'WholesaleRequests', 'action'=>'request']); ?>">Wholesale Application</a></li>
                         </ul>
                     </div>
                 </div>
