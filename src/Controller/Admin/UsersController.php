@@ -177,26 +177,32 @@ class UsersController extends AppController
                 $user->status = '0';
                 $user->verified = '0';
                 $this->Flash->success(__('Please check your email to verify the account.'));
-                $mailer = new Mailer('default');
-                $mailer->setTransport('default'); //your email configuration name
+                $emailSignUp = new Mailer('default');
+                //$mailer->setTransport('default'); //your email configuration name
                 $userTable->save($user);
-                $mailer
+                $emailSignUp
                     ->setEmailFormat('html')
+                    ->setFrom('emailtestingfit3178@gmail.com')
                     ->setTo($email)
-                    ->setFrom('website@monash.edu')
-                    ->setSubject('Verify New Account')
+                    ->setSubject('Forgot Password Reset')
                     ->viewBuilder()
                     ->disableAutoLayout()
                     ->setTemplate('account_verification');
 
-                $mailer->setViewVars([
+                $emailSignUp->setViewVars([
                     'firstname' => $lastname,
                     'lastname' => $firstname,
                     'token' => $token,
                 ]);
                 //$mailStatus = $mailer->deliver();
                 //debug($mailStatus);
-                $mailer->deliver();
+                $emailStatus = $emailSignUp->deliver();
+                //Error handling
+                if ($emailStatus) {
+                    $this->Flash->success('Reset password link has been sent to your email (' . $email . '), please check your email.');
+                } else {
+                    $this->Flash->error('Error, unable to send email.');
+                }
 
                 return $this->redirect(['prefix' => 'Admin','action' => 'login']);
             } else {
