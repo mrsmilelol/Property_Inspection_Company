@@ -172,8 +172,6 @@ class ProductsController extends AppController
 
         $shop = $this->Cart->getcart();
 
-        debug($this->getRequest()->getSession()->read('shop'));
-
         $this->set(compact('product','productImages','shop'));
     }
 
@@ -219,10 +217,10 @@ class ProductsController extends AppController
         }
     }
 
-    public function remove($id = null) {
+    public function removeProduct($id = null) {
         $product = $this->Cart->remove($id);
         if(!empty($product)) {
-            // $this->Flash->error($product['name'] . ' was removed from your shopping cart');
+            $this->Flash->error($product['name'] . ' was removed from your shopping cart');
         }
         return $this->redirect(['action' => 'cart']);
     }
@@ -239,7 +237,7 @@ class ProductsController extends AppController
 
     public function cartupdate() {
         if ($this->request->is('post')) {
-            foreach($this->request->data as $key => $value) {
+            foreach($this->request->getData() as $key => $value) {
                 $a = explode('-', $key);
                 $b = explode('_', $a[1]);
                 $this->Cart->add($b[0], $value, $b[1]);
