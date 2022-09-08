@@ -145,7 +145,7 @@ $this->layout = 'front';
                             echo $this->Form->control('phone');
                             echo $this->Form->control('email');
                             echo $this->Form->control('position');
-                            echo $this->Form->control('message',['label'=>'Additional information', 'type' => 'textarea','class'=>"col-md-8 col-12 mb-20"]);
+                            echo $this->Form->control('message',['label'=>'Additional information']);
                             //echo $this->Form->control('status');
                             //echo $this->Form->control('created_at');
                             //echo $this->Form->control('modified_at');
