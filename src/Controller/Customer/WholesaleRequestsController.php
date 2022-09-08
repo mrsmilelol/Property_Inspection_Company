@@ -39,7 +39,7 @@ class WholesaleRequestsController extends AppController
             $wholesaleRequest->status = "Not Approved";
             if ($this->WholesaleRequests->save($wholesaleRequest)) {
 
-                $mailer = new Mailer();
+                $mailer = new Mailer('default');
                 $mailer
                     ->setEmailFormat('html')
                     ->setTo($wholesaleRequest->email)

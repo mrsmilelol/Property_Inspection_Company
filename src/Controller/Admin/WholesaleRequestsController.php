@@ -67,7 +67,7 @@ class WholesaleRequestsController extends AppController
             $wholesaleRequest->status = "Not Approved";
             if ($this->WholesaleRequests->save($wholesaleRequest)) {
 
-                $mailer = new Mailer();
+                $mailer = new Mailer('default');
                 $mailer
                     ->setEmailFormat('html')
                     ->setTo($wholesaleRequest->email)
@@ -109,7 +109,7 @@ class WholesaleRequestsController extends AppController
             $wholesaleRequest->status = "Not Approved";
             if ($this->WholesaleRequests->save($wholesaleRequest)) {
 
-                $mailer = new Mailer();
+                $mailer = new Mailer('default');
                 $mailer
                     ->setEmailFormat('html')
                     ->setTo($wholesaleRequest->email)
@@ -160,7 +160,7 @@ class WholesaleRequestsController extends AppController
             if ($this->WholesaleRequests->save($wholesaleRequest)) {
 
                 $this->redirect(['controller' => 'Users', 'action' => 'addWholesale', $wholesaleRequest->id]);
-                $mailer = new Mailer();
+                $mailer = new Mailer('default');
                 $mailer
                     ->setEmailFormat('html')
                     ->setTo($wholesaleRequest->email)
@@ -210,7 +210,7 @@ class WholesaleRequestsController extends AppController
             $wholesaleRequest->status = "Rejected";
             if ($this->WholesaleRequests->save($wholesaleRequest)) {
 
-                $mailer = new Mailer();
+                $mailer = new Mailer('default');
                 $mailer
                     ->setEmailFormat('html')
                     ->setTo($wholesaleRequest->email)
