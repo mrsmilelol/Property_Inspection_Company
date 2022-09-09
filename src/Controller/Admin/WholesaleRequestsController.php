@@ -98,7 +98,7 @@ class WholesaleRequestsController extends AppController
         $this->set(compact('wholesaleRequest'));
     }
 
-    public function request()
+    /*public function request()
     {
         $this->loadModel('WholesaleRequests');
 
@@ -140,7 +140,7 @@ class WholesaleRequestsController extends AppController
             $this->Flash->error(__('The wholesale request could not be saved. Please, try again.'));
         }
         $this->set(compact('wholesaleRequest'));
-    }
+    }*/
 
     public function approve($id=null){
         $wholesaleRequest = $this->WholesaleRequests->get($id, [

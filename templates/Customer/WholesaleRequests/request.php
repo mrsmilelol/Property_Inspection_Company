@@ -121,31 +121,31 @@ $this->layout = 'front';
 
 <!-- Account Area Start -->
 <div class="account-area section-padding2">
-    <div class="container align-items-center">
-        <div class="row">
+    <div class="align-items-center" style="display: flex; justify-content: center">
+        <div class="row" style="width: 100vmin;">
             <div class="col-md-12">
                 <h1 class="heading-title"><?= __('Apply for wholesale account') ?></h1>
             </div>
             <div class="account-details">
-                <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="col-lg-6 col-sm-6" style="width: 100%">
                     <form action="#" class="create-account-form" method="post">
-<!--                        <h1 class="heading-title">Create an account</h1>-->
+                        <!--                        <h1 class="heading-title">Create an account</h1>-->
                         <p class="form-row">
                             <?= $this->Form->create($wholesaleRequest) ?>
                         <fieldset>
                             <?php
-                            echo $this->Form->control('business_name', ['label'=>'Business name']);
-                            echo $this->Form->control('website');
-                            echo $this->Form->control('abn', ['label'=>'ABN']);
-                            echo $this->Form->control('business_phone');
-                            echo $this->Form->control('address_line_1', ['label'=>'Address line 1']);
-                            echo $this->Form->control('address_line_2', ['label'=>'Address line 2']);
-                            echo $this->Form->control('first_name',['label'=>'Contact person firstname']);
-                            echo $this->Form->control('last_name',['label'=>'Contact person lastname']);
-                            echo $this->Form->control('phone');
-                            echo $this->Form->control('email');
-                            echo $this->Form->control('position');
-                            echo $this->Form->control('message',['label'=>'Additional information']);
+                            echo $this->Form->control('business_name', ['label' => 'Business name', 'id' => 'maxWidth']);
+                            echo $this->Form->control('website', ['id' => 'maxWidth', 'id' => 'maxWidth']);
+                            echo $this->Form->control('abn', ['label' => 'ABN', 'id' => 'maxWidth']);
+                            echo $this->Form->control('business_phone', ['id' => 'maxWidth', 'id' => 'maxWidth']);
+                            echo $this->Form->control('address_line_1', ['label' => 'Address line 1', 'id' => 'maxWidth']);
+                            echo $this->Form->control('address_line_2', ['label' => 'Address line 2', 'id' => 'maxWidth']);
+                            echo $this->Form->control('first_name', ['label' => 'Contact person firstname', 'id' => 'maxWidth']);
+                            echo $this->Form->control('last_name', ['label' => 'Contact person lastname', 'id' => 'maxWidth']);
+                            echo $this->Form->control('phone', ['id' => 'maxWidth']);
+                            echo $this->Form->control('email', ['id' => 'maxWidth']);
+                            echo $this->Form->control('position', ['id' => 'maxWidth']);
+                            echo $this->Form->control('message', ['label' => 'Additional information', 'id' => 'maxWidth']);
                             //echo $this->Form->control('status');
                             //echo $this->Form->control('created_at');
                             //echo $this->Form->control('modified_at');
@@ -160,7 +160,7 @@ $this->layout = 'front';
                                 'type' => 'submit',
                                 'id' => 'submitlogin',
                                 'name' => 'SubmitLogin',
-                                'class' => ''
+                                'class' => '',
                             ]) ?>
                         </p>
 
@@ -172,4 +172,9 @@ $this->layout = 'front';
         </div>
     </div>
 </div>
+
+<style>
+    #maxWidth{max-width: 100%;
+    }
+</style>
 <!-- Account Area End -->
