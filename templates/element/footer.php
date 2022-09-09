@@ -1,7 +1,7 @@
 <!--Footer Area Start-->
 <div class="footer-area">
     <!--Footer Top Area Start-->
-    <div class="footer-top section-padding2">
+    <!--<div class="footer-top section-padding2">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-4 col-md-3">
@@ -23,7 +23,7 @@
                             <li><a href="shop.html">New products</a></li>
                             <li><a href="shop.html">Best sellers</a></li>
                             <li><a href="shop.html">Our stores</a></li>
-                            <li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'contact']); ?>>Contact us</a></li>
+                            <li><a href=<?/*= $this->Url->build(['controller'=>'Pages', 'action'=>'contact']); */?>>Contact us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -46,13 +46,13 @@
                             <li><a href="#">Search Terms</a></li>
                             <li><a href="#">Advance Search</a></li>
                             <li><a href="#">Affiliates</a></li>
-                            <li><a href="<?= $this->Url->build(['prefix'=>'Admin','controller'=>'WholesaleRequests', 'action'=>'request']); ?>">Wholesale Application</a></li>
+                            <li><a href="<?/*= $this->Url->build(['prefix'=>'Admin','controller'=>'WholesaleRequests', 'action'=>'request']); */?>">Wholesale Application</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <!--Footer Top Area End-->
     <!--Footer Middle Area Start-->
     <div class="footer-middle section-padding2">
