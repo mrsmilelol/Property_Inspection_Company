@@ -372,15 +372,15 @@ endforeach;
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <p>Hi <?= h($firstname." ".$lastname.",") ?></p>
-                                        <p>You wholesale account application for Chelsea Fine Furnishing has been approved - </p>
-                                        <p><b>Business Name.: </b><?= h($business_name) ?></p>
-                                        <p><b>ABN.: </b><?= h($abn) ?></p>
-                                        <p><b>Contact Person Name: </b><?= h($firstname." ".$lastname) ?></p>
-                                        <p><b>Contact Person Phone: </b><?= h($phone)?></p>
+                                        <p>Hi <?= h($firstname.",") ?></p>
+                                        <p>Your wholesale account application for Chelsea Fine Furnishings has been approved - </p>
+                                        <p><b>Business name: </b><?= h($business_name) ?></p>
+                                        <p><b>ABN: </b><?= h($abn) ?></p>
+                                        <p><b>Contact person name: </b><?= h($firstname." ".$lastname) ?></p>
+                                        <p><b>Contact person phone: </b><?= h($phone)?></p>
                                         <p>Please find the login details in the following section - </p>
                                         <p><b>Username: </b><?= h($email) ?></p>
-                                        <p><b>Password.: </b><?= h($email) ?></p>
+                                        <p><b>Password: </b><?= h($email) ?></p>
 
                                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                                             <tbody>
@@ -389,7 +389,7 @@ endforeach;
                                                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                                         <tbody>
                                                         <tr>
-                                                            <td> <a href="<?= $this->Url->build(['controller'=> 'Users', 'action'=>'login','prefix' => 'Wholesale'], ['fullBase' => true]); ?>">Please click to the login page</a> </td>
+                                                            <td> <a href="<?= $this->Url->build(['controller'=> 'Users', 'action'=>'login','prefix' => 'Wholesale'], ['fullBase' => true]); ?>">Please click to proceed to the login page</a> </td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
@@ -399,7 +399,7 @@ endforeach;
                                         </table>
                                         <p>Please reply to this email if you have any questions.</p>
                                         <p>Kind regards, </p>
-                                        <p>Chelsea Fine Furnishing</p>
+                                        <p>Chelsea Fine Furnishings</p>
                                     </td>
                                 </tr>
                             </table>
@@ -415,7 +415,7 @@ endforeach;
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                         <tr>
                             <td class="content-block">
-                                <span class="apple-link">Copyright <?= date("Y")?> Chelsea Fine Furnishing. All rights reserved</span>
+                                <span class="apple-link">Copyright <?= date("Y")?> Chelsea Fine Furnishings. All rights reserved</span>
 <!--                                <br> Don't like these emails? <a href="#">Unsubscribe</a>.-->
                             </td>
                         </tr>

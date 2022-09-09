@@ -372,12 +372,12 @@ endforeach;
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <p>Dear <?= h($firstname." ".$lastname.",") ?></p>
+                                        <p>Dear <?= h($firstname.",") ?></p>
                                         <p>I am sorry to inform you that your current wholesale application has been rejected.</p>
 
-                                        <p>Please respond to this email if you have any questions.</p>
+                                        <p>Please respond to this email if you have any questions regarding this outcome.</p>
                                         <p>Kind regards, </p>
-                                        <p>Majestic Property Inspections</p>
+                                        <p>Chelsea Fine Furnishings</p>
                                     </td>
                                 </tr>
                             </table>
@@ -393,7 +393,7 @@ endforeach;
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                         <tr>
                             <td class="content-block">
-                                <span class="apple-link">Copyright <?= date("Y")?> Majestic Property Inspections. All rights reserved</span>
+                                <span class="apple-link">Copyright <?= date("Y")?> Chelsea Fine Furnishings. All rights reserved</span>
 <!--                                <br> Don't like these emails? <a href="#">Unsubscribe</a>.-->
                             </td>
                         </tr>
@@ -408,4 +408,3 @@ endforeach;
 </table>
 </body>
 </html>
-

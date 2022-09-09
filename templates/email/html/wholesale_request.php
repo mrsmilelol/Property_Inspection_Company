@@ -372,19 +372,19 @@ endforeach;
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <p>Dear <?= h($firstname." ".$lastname.",") ?></p>
-                                        <p>You wholesale account application for Chelsea Fine Furnishing has been sent for review </p>
-                                        <p><b>Business Name.: </b><?= h($business_name) ?></p>
-                                        <p><b>ABN.: </b><?= h($abn) ?></p>
-                                        <p><b>Contact Person Name: </b><?= h($firstname." ".$lastname) ?></p>
-                                        <p><b>Contact Person Phone: </b><?= h($phone)?></p>
-                                        <p>We will be contacting you shortly with the outcome of the application </p>
+                                        <p>Dear <?= h($firstname.",") ?></p>
+                                        <p>Your wholesale account application for Chelsea Fine Furnishings has been sent for review - </p>
+                                        <p><b>Business name: </b><?= h($business_name) ?></p>
+                                        <p><b>ABN: </b><?= h($abn) ?></p>
+                                        <p><b>Contact person name: </b><?= h($firstname." ".$lastname) ?></p>
+                                        <p><b>Contact person phone: </b><?= h($phone)?></p>
+                                        <p>We will be contacting you shortly with the outcome of this application. </p>
 
                                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                                         </table>
                                         <p>Please reply to this email if you have any questions.</p>
                                         <p>Kind regards, </p>
-                                        <p>Chelsea Fine Furnishing</p>
+                                        <p>Chelsea Fine Furnishings</p>
                                     </td>
                                 </tr>
                             </table>
@@ -400,7 +400,7 @@ endforeach;
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                         <tr>
                             <td class="content-block">
-                                <span class="apple-link">Copyright <?= date("Y")?> Chelsea Fine Furnishing. All rights reserved</span>
+                                <span class="apple-link">Copyright <?= date("Y")?> Chelsea Fine Furnishings. All rights reserved</span>
 <!--                                <br> Don't like these emails? <a href="#">Unsubscribe</a>.-->
                             </td>
                         </tr>
