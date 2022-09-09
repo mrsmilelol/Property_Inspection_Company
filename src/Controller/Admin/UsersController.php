@@ -140,8 +140,8 @@ class UsersController extends AppController
                 $user->lastname = $lastname;
                 $user->email = $email;
                 $user->token = $token;
-                //$user->status = '1';
-                //$user->verified = '1';
+                $user->status = '1';
+                $user->verified = '1';
                 $this->Flash->success(__('The account has been added.'));
                 $userTable->save($user);
                 return $this->redirect(['action' => 'index']);

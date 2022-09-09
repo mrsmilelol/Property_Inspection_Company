@@ -3833,9 +3833,8 @@ p.alert {
 .radio-inline label.top span.checked input {
   margin-top: 1px;
 }
-.vertical-center {
-    position: relative;
-    top: 50%;
-    /*-ms-transform: translateY(-50%);*/
-    /*transform: translateY(-50%);*/
+
+#flexBox{
+    display: flex;
+    justify-content: center;
 }
