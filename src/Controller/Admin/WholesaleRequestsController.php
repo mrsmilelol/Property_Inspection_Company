@@ -67,12 +67,12 @@ class WholesaleRequestsController extends AppController
             $wholesaleRequest->status = "Not Approved";
             if ($this->WholesaleRequests->save($wholesaleRequest)) {
 
-                $mailer = new Mailer();
+                $mailer = new Mailer('default');
                 $mailer
                     ->setEmailFormat('html')
                     ->setTo($wholesaleRequest->email)
                     //->setTo('contactreceiver@billgong.monash-ie.me')
-                    ->setFrom('website@monash.edu')
+                    ->setFrom('emailtestingfit3178@gmail.com')
                     ->setSubject('Your wholesale application has been sent for review')
                     ->viewBuilder()
                     ->disableAutoLayout()
@@ -109,18 +109,18 @@ class WholesaleRequestsController extends AppController
             $wholesaleRequest->status = "Not Approved";
             if ($this->WholesaleRequests->save($wholesaleRequest)) {
 
-                $mailer = new Mailer();
-                $mailer
+                $mailerRequest = new Mailer('default');
+                $mailerRequest
                     ->setEmailFormat('html')
                     ->setTo($wholesaleRequest->email)
                     //->setTo('contactreceiver@billgong.monash-ie.me')
-                    ->setFrom('website@monash.edu')
+                    ->setFrom('emailtestingfit3178@gmail.com')
                     ->setSubject('Your wholesale application has been sent for review')
                     ->viewBuilder()
                     ->disableAutoLayout()
                     ->setTemplate('wholesale_request');
 
-                $mailer->setViewVars([
+                $mailerRequest->setViewVars([
                     'firstname' => $wholesaleRequest->first_name,
                     'lastname' => $wholesaleRequest->last_name,
                     'business_name' => $wholesaleRequest->business_name,
@@ -128,7 +128,9 @@ class WholesaleRequestsController extends AppController
                     'phone' => $wholesaleRequest->phone,
                     'email'=> $wholesaleRequest->email
                 ]);
-                $mailer->deliver();
+                $mailerRequest->deliver();
+
+
 
                 //$this->redirect(['controller'=>'Users','action'=>'addWholesale',$wholesaleRequest->id]);
                 $this->Flash->success(__('The wholesale request has been saved.'));
@@ -160,18 +162,18 @@ class WholesaleRequestsController extends AppController
             if ($this->WholesaleRequests->save($wholesaleRequest)) {
 
                 $this->redirect(['controller' => 'Users', 'action' => 'addWholesale', $wholesaleRequest->id]);
-                $mailer = new Mailer();
-                $mailer
+                $mailerApprove = new Mailer('default');
+                $mailerApprove
                     ->setEmailFormat('html')
                     ->setTo($wholesaleRequest->email)
                     //->setTo('contactreceiver@billgong.monash-ie.me')
-                    ->setFrom('website@monash.edu')
+                    ->setFrom('emailtestingfit3178@gmail.com')
                     ->setSubject('Your wholesale application has been approved')
                     ->viewBuilder()
                     ->disableAutoLayout()
                     ->setTemplate('wholesale_approve');
 
-                $mailer->setViewVars([
+                $mailerApprove->setViewVars([
                     'firstname' => $wholesaleRequest->first_name,
                     'lastname' => $wholesaleRequest->last_name,
                     'business_name' => $wholesaleRequest->business_name,
@@ -180,8 +182,9 @@ class WholesaleRequestsController extends AppController
                     'email'=> $wholesaleRequest->email
                 ]);
                 $this->Flash->success(__('The wholesale request has been approved.'));
-                $mailer->deliver();
-
+                $mailerApprove->deliver();
+                $session = $this->request->getSession();
+                $session->write('Wholesale.id', $id);
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The wholesale request could not be saved. Please, try again.'));
@@ -210,22 +213,22 @@ class WholesaleRequestsController extends AppController
             $wholesaleRequest->status = "Rejected";
             if ($this->WholesaleRequests->save($wholesaleRequest)) {
 
-                $mailer = new Mailer();
-                $mailer
+                $mailerReject = new Mailer('default');
+                $mailerReject
                     ->setEmailFormat('html')
                     ->setTo($wholesaleRequest->email)
                     //->setTo('contactreceiver@billgong.monash-ie.me')
-                    ->setFrom('website@monash.edu')
-                    ->setSubject('Your wholesale application has been sent for review')
+                    ->setFrom('emailtestingfit3178@gmail.com')
+                    ->setSubject('Your wholesale application has been rejected')
                     ->viewBuilder()
                     ->disableAutoLayout()
                     ->setTemplate('wholesale_rejected');
 
-                $mailer->setViewVars([
+                $mailerReject->setViewVars([
                     'firstname' => $wholesaleRequest->first_name,
                     'lastname' => $wholesaleRequest->last_name,
                 ]);
-                $mailer->deliver();
+                $mailerReject->deliver();
 
                 $this->Flash->success(__('The wholesale request has been rejected.'));
 
@@ -255,14 +258,20 @@ class WholesaleRequestsController extends AppController
 
     }
 
-    public function addUser($id=null){
+    public function addUser($user_id=null){
+        $wholesale_id =$this->request->getSession()->read('Wholesale.id');
         $this->loadModel('WholesaleRequests');
-        $wholesaleRequest = $this->WholesaleRequests->get($id, [
+        $wholesaleRequest = $this->WholesaleRequests->get($wholesale_id, [
             'contain' => [],
         ]);
-        $user_id = $this->request->getSession()->read('User.id');
-        $wholesaleRequest->user_id = $user_id;
-        $this->WholesaleRequests->save($wholesaleRequest);
+        if($user_id != null) {
+            $wholesaleRequest->user_id = $user_id;
+            $this->WholesaleRequests->save($wholesaleRequest);
+        }
+        else {
+            $this->Flash->error(__('The user cannot be added.'));
+        }
+
 
         return $this->redirect(['action'=>'index']);
     }
