@@ -3830,3 +3830,8 @@ p.alert {
 .radio-inline label.top span.checked input {
   margin-top: 1px;
 }
+
+#flexBox{
+    display: flex;
+    justify-content: center;
+}

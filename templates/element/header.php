@@ -61,10 +61,10 @@
                             <a href=<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display','contact']); ?>>
                                 Contact Us
                             </a>
-                            <a href="wishlist.html" title="My wishlist">
-                                <i class="fa fa-heart"></i>
-                                My wishlist
-                            </a>
+<!--                            <a href="wishlist.html" title="My wishlist">-->
+<!--                                <i class="fa fa-heart"></i>-->
+<!--                                My wishlist-->
+<!--                            </a>-->
                             <a href=<?= $this->Url->build(['prefix' => 'Admin','controller' => 'users', 'action' => 'login']); ?>>
                                 <i class="fa fa-user"></i>
                                 Log In
