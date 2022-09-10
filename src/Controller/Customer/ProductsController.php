@@ -28,7 +28,7 @@ class ProductsController extends AppController
      */
     public function index()
     {
-        $products = $this->paginate($this->Products);
+        $products = $this->paginate($this->Products);}
 
 
     /**
