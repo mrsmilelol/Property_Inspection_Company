@@ -11,9 +11,9 @@ $formTemplate = [
     'radioContainer' => '<div class="form-radio">{{content}}</div>',
 ];
 $this->Form->setTemplates($formTemplate);
-$this->layout = 'logged_out';
+//$this->layout = 'logged_out';
 ?>
-<div class="container" style="padding-top: 12%;">
+<!--<div class="container" style="padding-top: 12%;">-->
 <div class="card shadow mb-4">
     <div class="d-sm-flex align-items-center justify-content-between card-header">
         <h1 class="h3 mb-0 text-gray-800"><?= __('Application for wholesale account') ?></h1>
@@ -28,18 +28,18 @@ $this->layout = 'logged_out';
             <?= $this->Form->create($wholesaleRequest) ?>
             <fieldset>
                 <?php
-                    echo $this->Form->control('business_name');
+                    echo $this->Form->control('business_name', ['label'=>'Business name']);
                     echo $this->Form->control('website');
-                    echo $this->Form->control('abn');
-                    echo $this->Form->control('business_phone');
-                    echo $this->Form->control('address_line_1');
-                    echo $this->Form->control('address_line_2');
-                    echo $this->Form->control('first_name');
-                    echo $this->Form->control('last_name');
+                    echo $this->Form->control('abn', ['label'=>'ABN']);
+                    echo $this->Form->control('business_phone', ['label'=>'Business phone']);
+                    echo $this->Form->control('address_line_1', ['label'=>'Address line 1']);
+                    echo $this->Form->control('address_line_2', ['label'=>'Address line 2']);
+                    echo $this->Form->control('first_name',['label'=>'Contact person first name']);
+                    echo $this->Form->control('last_name',['label'=>'Contact person last name']);
                     echo $this->Form->control('phone');
                     echo $this->Form->control('email');
                     echo $this->Form->control('position');
-                    echo $this->Form->control('message');
+                    echo $this->Form->control('message',['label'=>'Additional information']);
                     //echo $this->Form->control('status');
                     //echo $this->Form->control('created_at');
                     //echo $this->Form->control('modified_at');
@@ -50,4 +50,4 @@ $this->layout = 'logged_out';
             <?= $this->Form->end() ?>
         </div>
     </div>
-</div>
+<!--</div>-->

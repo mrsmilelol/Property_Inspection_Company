@@ -113,9 +113,9 @@ body {
   margin: 0;
 }
 .header-area .header-top {
-  border-bottom: 1px solid #100f0f;
+  /*border-bottom: 1px solid #100f0f;*/
     /*border-bottom: 1px solid #3b3b3b;*/
-    /*border-bottom: 1px solid #d3d3d3;*/
+    border-bottom: 1px solid #d3d3d3;
     background-color: #ffffff;
 }
 
@@ -129,12 +129,13 @@ body {
 .header-user-info {
   padding: 10px 0;
   text-align: center;
+    align-items: flex-start;
 }
 .header-user-info a {
   border-left: 1px solid #100f0f;
   color: #100f0f;
   font-size: 12px;
-  line-height: 20px;
+  line-height: 40px;
   padding-left: 14px;
   margin-right: 10px;
 }
@@ -195,7 +196,7 @@ body {
 /*  2.2	Main menu area CSS
 /*----------------------------------------*/
 .mainmenu {
-  margin-top: 45px;
+  margin-top: 15px;
   text-align: center;
 }
 .mainmenu ul li{display:inline-block;position:relative}
@@ -204,7 +205,8 @@ display: block;
 font-family: "Poppins",sans-serif;
 font-size: 14px;
 font-weight: 600;
-line-height: 55px;
+line-height: 18vmin;
+    /*line-height: 100px;*/
 margin: 0;
 padding: 0 19px;
 position: relative;
@@ -2868,12 +2870,14 @@ div.uploader span.action {
   border: medium none;
   border-radius: 3px;
   color: #363636;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: normal;
-  height: 40px;
+  height: 30px;
   outline: medium none;
   padding: 0 5px 0 10px;
   width: 60px;
+    line-height: 1.42857143;
+    vertical-align: middle;
 }
 .table-content table td.product-subtotal {
   color: #363636;

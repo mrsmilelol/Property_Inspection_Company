@@ -15,7 +15,7 @@
                     <td><?= $wholesaleRequest->has('user') ? $this->Html->link($wholesaleRequest->user->id, ['controller' => 'Users', 'action' => 'view', $wholesaleRequest->user->id]) : '' ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Business Name') ?></th>
+                    <th><?= __('Business name') ?></th>
                     <td><?= h($wholesaleRequest->business_name) ?></td>
                 </tr>
                 <tr>
@@ -23,27 +23,27 @@
                     <td><?= h($wholesaleRequest->website) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Abn') ?></th>
+                    <th><?= __('ABN') ?></th>
                     <td><?= h($wholesaleRequest->abn) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Business Phone') ?></th>
+                    <th><?= __('Business phone') ?></th>
                     <td><?= h($wholesaleRequest->business_phone) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Address Line 1') ?></th>
+                    <th><?= __('Address line 1') ?></th>
                     <td><?= h($wholesaleRequest->address_line_1) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Address Line 2') ?></th>
+                    <th><?= __('Address line 2') ?></th>
                     <td><?= h($wholesaleRequest->address_line_2) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('First Name') ?></th>
+                    <th><?= __('First name') ?></th>
                     <td><?= h($wholesaleRequest->first_name) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Last Name') ?></th>
+                    <th><?= __('Last name') ?></th>
                     <td><?= h($wholesaleRequest->last_name) ?></td>
                 </tr>
                 <tr>
@@ -67,15 +67,15 @@
                     <td><?= h($wholesaleRequest->status) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Id') ?></th>
+                    <th><?= __('ID') ?></th>
                     <td><?= $this->Number->format($wholesaleRequest->id) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Created At') ?></th>
+                    <th><?= __('Created at') ?></th>
                     <td><?= h($wholesaleRequest->created_at) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Modified At') ?></th>
+                    <th><?= __('Modified at') ?></th>
                     <td><?= h($wholesaleRequest->modified_at) ?></td>
                 </tr>
             </table>
@@ -91,7 +91,5 @@
             ['class' => 'btn btn-primary'],
         );
         ?>
-        </div>
-
     </div>
 </div>
