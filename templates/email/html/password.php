@@ -381,7 +381,7 @@ endforeach;
                                                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                                         <tbody>
                                                         <tr>
-                                                            <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'edit_password','prefix' => 'Admin', $token], ['fullBase' => true]);?>">Reset password</a>
+                                                            <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'edit_password','prefix' => false, $token], ['fullBase' => true]);?>">Reset password</a>
                                                         </tr>
                                                         </tbody>
                                                     </table>

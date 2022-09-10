@@ -30,8 +30,6 @@ class ProductsController extends AppController
     {
         $products = $this->paginate($this->Products);
 
-        $this->set(compact('products'));
-    }
 
     /**
      * View method

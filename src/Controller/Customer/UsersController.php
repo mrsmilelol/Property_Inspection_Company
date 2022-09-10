@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Controller\Wholesale;
+namespace App\Controller\Customer;
 
 use Cake\Event\EventInterface;
 use Cake\Mailer\Mailer;
@@ -18,12 +18,20 @@ use function __;
  */
 class UsersController extends AppController
 {
-    public function beforeFilter(EventInterface $event)
+
+    /**
+     * Index method
+     *
+     * @return \Cake\Http\Response|null|void Renders view
+     */
+    public function index()
     {
-        parent::beforeFilter($event);
-        // for all controllers in our application, make index and view
-        // actions public, skipping the authentication check.
-        $this->Authentication->addUnauthenticatedActions(['edit','add','view']);
+        $this->paginate = [
+            'contain' => ['UserTypes'],
+        ];
+        $users = $this->paginate($this->Users);
+
+        $this->set(compact('users'));
     }
 
     /**
@@ -42,68 +50,7 @@ class UsersController extends AppController
         $this->set(compact('user'));
     }
 
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
-        $user = $this->Users->newEmptyEntity();
 
-        if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-
-            $userTable = TableRegistry::getTableLocator()->get('Users');
-
-            $firstname = $this->request->getData('firstname');
-            $lastname = $this->request->getData('lastname');
-            $email = $this->request->getData('email');
-            $token = Security::hash(Security::randomBytes(32));
-            $user = $userTable->newEntity($this->request->getData());
-
-            if ($userTable->save($user)) {
-                $user->firstname = $firstname;
-                $user->lastname = $lastname;
-                $user->email = $email;
-                $user->token = $token;
-                $user->status = '1';
-                $user->verified = '1';
-                $this->Flash->success(__('The account has been added.'));
-                $userTable->save($user);
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('Registration failed, please try again.'));
-            }
-        }
-        $userTypes = $this->Users->UserTypes->find('list', ['limit' => 200])->all();
-        $this->set(compact('user', 'userTypes'));
-    }
-
-    /**
-     * Edit method
-     *
-     * @param string|null $id User id.
-     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        $user = $this->Users->get($id, [
-            'contain' => [],
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
-        }
-        $userTypes = $this->Users->UserTypes->find('list', ['limit' => 200])->all();
-        $this->set(compact('user', 'userTypes'));
-    }
 
 //    /**
 //     * Add Wholesale account method
