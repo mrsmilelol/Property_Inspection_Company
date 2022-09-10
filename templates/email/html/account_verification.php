@@ -372,7 +372,7 @@ endforeach;
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <p>Hi <?= h($firstname . ' ' . $lastname . ',') ?></p>
+                                        <p>Hi <?= h($firstname . ',') ?></p>
                                         <p>Please click the link below to verify your account - </p>
                                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                                             <tbody>
@@ -391,7 +391,7 @@ endforeach;
                                         </table>
                                         <p>Please reply to this email if you have any questions.</p>
                                         <p>Kind regards, </p>
-                                        <p>Chelsea Fine Furnishing</p>
+                                        <p>Chelsea Fine Furnishings</p>
                                     </td>
                                 </tr>
                             </table>
@@ -407,7 +407,7 @@ endforeach;
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                         <tr>
                             <td class="content-block">
-                                <span class="apple-link">Copyright <?= date('Y')?> Chelsea Fine Furnishing. All rights reserved</span>
+                                <span class="apple-link">Copyright <?= date('Y')?> Chelsea Fine Furnishings. All rights reserved</span>
 <!--                                <br> Don't like these emails? <a href="#">Unsubscribe</a>.-->
                             </td>
                         </tr>
@@ -422,4 +422,3 @@ endforeach;
 </table>
 </body>
 </html>
-

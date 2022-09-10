@@ -63,6 +63,7 @@ $this->layout = 'front';
             <div class="container">
                 <ul class="breadcrumbs">
                     <li><a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'main'])?> "><i class="fa fa-home"></i>Home</a></li>
+                    <li><span>></span></li>
                     <li class="active">Shopping Cart</li>
                 </ul>
             </div>
@@ -70,49 +71,54 @@ $this->layout = 'front';
         <!-- Breadcrumbs Area End -->
 
 		<!--Cart Main Area Start-->
-		<div class="section-padding-sm">
-			<div class="container">
-
-                <div class="block-title">
-                    <h1 class="title">Shopping Cart Summary</h1>
+        <div class="cart-main-area section-padding2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="heading-title">Shopping Cart Summary</h1>
+                    </div>
                 </div>
-
-                <div class="cart-wishlist-table table-responsive">
-                    <table class="table table-bordered mb-30">
-                        <thead>
-                            <tr>
-                                <th>Product</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Total</th>
-                                <th>Remove</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <?php foreach($orderItems['Orderitems'] as $orderItem): ?>
-                            <tr>
-                                <td><a href="<?= $this->Url->build(['controller' => 'products', 'action' => 'detail',$orderItem['product_id']])?>"><?= $orderItem['name']?></a></td>
-                                <td><?= $this->Number->currency($orderItem['price'])?></td>
-                                <td>
-                                    <div class="cart-quantity product-quantity">
-                                        <button class="dec qtybtn">-</button>
-                                        <input type="text" value="1">
-                                        <button class="inc qtybtn">+</button>
-                                    </div>
-                                </td>
-                                <td><?=$this->Number->currency($orderItem['price'])?></td>
-                                <td><?php echo $this->Html->link('<i class="fa fa-trash"></i>', ['controller' => 'products', 'action' => 'removeProduct', $orderItem['product_id']], ['class' => 'btn btn-secondary btn-sm', 'escape' => false]); ?></div>
-            </div></td>
-                            </tr>
-                        </tbody>
-                        <?php endforeach; ?>
-                    </table>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="cart-wishlist-table table-content table-responsive">
+                            <table class="table-bordered mb-30">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
+                                        <th>Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach($orderItems['Orderitems'] as $orderItem): ?>
+                                    <tr>
+                                        <td><a href="<?= $this->Url->build(['controller' => 'products', 'action' => 'detail',$orderItem['product_id']])?>"><?= $orderItem['name']?></a></td>
+                                        <td><?= $this->Number->currency($orderItem['price'])?></td>
+                                        <td>
+                                            <div class="cart-quantity product-quantity">
+                                                <button class="dec qtybtn">-</button>
+                                                <input type="text" value="1">
+                                                <button class="inc qtybtn">+</button>
+                                            </div>
+                                        </td>
+                                        <td><?=$this->Number->currency($orderItem['price'])?></td>
+                                        <td><?php echo $this->Html->link('<i class="fa fa-trash"></i>', [
+                                            'controller' => 'products', 'action' => 'removeProduct', $orderItem['product_id']], [
+                                                'class' => 'btn btn-secondary btn-sm', 'escape' => false]); ?>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <?php endforeach; ?>
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="row mb-n30">
-
                     <div class="col-md-8 col-sm-7 col-xs-12 mb-30">
-                        <div class="d-flex flex-wrap mb-n2">
+                        <div class="d-flex flex-wrap mb-n2 buttons-cart">
 <!--                            <input type="submit" value="Update Cart" class="me-3 mb-2">-->
                             <a class="btn mb-2" href="<?= $this->Url->build(['controller' => 'products',
                                 'action' => 'shop']); ?>">Continue Shopping</a>
@@ -131,9 +137,9 @@ $this->layout = 'front';
 <!--                        </div>-->
                     </div>
 
-                    <div class="col-md-4 col-sm-5 col-xs-12 mb-30">
+                    <div class="col-md-4 col-sm-5 col-xs-12 mb-30 cart_totals">
                         <div class="block-title text-end mb-2">
-                            <h4 class="title">Cart Totals</h4>
+                            <h2>Cart Totals</h2>
                         </div>
                         <div class="cart-total-wrap">
                             <div class="table-responsive">
@@ -156,17 +162,22 @@ $this->layout = 'front';
 <!--                                                </ul>-->
 <!--                                            </td>-->
 <!--                                        </tr>-->
-                                        <tr>
-                                            <th class="h5">Total</th>
-                                            <td class="h5"><strong><?= $this->Number->currency($subtotal) ?></strong></td>
+                                        <tr class="order-total">
+                                            <th>Total</th>
+                                            <td>
+                                                <strong>
+                                                    <span class="amount"><?= $this->Number->currency($subtotal) ?></span>
+                                                </strong>
+                                            </td>
                                         </tr>
                                     </tbody>
-                                    <tfoot>
+                                    <!--<tfoot>
                                         <tr>
                                             <td colspan="2" class="pb-0"><a class="btn" href="#">Proceed to Checkout</a></td>
                                         </tr>
-                                    </tfoot>
+                                    </tfoot>-->
                                 </table>
+                                <a class="readmore" href="#">Proceed to Checkout</a>
                             </div>
                         </div>
                     </div>
