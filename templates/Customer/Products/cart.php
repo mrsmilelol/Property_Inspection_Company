@@ -92,7 +92,9 @@ $this->layout = 'front';
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach($orderItems['Orderitems'] as $orderItem): ?>
+                                <?php
+                                if ($orderItems!=null):
+                                foreach($orderItems['Orderitems'] as $orderItem): ?>
                                     <tr>
                                         <td><a href="<?= $this->Url->build(['controller' => 'products', 'action' => 'detail',$orderItem['product_id']])?>"><?= $orderItem['name']?></a></td>
                                         <td><?= $this->Number->currency($orderItem['price'])?></td>
@@ -110,7 +112,7 @@ $this->layout = 'front';
                                         </td>
                                     </tr>
                                 </tbody>
-                                <?php endforeach; ?>
+                                <?php endforeach;endif?>
                             </table>
                         </div>
                     </div>
@@ -147,9 +149,10 @@ $this->layout = 'front';
                                     <tbody>
                                         <tr>
                                             <?php $subtotal=0;
+                                            if ($orderItems!=null):
                                             foreach($orderItems['Orderitems'] as $orderItem):
                                                 $subtotal = $subtotal+$orderItem['price'];
-                                            endforeach;?>
+                                            endforeach;endif;?>
 <!--                                            <th>Subtotal</th>-->
 <!--                                            <td><strong>--><!--</strong></td>-->
 <!--                                        </tr>-->
