@@ -121,15 +121,15 @@ $this->layout = 'front';
 
 <!-- Account Area Start -->
 <div class="account-area section-padding2">
-    <div class="container align-items-center">
-        <div class="row">
+    <div class="align-items-center" style="display: flex; justify-content: center">
+        <div class="row" style="width: 100vmin;">
             <div class="col-md-12">
                 <h1 class="heading-title"><?= __('Apply for wholesale account') ?></h1>
             </div>
             <div class="account-details">
-                <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="col-lg-6 col-sm-6" style="width: 100%">
                     <form action="#" class="create-account-form" method="post">
-<!--                        <h1 class="heading-title">Create an account</h1>-->
+                        <!--                        <h1 class="heading-title">Create an account</h1>-->
                         <p class="form-row">
                             <?= $this->Form->create($wholesaleRequest) ?>
                         <fieldset>
@@ -160,7 +160,7 @@ $this->layout = 'front';
                                 'type' => 'submit',
                                 'id' => 'submitlogin',
                                 'name' => 'SubmitLogin',
-                                'class' => ''
+                                'class' => '',
                             ]) ?>
                         </p>
 
@@ -172,4 +172,9 @@ $this->layout = 'front';
         </div>
     </div>
 </div>
+
+<style>
+    #maxWidth{max-width: 100%;
+    }
+</style>
 <!-- Account Area End -->
