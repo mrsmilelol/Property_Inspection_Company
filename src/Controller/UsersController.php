@@ -173,7 +173,7 @@ class UsersController extends AppController
             $this->Users->save($verify);
             $this->Flash->success(__('Your email has been verified, and please login now.'));
         } else {
-            $this->Flash->error(__('Toke does not exist'));
+            $this->Flash->error(__('Token does not exist'));
         }
         return $this->redirect(['controller' => 'Users', 'action' => 'login']);
 
