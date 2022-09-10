@@ -154,7 +154,7 @@ class UsersController extends AppController
                     $this->Flash->error('Error, unable to send email.');
                 }
 
-                return $this->redirect(['prefix' => 'Admin','action' => 'login']);
+                //return $this->redirect(['prefix' => false,'action' => 'login']);
             } else {
                 $this->Flash->error(__('Registration failed, please try again.'));
             }
