@@ -2870,12 +2870,14 @@ div.uploader span.action {
   border: medium none;
   border-radius: 3px;
   color: #363636;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: normal;
-  height: 40px;
+  height: 30px;
   outline: medium none;
   padding: 0 5px 0 10px;
   width: 60px;
+    line-height: 1.42857143;
+    vertical-align: middle;
 }
 .table-content table td.product-subtotal {
   color: #363636;
