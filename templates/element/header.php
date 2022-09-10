@@ -107,7 +107,7 @@
                     <div class="header-bottom-right pull-right">
                         <div class="header-bottom-right-inner">
                             <ul>
-                                <li>
+                                <!--<li>
                                     <a class="cart-toggler search-icon to-search-icon" href="#">
                                         <i class="fa fa-search"></i>
                                     </a>
@@ -121,19 +121,19 @@
                                             </div>
                                         </form>
                                     </div>
-                                </li>
+                                </li>-->
                                 <li>
                                     <a class="cart-toggler mini-cart-icon" href="<?= $this->Url->build(['controller' => 'products',
                                         'action' => 'cart']); ?>">
                                         <i class="fa fa-shopping-cart"></i>
-                                        <span>2</span>
+<!--                                        <span>2</span>-->
                                     </a>
-                                    <div class="cart-list">
+                                    <!--<div class="cart-list">
                                         <div class="product">
                                             <div class="cart-single-product">
-                                                <a class="product-image" href=<?= $this->Url->build(['controller' => 'products',
-                                                    'action' => 'cart']); ?>
-                                                    <?= $this->Html->image('cart-img/1.jpg'); ?>
+                                                <a class="product-image" href=<?/*= $this->Url->build(['controller' => 'products',
+                                                    'action' => 'cart']); */?>
+                                                    <?/*= $this->Html->image('cart-img/1.jpg'); */?>
                                                 </a>
                                                 <div class="product-details">
                                                     <a href="#" class="remove">
@@ -155,9 +155,9 @@
                                                 </div>
                                             </div>
                                             <div class="cart-single-product">
-                                                <a class="product-image" href=<?= $this->Url->build(['controller' => 'Pages',
-                                                    'action' => 'display','main']); ?>
-                                                    <?= $this->Html->image('cart-img/2.jpg'); ?>
+                                                <a class="product-image" href=<?/*= $this->Url->build(['controller' => 'Pages',
+                                                    'action' => 'display','main']); */?>
+                                                    <?/*= $this->Html->image('cart-img/2.jpg'); */?>
                                                 </a>
                                                 <div class="product-details">
                                                     <a href="#" class="remove">
@@ -194,7 +194,7 @@
                                                         </span>
                                             </a>
                                         </p>
-                                    </div>
+                                    </div>-->
                                 </li>
                             </ul>
                         </div>

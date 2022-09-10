@@ -103,11 +103,11 @@ $this->layout = 'front';
                     </div>
 
                     <div class="product-attributes clearfix">
-                                <span id="quantity-wanted-p" class="pull-left">
+                                <!--<span id="quantity-wanted-p" class="pull-left">
                                     <span class="dec qtybutton">-</span>
                                     <input type="text" class="cart-plus-minus-box" value="1">
                                     <span class="inc qtybutton">+</span>
-                                </span>
+                                </span>-->
                         <span>
                             <?php echo $this->Form->create(NULL,['url' => ['controller' => 'products', 'action' => 'addToCart']]);?>
                             <?php echo $this->Form->hidden('id', ['type' => 'hidden', 'value' => $product->id])?>
