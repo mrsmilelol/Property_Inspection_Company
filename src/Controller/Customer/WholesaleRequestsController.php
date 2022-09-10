@@ -40,12 +40,12 @@ class WholesaleRequestsController extends AppController
 
             if($wholesaleRequest->email == null){
                 $this->Flash->error('Error, please enter a valid email');
-                return $this->redirect(['prefix'=>'Customer','controller'=>'WholesaleRequests','action' => 'request']);
+                //return $this->redirect(['prefix'=>'Customer','controller'=>'WholesaleRequests','action' => 'request']);
             } else {
                 $validate = $this->WholesaleRequests->Users->findByEmail($wholesaleRequest->email)->first();
                 if ($validate != null){
                     $this->Flash->error('Error, the email entered already has an associated account');
-                    return $this->redirect(['prefix'=>'Customer','controller'=>'WholesaleRequests','action' => 'request']);
+                    //return $this->redirect(['prefix'=>'Customer','controller'=>'WholesaleRequests','action' => 'request']);
                 }
                 else {
                     $wholesaleRequest->status = "Not Approved";
