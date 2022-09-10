@@ -74,8 +74,7 @@ $this->layout = 'front';
                         </div>
                         <div id="viewproduct" class="nav nav-tabs product-view bxslider" data-tabs="tabs">
                             <?php for ($x = 0; $x <= count($productImages) - 1; $x++) : ?>
-                            <div class="pro-view active"><a href="#view1" class="lis_img" data-toggle="tab">
-                                    <?= $this->Html->image($productImages[$x]->description, ['alt' => 'CakePHP','class' => 'img-fluid','height' => 80,'width' => 106,'onclick'=>'check_img(this)']); ?></a></div>
+                            <div class="pro-view active"><a href="#view1" class="lis_img" data-toggle="tab"><?= $this->Html->image($productImages[$x]->description, ['alt' => 'CakePHP','class' => 'img-fluid','height' => 80,'width' => 106,'onclick'=>'check_img(this)']); ?></a></div>
                             <?php endfor ?>
                         </div>
                         <!-- BX Slider Navigation -->

@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use Cake\Controller\Controller;
-use Cake\Event\Event;
 use Cake\Event\EventInterface;
 
 /**
@@ -48,13 +47,22 @@ class AppController extends Controller
         $this->loadComponent('Flash');
         // Add this line to check authentication result and lock your site
         $this->loadComponent('Authentication.Authentication');
+//        $this->loadComponent('Auth', [ //load Auth component
+//            'authenticate' => [
+//                'Form' => [
+//                    'finder' => 'auth',
+//                ],
+//            ],
+//        ]);
+//
+//        $this->Auth->allow(['login','signup','forgotpassword','resetpassword','verification','logout']);
+//        $this->set('firstname', $this->Auth->user('firstname'));
 
         /*
          * Enable the following component for recommended CakePHP form protection settings.
          * see https://book.cakephp.org/4/en/controllers/components/form-protection.html
          */
         //$this->loadComponent('FormProtection');
-
     }
 
     public function beforeFilter(EventInterface $event)
@@ -64,9 +72,14 @@ class AppController extends Controller
             //If user is not on login or logout page, check their role
             if ($loggedin_user->user_type_id != null && $loggedin_user->user_type_id != 1) {
                 // the user is not an admin
-                $this->Flash->error("You're a wholeseller");
+                $this->Flash->error('You are a wholesale user');
                 $this->redirect(['prefix' => 'Wholesale', 'controller' => 'Products', 'action' => 'shop']);
             }
+//            if ($loggedin_user->user_type_id != null && $loggedin_user->user_type_id == 3) {
+//                // the user is not an admin
+//                $this->Flash->error('You are a regular customer');
+//                $this->redirect(['prefix' => 'Customer', 'controller' => 'Products', 'action' => 'shop']);
+//            }
         }
     }
 }

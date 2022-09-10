@@ -71,7 +71,15 @@ class OrdersProductsTable extends Table
         $validator
             ->integer('quantity')
             ->requirePresence('quantity', 'create')
-            ->notEmptyString('quantity');
+            ->notEmptyString('quantity')
+            ->add('quantity','quantityValue',[
+                'rule'=>function ($value, array $context) {
+                    if ($value > 0) {
+                        return true;
+                    }
+                    return 'The quantity must be at least 1.';
+                }
+            ]);
 
         $validator
             ->dateTime('created_at')

@@ -71,8 +71,6 @@
                     <h6 class="collapse-header">Product menu:</h6>
                     <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Products','action' => 'index']) ?>">Products</a>
                     <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Categories','action' => 'index']) ?>">Categories</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'ProductImages','action' => 'index']) ?>">Images</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'ProductReviews','action' => 'index']) ?>">Reviews</a>
                 </div>
             </div>
         </li>
@@ -91,47 +89,13 @@
                     <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Users','action' => 'index']) ?>">Users</a>
                     <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'UserTypes','action' => 'index']) ?>">User Types</a>
                     <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'UserAddresses','action' => 'index']) ?>">User Addresses</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'WholesaleRequests','action' => 'index']) ?>">Wholesale request</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'WholesaleRequests','action' => 'index']) ?>">Wholesale Requests</a>
                 </div>
             </div>
         </li>
 
-<!--         Nav Item - Utilities Collapse Menu-->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-               aria-expanded="true" aria-controls="collapseUtilities">
-                <i class="fas fa-fw fa-credit-card"></i>
-                <span>Payments</span>
-            </a>
-            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                 data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Payment menu:</h6>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Payments','action' => 'index']) ?>">Payments</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'ShoppingSessions','action' => 'index']) ?>">Shopping Sessions</a>
 
-                </div>
-            </div>
-        </li>
-
-<!--         Nav Item - Utilities Collapse Menu-->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrders"
-               aria-expanded="true" aria-controls="collapseOrderss">
-                <i class="fas fa-fw fa-box"></i>
-                <span>Orders</span>
-            </a>
-            <div id="collapseOrders" class="collapse" aria-labelledby="headingUtilities"
-                 data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Order menu:</h6>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Orders','action' => 'index']) ?>">Orders</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'OrderItems','action' => 'index']) ?>">Ordered items</a>
-                </div>
-            </div>
-        </li>
-
-<!--         Nav Item - Utilities Collapse Menu-->
+        <!--         Nav Item - Utilities Collapse Menu-->
         <li class="nav-item">
             <a class="nav-link collapsed" href="<?= $this->Url->build(['controller' => 'Stores','action' => 'index']) ?>"
                aria-expanded="true" aria-controls="collapseOrderss">
@@ -205,11 +169,6 @@
 <!--                         Dropdown - User Information-->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Settings
-                            </a>
-                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
@@ -268,7 +227,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="<?= $this->Url->build(['controller' => 'users','action' => 'logout']) ?>">Logout</a>
+                <a class="btn btn-primary" href="<?= $this->Url->build(['controller' => 'users','action' => 'logout','prefix' => false]) ?>">Logout</a>
 
             </div>
         </div>

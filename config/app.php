@@ -229,13 +229,18 @@ return [
     'EmailTransport' => [
         'default' => [
             'className' => MailTransport::class,
+                //MailTransport::class,
             /*
              * The keys host, port, timeout, username, password, client and tls
              * are used in SMTP transports
              */
-            'host' => 'localhost',
-            'port' => 25,
-            'timeout' => 30,
+            'host' => 'http://mail.u22s1009.monash-ie.me:2079',
+            'port' => 2079,
+            'username' => 'chelsea@u22s1009.monash-ie.me',
+            'password' => 'chelseapassword',
+            //'host' => 'localhost',
+            //'port' => 25,
+            //'timeout' => 30,
             /*
              * It is recommended to set these options through your environment or app_local.php
              */

@@ -3,7 +3,9 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\User $user
  */
+$this->layout = 'logged_out';
 ?>
+
 <div class="card shadow mb-4">
     <div class="d-sm-flex align-items-center justify-content-between card-header">
         <h1 class="h3 mb-0 text-gray-800"><?= __('Please enter your email to receive a link to reset password') ?></h1>

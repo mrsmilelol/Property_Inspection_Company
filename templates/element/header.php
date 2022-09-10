@@ -5,7 +5,8 @@
     <div class="header-top">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
+                <div class="">
+<!--            <div class="col-md-3">-->
                     <div class="header-default pull-left social-icon">
                         <!--                        <p>Default Welcome Msg!</p>-->
                         <ul>
@@ -15,7 +16,8 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-9 col-md-9 col-sm-12">
+                <div class="">
+<!--            <div class="col-lg-9 col-md-9 col-sm-12">-->
                     <div class="header-top-right pull-right">
 <!--                        <div class="currencies-block-top block-toggle pull-left">-->
 <!--                            <div class="current">-->
@@ -38,27 +40,44 @@
 <!--                            </ul>-->
 <!--                        </div>-->
                         <div class="header-user-info pull-right">
-                            <a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','about']); ?>>
+                            <?php
+//                            debug($_SERVER['REQUEST_URI']);
+//                            exit;
+                            $url_parts = parse_url($_SERVER['REQUEST_URI']);
+                            $path_parts=explode('/', $url_parts['path']);
+                            /*debug($path_parts[2]);
+                            exit;*/
+                            ?>
+                            <?php if ($path_parts[2] == 'admin') : ?>
+                                <a href=<?= $this->Url->build(['controller' => 'Products','action' => 'index']) ?>>
+                                    <i class="fa fa-home"></i>
+                                    Back to Dashboard
+                                </a>
+                            <?php endif; ?>
+                            <a href=<?= $this->Url->build(['prefix'=>'Customer','controller' => 'WholesaleRequests', 'action' => 'request']); ?>>
+                                Wholesale Application
+                            </a>
+                            <a href=<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display','about']); ?>>
                                 About Us
                             </a>
-                            <a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','contact']); ?>>
+                            <a href=<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display','contact']); ?>>
                                 Contact Us
                             </a>
-                            <a href="my-account.html" title="My account">
+<!--                            <a href="wishlist.html" title="My wishlist">-->
+<!--                                <i class="fa fa-heart"></i>-->
+<!--                                My wishlist-->
+<!--                            </a>-->
+                            <a href=<?= $this->Url->build(['controller' => 'users', 'action' => 'login', 'prefix' => false]); ?>>
                                 <i class="fa fa-user"></i>
-                                My account
+                                Log In
                             </a>
-                            <a href="wishlist.html" title="My wishlist">
-                                <i class="fa fa-heart"></i>
-                                My wishlist
-                            </a>
-                            <a href="#" title="My wishlist">
+                            <a href=<?= $this->Url->build(['controller' => 'users', 'action' => 'signUp','prefix' => false]); ?>>
                                 <i class="fa fa-unlock-alt"></i>
-                                Sign in
+                                Sign up
                             </a>
-                            <a href="#" title="My wishlist">
-                                <i class="fa fa-share-square-o"></i>
-                                Check out
+                            <a href=<?= $this->Url->build(['controller' => 'users', 'action' => 'logout','prefix' => false]); ?>>
+                            <i class="fa fa-share-square-o"></i>
+                                Log out
                             </a>
                         </div>
                     </div>
@@ -74,10 +93,12 @@
                 <div class="col-lg-1 col-md-3 col-sm-6 col-xs-12">
                     <!-- Header Logo -->
                     <div class="header-logo logo-main-page">
-                        <a href=<?= $this->Url->build(['controller'=>'Pages',
-                            'action'=>'display','main']); ?> title="Chelsea Furniture">
-                        <?= $this->Html->image('Logo-circle.png',
-                            ['class' =>'img-responsive']); ?>
+                        <a href=<?= $this->Url->build(['controller' => 'Pages',
+                            'action' => 'display','main']); ?> title="Chelsea Furniture">
+                        <?= $this->Html->image(
+                            'Logo-circle.png',
+                            ['class' => 'img-responsive']
+                        ); ?>
                         </a>
                     </div>
                 </div>
@@ -86,7 +107,7 @@
                     <div class="header-bottom-right pull-right">
                         <div class="header-bottom-right-inner">
                             <ul>
-                                <li>
+                                <!--<li>
                                     <a class="cart-toggler search-icon to-search-icon" href="#">
                                         <i class="fa fa-search"></i>
                                     </a>
@@ -100,18 +121,19 @@
                                             </div>
                                         </form>
                                     </div>
-                                </li>
+                                </li>-->
                                 <li>
-                                    <a class="cart-toggler mini-cart-icon" href="#">
+                                    <a class="cart-toggler mini-cart-icon" href="<?= $this->Url->build(['controller' => 'products',
+                                        'action' => 'cart']); ?>">
                                         <i class="fa fa-shopping-cart"></i>
-                                        <span>2</span>
+<!--                                        <span>2</span>-->
                                     </a>
-                                    <div class="cart-list">
+                                    <!--<div class="cart-list">
                                         <div class="product">
                                             <div class="cart-single-product">
-                                                <a class="product-image" href=<?= $this->Url->build(['controller'=>'Pages',
-                                                    'action'=>'display','main']); ?>
-                                                    <?= $this->Html->image('cart-img/1.jpg'); ?>
+                                                <a class="product-image" href=<?/*= $this->Url->build(['controller' => 'products',
+                                                    'action' => 'cart']); */?>
+                                                    <?/*= $this->Html->image('cart-img/1.jpg'); */?>
                                                 </a>
                                                 <div class="product-details">
                                                     <a href="#" class="remove">
@@ -133,9 +155,9 @@
                                                 </div>
                                             </div>
                                             <div class="cart-single-product">
-                                                <a class="product-image" href=<?= $this->Url->build(['controller'=>'Pages',
-                                                    'action'=>'display','main']); ?>
-                                                    <?= $this->Html->image('cart-img/2.jpg'); ?>
+                                                <a class="product-image" href=<?/*= $this->Url->build(['controller' => 'Pages',
+                                                    'action' => 'display','main']); */?>
+                                                    <?/*= $this->Html->image('cart-img/2.jpg'); */?>
                                                 </a>
                                                 <div class="product-details">
                                                     <a href="#" class="remove">
@@ -172,57 +194,61 @@
                                                         </span>
                                             </a>
                                         </p>
-                                    </div>
+                                    </div>-->
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-7 col-sm-12 col-xs-12">
-                <div class="col-lg-11 col-md-7 col-sm-12 col-xs-12">
+<!--                <div class="col-lg-11 col-md-7 col-sm-12 col-xs-12">-->
                     <!-- Main Menu -->
-                    <div class="mainmenu">
+                    <div class="mainmenu vertical-center">
                         <nav>
                             <ul>
 <!--                                <li><a href="--><!--<?//= $this->Url->build(['controller'=>'Pages', 'action'=>'display','main']); ?>--><!--">Home</a>-->
-                                <li><a href="<?= $this->Url->build(['controller'=>'Products', 'action'=>'shop']); ?>">Shop</a>
+                                <li><a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'shop']); ?>">Shop</a>
                                 </li>
-                                <li><a href="<?= $this->Url->build(['controller'=>'Categories', 'action'=>'list', 1]); ?>">Styles</a>
+                                <li><a href="<?= $this->Url->build(['controller' => 'Categories', 'action' => 'list', 1]); ?>">Styles</a>
                                     <!-- Mega Menu Four Column -->
                                     <div class="mega-menu two-column">
                                         <?php $categories = $categories->toArray();
-                                        for($x = 0; $x <= count($categories)-1; $x++): if ($categories[$x]->parent_id == 1): ?>
-                                        <?php $saved_id = $categories[$x]->id; ?>
+                                        for ($x = 0; $x <= count($categories) - 1; $x++) :
+                                            if ($categories[$x]->parent_id == 1) : ?>
+                                                <?php $saved_id = $categories[$x]->id; ?>
                                         <span>
-                                            <a class="mega-title" href=<?= $this->Url->build(['controller'=>'Categories',
-                                                'action'=> 'list', $categories[$x]->id]); ?>><?= h($categories[$x]->description) ?></a>
-                                                <?php foreach ($categories as $subcategory): if ($subcategory->parent_id == $saved_id):  ?>
+                                            <a class="mega-title" href=<?= $this->Url->build(['controller' => 'Categories',
+                                                'action' => 'list', $categories[$x]->id]); ?>><?= h($categories[$x]->description) ?></a>
+                                                                                            <?php foreach ($categories as $subcategory) :
+                                                                                                if ($subcategory->parent_id == $saved_id) :  ?>
                                                 <a href=<?= $this->Url->build(['controller' => 'Categories',
                                                     'action' => 'list', $subcategory->id]); ?>><?= h($subcategory->description) ?></a>
-                                                <?php endif; ?>
-                                                <?php endforeach; ?>
+                                                                                                <?php endif; ?>
+                                                                                            <?php endforeach; ?>
                                         </span>
-                                                <?php endif; ?>
-                                            <?php endfor; ?>
+                                            <?php endif; ?>
+                                        <?php endfor; ?>
                                     </div>
                                 </li>
 
                                 <?php
-                                for($x = 0; $x <= count($categories)-1; $x++): if ($categories[$x]->id > 1 and $categories[$x]->parent_id == null): ?>
-                                    <?php $saved_id = $categories[$x]->id; ?>
-                                <li class="expand"><a href=<?= $this->Url->build(['controller'=>'Categories',
-                                        'action'=> 'list', $categories[$x]->id]); ?>><?= h($categories[$x]->description) ?></a>
+                                for ($x = 0; $x <= count($categories) - 1; $x++) :
+                                    if ($categories[$x]->id > 1 and $categories[$x]->parent_id == null) : ?>
+                                                                            <?php $saved_id = $categories[$x]->id; ?>
+                                <li class="expand"><a href=<?= $this->Url->build(['controller' => 'Categories',
+                                        'action' => 'list', $categories[$x]->id]); ?>><?= h($categories[$x]->description) ?></a>
                                     <!-- DropDown Menu -->
                                     <ul class="restrain sub-menu">
-                                        <?php foreach ($categories as $subcategory): if ($subcategory->parent_id == $saved_id):  ?>
+                                                                            <?php foreach ($categories as $subcategory) :
+                                                                                if ($subcategory->parent_id == $saved_id) :  ?>
                                         <li><a href=<?= $this->Url->build(['controller' => 'Categories',
                                                 'action' => 'list', $subcategory->id]); ?>><?= h($subcategory->description) ?></a>
                                         </li>
-                                        <?php endif; ?>
-                                        <?php endforeach; ?>
+                                                                                <?php endif; ?>
+                                                                            <?php endforeach; ?>
                                     </ul>
                                 </li>
-                                <?php endif; ?>
+                                    <?php endif; ?>
                                 <?php endfor; ?>
 
 <!--                                <li>-->
@@ -247,44 +273,48 @@
                 <div class="mobile-menu">
                     <nav id="dropdown">
                         <ul>
-                            <li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','main']); ?>>Home</a></li>
-                            <li><a href=<?= $this->Url->build(['controller'=>'Categories', 'action'=>'view', 1]); ?>>Styles</a>
+                            <li><a href=<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display','main']); ?>>Home</a></li>
+                            <li><a href=<?= $this->Url->build(['controller' => 'Categories', 'action' => 'view', 1]); ?>>Styles</a>
                                 <ul>
-                                    <?php for($x = 0; $x <= count($categories)-1; $x++): if ($categories[$x]->parent_id == 1): ?>
-                                        <?php $saved_id = $categories[$x]->id; ?>
-                                    <li><a href=<?= $this->Url->build(['controller'=>'Categories',
-                                            'action'=> 'view', $categories[$x]->id]); ?>><?= h($categories[$x]->description) ?></a>
+                                    <?php for ($x = 0; $x <= count($categories) - 1; $x++) :
+                                        if ($categories[$x]->parent_id == 1) : ?>
+                                            <?php $saved_id = $categories[$x]->id; ?>
+                                    <li><a href=<?= $this->Url->build(['controller' => 'Categories',
+                                            'action' => 'view', $categories[$x]->id]); ?>><?= h($categories[$x]->description) ?></a>
                                         <ul>
-                                            <?php foreach ($categories as $subcategory): if ($subcategory->parent_id == $saved_id):  ?>
+                                                                                    <?php foreach ($categories as $subcategory) :
+                                                                                        if ($subcategory->parent_id == $saved_id) :  ?>
                                             <li><a href=<?= $this->Url->build(['controller' => 'Categories',
                                                     'action' => 'view', $subcategory->id]); ?>><?= h($subcategory->description) ?></a></li>
-                                            <?php endif; ?>
-                                            <?php endforeach; ?>
+                                                                                        <?php endif; ?>
+                                                                                    <?php endforeach; ?>
                                         </ul>
                                     </li>
-                                    <?php endif; ?>
+                                        <?php endif; ?>
                                     <?php endfor; ?>
                                 </ul>
                             </li>
                             <?php
-                            for($x = 0; $x <= count($categories)-1; $x++): if ($categories[$x]->id > 1 and $categories[$x]->parent_id == null): ?>
-                                <?php $saved_id = $categories[$x]->id; ?>
-                                <li><a href=<?= $this->Url->build(['controller'=>'Categories',
-                                        'action'=> 'view', $categories[$x]->id]); ?>><?= h($categories[$x]->description) ?></a>
+                            for ($x = 0; $x <= count($categories) - 1; $x++) :
+                                if ($categories[$x]->id > 1 and $categories[$x]->parent_id == null) : ?>
+                                                                    <?php $saved_id = $categories[$x]->id; ?>
+                                <li><a href=<?= $this->Url->build(['controller' => 'Categories',
+                                        'action' => 'view', $categories[$x]->id]); ?>><?= h($categories[$x]->description) ?></a>
                                     <!-- DropDown Menu -->
                                     <ul>
-                                        <?php foreach ($categories as $subcategory): if ($subcategory->parent_id == $saved_id):  ?>
+                                                                        <?php foreach ($categories as $subcategory) :
+                                                                            if ($subcategory->parent_id == $saved_id) :  ?>
                                             <li><a href=<?= $this->Url->build(['controller' => 'Categories',
                                                     'action' => 'view', $subcategory->id]); ?>><?= h($subcategory->description) ?></a>
                                             </li>
-                                        <?php endif; ?>
-                                        <?php endforeach; ?>
+                                                                            <?php endif; ?>
+                                                                        <?php endforeach; ?>
                                     </ul>
                                 </li>
-                            <?php endif; ?>
+                                <?php endif; ?>
                             <?php endfor; ?>
-                            <!--<li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','about']); ?>>About Us</a></li>
-                            <li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','contact']); ?>>Contact Us</a></li>-->
+                            <!--<li><a href=<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display','about']); ?>>About Us</a></li>
+                            <li><a href=<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display','contact']); ?>>Contact Us</a></li>-->
                         </ul>
                     </nav>
                 </div>

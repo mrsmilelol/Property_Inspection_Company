@@ -8,7 +8,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
 ?>
 <div class="card shadow mb-4">
     <div class="d-sm-flex align-items-center justify-content-between card-header">
-        <h1 class="h3 mb-0 text-gray-800"><?= __('WholesaleRequests') ?></h1>
+        <h1 class="h3 mb-0 text-gray-800"><?= __('Wholesale requests') ?></h1>
         <a href="<?= $this->Url->build(['action' => 'add']) ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-plus fa-sm text-white-50"></i> Add new request</a>
     </div>
@@ -17,10 +17,10 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             <table class="table table-bordered" id="wholesaleRequests" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th data-visible="false"><?= h('id') ?></th>
-                    <th><?= h('Account No') ?></th>
-                    <th><?= h('Business Name') ?></th>
-                    <th><?= h('Contact Person Name') ?></th>
+                    <th data-visible="false"><?= h('ID') ?></th>
+                    <th><?= h('Account no.') ?></th>
+                    <th><?= h('Business name') ?></th>
+                    <th><?= h('Name of contact person') ?></th>
                     <th data-visible="false"><?= h('Status') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>

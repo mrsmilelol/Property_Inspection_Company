@@ -57,12 +57,15 @@ class AppController extends Controller
     public function beforeFilter(EventInterface $event)
     {
         // Only apply redirect rule when user is actually logged in
-        if ($loggedin_user = $this->Authentication->getIdentity()) {
+        if (
+            $this->request->getParam('prefix') == 'Wholesale' &&
+            $loggedin_user = $this->Authentication->getIdentity()
+        ) {
             //If user is not on login or logout page, check their role
             if ($loggedin_user->user_type_id != null && $loggedin_user->user_type_id == 3) {
                 // the user is not an admin
                 $this->Flash->error("You're a regular customer");
-                $this->redirect(['prefix' => 'Wholesale', 'controller' => 'Products', 'action' => 'shop']);
+                $this->redirect(['prefix' => 'Customer', 'controller' => 'Products', 'action' => 'shop']);
             }
         }
     }
