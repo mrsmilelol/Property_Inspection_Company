@@ -12,7 +12,7 @@
         <table class="table table-bordered" id="products" width="100%" cellspacing="0">
             <?= $this->Form->create() ?>
             <br>
-            <?= $this->Form->button(__('Continue'), ['controller' => 'users', 'action' => 'login', 'class' => 'btn btn-primary'])?>
+            <?= $this->Form->button(__('Continue'), ['controller' => 'users', 'action' => 'login', 'prefix' => 'false', 'class' => 'btn btn-primary'])?>
             <?= $this->Form->end() ?>
         </table>
     </div>
