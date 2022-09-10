@@ -92,10 +92,11 @@ $this->layout = 'front';
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach($orderItems['Orderitems'] as $orderItem): ?>
+                                <?php if ($orderItems!=null):
+                                foreach($orderItems['Orderitems'] as $orderItem): ?>
                                     <tr>
                                         <td><a href="<?= $this->Url->build(['controller' => 'products', 'action' => 'detail',$orderItem['product_id']])?>"><?= $orderItem['name']?></a></td>
-                                        <td><?= $this->Number->currency($orderItem['price'])?></td>
+                                        <td><?= $this->Number->currency($orderItem['wholesale_price'])?></td>
                                         <td>
                                             <div class="cart-quantity product-quantity">
                                                 <button class="dec qtybtn">-</button>
@@ -103,14 +104,14 @@ $this->layout = 'front';
                                                 <button class="inc qtybtn">+</button>
                                             </div>
                                         </td>
-                                        <td><?=$this->Number->currency($orderItem['price'])?></td>
+                                        <td><?=$this->Number->currency($orderItem['wholesale_price'])?></td>
                                         <td><?php echo $this->Html->link('<i class="fa fa-trash"></i>', [
                                             'controller' => 'products', 'action' => 'removeProduct', $orderItem['product_id']], [
                                                 'class' => 'btn btn-secondary btn-sm', 'escape' => false]); ?>
                                         </td>
                                     </tr>
                                 </tbody>
-                                <?php endforeach; ?>
+                                <?php endforeach; endif;?>
                             </table>
                         </div>
                     </div>
@@ -147,9 +148,10 @@ $this->layout = 'front';
                                     <tbody>
                                         <tr>
                                             <?php $subtotal=0;
+                                            if ($orderItems!=null):
                                             foreach($orderItems['Orderitems'] as $orderItem):
-                                                $subtotal = $subtotal+$orderItem['price'];
-                                            endforeach;?>
+                                                $subtotal = $subtotal+$orderItem['wholesale_price'];
+                                            endforeach;endif;?>
 <!--                                            <th>Subtotal</th>-->
 <!--                                            <td><strong>--><!--</strong></td>-->
 <!--                                        </tr>-->
