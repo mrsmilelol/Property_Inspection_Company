@@ -65,15 +65,15 @@
 <!--                                <i class="fa fa-heart"></i>-->
 <!--                                My wishlist-->
 <!--                            </a>-->
-                            <a href=<?= $this->Url->build(['prefix' => 'Admin','controller' => 'users', 'action' => 'login']); ?>>
+                            <a href=<?= $this->Url->build(['controller' => 'users', 'action' => 'login', 'prefix' => false]); ?>>
                                 <i class="fa fa-user"></i>
                                 Log In
                             </a>
-                            <a href=<?= $this->Url->build(['prefix' => 'Admin','controller' => 'users', 'action' => 'signUp']); ?>>
+                            <a href=<?= $this->Url->build(['controller' => 'users', 'action' => 'signUp','prefix' => false]); ?>>
                                 <i class="fa fa-unlock-alt"></i>
                                 Sign up
                             </a>
-                            <a href=<?= $this->Url->build(['prefix' => 'Admin','controller' => 'users', 'action' => 'logout']); ?>>
+                            <a href=<?= $this->Url->build(['controller' => 'users', 'action' => 'logout','prefix' => false]); ?>>
                             <i class="fa fa-share-square-o"></i>
                                 Log out
                             </a>

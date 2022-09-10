@@ -381,7 +381,7 @@ endforeach;
                                                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                                         <tbody>
                                                         <tr>
-                                                            <td> <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'verification','prefix' => 'Admin', $token], ['fullBase' => true]);?>">Verify your account</a> </td>
+                                                            <td> <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'verification','prefix' => false, $token], ['fullBase' => true]);?>">Verify your account</a> </td>
                                                         </tr>
                                                         </tbody>
                                                     </table>

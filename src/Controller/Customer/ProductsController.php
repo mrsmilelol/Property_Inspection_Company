@@ -15,17 +15,7 @@ namespace App\Controller\Customer;
  */
 class ProductsController extends AppController
 {
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null|void Renders view
-     */
-    public function index()
-    {
-        $products = $this->paginate($this->Products);
 
-        $this->set(compact('products'));
-    }
 
     /**
      * View method

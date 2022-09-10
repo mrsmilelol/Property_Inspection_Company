@@ -131,7 +131,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
                 'controller' => 'Users',
                 'action' => 'login',
                 'plugin' => null,
-                'prefix' => null,
+                'prefix' => false,
             ]),
             'queryParam' => 'redirect',
         ]);
@@ -156,7 +156,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
                 'controller' => 'Users',
                 'action' => 'login',
                 'plugin' => null,
-                'prefix' => null,
+                'prefix' => false,
             ]),
         ]);
 

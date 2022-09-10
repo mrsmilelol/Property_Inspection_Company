@@ -19,7 +19,7 @@ $this->layout = 'logged_out';
                 ?>
             </fieldset>
             <br>
-            <?= $this->Form->button(__('Submit'), ['controller' => 'users', 'action' => 'login', 'class' => 'btn btn-primary'])?>
+            <?= $this->Form->button(__('Submit'), ['controller' => 'products', 'action' => 'index', 'class' => 'btn btn-primary'])?>
             <?= $this->Form->end() ?>
         </table>
     </div>

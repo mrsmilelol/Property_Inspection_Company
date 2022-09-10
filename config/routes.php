@@ -88,7 +88,7 @@ return static function (RouteBuilder $routes) {
         $routes->fallbacks(DashedRoute::class);
     });
 
-    Router::url(['controller' => 'Products', 'action' => 'shop', 'shop']);
+//    Router::url(['controller' => 'Products', 'action' => 'shop', 'shop']);
     /*
      * If you need a different set of middleware or none at all,
      * open new scope and define routes there.
