@@ -55,19 +55,39 @@ class CartComponent extends Component {
 
 //        $quantity = abs($quantity);
 //
-//        $data = [];
+        $data = [];
 
         $product = $controller->Products->get($id, [
             'contain' => []
         ]);
-
-        $data = [
-            'product_id' => $product->id,
-            'name' => $product->name,
-            'price' => sprintf('%01.2f', $product->price),
-        ];
+        if ($product->sale_price != null){
+            $data = [
+                'product_id' => $product->id,
+                'name' => $product->name,
+                'price' => sprintf('%01.2f', $product->sale_price)
+        ];}else{
+            $data = [
+                'product_id' => $product->id,
+                'name' => $product->name,
+                'price' => sprintf('%01.2f', $product->price)
+            ];
+        }
+        if ($product->wholesale_price != null){
+            $wholesale_data = [
+                'product_id' => $product->id,
+                'name' => $product->name,
+                'wholesale_price' => sprintf('%01.2f', $product->wholesale_price)
+            ];}
+        else{
+            $wholesale_data = [
+                'product_id' => $product->id,
+                'name' => $product->name,
+                'wholesale_price' => sprintf('%01.2f', $data['price'])
+            ];
+        }
 
         $this->getController()->getRequest()->getSession()->write('Shop.Orderitems.' . $id, $data);
+        $this->getController()->getRequest()->getSession()->write('Shop.WholesaleOrderitems.' . $id, $wholesale_data);
 
         $this->cart();
 

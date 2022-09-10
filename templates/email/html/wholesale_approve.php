@@ -389,7 +389,7 @@ endforeach;
                                                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                                         <tbody>
                                                         <tr>
-                                                            <td> <a href="<?= $this->Url->build(['controller'=> 'Users', 'action'=>'login','prefix' => 'Wholesale'], ['fullBase' => true]); ?>">Please click to proceed to the login page</a> </td>
+                                                            <td> <a href="<?= $this->Url->build(['controller'=> 'Users', 'action'=>'login','prefix' => false], ['fullBase' => true]); ?>">Please click to proceed to the login page</a> </td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
