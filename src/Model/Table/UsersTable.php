@@ -110,7 +110,7 @@ class UsersTable extends Table
 
         $validator
             ->integer('user_type_id')
-            ->allowEmptyString('user_type_id');
+            ->notEmptyString('user_type_id');
 
         $validator
             ->scalar('token')
@@ -140,6 +140,7 @@ class UsersTable extends Table
         $rules->add($rules->isUnique(['username']), ['errorField' => 'username']);
         $rules->add($rules->isUnique(['email']), ['errorField' => 'email']);
         $rules->add($rules->existsIn('user_type_id', 'UserTypes'), ['errorField' => 'user_type_id']);
+//        $rules->add($rules->validCount('user_type_id', 1, '>=', 'Please select a user type.'));
 
         return $rules;
     }
