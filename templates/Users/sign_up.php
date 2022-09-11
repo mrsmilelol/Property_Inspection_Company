@@ -14,7 +14,7 @@ $this->layout = 'logged_out';
 ?>
 <div class="card shadow mb-4">
     <div class="d-sm-flex align-items-center justify-content-between card-header">
-        <h1 class="h3 mb-0 text-gray-800"><?= __('Create Account') ?></h1>
+        <h1 class="h3 mb-0 text-gray-800"><?= __('Create account') ?></h1>
     </div>
     <div class="card-body">
         <table class="table table-bordered" id="products" width="100%" cellspacing="0">
@@ -22,8 +22,8 @@ $this->layout = 'logged_out';
                 <?php
                     echo $this->Form->control('username');
                     echo $this->Form->control('password');
-                    echo $this->Form->control('firstname');
-                    echo $this->Form->control('lastname');
+                    echo $this->Form->control('firstname', ['label' => 'First name']);
+                    echo $this->Form->control('lastname', ['label' => 'Last name']);
                     echo $this->Form->control('phone');
                     echo $this->Form->control('email');
                     //echo $this->Form->control('created_at', ['type' => 'hidden']);

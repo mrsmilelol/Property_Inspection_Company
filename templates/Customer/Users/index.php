@@ -25,7 +25,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <th data-visible="false"><?= h('Phone') ?></th>
                     <th><?= h('Email') ?></th>
                     <th><?= h('Role') ?></th>
-                    <th><?= h('Change Status') ?></th>
+                    <th><?= h('Change status') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
                 </thead>

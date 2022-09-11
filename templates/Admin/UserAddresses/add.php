@@ -20,8 +20,8 @@ $this->Form->setTemplates($formTemplate);
             <?= $this->Form->create($userAddress) ?>
                 <?php
                     echo $this->Form->control('user_id', ['options' => $users, 'empty' => true]);
-                    echo $this->Form->control('address_line_1');
-                    echo $this->Form->control('address_line_2');
+                    echo $this->Form->control('address_line_1', ['label' => 'Address line 1']);
+                    echo $this->Form->control('address_line_2', ['label' => 'Address line 2']);
                     echo $this->Form->control('city');
                     echo $this->Form->control('country');
                     echo $this->Form->control('state');
