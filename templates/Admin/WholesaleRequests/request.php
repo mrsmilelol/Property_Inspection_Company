@@ -9,6 +9,7 @@ $formTemplate = [
     'label' => '<label{{attrs}} class="form-label">{{text}}</label>',
     'input' => '<input type="{{type}}" name="{{name}}" class="form-control"{{attrs}}/>',
     'radioContainer' => '<div class="form-radio">{{content}}</div>',
+    'textarea' => '<textarea name="{{name}}" class="form-control" {{attrs}}> {{value}}</textarea>'
 ];
 $this->Form->setTemplates($formTemplate);
 
@@ -145,7 +146,7 @@ $this->layout = 'front';
                             echo $this->Form->control('phone', ['id' => 'maxWidth']);
                             echo $this->Form->control('email', ['id' => 'maxWidth']);
                             echo $this->Form->control('position', ['id' => 'maxWidth']);
-                            echo $this->Form->control('message', ['label' => 'Additional information', 'id' => 'maxWidth']);
+                            echo $this->Form->control('message', ['label' => 'Additional information', 'id' => 'maxWidth', 'type' => 'textarea', 'rows' => '5']);
                             //echo $this->Form->control('status');
                             //echo $this->Form->control('created_at');
                             //echo $this->Form->control('modified_at');

@@ -125,7 +125,7 @@ class WholesaleRequestsTable extends Table
 
         $validator
             ->scalar('message')
-            ->maxLength('message', 64)
+            ->maxLength('message', 255)
             ->allowEmptyString('message');
 
         $validator
