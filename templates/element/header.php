@@ -51,12 +51,12 @@
                             <?php /*debug($this->request->getSession()->read('Auth.user_type_id')); exit; */?>
                             <!-- Only displays back to dashboard button if user is an admin -->
                             <?php if ($this->request->getSession()->read('Auth.user_type_id') == 1) : ?>
-                                <a href=<?= $this->Url->build(['controller' => 'Products','action' => 'index']) ?>>
+                                <a href=<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'Products','action' => 'index']) ?>>
                                     <i class="fa fa-home"></i>
                                     Back to Dashboard
                                 </a>
                             <?php endif; ?>
-                            <a href=<?= $this->Url->build(['prefix'=>'Customer','controller' => 'WholesaleRequests', 'action' => 'request']); ?>>
+                            <a href=<?= $this->Url->build(['controller' => 'WholesaleRequests', 'action' => 'request']); ?>>
                                 Wholesale Application
                             </a>
                             <a href=<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display','about']); ?>>

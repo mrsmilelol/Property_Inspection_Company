@@ -14,9 +14,8 @@ declare(strict_types=1);
  * @since     0.2.9
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
-namespace App\Controller\Admin;
+namespace App\Controller;
 
-use App\Controller\Wholesale\AppController;
 use Cake\Core\Configure;
 use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
