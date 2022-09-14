@@ -20,13 +20,13 @@ $this->Form->setTemplates($formTemplate);
         <table class="table table-bordered" id="products" width="100%" cellspacing="0">
             <?= $this->Form->create($user) ?>
                 <?php
+                    echo $this->Form->control('user_type_id', ['label' => 'User type', 'options' => $userTypes, 'empty' => true]);
                     echo $this->Form->control('username');
                     echo $this->Form->control('password');
-                    echo $this->Form->control('firstname');
-                    echo $this->Form->control('lastname');
+                    echo $this->Form->control('firstname', ['label' => 'First name']);
+                    echo $this->Form->control('lastname', ['label' => 'Last name']);
                     echo $this->Form->control('phone');
                     echo $this->Form->control('email');
-                    echo $this->Form->control('user_type_id', ['options' => $userTypes, 'empty' => true]);
                     //echo $this->Form->control('created_at');
                     //echo $this->Form->control('modified_at');
                 ?>

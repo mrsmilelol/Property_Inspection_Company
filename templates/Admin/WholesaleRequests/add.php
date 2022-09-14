@@ -9,6 +9,7 @@ $formTemplate = [
     'label' => '<label{{attrs}} class="form-label">{{text}}</label>',
     'input' => '<input type="{{type}}" name="{{name}}" class="form-control"{{attrs}}/>',
     'radioContainer' => '<div class="form-radio">{{content}}</div>',
+    'textarea' => '<textarea name="{{name}}" class="form-control" {{attrs}}> {{value}}</textarea>'
 ];
 $this->Form->setTemplates($formTemplate);
 //$this->layout = 'logged_out';
@@ -39,7 +40,7 @@ $this->Form->setTemplates($formTemplate);
                     echo $this->Form->control('phone');
                     echo $this->Form->control('email');
                     echo $this->Form->control('position');
-                    echo $this->Form->control('message',['label'=>'Additional information']);
+                    echo $this->Form->control('message',['label'=>'Additional information', 'type' => 'textarea', 'rows' => '5']);
                     //echo $this->Form->control('status');
                     //echo $this->Form->control('created_at');
                     //echo $this->Form->control('modified_at');

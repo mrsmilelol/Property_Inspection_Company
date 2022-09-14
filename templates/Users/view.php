@@ -18,11 +18,11 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <td><?= h($user->username) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Firstname') ?></th>
+                    <th><?= __('First name') ?></th>
                     <td><?= h($user->firstname) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Lastname') ?></th>
+                    <th><?= __('Last name') ?></th>
                     <td><?= h($user->lastname) ?></td>
                 </tr>
                 <tr>
@@ -34,34 +34,34 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <td><?= h($user->email) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('User Type') ?></th>
+                    <th><?= __('User type') ?></th>
                     <td><?= $user->has('user_type') ? $this->Html->link($user->user_type->name, ['controller' => 'UserTypes', 'action' => 'view', $user->user_type->id]) : '' ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Id') ?></th>
+                    <th><?= __('ID') ?></th>
                     <td><?= $this->Number->format($user->id) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Created At') ?></th>
+                    <th><?= __('Created at') ?></th>
                     <td><?= h($user->created_at) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Modified At') ?></th>
+                    <th><?= __('Modified at') ?></th>
                     <td><?= h($user->modified_at) ?></td>
                 </tr>
             </table>
             <br>
             <div class="related">
-                <h4><?= __('Related Orders') ?></h4>
+                <h4><?= __('Related orders') ?></h4>
                 <?php if (!empty($user->orders)) : ?>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
                     <tr>
-                            <th><?= __('Id') ?></th>
-                            <th><?= __('User Id') ?></th>
+                            <th><?= __('ID') ?></th>
+                            <th><?= __('User ID') ?></th>
                             <th><?= __('Total') ?></th>
-                            <th><?= __('Created At') ?></th>
-                            <th><?= __('Modified At') ?></th>
+                            <th><?= __('Created at') ?></th>
+                            <th><?= __('Modified at') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($user->orders as $orders) : ?>
@@ -84,20 +84,20 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             </div>
             <br>
             <div class="related">
-                <h4><?= __('Related Payments') ?></h4>
+                <h4><?= __('Related payments') ?></h4>
                 <?php if (!empty($user->payments)) : ?>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
                     <tr>
-                            <th><?= __('Id') ?></th>
-                            <th><?= __('User Id') ?></th>
-                            <th><?= __('Payment Type') ?></th>
+                            <th><?= __('ID') ?></th>
+                            <th><?= __('User ID') ?></th>
+                            <th><?= __('Payment type') ?></th>
                             <th><?= __('Provider') ?></th>
-                            <th><?= __('Account No') ?></th>
-                            <th><?= __('Security No') ?></th>
-                            <th><?= __('Expiry Date') ?></th>
-                            <th><?= __('Created At') ?></th>
-                            <th><?= __('Modified At') ?></th>
+                            <th><?= __('Account no.') ?></th>
+                            <th><?= __('Security no.') ?></th>
+                            <th><?= __('Expiry date') ?></th>
+                            <th><?= __('Created at') ?></th>
+                            <th><?= __('Modified at') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($user->payments as $payments) : ?>
@@ -124,18 +124,18 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             </div>
             <br>
             <div class="related">
-                <h4><?= __('Related Product Reviews') ?></h4>
+                <h4><?= __('Related product reviews') ?></h4>
                 <?php if (!empty($user->product_reviews)) : ?>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
                     <tr>
-                            <th><?= __('Id') ?></th>
-                            <th><?= __('User Id') ?></th>
-                            <th><?= __('Product Id') ?></th>
+                            <th><?= __('ID') ?></th>
+                            <th><?= __('User ID') ?></th>
+                            <th><?= __('Product ID') ?></th>
                             <th><?= __('Description') ?></th>
                             <th><?= __('Rating') ?></th>
-                            <th><?= __('Created At') ?></th>
-                            <th><?= __('Modified At') ?></th>
+                            <th><?= __('Created at') ?></th>
+                            <th><?= __('Modified at') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($user->product_reviews as $productReviews) : ?>
@@ -160,17 +160,17 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             </div>
             <br>
             <div class="related">
-                <h4><?= __('Related Shopping Sessions') ?></h4>
+                <h4><?= __('Related shopping sessions') ?></h4>
                 <?php if (!empty($user->shopping_sessions)) : ?>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
                     <tr>
-                            <th><?= __('Id') ?></th>
-                            <th><?= __('User Id') ?></th>
-                            <th><?= __('Product Id') ?></th>
+                            <th><?= __('ID') ?></th>
+                            <th><?= __('User ID') ?></th>
+                            <th><?= __('Product ID') ?></th>
                             <th><?= __('Quantity') ?></th>
-                            <th><?= __('Created At') ?></th>
-                            <th><?= __('Modified At') ?></th>
+                            <th><?= __('Created at') ?></th>
+                            <th><?= __('Modified at') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($user->shopping_sessions as $shoppingSessions) : ?>
@@ -194,21 +194,21 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             </div>
             <br>
             <div class="related">
-                <h4><?= __('Related User Addresses') ?></h4>
+                <h4><?= __('Related user addresses') ?></h4>
                 <?php if (!empty($user->user_addresses)) : ?>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
                     <tr>
-                            <th><?= __('Id') ?></th>
-                            <th><?= __('User Id') ?></th>
-                            <th><?= __('Address Line 1') ?></th>
-                            <th><?= __('Address Line 2') ?></th>
+                            <th><?= __('ID') ?></th>
+                            <th><?= __('User ID') ?></th>
+                            <th><?= __('Address line 1') ?></th>
+                            <th><?= __('Address line 2') ?></th>
                             <th><?= __('City') ?></th>
                             <th><?= __('Country') ?></th>
                             <th><?= __('State') ?></th>
                             <th><?= __('Postcode') ?></th>
-                            <th><?= __('Created At') ?></th>
-                            <th><?= __('Modified At') ?></th>
+                            <th><?= __('Created at') ?></th>
+                            <th><?= __('Modified at') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($user->user_addresses as $userAddresses) : ?>

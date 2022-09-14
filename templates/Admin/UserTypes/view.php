@@ -18,35 +18,35 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <td><?= h($userType->name) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Id') ?></th>
+                    <th><?= __('ID') ?></th>
                     <td><?= $this->Number->format($userType->id) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Created At') ?></th>
+                    <th><?= __('Created at') ?></th>
                     <td><?= h($userType->created_at) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Modified At') ?></th>
+                    <th><?= __('Modified at') ?></th>
                     <td><?= h($userType->modified_at) ?></td>
                 </tr>
             </table>
             <br>
             <div class="related">
-                <h4><?= __('Related Users') ?></h4>
+                <h4><?= __('Related users') ?></h4>
                 <?php if (!empty($userType->users)) : ?>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="userTypeTable" width="100%" cellspacing="0">
                     <tr>
-                            <th><?= __('Id') ?></th>
+                            <th><?= __('ID') ?></th>
                             <th><?= __('Username') ?></th>
                             <th><?= __('Password') ?></th>
-                            <th><?= __('Firstname') ?></th>
-                            <th><?= __('Lastname') ?></th>
+                            <th><?= __('First name') ?></th>
+                            <th><?= __('Last name') ?></th>
                             <th><?= __('Phone') ?></th>
                             <th><?= __('Email') ?></th>
-                            <th><?= __('User Type Id') ?></th>
-                            <th><?= __('Created At') ?></th>
-                            <th><?= __('Modified At') ?></th>
+                            <th><?= __('User type ID') ?></th>
+                            <th><?= __('Created at') ?></th>
+                            <th><?= __('Modified at') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($userType->users as $users) : ?>
@@ -64,7 +64,11 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['controller' => 'Users', 'action' => 'view', $users->id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['controller' => 'Users', 'action' => 'edit', $users->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Users', 'action' => 'delete', $users->id], ['confirm' => __('Are you sure you want to delete # {0}?', $users->id)]) ?>
+                                <!--<?/*= $this->Form->postLink(__('Delete'), [
+                                    'controller' => 'Users',
+                                    'action' => 'delete', $users->id
+                                ],
+                                    ['confirm' => __('Are you sure you want to delete # {0}?', $users->id)]) */?>-->
                             </td>
                         </tr>
                         <?php endforeach; ?>

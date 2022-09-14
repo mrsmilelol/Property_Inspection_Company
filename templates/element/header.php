@@ -41,14 +41,16 @@
 <!--                        </div>-->
                         <div class="header-user-info pull-right">
                             <?php
-//                            debug($_SERVER['REQUEST_URI']);
-//                            exit;
+/*                            debug($_SERVER['REQUEST_URI']);
+                            exit;
                             $url_parts = parse_url($_SERVER['REQUEST_URI']);
                             $path_parts=explode('/', $url_parts['path']);
-                            /*debug($path_parts[2]);
-                            exit;*/
-                            ?>
-                            <?php if ($path_parts[2] == 'admin') : ?>
+                            debug($path_parts[2]);
+                            exit;
+                            if ($path_parts[2] == 'admin') : */?>
+                            <?php /*debug($this->request->getSession()->read('Auth.user_type_id')); exit; */?>
+                            <!-- Only displays back to dashboard button if user is an admin -->
+                            <?php if ($this->request->getSession()->read('Auth.user_type_id') == 1) : ?>
                                 <a href=<?= $this->Url->build(['controller' => 'Products','action' => 'index']) ?>>
                                     <i class="fa fa-home"></i>
                                     Back to Dashboard
@@ -67,6 +69,12 @@
 <!--                                <i class="fa fa-heart"></i>-->
 <!--                                My wishlist-->
 <!--                            </a>-->
+                            <?php if ($this->request->getSession()->read('Auth')): ?>
+                            <a href=<?= $this->Url->build(['controller' => 'users', 'action' => 'logout','prefix' => false]); ?>>
+                                <i class="fa fa-share-square-o"></i>
+                                Log out
+                            </a>
+                            <?php else: ?>
                             <a href=<?= $this->Url->build(['controller' => 'users', 'action' => 'login', 'prefix' => false]); ?>>
                                 <i class="fa fa-user"></i>
                                 Log In
@@ -75,10 +83,7 @@
                                 <i class="fa fa-unlock-alt"></i>
                                 Sign up
                             </a>
-                            <a href=<?= $this->Url->build(['controller' => 'users', 'action' => 'logout','prefix' => false]); ?>>
-                            <i class="fa fa-share-square-o"></i>
-                                Log out
-                            </a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -274,18 +279,18 @@
                     <nav id="dropdown">
                         <ul>
                             <li><a href=<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display','main']); ?>>Home</a></li>
-                            <li><a href=<?= $this->Url->build(['controller' => 'Categories', 'action' => 'view', 1]); ?>>Styles</a>
+                            <li><a href=<?= $this->Url->build(['controller' => 'Categories', 'action' => 'list', 1]); ?>>Styles</a>
                                 <ul>
                                     <?php for ($x = 0; $x <= count($categories) - 1; $x++) :
                                         if ($categories[$x]->parent_id == 1) : ?>
                                             <?php $saved_id = $categories[$x]->id; ?>
                                     <li><a href=<?= $this->Url->build(['controller' => 'Categories',
-                                            'action' => 'view', $categories[$x]->id]); ?>><?= h($categories[$x]->description) ?></a>
+                                            'action' => 'list', $categories[$x]->id]); ?>><?= h($categories[$x]->description) ?></a>
                                         <ul>
                                                                                     <?php foreach ($categories as $subcategory) :
                                                                                         if ($subcategory->parent_id == $saved_id) :  ?>
                                             <li><a href=<?= $this->Url->build(['controller' => 'Categories',
-                                                    'action' => 'view', $subcategory->id]); ?>><?= h($subcategory->description) ?></a></li>
+                                                    'action' => 'list', $subcategory->id]); ?>><?= h($subcategory->description) ?></a></li>
                                                                                         <?php endif; ?>
                                                                                     <?php endforeach; ?>
                                         </ul>
@@ -299,13 +304,13 @@
                                 if ($categories[$x]->id > 1 and $categories[$x]->parent_id == null) : ?>
                                                                     <?php $saved_id = $categories[$x]->id; ?>
                                 <li><a href=<?= $this->Url->build(['controller' => 'Categories',
-                                        'action' => 'view', $categories[$x]->id]); ?>><?= h($categories[$x]->description) ?></a>
+                                        'action' => 'list', $categories[$x]->id]); ?>><?= h($categories[$x]->description) ?></a>
                                     <!-- DropDown Menu -->
                                     <ul>
                                                                         <?php foreach ($categories as $subcategory) :
                                                                             if ($subcategory->parent_id == $saved_id) :  ?>
                                             <li><a href=<?= $this->Url->build(['controller' => 'Categories',
-                                                    'action' => 'view', $subcategory->id]); ?>><?= h($subcategory->description) ?></a>
+                                                    'action' => 'list', $subcategory->id]); ?>><?= h($subcategory->description) ?></a>
                                             </li>
                                                                             <?php endif; ?>
                                                                         <?php endforeach; ?>
