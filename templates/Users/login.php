@@ -13,7 +13,7 @@ $this->layout = 'logged_out';
         <table class="table table-bordered" id="products" width="100%" cellspacing="0">
             <?= $this->Form->create() ?>
             <fieldset>
-                <?= $this->Form->control('email') ?>
+                <?= $this->Form->control('username') ?>
                 <?= $this->Form->control('password') ?>
             </fieldset>
             <br>
