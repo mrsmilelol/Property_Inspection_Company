@@ -126,7 +126,6 @@ class UsersController extends AppController
                 $user->token = $token;
                 $user->status = '0';
                 $user->verified = '0';
-                $this->Flash->success(__('Please check your email to verify the account.'));
                 $emailSignUp = new Mailer('default');
                 //$mailer->setTransport('default'); //your email configuration name
                 $userTable->save($user);

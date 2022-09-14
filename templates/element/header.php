@@ -49,16 +49,19 @@
                             exit;
                             if ($path_parts[2] == 'admin') : */?>
                             <?php /*debug($this->request->getSession()->read('Auth.user_type_id')); exit; */?>
+                            <?php $userType = $this->request->getSession()->read('Auth.user_type_id') ?>
                             <!-- Only displays back to dashboard button if user is an admin -->
-                            <?php if ($this->request->getSession()->read('Auth.user_type_id') == 1) : ?>
+                            <?php if ($userType == 1) : ?>
                                 <a href=<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'Products','action' => 'index']) ?>>
                                     <i class="fa fa-home"></i>
                                     Back to Dashboard
                                 </a>
                             <?php endif; ?>
+                            <?php if ($userType == 3 || $userType == null) : ?>
                             <a href=<?= $this->Url->build(['controller' => 'WholesaleRequests', 'action' => 'request']); ?>>
                                 Wholesale Application
                             </a>
+                            <?php endif; ?>
                             <a href=<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display','about']); ?>>
                                 About Us
                             </a>

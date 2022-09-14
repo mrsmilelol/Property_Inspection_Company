@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Event\EventInterface;
+
 /**
  * Categories Controller
  *
@@ -11,6 +13,14 @@ namespace App\Controller;
  */
 class CategoriesController extends AppController
 {
+    public function beforeFilter(EventInterface $event)
+    {
+        parent::beforeFilter($event);
+        // for all controllers in our application, make index and view
+        // actions public, skipping the authentication check.
+        $this->Authentication->addUnauthenticatedActions(['list']);
+    }
+
     public function list($id = null)
     {
 //        $this->loadModel('Categories');

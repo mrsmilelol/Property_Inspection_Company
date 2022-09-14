@@ -6,6 +6,7 @@ namespace App\Controller;
 //use function App\Controller\__;
 //use const DS;
 //use const WWW_ROOT;
+use Cake\Event\EventInterface;
 
 /**
  * Products Controller
@@ -15,6 +16,14 @@ namespace App\Controller;
  */
 class ProductsController extends AppController
 {
+    public function beforeFilter(EventInterface $event)
+    {
+        parent::beforeFilter($event);
+        // for all controllers in our application, make index and view
+        // actions public, skipping the authentication check.
+        $this->Authentication->addUnauthenticatedActions(['cart','detail', 'shop']);
+    }
+
     public function initialize():void
     {
         parent::initialize();
