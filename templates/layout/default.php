@@ -34,7 +34,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display','main']) ?>">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display','main','prefix' => false]) ?>">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-toolbox"></i>
             </div>
@@ -46,7 +46,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'shop']) ?>">
+            <a class="nav-link" href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'shop','prefix' => false]) ?>">
                 <i class="fas fa-fw fa-store-alt"></i>
                 <span>Shop</span></a>
         </li>

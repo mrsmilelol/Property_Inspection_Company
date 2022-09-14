@@ -130,7 +130,7 @@ $this->layout = 'front';
             <div class="account-details">
                 <div class="col-lg-6 col-sm-6" style="width: 100%">
                     <form action="#" class="create-account-form" method="post">
-<!--                        <h1 class="heading-title">Create an account</h1>-->
+                        <!--                        <h1 class="heading-title">Create an account</h1>-->
                         <p class="form-row">
                             <?= $this->Form->create($wholesaleRequest) ?>
                         <fieldset>
