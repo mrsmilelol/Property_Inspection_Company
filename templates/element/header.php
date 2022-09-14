@@ -41,14 +41,16 @@
 <!--                        </div>-->
                         <div class="header-user-info pull-right">
                             <?php
-//                            debug($_SERVER['REQUEST_URI']);
-//                            exit;
+/*                            debug($_SERVER['REQUEST_URI']);
+                            exit;
                             $url_parts = parse_url($_SERVER['REQUEST_URI']);
                             $path_parts=explode('/', $url_parts['path']);
-                            /*debug($path_parts[2]);
-                            exit;*/
-                            ?>
-                            <?php if ($path_parts[2] == 'admin') : ?>
+                            debug($path_parts[2]);
+                            exit;
+                            if ($path_parts[2] == 'admin') : */?>
+                            <?php /*debug($this->request->getSession()->read('Auth.user_type_id')); exit; */?>
+                            <!-- Only displays back to dashboard button if user is an admin -->
+                            <?php if ($this->request->getSession()->read('Auth.user_type_id') == 1) : ?>
                                 <a href=<?= $this->Url->build(['controller' => 'Products','action' => 'index']) ?>>
                                     <i class="fa fa-home"></i>
                                     Back to Dashboard
@@ -67,6 +69,12 @@
 <!--                                <i class="fa fa-heart"></i>-->
 <!--                                My wishlist-->
 <!--                            </a>-->
+                            <?php if ($this->request->getSession()->read('Auth')): ?>
+                            <a href=<?= $this->Url->build(['controller' => 'users', 'action' => 'logout','prefix' => false]); ?>>
+                                <i class="fa fa-share-square-o"></i>
+                                Log out
+                            </a>
+                            <?php else: ?>
                             <a href=<?= $this->Url->build(['controller' => 'users', 'action' => 'login', 'prefix' => false]); ?>>
                                 <i class="fa fa-user"></i>
                                 Log In
@@ -75,10 +83,7 @@
                                 <i class="fa fa-unlock-alt"></i>
                                 Sign up
                             </a>
-                            <a href=<?= $this->Url->build(['controller' => 'users', 'action' => 'logout','prefix' => false]); ?>>
-                            <i class="fa fa-share-square-o"></i>
-                                Log out
-                            </a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
