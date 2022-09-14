@@ -135,18 +135,37 @@ $this->layout = 'front';
                             <?= $this->Form->create($wholesaleRequest) ?>
                         <fieldset>
                             <?php
-                            echo $this->Form->control('business_name', ['label' => 'Business name', 'id' => 'maxWidth']);
-                            echo $this->Form->control('website', ['id' => 'maxWidth', 'id' => 'maxWidth']);
-                            echo $this->Form->control('abn', ['label' => 'ABN', 'id' => 'maxWidth']);
-                            echo $this->Form->control('business_phone', ['label'=>'Business phone', 'id' => 'maxWidth']);
-                            echo $this->Form->control('address_line_1', ['label' => 'Address line 1', 'id' => 'maxWidth']);
+                            echo $this->Form->control('business_name', [
+                                'label' => ['class' => 'required', 'text' => 'Business name'],
+                                'id' => 'maxWidth']);
+                            echo $this->Form->control('website', ['id' => 'maxWidth']);
+                            echo $this->Form->control('abn', [
+                                'label' => ['class' => 'required', 'text' => 'ABN'],
+                                'id' => 'maxWidth']);
+                            echo $this->Form->control('business_phone', [
+                                'label' => ['class' => 'required', 'text' => 'Business phone'],
+                                'id' => 'maxWidth']);
+                            echo $this->Form->control('address_line_1', [
+                                'label' => ['class' => 'required', 'text' => 'Address line 1'],
+                                'id' => 'maxWidth']);
                             echo $this->Form->control('address_line_2', ['label' => 'Address line 2', 'id' => 'maxWidth']);
-                            echo $this->Form->control('first_name', ['label' => 'Contact person first name', 'id' => 'maxWidth']);
-                            echo $this->Form->control('last_name', ['label' => 'Contact person last name', 'id' => 'maxWidth']);
-                            echo $this->Form->control('phone', ['id' => 'maxWidth']);
-                            echo $this->Form->control('email', ['id' => 'maxWidth']);
-                            echo $this->Form->control('position', ['id' => 'maxWidth']);
-                            echo $this->Form->control('message', ['label' => 'Additional information', 'id' => 'maxWidth', 'type' => 'textarea', 'rows' => '5']);
+                            echo $this->Form->control('first_name', [
+                                'label' => ['class' => 'required', 'text' => 'Contact person first name'],
+                                'id' => 'maxWidth']);
+                            echo $this->Form->control('last_name', [
+                                'label' => ['class' => 'required', 'text' => 'Contact person last name'],
+                                'id' => 'maxWidth']);
+                            echo $this->Form->control('phone', [
+                                'label' => ['class' => 'required'],
+                                'id' => 'maxWidth']);
+                            echo $this->Form->control('email', [
+                                'label' => ['class' => 'required'],
+                                'id' => 'maxWidth']);
+                            echo $this->Form->control('position', [
+                                'label' => ['class' => 'required'], 'id' => 'maxWidth']);
+                            echo $this->Form->control('message', [
+                                'label' => 'Additional information',
+                                'id' => 'maxWidth', 'type' => 'textarea', 'rows' => '5']);
                             //echo $this->Form->control('status');
                             //echo $this->Form->control('created_at');
                             //echo $this->Form->control('modified_at');
