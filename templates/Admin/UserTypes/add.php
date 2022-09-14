@@ -18,7 +18,7 @@ $this->Form->setTemplates($formTemplate);
         <table class="table table-bordered" id="products" width="100%" cellspacing="0">
             <?= $this->Form->create($userType) ?>
                 <?php
-                    echo $this->Form->control('name');
+                    echo $this->Form->control('name', ['label' => ['class' => 'required']]);
                     //echo $this->Form->control('created_at');
                     //echo $this->Form->control('modified_at');
                 ?>

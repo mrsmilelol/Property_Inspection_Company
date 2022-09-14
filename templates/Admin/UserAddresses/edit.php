@@ -19,13 +19,15 @@ $this->Form->setTemplates($formTemplate);
         <table class="table table-bordered" id="products" width="100%" cellspacing="0">
             <?= $this->Form->create($userAddress) ?>
                 <?php
-                    echo $this->Form->control('user_id', ['options' => $users, 'empty' => true]);
-                    echo $this->Form->control('address_line_1', ['label' => 'Address line 1']);
-                    echo $this->Form->control('address_line_2', ['label' => 'Address line 2']);
-                    echo $this->Form->control('city');
-                    echo $this->Form->control('country');
-                    echo $this->Form->control('state');
-                    echo $this->Form->control('postcode');
+                echo $this->Form->control('user_id', ['options' => $users, 'empty' => true,
+                    'label' => ['class' => 'required']]);
+                echo $this->Form->control('address_line_1', [
+                    'label' => ['class' => 'required', 'text' => 'Address line 1']]);
+                echo $this->Form->control('address_line_2', ['label' => 'Address line 2']);
+                echo $this->Form->control('city', ['label' => ['class' => 'required']]);
+                echo $this->Form->control('country', ['label' => ['class' => 'required']]);
+                echo $this->Form->control('state', ['label' => ['class' => 'required']]);
+                echo $this->Form->control('postcode', ['label' => ['class' => 'required']]);
                     //echo $this->Form->control('created_at');
                     //echo $this->Form->control('modified_at');
                 ?>

@@ -58,7 +58,7 @@ class UserAddressesTable extends Table
     {
         $validator
             ->integer('user_id')
-            ->allowEmptyString('user_id');
+            ->notEmptyString('user_id');
 
         $validator
             ->scalar('address_line_1')
