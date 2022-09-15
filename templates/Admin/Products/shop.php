@@ -50,7 +50,7 @@ $this->layout = 'front';
             <div class="col-xs-12 col-sm-3">
                 <aside class="widget-title">
                     <p>Catalog</p>
-                    <input type="submit" value="Search" style="background-color: #000!important;">
+                    <input type="submit" value="查询">
                     <input type="hidden" value="" name="checks" class="checks">
                 </aside>
                 <div class="left-widget-content  indicator-banner">
