@@ -3847,3 +3847,7 @@ p.alert {
     display: flex;
     justify-content: center;
 }
+
+.mb-30 {
+    margin-bottom: 30px;
+}
