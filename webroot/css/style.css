@@ -1993,6 +1993,13 @@ h3.widget-subtitle {
 label {
   color: #333333;
 }
+
+label.required:after {
+    color: #e32;
+    content: ' *';
+    display:inline;
+}
+
 .price-filter .ui-slider.ui-slider-horizontal.ui-widget.ui-widget-content.ui-corner-all {
   margin: 6px 0 6px 10px;
   width: 91%;

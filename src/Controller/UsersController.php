@@ -126,7 +126,6 @@ class UsersController extends AppController
                 $user->token = $token;
                 $user->status = '0';
                 $user->verified = '0';
-                $this->Flash->success(__('Please check your email to verify the account.'));
                 $emailSignUp = new Mailer('default');
                 //$mailer->setTransport('default'); //your email configuration name
                 $userTable->save($user);
@@ -154,7 +153,7 @@ class UsersController extends AppController
                     $this->Flash->error('Error, unable to send email.');
                 }
 
-                return $this->redirect(['prefix' => 'Admin','action' => 'login']);
+                //return $this->redirect(['prefix' => false,'action' => 'login']);
             } else {
                 $this->Flash->error(__('Registration failed, please try again.'));
             }

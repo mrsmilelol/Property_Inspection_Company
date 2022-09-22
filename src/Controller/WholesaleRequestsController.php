@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Controller\Customer;
+namespace App\Controller;
 
 //use App\Controller\Wholesale\AppController;
 use Cake\Event\EventInterface;
@@ -80,7 +80,7 @@ class WholesaleRequestsController extends AppController
                         //$this->redirect(['controller'=>'Users','action'=>'addWholesale',$wholesaleRequest->id]);
                         //$this->Flash->success(__('The wholesale request has been saved.'));
 
-                        return $this->redirect(['prefix'=>'Customer','controller'=>'Pages','action' => 'display','main']);
+                        return $this->redirect(['controller'=>'Pages','action' => 'display','main']);
                     }
                     $this->Flash->error(__('The wholesale request could not be saved. Please, try again.'));
                 }

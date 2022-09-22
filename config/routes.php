@@ -51,7 +51,7 @@ return static function (RouteBuilder $routes) {
          * its action called 'display', and we pass a param to select the view file
          * to use (in this case, templates/Pages/home.php)...
          */
-        $builder->connect('/', ['controller' => 'Pages', 'action' => 'main','prefix' => 'Customer']);
+        $builder->connect('/', ['controller' => 'Pages', 'action' => 'main','prefix' => false]);
 
         /*
          * ...and connect the rest of 'Pages' controller's URLs.
@@ -88,20 +88,4 @@ return static function (RouteBuilder $routes) {
         $routes->fallbacks(DashedRoute::class);
     });
 
-//    Router::url(['controller' => 'Products', 'action' => 'shop', 'shop']);
-    /*
-     * If you need a different set of middleware or none at all,
-     * open new scope and define routes there.
-     *
-     * ```
-     * $routes->scope('/api', function (RouteBuilder $builder) {
-     *     // No $builder->applyMiddleware() here.
-     *
-     *     // Parse specified extensions from URLs
-     *     // $builder->setExtensions(['json', 'xml']);
-     *
-     *     // Connect API actions here.
-     * });
-     * ```
-     */
 };
