@@ -309,14 +309,14 @@ $this->layout = 'front';
                                             <span class="sale-label">Sale!</span>
                                         <?php endif; ?>
                                         <!--Product Action-->
-                                        <!--<div class="product-action">
+                                        <div class="product-action">
                                             <a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
                                             <a href="#" title="Add to Wishlist"><i class="fa fa-star"></i>
                                             </a>
                                             <a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
                                             </a>
                                             <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
-                                        </div>-->
+                                        </div>
                                     </div>
                                     <div class="product-content">
                                         <h5><a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="product "><?= $products[$x]->name ?></a></h5>
@@ -359,14 +359,14 @@ $this->layout = 'front';
                                                 <span class="sale-label">Sale!</span>
                                             <?php endif; ?>
                                             <!--Product Action-->
-                                            <!--<div class="product-action">
+                                            <div class="product-action">
                                                 <a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
                                                 <a href="#" title="Add to Wishlist"><i class="fa fa-star"></i>
                                                 </a>
                                                 <a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
                                                 </a>
                                                 <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
-                                            </div>-->
+                                            </div>
                                         </div>
                                         <div class="product-content">
                                             <h5><a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="product "><?= $products[$x]->name ?></a></h5>
@@ -409,14 +409,14 @@ $this->layout = 'front';
                                                 <span class="sale-label">Sale!</span>
                                             <?php endif; ?>
                                             <!--Product Action-->
-                                            <!--<div class="product-action">
+                                            <div class="product-action">
                                                 <a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
                                                 <a href="#" title="Add to Wishlist"><i class="fa fa-star"></i>
                                                 </a>
                                                 <a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
                                                 </a>
                                                 <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
-                                            </div>-->
+                                            </div>
                                         </div>
                                         <div class="product-content">
                                             <h5><a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="product "><?= $products[$x]->name ?></a></h5>

@@ -96,13 +96,13 @@
 
 
         <!--         Nav Item - Utilities Collapse Menu-->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="<?= $this->Url->build(['controller' => 'Stores','action' => 'index']) ?>"
+        <!--<li class="nav-item">
+            <a class="nav-link collapsed" href="<?/*= $this->Url->build(['controller' => 'Stores','action' => 'index']) */?>"
                aria-expanded="true" aria-controls="collapseOrderss">
                 <i class="fas fa-fw fa-store"></i>
                 <span>Stores</span>
             </a>
-        </li>
+        </li>-->
 
         <!-- Divider -->
         <hr class="sidebar-divider">

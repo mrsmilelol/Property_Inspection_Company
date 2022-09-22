@@ -291,159 +291,63 @@ $this->layout = 'front';
                 <div class="clearfix"></div>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="grid">
-                        <!-- Product display -->
-                        <div class="row">
+                        <!-- Product Display -->
+                        <div class="row-grid">
                             <?= $this->fetch('content') ?>
-                            <div class="col-xs-12 col-sm-6 col-md-4 first-in-line first-item-of-tablet-line first-item-of-mobile-line">
-                                <?php for ($x = 0; $x <= count($category->products)-1; $x+=3):?>
-                                <div class="single-product">
-                                    <!--product Content-->
-                                    <div class="product-img-content">
-                                        <!--Product Image-->
-                                        <div class="product-img">
-                                                <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="Printed Dress">
-                                                    <a><?= $this->Html->image($products[$x]['product_images'][0]->description,['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
+                            <?php foreach ($category->products as $c_product) :?>
+                                <?php $match = false; ?>
+                                <?php for ($x = 0; $x <= count($products)-1 and $match === false; $x++){
+                                    if ($products[$x]['id'] === $c_product->id){$match = true;}
+                                }?>
+                                <div class="col-xs-12 col-sm-6 col-md-4 mb-30">
+                                    <div class="single-product">
+                                        <!--Product Content-->
+                                        <div class="product-img-content">
+                                            <!--Product Image-->
+                                            <div class="product-img">
+                                                <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$c_product->id])?>" title="Printed Dress">
+                                                    <a><?= $this->Html->image($products[$x - 1]['product_images'][0]->description,['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
                                                 </a>
-                                        </div>
-                                        <span class="new-label">New</span>
-                                        <?php if ($this->Number->currency($products[$x]->wholesale_price) !== null and $this->Number->toPercentage($products[$x]->wholesale_price) > 0): ?>
-                                            <span class="sale-label">Sale!</span>
-                                        <?php endif; ?>
-                                        <!--Product Action-->
-                                        <div class="product-action">
-                                            <a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
-                                            <a href="#" title="Add to Wishlist"><i class="fa fa-star"></i>
-                                            </a>
-                                            <a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
-                                            </a>
-                                            <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <h5><a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="product "><?= $products[$x]->name ?></a></h5>
-                                        <!--Product Rating-->
-                                        <div class="rating-icon">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <!--Product Price-->
-                                        <?php if ($this->Number->currency($products[$x]->wholesale_price) !== null and $this->Number->toPercentage($products[$x]->wholesale_price) > 0): ?>
-                                            <div class="product-price">
-                                                <span class="new-price"><?=  $this->Number->currency($products[$x]->wholesale_price) ?></span>
-                                                <span class="old-price"><?=  $this->Number->currency($products[$x]->price) ?></span>
                                             </div>
-                                        <?php else: ?>
-                                            <div class="product-price">
-                                                <span class="new-price"><?=  $this->Number->currency($products[$x]->price) ?></span>
-                                            </div>
-                                        <?php endif; ?>
+                                            <span class="new-label">New</span>
+                                            <?php if ($this->Number->currency($c_product->wholesale_price) !== null and $this->Number->toPercentage($c_product->wholesale_price) > 0): ?>
+                                                <span class="sale-label">Sale!</span>
+                                            <?php endif; ?>
+                                            <!--Product Action-->
+                                            <!--<div class="product-action">
+                                                <a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
+                                                <a href="#" title="Add to Wishlist"><i class="fa fa-star"></i>
+                                                </a>
+                                                <a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
+                                                </a>
+                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
+                                            </div>-->
+                                        </div>
+                                        <div class="product-content">
+                                            <h5><a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$c_product->id])?>" title="product "><?= $c_product->name ?></a></h5>
+                                            <!--Product Rating-->
+                                            <!--<div class="rating-icon">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>-->
+                                            <!--Product Price-->
+                                            <?php if ($this->Number->currency($c_product->wholesale_price) !== null and $this->Number->toPercentage($c_product->wholesale_price) > 0): ?>
+                                                <div class="product-price">
+                                                    <span class="new-price"><?=  $this->Number->currency($c_product->wholesale_price) ?></span>
+                                                    <span class="old-price"><?=  $this->Number->currency($c_product->price) ?></span>
+                                                </div>
+                                            <?php else: ?>
+                                                <div class="product-price">
+                                                    <span class="new-price"><?=  $this->Number->currency($c_product->price) ?></span>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
                                     </div>
                                 </div>
-                                <?php endfor?>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-md-4 last-item-of-tablet-line">
-                                <?php for ($x = 1; $x <= count($category->products)-1; $x+=3):?>
-                                    <div class="single-product">
-                                        <!--product Content-->
-                                        <div class="product-img-content">
-                                            <!--Product Image-->
-                                            <div class="product-img">
-                                                <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="Printed Dress">
-                                                    <a><?= $this->Html->image($products[$x]['product_images'][0]->description,['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
-                                                </a>
-                                            </div>
-                                            <span class="new-label">New</span>
-                                            <?php if ($this->Number->currency($products[$x]->wholesale_price) !== null and $this->Number->toPercentage($products[$x]->wholesale_price) > 0): ?>
-                                                <span class="sale-label">Sale!</span>
-                                            <?php endif; ?>
-                                            <!--Product Action-->
-                                            <div class="product-action">
-                                                <a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
-                                                <a href="#" title="Add to Wishlist"><i class="fa fa-star"></i>
-                                                </a>
-                                                <a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
-                                                </a>
-                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <h5><a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="product "><?= $products[$x]->name ?></a></h5>
-                                            <!--Product Rating-->
-                                            <div class="rating-icon">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                            <!--Product Price-->
-                                            <?php if ($this->Number->currency($products[$x]->wholesale_price) !== null and $this->Number->toPercentage($products[$x]->wholesale_price) > 0): ?>
-                                                <div class="product-price">
-                                                    <span class="new-price"><?=  $this->Number->currency($products[$x]->wholesale_price) ?></span>
-                                                    <span class="old-price"><?=  $this->Number->currency($products[$x]->price) ?></span>
-                                                </div>
-                                            <?php else: ?>
-                                                <div class="product-price">
-                                                    <span class="new-price"><?=  $this->Number->currency($products[$x]->price) ?></span>
-                                                </div>
-                                            <?php endif; ?>
-                                        </div>
-                                    </div>
-                                <?php endfor; ?>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-md-4 last-in-line first-item-of-tablet-line last-item-of-mobile-line">
-                                <?php for ($x = 2; $x <= count($products)-1; $x+=3):?>
-                                    <div class="single-product">
-                                        <!--product Content-->
-                                        <div class="product-img-content">
-                                            <!--Product Image-->
-                                            <div class="product-img">
-                                                <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="Printed Dress">
-                                                    <a><?= $this->Html->image($products[$x]['product_images'][0]->description,['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
-                                                </a>
-                                            </div>
-                                            <span class="new-label">New</span>
-                                            <?php if ($this->Number->currency($products[$x]->wholesale_price) !== null and $this->Number->toPercentage($products[$x]->wholesale_price) > 0): ?>
-                                                <span class="sale-label">Sale!</span>
-                                            <?php endif; ?>
-                                            <!--Product Action-->
-                                            <div class="product-action">
-                                                <a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
-                                                <a href="#" title="Add to Wishlist"><i class="fa fa-star"></i>
-                                                </a>
-                                                <a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
-                                                </a>
-                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <h5><a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="product "><?= $products[$x]->name ?></a></h5>
-                                            <!--Product Rating-->
-                                            <div class="rating-icon">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                            <!--Product Price-->
-                                            <?php if ($this->Number->currency($products[$x]->wholesale_price) !== null and $this->Number->toPercentage($products[$x]->wholesale_price) > 0): ?>
-                                                <div class="product-price">
-                                                    <span class="new-price"><?=  $this->Number->currency($products[$x]->wholesale_price) ?></span>
-                                                    <span class="old-price"><?=  $this->Number->currency($products[$x]->price) ?></span>
-                                                </div>
-                                            <?php else: ?>
-                                                <div class="product-price">
-                                                    <span class="new-price"><?=  $this->Number->currency($products[$x]->price) ?></span>
-                                                </div>
-                                            <?php endif; ?>
-                                        </div>
-                                    </div>
-                                <?php endfor?>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
@@ -507,5 +411,3 @@ $this->layout = 'front';
 </div>
 <!--End of Quickview Product-->
 </html>
-
-
