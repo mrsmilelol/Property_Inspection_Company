@@ -72,12 +72,12 @@
 <!--                                <i class="fa fa-heart"></i>-->
 <!--                                My wishlist-->
 <!--                            </a>-->
-                            <?php if ($this->request->getSession()->read('Auth')): ?>
+                            <?php if ($this->request->getSession()->read('Auth')) : ?>
                             <a href=<?= $this->Url->build(['controller' => 'users', 'action' => 'logout','prefix' => false]); ?>>
                                 <i class="fa fa-share-square-o"></i>
                                 Log out
                             </a>
-                            <?php else: ?>
+                            <?php else : ?>
                             <a href=<?= $this->Url->build(['controller' => 'users', 'action' => 'login', 'prefix' => false]); ?>>
                                 <i class="fa fa-user"></i>
                                 Log In
@@ -100,19 +100,16 @@
             <div class="row">
                 <div class="col-lg-1 col-md-3 col-sm-6 col-xs-12">
                     <!-- Header Logo -->
-                    <div class="header-logo logo-main-page">
+                    <div class="header-logo logo-main-page" style="width: 150%; height: auto; max-width: 100px">
                         <a href=<?= $this->Url->build(['controller' => 'Pages',
                             'action' => 'display','main']); ?> title="Chelsea Furniture">
-                        <?= $this->Html->image(
-                            'Logo-circle.png',
-                            ['class' => 'img-responsive']
-                        ); ?>
+                        <?= $this->Html->image('Logo-circle.png', ['class' => 'img-fluid']); ?>
                         </a>
                     </div>
                 </div>
                 <!--Header Bottom Right Start-->
                 <div class="col-lg-2 col-md-1  col-sm-6 col-xs-11 header-right-inner">
-                    <div class="header-bottom-right pull-right">
+                    <div class="header-bottom-right pull-right" >
                         <div class="header-bottom-right-inner">
                             <ul>
                                 <!--<li>

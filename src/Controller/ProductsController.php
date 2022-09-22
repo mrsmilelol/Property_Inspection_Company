@@ -159,4 +159,5 @@ class ProductsController extends AppController
         $this->Flash->success('The shopping cart is cleared');
         return $this->redirect(['action' => 'index']);
     }
+
 }
