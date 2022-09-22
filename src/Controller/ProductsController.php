@@ -30,16 +30,27 @@ class ProductsController extends AppController
         $this->loadComponent('Cart');
     }
 
-    public function shop()
+    public function shop($id = null)
     {
 //        $this->loadModel('ProductImages');
-        $products = $this->Products->find()
-            ->contain(['ProductImages'])
-            ->all()->toArray();
+        $query = $this->Products->find('all');
+        $products = $query->contain(['ProductImages']);
+        if($id == 1){
+            $products = $products->where(['units_in_stock !=' => 0])->toArray();
+        }
+        elseif($id == 2){
+            $products = $products->where(['sale_price IS NOT' => null])->toArray();
+        }
+        else {
+            $products = $products->toArray();
+        }
+
+
         //$productImages = $this->ProductImages->find()->select(['product_id','description'])
 //            ->distinct(['product_id'])->toArray();
         $this->set(compact('products'));
     }
+
 
     /**
      * Details method
