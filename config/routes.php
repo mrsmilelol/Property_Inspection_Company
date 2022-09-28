@@ -88,4 +88,11 @@ return static function (RouteBuilder $routes) {
         $routes->fallbacks(DashedRoute::class);
     });
 
+    $routes->scope('/', function (RouteBuilder $builder) {
+        //... other routes
+        $builder->connect('/stripe', ['controller' => 'Stripes', 'action' => 'stripe']);
+        $builder->connect('/payment', ['controller' => 'Stripes', 'action' => 'payment']);
+
+        $builder->fallbacks();
+    });
 };

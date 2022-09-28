@@ -5,6 +5,7 @@
  */
 echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
 echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
+$this->layout = 'logged_out';
 ?>
 
 <div class="card shadow mb-4">
@@ -12,7 +13,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
         <h1 class="h3 mb-0 text-gray-800"><?= h($user->username) ?></h1>
     </div>
     <div class="card-body">
-        <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
+        <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
             <tr>
                     <th><?= __('Username') ?></th>
                     <td><?= h($user->username) ?></td>

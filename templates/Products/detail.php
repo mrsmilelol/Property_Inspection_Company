@@ -92,6 +92,11 @@ $this->layout = 'front';
                         <p class="media-body-title">AUD $<?= h($product->price) ?><span> tax incl.</span></p>
                         <p> Brand: <?= h($product->brand) ?></p>
                         <p> Style: <?= h($product->style) ?></p>
+                        <?php if ($product->units_in_stock > 0): ?>
+                            <p> Stock status: In Stock</p>
+                        <?php else: ?>
+                            <p> Stock status: Out Of Stock</p>
+                        <?php endif; ?>
 
                     </div>
                     <div class="pd-description">
