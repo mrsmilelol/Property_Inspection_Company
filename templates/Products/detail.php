@@ -68,7 +68,7 @@ $this->layout = 'front';
 <!--                        </div>-->
                         <div id="my-tab-content" class="tab-content">
                             <div class="tab-pane active" id="view1">
-                                <a class="venobox" href="<?php echo '/img/' . $productImages[0]->description ?>" data-gall="gallery" id="big_img" title=""><?= $this->Html->image($productImages[0]->description, ['alt' => 'CakePHP','class' => 'img-fluid']); ?>
+                                <a class="venobox" href="<?php echo '/team09-app_fit3048/img/' . $productImages[1]->description ?>" data-gall="gallery" id="big_img" title=""><?= $this->Html->image($productImages[0]->description, ['alt' => 'CakePHP','class' => 'img-fluid','onclick'=>'checkimg(this)']); ?>
                                     </a>
                             </div>
                         </div>
@@ -168,6 +168,13 @@ $this->layout = 'front';
   function check_img(e){
     var a = $(e).attr('src');
       $("#big_img img").attr('src',a)
+      // console.log(a)
+  }
+
+  function checkimg(e)
+  {
+      var a = $(e).attr('src');
+      $(".venobox").attr('href',a)
       console.log(a)
   }
 </script>
