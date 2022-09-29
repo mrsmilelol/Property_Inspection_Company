@@ -46,7 +46,7 @@ $this->layout = 'front';
 <div class="all-product-sidebar-area section-padding2">
     <div class="container">
         <div class="row">
-            <form action="/admin/products/shop" method="get">
+            <form action="/team09-app_fit3048/products/shop" method="get">
             <div class="col-xs-12 col-sm-3">
                 <aside class="widget-title">
                     <p>Catalog</p>
