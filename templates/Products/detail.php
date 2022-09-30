@@ -96,6 +96,11 @@ $this->layout = 'front';
                         <?php endif; ?>
                         <p> Brand: <?= h($product->brand) ?></p>
                         <p> Style: <?= h($product->style) ?></p>
+                        <?php if ($product->units_in_stock > 0): ?>
+                            <p> Stock status: In Stock</p>
+                        <?php else: ?>
+                            <p> Stock status: Out Of Stock</p>
+                        <?php endif; ?>
 
                     </div>
                     <div class="pd-description">

@@ -67,11 +67,11 @@ $this->layout = 'front';
                             <ul>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">On Sale</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'shop',1])?>">In Stock</a>
                                 </li>
                                 <li>
                                     <input type="checkbox">
-                                    <a href="#">In Stock</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'shop',2])?>">On Sale</a>
                                 </li>
                             </ul>
                         </div>
