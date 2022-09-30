@@ -23,8 +23,7 @@ $this->Form->setTemplates($formTemplate);
                     echo $this->Form->control('city');
                     echo $this->Form->control('country');
                     echo $this->Form->control('state');
-                    echo $this->Form->control('post_code');
-                    echo $this->Form->control('phone');
+                    echo $this->Form->control('post_code', ['label'=>'Postcode']);
                     //echo $this->Form->control('created_at');
                     //echo $this->Form->control('modified_at');
                 ?>

@@ -33,23 +33,19 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <td><?= h($store->state) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Post Code') ?></th>
+                    <th><?= __('Postcode') ?></th>
                     <td><?= h($store->post_code) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Phone') ?></th>
-                    <td><?= h($store->phone) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Id') ?></th>
+                    <th><?= __('ID') ?></th>
                     <td><?= $this->Number->format($store->id) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Created At') ?></th>
+                    <th><?= __('Created at') ?></th>
                     <td><?= h($store->created_at) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Modified At') ?></th>
+                    <th><?= __('Modified at') ?></th>
                     <td><?= h($store->modified_at) ?></td>
                 </tr>
             </table>

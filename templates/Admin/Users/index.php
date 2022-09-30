@@ -26,6 +26,11 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <th><?= h('Email') ?></th>
                     <th><?= h('Role') ?></th>
                     <th><?= h('Change status') ?></th>
+                    <?php $userMaster = $this->request->getSession()->read('Auth.master') ?>
+                    <!-- Only displays Change access level button if user has access at top level -->
+                    <?php if ($userMaster == 1) : ?>
+                    <th><?= h('Change access level') ?></th>
+                    <?php endif; ?>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
                 </thead>
@@ -56,6 +61,25 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                             <?php endif; ?>
                         </td>
 
+                        <!-- Only displays if user has access at top level -->
+                        <?php if ($userMaster == 1) : ?>
+                            <td>
+                                <?php if ($user->master == 1) : ?>
+                                    <?= $this->Form->postLink(
+                                        __('Downgrade'),
+                                        ['action' => 'userMaster', $user->id, $user->master],
+                                        ['block' => true, 'confirm' => __('Are you sure you want to downgrade this user # {0}?', $user->id)]
+                                    ) ?>
+                                <?php else : ?>
+                                    <?= $this->Form->postLink(
+                                        __('Upgrade'),
+                                        ['action' => 'userMaster', $user->id, $user->master],
+                                        ['block' => true, 'confirm' => __('Are you sure you want to upgrade this user # {0}?', $user->id)]
+                                    ) ?>
+                                <?php endif; ?>
+                            </td>
+                        <?php endif; ?>
+
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
                             <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
@@ -75,4 +99,3 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
         $('#products').DataTable();
     } );
 </script>
-

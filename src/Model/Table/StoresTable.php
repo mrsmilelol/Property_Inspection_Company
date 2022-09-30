@@ -81,14 +81,6 @@ class StoresTable extends Table
             ->allowEmptyString('post_code');
 
         $validator
-            ->scalar('phone')
-            ->maxLength('phone', 17)
-            ->requirePresence('phone', 'create')
-            ->notEmptyString('phone')
-            ->numeric('phone')
-            ->regex('phone', '/^(?:\+?61|0)[2-478](?:[ -]?[0-9]){8}$/', 'Invalid mobile number, try +61413062555');
-
-        $validator
             ->dateTime('created_at')
             ->notEmptyDateTime('created_at');
 

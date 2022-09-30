@@ -79,9 +79,11 @@ class WholesaleRequestsTable extends Table
 
         $validator
             ->scalar('business_phone')
-            ->maxLength('business_phone', 64)
+            ->maxLength('business_phone', 17)
             ->requirePresence('business_phone', 'create')
-            ->notEmptyString('business_phone');
+            ->notEmptyString('business_phone')
+            ->numeric('business_phone')
+            ->regex('business_phone', '/^(?:\+?61|0)[2-478](?:[ -]?[0-9]){8}$/', 'Invalid phone number, try +61313062555');
 
         $validator
             ->scalar('address_line_1')
