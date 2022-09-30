@@ -168,6 +168,7 @@ class ProductsController extends AppController
         $param = $_GET;
         $ids = $param['checks']??'';
         $price = $param['price']??'';
+
         if (!empty($price)){
             $price = str_replace('£','',$price);
             $price = str_replace('+','',$price);
@@ -176,12 +177,13 @@ class ProductsController extends AppController
             $max_p = $price[1];
         }
 
+
         $sql = "SELECT a.*,b.description as img from products as a
 left join product_images as b on a.id = b.product_id
 LEFT JOIN categories_products as c on c.product_id = a.id
-left join categories as d on d.id = c.category_id group by a.id;";
+left join categories as d on d.id = c.category_id group by a.id ;";
 
-        if (!empty($ids) && !empty($price)){
+        if (!empty($ids) && !empty($price) && $order_p){
         $sql = "SELECT a.*,b.description as img from products as a
 left join product_images as b on a.id = b.product_id
 LEFT JOIN categories_products as c on c.product_id = a.id

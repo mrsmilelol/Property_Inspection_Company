@@ -27,6 +27,13 @@ class CategoriesController extends AppController
         $category = $this->Categories->get($id, [
             'contain' => ['ParentCategories', 'Products', 'ChildCategories'],
         ]);
+        $order = $_GET['order']??'';
+        $order_p = '';
+        if($order){
+            $order_arr = explode('_',$order);
+            $order_p = $order_arr[0].' '.$order_arr[1];
+        }
+
         $parentCategories = $this->Categories->find('list');
         $products = $this->Categories->Products->find()
             //->where(['Categories.parent_id IS'=>null]))

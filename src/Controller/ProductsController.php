@@ -66,13 +66,18 @@ class ProductsController extends AppController
             $min_p = $price[0];
             $max_p = $price[1];
         }
-
+        $order = $param['order']??'';
+        $order_p = '';
+        if($order){
+            $order_arr = explode('_',$order);
+            $order_p = $order_arr[0].' '.$order_arr[1];
+        }
         $sql = "SELECT a.*,b.description as img from products as a
 left join product_images as b on a.id = b.product_id
 LEFT JOIN categories_products as c on c.product_id = a.id
 left join categories as d on d.id = c.category_id group by a.id;";
 
-        if (!empty($ids) && !empty($price)){
+        if (!empty($ids) && !empty($price) && $order_p){
             $sql = "SELECT a.*,b.description as img from products as a
 left join product_images as b on a.id = b.product_id
 LEFT JOIN categories_products as c on c.product_id = a.id
@@ -91,9 +96,15 @@ left join product_images as b on a.id = b.product_id
 LEFT JOIN categories_products as c on c.product_id = a.id
 left join categories as d on d.id = c.category_id where a.price BETWEEN ".$min_p." and ".$max_p." group by a.id;";
             }
-
+            if ($order_p){
+                $sql = "SELECT a.*,b.description as img from products as a
+left join product_images as b on a.id = b.product_id
+LEFT JOIN categories_products as c on c.product_id = a.id
+left join categories as d on d.id = c.category_id group by a.id order by ".$order_p;
+            }
 
         }
+
         $products = $this->conn->execute($sql);
         $products = $products->fetchAll('assoc');
 //        var_dump($products);
