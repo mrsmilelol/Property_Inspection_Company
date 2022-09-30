@@ -24,7 +24,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                         <th><?= h('Country') ?></th>
                         <th><?= h('State') ?></th>
                         <th><?= h('Postcode') ?></th>
-                        <th><?= h('Phone') ?></th>
                         <th data-visible="false"><?= h('created_at') ?></th>
                         <th data-visible="false"><?= h('modified_at') ?></th>
                         <th class="actions"><?= __('Actions') ?></th>
@@ -40,12 +39,12 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                         <td><?= h($store->country) ?></td>
                         <td><?= h($store->state) ?></td>
                         <td><?= h($store->post_code) ?></td>
-                        <td><?= h($store->phone) ?></td>
                         <td><?= h($store->created_at) ?></td>
                         <td><?= h($store->modified_at) ?></td>
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $store->id]) ?>
                             <?= $this->Html->link(__('Edit'), ['action' => 'edit', $store->id]) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $store->id], ['confirm' => __('Are you sure you want to delete # {0}?', $store->id)]) ?>
                         </td>
                     </tr>
                     <?php endforeach; ?>

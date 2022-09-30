@@ -245,7 +245,7 @@ class UsersController extends AppController
     }
 
     /**
-     * userStatus method changes the user status from 0 to 1 and vise versa allowing to disable user access
+     * userStatus method changes the user status from 0 to 1 and vice versa allowing to disable user access
      *
      * @param $id
      * @param $status
@@ -264,7 +264,33 @@ class UsersController extends AppController
         }
         //notify user about status being changed
         if ($this->Users->save($user)) {
-            $this->Flash->success(__('The users status has changed.'));
+            $this->Flash->success(__('The user status has changed.'));
+        }
+
+        return $this->redirect(['action' => 'index']);
+    }
+
+    /**
+     * userMaster method changes the user master value to 1 and vice versa allowing access at the topmost level
+     *
+     * @param $id
+     * @param $master
+     * @return \Cake\Http\Response|null|void Redirects to index.
+     */
+    public function userMaster($id = null, $master)
+    {
+        $this->request->allowMethod(['post']);
+        //get user id from Users
+        $user = $this->Users->get($id);
+        //change user master value
+        if ($master == 1) {
+            $user->master = 0;
+        } else {
+            $user->master = 1;
+        }
+        //notify user about master value (and hence access level) being changed
+        if ($this->Users->save($user)) {
+            $this->Flash->success(__('The user level of access has changed.'));
         }
 
         return $this->redirect(['action' => 'index']);

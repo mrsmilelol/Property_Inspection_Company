@@ -19,6 +19,7 @@ use Cake\ORM\Entity;
  * @property int|null $user_type_id
  * @property string|null $token
  * @property int $status
+ * @property int $master
  * @property \Cake\I18n\FrozenTime $created_at
  * @property \Cake\I18n\FrozenTime $modified_at
  *
@@ -48,6 +49,7 @@ class User extends Entity
         'user_type_id' => true,
         'token' => true,
         'status' => true,
+        'master' => true,
         'created_at' => true,
         'modified_at' => true,
         'user_type' => true,
