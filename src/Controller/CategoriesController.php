@@ -33,12 +33,14 @@ class CategoriesController extends AppController
             $order_arr = explode('_',$order);
             $order_p = $order_arr[0].' '.$order_arr[1];
         }
-
+//        print_r($order_p);exit();
         $parentCategories = $this->Categories->find('list');
         $products = $this->Categories->Products->find()
             //->where(['Categories.parent_id IS'=>null]))
             ->contain(['ProductImages'])
+
             ->all()->toArray();
+
         $this->set(compact('category', 'parentCategories', 'products'));
     }
 }
