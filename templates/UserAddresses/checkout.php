@@ -13,6 +13,26 @@ $formTemplate = [
 ];
 $this->Form->setTemplates($formTemplate);
 $this->layout = 'front';
+
+//require_once 'vendor/autoload.php';
+\Stripe\Stripe::setApiKey('sk_test_51LkgUlGRmWCorjcXA038yfpvxDxs4RGCgZjVodGkU4lVz37N5Uo94ig9MZg2YCCGDZSwaT0vSUmFpUYjNFnI9qOi00eWvmMRNg');
+
+$session = \Stripe\Checkout\Session::create([
+    'payment_method_types' => ['card'],
+    'line_items' => [[
+        'price_data' => [
+            'currency' => 'aud',
+            'product_data' => [
+                'name' => 'T-shirt',
+            ],
+            'unit_amount' => 2000,
+        ],
+        'quantity' => 1,
+    ]],
+    'mode' => 'payment',
+    'success_url' => 'http://localhost:8080/success',
+    'cancel_url' => 'http://example.com/cancel',
+]);
 ?>
 
 <!doctype html>
@@ -92,11 +112,11 @@ $this->layout = 'front';
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="breadcrumb-single">
                     <ul class="breadcrumbs">
-                        <li><a href="index.html" title="Return to Home">
-                                <i class="fa fa-home"></i>
-                                Home
-                            </a></li>
+                        <li><a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'main'])?> "><i class="fa fa-home"></i>Home</a></li>
                         <li>
+                            <span>></span>
+                        </li>
+                        <li><a href="<?= $this->Url->build(['controller' => 'products', 'action' => 'cart'])?> "><i class="fa fa-shopping-cart"></i>Shopping Cart</a></li>
                             <span>></span>
                         </li>
                         <li>Checkout</li>
@@ -173,7 +193,7 @@ $this->layout = 'front';
                         </div>
                         <div class="col-md-6">
                             <p class="form-row">
-                                <?php echo $this->Form->control('Town/City', ['placeholder' => 'Town / City','label' => ['class' => 'required']]); ?>
+                                <?php echo $this->Form->control('city', ['placeholder' => 'Town / City','label' => ['class' => 'required']]); ?>
                             </p>
                         </div>
                         <div class="col-md-6">
@@ -335,5 +355,16 @@ $this->layout = 'front';
 <!-- main JS
 ============================================ -->
 <script src="js/main.js"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    var stripe = Stripe('pk_test_51LkgUlGRmWCorjcXsDFRkKYqWTuPWk8mGeKtr6398t7o55wnltXdYpUjAqaDzSfHb426KyXxxCtfC2wWi6tV7IB700R4ElytR1');
+    const btn = document.getElementById("checkout-button")
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        stripe.redirectToCheckout({
+            sessionId: "<?php echo $session->id; ?>"
+        });
+    });
+</script>
 </body>
 </html>

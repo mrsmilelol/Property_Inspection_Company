@@ -21,6 +21,26 @@
 
 $cakeDescription = 'CakePHP: the rapid development php framework';
 $this->layout = 'front';
+
+//require_once 'vendor/autoload.php';
+\Stripe\Stripe::setApiKey('sk_test_51LkgUlGRmWCorjcXA038yfpvxDxs4RGCgZjVodGkU4lVz37N5Uo94ig9MZg2YCCGDZSwaT0vSUmFpUYjNFnI9qOi00eWvmMRNg');
+
+$session = \Stripe\Checkout\Session::create([
+    'payment_method_types' => ['card'],
+    'line_items' => [[
+        'price_data' => [
+            'currency' => 'aud',
+            'product_data' => [
+                'name' => 'T-shirt',
+            ],
+            'unit_amount' => 2000,
+        ],
+        'quantity' => 1,
+    ]],
+    'mode' => 'payment',
+    'success_url' => 'http://localhost:8080/success',
+    'cancel_url' => 'http://example.com/cancel',
+]);
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -32,7 +52,7 @@ $this->layout = 'front';
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-		<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.webp">
@@ -54,7 +74,6 @@ $this->layout = 'front';
         <!-- Main Style CSS -->
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/responsive.css">
-
     </head>
     <body>
 
@@ -62,15 +81,15 @@ $this->layout = 'front';
         <div class="breadcrumbs-area">
             <div class="container">
                 <ul class="breadcrumbs">
-                    <li><a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'main'])?> "><i class="fa fa-home"></i>Home</a></li>
+                    <li><a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'main'])?> "><i class="fa fa-home"></i> Home</a></li>
                     <li><span>></span></li>
-                    <li class="active">Shopping Cart</li>
+                    <li class="active"><i class="fa fa-shopping-cart"></i> Shopping Cart</li>
                 </ul>
             </div>
         </div>
         <!-- Breadcrumbs Area End -->
 
-		<!--Cart Main Area Start-->
+        <!--Cart Main Area Start-->
         <div class="cart-main-area section-padding2">
             <div class="container">
                 <div class="row">
@@ -93,9 +112,8 @@ $this->layout = 'front';
                                 </thead>
                                 <tbody>
                                 <?php
-                                if ($orderItems!=null):
-                                foreach($orderItems['Orderitems'] as $orderItem): ?>
-
+                                if ($orderItems != null) :
+                                    foreach ($orderItems['Orderitems'] as $orderItem) : ?>
                                 <tr>
                                         <td><a href="<?= $this->Url->build(['controller' => 'products', 'action' => 'detail',$orderItem['product_id']])?>"><?= $orderItem['name']?></a></td>
                                         <td><?= $this->Number->currency($orderItem['price'])?></td>
@@ -113,7 +131,8 @@ $this->layout = 'front';
                                         </td>
                                     </tr>
                                 </tbody>
-                                <?php endforeach; endif?>
+                                    <?php endforeach;
+                                endif?>
                             </table>
                         </div>
                     </div>
@@ -149,11 +168,12 @@ $this->layout = 'front';
                                 <table class="table table-borderless text-end mb-0">
                                     <tbody>
                                         <tr>
-                                            <?php $subtotal=0;
-                                            if ($orderItems!=null):
-                                            foreach($orderItems['Orderitems'] as $orderItem):
-                                                $subtotal = $subtotal+$orderItem['price'];
-                                            endforeach;endif;?>
+                                            <?php $subtotal = 0;
+                                            if ($orderItems != null) :
+                                                foreach ($orderItems['Orderitems'] as $orderItem) :
+                                                    $subtotal = $subtotal + $orderItem['price'];
+                                                endforeach;
+                                            endif;?>
 <!--                                            <th>Subtotal</th>-->
 <!--                                            <td><strong>--><!--</strong></td>-->
 <!--                                        </tr>-->
@@ -181,18 +201,18 @@ $this->layout = 'front';
                                         </tr>
                                     </tfoot>-->
                                 </table>
-                                <a class="readmore" href="#">Proceed to Checkout</a>
+                                <a class="readmore" href="<?= $this->Url->build(['controller' => 'user_addresses', 'action' => 'checkout','prefix' => false])?> ">Proceed to Checkout</a>
                             </div>
                         </div>
                     </div>
 
                 </div>
-			</div>
-		</div>
-		<!--Cart Main Area End-->
+            </div>
+        </div>
+        <!--Cart Main Area End-->
 
 
-		<!-- back To Top Product-->
+        <!-- back To Top Product-->
         <button id="scrollUp">
             <i class="fa fa-arrow-up"></i>
         </button>
@@ -221,6 +241,17 @@ $this->layout = 'front';
         <!-- Main JS -->
         <script src="assets/js/main.js"></script>
 
-
+        <!-- Stripe JS -->
+        <script src="https://js.stripe.com/v3/"></script>
+        <script>
+            var stripe = Stripe('pk_test_51LkgUlGRmWCorjcXsDFRkKYqWTuPWk8mGeKtr6398t7o55wnltXdYpUjAqaDzSfHb426KyXxxCtfC2wWi6tV7IB700R4ElytR1');
+            const btn = document.getElementById("checkout-button")
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                stripe.redirectToCheckout({
+                    sessionId: "<?php echo $session->id; ?>"
+                });
+            });
+        </script>
     </body>
 </html>
