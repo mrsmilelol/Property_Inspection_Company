@@ -6,6 +6,7 @@ namespace App\Controller;
 //use function App\Controller\__;
 //use const DS;
 //use const WWW_ROOT;
+use Cake\Datasource\ConnectionManager;
 use Cake\Controller\ComponentRegistry;
 use Cake\Database\Connection;
 use Cake\Database\Driver\Mysql;
@@ -33,9 +34,7 @@ class ProductsController extends AppController
 //            'username' => 'root',
 //            'password' => 'root',
 //        ]);
-        $conn = new Connection([
-            'driver' => Mysql::class,
-        ]);
+        $conn = ConnectionManager::get('default');
         $this->conn = $conn;
     }
 
