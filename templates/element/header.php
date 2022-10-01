@@ -57,6 +57,19 @@
                                     Back to Dashboard
                                 </a>
                             <?php endif; ?>
+                            <!-- Only displays my account button if user is a customer -->
+                            <?php if ($userType == 2) : ?>
+                                <a href=<?= $this->Url->build(['prefix' => 'Wholesale', 'controller' => 'Products','action' => 'index']) ?>>
+                                    <i class="fa fa-home"></i>
+                                    My Account
+                                </a>
+                            <?php endif; ?>
+                            <?php if ($userType == 3) : ?>
+                                <a href=<?= $this->Url->build(['prefix' => 'Customer', 'controller' => 'Users','action' => 'dashboard']) ?>>
+                                    <i class="fa fa-home"></i>
+                                    My Account
+                                </a>
+                            <?php endif; ?>
                             <?php if ($userType == 3 || $userType == null) : ?>
                             <a href=<?= $this->Url->build(['controller' => 'WholesaleRequests', 'action' => 'request']); ?>>
                                 Wholesale Application

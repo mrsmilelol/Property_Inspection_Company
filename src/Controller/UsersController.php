@@ -170,7 +170,7 @@ class UsersController extends AppController
             $verify->verified = '1';
             $verify->status = 1;
             $this->Users->save($verify);
-            $this->Flash->success(__('Your email has been verified, and please login now.'));
+            $this->Flash->success(__('Your email has been verified, please login now.'));
         } else {
             $this->Flash->error(__('Token does not exist'));
         }
