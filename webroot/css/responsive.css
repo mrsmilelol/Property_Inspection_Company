@@ -406,7 +406,7 @@ blockquote {
   padding: 10px 15px;
 }
 .create-account-form, .login-form {
-  min-height: 210px;
+  min-height: 10px;
 }
 .left-blog-sidebar .post-info {
   padding-top: 0;
@@ -420,6 +420,11 @@ blockquote {
 .my-account-area ul.myaccount-link-list li a i {
   padding: 8px 0 0;
 }
+    .myaccount-content {
+        padding: 20px 15px;
+    }
+
+
 .addresses-lists .panel-heading a span {
   margin-left: 10px;
 }

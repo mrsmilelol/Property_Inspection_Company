@@ -180,12 +180,10 @@ $this->layout = 'front';
                                 'type' => 'submit',
                                 'id' => 'submitlogin',
                                 'name' => 'SubmitLogin',
-                                'class' => '',
+                                'class' => ''
                             ]) ?>
                         </p>
-
                         <?= $this->Form->end() ?>
-                        </p>
                     </form>
                 </div>
             </div>

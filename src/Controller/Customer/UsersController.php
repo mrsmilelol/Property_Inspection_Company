@@ -50,6 +50,8 @@ class UsersController extends AppController
         $this->set(compact('user'));
     }
 
+    public function dashboard(){}
+
 
 
 //    /**
