@@ -6,6 +6,10 @@ namespace App\Controller;
 //use function App\Controller\__;
 //use const DS;
 //use const WWW_ROOT;
+use Cake\Datasource\ConnectionManager;
+use Cake\Controller\ComponentRegistry;
+use Cake\Database\Connection;
+use Cake\Database\Driver\Mysql;
 use Cake\Event\EventInterface;
 
 /**
@@ -16,6 +20,21 @@ use Cake\Event\EventInterface;
  */
 class ProductsController extends AppController
 {
+
+    private $conn;
+
+    public function __construct(?ServerRequest $request = null, ?Response $response = null, ?string $name = null, ?EventManagerInterface $eventManager = null, ?ComponentRegistry $components = null)
+    {
+        parent::__construct($request, $response, $name, $eventManager, $components);
+//        $driver = new Mysql([
+//            'database' => 'chelseafurniture',
+//            'username' => 'root',
+//            'password' => 'root',
+//        ]);
+        $conn = ConnectionManager::get('default');
+        $this->conn = $conn;
+    }
+
     public function beforeFilter(EventInterface $event)
     {
         parent::beforeFilter($event);

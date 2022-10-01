@@ -35,7 +35,6 @@ foreach ($orderItems['Orderitems'] as $orderItem){
     ],
         'quantity' => 1]);
 }
-debug($orderItems);
 $session = \Stripe\Checkout\Session::create([
     'payment_method_types' => ['card'],
     'line_items' => [$orderCheckout],
