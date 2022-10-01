@@ -3,7 +3,6 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\UserAddress $userAddress
  * @var \Cake\Collection\CollectionInterface|string[] $users
- * @var string[]|\Cake\Collection\CollectionInterface $orderItems
  */
 $formTemplate = [
     'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}<span class="help">{{help}}</span></div>',
@@ -18,22 +17,20 @@ $this->layout = 'front';
 //require_once 'vendor/autoload.php';
 \Stripe\Stripe::setApiKey('sk_test_51LkgUlGRmWCorjcXA038yfpvxDxs4RGCgZjVodGkU4lVz37N5Uo94ig9MZg2YCCGDZSwaT0vSUmFpUYjNFnI9qOi00eWvmMRNg');
 
-$orderCheckout = [];
-foreach ($orderItems['Orderitems'] as $orderItem){
-    array_push($orderCheckout, ['price_data' => [
-        'currency' => 'aud',
-        'product_data' => [
-            'name' => $orderItem['name'],
-        ],
-        'unit_amount' => intval($orderItem['price']*100),
-    ],
-        'quantity' => 1]);
-}
 $session = \Stripe\Checkout\Session::create([
     'payment_method_types' => ['card'],
-    'line_items' => [$orderCheckout],
+    'line_items' => [[
+        'price_data' => [
+            'currency' => 'aud',
+            'product_data' => [
+                'name' => 'T-shirt',
+            ],
+            'unit_amount' => 2000,
+        ],
+        'quantity' => 1,
+    ]],
     'mode' => 'payment',
-    'success_url' => 'http://localhost/team09-app_fit3048/user-addresses/success',
+    'success_url' => 'http://localhost:8080/success',
     'cancel_url' => 'http://example.com/cancel',
 ]);
 ?>
@@ -308,7 +305,7 @@ $session = \Stripe\Checkout\Session::create([
                         </div>
                         <div class="order-button-payment">
                             <input type="submit" value="Place order" />
-                            <?= $this->Form->button(__('Submit'), ['class' => 'order-button-payment','id'=>'checkout-button']) ?>
+                            <?= $this->Form->button(__('Submit'), ['class' => 'order-button-payment']) ?>
                         </div>
                         <?= $this->Form->end() ?>
                     </div>

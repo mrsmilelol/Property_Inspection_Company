@@ -129,7 +129,7 @@ left join categories as d on d.id = c.category_id group by a.id order by ".$orde
         $productImages = $this->ProductImages->findByProductId($id)->all()->toArray();
 
         $product = $this->Products->get($id, [
-            'contain' => ['Orders', 'OrdersProducts', 'Categories', 'ProductImages', 'ProductReviews'],
+            'contain' => ['Orders', 'OrdersProducts', 'Categories', 'ProductImages', 'ProductReviews', 'ShoppingSessions'],
         ]);
 
         $this->set(compact('product','productImages'));

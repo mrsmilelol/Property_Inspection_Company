@@ -68,7 +68,7 @@ class ProductsController extends AppController
         $productImages = $this->ProductImages->findByProductId($id)->all()->toArray();
 
         $product = $this->Products->get($id, [
-            'contain' => ['OrdersProducts', 'ProductImages', 'ProductReviews', 'Orders', 'Categories'],
+            'contain' => ['OrdersProducts', 'ProductImages', 'ProductReviews', 'ShoppingSessions', 'Orders', 'Categories'],
         ]);
 
         $this->set(compact('product','productImages'));
@@ -133,7 +133,7 @@ class ProductsController extends AppController
         $this->loadModel('ProductImages');
         $product = $this->Products->get($id, [
             'contain' => ['Orders', 'Categories', 'OrdersProducts',
-                'ProductImages', 'ProductReviews'],
+                'ProductImages', 'ProductReviews', 'ShoppingSessions'],
         ]);
         $productImages = $this->Products->get($id, [
             'contain' => ['ProductImages']])->toArray();
@@ -249,7 +249,7 @@ left join categories as d on d.id = c.category_id where a.price BETWEEN ".$min_p
         $productImages = $this->ProductImages->findByProductId($id)->all()->toArray();
 
         $product = $this->Products->get($id, [
-            'contain' => ['Orders', 'OrdersProducts', 'Categories', 'ProductImages', 'ProductReviews'],
+            'contain' => ['Orders', 'OrdersProducts', 'Categories', 'ProductImages', 'ProductReviews', 'ShoppingSessions'],
         ]);
 
         $this->set(compact('product','productImages'));
