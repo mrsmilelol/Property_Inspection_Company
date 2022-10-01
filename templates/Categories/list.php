@@ -254,16 +254,19 @@ $this->layout = 'front';
                             </li>
                         </ul>
                         <div class="shop-tab-selectors pull-right">
-                            <form action="">
+                            <form action="#">
                                 <div class="single-shop-form single-shop-show pull-left">
                                     <label>Sort by</label>
                                     <div class="shop-select">
-                                        <select name="order">
+                                        <select>
                                             <option selected="selected">--</option>
-                                            <option value="price_asc">Price: Lowest first</option>
-                                            <option value="price_desc">Price: Highest first</option>
-                                            <option value="name_asc">Product Name: A to Z</option>
-                                            <option value="name_desc">Product Name: Z to A</option>
+                                            <option>Price: Lowest first</option>
+                                            <option>Price: Highest first</option>
+                                            <option>Product Name: A to Z</option>
+                                            <option>Product Name: Z to A</option>
+                                            <option>In stock</option>
+                                            <option>Reference: Lowest first</option>
+                                            <option>Reference: Highest first</option>
                                         </select>
                                     </div>
                                 </div>
