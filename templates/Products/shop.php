@@ -13,6 +13,8 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Product[]|\Cake\Collection\CollectionInterface $products
+ * @var \App\Model\Entity\Product[]|\Cake\Collection\CollectionInterface $new_list
+ * @var \App\Model\Entity\Product[]|\Cake\Collection\CollectionInterface $ids
  */
 
 $cakeDescription = 'CakePHP: the rapid development php framework';
@@ -44,9 +46,12 @@ $this->layout = 'front';
 <div class="all-product-sidebar-area section-padding2">
     <div class="container">
         <div class="row">
+            <form action="/team09-app_fit3048/products/shop" method="get">
             <div class="col-xs-12 col-sm-3">
                 <aside class="widget-title">
                     <p>Catalog</p>
+                    <input type="submit" value="查询">
+                    <input type="hidden" value="" name="checks" class="checks">
                 </aside>
                 <div class="left-widget-content  indicator-banner">
                     <aside class="left-widget-price widget">
@@ -61,173 +66,41 @@ $this->layout = 'front';
                             </div>
                         </div>
                     </aside>
-                    <aside class="left-widget-size widget">
-                        <h3 class="widget-subtitle">Stock Status</h3>
-                        <div class="widget-info">
-                            <ul>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'shop',1])?>">In Stock</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'shop',2])?>">On Sale</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </aside>
-                    <aside class="left-widget-size widget">
-                        <h3 class="widget-subtitle">Brand</h3>
-                        <div class="widget-info">
-                            <ul>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">A.R.T (86)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">AMINI (41)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">CHELSEA FURNITURE (27)</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </aside>
-                    <aside class="left-widget-color widget">
-                        <h3 class="widget-subtitle">Style</h3>
-                        <div class="widget-info">
-                            <ul>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Arch Salvage (9)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Architrave (17)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Charme (6)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Giovanna (2)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Old world (21)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Passage (20)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Malibu Crest (26)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Mia Bella (11)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Mia Bella (11)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Bader (2)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">New Empaire (3)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Pearly (2)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Princess (2)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Ruby (1)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">SG Plush (2)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Shayan (3)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Sina (2)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Venues (2)</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </aside>
-                    <aside class="left-widget-size widget">
-                        <h3 class="widget-subtitle">Material</h3>
-                        <div class="widget-info">
-                            <ul>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Wood</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Metal</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Gold</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </aside>
-                    <aside class="left-widget-size widget">
-                        <h3 class="widget-subtitle">Colour</h3>
-                        <div class="widget-info">
-                            <ul>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Red</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Blue</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Brown</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">White</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Purple</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Grey</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Gold</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </aside>
+
+                    <?php
+                    foreach ($new_list as $key=>$val){
+                        ?>
+
+                        <aside class="left-widget-size widget">
+
+                            <h3 class="widget-subtitle"><?php echo $val['p_name'] ?></h3>
+                            <div class="widget-info">
+                                <ul>
+                                    <?php
+
+                                    foreach ($val['child'] as $k=>$v)
+                                    {
+                                        ?>
+                                        <li>
+                                            <input onchange="oBtAddChoice();" name="class_box" class="cheked_class" type="checkbox" value="<?php echo $k ?>">
+                                            <a href="#"><?php echo $v ?></a>
+                                        </li>
+                                    <?php
+                                    }
+                                    ?>
+
+                                </ul>
+                            </div>
+                        </aside>
+                    <?php
+                    }
+
+
+                    ?>
+
+
+
+
                 </div>
                 <div class="banner-image">
                     <a href="#">
@@ -235,11 +108,12 @@ $this->layout = 'front';
                     </a>
                 </div>
             </div>
+            </form>
             <div class="col-xs-12 col-sm-9">
                 <a><?= $this->Html->image('shop.jpg'); ?> </a>
                 <h1 class="page-heading section-padding2">
-                    <span class="cat-name pull-left">Shop </span>
-                    <span class="heading-counter pull-right">There is/are <?= h(count($products)) ?> product(s).</span>
+                    <span class="cat-name pull-left">Bedroom </span>
+                    <span class="heading-counter pull-right">There are 2 products.</span>
                 </h1>
                 <div class="shop-item-filter">
                     <div class="shop-tab clearfix">
@@ -253,19 +127,16 @@ $this->layout = 'front';
                             </li>
                         </ul>
                         <div class="shop-tab-selectors pull-right">
-                            <form action="#">
+                            <form action="">
                                 <div class="single-shop-form single-shop-show pull-left">
                                     <label>Sort by</label>
                                     <div class="shop-select">
-                                        <select>
+                                        <select name="order">
                                             <option selected="selected">--</option>
-                                            <option>Price: Lowest first</option>
-                                            <option>Price: Highest first</option>
-                                            <option>Product Name: A to Z</option>
-                                            <option>Product Name: Z to A</option>
-                                            <option>In stock</option>
-                                            <option>Reference: Lowest first</option>
-                                            <option>Reference: Highest first</option>
+                                            <option value="a.price_asc">Price: Lowest first</option>
+                                            <option value="a.price_desc">Price: Highest first</option>
+                                            <option value="a.name_asc">Product Name: A to Z</option>
+                                            <option value="a.name_desc">Product Name: Z to A</option>
                                         </select>
                                     </div>
                                 </div>
@@ -290,59 +161,55 @@ $this->layout = 'front';
                 <div class="clearfix"></div>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="grid">
-                        <!-- Product Display -->
-                        <div class="row-grid">
-                            <?= $this->fetch('content') ?>
-                            <?php for ($x = 0; $x <= count($products)-1; $x++):?>
-                            <div class="col-xs-12 col-sm-6 col-md-4 mb-30">
-                                <div class="single-product">
-                                    <!--Product Content-->
-                                    <div class="product-img-content">
-                                        <!--Product Image-->
-                                        <div class="product-img">
-                                                <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="Printed Dress">
-                                                    <a><?= $this->Html->image($products[$x]['product_images'][0]->description,['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
-                                                </a>
+                        <!-- Product display -->
+                        <div class="row">
+                            <?php foreach($products as $pk=>$pv){
+                                ?>
+                                <div class="col-xs-12 col-sm-6 col-md-4 first-in-line first-item-of-tablet-line first-item-of-mobile-line">
+
+                                        <div class="single-product">
+                                            <!--product Content-->
+                                            <div class="product-img-content">
+                                                <!--Product Image-->
+                                                <div class="product-img">
+                                                    <a href="<?php echo $this->Url->build(['controller' => 'Products', 'action' => 'detail',$pv['id']])?>" title="Printed Dress">
+                                                        <a href="<?php echo $this->Url->build(['controller' => 'Products', 'action' => 'detail',$pv['id']])?>"><?php echo $this->Html->image($pv['img'],['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
+                                                    </a>
+                                                </div>
+                                                <span class="new-label">New</span>
+                                                <!--Product Action-->
+                                                <div class="product-action">
+                                                    <a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="#" title="Add to Wishlist"><i class="fa fa-star"></i>
+                                                    </a>
+                                                    <a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
+                                                    </a>
+                                                    <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <h5><a href="<?php echo $this->Url->build(['controller' => 'Products', 'action' => 'detail',$pv['id']])?>" title="product "><?= $pv['name'] ?></a></h5>
+                                                <!--Product Rating-->
+                                                <div class="rating-icon">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <!--Product Price-->
+                                                <div class="product-price">
+                                                    <span class="new-price"><?php echo $this->Number->currency($pv['price']) ?></span>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <span class="new-label">New</span>
-                                        <?php if ($this->Number->currency($products[$x]->sale_price) !== null and $this->Number->toPercentage($products[$x]->sale_price) > 0): ?>
-                                            <span class="sale-label">Sale!</span>
-                                        <?php endif; ?>
-                                        <!--Product Action-->
-                                        <!--<div class="product-action">
-                                            <a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
-                                            <a href="#" title="Add to Wishlist"><i class="fa fa-star"></i>
-                                            </a>
-                                            <a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
-                                            </a>
-                                            <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
-                                        </div>-->
-                                    </div>
-                                    <div class="product-content">
-                                        <h5><a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="product "><?= $products[$x]->name ?></a></h5>
-                                        <!--Product Rating-->
-                                        <!--<div class="rating-icon">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>-->
-                                        <!--Product Price-->
-                                        <?php if ($this->Number->currency($products[$x]->sale_price) !== null and $this->Number->toPercentage($products[$x]->sale_price) > 0): ?>
-                                        <div class="product-price">
-                                            <span class="new-price"><?=  $this->Number->currency($products[$x]->sale_price) ?></span>
-                                            <span class="old-price"><?=  $this->Number->currency($products[$x]->price) ?></span>
-                                        </div>
-                                        <?php else: ?>
-                                        <div class="product-price">
-                                            <span class="new-price"><?=  $this->Number->currency($products[$x]->price) ?></span>
-                                        </div>
-                                        <?php endif; ?>
-                                    </div>
                                 </div>
-                            </div>
-                            <?php endfor?>
+
+
+                                <?php
+                            }
+                            ?>
+
                         </div>
                     </div>
                 </div>
@@ -350,7 +217,6 @@ $this->layout = 'front';
         </div>
     </div>
 </div>
-
 <!-- All Product Side Bar Area End -->
 
 <!--Quickview Product Start -->
@@ -405,6 +271,52 @@ $this->layout = 'front';
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="application/javascript">
+    var ids = "<?php echo $ids ?>";
+    if (ids.length >0){
+        var arr =ids.split(',');
+        for(var i in arr){
+            $("input:checkbox[value="+arr[i]+"]").prop("checked",true);
+        }
+
+    }
+    function oBtAddChoice() {
+        var app_value =[];
+        var spCodesTemp='';
+        $('input:checkbox[name=class_box]:checked').each(function(i){
+            //放到一个数组中
+
+            app_value.push($(this).val());
+            //将值放入一个字符串中
+
+            if(0==i){
+                spCodesTemp = $(this).val();
+            }else{
+                spCodesTemp += (","+$(this).val());
+            }
+
+        });
+        $(".checks").val(spCodesTemp);
+        // $("form").submit(function(){
+        //     alert("提交");
+        // });
+
+        //$.ajax({
+        //    type: 'GET', //请求的方式
+        //    url: "<?php //$this->Url->build(['controller' => 'Products', 'action' => 'shop'])?>//", // 请求的URL地址
+        //    data: { ids:  spCodesTemp},// 这次请求要携带的数据
+        //    success: function(res) { //请求成功之后的回调函数
+        //
+        //    },error(e){
+        //
+        //    }
+        //})
+        // $.get();
+    }
+
+
+</script>
 <!--End of Quickview Product-->
 </html>
 

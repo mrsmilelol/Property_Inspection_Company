@@ -69,7 +69,11 @@ $this->layout = 'front';
                 <p><br></p>
                 <p>Do you have any questions about our <br>
                     services and products? We will be happy <br> to help you.</p>
+
+
 <!--                <a href="tel:0370680002" title="Call Us Now !" id="call" class="btn">Call Us Now !</a>-->
+
+
             </div>
         </div>
         <div class="col-md-8 col-sm-12 col-xs-12">

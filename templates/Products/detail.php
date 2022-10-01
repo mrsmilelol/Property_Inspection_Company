@@ -68,13 +68,13 @@ $this->layout = 'front';
 <!--                        </div>-->
                         <div id="my-tab-content" class="tab-content">
                             <div class="tab-pane active" id="view1">
-                                <a class="venobox" href="<?php 'img/' . $productImages[0]->description . '/' ?>" data-gall="gallery" title=""><?= $this->Html->image($productImages[0]->description, ['alt' => 'CakePHP','class' => 'img-fluid']); ?>
+                                <a class="venobox" href="<?php echo '/team09-app_fit3048/img/' . $productImages[1]->description ?>" data-gall="gallery" id="big_img" title=""><?= $this->Html->image($productImages[0]->description, ['alt' => 'CakePHP','class' => 'img-fluid','onclick'=>'checkimg(this)']); ?>
                                     </a>
                             </div>
                         </div>
                         <div id="viewproduct" class="nav nav-tabs product-view bxslider" data-tabs="tabs">
-                            <?php for ($x = 1; $x <= count($productImages) - 1; $x++) : ?>
-                            <div class="pro-view active"><a href="#view1" data-toggle="tab"><?= $this->Html->image($productImages[$x]->description, ['alt' => 'CakePHP','class' => 'img-fluid','height' => 80,'width' => 106]); ?></a></div>
+                            <?php for ($x = 0; $x <= count($productImages) - 1; $x++) : ?>
+                            <div class="pro-view active"><a href="#view1" class="lis_img" data-toggle="tab"><?= $this->Html->image($productImages[$x]->description, ['alt' => 'CakePHP','class' => 'img-fluid','height' => 80,'width' => 106,'onclick'=>'check_img(this)']); ?></a></div>
                             <?php endfor ?>
                         </div>
                         <!-- BX Slider Navigation -->
@@ -89,11 +89,7 @@ $this->layout = 'front';
                 <div class="pd-center-column">
                     <h2><?= h($product->name) ?></h2>
                     <div class="media-body">
-                        <?php if ($product->sale_price !== null and $product->sale_price > 0): ?>
-                            <p class="media-body-title">AUD <?= $this->Number->currency(h($product->sale_price)) ?><span> tax incl.</span></p>
-                        <?php else: ?>
-                            <p class="media-body-title">AUD <?= $this->Number->currency(h($product->price)) ?><span> tax incl.</span></p>
-                        <?php endif; ?>
+                        <p class="media-body-title">AUD $<?= h($product->price) ?><span> tax incl.</span></p>
                         <p> Brand: <?= h($product->brand) ?></p>
                         <p> Style: <?= h($product->style) ?></p>
                         <?php if ($product->units_in_stock > 0): ?>
@@ -108,25 +104,16 @@ $this->layout = 'front';
                     </div>
 
                     <div class="product-attributes clearfix">
-                                <!--<span id="quantity-wanted-p" class="pull-left">
+                                <span id="quantity-wanted-p" class="pull-left">
                                     <span class="dec qtybutton">-</span>
                                     <input type="text" class="cart-plus-minus-box" value="1">
                                     <span class="inc qtybutton">+</span>
-                                </span>-->
+                                </span>
                         <span>
-                            <?php echo $this->Form->create(NULL,['url' => ['controller' => 'products', 'action' => 'addToCart']]);?>
-                            <?php echo $this->Form->hidden('id', ['type' => 'hidden', 'value' => $product->id])?>
-                            <a class="cart-btn">
-                                <?php echo $this->Form->submit('Add to cart', [
-                                    'type' => 'submit',
-                                    'id' => 'add-to-cart',
-                                    'name' => 'a.cart-btn',
-                                    'class' => '',
-                                    'escape' => 'false'
-                                ]);?>
-                            </a>
-                            <?php echo $this->Form->end();?>
-                        </span>
+                                    <a href="cart.html" class="cart-btn">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span>Add to Cart</span></a>
+                                </span>
                     </div>
                 </div>
             </div>
@@ -171,6 +158,26 @@ $this->layout = 'front';
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="application/javascript">
+  // $(".lis_img").click(function (e){
+  //     var a = $(".lis_img img").attr('src');
+  //     console.log(a)
+  //     $("#big_img img").attr('src',a)
+  // })
+  function check_img(e){
+    var a = $(e).attr('src');
+      $("#big_img img").attr('src',a)
+      // console.log(a)
+  }
+
+  function checkimg(e)
+  {
+      var a = $(e).attr('src');
+      $(".venobox").attr('href',a)
+      console.log(a)
+  }
+</script>
 <!-- Product Simple Area End -->
 
 </html>
