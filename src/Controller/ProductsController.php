@@ -11,6 +11,9 @@ use Cake\Controller\ComponentRegistry;
 use Cake\Database\Connection;
 use Cake\Database\Driver\Mysql;
 use Cake\Event\EventInterface;
+use Cake\Event\EventManagerInterface;
+use Cake\Http\Response;
+use Cake\Http\ServerRequest;
 
 /**
  * Products Controller
