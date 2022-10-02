@@ -154,7 +154,7 @@ class WholesaleRequestsController extends AppController
         }
         elseif (strcmp($status, "Approved")==0 ){
             $this->Flash->error(__('The quote request has already been approved.'));
-            return $this->redirect(['controller'=>'wholesaleRequests','action' => 'index']);;
+            return $this->redirect(['controller'=>'wholesaleRequests','action' => 'index']);
         }
         else {
             $wholesaleRequest->status = "Approved";

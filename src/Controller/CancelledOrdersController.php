@@ -11,100 +11,49 @@ namespace App\Controller;
  */
 class CancelledOrdersController extends AppController
 {
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null|void Renders view
-     */
-    public function index()
-    {
-        $this->paginate = [
-            'contain' => ['Orders'],
-        ];
-        $cancelledOrders = $this->paginate($this->CancelledOrders);
 
-        $this->set(compact('cancelledOrders'));
-    }
 
-    /**
-     * View method
-     *
-     * @param string|null $id Cancelled Order id.
-     * @return \Cake\Http\Response|null|void Renders view
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $cancelledOrder = $this->CancelledOrders->get($id, [
-            'contain' => ['Orders'],
-        ]);
 
-        $this->set(compact('cancelledOrder'));
-    }
-
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
-     */
-    public function add()
+    public function cancel($id=null)
     {
         $cancelledOrder = $this->CancelledOrders->newEmptyEntity();
-        if ($this->request->is('post')) {
-            $cancelledOrder = $this->CancelledOrders->patchEntity($cancelledOrder, $this->request->getData());
-            if ($this->CancelledOrders->save($cancelledOrder)) {
-                $this->Flash->success(__('The cancelled order has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The cancelled order could not be saved. Please, try again.'));
-        }
-        $orders = $this->CancelledOrders->Orders->find('list', ['limit' => 200])->all();
-        $this->set(compact('cancelledOrder', 'orders'));
-    }
-
-    /**
-     * Edit method
-     *
-     * @param string|null $id Cancelled Order id.
-     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        $cancelledOrder = $this->CancelledOrders->get($id, [
+        $order = $this->CancelledOrders->Orders->get($id, [
             'contain' => [],
         ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $cancelledOrder = $this->CancelledOrders->patchEntity($cancelledOrder, $this->request->getData());
-            if ($this->CancelledOrders->save($cancelledOrder)) {
-                $this->Flash->success(__('The cancelled order has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The cancelled order could not be saved. Please, try again.'));
+        $status = $order->status;
+        if (strcmp($status, "Cancel order requested")==0) {
+            $this->Flash->error(__('You have already submitted cancel order request'));
+            return $this->redirect(['prefix'=>'Admin','action'=>'index','controller'=>'Orders']);
         }
-        $orders = $this->CancelledOrders->Orders->find('list', ['limit' => 200])->all();
-        $this->set(compact('cancelledOrder', 'orders'));
-    }
-
-    /**
-     * Delete method
-     *
-     * @param string|null $id Cancelled Order id.
-     * @return \Cake\Http\Response|null|void Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $cancelledOrder = $this->CancelledOrders->get($id);
-        if ($this->CancelledOrders->delete($cancelledOrder)) {
-            $this->Flash->success(__('The cancelled order has been deleted.'));
+        elseif (strcmp($status, "Order cancelled")==0 ){
+            $this->Flash->error(__('The cancel order request has already been approved.'));
+            return $this->redirect(['prefix'=>'Admin','action'=>'index','controller'=>'Orders']);
+        }
+        elseif (strcmp($status, "Cancel order rejected")==0 ){
+            $this->Flash->error(__('Your cancel order request has been rejected, please contact the store for any questions.'));
+            return $this->redirect(['prefix'=>'Admin','action'=>'index','controller'=>'Orders']);
         } else {
-            $this->Flash->error(__('The cancelled order could not be deleted. Please, try again.'));
-        }
+            if ($this->request->is('post')) {
+                $cancelledOrder = $this->CancelledOrders->patchEntity($cancelledOrder, $this->request->getData());
+                $cancelledOrder->status = "Cancel order requested";
+                $cancelledOrder->order_id = $order->id;
+                $order->status = $cancelledOrder->status;
+                if ($this->CancelledOrders->save($cancelledOrder) && $this->CancelledOrders->Orders->save($order)) {
+                    $this->Flash->success(__('The cancelled order has been saved.'));
 
-        return $this->redirect(['action' => 'index']);
+                    return $this->redirect(['action' => 'index','prefix'=>'Admin']);
+                }
+                $this->Flash->error(__('The cancelled order could not be saved. Please, try again.'));
+            }
+        }
+        /*debug($cancelledOrder);
+        exit;*/
+
+        //$orders = $this->CancelledOrders->Orders->find('list', ['limit' => 200])->all();
+        $this->set(compact('cancelledOrder', 'order'));
     }
+
+
+
+
 }

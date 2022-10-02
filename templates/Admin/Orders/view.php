@@ -4,20 +4,12 @@
  * @var \App\Model\Entity\Order $order
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Order'), ['action' => 'edit', $order->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Order'), ['action' => 'delete', $order->id], ['confirm' => __('Are you sure you want to delete # {0}?', $order->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Orders'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Order'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
-        <div class="orders view content">
-            <h3><?= h($order->id) ?></h3>
-            <table>
+<div class="card shadow mb-4">
+    <div class="d-sm-flex align-items-center justify-content-between card-header">
+        <h1 class="h3 mb-0 text-gray-800"><?= h($order->user_id) ?></h1>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                 <tr>
                     <th><?= __('Status') ?></th>
                     <td><?= h($order->status) ?></td>
@@ -99,10 +91,10 @@
                 <?php endif; ?>
             </div>
             <div class="related">
-                <h4><?= __('Related Cancelled Orders') ?></h4>
+                <h4><?= __('Cancel Order request') ?></h4>
                 <?php if (!empty($order->cancelled_orders)) : ?>
                 <div class="table-responsive">
-                    <table>
+                    <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <tr>
                             <th><?= __('Id') ?></th>
                             <th><?= __('Order Id') ?></th>
@@ -135,7 +127,7 @@
                 <h4><?= __('Related Payments') ?></h4>
                 <?php if (!empty($order->payments)) : ?>
                 <div class="table-responsive">
-                    <table>
+                    <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <tr>
                             <th><?= __('Id') ?></th>
                             <th><?= __('Order Id') ?></th>
@@ -173,3 +165,9 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready( function () {
+        $('#productTable').DataTable();
+    } );
+</script>
