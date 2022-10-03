@@ -105,8 +105,8 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Order menu:</h6>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Orders','action' => 'index']) ?>">Orders</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Orders','action' => 'index']) ?>">Cancel Orders</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Orders','action' => 'index','prefix'=>'Admin']) ?>">Orders</a>
+                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'CancelledOrders','action' => 'index','prefix'=>'Admin']) ?>">Cancel Orders</a>
                 </div>
             </div>
         </li>

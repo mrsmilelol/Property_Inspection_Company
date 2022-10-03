@@ -3,19 +3,24 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Order[]|\Cake\Collection\CollectionInterface $orders
  */
+echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
+echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js', ['block' => true]);
 ?>
-<div class="orders index content">
-    <?= $this->Html->link(__('New Order'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Orders') ?></h3>
-    <div class="table-responsive">
-        <table>
-            <thead>
+<div class="card shadow mb-4">
+    <div class="d-sm-flex align-items-center justify-content-between card-header">
+        <h1 class="h3 mb-0 text-gray-800"><?= __('Orders') ?></h1>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="orders" width="100%" cellspacing="0">
+                <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('shopping_session_id') ?></th>
-                    <th><?= $this->Paginator->sort('total') ?></th>
-                    <th><?= $this->Paginator->sort('created_at') ?></th>
-                    <th><?= $this->Paginator->sort('modified_at') ?></th>
+                    <th data-visible="false"><?= h('id') ?></th>
+                    <th><?= h('user name') ?></th>
+                    <th><?= h('total') ?></th>
+                    <th><?= h('status') ?></th>
+                    <th><?= h('Created at') ?></th>
+
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -23,28 +28,25 @@
                 <?php foreach ($orders as $order): ?>
                 <tr>
                     <td><?= $this->Number->format($order->id) ?></td>
-                    <td><?= $order->has('shopping_session') ? $this->Html->link($order->shopping_session->id, ['controller' => 'ShoppingSessions', 'action' => 'view', $order->shopping_session->id]) : '' ?></td>
+                    <td><?= $order->has('user') ? $this->Html->link($order->user->username, ['controller' => 'Users', 'action' => 'view', $order->user->id]) : '' ?></td>
                     <td><?= $this->Number->format($order->total) ?></td>
+                    <td><?= h($order->status) ?></td>
                     <td><?= h($order->created_at) ?></td>
-                    <td><?= h($order->modified_at) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $order->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $order->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $order->id], ['confirm' => __('Are you sure you want to delete # {0}?', $order->id)]) ?>
+                        <?= $this->Html->link(__('Cancel'), ['controller'=>'CancelledOrders','action' => 'cancel','prefix'=>false , $order->id]) ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
     </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
-    </div>
+
 </div>
+    <!-- /.container-fluid -->
+    <script>
+        $(document).ready( function () {
+            $('#orders').DataTable();
+        } );
+    </script>
