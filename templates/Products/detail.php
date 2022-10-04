@@ -68,13 +68,13 @@ $this->layout = 'front';
 <!--                        </div>-->
                         <div id="my-tab-content" class="tab-content">
                             <div class="tab-pane active" id="view1">
-                                <a class="venobox" href="<?php 'img/' . $productImages[0]->description . '/' ?>" data-gall="gallery" title=""><?= $this->Html->image($productImages[0]->description, ['alt' => 'CakePHP','class' => 'img-fluid']); ?>
+                                <a class="venobox" id="big_img" href="<?php echo '/team09-app_fit3048img/' . $productImages[0]->description . '/' ?>" data-gall="gallery" title=""><?= $this->Html->image($productImages[0]->description, ['alt' => 'CakePHP','class' => 'img-fluid','onclick'=>'checkimg(this)']); ?>
                                     </a>
                             </div>
                         </div>
                         <div id="viewproduct" class="nav nav-tabs product-view bxslider" data-tabs="tabs">
-                            <?php for ($x = 1; $x <= count($productImages) - 1; $x++) : ?>
-                            <div class="pro-view active"><a href="#view1" data-toggle="tab"><?= $this->Html->image($productImages[$x]->description, ['alt' => 'CakePHP','class' => 'img-fluid','height' => 80,'width' => 106]); ?></a></div>
+                            <?php for ($x = 0; $x <= count($productImages) - 1; $x++) : ?>
+                            <div class="pro-view active"><a href="#view1" data-toggle="tab"><?= $this->Html->image($productImages[$x]->description, ['alt' => 'CakePHP','class' => 'img-fluid','height' => 80,'width' => 106,'onclick'=>'check_img(this)']); ?></a></div>
                             <?php endfor ?>
                         </div>
                         <!-- BX Slider Navigation -->
@@ -171,6 +171,26 @@ $this->layout = 'front';
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="application/javascript">
+    // $(".lis_img").click(function (e){
+    //     var a = $(".lis_img img").attr('src');
+    //     console.log(a)
+    //     $("#big_img img").attr('src',a)
+    // })
+    function check_img(e){
+        var a = $(e).attr('src');
+        $("#big_img img").attr('src',a)
+        // console.log(a)
+    }
+
+    function checkimg(e)
+    {
+        var a = $(e).attr('src');
+        $(".venobox").attr('href',a)
+        console.log(a)
+    }
+</script>
 <!-- Product Simple Area End -->
 
 </html>
