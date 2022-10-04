@@ -29,7 +29,7 @@ class CancelledOrdersController extends AppController
             $this->Flash->error(__('The cancel order request has already been approved.'));
             return $this->redirect(['prefix'=>'Admin','action'=>'index','controller'=>'Orders']);
         }
-        elseif (strcmp($status, "Cancel order rejected")==0 ){
+        elseif (strcmp($status, "Cancel request rejected")==0 ){
             $this->Flash->error(__('Your cancel order request has been rejected, please contact the store for any questions.'));
             return $this->redirect(['prefix'=>'Admin','action'=>'index','controller'=>'Orders']);
         } else {

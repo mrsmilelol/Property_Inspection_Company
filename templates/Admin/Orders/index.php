@@ -34,7 +34,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <td><?= h($order->created_at) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $order->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $order->id]) ?>
                         <?= $this->Html->link(__('Cancel'), ['controller'=>'CancelledOrders','action' => 'cancel','prefix'=>false , $order->id]) ?>
                     </td>
                 </tr>
