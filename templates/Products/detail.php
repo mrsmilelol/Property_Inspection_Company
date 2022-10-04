@@ -68,7 +68,7 @@ $this->layout = 'front';
 <!--                        </div>-->
                         <div id="my-tab-content" class="tab-content">
                             <div class="tab-pane active" id="view1">
-                                <a class="venobox" id="big_img" href="<?php echo '/team09-app_fit3048img/' . $productImages[0]->description . '/' ?>" data-gall="gallery" title=""><?= $this->Html->image($productImages[0]->description, ['alt' => 'CakePHP','class' => 'img-fluid','onclick'=>'checkimg(this)']); ?>
+                                <a class="venobox" id="big_img" href="<?php echo '/team09-app_fit3048/img/' . $productImages[0]->description . '/' ?>" data-gall="gallery" title=""><?= $this->Html->image($productImages[0]->description, ['alt' => 'CakePHP','class' => 'img-fluid','onclick'=>'checkimg(this)']); ?>
                                     </a>
                             </div>
                         </div>
