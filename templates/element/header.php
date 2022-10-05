@@ -59,7 +59,7 @@
                             <?php endif; ?>
                             <!-- Only displays my account button if user is a customer -->
                             <?php if ($userType == 2) : ?>
-                                <a href=<?= $this->Url->build(['prefix' => 'Wholesale', 'controller' => 'Users','action' => 'dashboard']) ?>>
+                                <a href=<?= $this->Url->build(['prefix' => 'Wholesale', 'controller' => 'Products','action' => 'index']) ?>>
                                     <i class="fa fa-home"></i>
                                     My Account
                                 </a>

@@ -1,19 +1,24 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * * @var \App\Model\Entity\User[]|\Cake\Collection\CollectionInterface $users
  * @var \App\Model\Entity\User $user
  */
 echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
 echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
 
+$formTemplate = [
+    'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
+    'label' => '<label{{attrs}} class="form-label">{{text}}</label>',
+    'input' => '<input type="{{type}}" name="{{name}}" class="form-control"{{attrs}}/>',
+    'radioContainer' => '<div class="form-radio">{{content}}</div>',
+    'textarea' => '<textarea name="{{name}}" class="form-control" {{attrs}}> {{value}}</textarea>'
+];
+$this->Form->setTemplates($formTemplate);
+
 $this->layout = 'front';
 ?>
 
-<?php
-$the_user = $this->request->getSession()->read('Auth');
-?>
-
+<?php $user = $this->request->getSession()->read('Auth') ?>
 <!-- Account Area Start -->
 <div class="account-area section-padding-sm">
     <div class="container-dashboard">
@@ -24,7 +29,7 @@ $the_user = $this->request->getSession()->read('Auth');
                 <div class="myaccount-tab-menu nav-dashboard" role="tablist" id="allTabs">
                     <a href="#dashboard" class="aTab active" data-toggle="tab"><i class="fa fa-dashboard"></i> Dashboard</a>
                     <a href="#orders" class="aTab" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i> Orders</a>
-                    <!--<a href="#payment-method" class="aTab" data-toggle="tab"><i class="fa fa-credit-card"></i> Payment Method</a>-->
+                    <a href="#payment-method" class="aTab" data-toggle="tab"><i class="fa fa-credit-card"></i> Payment Method</a>
                     <a href="#address-edit" class="aTab" data-toggle="tab"><i class="fa fa-map-marker"></i> address</a>
                     <a href="#account-info" class="aTab" data-toggle="tab"><i class="fa fa-user"></i> Account Details</a>
                 </div>
@@ -41,10 +46,9 @@ $the_user = $this->request->getSession()->read('Auth');
                         <div class="myaccount-content">
                             <h5>Dashboard</h5>
                             <div class="welcome">
-                                <p class="lhbigger">Hello, <strong><?= h($the_user->firstname) . " " . h($the_user->lastname) ?> </strong> <!--(If Not <strong>Tuntuni !</strong><a href="login-register.html" class="logout"> Logout</a>)--></p>
+                                <p class="lhbigger">Hello, <strong><?= h($user->firstname) . " " . h($user->lastname) ?> </strong> <!--(If Not <strong>Tuntuni !</strong><a href="login-register.html" class="logout"> Logout</a>)--></p>
                             </div>
-                            <br>
-                            <p class="lhbigger mb-0">From your account dashboard, you can easily check &amp; view your recent orders, manage your address and edit your account details.</p>
+                            <p class="lhbigger mb-0">From your account dashboard. you can easily check &amp; view your recent orders, manage your shipping and billing addresses and edit your password and account details.</p>
                         </div>
                     </div>
                     <!-- Single Tab Content End -->
@@ -54,16 +58,16 @@ $the_user = $this->request->getSession()->read('Auth');
                     <div class="tab-pane fade active" id="orders" role="tabpanel">
                         <div class="myaccount-content">
                             <h5>Orders</h5>
-                            <div class="myaccount-table table-responsive">
+                            <div class="myaccount-table table-responsive" style="text-align: center!important;">
                                 <table class="table-myaccount table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Name</th>
-                                        <th>Date</th>
-                                        <th>Status</th>
-                                        <th>Total</th>
-                                        <th>Action</th>
+                                        <th style="text-align: center;">No</th>
+                                        <th style="text-align: center;">Name</th>
+                                        <th style="text-align: center;">Date</th>
+                                        <th style="text-align: center;">Status</th>
+                                        <th style="text-align: center;">Total</th>
+                                        <th style="text-align: center;">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -100,12 +104,12 @@ $the_user = $this->request->getSession()->read('Auth');
 
                     <!-- Single Tab Content Start -->
                     <!-- Payment Method -->
-                    <!--<div class="tab-pane fade" id="payment-method" role="tabpanel">
+                    <div class="tab-pane fade" id="payment-method" role="tabpanel">
                         <div class="myaccount-content">
                             <h5>Payment Method</h5>
                             <p class="saved-message">You Can't Saved Your Payment Method yet.</p>
                         </div>
-                    </div>-->
+                    </div>
                     <!-- Single Tab Content End -->
 
                     <!-- Single Tab Content Start -->
@@ -113,27 +117,14 @@ $the_user = $this->request->getSession()->read('Auth');
                     <div class="tab-pane fade" id="address-edit" role="tabpanel">
                         <div class="myaccount-content">
                             <h5>Billing Address</h5>
-                            <p><strong><?= h($the_user->firstname) . " " . h($the_user->lastname) ?></strong></p>
                             <address>
-                                <?php if (!empty($addresses)) : ?>
-                                <?php foreach ($addresses as $address) :?>
-                                    <p class="lhbigger"><?= h($address->address_line_1)?> <br>
-                                        <?= h($address->address_line_2)?></p>
-                                    <p class="lhbigger"> City:
-                                        <?= h($address->city)?>, <?= h($address->country)?>
-                                    </p>
-                                        <p class="lhbigger"> State:
-                                            <?= h($address->state)?> <?= h($address->postcode)?>
-                                        </p>
-                                    <a href="<?= $this->Url->build(['controller' => 'UserAddresses', 'action' => 'edit', $address->id]) ?>" class="btn btn-round d-inline-block address-btn-edit">
-                                        <i class="fa fa-edit"></i> Edit address </a>
-                                <?php endforeach; ?>
-                                <?php else : ?>
-                                <p class="lhbigger">You currently have no saved address. </p>
-                                <a href="<?= $this->Url->build(['controller' => 'UserAddresses', 'action' => 'add', $the_user->id]) ?>" class="btn btn-round d-inline-block address-btn-edit">
-                                    <i class="fa fa-edit"></i> Add address </a>
+                                <p><strong><?= h($user->firstname) . " " . h($user->lastname) ?></strong></p>
+                                <p class="lhbigger"><?= h($user->user_addresses)?> <br>
+                                    <!--San Francisco, CA 94103--></p>
+                                <p class="lhbigger">Mobile: <?= h($user->phone)?></p>
                             </address>
-                                <?php endif; ?>
+                            <a href="#" class="btn btn-round d-inline-block address-btn-edit">
+                                <i class="fa fa-edit"></i>Edit Address
                             </a>
                         </div>
                     </div>
@@ -144,36 +135,71 @@ $the_user = $this->request->getSession()->read('Auth');
                     <div class="tab-pane fade" id="account-info" role="tabpanel">
                         <div class="myaccount-content">
                             <h5>Account Details</h5>
-                            <div class="myaccount-table table-responsive">
-                                <table class="table-myaccount table-bordered">
-                                    <tr>
-                                        <th><?= __('First name') ?></th>
-                                        <td style="text-align: left"><?= h($the_user->firstname) ?></td>
-                                    </tr>
-                                    <tr>
-                                        <th><?= __('Last name') ?></th>
-                                        <td style="text-align: left"><?= h($the_user->lastname) ?></td>
-                                    </tr>
-                                    <tr>
-                                        <th><?= __('Phone') ?></th>
-                                        <td style="text-align: left"><?= h($the_user->phone) ?></td>
-                                    </tr>
-                                    <tr>
-                                        <th><?= __('Email') ?></th>
-                                        <td style="text-align: left"><?= h($the_user->email) ?></td>
-                                    </tr>
-                                    <tr>
-                                        <th><?= __('Username') ?></th>
-                                        <td style="text-align: left"><?= h($the_user->username) ?></td>
-                                    </tr>
-                                </table>
+                            <div class="account-details-form">
+                                <form action="#">
+                                    <p class="form-row">
+                                        <?= $this->Form->create($user) ?>
+                                        <fieldset>
+                                        <?php
+                                        echo $this->Form->control('firstname', ['label' => ['class' => 'required', 'text' =>'First name']]);
+                                        echo $this->Form->control('lastname', ['label' => ['class' => 'required', 'text' =>'Last name']]);
+                                        echo $this->Form->control('username', ['label' => ['class' => 'required']]);
+                                        echo $this->Form->control('phone', ['label' => ['class' => 'required']]);
+                                        echo $this->Form->control('email', ['label' => ['class' => 'required']]);
+                                        echo $this->Form->control('password', ['label' => ['class' => 'required']]);
+                                        //echo $this->Form->control('created_at');
+                                        //echo $this->Form->control('modified_at');
+                                        ?>
+                                        </fieldset>
+                                        <br>
+                                        <!--<div class="col-lg-6 col-12 mb-30">
+                                            <input id="first-name" placeholder="First Name" type="text">
+                                        </div>
+
+                                        <div class="col-lg-6 col-12 mb-30">
+                                            <input id="last-name" placeholder="Last Name" type="text">
+                                        </div>
+
+                                        <div class="col-12 mb-30">
+                                            <input id="display-name" placeholder="Display Name" type="text">
+                                        </div>
+
+                                        <div class="col-12 mb-30">
+                                            <input id="email" placeholder="Email Address" type="email">
+                                        </div>
+
+                                        <div class="col-12 mb-30"><h6 class="mb-0">Password change</h6></div>
+
+                                        <div class="col-12 mb-30">
+                                            <input id="current-pwd" placeholder="Current Password" type="password">
+                                        </div>
+
+                                        <div class="col-lg-6 col-12 mb-30">
+                                            <input id="new-pwd" placeholder="New Password" type="password">
+                                        </div>
+
+                                        <div class="col-lg-6 col-12 mb-30">
+                                            <input id="confirm-pwd" placeholder="Confirm Password" type="password">
+                                        </div>-->
+
+                                        <!--<div class="col-12">
+                                            <button class="btn btn-round btn-lg">Save Changes</button>
+                                        </div>-->
+
+                                    <p class="submit">
+                                        <!--<button type="submit" id="submitlogin" name="SubmitLogin" class="">
+                                            <span><i class="fa fa-lock"></i>Sign In</span>
+                                        </button>-->
+                                        <?= $this->Form->button(__('Save changes'), [
+                                            'type' => 'submit',
+                                            'id' => 'submitlogin',
+                                            'name' => 'SubmitLogin',
+                                            'class' => ''
+                                        ]) ?>
+                                    </p>
+                                    <?= $this->Form->end() ?>
+                                </form>
                             </div>
-                            <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'account', $the_user->id]) ?>" class="btn btn-round d-inline-block address-btn-edit"><i
-                                    class="fa fa-edit"></i> Edit account details</a>
-                                <!--<?/*= $this->Html->link('Edit account details',
-                                    ['controller' => 'Users', 'action' => 'account', $the_user->id],
-                                    array('class'=>'submit')
-                                );*/?>--->
                         </div>
                     </div>
                     <!-- Single Tab Content End -->
