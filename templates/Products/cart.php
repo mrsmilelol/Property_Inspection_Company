@@ -154,7 +154,7 @@ $session = \Stripe\Checkout\Session::create([
                 <div class="row mb-n30">
                     <div class="col-md-8 col-sm-7 col-xs-12 mb-30">
                         <div class="d-flex flex-wrap mb-n2 buttons-cart">
-                            <!--                            <input type="submit" value="Update Cart" class="me-3 mb-2">-->
+<!--                            <input type="submit" value="Update Cart" class="me-3 mb-2">-->
                             <a class="btn mb-2" href="<?= $this->Url->build(['controller' => 'products',
                                 'action' => 'shop']); ?>">Continue Shopping</a>
                         </div>
