@@ -6,20 +6,18 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * ShoppingSession Entity
+ * CancelledOrder Entity
  *
  * @property int $id
- * @property int|null $user_id
- * @property int|null $product_id
- * @property int|null $quantity
+ * @property int $order_id
+ * @property string $reason
+ * @property string $status
  * @property \Cake\I18n\FrozenTime $created_at
  * @property \Cake\I18n\FrozenTime $modified_at
  *
- * @property \App\Model\Entity\User $user
- * @property \App\Model\Entity\Product $product
- * @property \App\Model\Entity\Order[] $orders
+ * @property \App\Model\Entity\Order $order
  */
-class ShoppingSession extends Entity
+class CancelledOrder extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -31,13 +29,11 @@ class ShoppingSession extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
-        'user_id' => true,
-        'product_id' => true,
-        'quantity' => true,
+        'order_id' => true,
+        'reason' => true,
+        'status' => true,
         'created_at' => true,
         'modified_at' => true,
-        'user' => true,
-        'product' => true,
-        'orders' => true,
+        'order' => true,
     ];
 }

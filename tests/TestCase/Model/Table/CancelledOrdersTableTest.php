@@ -3,20 +3,20 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\OrdersTable;
+use App\Model\Table\CancelledOrdersTable;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\OrdersTable Test Case
+ * App\Model\Table\CancelledOrdersTable Test Case
  */
-class OrdersTableTest extends TestCase
+class CancelledOrdersTableTest extends TestCase
 {
     /**
      * Test subject
      *
-     * @var \App\Model\Table\OrdersTable
+     * @var \App\Model\Table\CancelledOrdersTable
      */
-    protected $Orders;
+    protected $CancelledOrders;
 
     /**
      * Fixtures
@@ -24,10 +24,8 @@ class OrdersTableTest extends TestCase
      * @var array<string>
      */
     protected $fixtures = [
+        'app.CancelledOrders',
         'app.Orders',
-        'app.ShoppingSessions',
-        'app.Payments',
-        'app.Products',
     ];
 
     /**
@@ -38,8 +36,8 @@ class OrdersTableTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $config = $this->getTableLocator()->exists('Orders') ? [] : ['className' => OrdersTable::class];
-        $this->Orders = $this->getTableLocator()->get('Orders', $config);
+        $config = $this->getTableLocator()->exists('CancelledOrders') ? [] : ['className' => CancelledOrdersTable::class];
+        $this->CancelledOrders = $this->getTableLocator()->get('CancelledOrders', $config);
     }
 
     /**
@@ -49,7 +47,7 @@ class OrdersTableTest extends TestCase
      */
     protected function tearDown(): void
     {
-        unset($this->Orders);
+        unset($this->CancelledOrders);
 
         parent::tearDown();
     }
@@ -58,7 +56,7 @@ class OrdersTableTest extends TestCase
      * Test validationDefault method
      *
      * @return void
-     * @uses \App\Model\Table\OrdersTable::validationDefault()
+     * @uses \App\Model\Table\CancelledOrdersTable::validationDefault()
      */
     public function testValidationDefault(): void
     {
@@ -69,7 +67,7 @@ class OrdersTableTest extends TestCase
      * Test buildRules method
      *
      * @return void
-     * @uses \App\Model\Table\OrdersTable::buildRules()
+     * @uses \App\Model\Table\CancelledOrdersTable::buildRules()
      */
     public function testBuildRules(): void
     {

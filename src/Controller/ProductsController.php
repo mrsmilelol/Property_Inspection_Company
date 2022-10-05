@@ -32,8 +32,27 @@ class ProductsController extends AppController
 
     public function shop($id = null)
     {
+
+        $param = $_GET;
+        $sel = $param['sel']??'99';
 //        $this->loadModel('ProductImages');
-        $query = $this->Products->find('all');
+         switch ($sel){
+             case 1:
+              $query = $this->Products->find('all')->orderAsc('sale_price');
+                 break;
+              case 2:
+            $query = $this->Products->find('all')->orderDesc('sale_price');
+                break;
+               case 3:
+                $query = $this->Products->find('all')->orderAsc('name');
+                break;
+                case 4:
+                $query = $this->Products->find('all')->orderDesc('name');
+                break;
+                 default:
+                     $query = $this->Products->find('all');
+                }
+
         $products = $query->contain(['ProductImages']);
         if($id == 1){
             $products = $products->where(['units_in_stock !=' => 0])->toArray();
