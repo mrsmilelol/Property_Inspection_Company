@@ -142,9 +142,9 @@
                                 </li>-->
                                 <li>
                                     <a class="cart-toggler mini-cart-icon" href="<?= $this->Url->build(['controller' => 'products',
-                                        'action' => 'cart']); ?>">
+                                        'action' => 'cart', 'prefix' => false]); ?>">
                                         <i class="fa fa-shopping-cart"></i>
-<!--                                        <span>2</span>-->
+<!--                                       <span>*</span>-->
                                     </a>
                                     <!--<div class="cart-list">
                                         <div class="product">
