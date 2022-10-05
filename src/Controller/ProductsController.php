@@ -50,9 +50,9 @@ class ProductsController extends AppController
                 $query = $this->Products->find('all')->orderDesc('name');
                 break;
                  default:
-                     $query = $this->Products->find('all');
+                 $query = $this->Products->find('all');
                 }
-
+        $query = $this->Products->find('all');
         $products = $query->contain(['ProductImages']);
         if($id == 1){
             $products = $products->where(['units_in_stock !=' => 0])->toArray();
