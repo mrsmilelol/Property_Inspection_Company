@@ -3918,12 +3918,10 @@ p.alert {
 }
 .myaccount-table table th,.myaccount-table .table th {
     padding:10px;
-    text-align: center;
 }
 .myaccount-table table td,.myaccount-table .table td {
     vertical-align:middle;
     padding:20px 10px;
-    text-align: center;
 }
 .saved-message {
     border-top:3px solid #c38748;
@@ -4037,35 +4035,3 @@ p:last-child {
     background-color: #c38748;
     text-decoration: none;
 }
-.text-centered {
-    text-align: center;
-}
-a.submit {
-    background: #282828 none repeat scroll 0 0;
-    border: medium none;
-    color: #ffffff;
-    /*padding: 0;*/
-    /*padding: 10px;*/
-    font-size: 14px;
-    font-weight: 600;
-    padding: 10px 30px;
-    line-height: 24px;
-    text-transform: uppercase;
-    border-radius: 0;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-    cursor: pointer;
-}
-a.submit span {
-    color: #ffffff;
-    display: block;
-    font-size: 12px;
-    padding: 5px 15px;
-    text-transform: uppercase;
-}
-a.submit:hover {
-    background: #C38749 none repeat scroll 0 0;
-    color: #ffffff;
-}
-#maxWidth{max-width: 100%;}

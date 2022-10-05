@@ -63,7 +63,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
 
                         <!-- Only displays if user has access at top level -->
                         <?php if ($userMaster == 1) : ?>
-                            <?php if ($user->user_type_id == 1) : ?>
                             <td>
                                 <?php if ($user->master == 1) : ?>
                                     <?= $this->Form->postLink(
@@ -79,9 +78,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                                     ) ?>
                                 <?php endif; ?>
                             </td>
-                            <?php else : ?>
-                            <td></td>
-                            <?php endif; ?>
                         <?php endif; ?>
 
                         <td class="actions">
