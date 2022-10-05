@@ -91,6 +91,30 @@ class OrdersController extends AppController
     }
 
     /**
+     * Cancel method
+     *
+     * @param string|null $id Order id.
+     * @return \Cake\Http\Response|null|void Redirects on successful cancel, renders view otherwise.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function cancel($id = null)
+    {
+        $this->request->allowMethod(['post', 'delete']);
+        $order = $this->Orders->get($id);
+        $user = $this->fetchTable('Users')->get($order->user_id);
+
+        $order->status = 'Order cancelled';
+        if ($this->Orders->save($order)) {
+            $this->Flash->success(__('The order has been cancelled.'));
+        } else {
+            $this->Flash->error(__('The order could not be cancelled. Please, try again.'));
+        }
+
+        return $this->redirect(['action' => 'index']);
+    }
+
+
+    /**
      * Delete method
      *
      * @param string|null $id Order id.

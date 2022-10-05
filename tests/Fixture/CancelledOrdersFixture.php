@@ -23,8 +23,8 @@ class CancelledOrdersFixture extends TestFixture
                 'order_id' => 1,
                 'reason' => 'Lorem ipsum dolor sit amet',
                 'status' => 'Lorem ipsum dolor sit amet',
-                'created_at' => 1664683695,
-                'modified_at' => 1664683695,
+                'created_at' => 1664935528,
+                'modified_at' => 1664935528,
             ],
         ];
         parent::init();
