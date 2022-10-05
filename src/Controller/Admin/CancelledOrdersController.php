@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+use Cake\Mailer\Mailer;
+
 /**
  * CancelledOrders Controller
  *
@@ -74,6 +76,8 @@ class CancelledOrdersController extends AppController
             'contain' => [],
         ]);
 
+        $user = $this->fetchTable('Users')->get($order->user_id);
+
         $status = $cancelledorder->status;
         if(strcmp($status,'Rejected')==0){
             $this->Flash->error(__('The cancel request has been rejected'));
@@ -87,6 +91,30 @@ class CancelledOrdersController extends AppController
             $cancelledorder->status = "Approved";
             $order->status = 'Order cancelled';
             if ($this->CancelledOrders->save($cancelledorder) && $this->CancelledOrders->Orders->save($order)) {
+
+                //send the email to the user eamil address
+                $mailer = new Mailer('default');
+                $mailer
+                    ->setEmailFormat('html')
+                    ->setTo($user->email)
+                    //->setTo('contactreceiver@billgong.monash-ie.me')
+                    ->setFrom('emailtestingfit3178@gmail.com')
+                    ->setSubject('Your order has been cancelled by chelsea furniture')
+                    ->viewBuilder()
+                    ->disableAutoLayout()
+                    ->setTemplate('order_cancel_approve');
+
+                $mailer->setViewVars([
+                    'firstname' => $user->firstname,
+                    'id' => $order->id,
+                ]);
+                $requestStatus = $mailer->deliver();
+                if ($requestStatus) {
+                    $this->Flash->success('An email has been sent to the customer regarding the order status');
+                } else {
+                    $this->Flash->error('Error, unable to send email.');
+                }
+
                 $this->Flash->success(__('The cancel request has been approved.'));
 
                 return $this->redirect(['action' => 'index']);
@@ -105,6 +133,8 @@ class CancelledOrdersController extends AppController
             'contain' => [],
         ]);
 
+        $user = $this->fetchTable('Users')->get($order->user_id);
+
         $status = $cancelledorder->status;
         if(strcmp($status,'Rejected')==0){
             $this->Flash->error(__('The cancel request has been rejected'));
@@ -118,6 +148,29 @@ class CancelledOrdersController extends AppController
             $cancelledorder->status = "Rejected";
             $order->status = 'Cancel request rejected';
             if ($this->CancelledOrders->save($cancelledorder) && $this->CancelledOrders->Orders->save($order)) {
+
+                //send the email to the user eamil address
+                $mailer = new Mailer('default');
+                $mailer
+                    ->setEmailFormat('html')
+                    ->setTo($user->email)
+                    //->setTo('contactreceiver@billgong.monash-ie.me')
+                    ->setFrom('emailtestingfit3178@gmail.com')
+                    ->setSubject('Your order has been cancelled by chelsea furniture')
+                    ->viewBuilder()
+                    ->disableAutoLayout()
+                    ->setTemplate('order_cancel_reject');
+
+                $mailer->setViewVars([
+                    'firstname' => $user->firstname,
+                    'id' => $order->id,
+                ]);
+                $requestStatus = $mailer->deliver();
+                if ($requestStatus) {
+                    $this->Flash->success('An email has been sent to the customer regarding the order status');
+                } else {
+                    $this->Flash->error('Error, unable to send email.');
+                }
                 $this->Flash->success(__('The cancel request has been rejected.'));
 
                 return $this->redirect(['action' => 'index']);

@@ -253,19 +253,19 @@ $this->layout = 'front';
                             </li>
                         </ul>
                         <div class="shop-tab-selectors pull-right">
-                            <form action="#">
+                            <form action="/team09-app_fit3048/products/shop">
                                 <div class="single-shop-form single-shop-show pull-left">
                                     <label>Sort by</label>
                                     <div class="shop-select">
-                                        <select>
-                                            <option selected="selected">--</option>
-                                            <option>Price: Lowest first</option>
-                                            <option>Price: Highest first</option>
-                                            <option>Product Name: A to Z</option>
-                                            <option>Product Name: Z to A</option>
-                                            <option>In stock</option>
-                                            <option>Reference: Lowest first</option>
-                                            <option>Reference: Highest first</option>
+                                        <select name="sel">
+                                            <option selected="selected" value="">--</option>
+                                            <option value="1">Price: Lowest first</option>
+                                            <option value="2">Price: Highest first</option>
+                                            <option value="3">Product Name: A to Z</option>
+                                            <option value="4">Product Name: Z to A</option>
+<!--                                            <option>In stock</option>-->
+<!--                                            <option>Reference: Lowest first</option>-->
+<!--                                            <option>Reference: Highest first</option>-->
                                         </select>
                                     </div>
                                 </div>

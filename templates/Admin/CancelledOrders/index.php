@@ -6,7 +6,7 @@
 ?>
 <div class="card shadow mb-4">
     <div class="d-sm-flex align-items-center justify-content-between card-header">
-        <h1 class="h3 mb-0 text-gray-800"><?= __('Cancel Orders') ?></h1>
+        <h1 class="h3 mb-0 text-gray-800"><?= __('Cancel Order Request') ?></h1>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -29,7 +29,6 @@
                         <td><?= h($cancelledOrder->created_at) ?></td>
                         <td class="actions">
                             <?= $this->Html->link(__('Review'), ['action' => 'view', $cancelledOrder->id]) ?>
-                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $cancelledOrder->id]) ?>
 
                         </td>
                     </tr>

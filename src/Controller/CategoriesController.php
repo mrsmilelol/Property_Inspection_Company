@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Datasource\ConnectionManager;
 use Cake\Event\EventInterface;
 
 /**
@@ -23,15 +24,53 @@ class CategoriesController extends AppController
 
     public function list($id = null)
     {
+        $param = $_GET;
+        $sel = $param['sel']??'99';
 //        $this->loadModel('Categories');
         $category = $this->Categories->get($id, [
             'contain' => ['ParentCategories', 'Products', 'ChildCategories'],
         ]);
         $parentCategories = $this->Categories->find('list');
         $products = $this->Categories->Products->find()
-            //->where(['Categories.parent_id IS'=>null]))
+//            ->where(['Categories.id'=>$id])
             ->contain(['ProductImages'])
-            ->all()->toArray();
+            ->find('all')->toArray();
+
+        switch ($sel){
+            case 1:
+                $price = array();
+                foreach ($category->products as $product){
+                    $price[]=$product['sale_price'];
+                }
+                array_multisort($price,SORT_ASC,$category->products);
+                break;
+            case 2:
+                $price = array();
+                foreach ($category->products as $product){
+                    $price[]=$product['sale_price'];
+                }
+                array_multisort($price,SORT_DESC,$category->products);
+                break;
+            case 3:
+                $price = array();
+                foreach ($category->products as $product){
+                    $price[]=$product['name'];
+                }
+                array_multisort($price,SORT_ASC,$category->products);
+                break;
+            case 4:
+                $price = array();
+                foreach ($category->products as $product){
+                    $price[]=$product['name'];
+                }
+                array_multisort($price,SORT_DESC,$category->products);
+                break;
+            default:
+
+        }
+
+
+
         $this->set(compact('category', 'parentCategories', 'products'));
     }
 }
