@@ -160,40 +160,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             </div>
             <br>
             <div class="related">
-                <h4><?= __('Related shopping sessions') ?></h4>
-                <?php if (!empty($user->shopping_sessions)) : ?>
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
-                    <tr>
-                            <th><?= __('ID') ?></th>
-                            <th><?= __('User ID') ?></th>
-                            <th><?= __('Product ID') ?></th>
-                            <th><?= __('Quantity') ?></th>
-                            <th><?= __('Created at') ?></th>
-                            <th><?= __('Modified at') ?></th>
-                            <th class="actions"><?= __('Actions') ?></th>
-                        </tr>
-                        <?php foreach ($user->shopping_sessions as $shoppingSessions) : ?>
-                        <tr>
-                            <td><?= h($shoppingSessions->id) ?></td>
-                            <td><?= h($shoppingSessions->user_id) ?></td>
-                            <td><?= h($shoppingSessions->product_id) ?></td>
-                            <td><?= h($shoppingSessions->quantity) ?></td>
-                            <td><?= h($shoppingSessions->created_at) ?></td>
-                            <td><?= h($shoppingSessions->modified_at) ?></td>
-                            <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'ShoppingSessions', 'action' => 'view', $shoppingSessions->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'ShoppingSessions', 'action' => 'edit', $shoppingSessions->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'ShoppingSessions', 'action' => 'delete', $shoppingSessions->id], ['confirm' => __('Are you sure you want to delete # {0}?', $shoppingSessions->id)]) ?>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </table>
-                </div>
-                <?php endif; ?>
-            </div>
-            <br>
-            <div class="related">
                 <h4><?= __('Related user addresses') ?></h4>
                 <?php if (!empty($user->user_addresses)) : ?>
                 <div class="table-responsive">
