@@ -104,35 +104,41 @@ class OrdersController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $order = $this->Orders->get($id);
         $user = $this->fetchTable('Users')->get($order->user_id);
+        $status = $order->status;
+        if(strcmp($status,'Submitted')==0){
+            $order->status = 'Order cancelled';
+            if ($this->Orders->save($order)) {
+                //send the email to the user eamil address
+                $mailer = new Mailer('default');
+                $mailer
+                    ->setEmailFormat('html')
+                    ->setTo($user->email)
+                    //->setTo('contactreceiver@billgong.monash-ie.me')
+                    ->setFrom('emailtestingfit3178@gmail.com')
+                    ->setSubject('Your order has been cancelled by chelsea furniture')
+                    ->viewBuilder()
+                    ->disableAutoLayout()
+                    ->setTemplate('order_cancel_admin');
 
-        $order->status = 'Order cancelled';
-        if ($this->Orders->save($order)) {
-            //send the email to the user eamil address
-            $mailer = new Mailer('default');
-            $mailer
-                ->setEmailFormat('html')
-                ->setTo($user->email)
-                //->setTo('contactreceiver@billgong.monash-ie.me')
-                ->setFrom('emailtestingfit3178@gmail.com')
-                ->setSubject('Your order has been cancelled by chelsea furniture')
-                ->viewBuilder()
-                ->disableAutoLayout()
-                ->setTemplate('order_cancel_admin');
-
-            $mailer->setViewVars([
-                'firstname' => $user->firstname,
-                'id' => $order->id,
-            ]);
-            $requestStatus = $mailer->deliver();
-            if ($requestStatus) {
-                $this->Flash->success('An email has been sent to the customer regarding the order status');
+                $mailer->setViewVars([
+                    'firstname' => $user->firstname,
+                    'id' => $order->id,
+                ]);
+                $requestStatus = $mailer->deliver();
+                if ($requestStatus) {
+                    $this->Flash->success('An email has been sent to the customer regarding the order status');
+                } else {
+                    $this->Flash->error('Error, unable to send email.');
+                }
+                $this->Flash->success(__('The order has been cancelled.'));
             } else {
-                $this->Flash->error('Error, unable to send email.');
+                $this->Flash->error(__('The order could not be cancelled. Please, try again.'));
             }
-            $this->Flash->success(__('The order has been cancelled.'));
-        } else {
-            $this->Flash->error(__('The order could not be cancelled. Please, try again.'));
         }
+        else {
+            $this->Flash->error(__('The order has already been processed, please check the order status'));
+        }
+
 
         return $this->redirect(['action' => 'index']);
     }
