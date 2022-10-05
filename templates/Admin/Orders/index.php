@@ -35,7 +35,8 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $order->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $order->id]) ?>
-                        <?= $this->Html->link(__('Cancel'), ['controller'=>'CancelledOrders','action' => 'cancel','prefix'=>false , $order->id]) ?>
+                        <?= $this->Form->postLink(__('Cancel'), ['prefix'=>'Admin','action' => 'cancel', $order->id], ['confirm' => __('Are you sure you want to cancel # {0}?', $order->id)])
+                        //$this->Html->link(__('Cancel'), ['controller'=>'CancelledOrders','action' => 'cancel','prefix'=>false , $order->id]) ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>
