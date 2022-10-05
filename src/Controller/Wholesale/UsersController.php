@@ -36,7 +36,7 @@ class UsersController extends AppController
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => ['UserTypes', 'ProductReviews', 'ShoppingSessions', 'UserAddresses'],
+            'contain' => ['UserTypes', 'ProductReviews', 'UserAddresses'],
         ]);
 
         $this->set(compact('user'));
@@ -100,6 +100,37 @@ class UsersController extends AppController
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
+        }
+        $userTypes = $this->Users->UserTypes->find('list', ['limit' => 200])->all();
+        $this->set(compact('user', 'userTypes'));
+    }
+
+    public function dashboard($id=null){
+        /*$user = $this->Users->get($id, [
+            'contain' => ['UserAddresses']]);*/
+        $users = $this->Users->find('list');
+        $the_user = $this->request->getSession()->read('Auth.id');
+        $user = $this->Users->find()->where(['Users.id' => $the_user]);
+        $addresses = $this->Users->UserAddresses->find()
+            ->where(['UserAddresses.user_id'=>$the_user])
+            ->find('all')->toArray();
+
+        $this->set(compact('addresses'));
+    }
+
+    public function account($id){
+        $user = $this->Users->get($id, [
+            'contain' => [],
+        ]);
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('Your changes have been saved. Please log out and login again to see your changes.'));
+
+                return $this->redirect(['action' => 'dashboard']);
+            }
+            $this->Flash->error(__('Your changes could not be saved. Please, try again.'));
         }
         $userTypes = $this->Users->UserTypes->find('list', ['limit' => 200])->all();
         $this->set(compact('user', 'userTypes'));
