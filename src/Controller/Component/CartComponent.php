@@ -96,9 +96,9 @@ class CartComponent extends Component {
 ////////////////////////////////////////////////////////////////////////////////
 
     public function remove($id) {
-        if($this->getController()->getRequest()->getSession()->read('Shop.Orderproducts.' . $id)) {
-            $product = $this->getController()->getRequest()->getSession()->read('Shop.Orderproducts.' . $id);
-            $this->getController()->getRequest()->getSession()->delete('Shop.Orderproducts.' . $id);
+        if($this->getController()->getRequest()->getSession()->read('Shop.Orderitems.' . $id)) {
+            $product = $this->getController()->getRequest()->getSession()->read('Shop.Orderitems.' . $id);
+            $this->getController()->getRequest()->getSession()->delete('Shop.Orderitems.' . $id);
             $this->cart();
             return $product;
         }
