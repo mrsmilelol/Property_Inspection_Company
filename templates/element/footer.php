@@ -33,7 +33,7 @@
                     <div class="footer-top-menu">
                         <h3 class="footer-widget-title">EXTRAS</h3>
                         <ul class="toggle-footer">
-                            <li><a href="#">Orders & Returns</a></li>
+                            <li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','warranties']); ?>>Warranties</a></li>
                             <li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','about']); ?>>About Us</a></li>
                             <li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','contact']); ?>>Contact Us</a></li>
                             <li><a href="<?= $this->Url->build(['controller'=>'Products', 'action'=>'shop']); ?>">Shop</a></li>
