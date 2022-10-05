@@ -373,10 +373,23 @@ endforeach;
                                 <tr>
                                     <td>
                                         <p>Hi <?= h($firstname.",") ?></p>
-                                        <p>Your request for canceling your order <?=h($id) ?> has been sent for review - </p>
-                                        <p><b>Order Number: </b><?= h($id) ?></p>
-                                        <p>We will process your request within seven business days - </p>
+                                        <p>I am sorry to inform that your order: <?= h($id)?> has been cancelled due to products availability </p>
 
+                                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+                                            <tbody>
+                                            <tr>
+                                                <td align="left">
+                                                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td> <a href="<?= $this->Url->build(['controller'=> 'Users', 'action'=>'login','prefix' => false], ['fullBase' => true]); ?>">Login to check your order</a> </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
                                         <p>Please reply to this email if you have any questions.</p>
                                         <p>Kind regards, </p>
                                         <p>Chelsea Fine Furnishings</p>

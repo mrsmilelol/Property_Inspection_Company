@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+use Cake\Mailer\Mailer;
+
 /**
  * Orders Controller
  *
@@ -105,6 +107,28 @@ class OrdersController extends AppController
 
         $order->status = 'Order cancelled';
         if ($this->Orders->save($order)) {
+            //send the email to the user eamil address
+            $mailer = new Mailer('default');
+            $mailer
+                ->setEmailFormat('html')
+                ->setTo($user->email)
+                //->setTo('contactreceiver@billgong.monash-ie.me')
+                ->setFrom('emailtestingfit3178@gmail.com')
+                ->setSubject('Your order has been cancelled by chelsea furniture')
+                ->viewBuilder()
+                ->disableAutoLayout()
+                ->setTemplate('order_cancel_admin');
+
+            $mailer->setViewVars([
+                'firstname' => $user->firstname,
+                'id' => $order->id,
+            ]);
+            $requestStatus = $mailer->deliver();
+            if ($requestStatus) {
+                $this->Flash->success('An email has been sent to the customer regarding the order status');
+            } else {
+                $this->Flash->error('Error, unable to send email.');
+            }
             $this->Flash->success(__('The order has been cancelled.'));
         } else {
             $this->Flash->error(__('The order could not be cancelled. Please, try again.'));

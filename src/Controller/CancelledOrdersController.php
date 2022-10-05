@@ -53,20 +53,19 @@ class CancelledOrdersController extends AppController
                         ->setSubject('Your cancel order request has been submitted')
                         ->viewBuilder()
                         ->disableAutoLayout()
-                        ->setTemplate('wholesale_request');
+                        ->setTemplate('order_cancel');
 
                     $mailer->setViewVars([
                         'firstname' => $user->firstname,
-                        'lastname' => $user->lastname,
-                        'order_number' => $order->id,
+                        'id' => $order->id
                     ]);
                     $requestStatus = $mailer->deliver();
                     if ($requestStatus) {
-                        $this->Flash->success('Your application has been sent for review');
+                        $this->Flash->success('Your request has been sent for review');
                     } else {
                         $this->Flash->error('Error, unable to send email.');
                     }
-                    $this->Flash->success(__('The cancelled order has been saved.'));
+                    $this->Flash->success(__('The cancelled order request has been saved.'));
 
                     return $this->redirect(['action' => 'index','prefix'=>'Admin']);
                 }
