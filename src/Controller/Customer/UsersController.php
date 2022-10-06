@@ -51,6 +51,7 @@ class UsersController extends AppController
         $this->set(compact('user'));
     }
 
+
     public function dashboard($id=null){
         /*$user = $this->Users->get($id, [
             'contain' => ['UserAddresses']]);*/
@@ -60,6 +61,8 @@ class UsersController extends AppController
         $addresses = $this->Users->UserAddresses->find()
             ->where(['UserAddresses.user_id'=>$the_user])
             ->find('all')->toArray();
+
+        $orders = $this->fetchTable('Orders')->find('all')->where(['']);
 
         $this->set(compact('addresses'));
     }

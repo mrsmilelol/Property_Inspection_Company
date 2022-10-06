@@ -66,11 +66,9 @@ $this->layout = 'front';
                         <div class="widget-info">
                             <ul>
                                 <li>
-                                    <input type="checkbox">
                                     <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'shop',1])?>">In Stock</a>
                                 </li>
                                 <li>
-                                    <input type="checkbox">
                                     <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'shop',2])?>">On Sale</a>
                                 </li>
                             </ul>
