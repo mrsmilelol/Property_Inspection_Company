@@ -23,37 +23,37 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 $this->layout = 'front';
 
 //require_once 'vendor/autoload.php';
-\Stripe\Stripe::setApiKey('sk_test_51LkgUlGRmWCorjcXA038yfpvxDxs4RGCgZjVodGkU4lVz37N5Uo94ig9MZg2YCCGDZSwaT0vSUmFpUYjNFnI9qOi00eWvmMRNg');
-$orderCheckout = [];
-foreach ($orderItems['Orderitems'] as $orderItem){
-    array_push($orderCheckout, ['price_data' => [
-        'currency' => 'aud',
-        'product_data' => [
-            'name' => $orderItem['name'],
-        ],
-        'unit_amount' => intval($orderItem['price']),
-    ],
-        'quantity' => 1]);
-}
-debug($orderItems);
-
-$session = \Stripe\Checkout\Session::create([
-    'payment_method_types' => ['card'],
-    /*'line_items' => [[
-        'price_data' => [
-            'currency' => 'aud',
-            'product_data' => [
-                'name' => 'T-shirt',
-            ],
-            'unit_amount' => 2000,
-        ],
-        'quantity' => 1,
-    ]],*/
-    'line_items' => [$orderCheckout],
-    'mode' => 'payment',
-    'success_url' => 'http://localhost:8080/success',
-    'cancel_url' => 'http://example.com/cancel',
-]);
+//\Stripe\Stripe::setApiKey('sk_test_51LkgUlGRmWCorjcXA038yfpvxDxs4RGCgZjVodGkU4lVz37N5Uo94ig9MZg2YCCGDZSwaT0vSUmFpUYjNFnI9qOi00eWvmMRNg');
+//$orderCheckout = [];
+//foreach ($orderItems['Orderitems'] as $orderItem){
+//    array_push($orderCheckout, ['price_data' => [
+//        'currency' => 'aud',
+//        'product_data' => [
+//            'name' => $orderItem['name'],
+//        ],
+//        'unit_amount' => intval($orderItem['price']),
+//    ],
+//        'quantity' => 1]);
+//}
+//debug($orderItems);
+//
+//$session = \Stripe\Checkout\Session::create([
+//    'payment_method_types' => ['card'],
+//    /*'line_items' => [[
+//        'price_data' => [
+//            'currency' => 'aud',
+//            'product_data' => [
+//                'name' => 'T-shirt',
+//            ],
+//            'unit_amount' => 2000,
+//        ],
+//        'quantity' => 1,
+//    ]],*/
+//    'line_items' => [$orderCheckout],
+//    'mode' => 'payment',
+//    'success_url' => 'http://localhost:8080/success',
+//    'cancel_url' => 'http://example.com/cancel',
+//]);
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -214,7 +214,17 @@ $session = \Stripe\Checkout\Session::create([
                                         </tr>
                                     </tfoot>-->
                                 </table>
-                                <a class="readmore" href="<?= $this->Url->build(['controller' => 'user_addresses', 'action' => 'checkout','prefix' => false])?> ">Proceed to Checkout</a>
+                                <?php $subtotal = 0;
+                                if ($orderItems != null) :
+                                    {
+                                        $urlLink = ['controller' => 'user_addresses', 'action' => 'checkout','prefix' => false];
+                                    }
+                                else :
+                                    {
+                                        $urlLink = ['controller' => 'Products', 'action' => 'cart','prefix' => false];
+                                        }
+                                endif;?>
+                                    <a class="readmore" href="<?= $this->Url->build($urlLink)?> ">Proceed to Checkout</a>
                             </div>
                         </div>
                     </div>
@@ -256,15 +266,6 @@ $session = \Stripe\Checkout\Session::create([
 
         <!-- Stripe JS -->
         <script src="https://js.stripe.com/v3/"></script>
-        <script>
-            var stripe = Stripe('pk_test_51LkgUlGRmWCorjcXsDFRkKYqWTuPWk8mGeKtr6398t7o55wnltXdYpUjAqaDzSfHb426KyXxxCtfC2wWi6tV7IB700R4ElytR1');
-            const btn = document.getElementById("checkout-button")
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                stripe.redirectToCheckout({
-                    sessionId: "<?php echo $session->id; ?>"
-                });
-            });
-        </script>
+<!--
     </body>
 </html>

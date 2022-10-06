@@ -58,6 +58,7 @@ class UserAddressesController extends AppController
      */
     public function checkout()
     {
+        $userID = $this->request->getSession()->read('Auth');
         $userAddress = $this->UserAddresses->newEmptyEntity();
         $orderItems = $this->Cart->getcart();
         if ($this->request->is('post')) {
@@ -72,7 +73,7 @@ class UserAddressesController extends AppController
             return $this->redirect(['action' => 'cancel']);
         }
         $users = $this->UserAddresses->Users->find('list', ['limit' => 200])->all();
-        $this->set(compact('userAddress', 'users','orderItems'));
+        $this->set(compact('userAddress', 'users','orderItems','userID'));
     }
 
     /**
