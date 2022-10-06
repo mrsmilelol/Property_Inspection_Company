@@ -136,7 +136,20 @@ class UserAddressesController extends AppController
             'status'=>'Order is placed',
             'user_id'=> $user->id
         ]);
-        $this->Orders->save($order);
+        if ( $total >= 0)
+            {$this->Orders->save($order);}
+
+
+        $orderID = $this->Orders->find()->select(['id'])->where(['user_id'=> $user->id])->order(['id'=>'DESC'])->first();
+        foreach($orderItems as $orderItem){
+            $orderProduct = $this->OrdersProducts->newEntity([
+                'order_id'=>$orderID->id,
+                'product_id' => $orderItem['product_id'],
+                'quantity' => 1
+            ]);
+            $this->OrdersProducts->save($orderProduct);
+        }
+        $this->Cart->clear();
     }
 
     public function cancel($id = null)

@@ -302,7 +302,7 @@ $session = \Stripe\Checkout\Session::create([
                         <div class="order-button-payment">
                             <?php echo $this->Form->submit('Place order', [
                                 'type' => 'submit',
-                                'id' => 'checkout-button',
+                                'id' => 'checkout-button-main',
                                 'class' => 'order-button-payment',
                                 'escape' => 'false'
                             ]);?>
