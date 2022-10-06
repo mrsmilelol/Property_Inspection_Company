@@ -13,10 +13,10 @@
             <table class="table table-bordered" id="products" width="100%" cellspacing="0">
                 <thead>
                 <tr>
-                    <th data-visible="false"><?= h('id') ?></th>
-                    <th><?= h('Order Number') ?></th>
-                    <th><?= h('status') ?></th>
-                    <th><?= h('created_at') ?></th>
+                    <th data-visible="false"><?= h('ID') ?></th>
+                    <th><?= h('Order number') ?></th>
+                    <th><?= h('Status') ?></th>
+                    <th><?= h('Created at') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
                 </thead>

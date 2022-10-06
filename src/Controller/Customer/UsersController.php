@@ -51,6 +51,7 @@ class UsersController extends AppController
         $this->set(compact('user'));
     }
 
+
     public function dashboard($id=null){
         /*$user = $this->Users->get($id, [
             'contain' => ['UserAddresses']]);*/

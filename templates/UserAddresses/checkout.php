@@ -4,6 +4,7 @@
  * @var \App\Model\Entity\UserAddress $userAddress
  * @var \Cake\Collection\CollectionInterface|string[] $users
  * @var string[]|\Cake\Collection\CollectionInterface $orderItems
+ * @var string[]|\Cake\Collection\CollectionInterface $userID
  */
 $formTemplate = [
     'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}<span class="help">{{help}}</span></div>',
@@ -21,6 +22,7 @@ $cancelURL = 'https://' . $_SERVER['SERVER_NAME'] . '/team09-app_fit3048/user-ad
 \Stripe\Stripe::setApiKey('sk_test_51LkgUlGRmWCorjcXA038yfpvxDxs4RGCgZjVodGkU4lVz37N5Uo94ig9MZg2YCCGDZSwaT0vSUmFpUYjNFnI9qOi00eWvmMRNg');
 //aaa
 $orderCheckout = [];
+
 foreach ($orderItems['Orderitems'] as $orderItem) {
     array_push($orderCheckout, ['price_data' => [
         'currency' => 'aud',
@@ -31,13 +33,18 @@ foreach ($orderItems['Orderitems'] as $orderItem) {
     ],
         'quantity' => 1]);
 }
-$session = \Stripe\Checkout\Session::create([
-    'payment_method_types' => ['card'],
-    'line_items' => [$orderCheckout],
-    'mode' => 'payment',
-    'success_url' => $successURL,
-    'cancel_url' => $cancelURL,
-]);
+
+if ($orderCheckout != []) {
+    $session = \Stripe\Checkout\Session::create([
+        'payment_method_types' => ['card'],
+        'line_items' => [$orderCheckout],
+        'mode' => 'payment',
+        'success_url' => $successURL,
+        'cancel_url' => $cancelURL,
+    ]);
+} else {
+    $this->Url->build(['controller' => 'Products','action' => 'cart']);
+}
 ?>
 
 <!doctype html>
@@ -176,11 +183,7 @@ $session = \Stripe\Checkout\Session::create([
                     <h3 class="checkbox-title">Billing Details</h3>
                     <div class="row">
                         <?= $this->Form->create($userAddress) ?>
-                        <div class="col-md-6">
-                            <p class="form-row">
-                        <?php echo $this->Form->control('user_id', ['options' => $users, 'empty' => true, 'label' => ['class' => 'required']]);?>
-                            </p>
-                        </div>
+                        <?php echo $this->Form->hidden('user_id', ['value' => $userID->id,'type' => 'text']);?>
                         <div class="col-md-6">
                             <p class="form-row">
                                 <?php echo $this->Form->control('country', ['placeholder' => 'Australia','label' => ['class' => 'required']]); ?>

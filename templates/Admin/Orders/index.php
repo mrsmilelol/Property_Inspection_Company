@@ -15,10 +15,10 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             <table class="table table-bordered" id="orders" width="100%" cellspacing="0">
                 <thead>
                 <tr>
-                    <th data-visible="false"><?= h('id') ?></th>
-                    <th><?= h('user name') ?></th>
-                    <th><?= h('total') ?></th>
-                    <th><?= h('status') ?></th>
+                    <th data-visible="false"><?= h('ID') ?></th>
+                    <th><?= h('Username') ?></th>
+                    <th><?= h('Total') ?></th>
+                    <th><?= h('Status') ?></th>
                     <th><?= h('Created at') ?></th>
 
                     <th class="actions"><?= __('Actions') ?></th>
@@ -36,7 +36,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                         <?= $this->Html->link(__('View'), ['action' => 'view', $order->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $order->id]) ?>
                         <?= $this->Form->postLink(__('Cancel'), ['prefix'=>'Admin','action' => 'cancel', $order->id], ['confirm' => __('Are you sure you want to cancel # {0}?', $order->id)])
-                        //$this->Html->link(__('Cancel'), ['controller'=>'CancelledOrders','action' => 'cancel','prefix'=>false , $order->id]) ?>
+                        //$this->Html->link(__('Cancel'), ['controller'=>'CancelledOrders','action' => 'cancel', $order->id]) ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>
