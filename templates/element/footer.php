@@ -1,52 +1,66 @@
 <!--Footer Area Start-->
+<?php $categories = $this->Common->getCategoryInfo(); ?>
 <div class="footer-area">
     <!--Footer Top Area Start-->
     <div class="footer-top section-padding2">
         <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-4 col-md-3">
+            <div class="row" style="display: flex; justify-content: center">
+                <div class="col-xs-12">
                     <div class="footer-top-menu">
                         <h3 class="footer-widget-title">Categories</h3>
                         <ul class="toggle-footer">
-                            <li><a href="shop.html">Bedroom</a></li>
-                            <li><a href="shop.html">Livingroom</a></li>
-                            <li><a href="shop.html">Lighting</a></li>
-                            <li><a href="shop.html">Accessories</a></li>
+                            <?php $categories = $categories->toArray();
+                            for ($x = 0; $x <= count($categories) - 1; $x++) :
+                            if ($categories[$x]->parent_id == null) : ?>
+                            <li>
+                                <a href=<?= $this->Url->build(['controller' => 'Categories',
+                                    'action' => 'list', $categories[$x]->id]); ?>><?= h($categories[$x]->description) ?></a>
+                            </li>
+                            <?php endif; endfor; ?>
                         </ul>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-4 col-md-3">
+                <!--<div class="col-xs-12 col-md-4">
                     <div class="footer-top-menu">
                         <h3 class="footer-widget-title">Information</h3>
                         <ul class="toggle-footer">
-                            <li><a href="shop.html">Specials</a></li>
-                            <li><a href="shop.html">New products</a></li>
-                            <li><a href="shop.html">Best sellers</a></li>
-                            <li><a href="shop.html">Our stores</a></li>
-                            <li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'contact']); ?>>Contact us</a></li>
                         </ul>
                     </div>
-                </div>
-                <div class="col-xs-12 col-sm-4 col-md-3">
-                    <div class="footer-top-menu">
-                        <h3 class="footer-widget-title">My account</h3>
-                        <ul class="toggle-footer">
-                            <li><a href="#">My orders</a></li>
-                            <li><a href="#">My credit slips</a></li>
-                            <li><a href="#">My addresses</a></li>
-                            <li><a href="#">My personal info</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-3 col-md-3 hidden-sm">
+                </div>-->
+                <?php $userType = $this->request->getSession()->read('Auth.user_type_id') ?>
+
+                <div class="col-xs-12 hidden-sm">
                     <div class="footer-top-menu">
                         <h3 class="footer-widget-title">EXTRAS</h3>
                         <ul class="toggle-footer">
-                            <li><a href="#">Orders & Returns</a></li>
-                            <li><a href="#">Search Terms</a></li>
-                            <li><a href="#">Advance Search</a></li>
-                            <li><a href="#">Affiliates</a></li>
-                            <li><a href="<?= $this->Url->build(['prefix'=>'Customer','controller'=>'WholesaleRequests', 'action'=>'request']); ?>">Wholesale Application</a></li>
+                            <li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','warranties']); ?>>Warranties</a></li>
+                            <li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','about']); ?>>About Us</a></li>
+                            <li><a href=<?= $this->Url->build(['controller'=>'Pages', 'action'=>'display','contact']); ?>>Contact Us</a></li>
+                            <li><a href="<?= $this->Url->build(['controller'=>'Products', 'action'=>'shop']); ?>">Shop</a></li>
+                            <!-- My account - this links to different things depending on the user -->
+                            <?php if ($userType == 1) : ?>
+                                <li>
+                                    <a href=<?= $this->Url->build(['prefix' => 'Admin', 'controller' => 'Products','action' => 'index']) ?>>Back to Dashboard</a>
+                                </li>
+                            <?php elseif ($userType == 2) : ?>
+                                <li>
+                                    <a href=<?= $this->Url->build(['prefix' => 'Wholesale', 'controller' => 'Users','action' => 'dashboard']) ?>>My Account</a>
+                                </li>
+                            <?php elseif ($userType == 3) : ?>
+                                <li>
+                                    <a href=<?= $this->Url->build(['prefix' => 'Customer', 'controller' => 'Users','action' => 'dashboard']) ?>>My Account</a>
+                                </li>
+                            <?php else : ?>
+                                <li>
+                                    <a href=<?= $this->Url->build(['prefix' => false, 'controller' => 'Users','action' => 'login']) ?>>My Account</a>
+                                </li>
+                            <?php endif; ?>
+                            <!-- Wholesale application page -->
+                            <?php if ($userType == 3 || $userType == null) : ?>
+                            <li>
+                                <a href="<?= $this->Url->build(['controller'=>'WholesaleRequests', 'action'=>'request']); ?>">Wholesale Application</a>
+                            </li>
+                            <?php endif; ?>
                         </ul>
                     </div>
                 </div>
