@@ -33,6 +33,9 @@ $this->layout = 'front';
                                 Home
                             </a></li>
                         <li>
+                            <span>></span>
+                        </li>
+                        <li>Shop</li>
                     </ul>
                 </div>
             </div>

@@ -34,6 +34,9 @@ $this->layout = 'front';
                                 Home
                             </a></li>
                         <li>
+                            <span>></span>
+                        </li>
+                        <li><?= h($category->description) ?></li>
                     </ul>
                 </div>
             </div>
