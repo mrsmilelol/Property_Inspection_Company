@@ -74,7 +74,7 @@ $the_user = $this->request->getSession()->read('Auth');
                                                 <td><?= h($order->status) ?></td>
                                                 <td><?= h($order->created_at) ?></td>
                                                 <td>
-                                                    <a href="<?= $this->Url->build(['controller' => 'Orders', 'action' => 'view', $order->id]) ?>" class="btn btn-round orders-btn-view">View</a>
+                                                    <!--<a href="<?= $this->Url->build(['controller' => 'Orders', 'action' => 'view', $order->id]) ?>" class="btn btn-round orders-btn-view">View</a>-->
                                                     <a href="<?= $this->Url->build(['controller' => 'CancelledOrders', 'action' => 'cancel', $order->id]) ?>" class="btn btn-round orders-btn-view">Cancel</a>
                                                 </td>
                                             </tr>
