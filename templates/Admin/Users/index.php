@@ -62,7 +62,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                                     ['action' => 'userStatus', $user->id, $user->status],
                                     ['block' => true,
                                         'confirm' => __('Are you sure you want to activate this user # {0}? This user will now be able to access the system.',
-                                            $user->id)]
+                                            $user->username)]
                                 ) ?>
                             <?php endif; ?>
                         </td>
@@ -76,13 +76,13 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                                     <?= $this->Form->postLink(
                                         __('Downgrade'),
                                         ['action' => 'userMaster', $user->id, $user->master],
-                                        ['block' => true, 'confirm' => __('Are you sure you want to downgrade this user # {0}?', $user->id)]
+                                        ['block' => true, 'confirm' => __('Are you sure you want to downgrade this user # {0}?', $user->username)]
                                     ) ?>
                                 <?php else : ?>
                                     <?= $this->Form->postLink(
                                         __('Upgrade'),
                                         ['action' => 'userMaster', $user->id, $user->master],
-                                        ['block' => true, 'confirm' => __('Are you sure you want to upgrade this user # {0}?', $user->id)]
+                                        ['block' => true, 'confirm' => __('Are you sure you want to upgrade this user # {0}?', $user->username)]
                                     ) ?>
                                 <?php endif; ?>
                             </td>

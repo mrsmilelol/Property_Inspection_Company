@@ -32,7 +32,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['action' => 'view', $category->id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $category->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $category->id], ['confirm' => __('Are you sure you want to delete # {0}?', $category->id)]) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $category->id], ['confirm' => __('Are you sure you want to delete # {0}?', $category->description)]) ?>
                             </td>
                         </tr>
                         <?php endforeach; ?>
