@@ -55,42 +55,35 @@ $the_user = $this->request->getSession()->read('Auth');
                         <div class="myaccount-content">
                             <h5>Orders</h5>
                             <div class="myaccount-table table-responsive">
+                                <?php if (!empty($orders)) : ?>
                                 <table class="table-myaccount table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Name</th>
-                                        <th>Date</th>
-                                        <th>Status</th>
-                                        <th>Total</th>
-                                        <th>Action</th>
+                                        <th><?= __('ID') ?></th>
+                                        <th><?= __('Total') ?></th>
+                                        <th><?= __('Status') ?></th>
+                                        <th><?= __('Order date') ?></th>
+                                        <th><?= __('Actions') ?></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Moisturizing Oil</td>
-                                        <td>Aug 22, 2018</td>
-                                        <td>Pending</td>
-                                        <td>$45</td>
-                                        <td><a href="cart.html" class="btn btn-round orders-btn-view">View</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Katopeno Altuni</td>
-                                        <td>July 22, 2018</td>
-                                        <td>Approved</td>
-                                        <td>$100</td>
-                                        <td><a href="cart.html" class="btn btn-round orders-btn-view">View</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Murikhete Paris</td>
-                                        <td>June 12, 2017</td>
-                                        <td>On Hold</td>
-                                        <td>$99</td>
-                                        <td><a href="cart.html" class="btn btn-round orders-btn-view">View</a></td>
-                                    </tr>
+                                    <?php foreach ($orders as $order) :?>
+                                        <tr>
+                                            <td><?= $this->Number->format($order->id) ?></td>
+                                            <td><?= $this->Number->format($order->total) ?></td>
+                                            <td><?= h($order->status) ?></td>
+                                            <td><?= h($order->created_at) ?></td>
+                                            <td>
+                                                <a href="<?= $this->Url->build(['controller' => 'Orders', 'action' => 'view', $order->id]) ?>" class="btn btn-round orders-btn-view">View</a>
+                                                <a href="<?= $this->Url->build(['controller' => 'CancelledOrders', 'action' => 'cancel', $order->id]) ?>" class="btn btn-round orders-btn-view">Cancel</a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                    <?php else : ?>
+                                        <p class="lhbigger">You currently have no orders. </p>
+                                        <a href="<?= $this->Url->build(['controller' => 'UserAddresses', 'action' => 'add', $the_user->id]) ?>" class="btn btn-round d-inline-block address-btn-edit">
+                                            <i class="fa fa-edit"></i> Add address </a>
+                                    <?php endif; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -134,7 +127,6 @@ $the_user = $this->request->getSession()->read('Auth');
                                     <i class="fa fa-edit"></i> Add address </a>
                             </address>
                                 <?php endif; ?>
-                            </a>
                         </div>
                     </div>
                     <!-- Single Tab Content End -->
