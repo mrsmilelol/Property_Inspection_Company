@@ -39,6 +39,9 @@ $this->layout = 'front';
                         <p class="lost-password form-group">
                             <?= $this->Html->link('Forgot your password?', ['action' => 'password_reset'], ['class' => 'button float-right']) ?>
                         </p>
+                        <p class="lost-password form-group">
+                            <?= $this->Html->link('Or do you not yet have an account? Register', ['action' => 'sign_up'], ['class' => 'button float-right']) ?>
+                        </p>
                         <p class="submit">
                             <?= $this->Form->button(__('Login'), [
                                 'type' => 'submit',

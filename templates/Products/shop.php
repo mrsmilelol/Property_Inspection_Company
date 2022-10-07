@@ -38,6 +38,9 @@ $this->layout = 'front';
                                 Home
                             </a></li>
                         <li>
+                            <span>></span>
+                        </li>
+                        <li>Shop</li>
                     </ul>
                 </div>
             </div>
@@ -294,7 +297,10 @@ $this->layout = 'front';
                                         <!--Product Image-->
                                         <div class="product-img">
                                                 <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="Printed Dress">
-                                                    <a><?= $this->Html->image($products[$x]['product_images'][0]->description,['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
+                                                    <a><?= $this->Html->image($products[$x]['product_images'][0]->description,[
+                                                        'alt' => 'CakePHP',
+                                                            'class' => 'img-fluid',
+                                                            'url' => ['controller' => 'Products', 'action' => 'detail',$products[$x]->id]]);?> </a>
                                                 </a>
                                         </div>
                                         <span class="new-label">New</span>

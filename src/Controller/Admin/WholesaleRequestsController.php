@@ -91,7 +91,7 @@ class WholesaleRequestsController extends AppController
                 //$this->redirect(['controller'=>'Users','action'=>'addWholesale',$wholesaleRequest->id]);
                 $this->Flash->success(__('The wholesale request has been saved.'));
 
-                return $this->redirect(['controller'=>'WholesaleRequests','action' => 'add','prefix'=>'Admin']);
+                return $this->redirect(['controller'=>'WholesaleRequests','action' => 'index','prefix'=>'Admin']);
             }
             $this->Flash->error(__('The wholesale request could not be saved. Please, try again.'));
         }

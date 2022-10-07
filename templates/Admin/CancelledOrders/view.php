@@ -19,7 +19,7 @@
                 <td><?= h($cancelledOrder->reason) ?></td>
             </tr>
             <tr>
-                <th><?= __('Created At') ?></th>
+                <th><?= __('Created at') ?></th>
                 <td><?= h($cancelledOrder->created_at) ?></td>
             </tr>
         </table>
@@ -37,5 +37,4 @@
         );
         ?>
     </div>
-</div>
 </div>

@@ -55,8 +55,8 @@ $this->layout = 'front';
                 <p>1680 Dandenong Rd, Oakleigh East VIC 3166 (Melbourne)</p>
                 <p><br></p>
                 <h3>Contact details</h3>
-                <p>Email: info@chelseafurniture.com.au</p>
-                <p>Telephone: 03 7068 0002</p>
+                <p>Email: <a href="mailto:info@chelseafurniture.com.au">info@chelseafurniture.com.au</a></p>
+                <p>Telephone: <a href="tel:+61 3 7068 0002">03 7068 0002</a></p>
             </div>
             <div class="social-icon">
                 <ul>

@@ -50,6 +50,9 @@ $this->layout = 'front';
                             //echo $this->Form->control('modified_at', ['type' => 'hidden']);
                             ?>
                         </p>
+                        <p class="lost-password form-group">
+                            <?= $this->Html->link('Or do you already have an account? Sign in', ['action' => 'login'], ['class' => 'button float-right']) ?>
+                        </p>
                         <p class="submit">
                             <?= $this->Form->button(__('Sign up'), [
                                 'type' => 'submit',
