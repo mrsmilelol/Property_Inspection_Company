@@ -62,13 +62,13 @@ class UserAddressesTable extends Table
 
         $validator
             ->scalar('address_line_1')
-            ->maxLength('address_line_1', 64)
+            ->maxLength('address_line_1', 255)
             ->requirePresence('address_line_1', 'create')
             ->notEmptyString('address_line_1');
 
         $validator
             ->scalar('address_line_2')
-            ->maxLength('address_line_2', 64)
+            ->maxLength('address_line_2', 255)
             ->allowEmptyString('address_line_2');
 
         $validator
