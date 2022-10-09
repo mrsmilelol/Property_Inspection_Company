@@ -149,8 +149,36 @@ class UserAddressesController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function success($id = null)
+    public function success()
     {
+        $this->loadModel('Orders');
+        $this->loadModel('OrdersProducts');
+        $sessionData = $this->Cart->getcart();
+        $user = $this->request->getSession()->read('Auth');
+        $orderItems = $sessionData['Orderitems'];
+        $total = 0;
+        foreach ($orderItems as $orderItem){
+            $total = $total + $orderItem['price'];
+        }
+        $order = $this->Orders->newEntity([
+            'total'=>intval($total),
+            'status'=>'Order is placed',
+            'user_id'=> $user->id
+        ]);
+        if ( $total >= 0)
+            {$this->Orders->save($order);}
+
+
+        $orderID = $this->Orders->find()->select(['id'])->where(['user_id'=> $user->id])->order(['id'=>'DESC'])->first();
+        foreach($orderItems as $orderItem){
+            $orderProduct = $this->OrdersProducts->newEntity([
+                'order_id'=>$orderID->id,
+                'product_id' => $orderItem['product_id'],
+                'quantity' => 1
+            ]);
+            $this->OrdersProducts->save($orderProduct);
+        }
+        $this->Cart->clear();
     }
 
     public function cancel($id = null)
