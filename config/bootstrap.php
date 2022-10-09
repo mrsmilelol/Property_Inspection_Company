@@ -106,7 +106,12 @@ if (Configure::read('debug')) {
  * Set the default server timezone. Using UTC makes time calculations / conversions easier.
  * Check http://php.net/manual/en/timezones.php for list of valid timezone strings.
  */
-date_default_timezone_set(Configure::read('App.defaultTimezone'));
+//date_default_timezone_set(Configure::read('App.defaultTimezone'));
+date_default_timezone_set('Australia/Melbourne');
+\Cake\I18n\Time::setToStringFormat('h:mm a');
+\Cake\I18n\Date::setToStringFormat('dd/MM/yyyy');
+\Cake\I18n\FrozenTime::setToStringFormat('dd/MM/yyyy h:mm a');
+\Cake\I18n\FrozenDate::setToStringFormat('dd/MM/yyyy');
 
 /*
  * Configure the mbstring extension to use the correct encoding.
