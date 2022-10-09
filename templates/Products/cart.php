@@ -177,9 +177,6 @@ $this->layout = 'front';
 
                     <?php if ($orderItems['Orderitems'] !=null): ?>
                     <div class="col-md-4 col-sm-5 col-xs-12 mb-30 cart_totals">
-                        <div class="block-title text-end mb-2">
-                            <h2>Cart Totals</h2>
-                        </div>
                         <div class="cart-total-wrap">
                             <div class="table-responsive">
                                 <table class="table table-borderless text-end mb-0">
@@ -202,7 +199,7 @@ $this->layout = 'front';
 <!--                                            </td>-->
 <!--                                        </tr>-->
                                         <tr class="order-total">
-                                            <th>Total</th>
+                                            <th>Cart Total</th>
                                             <td>
                                                 <strong>
                                                     <span class="amount"><?= $this->Number->currency($subtotal) ?></span>

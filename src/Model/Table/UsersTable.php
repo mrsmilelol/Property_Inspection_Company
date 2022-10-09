@@ -85,13 +85,13 @@ class UsersTable extends Table
 
         $validator
             ->scalar('firstname')
-            ->maxLength('firstname', 32)
+            ->maxLength('firstname', 16)
             ->requirePresence('firstname', 'create')
             ->notEmptyString('firstname');
 
         $validator
             ->scalar('lastname')
-            ->maxLength('lastname', 32)
+            ->maxLength('lastname', 16)
             ->requirePresence('lastname', 'create')
             ->notEmptyString('lastname');
 

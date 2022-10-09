@@ -9,7 +9,7 @@ $formTemplate = [
     'label' => '<label{{attrs}} class="form-label">{{text}}</label>',
     'input' => '<input type="{{type}}" name="{{name}}" class="form-control"{{attrs}}/>',
     'radioContainer' => '<div class="form-radio">{{content}}</div>',
-    'textarea' => '<textarea name="{{name}}" class="form-control" {{attrs}}> {{value}}</textarea>'
+    'textarea' => '<textarea name="{{name}}" class="form-control" {{attrs}}> {{value}}</textarea>',
 ];
 $this->Form->setTemplates($formTemplate);
 
@@ -34,22 +34,25 @@ $this->layout = 'front';
                             <?= $this->Form->control('username', ['id' => 'maxWidth']) ?>
                             <?= $this->Form->control('password', ['id' => 'maxWidth']) ?>
                         </fieldset>
-                        <br>
 
-                        <p class="lost-password form-group">
-                            <?= $this->Html->link('Forgot your password?', ['action' => 'password_reset'], ['class' => 'button float-right']) ?>
+                        <p class="lost-password form-group" >Dont have an account?
+                            <?= $this->Html->link('Sign Up', ['action' => 'sign_up'], ['class' => 'button float-right']) ?>
                         </p>
-                        <p class="lost-password form-group">
-                            <?= $this->Html->link('Or do you not yet have an account? Register', ['action' => 'sign_up'], ['class' => 'button float-right']) ?>
-                        </p>
-                        <p class="submit">
-                            <?= $this->Form->button(__('Login'), [
-                                'type' => 'submit',
-                                'id' => 'submitlogin',
-                                'name' => 'SubmitLogin',
-                                'class' => ''
-                            ]); ?>
-                        </p>
+                        <div class="form-row">
+                            <div class="col-md-3 mb-3" style="padding-left: 0">
+                                <p class="submit">
+                                    <?= $this->Form->button(__('Login'), [
+                                        'type' => 'submit',
+                                        'id' => 'submitlogin',
+                                        'name' => 'SubmitLogin',
+                                        'class' => '',
+                                    ]); ?>
+                                </p>
+                            </div>
+                        <div style = "display: flex; justify-content:flex-end">
+                            <?= $this->Html->link('Forgot your password?', ['action' => 'password_reset', 'id' => 'forgot_password'], ['class' => 'submit ']) ?>
+                        </div>
+                        </div>
                         <?= $this->Form->end() ?>
                     </form>
                 </div>

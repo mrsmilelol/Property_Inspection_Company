@@ -62,7 +62,7 @@ class WholesaleRequestsTable extends Table
 
         $validator
             ->scalar('business_name')
-            ->maxLength('business_name', 64)
+            ->maxLength('business_name', 32)
             ->requirePresence('business_name', 'create')
             ->notEmptyString('business_name');
 
@@ -73,7 +73,7 @@ class WholesaleRequestsTable extends Table
 
         $validator
             ->scalar('abn')
-            ->maxLength('abn', 64)
+            ->maxLength('abn', 11)
             ->requirePresence('abn', 'create')
             ->notEmptyString('abn');
 
@@ -87,32 +87,33 @@ class WholesaleRequestsTable extends Table
 
         $validator
             ->scalar('address_line_1')
-            ->maxLength('address_line_1', 64)
+            ->maxLength('address_line_1', 255)
             ->requirePresence('address_line_1', 'create')
             ->notEmptyString('address_line_1');
 
         $validator
             ->scalar('address_line_2')
-            ->maxLength('address_line_2', 64)
+            ->maxLength('address_line_2', 255)
             ->allowEmptyString('address_line_2');
 
         $validator
             ->scalar('first_name')
-            ->maxLength('first_name', 64)
+            ->maxLength('first_name', 12)
             ->requirePresence('first_name', 'create')
             ->notEmptyString('first_name');
 
         $validator
             ->scalar('last_name')
-            ->maxLength('last_name', 64)
+            ->maxLength('last_name', 12)
             ->requirePresence('last_name', 'create')
             ->notEmptyString('last_name');
 
         $validator
             ->scalar('phone')
-            ->maxLength('phone', 64)
+            ->maxLength('phone', 17)
             ->requirePresence('phone', 'create')
-            ->notEmptyString('phone');
+            ->notEmptyString('phone')
+            ->regex('phone', '/^(?:\+?61|0)[2-478](?:[ -]?[0-9]){8}$/', 'Invalid phone number, try +61313062555');
 
         $validator
             ->email('email')
@@ -121,7 +122,7 @@ class WholesaleRequestsTable extends Table
 
         $validator
             ->scalar('position')
-            ->maxLength('position', 64)
+            ->maxLength('position', 12)
             ->requirePresence('position', 'create')
             ->notEmptyString('position');
 
