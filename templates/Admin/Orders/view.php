@@ -19,45 +19,41 @@
                     <td><?= $order->has('user') ? $this->Html->link($order->user->username, ['controller' => 'Users', 'action' => 'view', $order->user->id]) : '' ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Id') ?></th>
-                    <td><?= $this->Number->format($order->id) ?></td>
-                </tr>
-                <tr>
                     <th><?= __('Total') ?></th>
                     <td><?= $this->Number->format($order->total) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Created At') ?></th>
+                    <th><?= __('Created at') ?></th>
                     <td><?= h($order->created_at) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Modified At') ?></th>
+                    <th><?= __('Modified at') ?></th>
                     <td><?= h($order->modified_at) ?></td>
                 </tr>
             </table>
             <div class="related">
-                <h4><?= __('Related Products') ?></h4>
+                <h4><?= __('Related products') ?></h4>
                 <?php if (!empty($order->products)) : ?>
                 <div class="table-responsive">
                     <table>
                         <tr>
-                            <th><?= __('Id') ?></th>
+                            <th><?= __('ID') ?></th>
                             <th><?= __('Name') ?></th>
                             <th><?= __('Description') ?></th>
-                            <th><?= __('Price') ?></th>
+                            <th><?= __('Normal price') ?></th>
                             <th><?= __('Material') ?></th>
                             <th><?= __('Brand') ?></th>
                             <th><?= __('Style') ?></th>
                             <th><?= __('Colour') ?></th>
-                            <th><?= __('Units In Stock') ?></th>
+                            <th><?= __('Units in stock') ?></th>
                             <th><?= __('Size') ?></th>
                             <th><?= __('Weight') ?></th>
                             <th><?= __('Finish') ?></th>
-                            <th><?= __('Wholesale Price') ?></th>
-                            <th><?= __('Sale Price') ?></th>
-                            <th><?= __('Manufacturing') ?></th>
-                            <th><?= __('Created At') ?></th>
-                            <th><?= __('Modified At') ?></th>
+                            <th><?= __('Wholesale price') ?></th>
+                            <th><?= __('Sale price') ?></th>
+                            <th><?= __('Manufacturer') ?></th>
+                            <th><?= __('Created at') ?></th>
+                            <th><?= __('Modified at') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($order->products as $products) : ?>
@@ -91,23 +87,21 @@
                 <?php endif; ?>
             </div>
             <div class="related">
-                <h4><?= __('Cancel Order request') ?></h4>
+                <h4><?= __('Related order cancellation requests') ?></h4>
                 <?php if (!empty($order->cancelled_orders)) : ?>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <tr>
-                            <th><?= __('Id') ?></th>
-                            <th><?= __('Order Id') ?></th>
+                            <th><?= __('ID') ?></th>
                             <th><?= __('Reason') ?></th>
                             <th><?= __('Status') ?></th>
-                            <th><?= __('Created At') ?></th>
-                            <th><?= __('Modified At') ?></th>
+                            <th><?= __('Created at') ?></th>
+                            <th><?= __('Modified at') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($order->cancelled_orders as $cancelledOrders) : ?>
                         <tr>
                             <td><?= h($cancelledOrders->id) ?></td>
-                            <td><?= h($cancelledOrders->order_id) ?></td>
                             <td><?= h($cancelledOrders->reason) ?></td>
                             <td><?= h($cancelledOrders->status) ?></td>
                             <td><?= h($cancelledOrders->created_at) ?></td>
@@ -115,7 +109,7 @@
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['controller' => 'CancelledOrders', 'action' => 'view', $cancelledOrders->id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['controller' => 'CancelledOrders', 'action' => 'edit', $cancelledOrders->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'CancelledOrders', 'action' => 'delete', $cancelledOrders->id], ['confirm' => __('Are you sure you want to delete # {0}?', $cancelledOrders->id)]) ?>
+                                <!--<?/*= $this->Form->postLink(__('Delete'), ['controller' => 'CancelledOrders', 'action' => 'delete', $cancelledOrders->id], ['confirm' => __('Are you sure you want to delete # {0}?', $cancelledOrders->id)]) */?>-->
                             </td>
                         </tr>
                         <?php endforeach; ?>
@@ -124,20 +118,20 @@
                 <?php endif; ?>
             </div>
             <div class="related">
-                <h4><?= __('Related Payments') ?></h4>
+                <h4><?= __('Related payments') ?></h4>
                 <?php if (!empty($order->payments)) : ?>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <tr>
-                            <th><?= __('Id') ?></th>
-                            <th><?= __('Order Id') ?></th>
-                            <th><?= __('Payment Type') ?></th>
+                            <th><?= __('ID') ?></th>
+                            <th><?= __('Order ID') ?></th>
+                            <th><?= __('Payment type') ?></th>
                             <th><?= __('Provider') ?></th>
-                            <th><?= __('Account No') ?></th>
-                            <th><?= __('Security No') ?></th>
-                            <th><?= __('Expiry Date') ?></th>
-                            <th><?= __('Created At') ?></th>
-                            <th><?= __('Modified At') ?></th>
+                            <th><?= __('Account no.') ?></th>
+                            <th><?= __('Security no.') ?></th>
+                            <th><?= __('Expiry date') ?></th>
+                            <th><?= __('Created at') ?></th>
+                            <th><?= __('Modified at') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($order->payments as $payments) : ?>
@@ -164,7 +158,6 @@
             </div>
         </div>
     </div>
-</div>
 
 <script>
     $(document).ready( function () {

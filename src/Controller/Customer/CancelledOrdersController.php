@@ -26,15 +26,15 @@ class CancelledOrdersController extends AppController
         $status = $order->status;
         if (strcmp($status, "Cancel order requested")==0) {
             $this->Flash->error(__('You have already submitted cancel order request'));
-            return $this->redirect(['prefix'=>'Admin','action'=>'index','controller'=>'Orders']);
+            return $this->redirect(['prefix'=>'Customer','action'=>'dashboard','controller'=>'Users']);
         }
         elseif (strcmp($status, "Order cancelled")==0 ){
             $this->Flash->error(__('The cancel order request has already been approved.'));
-            return $this->redirect(['prefix'=>'Admin','action'=>'index','controller'=>'Orders']);
+            return $this->redirect(['prefix'=>'Customer','action'=>'dashboard','controller'=>'Users']);
         }
         elseif (strcmp($status, "Cancel request rejected")==0 ){
             $this->Flash->error(__('Your cancel order request has been rejected, please contact the store for any questions.'));
-            return $this->redirect(['prefix'=>'Admin','action'=>'index','controller'=>'Orders']);
+            return $this->redirect(['prefix'=>'Customer','action'=>'dashboard','controller'=>'Users']);
         } else {
             if ($this->request->is('post')) {
                 $cancelledOrder = $this->CancelledOrders->patchEntity($cancelledOrder, $this->request->getData());
@@ -67,7 +67,7 @@ class CancelledOrdersController extends AppController
                     }
                     $this->Flash->success(__('The cancelled order request has been saved.'));
 
-                    return $this->redirect(['action' => 'index','prefix'=>'Admin']);
+                    return $this->redirect(['controller'=>'Users','action' => 'dashboard','prefix'=>'Customer']);
                 }
                 $this->Flash->error(__('The cancelled order could not be saved. Please, try again.'));
             }

@@ -105,6 +105,7 @@ $this->layout = 'front';
         <!--Cart Main Area Start-->
         <div class="cart-main-area section-padding2">
             <div class="container">
+                <?php if ($orderItems['Orderitems'] !=null): ?>
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="heading-title">Shopping Cart Summary</h1>
@@ -125,7 +126,6 @@ $this->layout = 'front';
                                 </thead>
                                 <tbody>
                                 <?php
-                                if ($orderItems != null) :
                                     foreach ($orderItems['Orderitems'] as $orderItem) : ?>
                                 <tr>
                                         <td><a href="<?= $this->Url->build(['controller' => 'products', 'action' => 'detail',$orderItem['product_id']])?>"><?= $orderItem['name']?></a></td>
@@ -144,16 +144,19 @@ $this->layout = 'front';
                                         </td>
                                     </tr>
                                 </tbody>
-                                    <?php endforeach;
-                                endif?>
+                                    <?php endforeach;?>
                             </table>
                         </div>
+                        <?php else : ?>
+                            <p class="lhbigger">Your shopping cart is currently empty. </p>
+                        <?php endif;?>
                     </div>
                 </div>
 
                 <div class="row mb-n30">
                     <div class="col-md-8 col-sm-7 col-xs-12 mb-30">
-                        <div class="d-flex flex-wrap mb-n2 buttons-cart">
+                        <div class="d-flex flex-wrap mb-n2 buttons-cart"
+                             style="padding-right:15px;padding-left:15px;">
                             <!--                            <input type="submit" value="Update Cart" class="me-3 mb-2">-->
                             <a class="btn mb-2" href="<?= $this->Url->build(['controller' => 'products',
                                 'action' => 'shop']); ?>">Continue Shopping</a>
@@ -172,6 +175,7 @@ $this->layout = 'front';
 <!--                        </div>-->
                     </div>
 
+                    <?php if ($orderItems['Orderitems'] !=null): ?>
                     <div class="col-md-4 col-sm-5 col-xs-12 mb-30 cart_totals">
                         <div class="cart-total-wrap">
                             <div class="table-responsive">
@@ -179,11 +183,9 @@ $this->layout = 'front';
                                     <tbody>
                                         <tr>
                                             <?php $subtotal = 0;
-                                            if ($orderItems != null) :
                                                 foreach ($orderItems['Orderitems'] as $orderItem) :
                                                     $subtotal = $subtotal + $orderItem['price'];
-                                                endforeach;
-                                            endif;?>
+                                                endforeach; ?>
 <!--                                            <th>Subtotal</th>-->
 <!--                                            <td><strong>--><!--</strong></td>-->
 <!--                                        </tr>-->
@@ -223,6 +225,7 @@ $this->layout = 'front';
                                 endif;?>
                                     <a class="readmore" href="<?= $this->Url->build($urlLink)?> ">Proceed to Checkout</a>
                             </div>
+                            <?php endif;?>
                         </div>
                     </div>
 

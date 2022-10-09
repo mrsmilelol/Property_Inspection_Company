@@ -100,17 +100,23 @@
                                 <!--                                    <p>8901 Marmora Road, Glasgow D04 <br /> 89 GR, New York</p>-->
                                 <!--                                </li>-->
                                 <li>
-                                    <i class="fa fa-phone"></i>
+                                    <a href="tel:+61 3 7068 0002">
+                                        <i class="fa fa-phone"></i>
+                                    </a>
                                     <!--                                    <p>Telephone: 03 7068 0002 <br />Fax: (+1) 866-540-3229</p>-->
-                                    Telephone: 03 7068 0002
+                                    Telephone: <a href="tel:+61 3 7068 0002">03 7068 0002</a>
                                 </li>
                                 <li>
-                                    <i class="fa fa-envelope-o"></i>
-                                    Email: info@chelseafurniture.com.au
+                                    <a href="mailto:info@chelseafurniture.com.au">
+                                        <i class="fa fa-envelope-o"></i>
+                                    </a>
+                                    Email: <a href="mailto:info@chelseafurniture.com.au">info@chelseafurniture.com.au</a>
                                 </li>
                                 <li>
-                                    <i class="fa fa-globe"></i>
-                                    Website: https://chelseafurniture.com.au/
+                                    <a href="https://chelseafurniture.com.au/">
+                                        <i class="fa fa-globe"></i>
+                                    </a>
+                                    Website: <a href="https://chelseafurniture.com.au/">https://chelseafurniture.com.au/</a>
                                 </li>
                             </ul>
                         </div>

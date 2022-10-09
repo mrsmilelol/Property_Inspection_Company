@@ -26,6 +26,22 @@ class CategoriesController extends AppController
     {
         $param = $_GET;
         $sel = $param['sel']??'99';
+        $brandsql = '';
+        $stylesql = '';
+        $meterialsql = '';
+        $colorsql = '';
+        if (isset($param['brand']) and $param['brand']!=''){
+            $brandsql = ' brand="'.$param['brand'].'"';
+        }
+        if (isset($param['style']) and $param['style']!=''){
+            $stylesql = ' style="'.$param['style'].'"';
+        }
+        if (isset($param['material']) and $param['material']!=''){
+            $meterialsql = ' material="'.$param['material'].'"';
+        }
+        if (isset($param['colour']) and $param['colour']!=''){
+            $colorsql = ' colour="'.$param['colour'].'"';
+        }
 //        $this->loadModel('Categories');
         $category = $this->Categories->get($id, [
             'contain' => ['ParentCategories', 'Products', 'ChildCategories'],
@@ -33,6 +49,10 @@ class CategoriesController extends AppController
         $parentCategories = $this->Categories->find('list');
         $products = $this->Categories->Products->find()
 //            ->where(['Categories.id'=>$id])
+            ->where($brandsql)
+            ->where($stylesql)
+            ->where($meterialsql)
+            ->where($colorsql)
             ->contain(['ProductImages'])
             ->find('all')->toArray();
 

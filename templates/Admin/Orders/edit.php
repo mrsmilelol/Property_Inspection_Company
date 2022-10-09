@@ -16,7 +16,7 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
 ?>
 <div class="card shadow mb-4">
     <div class="d-sm-flex align-items-center justify-content-between card-header">
-        <h1 class="h3 mb-0 text-gray-800"><?= __('Edit product') ?></h1>
+        <h1 class="h3 mb-0 text-gray-800"><?= __('Edit orders') ?></h1>
     </div>
     <div class="card-body">
         <table class="table table-bordered" id="products" width="100%" cellspacing="0">
