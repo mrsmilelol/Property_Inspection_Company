@@ -126,18 +126,14 @@ $this->layout = 'front';
                                 </thead>
                                 <tbody>
                                 <?php
-                                    foreach ($orderItems['Orderitems'] as $orderItem) : ?>
+                                    foreach ($orderItems['Orderitems'] as $key=>$orderItem) : ?>
                                 <tr>
                                         <td><a href="<?= $this->Url->build(['controller' => 'products', 'action' => 'detail',$orderItem['product_id']])?>"><?= $orderItem['name']?></a></td>
                                         <td><?= $this->Number->currency($orderItem['price'])?></td>
                                         <td>
-                                            <div class="cart-quantity product-quantity">
-                                                <button class="dec qtybtn">-</button>
-                                                <input type="text" value="1">
-                                                <button class="inc qtybtn">+</button>
-                                            </div>
-                                        </td>
-                                        <td><?=$this->Number->currency($orderItem['price'])?></td>
+                                            <?= $this->Form->create(NULL,['url' => ['controller' => 'products', 'action' => 'cartupdate']])?>
+                                                <?php echo $this->Form->control('quantity-'.$key,['value'=>$orderItem['quantity'],'label'=>false,'type'=>'integer']); ?></td>
+                                        <td><?=$this->Number->currency($orderItem['price']*$orderItem['quantity'])?></td>
                                         <td><?php echo $this->Html->link('<i class="fa fa-trash"></i>', [
                                             'controller' => 'products', 'action' => 'removeProduct', $orderItem['product_id']], [
                                                 'class' => 'btn btn-secondary btn-sm', 'escape' => false]); ?>
@@ -160,6 +156,14 @@ $this->layout = 'front';
                             <!--                            <input type="submit" value="Update Cart" class="me-3 mb-2">-->
                             <a class="btn mb-2" href="<?= $this->Url->build(['controller' => 'products',
                                 'action' => 'shop']); ?>">Continue Shopping</a>
+                            <?php
+                            echo $this->Form->submit('Update the cart', [
+                                'type' => 'submit',
+                                'id' => '',
+                                'class' => 'btn mb-2',
+                                'escape' => 'false'
+                            ]); ?>
+                            <?php $this->Form->end();?>
                         </div>
 <!--                        <div class="coupon mt-4">-->
 <!--                            <h6>Coupon</h6>-->
@@ -184,7 +188,7 @@ $this->layout = 'front';
                                         <tr>
                                             <?php $subtotal = 0;
                                                 foreach ($orderItems['Orderitems'] as $orderItem) :
-                                                    $subtotal = $subtotal + $orderItem['price'];
+                                                    $subtotal = $subtotal + ($orderItem['price']*$orderItem['quantity']);
                                                 endforeach; ?>
 <!--                                            <th>Subtotal</th>-->
 <!--                                            <td><strong>--><!--</strong></td>-->

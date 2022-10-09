@@ -173,9 +173,11 @@ class ProductsController extends AppController
             foreach($this->request->getData() as $key => $value) {
                 $a = explode('-', $key);
                 $b = explode('_', $a[1]);
-                $this->Cart->add($b[0], $value, $b[1]);
-                $this->Cart->cart();
+                $value = intval($value);
+                $id = intval($b[0]);
+                $this->Cart->updateQty($id, $value);
             }
+            return $this->redirect($this->referer());
         }
         return $this->redirect(['action' => 'cart']);
     }
