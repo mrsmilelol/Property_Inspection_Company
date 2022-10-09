@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller\Component;
 
+use App\Model\Entity\UserAddress;
 use Cake\Controller\Component;
 
 class CartComponent extends Component {
@@ -110,5 +111,26 @@ class CartComponent extends Component {
     public function clear()
     {
         $this->getController()->getRequest()->getSession()->delete('Shop');
+    }
+
+    public function addUserAddress($id){
+        $controller = $this->_registry->getController();
+
+        $data = [];
+
+        $userAddress = $controller->UserAddress->get($id, [
+            'contain' => []
+        ]);
+        $data = [
+            'product_id' => $userAddress->id,
+            'user_id' => $userAddress->user_id,
+            'address_line_1' => $userAddress->address_line_1,
+            'address_line_2' => $userAddress->address_line_2,
+            'city' => $userAddress->city,
+            'country' => $userAddress->country,
+            'state' => $userAddress->state,
+            'postcode' => $userAddress->postcode
+        ];
+        $this->getController()->getRequest()->getSession()->write('Shop.UserAddress.' . $id, $data);
     }
 }

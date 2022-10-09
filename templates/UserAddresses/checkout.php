@@ -303,7 +303,12 @@ if ($orderCheckout != []) {
                     </div>
                     <div class="payment-method">
                         <div class="order-button-payment">
-                            <input id="checkout-button-main" class="order-button-payment" type="submit" value="Place order" />
+                            <?php echo $this->Form->submit('Place order', [
+                                'type' => 'submit',
+                                'id' => 'checkout-button-main',
+                                'class' => 'order-button-payment',
+                                'escape' => 'false'
+                            ]);?>
                         </div>
                         <?= $this->Form->end() ?>
                     </div>
