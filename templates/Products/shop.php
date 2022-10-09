@@ -62,7 +62,7 @@ $this->layout = 'front';
                         <div class="widget-info">
                             <ul>
                                 <li>
-                                    <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'shop',1])?>">In Stock</a>
+                                    <a href="<?= $this->Url->build([ 'class' => 'widget-info','controller' => 'Products', 'action' => 'shop',1])?>">In Stock</a>
                                 </li>
                                 <li>
                                     <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'shop',2])?>">On Sale</a>
@@ -222,7 +222,7 @@ $this->layout = 'front';
                                 </ul>
                             </div>
                         </aside>
-                        <button type="submit">compare</button>
+                            <button type="submit" class="btn btn-primary" style="background-color: #c38748; border-radius: 0px; border: 0; width: 100%">Search</button>
                     </form>
                 </div>
                 <div class="banner-image">
@@ -276,7 +276,7 @@ $this->layout = 'front';
                                 </div>
                                 <div class="single-shop-form pul-right">
                                     <button type="submit">
-                                        <span>Compare (<strong class="total-compare-val">0</strong>)<i class="fa fa-chevron-right right"></i></span>
+                                        <span>Sort Products <i class="fa fa-chevron-right right"></i></span>
                                     </button>
                                 </div>
                             </form>
