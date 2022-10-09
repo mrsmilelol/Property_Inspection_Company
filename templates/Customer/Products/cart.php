@@ -73,7 +73,7 @@ $this->layout = 'front';
 		<!--Cart Main Area Start-->
         <div class="cart-main-area section-padding2">
             <div class="container">
-                <?php if ($orderItems['Orderitems'] !=null): ?>
+                <?php if ($orderItems!=null and $orderItems['Orderitems'] !=null): ?>
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="heading-title">Shopping Cart Summary</h1>
@@ -142,6 +142,7 @@ $this->layout = 'front';
 <!--                        </div>-->
                     </div>
 
+                    <?php if ($orderItems!=null and $orderItems['Orderitems'] !=null): ?>
                     <div class="col-md-4 col-sm-5 col-xs-12 mb-30 cart_totals">
                         <div class="block-title text-end mb-2">
                             <h2>Cart Totals</h2>
@@ -185,6 +186,7 @@ $this->layout = 'front';
                                 </table>
                                 <a class="readmore" href="#">Proceed to Checkout</a>
                             </div>
+                            <?php endif;?>
                         </div>
                     </div>
 
