@@ -80,14 +80,14 @@ class CartComponent extends Component {
                 'product_id' => $product->id,
                 'name' => $product->name,
                 'quantity' => 1,
-                'wholesale_price' => sprintf('%01.2f', $product->wholesale_price)
+                'price' => sprintf('%01.2f', $product->wholesale_price)
             ];}
         else{
             $wholesale_data = [
                 'product_id' => $product->id,
                 'name' => $product->name,
                 'quantity' => 1,
-                'wholesale_price' => sprintf('%01.2f', $data['price'])
+                'price' => sprintf('%01.2f', $data['price'])
             ];
         }
 
@@ -141,14 +141,35 @@ class CartComponent extends Component {
     public function updateQty($id,$quantity){
         $controller = $this->_registry->getController();
         $cart = $this->getController()->getRequest()->getSession()->read('Shop');
+        $user = $this->getController()->getRequest()->getSession()->read('Auth');
         $data = [];
         $product = $controller->Products->get($id, ['contain' => []]);
-        $data = [
-            'product_id' => $product->id,
-            'name' => $product->name,
-            'quantity' => $quantity,
-            'price' => sprintf('%01.2f', $product->sale_price)
-        ];
-        $this->getController()->getRequest()->getSession()->write('Shop.Orderitems.' . $id, $data);
+        if ($user->user_type_id == 2){
+            $data = [
+                'product_id' => $product->id,
+                'name' => $product->name,
+                'quantity' => $quantity,
+                'price' => sprintf('%01.2f', $product->wholesale_price)
+            ];
+            $this->getController()->getRequest()->getSession()->write('Shop.WholesaleOrderitems.' . $id, $data);
+        }
+        elseif ($product->sale_price != null){
+            $data = [
+                'product_id' => $product->id,
+                'name' => $product->name,
+                'quantity' => $quantity,
+                'price' => sprintf('%01.2f', $product->sale_price)
+            ];
+            $this->getController()->getRequest()->getSession()->write('Shop.Orderitems.' . $id, $data);
+        }
+        else{
+            $data = [
+                'product_id' => $product->id,
+                'name' => $product->name,
+                'quantity' => $quantity,
+                'price' => sprintf('%01.2f', $product->price)
+            ];
+            $this->getController()->getRequest()->getSession()->write('Shop.Orderitems.' . $id, $data);
+        }
     }
 }

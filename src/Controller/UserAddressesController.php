@@ -59,6 +59,7 @@ class UserAddressesController extends AppController
     public function checkout()
     {
         $userID = $this->request->getSession()->read('Auth');
+        $user = $this->request->getSession()->read('Auth');
 
         $the_user = $this->request->getSession()->read('Auth.id');
         $addresses = $this->UserAddresses->find()
@@ -101,7 +102,7 @@ class UserAddressesController extends AppController
             $users = $this->UserAddresses->Users->find('list', ['limit' => 200])->all();
         }
 
-        $this->set(compact('userAddress', 'users','orderItems','userID'));
+        $this->set(compact('userAddress', 'users','orderItems','userID','user'));
     }
 
     /**
@@ -156,27 +157,53 @@ class UserAddressesController extends AppController
         $sessionData = $this->Cart->getcart();
         $user = $this->request->getSession()->read('Auth');
         $orderItems = $sessionData['Orderitems'];
+        $wholesaleOrderItems = $sessionData['WholesaleOrderitems'];
         $total = 0;
-        foreach ($orderItems as $orderItem){
-            $total = $total + $orderItem['price'];
-        }
-        $order = $this->Orders->newEntity([
-            'total'=>intval($total),
-            'status'=>'Order is placed',
-            'user_id'=> $user->id
-        ]);
-        if ( $total >= 0)
+        if ($user->user_type_id == 2){
+            foreach ($wholesaleOrderItems as $orderItem){
+                $total = $total + $orderItem['price'] * $orderItem['quantity'];
+            }
+            $order = $this->Orders->newEntity([
+                'total'=>intval($total),
+                'status'=>'Order is placed',
+                'user_id'=> $user->id
+            ]);
+            if ( $total >= 0)
             {$this->Orders->save($order);}
-
+        }
+        else{
+            foreach ($orderItems as $orderItem){
+                $total = $total + $orderItem['price'] * $orderItem['quantity'];
+            }
+            $order = $this->Orders->newEntity([
+                'total'=>intval($total),
+                'status'=>'Order is placed',
+                'user_id'=> $user->id
+            ]);
+            if ( $total >= 0)
+            {$this->Orders->save($order);}
+        }
 
         $orderID = $this->Orders->find()->select(['id'])->where(['user_id'=> $user->id])->order(['id'=>'DESC'])->first();
-        foreach($orderItems as $orderItem){
-            $orderProduct = $this->OrdersProducts->newEntity([
-                'order_id'=>$orderID->id,
-                'product_id' => $orderItem['product_id'],
-                'quantity' => 1
-            ]);
-            $this->OrdersProducts->save($orderProduct);
+        if ($user->user_type_id == 2) {
+            foreach ($wholesaleOrderItems as $orderItem) {
+                $orderProduct = $this->OrdersProducts->newEntity([
+                    'order_id' => $orderID->id,
+                    'product_id' => $orderItem['product_id'],
+                    'quantity' => $orderItem['quantity']
+                ]);
+                $this->OrdersProducts->save($orderProduct);
+            }
+        }
+        else{
+            foreach ($orderItems as $orderItem) {
+                $orderProduct = $this->OrdersProducts->newEntity([
+                    'order_id' => $orderID->id,
+                    'product_id' => $orderItem['product_id'],
+                    'quantity' => $orderItem['quantity']
+                ]);
+                $this->OrdersProducts->save($orderProduct);
+            }
         }
         $this->Cart->clear();
     }

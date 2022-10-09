@@ -163,7 +163,8 @@ class ProductsController extends AppController
     public function cart()
     {
         $orderItems = $this->Cart->getcart();
-        $this->set(compact('orderItems'));
+        $user = $this->request->getSession()->read('Auth');
+        $this->set(compact('orderItems','user'));
     }
 
 ////////////////////////////////////////////////////////////////////////////////
