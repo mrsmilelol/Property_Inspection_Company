@@ -67,23 +67,23 @@ $the_user = $this->request->getSession()->read('Auth');
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($orders as $order) :?>
-                                            <tr>
-                                                <td><?= $this->Number->format($order->id) ?></td>
-                                                <td><?= $this->Number->format($order->total) ?></td>
-                                                <td><?= h($order->status) ?></td>
-                                                <td><?= h($order->created_at) ?></td>
-                                                <td>
-                                                    <!--<a href="<?= $this->Url->build(['controller' => 'Orders', 'action' => 'view', $order->id]) ?>" class="btn btn-round orders-btn-view">View</a>-->
-                                                    <a href="<?= $this->Url->build(['controller' => 'CancelledOrders', 'action' => 'cancel', $order->id]) ?>" class="btn btn-round orders-btn-view">Cancel</a>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
+                                    <?php foreach ($orders as $order) :?>
+                                        <tr>
+                                            <td><?= $this->Number->format($order->id) ?></td>
+                                            <td><?= $this->Number->format($order->total) ?></td>
+                                            <td><?= h($order->status) ?></td>
+                                            <td><?= h($order->created_at) ?></td>
+                                            <td>
+                                                <!--<a href="<?= $this->Url->build(['controller' => 'Orders', 'action' => 'view', $order->id]) ?>" class="btn btn-round orders-btn-view">View</a>-->
+                                                <a href="<?= $this->Url->build(['controller' => 'CancelledOrders', 'action' => 'cancel', $order->id]) ?>" class="btn btn-round orders-btn-view">Cancel</a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
                                     <?php else : ?>
-                                    <p class="lhbigger">You currently have no orders. </p>
-                                    <a href="<?= $this->Url->build(['controller' => 'UserAddresses', 'action' => 'add', $the_user->id]) ?>" class="btn btn-round d-inline-block address-btn-edit">
-                                        <i class="fa fa-edit"></i> Add address </a>
-                                <?php endif; ?>
+                                        <p class="lhbigger">You currently have no orders. </p>
+                                        <a href="<?= $this->Url->build(['controller' => 'UserAddresses', 'action' => 'add', $the_user->id]) ?>" class="btn btn-round d-inline-block address-btn-edit">
+                                            <i class="fa fa-edit"></i> Add address </a>
+                                    <?php endif; ?>
                                     </tbody>
                                 </table>
                             </div>

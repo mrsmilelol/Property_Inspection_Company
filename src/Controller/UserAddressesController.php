@@ -58,21 +58,50 @@ class UserAddressesController extends AppController
      */
     public function checkout()
     {
-        $userAddress = $this->UserAddresses->newEmptyEntity();
-        $orderItems = $this->Cart->getcart();
-        if ($this->request->is('post')) {
-            $userAddress = $this->UserAddresses->patchEntity($userAddress, $this->request->getData());
-            if ($this->UserAddresses->save($userAddress)) {
-                $this->Flash->success(__('The user address has been saved.'));
+        $userID = $this->request->getSession()->read('Auth');
 
-                return $this->redirect(['action' => 'success']);
+        $the_user = $this->request->getSession()->read('Auth.id');
+        $addresses = $this->UserAddresses->find()
+            ->where(['UserAddresses.user_id'=>$the_user])
+            ->find('all')->toArray();
+
+        if (empty($addresses)) {
+            $userAddress = $this->UserAddresses->newEmptyEntity();
+            $orderItems = $this->Cart->getcart();
+            if ($this->request->is('post')) {
+                $userAddress = $this->UserAddresses->patchEntity($userAddress, $this->request->getData());
+                if ($this->UserAddresses->save($userAddress)) {
+                    $this->Flash->success(__('The user address has been saved.'));
+
+                    return $this->redirect(['action' => 'success']);
+                }
+                $this->Flash->error(__('The user address could not be saved. Please, try again.'));
+
+                return $this->redirect(['action' => 'cancel']);
             }
-            $this->Flash->error(__('The user address could not be saved. Please, try again.'));
-
-            return $this->redirect(['action' => 'cancel']);
+            $users = $this->UserAddresses->Users->find('list', ['limit' => 200])->all();
         }
-        $users = $this->UserAddresses->Users->find('list', ['limit' => 200])->all();
-        $this->set(compact('userAddress', 'users','orderItems'));
+
+        else {
+            $address = $addresses[0]['id'];
+            $userAddress = $this->UserAddresses->get($address, [
+                'contain' => [],
+            ]);
+            $orderItems = $this->Cart->getcart();
+            if ($this->request->is(['patch', 'post', 'put'])) {
+                if ($this->UserAddresses->save($userAddress)) {
+                    $this->Flash->success(__('The user address has been saved.'));
+
+                    return $this->redirect(['action' => 'success']);
+                }
+                $this->Flash->error(__('The user address could not be saved. Please, try again.'));
+
+                return $this->redirect(['action' => 'cancel']);
+            }
+            $users = $this->UserAddresses->Users->find('list', ['limit' => 200])->all();
+        }
+
+        $this->set(compact('userAddress', 'users','orderItems','userID'));
     }
 
     /**

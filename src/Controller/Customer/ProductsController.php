@@ -138,12 +138,58 @@ class ProductsController extends AppController
         $this->set(compact('product','categories','productImages'));
     }
 
-    public function shop()
+    public function shop($id = null)
     {
+
+        $param = $_GET;
+        $sel = $param['sel']??'99';
 //        $this->loadModel('ProductImages');
-        $products = $this->Products->find()
-            ->contain(['ProductImages'])
-            ->all()->toArray();
+        $brandsql = '';
+        $stylesql = '';
+        $meterialsql = '';
+        $colorsql = '';
+        if (isset($param['brand']) and $param['brand']!=''){
+            $brandsql = ' brand="'.$param['brand'].'"';
+        }
+        if (isset($param['style']) and $param['style']!=''){
+            $stylesql = ' style="'.$param['style'].'"';
+        }
+        if (isset($param['material']) and $param['material']!=''){
+            $meterialsql = ' material="'.$param['material'].'"';
+        }
+        if (isset($param['colour']) and $param['colour']!=''){
+            $colorsql = ' colour="'.$param['colour'].'"';
+        }
+        switch ($sel){
+            case 1:
+                $query = $this->Products->find('all')->orderAsc('sale_price');
+                break;
+            case 2:
+                $query = $this->Products->find('all')->orderDesc('sale_price');
+                break;
+            case 3:
+                $query = $this->Products->find('all')->orderAsc('name');
+                break;
+            case 4:
+                $query = $this->Products->find('all')->orderDesc('name');
+                break;
+            default:
+                $query = $this->Products->find('all')->where($brandsql)->where($stylesql)
+                    ->where($meterialsql)->where($colorsql);
+        }
+
+        $products = $query->contain(['ProductImages']);
+        if($id == 1){
+            $products = $products->where(['units_in_stock !=' => 0])->toArray();
+        }
+        elseif($id == 2){
+            $products = $products->where(['sale_price IS NOT' => null])->toArray();
+        }
+        else {
+            $products = $products->toArray();
+        }
+
+
         //$productImages = $this->ProductImages->find()->select(['product_id','description'])
 //            ->distinct(['product_id'])->toArray();
         $this->set(compact('products'));

@@ -20,6 +20,11 @@ $this->layout = 'front';
 
 ?>
 <!doctype html>
+<style>
+    label span{
+        font-weight: 300;
+    }
+</style>
 <html class="no-js" lang="">
 <!-- Breadcrumbs Area Start -->
 <div class="breadcrumbs-area">
@@ -33,6 +38,9 @@ $this->layout = 'front';
                                 Home
                             </a></li>
                         <li>
+                            <span>></span>
+                        </li>
+                        <li>Shop</li>
                     </ul>
                 </div>
             </div>
@@ -49,185 +57,173 @@ $this->layout = 'front';
                     <p>Catalog</p>
                 </aside>
                 <div class="left-widget-content  indicator-banner">
-                    <aside class="left-widget-price widget">
-                        <h3 class="widget-subtitle">Price</h3>
-                        <div class="info-widget">
-                            <div class="price-filter">
-                                <div class="price-slider-amount">
-                                    <label>Range:</label>
-                                    <input type="text" id="amount" name="price"  placeholder="Add Your Price" />
-                                </div>
-                                <div id="slider-range"></div>
-                            </div>
-                        </div>
-                    </aside>
                     <aside class="left-widget-size widget">
                         <h3 class="widget-subtitle">Stock Status</h3>
                         <div class="widget-info">
                             <ul>
                                 <li>
-                                    <input type="checkbox">
-                                    <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'shop',1])?>">In Stock</a>
+                                    <a href="<?= $this->Url->build([ 'class' => 'widget-info','controller' => 'Products', 'action' => 'shop',1])?>">In Stock</a>
                                 </li>
                                 <li>
-                                    <input type="checkbox">
                                     <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'shop',2])?>">On Sale</a>
                                 </li>
                             </ul>
                         </div>
                     </aside>
-                    <aside class="left-widget-size widget">
-                        <h3 class="widget-subtitle">Brand</h3>
-                        <div class="widget-info">
-                            <ul>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">A.R.T (86)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">AMINI (41)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">CHELSEA FURNITURE (27)</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </aside>
-                    <aside class="left-widget-color widget">
-                        <h3 class="widget-subtitle">Style</h3>
-                        <div class="widget-info">
-                            <ul>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Arch Salvage (9)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Architrave (17)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Charme (6)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Giovanna (2)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Old world (21)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Passage (20)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Malibu Crest (26)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Mia Bella (11)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Mia Bella (11)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Bader (2)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">New Empaire (3)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Pearly (2)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Princess (2)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Ruby (1)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">SG Plush (2)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Shayan (3)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Sina (2)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Venues (2)</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </aside>
-                    <aside class="left-widget-size widget">
-                        <h3 class="widget-subtitle">Material</h3>
-                        <div class="widget-info">
-                            <ul>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Wood</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Metal</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Gold</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </aside>
-                    <aside class="left-widget-size widget">
-                        <h3 class="widget-subtitle">Colour</h3>
-                        <div class="widget-info">
-                            <ul>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Red</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Blue</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Brown</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">White</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Purple</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Grey</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Gold</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </aside>
+                    <form action="/team09-app_fit3048/products/shop">
+                        <aside class="left-widget-size widget">
+                            <h3 class="widget-subtitle">Brand</h3>
+                            <div class="widget-info">
+                                <ul>
+                                    <li>
+                                        <input type="radio" id="brand1" name="brand" value="A.R.T">
+                                        <label for="brand1"><span>A.R.T (86)</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="brand2" name="brand" value="AMINI">
+                                        <label for="brand2"><span>AMINI (41)</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="brand3" name="brand" value="CHELSEA_FURNITURE">
+                                        <label for="brand3"><span>CHELSEA_FURNITURE (27)</span></label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </aside>
+                        <aside class="left-widget-color widget">
+                            <h3 class="widget-subtitle">Style</h3>
+                            <div class="widget-info">
+                                <ul>
+                                    <li>
+                                        <input type="radio" id="style1" name="style" value="Arch_Salvage">
+                                        <label for="style1"><span>Arch_Salvage (9)</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="style2" name="style" value="Architrave">
+                                        <label for="style2"><span>Architrave (17)</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="style3" name="style" value="Charme">
+                                        <label for="style3"><span>Charme (6)</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="style4" name="style" value="Giovanna">
+                                        <label for="style4"><span>Giovanna (2)</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="style5" name="style" value="Old_world">
+                                        <label for="style5"><span>Old_world (21)</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="style6" name="style" value="Passage">
+                                        <label for="style6"><span>Passage (20)</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="style7" name="style" value="Malibu_Crest">
+                                        <label for="style7"><span>Malibu_Crest</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="style8" name="style" value="Mia_Bella">
+                                        <label for="style8"><span>Mia_Bella (11)</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="style10" name="style" value="Bader">
+                                        <label for="style10"><span>Bader (9)</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="style11" name="style" value="New_Empaire">
+                                        <label for="style11"><span>New_Empaire (9)</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="style12" name="style" value="Pearly">
+                                        <label for="style12"><span>Pearly (10)</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="style13" name="style" value="Princess">
+                                        <label for="style13"><span>Princess (2)</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="style14" name="style" value="Ruby">
+                                        <label for="style14"><span>Ruby (9)</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="style15" name="style" value="SG_Plush">
+                                        <label for="style15"><span>SG_Plush (9)</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="style16" name="style" value="Shayan">
+                                        <label for="style16"><span>Shayan (9)</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="style17" name="style" value="Sina">
+                                        <label for="style17"><span>Sina (9)</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="style18" name="style" value="Venues">
+                                        <label for="style18"><span>Venues (9)</span></label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </aside>
+                        <aside class="left-widget-size widget">
+                            <h3 class="widget-subtitle">Material</h3>
+                            <div class="widget-info">
+                                <ul>
+                                    <li>
+                                        <input type="radio" id="material1" name="material" value="Wood">
+                                        <label for="material1"><span>Wood</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="material2" name="material" value="Metal">
+                                        <label for="material2"><span>Metal</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="material3" name="material" value="Gold">
+                                        <label for="material3"><span>Gold</span></label>
+                                    </li>
+                                    <li>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </aside>
+                        <aside class="left-widget-size widget">
+                            <h3 class="widget-subtitle">Colour</h3>
+                            <div class="widget-info">
+                                <ul>
+                                    <li>
+                                        <input type="radio" id="colour1" name="colour" value="Red">
+                                        <label for="colour1"><span>Red</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="colour2" name="colour" value="Blue">
+                                        <label for="colour2"><span>Blue</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="colour3" name="colour" value="Brown">
+                                        <label for="colour3"><span>Brown</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="colour4" name="colour" value="White">
+                                        <label for="colour4"><span>White</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="colour5" name="colour" value="Black">
+                                        <label for="colour5"><span>Black</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="colour6" name="colour" value="Grey">
+                                        <label for="colour6"><span>Grey</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="colour7" name="colour" value="Gold">
+                                        <label for="colour7"><span>Gold</span></label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </aside>
+                            <button type="submit" class="btn btn-primary" style="background-color: #c38748; border-radius: 0px; border: 0; width: 100%">Search</button>
+                    </form>
                 </div>
                 <div class="banner-image">
                     <a href="#">
@@ -280,7 +276,7 @@ $this->layout = 'front';
                                 </div>
                                 <div class="single-shop-form pul-right">
                                     <button type="submit">
-                                        <span>Compare (<strong class="total-compare-val">0</strong>)<i class="fa fa-chevron-right right"></i></span>
+                                        <span>Sort Products <i class="fa fa-chevron-right right"></i></span>
                                     </button>
                                 </div>
                             </form>
@@ -301,7 +297,10 @@ $this->layout = 'front';
                                         <!--Product Image-->
                                         <div class="product-img">
                                                 <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="Printed Dress">
-                                                    <a><?= $this->Html->image($products[$x]['product_images'][0]->description,['alt' => 'CakePHP','class' => 'img-fluid']);?> </a>
+                                                    <a><?= $this->Html->image($products[$x]['product_images'][0]->description,[
+                                                        'alt' => 'CakePHP',
+                                                            'class' => 'img-fluid',
+                                                            'url' => ['controller' => 'Products', 'action' => 'detail',$products[$x]->id]]);?> </a>
                                                 </a>
                                         </div>
                                         <span class="new-label">New</span>

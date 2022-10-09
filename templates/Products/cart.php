@@ -21,6 +21,39 @@
 
 $cakeDescription = 'CakePHP: the rapid development php framework';
 $this->layout = 'front';
+
+//require_once 'vendor/autoload.php';
+//\Stripe\Stripe::setApiKey('sk_test_51LkgUlGRmWCorjcXA038yfpvxDxs4RGCgZjVodGkU4lVz37N5Uo94ig9MZg2YCCGDZSwaT0vSUmFpUYjNFnI9qOi00eWvmMRNg');
+//$orderCheckout = [];
+//foreach ($orderItems['Orderitems'] as $orderItem){
+//    array_push($orderCheckout, ['price_data' => [
+//        'currency' => 'aud',
+//        'product_data' => [
+//            'name' => $orderItem['name'],
+//        ],
+//        'unit_amount' => intval($orderItem['price']),
+//    ],
+//        'quantity' => 1]);
+//}
+//debug($orderItems);
+//
+//$session = \Stripe\Checkout\Session::create([
+//    'payment_method_types' => ['card'],
+//    /*'line_items' => [[
+//        'price_data' => [
+//            'currency' => 'aud',
+//            'product_data' => [
+//                'name' => 'T-shirt',
+//            ],
+//            'unit_amount' => 2000,
+//        ],
+//        'quantity' => 1,
+//    ]],*/
+//    'line_items' => [$orderCheckout],
+//    'mode' => 'payment',
+//    'success_url' => 'http://localhost:8080/success',
+//    'cancel_url' => 'http://example.com/cancel',
+//]);
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -72,6 +105,7 @@ $this->layout = 'front';
         <!--Cart Main Area Start-->
         <div class="cart-main-area section-padding2">
             <div class="container">
+                <?php if ($orderItems['Orderitems'] !=null): ?>
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="heading-title">Shopping Cart Summary</h1>
@@ -92,7 +126,6 @@ $this->layout = 'front';
                                 </thead>
                                 <tbody>
                                 <?php
-                                if ($orderItems != null) :
                                     foreach ($orderItems['Orderitems'] as $orderItem) : ?>
                                 <tr>
                                         <td><a href="<?= $this->Url->build(['controller' => 'products', 'action' => 'detail',$orderItem['product_id']])?>"><?= $orderItem['name']?></a></td>
@@ -111,16 +144,19 @@ $this->layout = 'front';
                                         </td>
                                     </tr>
                                 </tbody>
-                                    <?php endforeach;
-                                endif?>
+                                    <?php endforeach;?>
                             </table>
                         </div>
+                        <?php else : ?>
+                            <p class="lhbigger">Your shopping cart is currently empty. </p>
+                        <?php endif;?>
                     </div>
                 </div>
 
                 <div class="row mb-n30">
                     <div class="col-md-8 col-sm-7 col-xs-12 mb-30">
-                        <div class="d-flex flex-wrap mb-n2 buttons-cart">
+                        <div class="d-flex flex-wrap mb-n2 buttons-cart"
+                             style="padding-right:15px;padding-left:15px;">
                             <!--                            <input type="submit" value="Update Cart" class="me-3 mb-2">-->
                             <a class="btn mb-2" href="<?= $this->Url->build(['controller' => 'products',
                                 'action' => 'shop']); ?>">Continue Shopping</a>
@@ -139,21 +175,17 @@ $this->layout = 'front';
 <!--                        </div>-->
                     </div>
 
+                    <?php if ($orderItems['Orderitems'] !=null): ?>
                     <div class="col-md-4 col-sm-5 col-xs-12 mb-30 cart_totals">
-                        <div class="block-title text-end mb-2">
-                            <h2>Cart Totals</h2>
-                        </div>
                         <div class="cart-total-wrap">
                             <div class="table-responsive">
                                 <table class="table table-borderless text-end mb-0">
                                     <tbody>
                                         <tr>
                                             <?php $subtotal = 0;
-                                            if ($orderItems != null) :
                                                 foreach ($orderItems['Orderitems'] as $orderItem) :
                                                     $subtotal = $subtotal + $orderItem['price'];
-                                                endforeach;
-                                            endif;?>
+                                                endforeach; ?>
 <!--                                            <th>Subtotal</th>-->
 <!--                                            <td><strong>--><!--</strong></td>-->
 <!--                                        </tr>-->
@@ -167,7 +199,7 @@ $this->layout = 'front';
 <!--                                            </td>-->
 <!--                                        </tr>-->
                                         <tr class="order-total">
-                                            <th>Total</th>
+                                            <th>Cart Total</th>
                                             <td>
                                                 <strong>
                                                     <span class="amount"><?= $this->Number->currency($subtotal) ?></span>
@@ -181,8 +213,19 @@ $this->layout = 'front';
                                         </tr>
                                     </tfoot>-->
                                 </table>
-                                <a class="readmore" href="<?= $this->Url->build(['controller' => 'user_addresses', 'action' => 'checkout','prefix' => false])?> ">Proceed to Checkout</a>
+                                <?php $subtotal = 0;
+                                if ($orderItems != null) :
+                                    {
+                                        $urlLink = ['controller' => 'user_addresses', 'action' => 'checkout','prefix' => false];
+                                    }
+                                else :
+                                    {
+                                        $urlLink = ['controller' => 'Products', 'action' => 'cart','prefix' => false];
+                                        }
+                                endif;?>
+                                    <a class="readmore" href="<?= $this->Url->build($urlLink)?> ">Proceed to Checkout</a>
                             </div>
+                            <?php endif;?>
                         </div>
                     </div>
 
@@ -223,15 +266,6 @@ $this->layout = 'front';
 
         <!-- Stripe JS -->
         <script src="https://js.stripe.com/v3/"></script>
-        <script>
-            var stripe = Stripe('pk_test_51LkgUlGRmWCorjcXsDFRkKYqWTuPWk8mGeKtr6398t7o55wnltXdYpUjAqaDzSfHb426KyXxxCtfC2wWi6tV7IB700R4ElytR1');
-            const btn = document.getElementById("checkout-button")
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                stripe.redirectToCheckout({
-                    sessionId: "<?php echo $session->id; ?>"
-                });
-            });
-        </script>
+<!--
     </body>
 </html>

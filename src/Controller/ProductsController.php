@@ -21,7 +21,7 @@ class ProductsController extends AppController
         parent::beforeFilter($event);
         // for all controllers in our application, make index and view
         // actions public, skipping the authentication check.
-        $this->Authentication->addUnauthenticatedActions(['cart','detail', 'shop']);
+        $this->Authentication->addUnauthenticatedActions(['cart','detail', 'shop','addToCart']);
     }
 
     public function initialize():void
@@ -36,6 +36,22 @@ class ProductsController extends AppController
         $param = $_GET;
         $sel = $param['sel']??'99';
 //        $this->loadModel('ProductImages');
+        $brandsql = '';
+        $stylesql = '';
+        $meterialsql = '';
+        $colorsql = '';
+        if (isset($param['brand']) and $param['brand']!=''){
+            $brandsql = ' brand="'.$param['brand'].'"';
+        }
+        if (isset($param['style']) and $param['style']!=''){
+            $stylesql = ' style="'.$param['style'].'"';
+        }
+        if (isset($param['material']) and $param['material']!=''){
+            $meterialsql = ' material="'.$param['material'].'"';
+        }
+        if (isset($param['colour']) and $param['colour']!=''){
+            $colorsql = ' colour="'.$param['colour'].'"';
+        }
          switch ($sel){
              case 1:
               $query = $this->Products->find('all')->orderAsc('sale_price');
@@ -50,7 +66,8 @@ class ProductsController extends AppController
                 $query = $this->Products->find('all')->orderDesc('name');
                 break;
                  default:
-                     $query = $this->Products->find('all');
+                     $query = $this->Products->find('all')->where($brandsql)->where($stylesql)
+                         ->where($meterialsql)->where($colorsql);
                 }
 
         $products = $query->contain(['ProductImages']);
