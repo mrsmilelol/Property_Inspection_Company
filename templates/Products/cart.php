@@ -17,6 +17,7 @@
 /**
  * @var \App\View\AppView $this
  * @var string[]|\Cake\Collection\CollectionInterface $orderItems
+ * @var string[]|\Cake\Collection\CollectionInterface $user
  */
 
 $cakeDescription = 'CakePHP: the rapid development php framework';
@@ -125,6 +126,24 @@ $this->layout = 'front';
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php if ($user->user_type_id == 2):?>
+                                <?php
+                                foreach ($orderItems['WholesaleOrderitems'] as $key=>$orderItem) : ?>
+                                <tr>
+                                    <td><a href="<?= $this->Url->build(['controller' => 'products', 'action' => 'detail',$orderItem['product_id']])?>"><?= $orderItem['name']?></a></td>
+                                    <td><?= $this->Number->currency($orderItem['price'])?></td>
+                                    <td>
+                                        <?= $this->Form->create(NULL,['url' => ['controller' => 'products', 'action' => 'cartupdate']])?>
+                                        <?php echo $this->Form->control('quantity-'.$key,['value'=>$orderItem['quantity'],'label'=>false,'type'=>'integer']); ?></td>
+                                    <td><?=$this->Number->currency($orderItem['price']*$orderItem['quantity'])?></td>
+                                    <td><?php echo $this->Html->link('<i class="fa fa-trash"></i>', [
+                                            'controller' => 'products', 'action' => 'removeProduct', $orderItem['product_id']], [
+                                            'class' => 'btn btn-secondary btn-sm', 'escape' => false]); ?>
+                                    </td>
+                                </tr>
+                                </tbody>
+                                <?php endforeach;
+                                else:?>
                                 <?php
                                     foreach ($orderItems['Orderitems'] as $key=>$orderItem) : ?>
                                 <tr>
@@ -141,6 +160,7 @@ $this->layout = 'front';
                                     </tr>
                                 </tbody>
                                     <?php endforeach;?>
+                                <?php endif;?>
                             </table>
                         </div>
                         <?php else : ?>
@@ -187,9 +207,16 @@ $this->layout = 'front';
                                     <tbody>
                                         <tr>
                                             <?php $subtotal = 0;
-                                                foreach ($orderItems['Orderitems'] as $orderItem) :
-                                                    $subtotal = $subtotal + ($orderItem['price']*$orderItem['quantity']);
-                                                endforeach; ?>
+                                                if ($user->user_type_id == 2) {
+                                                    foreach ($orderItems['WholesaleOrderitems'] as $orderItem) :
+                                                        $subtotal = $subtotal + ($orderItem['price'] * $orderItem['quantity']);
+                                                    endforeach;
+                                                    }
+                                                else{
+                                                    foreach ($orderItems['Orderitems'] as $orderItem) :
+                                                        $subtotal = $subtotal + ($orderItem['price']*$orderItem['quantity']);
+                                                    endforeach;}
+                                            ?>
 <!--                                            <th>Subtotal</th>-->
 <!--                                            <td><strong>--><!--</strong></td>-->
 <!--                                        </tr>-->

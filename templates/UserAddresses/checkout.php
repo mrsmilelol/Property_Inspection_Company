@@ -5,6 +5,7 @@
  * @var \Cake\Collection\CollectionInterface|string[] $users
  * @var string[]|\Cake\Collection\CollectionInterface $orderItems
  * @var string[]|\Cake\Collection\CollectionInterface $userID
+ * @var string[]|\Cake\Collection\CollectionInterface $user
  */
 $formTemplate = [
     'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}<span class="help">{{help}}</span></div>',
@@ -22,16 +23,29 @@ $cancelURL = 'https://' . $_SERVER['SERVER_NAME'] . '/team09-app_fit3048/user-ad
 \Stripe\Stripe::setApiKey('sk_test_51LkgUlGRmWCorjcXA038yfpvxDxs4RGCgZjVodGkU4lVz37N5Uo94ig9MZg2YCCGDZSwaT0vSUmFpUYjNFnI9qOi00eWvmMRNg');
 //aaa
 $orderCheckout = [];
-
-foreach ($orderItems['Orderitems'] as $orderItem) {
-    array_push($orderCheckout, ['price_data' => [
-        'currency' => 'aud',
-        'product_data' => [
-            'name' => $orderItem['name'],
+if ($user->user_type_id == 2){
+    foreach ($orderItems['WholesaleOrderitems'] as $orderItem) {
+        array_push($orderCheckout, ['price_data' => [
+            'currency' => 'aud',
+            'product_data' => [
+                'name' => $orderItem['name'],
+            ],
+            'unit_amount' => intval($orderItem['price'] * 100),
         ],
-        'unit_amount' => intval($orderItem['price'] * 100),
-    ],
-        'quantity' => 1]);
+            'quantity' => $orderItem['quantity']]);
+    }
+}
+else{
+    foreach ($orderItems['Orderitems'] as $orderItem) {
+        array_push($orderCheckout, ['price_data' => [
+            'currency' => 'aud',
+            'product_data' => [
+                'name' => $orderItem['name'],
+            ],
+            'unit_amount' => intval($orderItem['price'] * 100),
+        ],
+            'quantity' => $orderItem['quantity']]);
+    }
 }
 
 if ($orderCheckout != []) {
@@ -255,16 +269,29 @@ if ($orderCheckout != []) {
                             </thead>
                             <tbody>
                             <?php
+                            if ($user->user_type_id == 2):
+                                if ($orderItems != null) :
+                                    foreach ($orderItems['WholesaleOrderitems'] as $orderItem) : ?>
+                            <tr class="cart_item">
+                                <td class="c-product-name"><a href="<?= $this->Url->build(['controller' => 'products', 'action' => 'detail',$orderItem['product_id']])?>"><?= $orderItem['name']?></a></td>
+                                <td  class="c-product-quantity"><?= $orderItem['quantity'] ?></td>
+                                <td class="c-product-total"><?=$this->Number->currency($orderItem['price'])?></td>
+                            </tr>
+                            </tbody>
+                                    <?php endforeach;
+                                endif;
+                            else:
                             if ($orderItems != null) :
                                 foreach ($orderItems['Orderitems'] as $orderItem) : ?>
                             <tr class="cart_item">
                                 <td class="c-product-name"><a href="<?= $this->Url->build(['controller' => 'products', 'action' => 'detail',$orderItem['product_id']])?>"><?= $orderItem['name']?></a></td>
-                                <td  class="c-product-quantity"><input type="text" value="1" style="width: 20%;"disabled></td>
+                                <td  class="c-product-quantity"><?= $orderItem['quantity'] ?></td>
                                 <td class="c-product-total"><?=$this->Number->currency($orderItem['price'])?></td>
                             </tr>
                             </tbody>
                                 <?php endforeach;
-                            endif?>
+                            endif;
+                            endif;?>
                             <tfoot>
                             <tr class="shipping">
                                 <th>7 day Shipping </th>
@@ -289,10 +316,18 @@ if ($orderCheckout != []) {
                             </tr>
                             <tr class="order-total">
                                 <?php $subtotal = 0;
-                                if ($orderItems != null) :
-                                    foreach ($orderItems['Orderitems'] as $orderItem) :
-                                        $subtotal = $subtotal + $orderItem['price'];
-                                    endforeach;
+                                if ($user->user_type_id == 2):
+                                    if ($orderItems != null) :
+                                        foreach ($orderItems['WholesaleOrderitems'] as $orderItem) :
+                                            $subtotal = $subtotal + $orderItem['price']*$orderItem['quantity'];
+                                        endforeach;
+                                    endif;
+                                    else:
+                                    if ($orderItems != null) :
+                                        foreach ($orderItems['Orderitems'] as $orderItem) :
+                                            $subtotal = $subtotal + $orderItem['price']*$orderItem['quantity'];
+                                        endforeach;
+                                    endif;
                                 endif;?>
                                 <th>Order Total</th>
                                 <td><strong><span class="amount"></span></strong></td>
