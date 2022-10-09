@@ -65,11 +65,13 @@ class CartComponent extends Component {
             $data = [
                 'product_id' => $product->id,
                 'name' => $product->name,
+                'quantity' => 1,
                 'price' => sprintf('%01.2f', $product->sale_price)
         ];}else{
             $data = [
                 'product_id' => $product->id,
                 'name' => $product->name,
+                'quantity' => 1,
                 'price' => sprintf('%01.2f', $product->price)
             ];
         }
@@ -77,12 +79,14 @@ class CartComponent extends Component {
             $wholesale_data = [
                 'product_id' => $product->id,
                 'name' => $product->name,
+                'quantity' => 1,
                 'wholesale_price' => sprintf('%01.2f', $product->wholesale_price)
             ];}
         else{
             $wholesale_data = [
                 'product_id' => $product->id,
                 'name' => $product->name,
+                'quantity' => 1,
                 'wholesale_price' => sprintf('%01.2f', $data['price'])
             ];
         }
@@ -132,5 +136,19 @@ class CartComponent extends Component {
             'postcode' => $userAddress->postcode
         ];
         $this->getController()->getRequest()->getSession()->write('Shop.UserAddress.' . $id, $data);
+    }
+
+    public function updateQty($id,$quantity){
+        $controller = $this->_registry->getController();
+        $cart = $this->getController()->getRequest()->getSession()->read('Shop');
+        $data = [];
+        $product = $controller->Products->get($id, ['contain' => []]);
+        $data = [
+            'product_id' => $product->id,
+            'name' => $product->name,
+            'quantity' => $quantity,
+            'price' => sprintf('%01.2f', $product->sale_price)
+        ];
+        $this->getController()->getRequest()->getSession()->write('Shop.Orderitems.' . $id, $data);
     }
 }
