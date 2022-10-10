@@ -21,7 +21,7 @@ class ProductsController extends AppController
         parent::beforeFilter($event);
         // for all controllers in our application, make index and view
         // actions public, skipping the authentication check.
-        $this->Authentication->addUnauthenticatedActions(['cart','detail', 'shop','addToCart','removeProduct']);
+        $this->Authentication->addUnauthenticatedActions(['cart','detail', 'shop','addToCart','removeProduct', 'changeQty']);
     }
 
     public function initialize():void
