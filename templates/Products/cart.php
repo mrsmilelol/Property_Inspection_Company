@@ -167,7 +167,6 @@ $this->layout = 'front';
                                         </td>
                                     <!--<td><?/*= $this->Form->create(NULL,['url' => ['controller' => 'products', 'action' => 'cartupdate']])*/?>
                                         <?php /*echo $this->Form->control('quantity-'.$key,['value'=>$orderItem['quantity'],'label'=>false,'type'=>'integer']); */?></td>-->
-                                    <td><?=$this->Number->currency($orderItem['price']*$orderItem['quantity'])?></td>
 
                                     <td><?=$this->Number->currency($orderItem['price']*$orderItem['quantity'])?></td>
                                         <td><?php echo $this->Html->link('<i class="fa fa-trash"></i>', [
@@ -224,7 +223,7 @@ $this->layout = 'front';
                                     <tbody>
                                         <tr>
                                             <?php $subtotal = 0;
-                                                if ($user->user_type_id == 2) {
+                                                if ($user !== null and $user->user_type_id == 2) {
                                                     foreach ($orderItems['WholesaleOrderitems'] as $orderItem) :
                                                         $subtotal = $subtotal + ($orderItem['price'] * $orderItem['quantity']);
                                                     endforeach;
