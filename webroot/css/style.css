@@ -2869,6 +2869,38 @@ div.uploader span.action {
   font-size: 16px;
   font-weight: 500;
 }
+.cart-quantity {
+    display: inline-flex;
+    align-items: center;
+    border: 2px solid #e1e1e1;
+    color: #aaaaaa;
+    height: 40px;
+    margin: 0 5px 10px;
+    text-align: center;
+}
+.cart-quantity input {
+    width: 30px;
+    border: none;
+    background-color: transparent !important;
+    height: 36px;
+    line-height: 37px;
+    padding: 0 !important;
+    text-align: center;
+    margin: 0 !important;
+    width: 30px !important;
+}
+.cart-quantity .qtybtn {
+    width: 30px;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 37px;
+    text-align: center;
+    display: block;
+    cursor: pointer;
+    padding: 1px 0 0;
+    border: none;
+    background-color: transparent;
+}
 .table-content table td.product-quantity {
   width: 180px;
 }

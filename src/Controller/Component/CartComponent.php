@@ -172,4 +172,71 @@ class CartComponent extends Component {
             $this->getController()->getRequest()->getSession()->write('Shop.Orderitems.' . $id, $data);
         }
     }
+
+    public function qtyChange($id,$quantity,$change){
+        $controller = $this->_registry->getController();
+        $cart = $this->getController()->getRequest()->getSession()->read('Shop');
+        $user = $this->getController()->getRequest()->getSession()->read('Auth');
+        $data = [];
+        $product = $controller->Products->get($id, ['contain' => []]);
+        if ($change === 'minus') {
+        if ($user->user_type_id == 2){
+            $data = [
+                'product_id' => $product->id,
+                'name' => $product->name,
+                'quantity' => $quantity - 1,
+                'price' => sprintf('%01.2f', $product->wholesale_price)
+            ];
+            $this->getController()->getRequest()->getSession()->write('Shop.WholesaleOrderitems.' . $id, $data);
+        }
+        elseif ($product->sale_price != null){
+            $data = [
+                'product_id' => $product->id,
+                'name' => $product->name,
+                'quantity' => $quantity - 1,
+                'price' => sprintf('%01.2f', $product->sale_price)
+            ];
+            $this->getController()->getRequest()->getSession()->write('Shop.Orderitems.' . $id, $data);
+        }
+        else{
+            $data = [
+                'product_id' => $product->id,
+                'name' => $product->name,
+                'quantity' => $quantity - 1,
+                'price' => sprintf('%01.2f', $product->price)
+            ];
+            $this->getController()->getRequest()->getSession()->write('Shop.Orderitems.' . $id, $data);
+        }
+        }
+        else {
+            if ($user->user_type_id == 2){
+                $data = [
+                    'product_id' => $product->id,
+                    'name' => $product->name,
+                    'quantity' => $quantity + 1,
+                    'price' => sprintf('%01.2f', $product->wholesale_price)
+                ];
+                $this->getController()->getRequest()->getSession()->write('Shop.WholesaleOrderitems.' . $id, $data);
+            }
+            elseif ($product->sale_price != null){
+                $data = [
+                    'product_id' => $product->id,
+                    'name' => $product->name,
+                    'quantity' => $quantity + 1,
+                    'price' => sprintf('%01.2f', $product->sale_price)
+                ];
+                $this->getController()->getRequest()->getSession()->write('Shop.Orderitems.' . $id, $data);
+            }
+            else{
+                $data = [
+                    'product_id' => $product->id,
+                    'name' => $product->name,
+                    'quantity' => $quantity + 1,
+                    'price' => sprintf('%01.2f', $product->price)
+                ];
+                $this->getController()->getRequest()->getSession()->write('Shop.Orderitems.' . $id, $data);
+            }
+        }
+
+    }
 }

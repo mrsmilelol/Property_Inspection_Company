@@ -126,15 +126,23 @@ $this->layout = 'front';
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php if ($user->user_type_id == 2):?>
+                                <?php if ($user !== null and $user->user_type_id == 2):?>
                                 <?php
-                                foreach ($orderItems['WholesaleOrderitems'] as $key=>$orderItem) : ?>
+                                foreach ($orderItems['WholesaleOrderitems'] as $orderItem) :
+                                /*foreach ($orderItems['WholesaleOrderitems'] as $key=>$orderItem) :*/ ?>
                                 <tr>
                                     <td><a href="<?= $this->Url->build(['controller' => 'products', 'action' => 'detail',$orderItem['product_id']])?>"><?= $orderItem['name']?></a></td>
                                     <td><?= $this->Number->currency($orderItem['price'])?></td>
                                     <td>
-                                        <?= $this->Form->create(NULL,['url' => ['controller' => 'products', 'action' => 'cartupdate']])?>
-                                        <?php echo $this->Form->control('quantity-'.$key,['value'=>$orderItem['quantity'],'label'=>false,'type'=>'integer']); ?></td>
+                                        <div class="cart-quantity product-quantity">
+                                            <button class="dec qtybtn" onClick="javascript:window.location.href='<?= $this->Url->build(['action'=>'changeQty', 'minus', $orderItem['product_id'], $orderItem['quantity']]) ?>'">-</button>
+                                            <input id="myInput" type="integer" value="<?= $orderItem['quantity']?>" onClick="javascript:window.location.href='<?= $this->Url->build(['action'=>'changeQty', 'edit', $orderItem['product_id'], $orderItem['quantity']]) ?>'">
+                                            <button class="inc qtybtn" onClick="javascript:window.location.href='<?= $this->Url->build(['action'=>'changeQty', 'plus',  $orderItem['product_id'], $orderItem['quantity']]) ?>'">+</button>
+                                        </div>
+                                    </td>
+                                    <!--<td>
+                                        <?/*= $this->Form->create(NULL,['url' => ['controller' => 'products', 'action' => 'cartupdate']])*/?>
+                                        <?php /*echo $this->Form->control('quantity-'.$key,['value'=>$orderItem['quantity'],'label'=>false,'type'=>'integer']); */?></td>-->
                                     <td><?=$this->Number->currency($orderItem['price']*$orderItem['quantity'])?></td>
                                     <td><?php echo $this->Html->link('<i class="fa fa-trash"></i>', [
                                             'controller' => 'products', 'action' => 'removeProduct', $orderItem['product_id']], [
@@ -145,14 +153,23 @@ $this->layout = 'front';
                                 <?php endforeach;
                                 else:?>
                                 <?php
-                                    foreach ($orderItems['Orderitems'] as $key=>$orderItem) : ?>
+                                    foreach ($orderItems['Orderitems'] as $orderItem) :
+                                        //foreach ($orderItems['Orderitems'] as $key=>$orderItem) :?>
                                 <tr>
                                         <td><a href="<?= $this->Url->build(['controller' => 'products', 'action' => 'detail',$orderItem['product_id']])?>"><?= $orderItem['name']?></a></td>
                                         <td><?= $this->Number->currency($orderItem['price'])?></td>
                                         <td>
-                                            <?= $this->Form->create(NULL,['url' => ['controller' => 'products', 'action' => 'cartupdate']])?>
-                                                <?php echo $this->Form->control('quantity-'.$key,['value'=>$orderItem['quantity'],'label'=>false,'type'=>'integer']); ?></td>
-                                        <td><?=$this->Number->currency($orderItem['price']*$orderItem['quantity'])?></td>
+                                            <div class="cart-quantity product-quantity">
+                                                <button class="dec qtybtn" onClick="javascript:window.location.href='<?= $this->Url->build(['action'=>'changeQty', 'minus', $orderItem['product_id'], $orderItem['quantity']]) ?>'">-</button>
+                                                <input id="myInput" type="integer" value="<?= $orderItem['quantity']?>" onClick="javascript:window.location.href='<?= $this->Url->build(['action'=>'changeQty', 'edit', $orderItem['product_id'], $orderItem['quantity']]) ?>'">
+                                                <button class="inc qtybtn" onClick="javascript:window.location.href='<?= $this->Url->build(['action'=>'changeQty', 'plus',  $orderItem['product_id'], $orderItem['quantity']]) ?>'">+</button>
+                                            </div>
+                                        </td>
+                                    <!--<td><?/*= $this->Form->create(NULL,['url' => ['controller' => 'products', 'action' => 'cartupdate']])*/?>
+                                        <?php /*echo $this->Form->control('quantity-'.$key,['value'=>$orderItem['quantity'],'label'=>false,'type'=>'integer']); */?></td>-->
+                                    <td><?=$this->Number->currency($orderItem['price']*$orderItem['quantity'])?></td>
+
+                                    <td><?=$this->Number->currency($orderItem['price']*$orderItem['quantity'])?></td>
                                         <td><?php echo $this->Html->link('<i class="fa fa-trash"></i>', [
                                             'controller' => 'products', 'action' => 'removeProduct', $orderItem['product_id']], [
                                                 'class' => 'btn btn-secondary btn-sm', 'escape' => false]); ?>
@@ -177,13 +194,13 @@ $this->layout = 'front';
                             <a class="btn mb-2" href="<?= $this->Url->build(['controller' => 'products',
                                 'action' => 'shop']); ?>">Continue Shopping</a>
                             <?php
-                            echo $this->Form->submit('Update the cart', [
+/*                            echo $this->Form->submit('Update the cart', [
                                 'type' => 'submit',
                                 'id' => '',
                                 'class' => 'btn mb-2',
                                 'escape' => 'false'
-                            ]); ?>
-                            <?php $this->Form->end();?>
+                            ]); */?><!--
+                            --><?php /*$this->Form->end();*/?>
                         </div>
 <!--                        <div class="coupon mt-4">-->
 <!--                            <h6>Coupon</h6>-->
@@ -297,6 +314,48 @@ $this->layout = 'front';
 
         <!-- Stripe JS -->
         <script src="https://js.stripe.com/v3/"></script>
-<!--
+
+        <?= $this->Html->script('jquery-1.12.4.min.js') ?>
+<script>
+    (function ($) {
+        "use strict";
+        /*----------------------------
+            Price Range
+        ------------------------------ */
+        /*$("#price-range").slider({
+            range: true,
+            min: 40,
+            max: 600,
+            values: [ 60, 570 ],
+            slide: function( event, ui ) {
+                $(".price-amount").text("Â£"+ui.values[0]+" - Â£"+ui.values[1]);
+            }
+        });
+        $(".price-amount").text("Â£"+$("#price-range").slider("values", 0)+" - Â£"+$("#price-range").slider("values", 1));
+*/
+        /*----------------------------
+            Input Plus Minus Button
+        ------------------------------ */
+        $(".qtybtn").on("click", function() {
+            var $btn = $(this),
+                $oldValue = $btn.parent().find("input").val();
+            if ($btn.text() == "+") {
+                var $newVal = parseFloat($oldValue) + 1;
+            } else {
+                // Don't allow decrementing below zero
+                if ($oldValue > 1) {
+                    var $newVal = parseFloat($oldValue) - 1;
+                } else {
+                    $newVal = 1;
+                }
+            }
+            $btn.parent().find("input").val($newVal);
+        });
+
+
+    })(jQuery);
+</script>
+        <?= $this->fetch('script') ?>
+        <!--
     </body>
 </html>
