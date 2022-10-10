@@ -210,4 +210,12 @@ class ProductsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+    public function changeQty($change, $id, $qty){
+        $value = intval($qty);
+        $ID = intval($id);
+        $this->Cart->qtyChange($ID, $value, $change);
+
+        return $this->redirect(['action' => 'cart']);
+    }
+
 }
