@@ -180,7 +180,7 @@ class CartComponent extends Component {
         $data = [];
         $product = $controller->Products->get($id, ['contain' => []]);
         if ($change === 'minus') {
-        if ($user->user_type_id == 2){
+        if ($user !== null and $user->user_type_id == 2){
             $data = [
                 'product_id' => $product->id,
                 'name' => $product->name,
@@ -209,7 +209,7 @@ class CartComponent extends Component {
         }
         }
         else {
-            if ($user->user_type_id == 2){
+            if ($user !== null and $user->user_type_id == 2){
                 $data = [
                     'product_id' => $product->id,
                     'name' => $product->name,
