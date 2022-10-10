@@ -168,8 +168,6 @@ class UserAddressesController extends AppController
                 'status'=>'Order is placed',
                 'user_id'=> $user->id
             ]);
-            if ( $total >= 0)
-            {$this->Orders->save($order);}
         }
         else{
             foreach ($orderItems as $orderItem){
@@ -180,9 +178,9 @@ class UserAddressesController extends AppController
                 'status'=>'Order is placed',
                 'user_id'=> $user->id
             ]);
-            if ( $total >= 0)
-            {$this->Orders->save($order);}
         }
+        if ( $total > 0)
+        {$this->Orders->save($order);}
 
         $orderID = $this->Orders->find()->select(['id'])->where(['user_id'=> $user->id])->order(['id'=>'DESC'])->first();
         if ($user->user_type_id == 2) {
