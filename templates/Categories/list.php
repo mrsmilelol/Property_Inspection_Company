@@ -223,7 +223,7 @@ $this->layout = 'front';
                                 </ul>
                             </div>
                         </aside>
-                        <button type="submit">compare</button>
+                        <button type="submit" class="btn btn-primary" style="background-color: #c38748; border-radius: 0px; border: 0; width: 100%">Search</button>
                     </form>
                 </div>
                 <div class="banner-image">
