@@ -228,8 +228,9 @@ return [
      */
     'EmailTransport' => [
         'default' => [
-            'className' => 'Debug',
+            'className' => MailTransport::class,
                 //MailTransport::class,
+            //'Debug'
             /*
              * The keys host, port, timeout, username, password, client and tls
              * are used in SMTP transports
