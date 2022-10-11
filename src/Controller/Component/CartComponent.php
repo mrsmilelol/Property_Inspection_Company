@@ -180,6 +180,8 @@ class CartComponent extends Component {
         $data = [];
         $product = $controller->Products->get($id, ['contain' => []]);
         if ($change === 'minus') {
+            $newquantity = $quantity - 1;
+            if ($newquantity < 1) {$quantity = $quantity + 1;}
         if ($user !== null and $user->user_type_id == 2){
             $data = [
                 'product_id' => $product->id,

@@ -187,11 +187,10 @@ $this->layout = 'front';
 
                 <div class="row mb-n30">
                     <div class="col-md-8 col-sm-7 col-xs-12 mb-30">
-                        <div class="d-flex flex-wrap mb-n2 buttons-cart"
-                             style="padding-right:15px;padding-left:15px;">
+                        <div class="d-flex flex-wrap mb-n2 buttons-cart container">
                             <!--                            <input type="submit" value="Update Cart" class="me-3 mb-2">-->
                             <a class="btn mb-2" href="<?= $this->Url->build(['controller' => 'products',
-                                'action' => 'shop']); ?>">Continue Shopping</a>
+                                'action' => 'shop']); ?>" style="float: right">Continue Shopping</a>
                             <?php
 /*                            echo $this->Form->submit('Update the cart', [
                                 'type' => 'submit',
@@ -335,7 +334,7 @@ $this->layout = 'front';
         /*----------------------------
             Input Plus Minus Button
         ------------------------------ */
-        $(".qtybtn").on("click", function() {
+        /*$(".qtybtn").on("click", function() {
             var $btn = $(this),
                 $oldValue = $btn.parent().find("input").val();
             if ($btn.text() == "+") {
@@ -352,7 +351,7 @@ $this->layout = 'front';
         });
 
 
-    })(jQuery);
+    })(jQuery);*/
 </script>
         <?= $this->fetch('script') ?>
         <!--

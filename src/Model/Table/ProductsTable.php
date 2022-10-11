@@ -134,10 +134,10 @@ class ProductsTable extends Table
             ->notEmptyString('units_in_stock')
             ->add('units_in_stock','unitsValue',[
             'rule'=>function ($value, array $context) {
-                if ($value > 0) {
+                if ($value >= 0) {
                     return true;
                 }
-                return 'The no. of units in stock must be over 0.';
+                return 'The no. of units in stock must be bigger or equal to 0.';
             }
             ]);
 

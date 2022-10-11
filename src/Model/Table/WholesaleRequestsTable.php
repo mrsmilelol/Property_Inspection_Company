@@ -71,19 +71,31 @@ class WholesaleRequestsTable extends Table
             ->maxLength('website', 64)
             ->allowEmptyString('website');
 
+
+
         $validator
             ->scalar('abn')
             ->maxLength('abn', 11)
             ->requirePresence('abn', 'create')
-            ->notEmptyString('abn');
+            ->notEmptyString('abn')
+            ->add('abn','abnValue',[
+                'rule'=>function ($value, array $context) {
+                $numLength = strlen(($value));
+
+                    if ($numLength == 11 && is_numeric($value)) {
+                        return true;
+                    }
+                    return 'The ABN must be 11 digits long.';
+                }
+            ]);
 
         $validator
             ->scalar('business_phone')
-            ->maxLength('business_phone', 17)
+            ->maxLength('business_phone', 10)
             ->requirePresence('business_phone', 'create')
             ->notEmptyString('business_phone')
             ->numeric('business_phone')
-            ->regex('business_phone', '/^(?:\+?61|0)[2-478](?:[ -]?[0-9]){8}$/', 'Invalid phone number, try +61313062555');
+            ->regex('business_phone', '/^(?:\+?61|0)[2-478](?:[ -]?[0-9]){8}$/', 'Invalid phone number, try 0313062555');
 
         $validator
             ->scalar('address_line_1')
@@ -110,10 +122,10 @@ class WholesaleRequestsTable extends Table
 
         $validator
             ->scalar('phone')
-            ->maxLength('phone', 17)
+            ->maxLength('phone', 10)
             ->requirePresence('phone', 'create')
             ->notEmptyString('phone')
-            ->regex('phone', '/^(?:\+?61|0)[2-478](?:[ -]?[0-9]){8}$/', 'Invalid phone number, try +61313062555');
+            ->regex('phone', '/^(?:\+?61|0)[2-478](?:[ -]?[0-9]){8}$/', 'Invalid phone number, try 0413962875');
 
         $validator
             ->email('email')
