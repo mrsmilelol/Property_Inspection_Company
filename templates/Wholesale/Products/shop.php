@@ -22,7 +22,20 @@ $this->layout = 'front';
 <!doctype html>
 <style>
     label span{
+        /*font-weight: 300;*/
+        color: #000;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 20px;
+    }
+    .widget-info li a {
+        /*font-size: 12px;
         font-weight: 300;
+        margin-left: 5px;*/
+        color: #000;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 20px;
     }
 </style>
 <html class="no-js" lang="">
@@ -77,15 +90,15 @@ $this->layout = 'front';
                                 <ul>
                                     <li>
                                         <input type="radio" id="brand1" name="brand" value="A.R.T">
-                                        <label for="brand1"><span>A.R.T (86)</span></label>
+                                        <label for="brand1"><span>A.R.T</span></label>
                                     </li>
                                     <li>
                                         <input type="radio" id="brand2" name="brand" value="AMINI">
-                                        <label for="brand2"><span>AMINI (41)</span></label>
+                                        <label for="brand2"><span>AMINI</span></label>
                                     </li>
                                     <li>
                                         <input type="radio" id="brand3" name="brand" value="CHELSEA_FURNITURE">
-                                        <label for="brand3"><span>CHELSEA_FURNITURE (27)</span></label>
+                                        <label for="brand3"><span>CHELSEA_FURNITURE</span></label>
                                     </li>
                                 </ul>
                             </div>
@@ -96,27 +109,27 @@ $this->layout = 'front';
                                 <ul>
                                     <li>
                                         <input type="radio" id="style1" name="style" value="Arch_Salvage">
-                                        <label for="style1"><span>Arch_Salvage (9)</span></label>
+                                        <label for="style1"><span>Arch_Salvage</span></label>
                                     </li>
                                     <li>
                                         <input type="radio" id="style2" name="style" value="Architrave">
-                                        <label for="style2"><span>Architrave (17)</span></label>
+                                        <label for="style2"><span>Architrave</span></label>
                                     </li>
                                     <li>
                                         <input type="radio" id="style3" name="style" value="Charme">
-                                        <label for="style3"><span>Charme (6)</span></label>
+                                        <label for="style3"><span>Charme</span></label>
                                     </li>
                                     <li>
                                         <input type="radio" id="style4" name="style" value="Giovanna">
-                                        <label for="style4"><span>Giovanna (2)</span></label>
+                                        <label for="style4"><span>Giovanna</span></label>
                                     </li>
                                     <li>
                                         <input type="radio" id="style5" name="style" value="Old_world">
-                                        <label for="style5"><span>Old_world (21)</span></label>
+                                        <label for="style5"><span>Old_world</span></label>
                                     </li>
                                     <li>
                                         <input type="radio" id="style6" name="style" value="Passage">
-                                        <label for="style6"><span>Passage (20)</span></label>
+                                        <label for="style6"><span>Passage</span></label>
                                     </li>
                                     <li>
                                         <input type="radio" id="style7" name="style" value="Malibu_Crest">
@@ -124,43 +137,43 @@ $this->layout = 'front';
                                     </li>
                                     <li>
                                         <input type="radio" id="style8" name="style" value="Mia_Bella">
-                                        <label for="style8"><span>Mia_Bella (11)</span></label>
+                                        <label for="style8"><span>Mia_Bella</span></label>
                                     </li>
                                     <li>
                                         <input type="radio" id="style10" name="style" value="Bader">
-                                        <label for="style10"><span>Bader (9)</span></label>
+                                        <label for="style10"><span>Bader</span></label>
                                     </li>
                                     <li>
                                         <input type="radio" id="style11" name="style" value="New_Empaire">
-                                        <label for="style11"><span>New_Empaire (9)</span></label>
+                                        <label for="style11"><span>New_Empaire</span></label>
                                     </li>
                                     <li>
                                         <input type="radio" id="style12" name="style" value="Pearly">
-                                        <label for="style12"><span>Pearly (10)</span></label>
+                                        <label for="style12"><span>Pearly</span></label>
                                     </li>
                                     <li>
                                         <input type="radio" id="style13" name="style" value="Princess">
-                                        <label for="style13"><span>Princess (2)</span></label>
+                                        <label for="style13"><span>Princess</span></label>
                                     </li>
                                     <li>
                                         <input type="radio" id="style14" name="style" value="Ruby">
-                                        <label for="style14"><span>Ruby (9)</span></label>
+                                        <label for="style14"><span>Ruby</span></label>
                                     </li>
                                     <li>
                                         <input type="radio" id="style15" name="style" value="SG_Plush">
-                                        <label for="style15"><span>SG_Plush (9)</span></label>
+                                        <label for="style15"><span>SG_Plush</span></label>
                                     </li>
                                     <li>
                                         <input type="radio" id="style16" name="style" value="Shayan">
-                                        <label for="style16"><span>Shayan (9)</span></label>
+                                        <label for="style16"><span>Shayan</span></label>
                                     </li>
                                     <li>
                                         <input type="radio" id="style17" name="style" value="Sina">
-                                        <label for="style17"><span>Sina (9)</span></label>
+                                        <label for="style17"><span>Sina</span></label>
                                     </li>
                                     <li>
                                         <input type="radio" id="style18" name="style" value="Venues">
-                                        <label for="style18"><span>Venues (9)</span></label>
+                                        <label for="style18"><span>Venues</span></label>
                                     </li>
                                 </ul>
                             </div>
@@ -222,13 +235,8 @@ $this->layout = 'front';
                                 </ul>
                             </div>
                         </aside>
-                        <button type="submit">compare</button>
+                        <button type="submit" class="btn btn-primary" style="background-color: #c38748; border-radius: 0px; border: 0; width: 100%; text-transform: uppercase">Search</button>
                     </form>
-                </div>
-                <div class="banner-image">
-                    <a href="#">
-                        <a><?= $this->Html->image('shop2.jpg'); ?></a>
-                    </a>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-9">
@@ -240,14 +248,6 @@ $this->layout = 'front';
                 <div class="shop-item-filter">
                     <div class="shop-tab clearfix">
                         <!-- Nav tabs -->
-                        <ul class="tab-menu" role="tablist">
-                            <li role="presentation" class="active">
-                                <a href="#grid" aria-controls="grid" role="tab" data-toggle="tab"><i class="fa fa-th-large"></i></a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#list" aria-controls="list" role="tab" data-toggle="tab"><i class="fa fa-th-list"></i></a>
-                            </li>
-                        </ul>
                         <div class="shop-tab-selectors pull-right">
                             <form action="/team09-app_fit3048/products/shop">
                                 <div class="single-shop-form single-shop-show pull-left">
@@ -276,7 +276,7 @@ $this->layout = 'front';
                                 </div>
                                 <div class="single-shop-form pul-right">
                                     <button type="submit">
-                                        <span>Compare (<strong class="total-compare-val">0</strong>)<i class="fa fa-chevron-right right"></i></span>
+                                        <span>Sort Products <i class="fa fa-chevron-right right"></i></span>
                                     </button>
                                 </div>
                             </form>
