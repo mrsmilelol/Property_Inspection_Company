@@ -105,7 +105,7 @@ class OrdersController extends AppController
         $order = $this->Orders->get($id);
         $user = $this->fetchTable('Users')->get($order->user_id);
         $status = $order->status;
-        if(strcmp($status,'Submitted')==0){
+        if(strcmp($status,'Submitted')==0 || strcmp($status,'Order is placed')){
             $order->status = 'Order cancelled';
             if ($this->Orders->save($order)) {
                 //send the email to the user eamil address
