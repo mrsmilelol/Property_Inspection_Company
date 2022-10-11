@@ -71,11 +71,23 @@ class WholesaleRequestsTable extends Table
             ->maxLength('website', 64)
             ->allowEmptyString('website');
 
+
+
         $validator
             ->scalar('abn')
             ->maxLength('abn', 11)
             ->requirePresence('abn', 'create')
-            ->notEmptyString('abn');
+            ->notEmptyString('abn')
+            ->add('abn','abnValue',[
+                'rule'=>function ($value, array $context) {
+                $numLength = strlen(($value));
+
+                    if ($numLength == 11 && is_numeric($value)) {
+                        return true;
+                    }
+                    return 'The ABN must be 11 digit number.';
+                }
+            ]);
 
         $validator
             ->scalar('business_phone')
