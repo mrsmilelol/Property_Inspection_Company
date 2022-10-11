@@ -106,7 +106,7 @@ $this->layout = 'front';
         <!--Cart Main Area Start-->
         <div class="cart-main-area section-padding2">
             <div class="container">
-                <?php if ($orderItems!=null and $orderItems['Orderitems'] !=null): ?>
+                <?php if ($orderItems != null and $orderItems['Orderitems'] != null) : ?>
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="heading-title">Shopping Cart Summary</h1>
@@ -126,33 +126,33 @@ $this->layout = 'front';
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php if ($user !== null and $user->user_type_id == 2):?>
-                                <?php
-                                foreach ($orderItems['WholesaleOrderitems'] as $orderItem) :
-                                /*foreach ($orderItems['WholesaleOrderitems'] as $key=>$orderItem) :*/ ?>
+                                <?php if ($user !== null and $user->user_type_id == 2) :?>
+                                    <?php
+                                    foreach ($orderItems['WholesaleOrderitems'] as $orderItem) :
+                                    /*foreach ($orderItems['WholesaleOrderitems'] as $key=>$orderItem) :*/ ?>
                                 <tr>
                                     <td><a href="<?= $this->Url->build(['controller' => 'products', 'action' => 'detail',$orderItem['product_id']])?>"><?= $orderItem['name']?></a></td>
                                     <td><?= $this->Number->currency($orderItem['price'])?></td>
                                     <td>
                                         <div class="cart-quantity product-quantity">
-                                            <button class="dec qtybtn" onClick="javascript:window.location.href='<?= $this->Url->build(['action'=>'changeQty', 'minus', $orderItem['product_id'], $orderItem['quantity']]) ?>'">-</button>
-                                            <input id="myInput" type="integer" value="<?= $orderItem['quantity']?>" onClick="javascript:window.location.href='<?= $this->Url->build(['action'=>'changeQty', 'edit', $orderItem['product_id'], $orderItem['quantity']]) ?>'">
-                                            <button class="inc qtybtn" onClick="javascript:window.location.href='<?= $this->Url->build(['action'=>'changeQty', 'plus',  $orderItem['product_id'], $orderItem['quantity']]) ?>'">+</button>
+                                            <button class="dec qtybtn" onClick="javascript:window.location.href='<?= $this->Url->build(['action' => 'changeQty', 'minus', $orderItem['product_id'], $orderItem['quantity']]) ?>'">-</button>
+                                            <input id="myInput" type="integer" value="<?= $orderItem['quantity']?>" onClick="javascript:window.location.href='<?= $this->Url->build(['action' => 'changeQty', 'edit', $orderItem['product_id'], $orderItem['quantity']]) ?>'">
+                                            <button class="inc qtybtn" onClick="javascript:window.location.href='<?= $this->Url->build(['action' => 'changeQty', 'plus',  $orderItem['product_id'], $orderItem['quantity']]) ?>'">+</button>
                                         </div>
                                     </td>
                                     <!--<td>
                                         <?/*= $this->Form->create(NULL,['url' => ['controller' => 'products', 'action' => 'cartupdate']])*/?>
-                                        <?php /*echo $this->Form->control('quantity-'.$key,['value'=>$orderItem['quantity'],'label'=>false,'type'=>'integer']); */?></td>-->
-                                    <td><?=$this->Number->currency($orderItem['price']*$orderItem['quantity'])?></td>
+                                            <?php /*echo $this->Form->control('quantity-'.$key,['value'=>$orderItem['quantity'],'label'=>false,'type'=>'integer']); */?></td>-->
+                                    <td><?=$this->Number->currency($orderItem['price'] * $orderItem['quantity'])?></td>
                                     <td><?php echo $this->Html->link('<i class="fa fa-trash"></i>', [
                                             'controller' => 'products', 'action' => 'removeProduct', $orderItem['product_id']], [
                                             'class' => 'btn btn-secondary btn-sm', 'escape' => false]); ?>
                                     </td>
                                 </tr>
                                 </tbody>
-                                <?php endforeach;
-                                else:?>
-                                <?php
+                                    <?php endforeach;
+                                else :?>
+                                    <?php
                                     foreach ($orderItems['Orderitems'] as $orderItem) :
                                         //foreach ($orderItems['Orderitems'] as $key=>$orderItem) :?>
                                 <tr>
@@ -160,15 +160,15 @@ $this->layout = 'front';
                                         <td><?= $this->Number->currency($orderItem['price'])?></td>
                                         <td>
                                             <div class="cart-quantity product-quantity">
-                                                <button class="dec qtybtn" onClick="javascript:window.location.href='<?= $this->Url->build(['action'=>'changeQty', 'minus', $orderItem['product_id'], $orderItem['quantity']]) ?>'">-</button>
-                                                <input id="myInput" type="integer" value="<?= $orderItem['quantity']?>" onClick="javascript:window.location.href='<?= $this->Url->build(['action'=>'changeQty', 'edit', $orderItem['product_id'], $orderItem['quantity']]) ?>'">
-                                                <button class="inc qtybtn" onClick="javascript:window.location.href='<?= $this->Url->build(['action'=>'changeQty', 'plus',  $orderItem['product_id'], $orderItem['quantity']]) ?>'">+</button>
+                                                <button class="dec qtybtn" onClick="javascript:window.location.href='<?= $this->Url->build(['action' => 'changeQty', 'minus', $orderItem['product_id'], $orderItem['quantity']]) ?>'">-</button>
+                                                <input readonly="readonly" id="myInput" type="integer" value="<?= $orderItem['quantity']?>" onClick="javascript:window.location.href='<?= $this->Url->build(['action' => 'changeQty', 'edit', $orderItem['product_id'], $orderItem['quantity']]) ?>'">
+                                                <button class="inc qtybtn" onClick="javascript:window.location.href='<?= $this->Url->build(['action' => 'changeQty', 'plus',  $orderItem['product_id'], $orderItem['quantity']]) ?>'">+</button>
                                             </div>
                                         </td>
                                     <!--<td><?/*= $this->Form->create(NULL,['url' => ['controller' => 'products', 'action' => 'cartupdate']])*/?>
                                         <?php /*echo $this->Form->control('quantity-'.$key,['value'=>$orderItem['quantity'],'label'=>false,'type'=>'integer']); */?></td>-->
 
-                                    <td><?=$this->Number->currency($orderItem['price']*$orderItem['quantity'])?></td>
+                                    <td><?=$this->Number->currency($orderItem['price'] * $orderItem['quantity'])?></td>
                                         <td><?php echo $this->Html->link('<i class="fa fa-trash"></i>', [
                                             'controller' => 'products', 'action' => 'removeProduct', $orderItem['product_id']], [
                                                 'class' => 'btn btn-secondary btn-sm', 'escape' => false]); ?>
@@ -179,9 +179,9 @@ $this->layout = 'front';
                                 <?php endif;?>
                             </table>
                         </div>
-                        <?php else : ?>
+                <?php else : ?>
                             <p class="lhbigger">Your shopping cart is currently empty. </p>
-                        <?php endif;?>
+                <?php endif;?>
                     </div>
                 </div>
 
@@ -215,7 +215,7 @@ $this->layout = 'front';
 <!--                        </div>-->
                     </div>
 
-                    <?php if ($orderItems!=null and $orderItems['Orderitems'] !=null): ?>
+                    <?php if ($orderItems != null and $orderItems['Orderitems'] != null) : ?>
                     <div class="col-md-4 col-sm-5 col-xs-12 mb-30 cart_totals">
                         <div class="cart-total-wrap">
                             <div class="table-responsive">
@@ -223,15 +223,15 @@ $this->layout = 'front';
                                     <tbody>
                                         <tr>
                                             <?php $subtotal = 0;
-                                                if ($user !== null and $user->user_type_id == 2) {
-                                                    foreach ($orderItems['WholesaleOrderitems'] as $orderItem) :
-                                                        $subtotal = $subtotal + ($orderItem['price'] * $orderItem['quantity']);
-                                                    endforeach;
-                                                    }
-                                                else{
-                                                    foreach ($orderItems['Orderitems'] as $orderItem) :
-                                                        $subtotal = $subtotal + ($orderItem['price']*$orderItem['quantity']);
-                                                    endforeach;}
+                                            if ($user !== null and $user->user_type_id == 2) {
+                                                foreach ($orderItems['WholesaleOrderitems'] as $orderItem) :
+                                                    $subtotal = $subtotal + ($orderItem['price'] * $orderItem['quantity']);
+                                                endforeach;
+                                            } else {
+                                                foreach ($orderItems['Orderitems'] as $orderItem) :
+                                                    $subtotal = $subtotal + ($orderItem['price'] * $orderItem['quantity']);
+                                                endforeach;
+                                            }
                                             ?>
 <!--                                            <th>Subtotal</th>-->
 <!--                                            <td><strong>--><!--</strong></td>-->
@@ -272,7 +272,7 @@ $this->layout = 'front';
                                 endif;?>
                                     <a class="readmore" href="<?= $this->Url->build($urlLink)?> ">Proceed to Checkout</a>
                             </div>
-                            <?php endif;?>
+                    <?php endif;?>
                         </div>
                     </div>
 

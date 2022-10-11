@@ -73,19 +73,19 @@ class UserAddressesTable extends Table
 
         $validator
             ->scalar('city')
-            ->maxLength('city', 64)
+            ->maxLength('city', 16)
             ->requirePresence('city', 'create')
             ->notEmptyString('city');
 
         $validator
             ->scalar('country')
-            ->maxLength('country', 64)
+            ->maxLength('country', 16)
             ->requirePresence('country', 'create')
             ->notEmptyString('country');
 
         $validator
             ->scalar('state')
-            ->maxLength('state', 64)
+            ->maxLength('state', 3)
             ->requirePresence('state', 'create')
             ->notEmptyString('state');
 

@@ -23,7 +23,7 @@ $cancelURL = 'https://' . $_SERVER['SERVER_NAME'] . '/team09-app_fit3048/user-ad
 \Stripe\Stripe::setApiKey('sk_test_51LkgUlGRmWCorjcXA038yfpvxDxs4RGCgZjVodGkU4lVz37N5Uo94ig9MZg2YCCGDZSwaT0vSUmFpUYjNFnI9qOi00eWvmMRNg');
 //aaa
 $orderCheckout = [];
-if ($user->user_type_id == 2){
+if ($user->user_type_id == 2) {
     foreach ($orderItems['WholesaleOrderitems'] as $orderItem) {
         array_push($orderCheckout, ['price_data' => [
             'currency' => 'aud',
@@ -34,8 +34,7 @@ if ($user->user_type_id == 2){
         ],
             'quantity' => $orderItem['quantity']]);
     }
-}
-else{
+} else {
     foreach ($orderItems['Orderitems'] as $orderItem) {
         array_push($orderCheckout, ['price_data' => [
             'currency' => 'aud',
@@ -269,7 +268,7 @@ if ($orderCheckout != []) {
                             </thead>
                             <tbody>
                             <?php
-                            if ($user->user_type_id == 2):
+                            if ($user->user_type_id == 2) :
                                 if ($orderItems != null) :
                                     foreach ($orderItems['WholesaleOrderitems'] as $orderItem) : ?>
                             <tr class="cart_item">
@@ -280,17 +279,17 @@ if ($orderCheckout != []) {
                             </tbody>
                                     <?php endforeach;
                                 endif;
-                            else:
-                            if ($orderItems != null) :
-                                foreach ($orderItems['Orderitems'] as $orderItem) : ?>
+                            else :
+                                if ($orderItems != null) :
+                                    foreach ($orderItems['Orderitems'] as $orderItem) : ?>
                             <tr class="cart_item">
                                 <td class="c-product-name"><a href="<?= $this->Url->build(['controller' => 'products', 'action' => 'detail',$orderItem['product_id']])?>"><?= $orderItem['name']?></a></td>
                                 <td  class="c-product-quantity"><?= $orderItem['quantity'] ?></td>
                                 <td class="c-product-total"><?=$this->Number->currency($orderItem['price'])?></td>
                             </tr>
                             </tbody>
-                                <?php endforeach;
-                            endif;
+                                    <?php endforeach;
+                                endif;
                             endif;?>
                             <tfoot>
                             <tr class="shipping">
@@ -316,16 +315,16 @@ if ($orderCheckout != []) {
                             </tr>
                             <tr class="order-total">
                                 <?php $subtotal = 0;
-                                if ($user->user_type_id == 2):
+                                if ($user->user_type_id == 2) :
                                     if ($orderItems != null) :
                                         foreach ($orderItems['WholesaleOrderitems'] as $orderItem) :
-                                            $subtotal = $subtotal + $orderItem['price']*$orderItem['quantity'];
+                                            $subtotal = $subtotal + $orderItem['price'] * $orderItem['quantity'];
                                         endforeach;
                                     endif;
-                                    else:
+                                else :
                                     if ($orderItems != null) :
                                         foreach ($orderItems['Orderitems'] as $orderItem) :
-                                            $subtotal = $subtotal + $orderItem['price']*$orderItem['quantity'];
+                                            $subtotal = $subtotal + $orderItem['price'] * $orderItem['quantity'];
                                         endforeach;
                                     endif;
                                 endif;?>
@@ -342,7 +341,7 @@ if ($orderCheckout != []) {
                                 'type' => 'submit',
                                 'id' => 'checkout-button-main',
                                 'class' => 'order-button-payment',
-                                'escape' => 'false'
+                                'escape' => 'false',
                             ]);?>
                         </div>
                         <?= $this->Form->end() ?>
