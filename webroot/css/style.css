@@ -2082,9 +2082,13 @@ ul.tab-menu li.active i {
   color: #333333;
 }
 .single-shop-form label {
-  color: #333333;
+  /*color: #333333;
   font-size: 12px;
-  font-weight: 300;
+  font-weight: 300;*/
+    color: #000;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
 }
 .single-shop-form .shop-select {
   display: inline;
@@ -2099,7 +2103,7 @@ ul.tab-menu li.active i {
   margin-top: 6px;
 }
 .shop-select select {
-  -moz-appearance: none;
+ /* -moz-appearance: none;
   -moz-user-select: none;
   background: #fbfbfb url('../img/select-icon.png') no-repeat scroll right center;
   border-color: #dddddd -moz-use-text-color #dddddd #dddddd;
@@ -2111,10 +2115,21 @@ ul.tab-menu li.active i {
   font-weight: 400;
   height: 27px;
   padding-inline-end: 35px;
-  padding-inline-start: 5px;
+  padding-inline-start: 5px;*/
+    font-size: 13px;
+    padding: 4px 25px 4px 5px;
+    background-color: transparent;
+    background-image: url('../img/select-icon.png');
+    background-repeat: no-repeat;
+    background-position: center right;
+    width: auto;
+    border: 1px solid #dddddd;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 .single-shop-form.pul-right > button {
-  background: #737373 none repeat scroll 0 0;
+  background: #c38748 none repeat scroll 0 0;
   border: medium none;
 }
 .single-shop-form span {
@@ -2124,6 +2139,17 @@ ul.tab-menu li.active i {
   font-weight: 400;
   font-size: 12px;
   text-transform: uppercase;
+    background-color: #c38748;
+    border-radius: 0px;
+    border: 0;
+    width: 100%;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
 }
 /*----------------------------------------*/
 /*  25.	Tab Content

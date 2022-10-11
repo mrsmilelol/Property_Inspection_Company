@@ -23,7 +23,20 @@ $this->layout = 'front';
 <!doctype html>
 <style>
     label span{
+        /*font-weight: 300;*/
+        color: #000;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 20px;
+    }
+    .widget-info li a {
+        /*font-size: 12px;
         font-weight: 300;
+        margin-left: 5px;*/
+        color: #000;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 20px;
     }
 </style>
 <html class="no-js" lang="">
@@ -223,13 +236,8 @@ $this->layout = 'front';
                                 </ul>
                             </div>
                         </aside>
-                        <button type="submit" class="btn btn-primary" style="background-color: #c38748; border-radius: 0px; border: 0; width: 100%">Search</button>
+                        <button type="submit" class="btn btn-primary" style="background-color: #c38748; border-radius: 0px; border: 0; width: 100%; text-transform: uppercase">Search</button>
                     </form>
-                </div>
-                <div class="banner-image">
-                    <a href="#">
-                        <a><?= $this->Html->image('shop2.jpg'); ?></a>
-                    </a>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-9">
@@ -241,14 +249,6 @@ $this->layout = 'front';
                 <div class="shop-item-filter">
                     <div class="shop-tab clearfix">
                         <!-- Nav tabs -->
-                        <ul class="tab-menu" role="tablist">
-                            <li role="presentation" class="active">
-                                <a href="#grid" aria-controls="grid" role="tab" data-toggle="tab"><i class="fa fa-th-large"></i></a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#list" aria-controls="list" role="tab" data-toggle="tab"><i class="fa fa-th-list"></i></a>
-                            </li>
-                        </ul>
                         <div class="shop-tab-selectors pull-right">
 
                             <form action="<?php echo $_SERVER['REQUEST_URI']; ?>">
@@ -278,7 +278,7 @@ $this->layout = 'front';
                                 </div>
                                 <div class="single-shop-form pul-right">
                                     <button type="submit">
-                                        <span>Compare (<strong class="total-compare-val">0</strong>)<i class="fa fa-chevron-right right"></i></span>
+                                        <span>Sort Products <i class="fa fa-chevron-right right"></i></span>
                                     </button>
                                 </div>
                             </form>
