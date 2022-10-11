@@ -158,9 +158,9 @@ if ($orderCheckout != []) {
     <div class="container">
         <div class="row">
             <div class="coupon-area">
-                <div class="col-md-12">
+                <!--<div class="col-md-12">
                     <h1 class="heading-title">Procced to Checkout </h1>
-                </div>
+                </div>-->
                 <div class="col-md-12">
                     <div class="coupon-accordion">
                         <!-- ACCORDION START -->
@@ -293,7 +293,7 @@ if ($orderCheckout != []) {
                             endif;
                             endif;?>
                             <tfoot>
-                            <tr class="shipping">
+                            <!--<tr class="shipping">
                                 <th>7 day Shipping </th>
                                 <td>
                                     <ul>
@@ -313,7 +313,7 @@ if ($orderCheckout != []) {
                                         <li></li>
                                     </ul>
                                 </td>
-                            </tr>
+                            </tr>-->
                             <tr class="order-total">
                                 <?php $subtotal = 0;
                                 if ($user->user_type_id == 2):
