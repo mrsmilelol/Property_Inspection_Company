@@ -9,7 +9,7 @@ use Cake\ORM\TableRegistry;
 class CommonHelper extends Helper {
 
 	public function getCategoryInfo() {
-		$categories = TableRegistry::get("Categories")->find('all');
+		$categories = TableRegistry::get("Categories")->find('all')->contain('Products');
 		return $categories;
 	}
 }
