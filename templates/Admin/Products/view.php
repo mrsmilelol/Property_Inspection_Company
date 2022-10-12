@@ -145,37 +145,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 </div>
             <?php endif; ?>
         </div>
-        <div class="related">
-            <h4><?= __('Related product reviews') ?></h4>
-            <?php if (!empty($product->product_reviews)) : ?>
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
-                        <tr>
-                            <th data-visible="false"><?= __('ID') ?></th>
-                            <th><?= __('User ID') ?></th>
-                            <th><?= __('Product ID') ?></th>
-                            <th><?= __('Description') ?></th>
-                            <th><?= __('Rating') ?></th>
-                            <th class="actions"><?= __('Actions') ?></th>
-                        </tr>
-                        <?php foreach ($product->product_reviews as $productReviews) : ?>
-                            <tr>
-                                <td><?= h($productReviews->id) ?></td>
-                                <td><?= h($productReviews->user_id) ?></td>
-                                <td><?= h($productReviews->product_id) ?></td>
-                                <td><?= h($productReviews->description) ?></td>
-                                <td><?= h($productReviews->rating) ?></td>
-                                <td class="actions">
-                                    <?= $this->Html->link(__('View'), ['controller' => 'ProductReviews', 'action' => 'view', $productReviews->id]) ?>
-                                    <?= $this->Html->link(__('Edit'), ['controller' => 'ProductReviews', 'action' => 'edit', $productReviews->id]) ?>
-                                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'ProductReviews', 'action' => 'delete', $productReviews->id], ['confirm' => __('Are you sure you want to delete # {0}?', $productReviews->id)]) ?>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </table>
-                </div>
-            <?php endif; ?>
-        </div>
     </div>
 </div>
 

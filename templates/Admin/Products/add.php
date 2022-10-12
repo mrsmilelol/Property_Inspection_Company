@@ -40,7 +40,7 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
                         //echo $this->Form->control('categories._ids', ['options' => $subcategories->toArray(), 'class' => 'category_select_sub', 'id' => 'select_category_sub', 'style' => 'width:300px', 'label'=>'Sub Category']);
                         //echo $this->Form->control('inventory_id', ['options' => $productInventories, 'empty' => true]);
                         echo $this->Form->control('name', ['label' => ['class' => 'required']]);
-                        echo $this->Form->control('description', ['type' => 'text']);
+                        echo $this->Form->control('description');
                         echo $this->Form->control('units_in_stock', ['label' => ['class' => 'required', 'text' => 'Units in stock']]);
                         echo $this->Form->control('material', ['label' => ['class' => 'required']]);
                         echo $this->Form->control('brand', ['label' => ['class' => 'required']]);
