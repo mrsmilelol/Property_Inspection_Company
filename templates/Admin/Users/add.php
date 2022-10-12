@@ -25,13 +25,13 @@ $this->Form->setTemplates($formTemplate);
                         'empty' => true]);
                     echo $this->Form->control('username', ['label' => ['class' => 'required']]);
                     echo $this->Form->control('password', ['label' => ['class' => 'required']]);
-                    echo $this->Form->control('firstname', ['label' => ['class' => 'required', 'text' =>'First name']]);
-                    echo $this->Form->control('lastname', ['label' => ['class' => 'required', 'text' =>'Last name']]);
+                    echo $this->Form->control('firstname', ['label' => ['class' => 'required', 'text' => 'First name']]);
+                    echo $this->Form->control('lastname', ['label' => ['class' => 'required', 'text' => 'Last name']]);
                     echo $this->Form->control('phone', ['label' => ['class' => 'required']]);
                     echo $this->Form->control('email', ['label' => ['class' => 'required']]);
                     //echo $this->Form->control('created_at', ['type' => 'hidden']);
                     //echo $this->Form->control('modified_at', ['type' => 'hidden']);
-                ?>
+                    ?>
             <br>
             <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
             <?= $this->Form->end() ?>

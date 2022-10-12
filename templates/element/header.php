@@ -109,7 +109,7 @@
     <!-- Header Top End -->
     <!-- Header Bottom Start -->
     <div class="header-bottom">
-        <div class="container">
+        <div class="container headernone">
             <div class="row">
                 <div class="col-lg-1 col-md-3 col-sm-6 col-xs-12">
                     <!-- Header Logo -->
@@ -283,8 +283,19 @@
     <!--Header Bottom End-->
 </div>
 <!-- Header Area End -->
-<!-- Mobile Menu Start -->
+<!-- Mobile Menu Start 1-->
 <div class="mobile-menu-area">
+    <div class="mobile-header-logo">
+        <a href=<?= $this->Url->build(['controller' => 'Pages',
+            'action' => 'display','main']); ?> title="Chelsea Furniture">
+        <?= $this->Html->image('Logo-circle.png', ['class' => 'img-fluid']); ?>
+        </a>
+    </div>
+    <a class="cart-toggler mini-cart-icon" href="<?= $this->Url->build(['controller' => 'products',
+        'action' => 'cart', 'prefix' => false]); ?>">
+        <i class="fa fa-shopping-cart"></i>
+        <!--                                       <span>*</span>-->
+    </a>
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
@@ -341,3 +352,23 @@
     </div>
 </div>
 <!-- Mobile Menu End -->
+<style>
+    @media (max-width: 767px) {
+        .headernone{
+            display: none;
+        }
+        .mobile-header-logo{
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            left: 4%;
+            top: 11px;
+        }
+        .cart-toggler{
+            position: absolute;
+            right: 2%;
+            top: 10px;
+        }
+    }
+
+</style>

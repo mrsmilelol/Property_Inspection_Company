@@ -3,8 +3,9 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\UserAddress $userAddress
  * @var \Cake\Collection\CollectionInterface|string[] $users
+ * @var array $state
  */
-$formTemplate= [
+$formTemplate = [
     'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
     'label' => '<label{{attrs}} class="form-label">{{text}}</label>',
     'input' => '<input type="{{type}}" name="{{name}}" class="form-control"{{attrs}}/>',
@@ -24,15 +25,15 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
                 echo $this->Form->control('user_id', ['class' => 'category_select_main','id' => 'select_user','options' => $users, 'empty' => true]);
                 echo $this->Form->control('address_line_1', ['label' => 'Address line 1']);
                 echo $this->Form->control('address_line_2', ['label' => 'Address line 2']);
-                echo $this->Form->control('city');
-                echo $this->Form->control('country');
-                echo $this->Form->control('state');
-                echo $this->Form->control('postcode');
-                //echo $this->Form->control('created_at');
-                //echo $this->Form->control('modified_at');
+                echo $this->Form->control('city', ['label' => 'City: Melbourne']);
+               // $countries = ['1' => 'Australia','2' => 'United States of America','3' => 'New Zealand'];
+                echo $this->Form->control('country', ['value' => 'Australia']);
+                //$states = ['1' => 'VIC','2' => 'NSW','3' => 'SA','4' => 'WA','5' => 'NT','6' => 'QLD','7' => 'TAS'];
+                echo $this->Form->control('state', ['options' => $state, 'label' => 'Select your state']);
+                echo $this->Form->control('postcode', ['label' => 'Postcode: 3102']);
                 ?>
                 <br>
-                <?= $this->Form->button(__('Submit'),['class' => 'btn btn-primary']) ?>
+                <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
                 <?= $this->Form->end() ?>
             </table>
         </div>
