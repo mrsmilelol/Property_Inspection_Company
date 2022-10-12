@@ -199,7 +199,9 @@ if ($orderCheckout != []) {
                         <?php echo $this->Form->hidden('user_id', ['value' => $userID->id,'type' => 'text']);?>
                         <div class="col-md-6">
                             <p class="form-row">
-                                <?php echo $this->Form->control('country', ['placeholder' => 'Australia','label' => ['class' => 'required']]); ?>
+                                <?php
+                                echo $this->Form->control('country', ['placeholder' => 'Australia', 'value' => 'Australia','label' => ['class' => 'required']]);
+                                ?>
                             </p>
                         </div>
                         <div class="col-md-6">
@@ -219,7 +221,9 @@ if ($orderCheckout != []) {
                         </div>
                         <div class="col-md-6">
                             <p class="form-row">
-                                <?php echo $this->Form->control('state', ['placeholder' => 'VIC / NSW','label' => ['class' => 'required']]);?>
+                                <?php
+                                $states = ['1' => 'VIC','2' => 'NSW','3' => 'SA','4' => 'WA','5' => 'NT','6' => 'QLD','7' => 'TAS'];
+                                echo $this->Form->control('state', ['options' => $states, 'label' => 'Select your state']); ?>
                             </p>
                         </div>
                         <div class="col-md-6">

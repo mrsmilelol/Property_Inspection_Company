@@ -10,6 +10,8 @@ $formTemplate= [
     'input' => '<input type="{{type}}" name="{{name}}" class="form-control"{{attrs}}/>',
 ];
 $this->Form->setTemplates($formTemplate);
+echo $this->Html->css('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css', ['block' => true]);
+echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', ['block' => true]);
 ?>
 <div class="card shadow mb-4">
     <div class="d-sm-flex align-items-center justify-content-between card-header">
@@ -19,17 +21,16 @@ $this->Form->setTemplates($formTemplate);
         <table class="table table-bordered" id="products" width="100%" cellspacing="0">
             <?= $this->Form->create($userAddress) ?>
                 <?php
-                echo $this->Form->control('user_id', ['options' => $users, 'empty' => true,
-                    'label' => ['class' => 'required']]);
+                echo $this->Form->control('user_id', ['class' => 'category_select_main','id' => 'select_user','options' => $users, 'empty' => true, 'label' => ['class' => 'required']]);
                 echo $this->Form->control('address_line_1', [
                     'label' => ['class' => 'required', 'text' => 'Address line 1']]);
                 echo $this->Form->control('address_line_2', ['label' => 'Address line 2']);
                 echo $this->Form->control('city', ['label' => ['class' => 'required']]);
                 echo $this->Form->control('country', ['label' => ['class' => 'required']]);
-                echo $this->Form->control('state', ['label' => ['class' => 'required']]);
+                $states = ['1' => 'VIC','2' => 'NSW','3' => 'SA','4' => 'WA','5' => 'NT','6' => 'QLD','7' => 'TAS'];
+                echo $this->Form->control('state', ['options' => $states, 'label' => 'Select your state']);
                 echo $this->Form->control('postcode', ['label' => ['class' => 'required']]);
-                    //echo $this->Form->control('created_at');
-                    //echo $this->Form->control('modified_at');
+
                 ?>
             <br>
             <?= $this->Form->button(__('Submit'),['class' => 'btn btn-primary']) ?>
@@ -37,3 +38,8 @@ $this->Form->setTemplates($formTemplate);
         </table>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#select_user').select2();
+    });
+</script>
