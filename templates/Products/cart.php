@@ -180,7 +180,7 @@ $this->layout = 'front';
                             </table>
                         </div>
                         <?php else : ?>
-                            <p class="lhbigger">Your shopping cart is currently empty. </p>
+                            <p class="lhbigger" style="color: #000;">Your shopping cart is currently empty. </p>
                         <?php endif;?>
                     </div>
                 </div>

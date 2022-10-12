@@ -56,6 +56,7 @@ if ($orderCheckout != []) {
         'success_url' => $successURL,
         'cancel_url' => $cancelURL,
     ]);
+    $this->request->getSession()->write('pay_session', $session);
 } else {
     $this->Url->build(['controller' => 'Products','action' => 'cart']);
 }

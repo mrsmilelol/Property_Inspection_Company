@@ -69,6 +69,7 @@ class UserAddressesController extends AppController
         if (empty($addresses)) {
             $userAddress = $this->UserAddresses->newEmptyEntity();
             $orderItems = $this->Cart->getcart();
+            //$session = $this->request->getSession()->read('pay_session');
             if ($this->request->is('post')) {
                 $userAddress = $this->UserAddresses->patchEntity($userAddress, $this->request->getData());
                 if ($this->UserAddresses->save($userAddress)) {
@@ -89,9 +90,15 @@ class UserAddressesController extends AppController
                 'contain' => [],
             ]);
             $orderItems = $this->Cart->getcart();
+            //$session = $this->request->getSession()->read('pay_session');
             if ($this->request->is(['patch', 'post', 'put'])) {
+                $userAddress = $this->UserAddresses->patchEntity($userAddress, $this->request->getData());
                 if ($this->UserAddresses->save($userAddress)) {
                     $this->Flash->success(__('The user address has been saved.'));
+                    //$this->Html->scriptBlock("Stripe('pk_test_51LkgUlGRmWCorjcXsDFRkKYqWTuPWk8mGeKtr6398t7o55wnltXdYpUjAqaDzSfHb426KyXxxCtfC2wWi6tV7IB700R4ElytR1').redirectToCheckout({sessionId: $session->id;})", ['defer' => true]);
+                    /*$this->Html->scriptStart(['block' => true]);
+                    echo "Stripe('pk_test_51LkgUlGRmWCorjcXsDFRkKYqWTuPWk8mGeKtr6398t7o55wnltXdYpUjAqaDzSfHb426KyXxxCtfC2wWi6tV7IB700R4ElytR1').redirectToCheckout({sessionId: $session->id;});";
+                    $this->Html->scriptEnd();*/
 
                     return $this->redirect(['action' => 'success']);
                 }
