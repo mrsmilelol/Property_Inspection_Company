@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\UserAddress $userAddress
  * @var string[]|\Cake\Collection\CollectionInterface $users
  */
-$formTemplate= [
+$formTemplate = [
     'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
     'label' => '<label{{attrs}} class="form-label">{{text}}</label>',
     'input' => '<input type="{{type}}" name="{{name}}" class="form-control"{{attrs}}/>',
@@ -33,7 +33,7 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
 
                 ?>
             <br>
-            <?= $this->Form->button(__('Submit'),['class' => 'btn btn-primary']) ?>
+            <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
             <?= $this->Form->end() ?>
         </table>
     </div>

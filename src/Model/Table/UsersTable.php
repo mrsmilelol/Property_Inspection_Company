@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -74,13 +73,17 @@ class UsersTable extends Table
             ->scalar('username')
             ->maxLength('username', 16)
             ->requirePresence('username', 'create')
-            ->notEmptyString('username');
+            ->notEmptyString('username')
+            ->add('password', 'length', ['rule' => ['lengthBetween', 6, 16], 'message' => __('Username length should be at least 6 characters')]);
+
 
         $validator
             ->scalar('password')
             ->maxLength('password', 128)
             ->requirePresence('password', 'create')
-            ->notEmptyString('password');
+            ->notEmptyString('password')
+            ->add('password', 'length', ['rule' => ['lengthBetween', 8, 128], 'message' => __('Password length should be at least 8 characters')]);
+
             //->regex('password', "^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$", 'Password must have minimum eight characters, at least one letter and one number');
 
         $validator
@@ -97,7 +100,7 @@ class UsersTable extends Table
 
         $validator
             ->scalar('phone')
-            ->maxLength('phone', 17)
+            ->maxLength('phone', 12)
             ->requirePresence('phone', 'create')
             ->notEmptyString('phone')
             ->numeric('phone')
@@ -106,7 +109,10 @@ class UsersTable extends Table
         $validator
             ->email('email')
             ->requirePresence('email', 'create')
-            ->notEmptyString('email');
+            ->notEmptyString('email')
+            ->maxLength('email', 64);
+
+
 
         $validator
             ->integer('user_type_id')
@@ -145,14 +151,5 @@ class UsersTable extends Table
         return $rules;
     }
 
-    public function findAuth(Query $query, array $options)
-    {
-        $query->where([
-            'OR' => [
-                'username' => $options['username'],
-                'email' => $options['username'],
-            ]], [], true);
 
-        return $query;
-    }
 }
