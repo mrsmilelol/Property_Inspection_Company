@@ -17,11 +17,11 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <td><?= $userAddress->has('user') ? $this->Html->link($userAddress->user->id, ['controller' => 'Users', 'action' => 'view', $userAddress->user->id]) : '' ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Address line 1') ?></th>
+                    <th><?= __('Address') ?></th>
                     <td><?= h($userAddress->address_line_1) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Address line 2') ?></th>
+                    <th><?= __('') ?></th>
                     <td><?= h($userAddress->address_line_2) ?></td>
                 </tr>
                 <tr>
@@ -40,10 +40,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <th><?= __('Postcode') ?></th>
                     <td><?= h($userAddress->postcode) ?></td>
                 </tr>
-                <tr>
-                    <th><?= __('ID') ?></th>
-                    <td><?= $this->Number->format($userAddress->id) ?></td>
-                </tr>
+
                 <tr>
                     <th><?= __('Created at') ?></th>
                     <td><?= h($userAddress->created_at) ?></td>

@@ -23,10 +23,13 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
                 <?php
                 echo $this->Form->control('user_id', ['class' => 'category_select_main','id' => 'select_user','options' => $users, 'empty' => true, 'label' => ['class' => 'required']]);
                 echo $this->Form->control('address_line_1', [
-                    'label' => ['class' => 'required', 'text' => 'Address line 1']]);
-                echo $this->Form->control('address_line_2', ['label' => 'Address line 2']);
+                    'label' => ['class' => 'required', 'text' => 'Address']]);
+                ?>
+                <br>
+                <?php
+                echo $this->Form->control('address_line_2', ['label' => false]);
                 echo $this->Form->control('city', ['label' => ['class' => 'required']]);
-                echo $this->Form->control('country', ['label' => ['class' => 'required']]);
+                echo $this->Form->control('country', ['label' => ['class' => 'required'], 'type' => 'hidden']);
                 $states = ['1' => 'VIC','2' => 'NSW','3' => 'SA','4' => 'WA','5' => 'NT','6' => 'QLD','7' => 'TAS'];
                 echo $this->Form->control('state', ['options' => $states, 'label' => 'Select your state']);
                 echo $this->Form->control('postcode', ['label' => ['class' => 'required']]);
