@@ -283,6 +283,7 @@ $this->layout = 'front';
                         </div>
                     </div>
                 </div>
+
                 <div class="clearfix"></div>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="grid">
@@ -342,6 +343,26 @@ $this->layout = 'front';
                                 </div>
                             </div>
                             <?php endfor?>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pagination-content">
+                            <p class="pull-left">Showing 1 - 10 of 10 items</p>
+                            <div class="pagination-button pull-right">
+                                <ul class="pagination">
+                                    <li class="pagination-previous" id="pagination-previous-bottom">
+                                        <a href="#"><i class="fa fa-chevron-left"></i>Previous</a>
+                                    </li>
+                                    <li><a href="#"><span>1</span></a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li class="pagination-next" id="pagination-next-bottom">
+                                        <a href="#">Next<i class="fa fa-chevron-right"></i></a>
+                                    </li>
+                                </ul>
+                                <button class="show-pagi">Show all</button>
+                            </div>
                         </div>
                     </div>
                 </div>
