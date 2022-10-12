@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Controller\Wholesale\AppController;
+use function PHPUnit\Framework\isNull;
+
 //use function App\Controller\__;
 
 /**
@@ -154,10 +156,21 @@ class CategoriesController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $category = $this->Categories->get($id);
-        if ($this->Categories->delete($category)) {
-            $this->Flash->success(__('The category has been deleted.'));
+        if($category->parent_id == null){
+            $subcategories = $this->Categories->find('all')->where(['Categories.parent_id' => $category->id]);
+            if($this->Categories->delete($category) && $this->Categories->deleteMany($subcategories)) {
+                $this->Flash->success(__('The parent category and related sub categories has been deleted.'));
+            }
+            else {
+                $this->Flash->error(__('The category could not be deleted. Please, try again.'));
+            }
+
         } else {
-            $this->Flash->error(__('The category could not be deleted. Please, try again.'));
+            if ($this->Categories->delete($category)) {
+                $this->Flash->success(__('The sub category has been deleted.'));
+            } else {
+                $this->Flash->error(__('The category could not be deleted. Please, try again.'));
+            }
         }
 
         return $this->redirect(['action' => 'index']);
