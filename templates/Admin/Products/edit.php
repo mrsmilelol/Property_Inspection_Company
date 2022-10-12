@@ -146,13 +146,8 @@ echo $this->Html->script('//cdn.ckeditor.com/ckeditor5/35.2.0/classic/ckeditor.j
                             <td><?= h($productImages->modified_at) ?></td>
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['controller' => 'ProductImages', 'action' => 'view', $productImages->id]) ?>
-<!--                                --><!--<?//= $this->Html->link(__('Edit'),
-//                                    ['controller' => 'ProductImages', 'action' => 'edit', $productImages->id])
-//                                ?>-->
-<!--                                --><!--<?//= $this->Form->postLink(__('Delete'),
-//                                    ['controller' => 'ProductImages', 'action' => 'delete', $productImages->id],
-//                                    ['confirm' => __('Are you sure you want to delete # {0}?', $productImages->id)])
-//                                ?>-->
+                                <?= $this->Html->link(__('Edit'), ['controller' => 'ProductImages', 'action' => 'edit', $productImages->id]) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'ProductImages', 'action' => 'delete', $productImages->id], ['confirm' => __('Are you sure you want to delete # {0}?', $productImages->id)]) ?>
                             </td>
                         </tr>
                         <?php endforeach; ?>
