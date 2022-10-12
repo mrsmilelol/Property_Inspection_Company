@@ -62,9 +62,15 @@ class UsersController extends AppController
             ->where(['UserAddresses.user_id'=>$the_user])
             ->find('all')->toArray();
 
+        $state = array("VIC", "NSW", "SA","WA","NT","QLD","TAS");
+        foreach ($addresses as $address){
+            $state_str = $state[$address->state -1];
+            $address->state = $state_str;
+        }
+
         $orders = $this->fetchTable('Orders')->find('all')->where(['Orders.user_id' => $the_user])->toArray();
 
-        $this->set(compact('addresses','orders'));
+        $this->set(compact('addresses','orders','state'));
     }
 
     public function account($id){

@@ -25,8 +25,13 @@ class UserAddressesController extends AppController
             'contain' => ['Users'],
         ];
         $userAddresses = $this->paginate($this->UserAddresses);
+        $state = array("VIC", "NSW", "SA","WA","NT","QLD","TAS");
+        foreach ($userAddresses as $userAddress){
+            $state_str = $state[$userAddress->state - 1];
+            $userAddress->state = $state_str;
+        }
 
-        $this->set(compact('userAddresses'));
+        $this->set(compact('userAddresses', 'state'));
     }
 
     /**
@@ -41,8 +46,11 @@ class UserAddressesController extends AppController
         $userAddress = $this->UserAddresses->get($id, [
             'contain' => ['Users'],
         ]);
+        $state = array("VIC", "NSW", "SA","WA","NT","QLD","TAS");
+        $state_str = $state[$userAddress->state - 1];
+        $userAddress->state = $state_str;
 
-        $this->set(compact('userAddress'));
+        $this->set(compact('userAddress','state'));
     }
 
     /**
