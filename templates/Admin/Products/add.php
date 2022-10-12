@@ -20,6 +20,7 @@ $formTemplate = [
 $this->Form->setTemplates($formTemplate);
 echo $this->Html->css('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css', ['block' => true]);
 echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', ['block' => true]);
+echo $this->Html->script('//cdn.ckeditor.com/ckeditor5/35.2.0/classic/ckeditor.js', ['block' => true]);
 ?>
 <div class="card shadow mb-4">
     <div class="d-sm-flex align-items-center justify-content-between card-header">
@@ -40,7 +41,7 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
                         //echo $this->Form->control('categories._ids', ['options' => $subcategories->toArray(), 'class' => 'category_select_sub', 'id' => 'select_category_sub', 'style' => 'width:300px', 'label'=>'Sub Category']);
                         //echo $this->Form->control('inventory_id', ['options' => $productInventories, 'empty' => true]);
                         echo $this->Form->control('name', ['label' => ['class' => 'required']]);
-                        echo $this->Form->control('description');
+                        echo $this->Form->control('description', ['type' => 'text', 'id' => 'editor']);
                         echo $this->Form->control('units_in_stock', ['label' => ['class' => 'required', 'text' => 'Units in stock']]);
                         echo $this->Form->control('material', ['label' => ['class' => 'required']]);
                         echo $this->Form->control('brand', ['label' => ['class' => 'required']]);
@@ -74,6 +75,11 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
     $(document).ready(function() {
         $('.category_select_main').select2();
         $('.category_select_sub').select2();
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
     });
 </script>
 <style>
@@ -81,3 +87,4 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
         display: block;
     }
 </style>
+

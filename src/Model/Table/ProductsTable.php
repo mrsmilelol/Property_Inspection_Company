@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -17,7 +16,6 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\CategoriesTable&\Cake\ORM\Association\BelongsToMany $Categories
  * @property \App\Model\Table\OrdersTable&\Cake\ORM\Association\BelongsToMany $Orders
  * @property \App\Model\Table\OrdersProductsTable&\Cake\ORM\Association\HasMany $OrdersProducts
- *
  * @method \App\Model\Entity\Product newEmptyEntity()
  * @method \App\Model\Entity\Product newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\Product[] newEntities(array $data, array $options = [])
@@ -95,13 +93,14 @@ class ProductsTable extends Table
             ->integer('price')
             ->requirePresence('price', 'create')
             ->notEmptyString('price')
-            ->add('price','priceValue',[
-                'rule'=>function ($value, array $context) {
+            ->add('price', 'priceValue', [
+                'rule' => function ($value, array $context) {
                     if ($value > 0) {
                         return true;
                     }
+
                     return 'Price must be over $0.';
-                }
+                },
             ]);
 
         $validator
@@ -132,14 +131,16 @@ class ProductsTable extends Table
             ->integer('units_in_stock')
             ->requirePresence('units_in_stock', 'create')
             ->notEmptyString('units_in_stock')
-            ->add('units_in_stock','unitsValue',[
-            'rule'=>function ($value, array $context) {
+            ->add('units_in_stock', 'unitsValue', [
+            'rule' => function ($value, array $context) {
                 if ($value >= 0) {
                     return true;
                 }
+
                 return 'The no. of units in stock must be bigger or equal to 0.';
-            }
-            ]);
+            },
+            ])
+            ->maxLength('colour', 6);
 
         $validator
             ->scalar('size')
@@ -151,14 +152,16 @@ class ProductsTable extends Table
             ->integer('weight')
             ->requirePresence('weight', 'create')
             ->notEmptyString('weight')
-            ->add('weight','weightValue',[
-                'rule'=>function ($value, array $context) {
+            ->add('weight', 'weightValue', [
+                'rule' => function ($value, array $context) {
                     if ($value > 0) {
                         return true;
                     }
+
                     return 'The weight must be over 0 kg.';
-                }
-            ]);
+                },
+            ])
+            ->maxLength('colour', 6);
 
         $validator
             ->scalar('finish')
@@ -168,26 +171,31 @@ class ProductsTable extends Table
         $validator
             ->integer('wholesale_price')
             ->allowEmptyString('wholesale_price')
-            ->add('wholesale_price','priceValue',[
-                'rule'=>function ($value, array $context) {
+            ->add('wholesale_price', 'priceValue', [
+                'rule' => function ($value, array $context) {
                     if ($value > 0 and $value < $context['data']['price']) {
                         return true;
                     }
+
                     return 'Wholesale price must be over $0 but less than the normal price.';
-                }
-            ]);
+                },
+            ])
+            ->maxLength('colour', 8);
 
         $validator
             ->integer('sale_price')
             ->allowEmptyString('sale_price')
-            ->add('sale_price','priceValue',[
-                'rule'=>function ($value, array $context) {
+            ->add('sale_price', 'priceValue', [
+                'rule' => function ($value, array $context) {
                     if ($value > 0 and $value < $context['data']['price']) {
                         return true;
                     }
+
                     return 'Sale price must be over $0 but less than the normal price.';
-                }
-            ]);
+                },
+            ])
+            ->maxLength('colour', 8);
+
 
         $validator
             ->scalar('manufacturing')
@@ -208,6 +216,7 @@ class ProductsTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->validCount('categories', 1, '>=', 'Please select at least 1 category.'));
+
         return $rules;
     }
 }
