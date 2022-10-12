@@ -3,6 +3,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\UserAddress $userAddress
  * @var \Cake\Collection\CollectionInterface|string[] $users
+ * @var array $state
  */
 $formTemplate = [
     'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
@@ -27,8 +28,8 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
                 echo $this->Form->control('city', ['label' => 'City: Melbourne']);
                // $countries = ['1' => 'Australia','2' => 'United States of America','3' => 'New Zealand'];
                 echo $this->Form->control('country', ['value' => 'Australia']);
-                $states = ['1' => 'VIC','2' => 'NSW','3' => 'SA','4' => 'WA','5' => 'NT','6' => 'QLD','7' => 'TAS'];
-                echo $this->Form->control('state', ['options' => $states, 'label' => 'Select your state']);
+                //$states = ['1' => 'VIC','2' => 'NSW','3' => 'SA','4' => 'WA','5' => 'NT','6' => 'QLD','7' => 'TAS'];
+                echo $this->Form->control('state', ['options' => $state, 'label' => 'Select your state']);
                 echo $this->Form->control('postcode', ['label' => 'Postcode: 3102']);
                 ?>
                 <br>
