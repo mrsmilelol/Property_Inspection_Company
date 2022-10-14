@@ -102,8 +102,12 @@ class OrdersController extends AppController
     public function cancel($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
+
+        //get the order by primary key
         $order = $this->Orders->get($id);
         $user = $this->fetchTable('Users')->get($order->user_id);
+
+        //check the order status before perform action
         $status = $order->status;
         if (strcmp($status, 'Submitted') == 0 || strcmp($status, 'Order is placed')) {
             $order->status = 'Order cancelled';
