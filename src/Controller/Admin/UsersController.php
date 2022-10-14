@@ -18,12 +18,16 @@ use function __;
  */
 class UsersController extends AppController
 {
+    /**
+     * @param \Cake\Event\EventInterface $event
+     * @return \Cake\Http\Response|void|null
+     */
     public function beforeFilter(EventInterface $event)
     {
         parent::beforeFilter($event);
         // for all controllers in our application, make index and view
         // actions public, skipping the authentication check.
-        $this->Authentication->addUnauthenticatedActions(['login','signUp','verification','logout','passwordReset','editPassword']);
+        $this->Authentication->addUnauthenticatedActions(['login', 'signUp', 'verification', 'logout', 'passwordReset', 'editPassword']);
     }
 
     /**
@@ -40,7 +44,6 @@ class UsersController extends AppController
 
         $this->set(compact('users'));
     }
-
 
     /**
      * View method
@@ -69,15 +72,16 @@ class UsersController extends AppController
 
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
-
+            //get user information
             $userTable = TableRegistry::getTableLocator()->get('Users');
-
+            //populate the variables
             $firstname = $this->request->getData('firstname');
             $lastname = $this->request->getData('lastname');
             $email = $this->request->getData('email');
             $token = Security::hash(Security::randomBytes(32));
             $user = $userTable->newEntity($this->request->getData());
-
+            //add the new user account and set status+verified to 1 to avoid email check if user was
+            //added manually through the backend panel
             if ($userTable->save($user)) {
                 $user->firstname = $firstname;
                 $user->lastname = $lastname;
@@ -87,6 +91,7 @@ class UsersController extends AppController
                 $user->verified = '1';
                 $this->Flash->success(__('The account has been added.'));
                 $userTable->save($user);
+
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('Registration failed, please try again.'));
@@ -96,21 +101,24 @@ class UsersController extends AppController
         $this->set(compact('user', 'userTypes'));
     }
 
+    /**
+     * @return \Cake\Http\Response|void|null
+     */
     public function signUp()
     {
         $user = $this->Users->newEmptyEntity();
 
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
-
+            //get user information
             $userTable = TableRegistry::getTableLocator()->get('Users');
-
+            //populate the variables
             $firstname = $this->request->getData('firstname');
             $lastname = $this->request->getData('lastname');
             $email = $this->request->getData('email');
             $token = Security::hash(Security::randomBytes(32));
             $user = $userTable->newEntity($this->request->getData());
-
+            //create a new user account but set status+verified to 0 until the user goes through verification process
             if ($userTable->save($user)) {
                 $user->user_type = $this->Users->UserTypes->get(3);
                 $user->firstname = $firstname;
@@ -120,8 +128,9 @@ class UsersController extends AppController
                 $user->status = '0';
                 $user->verified = '0';
                 $this->Flash->success(__('Please check your email to verify the account.'));
+                //create a new email
                 $emailSignUp = new Mailer('default');
-                //$mailer->setTransport('default'); //your email configuration name
+                //configure the email and set the template to account_verification
                 $userTable->save($user);
                 $emailSignUp
                     ->setEmailFormat('html')
@@ -131,14 +140,13 @@ class UsersController extends AppController
                     ->viewBuilder()
                     ->disableAutoLayout()
                     ->setTemplate('account_verification');
-
+                //pass the variables to the template
                 $emailSignUp->setViewVars([
                     'firstname' => $lastname,
                     'lastname' => $firstname,
                     'token' => $token,
                 ]);
-                //$mailStatus = $mailer->deliver();
-                //debug($mailStatus);
+                //send an email
                 $emailStatus = $emailSignUp->deliver();
                 //Error handling
                 if ($emailStatus) {
@@ -147,7 +155,7 @@ class UsersController extends AppController
                     $this->Flash->error('Error, unable to send email.');
                 }
 
-                return $this->redirect(['prefix' => 'Admin','action' => 'login']);
+                return $this->redirect(['prefix' => 'Admin', 'action' => 'login']);
             } else {
                 $this->Flash->error(__('Registration failed, please try again.'));
             }
@@ -156,10 +164,17 @@ class UsersController extends AppController
         $this->set(compact('user', 'userTypes'));
     }
 
+    /**
+     * @param $token
+     * @return \Cake\Http\Response|null
+     */
     public function verification($token)
     {
+        //get user information
         $userTable = TableRegistry::getTableLocator()->get('Users');
+        //check if the token is matching the db record
         $verify = $userTable->find('all')->where(['token' => $token])->first();
+        //set the status of the users as well as verified parameter to 1
         $verify->verified = '1';
         $verify->status = 1;
         $userTable->save($verify);
@@ -170,13 +185,14 @@ class UsersController extends AppController
 
     /**
      * Add Wholesale account method
+     * Adding a wholesale user manually through the back end and setting of the verification checks
+     * to 1 to avoid going through email checks
      *
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
     public function addWholesale($id = null)
     {
         $user = $this->Users->newEmptyEntity();
-        //$this->loadModel("WholesaleRequests");
         $wholesaleRequest = $this->fetchTable('WholesaleRequests')->get($id);
         $token = Security::hash(Security::randomBytes(32));
         $user->user_type = $this->Users->UserTypes->get(2);
@@ -192,11 +208,8 @@ class UsersController extends AppController
 
         $this->Users->save($user);
         $userId = $user->id;
-        //$session = $this->request->getSession();
-        //$session->write('User.id', $userId);
-        //debug($status);
 
-        return $this->redirect(['prefix'=>'Admin','controller' => 'WholesaleRequests','action' => 'addUser',$userId]);
+        return $this->redirect(['prefix' => 'Admin', 'controller' => 'WholesaleRequests', 'action' => 'addUser', $userId]);
     }
 
     /**
@@ -296,6 +309,11 @@ class UsersController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+    /**
+     * @param $token
+     * @return \Cake\Http\Response|void|null
+     * Edit password method, is activated once the user clicks on password reset link from the email
+     */
     public function editPassword($token)
     {
         if ($this->request->is('post')) {

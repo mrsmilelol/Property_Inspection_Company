@@ -97,8 +97,12 @@ $this->layout = 'front';
                                         <label for="brand2"><span>AMINI</span></label>
                                     </li>
                                     <li>
-                                        <input type="radio" id="brand3" name="brand" value="CHELSEA_FURNITURE">
-                                        <label for="brand3"><span>CHELSEA_FURNITURE</span></label>
+                                        <input type="radio" id="brand3" name="brand" value="CHELSEA FURNITURE">
+                                        <label for="brand3"><span>CHELSEA FURNITURE</span></label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="brand4" name="brand" value="ARIA">
+                                        <label for="brand4"><span>ARIA</span></label>
                                     </li>
                                 </ul>
                             </div>
@@ -108,8 +112,8 @@ $this->layout = 'front';
                             <div class="widget-info">
                                 <ul>
                                     <li>
-                                        <input type="radio" id="style1" name="style" value="Arch_Salvage">
-                                        <label for="style1"><span>Arch_Salvage</span></label>
+                                        <input type="radio" id="style1" name="style" value="Arch Salvage">
+                                        <label for="style1"><span>Arch Salvage</span></label>
                                     </li>
                                     <li>
                                         <input type="radio" id="style2" name="style" value="Architrave">
@@ -124,28 +128,28 @@ $this->layout = 'front';
                                         <label for="style4"><span>Giovanna</span></label>
                                     </li>
                                     <li>
-                                        <input type="radio" id="style5" name="style" value="Old_world">
-                                        <label for="style5"><span>Old_world</span></label>
+                                        <input type="radio" id="style5" name="style" value="Old world">
+                                        <label for="style5"><span>Old world</span></label>
                                     </li>
                                     <li>
                                         <input type="radio" id="style6" name="style" value="Passage">
                                         <label for="style6"><span>Passage</span></label>
                                     </li>
                                     <li>
-                                        <input type="radio" id="style7" name="style" value="Malibu_Crest">
-                                        <label for="style7"><span>Malibu_Crest</span></label>
+                                        <input type="radio" id="style7" name="style" value="Malibu Crest">
+                                        <label for="style7"><span>Malibu Crest</span></label>
                                     </li>
                                     <li>
-                                        <input type="radio" id="style8" name="style" value="Mia_Bella">
-                                        <label for="style8"><span>Mia_Bella</span></label>
+                                        <input type="radio" id="style8" name="style" value="Mia Bella">
+                                        <label for="style8"><span>Mia Bella</span></label>
                                     </li>
                                     <li>
                                         <input type="radio" id="style10" name="style" value="Bader">
                                         <label for="style10"><span>Bader</span></label>
                                     </li>
                                     <li>
-                                        <input type="radio" id="style11" name="style" value="New_Empaire">
-                                        <label for="style11"><span>New_Empaire</span></label>
+                                        <input type="radio" id="style11" name="style" value="New Empaire">
+                                        <label for="style11"><span>New Empaire</span></label>
                                     </li>
                                     <li>
                                         <input type="radio" id="style12" name="style" value="Pearly">
@@ -160,8 +164,8 @@ $this->layout = 'front';
                                         <label for="style14"><span>Ruby</span></label>
                                     </li>
                                     <li>
-                                        <input type="radio" id="style15" name="style" value="SG_Plush">
-                                        <label for="style15"><span>SG_Plush</span></label>
+                                        <input type="radio" id="style15" name="style" value="SG Plush">
+                                        <label for="style15"><span>SG Plush</span></label>
                                     </li>
                                     <li>
                                         <input type="radio" id="style16" name="style" value="Shayan">
@@ -187,15 +191,12 @@ $this->layout = 'front';
                                         <label for="material1"><span>Wood</span></label>
                                     </li>
                                     <li>
-                                        <input type="radio" id="material2" name="material" value="Metal">
-                                        <label for="material2"><span>Metal</span></label>
+                                        <input type="radio" id="material2" name="material" value="Leather">
+                                        <label for="material2"><span>Leather</span></label>
                                     </li>
                                     <li>
-                                        <input type="radio" id="material3" name="material" value="Gold">
-                                        <label for="material3"><span>Gold</span></label>
-                                    </li>
-                                    <li>
-
+                                        <input type="radio" id="material3" name="material" value="Fabric">
+                                        <label for="material3"><span>Fabric</span></label>
                                     </li>
                                 </ul>
                             </div>

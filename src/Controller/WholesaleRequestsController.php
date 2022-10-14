@@ -21,7 +21,7 @@ class WholesaleRequestsController extends AppController
         parent::beforeFilter($event);
         // for all controllers in our application, make index and view
         // actions public, skipping the authentication check.
-        $this->Authentication->addUnauthenticatedActions(['request','add']);
+        $this->Authentication->addUnauthenticatedActions(['request', 'add']);
     }
 
     public function request()
@@ -74,7 +74,7 @@ class WholesaleRequestsController extends AppController
                         //$this->redirect(['controller'=>'Users','action'=>'addWholesale',$wholesaleRequest->id]);
                         //$this->Flash->success(__('The wholesale request has been saved.'));
 
-                        return $this->redirect(['controller' => 'Pages','action' => 'display','main']);
+                        return $this->redirect(['controller' => 'Pages', 'action' => 'display', 'main']);
                     }
                     $this->Flash->error(__('The wholesale request could not be saved. Please, try again.'));
                 }

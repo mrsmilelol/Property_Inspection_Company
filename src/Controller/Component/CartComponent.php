@@ -117,27 +117,6 @@ class CartComponent extends Component {
         $this->getController()->getRequest()->getSession()->delete('Shop');
     }
 
-    public function addUserAddress($id){
-        $controller = $this->_registry->getController();
-
-        $data = [];
-
-        $userAddress = $controller->UserAddress->get($id, [
-            'contain' => []
-        ]);
-        $data = [
-            'product_id' => $userAddress->id,
-            'user_id' => $userAddress->user_id,
-            'address_line_1' => $userAddress->address_line_1,
-            'address_line_2' => $userAddress->address_line_2,
-            'city' => $userAddress->city,
-            'country' => $userAddress->country,
-            'state' => $userAddress->state,
-            'postcode' => $userAddress->postcode
-        ];
-        $this->getController()->getRequest()->getSession()->write('Shop.UserAddress.' . $id, $data);
-    }
-
     public function updateQty($id,$quantity){
         $controller = $this->_registry->getController();
         $cart = $this->getController()->getRequest()->getSession()->read('Shop');
@@ -240,5 +219,34 @@ class CartComponent extends Component {
             }
         }
 
+    }
+
+    public function addUserAddress($userAddress){
+        $data = [];
+        $states = ['1' => 'VIC','2' => 'NSW','3' => 'SA','4' => 'WA','5' => 'NT','6' => 'QLD','7' => 'TAS'];
+        $id = $userAddress['user_id'];
+        if (is_int(intval($userAddress['state'])) != 0){
+            $data = [
+                'user_id' => intval($userAddress['user_id']),
+                'address_line_1' => $userAddress['address_line_1'],
+                'address_line_2' => $userAddress['address_line_2'],
+                'city' => $userAddress['city'],
+                'country' => $userAddress['country'],
+                'state' => $states[$userAddress['state']],
+                'postcode' => $userAddress['postcode']
+            ];
+        }
+        else{
+            $data = [
+                'user_id' => intval($userAddress['user_id']),
+                'address_line_1' => $userAddress['address_line_1'],
+                'address_line_2' => $userAddress['address_line_2'],
+                'city' => $userAddress['city'],
+                'country' => $userAddress['country'],
+                'state' => $userAddress['state'],
+                'postcode' => $userAddress['postcode']
+            ];
+        }
+        $this->getController()->getRequest()->getSession()->write('Shop.UserAddress.' . $id, $data);
     }
 }

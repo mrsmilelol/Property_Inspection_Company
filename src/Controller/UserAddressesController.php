@@ -14,7 +14,11 @@ namespace App\Controller;
  */
 class UserAddressesController extends AppController
 {
-    public function initialize():void
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    public function initialize(): void
     {
         parent::initialize();
         $this->loadComponent('Cart');
@@ -58,12 +62,13 @@ class UserAddressesController extends AppController
      */
     public function checkout()
     {
+        $check = 0;
         $userID = $this->request->getSession()->read('Auth');
         $user = $this->request->getSession()->read('Auth');
 
         $the_user = $this->request->getSession()->read('Auth.id');
         $addresses = $this->UserAddresses->find()
-            ->where(['UserAddresses.user_id'=>$the_user])
+            ->where(['UserAddresses.user_id' => $the_user])
             ->find('all')->toArray();
 
         if (empty($addresses)) {
@@ -71,20 +76,21 @@ class UserAddressesController extends AppController
             $orderItems = $this->Cart->getcart();
             //$session = $this->request->getSession()->read('pay_session');
             if ($this->request->is('post')) {
-                $userAddress = $this->UserAddresses->patchEntity($userAddress, $this->request->getData());
-                if ($this->UserAddresses->save($userAddress)) {
-                    $this->Flash->success(__('The user address has been saved.'));
-
+                $this->Cart->addUserAddress($this->request->getData());
+//                if ($this->UserAddresses->save($userAddress)) {
+//                    $this->Flash->success(__('The user address has been saved.'));
+//
                     return $this->redirect(['action' => 'success']);
-                }
-                $this->Flash->error(__('The user address could not be saved. Please, try again.'));
-
-                return $this->redirect(['action' => 'cancel']);
+//                }
+//                $this->Flash->error(__('The user address could not be saved. Please, try again.'));
+//
+//                return $this->redirect(['action' => 'cancel']);
             }
             $users = $this->UserAddresses->Users->find('list', ['limit' => 200])->all();
         }
 
         else {
+            $check = 1;
             $address = $addresses[0]['id'];
             $userAddress = $this->UserAddresses->get($address, [
                 'contain' => [],
@@ -92,13 +98,9 @@ class UserAddressesController extends AppController
             $orderItems = $this->Cart->getcart();
             //$session = $this->request->getSession()->read('pay_session');
             if ($this->request->is(['patch', 'post', 'put'])) {
+                $this->Cart->addUserAddress($this->request->getData());
                 $userAddress = $this->UserAddresses->patchEntity($userAddress, $this->request->getData());
                 if ($this->UserAddresses->save($userAddress)) {
-                    $this->Flash->success(__('The user address has been saved.'));
-                    //$this->Html->scriptBlock("Stripe('pk_test_51LkgUlGRmWCorjcXsDFRkKYqWTuPWk8mGeKtr6398t7o55wnltXdYpUjAqaDzSfHb426KyXxxCtfC2wWi6tV7IB700R4ElytR1').redirectToCheckout({sessionId: $session->id;})", ['defer' => true]);
-                    /*$this->Html->scriptStart(['block' => true]);
-                    echo "Stripe('pk_test_51LkgUlGRmWCorjcXsDFRkKYqWTuPWk8mGeKtr6398t7o55wnltXdYpUjAqaDzSfHb426KyXxxCtfC2wWi6tV7IB700R4ElytR1').redirectToCheckout({sessionId: $session->id;});";
-                    $this->Html->scriptEnd();*/
 
                     return $this->redirect(['action' => 'success']);
                 }
@@ -109,7 +111,7 @@ class UserAddressesController extends AppController
             $users = $this->UserAddresses->Users->find('list', ['limit' => 200])->all();
         }
 
-        $this->set(compact('userAddress', 'users','orderItems','userID','user'));
+        $this->set(compact('userAddress', 'users','orderItems','userID','user','check'));
     }
 
     /**
@@ -157,6 +159,9 @@ class UserAddressesController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+    /**
+     * @return void
+     */
     public function success()
     {
         $this->loadModel('Orders');
@@ -165,54 +170,80 @@ class UserAddressesController extends AppController
         $user = $this->request->getSession()->read('Auth');
         $orderItems = $sessionData['Orderitems'];
         $wholesaleOrderItems = $sessionData['WholesaleOrderitems'];
+        $userAddress = $sessionData['UserAddress'];
         $total = 0;
-        if ($user->user_type_id == 2){
-            foreach ($wholesaleOrderItems as $orderItem){
+        if ($user->user_type_id == 2) {
+            foreach ($wholesaleOrderItems as $orderItem) {
                 $total = $total + $orderItem['price'] * $orderItem['quantity'];
             }
             $order = $this->Orders->newEntity([
-                'total'=>intval($total),
-                'status'=>'Order is placed',
-                'user_id'=> $user->id
+                'total' => intval($total),
+                'status' => 'Order is placed',
+                'user_id' => $user->id,
             ]);
-        }
-        else{
-            foreach ($orderItems as $orderItem){
+        } else {
+            foreach ($orderItems as $orderItem) {
                 $total = $total + $orderItem['price'] * $orderItem['quantity'];
             }
             $order = $this->Orders->newEntity([
-                'total'=>intval($total),
-                'status'=>'Order is placed',
-                'user_id'=> $user->id
+                'total' => intval($total),
+                'status' => 'Order is placed',
+                'user_id' => $user->id,
             ]);
         }
-        if ( $total > 0)
-        {$this->Orders->save($order);}
+        if ($total > 0) {
+            $this->Orders->save($order);
+        }
 
-        $orderID = $this->Orders->find()->select(['id'])->where(['user_id'=> $user->id])->order(['id'=>'DESC'])->first();
+        $orderID = $this->Orders->find()->select(['id'])->where(['user_id' => $user->id])->order(['id' => 'DESC'])->first();
         if ($user->user_type_id == 2) {
             foreach ($wholesaleOrderItems as $orderItem) {
                 $orderProduct = $this->OrdersProducts->newEntity([
                     'order_id' => $orderID->id,
                     'product_id' => $orderItem['product_id'],
-                    'quantity' => $orderItem['quantity']
+                    'quantity' => $orderItem['quantity'],
                 ]);
                 $this->OrdersProducts->save($orderProduct);
             }
-        }
-        else{
+        } else {
             foreach ($orderItems as $orderItem) {
                 $orderProduct = $this->OrdersProducts->newEntity([
                     'order_id' => $orderID->id,
                     'product_id' => $orderItem['product_id'],
-                    'quantity' => $orderItem['quantity']
+                    'quantity' => $orderItem['quantity'],
                 ]);
                 $this->OrdersProducts->save($orderProduct);
             }
         }
+        $oldUserAddress = $this->UserAddresses->findByUserId($user->id)->first();
+        if($oldUserAddress == null){
+            $newUserAddress = $this->UserAddresses->newEntity(['user_id' => $userAddress[$user->id]['user_id'],
+                'address_line_1' => $userAddress[$user->id]['address_line_1'],
+                'address_line_2' => $userAddress[$user->id]['address_line_2'],
+                'city' => $userAddress[$user->id]['city'],
+                'country' => $userAddress[$user->id]['country'],
+                'state' => $userAddress[$user->id]['state'],
+                'postcode' => $userAddress[$user->id]['postcode']]);
+            $this->UserAddresses->save($newUserAddress);
+        }
+        else{
+            $oldUserAddress = $this->UserAddresses->patchEntity($oldUserAddress,
+                ['user_id' => $userAddress[$user->id]['user_id'],
+                    'address_line_1' => $userAddress[$user->id]['address_line_1'],
+                    'address_line_2' => $userAddress[$user->id]['address_line_2'],
+                    'city' => $userAddress[$user->id]['city'],
+                    'country' => $userAddress[$user->id]['country'],
+                    'state' => $userAddress[$user->id]['state'],
+                    'postcode' => $userAddress[$user->id]['postcode']]);
+            $this->UserAddresses->save($oldUserAddress);
+        }
         $this->Cart->clear();
     }
 
+    /**
+     * @param $id
+     * @return void
+     */
     public function cancel($id = null)
     {
     }
