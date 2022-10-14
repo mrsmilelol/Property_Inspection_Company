@@ -3,6 +3,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\UserAddress $userAddress
  * @var \Cake\Collection\CollectionInterface|string[] $users
+ * @var array $state
  */
 $formTemplate = [
     'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
@@ -21,15 +22,20 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
             <table class="table table-bordered" id="products" width="100%" cellspacing="0">
                 <?= $this->Form->create($userAddress) ?>
                 <?php
-                echo $this->Form->control('user_id', ['class' => 'category_select_main','id' => 'select_user','options' => $users, 'empty' => true]);
-                echo $this->Form->control('address_line_1', ['label' => 'Address line 1']);
-                echo $this->Form->control('address_line_2', ['label' => 'Address line 2']);
-                echo $this->Form->control('city', ['label' => 'City: Melbourne']);
+                echo $this->Form->control('user_id', ['class' => 'category_select_main','id' => 'select_user','options' => $users, 'empty' => true,
+                    'label'=> ['class'=>'required']]);
+                echo $this->Form->control('address_line_1', ['label' => ['class'=>'required', 'text' => 'Address'], 'placeholder'=>'e.g. 1680 Dandenong Rd']);
+                ?>
+                <br>
+                <?php
+                echo $this->Form->control('address_line_2', ['label' => false, 'placeholder'=>'e.g. Oakleigh East']);
+                echo $this->Form->control('city', ['placeholder' => 'e.g. Melbourne']);
                // $countries = ['1' => 'Australia','2' => 'United States of America','3' => 'New Zealand'];
-                echo $this->Form->control('country', ['value' => 'Australia']);
-                $states = ['1' => 'VIC','2' => 'NSW','3' => 'SA','4' => 'WA','5' => 'NT','6' => 'QLD','7' => 'TAS'];
-                echo $this->Form->control('state', ['options' => $states, 'label' => 'Select your state']);
-                echo $this->Form->control('postcode', ['label' => 'Postcode: 3102']);
+                echo $this->Form->control('country', ['value' => 'Australia', 'type'=>'hidden']);
+                //$states = ['1' => 'VIC','2' => 'NSW','3' => 'SA','4' => 'WA','5' => 'NT','6' => 'QLD','7' => 'TAS'];
+                echo $this->Form->control('state', ['options' => $state, 'label' => ['class' => 'required','text' => 'Select your state']]);
+                echo $this->Form->control('postcode', ['placeholder'=>'e.g. 3166',
+                    'label'=> ['class'=>'required']]);
                 ?>
                 <br>
                 <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>

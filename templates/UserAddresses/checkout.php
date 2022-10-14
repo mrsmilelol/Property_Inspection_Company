@@ -6,6 +6,7 @@
  * @var string[]|\Cake\Collection\CollectionInterface $orderItems
  * @var string[]|\Cake\Collection\CollectionInterface $userID
  * @var string[]|\Cake\Collection\CollectionInterface $user
+ * @var string[]|\Cake\Collection\CollectionInterface $check
  */
 $formTemplate = [
     'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}<span class="help">{{help}}</span></div>',
@@ -55,6 +56,7 @@ if ($orderCheckout != []) {
         'success_url' => $successURL,
         'cancel_url' => $cancelURL,
     ]);
+    $this->request->getSession()->write('pay_session', $session);
 } else {
     $this->Url->build(['controller' => 'Products','action' => 'cart']);
 }
@@ -223,7 +225,17 @@ if ($orderCheckout != []) {
                             <p class="form-row">
                                 <?php
                                 $states = ['1' => 'VIC','2' => 'NSW','3' => 'SA','4' => 'WA','5' => 'NT','6' => 'QLD','7' => 'TAS'];
-                                echo $this->Form->control('state', ['options' => $states, 'label' => 'Select your state']); ?>
+                                if ($check == 1){
+                                    for ($i = 1; $i<sizeof($states)+1; $i++){
+                                        if ($states[$i] == $userAddress->state){
+                                            echo $this->Form->control('state', ['options' => $states, 'label' => 'Select your state','value'=>strval($i)]);
+                                        }
+                                    }
+                                }
+                                else{
+                                    echo $this->Form->control('state', ['options' => $states, 'label' => 'Select your state']);
+                                }
+                                ?>
                             </p>
                         </div>
                         <div class="col-md-6">

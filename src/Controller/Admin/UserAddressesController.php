@@ -26,8 +26,13 @@ class UserAddressesController extends AppController
             'contain' => ['Users'],
         ];
         $userAddresses = $this->paginate($this->UserAddresses);
+        $state = array("VIC", "NSW", "SA","WA","NT","QLD","TAS");
+        foreach ($userAddresses as $userAddress){
+            $state_str = $state[$userAddress->state - 1];
+            $userAddress->state = $state_str;
+        }
 
-        $this->set(compact('userAddresses'));
+        $this->set(compact('userAddresses', 'state'));
     }
 
     /**
@@ -42,8 +47,11 @@ class UserAddressesController extends AppController
         $userAddress = $this->UserAddresses->get($id, [
             'contain' => ['Users'],
         ]);
+        $state = array("VIC", "NSW", "SA","WA","NT","QLD","TAS");
+        $state_str = $state[$userAddress->state - 1];
+        $userAddress->state = $state_str;
 
-        $this->set(compact('userAddress'));
+        $this->set(compact('userAddress','state'));
     }
 
     /**
@@ -54,8 +62,15 @@ class UserAddressesController extends AppController
     public function add()
     {
         $userAddress = $this->UserAddresses->newEmptyEntity();
+
+        $state = array("VIC", "NSW", "SA","WA","NT","QLD","TAS");
+
         if ($this->request->is('post')) {
             $userAddress = $this->UserAddresses->patchEntity($userAddress, $this->request->getData());
+            //convert the index back to string value from the array
+            $state_str = $state[$userAddress->state];
+            $userAddress->state = $state_str;
+
             if ($this->UserAddresses->save($userAddress)) {
                 $this->Flash->success(__('The user address has been saved.'));
 
@@ -64,7 +79,7 @@ class UserAddressesController extends AppController
             $this->Flash->error(__('The user address could not be saved. Please, try again.'));
         }
         $users = $this->UserAddresses->Users->find('list', ['limit' => 200])->all();
-        $this->set(compact('userAddress', 'users'));
+        $this->set(compact('userAddress', 'users','state'));
     }
 
     /**

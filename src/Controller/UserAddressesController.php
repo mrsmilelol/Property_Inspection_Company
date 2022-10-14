@@ -62,6 +62,7 @@ class UserAddressesController extends AppController
      */
     public function checkout()
     {
+        $check = 0;
         $userID = $this->request->getSession()->read('Auth');
         $user = $this->request->getSession()->read('Auth');
 
@@ -73,27 +74,33 @@ class UserAddressesController extends AppController
         if (empty($addresses)) {
             $userAddress = $this->UserAddresses->newEmptyEntity();
             $orderItems = $this->Cart->getcart();
+            //$session = $this->request->getSession()->read('pay_session');
             if ($this->request->is('post')) {
-                $userAddress = $this->UserAddresses->patchEntity($userAddress, $this->request->getData());
-                if ($this->UserAddresses->save($userAddress)) {
-                    $this->Flash->success(__('The user address has been saved.'));
-
+                $this->Cart->addUserAddress($this->request->getData());
+//                if ($this->UserAddresses->save($userAddress)) {
+//                    $this->Flash->success(__('The user address has been saved.'));
+//
                     return $this->redirect(['action' => 'success']);
-                }
-                $this->Flash->error(__('The user address could not be saved. Please, try again.'));
-
-                return $this->redirect(['action' => 'cancel']);
+//                }
+//                $this->Flash->error(__('The user address could not be saved. Please, try again.'));
+//
+//                return $this->redirect(['action' => 'cancel']);
             }
             $users = $this->UserAddresses->Users->find('list', ['limit' => 200])->all();
-        } else {
+        }
+
+        else {
+            $check = 1;
             $address = $addresses[0]['id'];
             $userAddress = $this->UserAddresses->get($address, [
                 'contain' => [],
             ]);
             $orderItems = $this->Cart->getcart();
+            //$session = $this->request->getSession()->read('pay_session');
             if ($this->request->is(['patch', 'post', 'put'])) {
+                $this->Cart->addUserAddress($this->request->getData());
+                $userAddress = $this->UserAddresses->patchEntity($userAddress, $this->request->getData());
                 if ($this->UserAddresses->save($userAddress)) {
-                    $this->Flash->success(__('The user address has been saved.'));
 
                     return $this->redirect(['action' => 'success']);
                 }
@@ -104,7 +111,7 @@ class UserAddressesController extends AppController
             $users = $this->UserAddresses->Users->find('list', ['limit' => 200])->all();
         }
 
-        $this->set(compact('userAddress', 'users', 'orderItems', 'userID', 'user'));
+        $this->set(compact('userAddress', 'users','orderItems','userID','user','check'));
     }
 
     /**
@@ -163,6 +170,7 @@ class UserAddressesController extends AppController
         $user = $this->request->getSession()->read('Auth');
         $orderItems = $sessionData['Orderitems'];
         $wholesaleOrderItems = $sessionData['WholesaleOrderitems'];
+        $userAddress = $sessionData['UserAddress'];
         $total = 0;
         if ($user->user_type_id == 2) {
             foreach ($wholesaleOrderItems as $orderItem) {
@@ -206,6 +214,28 @@ class UserAddressesController extends AppController
                 ]);
                 $this->OrdersProducts->save($orderProduct);
             }
+        }
+        $oldUserAddress = $this->UserAddresses->findByUserId($user->id)->first();
+        if($oldUserAddress == null){
+            $newUserAddress = $this->UserAddresses->newEntity(['user_id' => $userAddress[$user->id]['user_id'],
+                'address_line_1' => $userAddress[$user->id]['address_line_1'],
+                'address_line_2' => $userAddress[$user->id]['address_line_2'],
+                'city' => $userAddress[$user->id]['city'],
+                'country' => $userAddress[$user->id]['country'],
+                'state' => $userAddress[$user->id]['state'],
+                'postcode' => $userAddress[$user->id]['postcode']]);
+            $this->UserAddresses->save($newUserAddress);
+        }
+        else{
+            $oldUserAddress = $this->UserAddresses->patchEntity($oldUserAddress,
+                ['user_id' => $userAddress[$user->id]['user_id'],
+                    'address_line_1' => $userAddress[$user->id]['address_line_1'],
+                    'address_line_2' => $userAddress[$user->id]['address_line_2'],
+                    'city' => $userAddress[$user->id]['city'],
+                    'country' => $userAddress[$user->id]['country'],
+                    'state' => $userAddress[$user->id]['state'],
+                    'postcode' => $userAddress[$user->id]['postcode']]);
+            $this->UserAddresses->save($oldUserAddress);
         }
         $this->Cart->clear();
     }

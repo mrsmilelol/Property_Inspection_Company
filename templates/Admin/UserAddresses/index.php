@@ -18,7 +18,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <thead>
                     <tr>
                         <th data-visible="false"><?= h('id') ?></th>
-                        <th><?= h('User ID') ?></th>
+                        <th><?= h('User') ?></th>
                         <th><?= h('Address line 1') ?></th>
                         <th><?= h('Address line 2') ?></th>
                         <th><?= h('City') ?></th>
