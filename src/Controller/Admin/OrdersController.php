@@ -105,7 +105,7 @@ class OrdersController extends AppController
         $order = $this->Orders->get($id);
         $user = $this->fetchTable('Users')->get($order->user_id);
         $status = $order->status;
-        if(strcmp($status,'Submitted')==0 || strcmp($status,'Order is placed')){
+        if (strcmp($status, 'Submitted') == 0 || strcmp($status, 'Order is placed')) {
             $order->status = 'Order cancelled';
             if ($this->Orders->save($order)) {
                 //send the email to the user eamil address
@@ -134,15 +134,12 @@ class OrdersController extends AppController
             } else {
                 $this->Flash->error(__('The order could not be cancelled. Please, try again.'));
             }
-        }
-        else {
+        } else {
             $this->Flash->error(__('The order has already been processed, please check the order status'));
         }
 
-
         return $this->redirect(['action' => 'index']);
     }
-
 
     /**
      * Delete method

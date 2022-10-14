@@ -14,7 +14,11 @@ namespace App\Controller;
  */
 class UserAddressesController extends AppController
 {
-    public function initialize():void
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    public function initialize(): void
     {
         parent::initialize();
         $this->loadComponent('Cart');
@@ -63,7 +67,7 @@ class UserAddressesController extends AppController
 
         $the_user = $this->request->getSession()->read('Auth.id');
         $addresses = $this->UserAddresses->find()
-            ->where(['UserAddresses.user_id'=>$the_user])
+            ->where(['UserAddresses.user_id' => $the_user])
             ->find('all')->toArray();
 
         if (empty($addresses)) {
@@ -81,9 +85,7 @@ class UserAddressesController extends AppController
                 return $this->redirect(['action' => 'cancel']);
             }
             $users = $this->UserAddresses->Users->find('list', ['limit' => 200])->all();
-        }
-
-        else {
+        } else {
             $address = $addresses[0]['id'];
             $userAddress = $this->UserAddresses->get($address, [
                 'contain' => [],
@@ -102,7 +104,7 @@ class UserAddressesController extends AppController
             $users = $this->UserAddresses->Users->find('list', ['limit' => 200])->all();
         }
 
-        $this->set(compact('userAddress', 'users','orderItems','userID','user'));
+        $this->set(compact('userAddress', 'users', 'orderItems', 'userID', 'user'));
     }
 
     /**
@@ -150,6 +152,9 @@ class UserAddressesController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+    /**
+     * @return void
+     */
     public function success()
     {
         $this->loadModel('Orders');
@@ -159,46 +164,45 @@ class UserAddressesController extends AppController
         $orderItems = $sessionData['Orderitems'];
         $wholesaleOrderItems = $sessionData['WholesaleOrderitems'];
         $total = 0;
-        if ($user->user_type_id == 2){
-            foreach ($wholesaleOrderItems as $orderItem){
+        if ($user->user_type_id == 2) {
+            foreach ($wholesaleOrderItems as $orderItem) {
                 $total = $total + $orderItem['price'] * $orderItem['quantity'];
             }
             $order = $this->Orders->newEntity([
-                'total'=>intval($total),
-                'status'=>'Order is placed',
-                'user_id'=> $user->id
+                'total' => intval($total),
+                'status' => 'Order is placed',
+                'user_id' => $user->id,
             ]);
-        }
-        else{
-            foreach ($orderItems as $orderItem){
+        } else {
+            foreach ($orderItems as $orderItem) {
                 $total = $total + $orderItem['price'] * $orderItem['quantity'];
             }
             $order = $this->Orders->newEntity([
-                'total'=>intval($total),
-                'status'=>'Order is placed',
-                'user_id'=> $user->id
+                'total' => intval($total),
+                'status' => 'Order is placed',
+                'user_id' => $user->id,
             ]);
         }
-        if ( $total > 0)
-        {$this->Orders->save($order);}
+        if ($total > 0) {
+            $this->Orders->save($order);
+        }
 
-        $orderID = $this->Orders->find()->select(['id'])->where(['user_id'=> $user->id])->order(['id'=>'DESC'])->first();
+        $orderID = $this->Orders->find()->select(['id'])->where(['user_id' => $user->id])->order(['id' => 'DESC'])->first();
         if ($user->user_type_id == 2) {
             foreach ($wholesaleOrderItems as $orderItem) {
                 $orderProduct = $this->OrdersProducts->newEntity([
                     'order_id' => $orderID->id,
                     'product_id' => $orderItem['product_id'],
-                    'quantity' => $orderItem['quantity']
+                    'quantity' => $orderItem['quantity'],
                 ]);
                 $this->OrdersProducts->save($orderProduct);
             }
-        }
-        else{
+        } else {
             foreach ($orderItems as $orderItem) {
                 $orderProduct = $this->OrdersProducts->newEntity([
                     'order_id' => $orderID->id,
                     'product_id' => $orderItem['product_id'],
-                    'quantity' => $orderItem['quantity']
+                    'quantity' => $orderItem['quantity'],
                 ]);
                 $this->OrdersProducts->save($orderProduct);
             }
@@ -206,6 +210,10 @@ class UserAddressesController extends AppController
         $this->Cart->clear();
     }
 
+    /**
+     * @param $id
+     * @return void
+     */
     public function cancel($id = null)
     {
     }

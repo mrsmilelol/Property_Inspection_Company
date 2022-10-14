@@ -5,8 +5,9 @@ namespace App\Controller\Customer;
 
 //use App\Controller\Wholesale\AppController;
 use Cake\Event\EventInterface;
-use function __;
 use Cake\Mailer\Mailer;
+use function __;
+
 /**
  * WholesaleRequests Controller
  *
@@ -15,7 +16,10 @@ use Cake\Mailer\Mailer;
  */
 class WholesaleRequestsController extends AppController
 {
-
+    /**
+     * @param EventInterface $event
+     * @return \Cake\Http\Response|void|null
+     */
     public function beforeFilter(EventInterface $event)
     {
         parent::beforeFilter($event);
@@ -24,10 +28,9 @@ class WholesaleRequestsController extends AppController
         $this->Authentication->addUnauthenticatedActions(['request','add']);
     }
 
-
-
-
-
+    /**
+     * @return \Cake\Http\Response|void|null
+     */
     public function request()
     {
         $this->loadModel('WholesaleRequests');
@@ -38,19 +41,17 @@ class WholesaleRequestsController extends AppController
             //updating the status
 
 
-            if($wholesaleRequest->email == null){
+            if ($wholesaleRequest->email == null) {
                 $this->Flash->error('Error, please enter a valid email');
                 //return $this->redirect(['prefix'=>'Customer','controller'=>'WholesaleRequests','action' => 'request']);
             } else {
                 $validate = $this->WholesaleRequests->Users->findByEmail($wholesaleRequest->email)->first();
-                if ($validate != null){
+                if ($validate != null) {
                     $this->Flash->error('Error, the email entered already has an associated account');
                     //return $this->redirect(['prefix'=>'Customer','controller'=>'WholesaleRequests','action' => 'request']);
-                }
-                else {
-                    $wholesaleRequest->status = "Not Approved";
+                } else {
+                    $wholesaleRequest->status = 'Not Approved';
                     if ($this->WholesaleRequests->save($wholesaleRequest)) {
-
                         $mailer = new Mailer('default');
                         $mailer
                             ->setEmailFormat('html')
@@ -68,7 +69,7 @@ class WholesaleRequestsController extends AppController
                             'business_name' => $wholesaleRequest->business_name,
                             'abn' => $wholesaleRequest->abn,
                             'phone' => $wholesaleRequest->phone,
-                            'email'=> $wholesaleRequest->email
+                            'email' => $wholesaleRequest->email,
                         ]);
                         $requestStatus = $mailer->deliver();
                         if ($requestStatus) {
@@ -80,7 +81,7 @@ class WholesaleRequestsController extends AppController
                         //$this->redirect(['controller'=>'Users','action'=>'addWholesale',$wholesaleRequest->id]);
                         //$this->Flash->success(__('The wholesale request has been saved.'));
 
-                        return $this->redirect(['prefix'=>'Customer','controller'=>'Pages','action' => 'display','main']);
+                        return $this->redirect(['prefix' => 'Customer','controller' => 'Pages','action' => 'display','main']);
                     }
                     $this->Flash->error(__('The wholesale request could not be saved. Please, try again.'));
                 }
@@ -124,6 +125,4 @@ class WholesaleRequestsController extends AppController
         }
         $this->set(compact('wholesaleRequest'));
     }
-
-
 }

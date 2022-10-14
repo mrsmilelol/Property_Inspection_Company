@@ -65,9 +65,12 @@ class CancelledOrdersController extends AppController
         $this->set(compact('cancelledOrder', 'orders'));
     }
 
-
-
-    public function approve($id=null){
+    /**
+     * @param $id
+     * @return \Cake\Http\Response|void|null
+     */
+    public function approve($id = null)
+    {
         $cancelledorder = $this->CancelledOrders->get($id, [
             'contain' => [],
         ]);
@@ -79,19 +82,18 @@ class CancelledOrdersController extends AppController
         $user = $this->fetchTable('Users')->get($order->user_id);
 
         $status = $cancelledorder->status;
-        if(strcmp($status,'Rejected')==0){
+        if (strcmp($status, 'Rejected') == 0) {
             $this->Flash->error(__('The cancel request has been rejected'));
-            return $this->redirect(['controller'=>'CancelledOrders','action' => 'index']);
-        }
-        elseif (strcmp($status,'Approved')==0){
+
+            return $this->redirect(['controller' => 'CancelledOrders','action' => 'index']);
+        } elseif (strcmp($status, 'Approved') == 0) {
             $this->Flash->error(__('The cancel request has already been approved.'));
-            return $this->redirect(['controller'=>'CancelledOrders','action' => 'index']);
-        }
-        else {
-            $cancelledorder->status = "Approved";
+
+            return $this->redirect(['controller' => 'CancelledOrders','action' => 'index']);
+        } else {
+            $cancelledorder->status = 'Approved';
             $order->status = 'Order cancelled';
             if ($this->CancelledOrders->save($cancelledorder) && $this->CancelledOrders->Orders->save($order)) {
-
                 //send the email to the user eamil address
                 $mailer = new Mailer('default');
                 $mailer
@@ -120,11 +122,15 @@ class CancelledOrdersController extends AppController
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The cancelled order could not be approved. Please, try again.'));
-
         }
     }
 
-    public function reject($id=null){
+    /**
+     * @param $id
+     * @return \Cake\Http\Response|void|null
+     */
+    public function reject($id = null)
+    {
         $cancelledorder = $this->CancelledOrders->get($id, [
             'contain' => [],
         ]);
@@ -136,19 +142,18 @@ class CancelledOrdersController extends AppController
         $user = $this->fetchTable('Users')->get($order->user_id);
 
         $status = $cancelledorder->status;
-        if(strcmp($status,'Rejected')==0){
+        if (strcmp($status, 'Rejected') == 0) {
             $this->Flash->error(__('The cancel request has been rejected'));
-            return $this->redirect(['controller'=>'CancelledOrders','action' => 'index']);
-        }
-        elseif (strcmp($status,'Approved')==0){
+
+            return $this->redirect(['controller' => 'CancelledOrders','action' => 'index']);
+        } elseif (strcmp($status, 'Approved') == 0) {
             $this->Flash->error(__('The cancel request has already been approved.'));
-            return $this->redirect(['controller'=>'CancelledOrders','action' => 'index']);
-        }
-        else {
-            $cancelledorder->status = "Rejected";
+
+            return $this->redirect(['controller' => 'CancelledOrders','action' => 'index']);
+        } else {
+            $cancelledorder->status = 'Rejected';
             $order->status = 'Cancel request rejected';
             if ($this->CancelledOrders->save($cancelledorder) && $this->CancelledOrders->Orders->save($order)) {
-
                 //send the email to the user eamil address
                 $mailer = new Mailer('default');
                 $mailer
@@ -176,11 +181,8 @@ class CancelledOrdersController extends AppController
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The cancelled order could not be rejected. Please, try again.'));
-
         }
     }
-
-
 
     /**
      * Edit method

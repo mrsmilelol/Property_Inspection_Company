@@ -47,9 +47,15 @@ class AppController extends Controller
         $this->loadComponent('Flash');
         // Add this line to check authentication result and lock your site
         $this->loadComponent('Authentication.Authentication');
-
     }
 
+    /**
+     * @param \Cake\Event\EventInterface $event
+     * @return \Cake\Http\Response|void|null
+     *
+     * Use this method to specify which type of user is allowed to access the Admin prefix
+     * If user type is not 1 (user isn't an Admin) redirect back to the shop page
+     */
     public function beforeFilter(EventInterface $event)
     {
         // Only apply redirect rule when user is actually logged in
@@ -60,11 +66,6 @@ class AppController extends Controller
                 $this->Flash->error('You are a wholesale user');
                 $this->redirect(['prefix' => 'Wholesale', 'controller' => 'Products', 'action' => 'shop']);
             }
-//            if ($loggedin_user->user_type_id != null && $loggedin_user->user_type_id == 3) {
-//                // the user is not an admin
-//                $this->Flash->error('You are a regular customer');
-//                $this->redirect(['prefix' => 'Customer', 'controller' => 'Products', 'action' => 'shop']);
-//            }
         }
     }
 }

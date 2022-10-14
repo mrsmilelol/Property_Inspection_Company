@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Controller\Wholesale\AppController;
-use function PHPUnit\Framework\isNull;
 
 //use function App\Controller\__;
 
@@ -25,7 +24,7 @@ class CategoriesController extends AppController
     {
         $this->paginate = [
             'contain' => ['ParentCategories'],
-            'limit' => 200
+            'limit' => 200,
         ];
         $categories = $this->paginate($this->Categories->find('all')->where(['Categories.parent_id IS' => null]));
         $subcategories = $this->paginate($this->Categories->find('all')->where(['Categories.parent_id IS NOT' => null]));
@@ -156,15 +155,13 @@ class CategoriesController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $category = $this->Categories->get($id);
-        if($category->parent_id == null){
+        if ($category->parent_id == null) {
             $subcategories = $this->Categories->find('all')->where(['Categories.parent_id' => $category->id]);
-            if($this->Categories->delete($category) && $this->Categories->deleteMany($subcategories)) {
+            if ($this->Categories->delete($category) && $this->Categories->deleteMany($subcategories)) {
                 $this->Flash->success(__('The parent category and related sub categories has been deleted.'));
-            }
-            else {
+            } else {
                 $this->Flash->error(__('The category could not be deleted. Please, try again.'));
             }
-
         } else {
             if ($this->Categories->delete($category)) {
                 $this->Flash->success(__('The sub category has been deleted.'));
@@ -176,15 +173,17 @@ class CategoriesController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+    /**
+     * @param $id
+     * @return void
+     */
     public function list($id = null)
     {
-//        $this->loadModel('Categories');
         $category = $this->Categories->get($id, [
             'contain' => ['ParentCategories', 'Products', 'ChildCategories'],
         ]);
         $parentCategories = $this->Categories->find('list');
         $products = $this->Categories->Products->find()
-            //->where(['Categories.parent_id IS'=>null]))
             ->contain(['ProductImages'])
             ->all()->toArray();
         $this->set(compact('category', 'parentCategories', 'products'));

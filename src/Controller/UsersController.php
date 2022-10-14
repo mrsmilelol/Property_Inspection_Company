@@ -18,12 +18,16 @@ use function __;
  */
 class UsersController extends AppController
 {
+    /**
+     * @param \Cake\Event\EventInterface $event
+     * @return \Cake\Http\Response|void|null
+     */
     public function beforeFilter(EventInterface $event)
     {
         parent::beforeFilter($event);
         // for all controllers in our application, make index and view
         // actions public, skipping the authentication check.
-        $this->Authentication->addUnauthenticatedActions(['login','signUp','verification','logout','passwordReset','editPassword']);
+        $this->Authentication->addUnauthenticatedActions(['login', 'signUp', 'verification', 'logout', 'passwordReset', 'editPassword']);
     }
 
     /**
@@ -77,7 +81,6 @@ class UsersController extends AppController
                 ]);
             }
 
-
             return $this->redirect($redirect);
         }
         // display error if user submitted and authentication failed
@@ -98,26 +101,30 @@ class UsersController extends AppController
         if ($result->isValid()) {
             $this->Authentication->logout();
 
-            return $this->redirect(['controller' => 'Users', 'action' => 'login','prefix' => false]);
+            return $this->redirect(['controller' => 'Users', 'action' => 'login', 'prefix' => false]);
         }
-        return $this->redirect(['controller' => 'Users', 'action' => 'login','prefix' => false]);
+
+        return $this->redirect(['controller' => 'Users', 'action' => 'login', 'prefix' => false]);
     }
 
+    /**
+     * @return void
+     */
     public function signUp()
     {
         $user = $this->Users->newEmptyEntity();
 
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
-
+            //get user information
             $userTable = TableRegistry::getTableLocator()->get('Users');
-
+            //populate the variables
             $firstname = $this->request->getData('firstname');
             $lastname = $this->request->getData('lastname');
             $email = $this->request->getData('email');
             $token = Security::hash(Security::randomBytes(32));
             $user = $userTable->newEntity($this->request->getData());
-
+            //create a new user account but set status+verified to 0 until the user goes through verification process
             if ($userTable->save($user)) {
                 $user->user_type = $this->Users->UserTypes->get(3);
                 $user->firstname = $firstname;
@@ -126,8 +133,10 @@ class UsersController extends AppController
                 $user->token = $token;
                 $user->status = '0';
                 $user->verified = '0';
+                //create a new email
                 $emailSignUp = new Mailer('default');
-                //$mailer->setTransport('default'); //your email configuration name
+                //configure the email and set the template to account_verification
+
                 $userTable->save($user);
                 $emailSignUp
                     ->setEmailFormat('html')
@@ -137,14 +146,13 @@ class UsersController extends AppController
                     ->viewBuilder()
                     ->disableAutoLayout()
                     ->setTemplate('account_verification');
-
+                //pass the variables to the template
                 $emailSignUp->setViewVars([
                     'firstname' => $lastname,
                     'lastname' => $firstname,
                     'token' => $token,
                 ]);
-                //$mailStatus = $mailer->deliver();
-                //debug($mailStatus);
+                //send an email
                 $emailStatus = $emailSignUp->deliver();
                 //Error handling
                 if ($emailStatus) {
@@ -152,8 +160,6 @@ class UsersController extends AppController
                 } else {
                     $this->Flash->error('Error, unable to send email.');
                 }
-
-                //return $this->redirect(['prefix' => false,'action' => 'login']);
             } else {
                 $this->Flash->error(__('Registration failed, please try again.'));
             }
@@ -162,10 +168,16 @@ class UsersController extends AppController
         $this->set(compact('user', 'userTypes'));
     }
 
+    /**
+     * @param $token
+     * @return \Cake\Http\Response|null
+     */
     public function verification($token)
     {
+        //get user information
         //$userTable = TableRegistry::getTableLocator()->get('Users');
         $verify = $this->Users->find('all')->where(['token' => $token])->first();
+        //check if the token is matching the db record
         if ($verify) {
             $verify->verified = '1';
             $verify->status = 1;
@@ -174,10 +186,15 @@ class UsersController extends AppController
         } else {
             $this->Flash->error(__('Token does not exist'));
         }
-        return $this->redirect(['controller' => 'Users', 'action' => 'login']);
 
+        return $this->redirect(['controller' => 'Users', 'action' => 'login']);
     }
 
+    /**
+     * @param $token
+     * @return \Cake\Http\Response|void|null
+     * Edit password method, is activated once the user clicks on password reset link from the email
+     */
     public function editPassword($token)
     {
         if ($this->request->is('post')) {

@@ -18,7 +18,11 @@ use const WWW_ROOT;
 class ProductsController extends AppController
 {
 
-    public function initialize():void
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    public function initialize(): void
     {
         parent::initialize();
         $this->loadComponent('Cart');
@@ -52,7 +56,7 @@ class ProductsController extends AppController
             'contain' => ['OrdersProducts', 'ProductImages', 'ProductReviews', 'Orders', 'Categories'],
         ]);
 
-        $this->set(compact('product','productImages'));
+        $this->set(compact('product', 'productImages'));
     }
 
     /**
@@ -66,17 +70,6 @@ class ProductsController extends AppController
         $this->loadModel('ProductImages');
         $product = $this->Products->newEmptyEntity();
         $categories = $this->Products->Categories->find('list', ['limit' => 200])->all();
-        //$categories = $this->Products->Categories->find('list', ['conditions'=>['Categories.parent_id IS' => null],'limit' => 200])->all();
-        //$subcategories = $this->Products->Categories->find('list', ['conditions'=>['Categories.parent_id IS NOT' => null],'limit' => 200])->all();
-        /*$categories = $this->Categories->find('all',['conditions' => ['Categories.parent_id IS' => null]])->toArray();
-        $subcategories = $this->Categories->find('all',['conditions' => ['Categories.parent_id IS NOT' => null]])->toArray();
-        foreach ($categories as $category) :
-            foreach ($subcategories as $subcategory) :
-                if ($category->id == $subcategory->parent_id) :
-                     $displayCategory[]= $category['description'] . ' ' . $subcategory['description'];
-                endif;
-            endforeach;
-        endforeach;*/
         if ($this->request->is('post')) {
             $product = $this->Products->patchEntity($product, $this->request->getData());
             if ($this->Products->save($product)) {
@@ -94,11 +87,10 @@ class ProductsController extends AppController
                     }
                 }
 
-                    return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
         }
-//        $categories = $this->Products->ProductCategories->find('list', ['limit' => 200])->all();
         $this->set(compact('product', 'categories'));
     }
 
@@ -140,17 +132,17 @@ class ProductsController extends AppController
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
         }
         $categories = $this->Products->Categories->find('list', ['limit' => 200])->all();
-        $this->set(compact('product','categories','productImages'));
+        $this->set(compact('product', 'categories', 'productImages'));
     }
 
+    /**
+     * @return void
+     */
     public function shop()
     {
-//        $this->loadModel('ProductImages');
         $products = $this->Products->find()
             ->contain(['ProductImages'])
             ->all()->toArray();
-        //$productImages = $this->ProductImages->find()->select(['product_id','description'])
-//            ->distinct(['product_id'])->toArray();
         $this->set(compact('products'));
     }
 
@@ -172,7 +164,7 @@ class ProductsController extends AppController
 
         $shop = $this->Cart->getcart();
 
-        $this->set(compact('product','productImages','shop'));
+        $this->set(compact('product', 'productImages', 'shop'));
     }
 
     /**
@@ -194,7 +186,11 @@ class ProductsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function addToCart(){
+    /**
+     * @return \Cake\Http\Response|null
+     */
+    public function addToCart()
+    {
         if ($this->request->is('post')) {
 
             $data = $this->request->getData();
@@ -204,7 +200,7 @@ class ProductsController extends AppController
             $product = $this->Products->get($id, [
                 'contain' => []
             ]);
-            if(empty($product)) {
+            if (empty($product)) {
                 $this->Flash->error('Invalid request');
             } else {
                 $this->Cart->add($id, $quantity);
@@ -217,9 +213,14 @@ class ProductsController extends AppController
         }
     }
 
-    public function removeProduct($id = null) {
+    /**
+     * @param $id
+     * @return \Cake\Http\Response|null
+     */
+    public function removeProduct($id = null)
+    {
         $product = $this->Cart->remove($id);
-        if(!empty($product)) {
+        if (!empty($product)) {
             $this->Flash->error($product['name'] . ' was removed from your shopping cart');
         }
         return $this->redirect(['action' => 'cart']);
@@ -227,6 +228,9 @@ class ProductsController extends AppController
 
 ////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * @return void
+     */
     public function cart()
     {
         $orderItems = $this->Cart->getcart();
@@ -235,9 +239,13 @@ class ProductsController extends AppController
 
 ////////////////////////////////////////////////////////////////////////////////
 
-    public function cartupdate() {
+    /**
+     * @return \Cake\Http\Response|null
+     */
+    public function cartupdate()
+    {
         if ($this->request->is('post')) {
-            foreach($this->request->getData() as $key => $value) {
+            foreach ($this->request->getData() as $key => $value) {
                 $a = explode('-', $key);
                 $b = explode('_', $a[1]);
                 $this->Cart->add($b[0], $value, $b[1]);
@@ -249,11 +257,15 @@ class ProductsController extends AppController
 
 ////////////////////////////////////////////////////////////////////////////////
 
-    public function itemupdate() {
+    /**
+     * @return void
+     */
+    public function itemupdate()
+    {
         if ($this->request->is('ajax')) {
             $id = $this->request->data['id'];
             $quantity = isset($this->request->data['quantity']) ? $this->request->data['quantity'] : 1;
-            if(isset($this->request->data['mods']) && ($this->request->data['mods'] > 0)) {
+            if (isset($this->request->data['mods']) && ($this->request->data['mods'] > 0)) {
                 $productmodId = $this->request->data['mods'];
             } else {
                 $productmodId = 0;
@@ -267,6 +279,9 @@ class ProductsController extends AppController
 
 ////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * @return \Cake\Http\Response|null
+     */
     public function clear()
     {
         $this->Cart->clear();

@@ -16,68 +16,78 @@ use Cake\Event\EventInterface;
  */
 class ProductsController extends AppController
 {
+    /**
+     * @param EventInterface $event
+     * @return \Cake\Http\Response|void|null
+     */
     public function beforeFilter(EventInterface $event)
     {
         parent::beforeFilter($event);
         // for all controllers in our application, make index and view
         // actions public, skipping the authentication check.
-        $this->Authentication->addUnauthenticatedActions(['cart','detail', 'shop','addToCart','removeProduct', 'changeQty']);
+        $this->Authentication->addUnauthenticatedActions(['cart', 'detail', 'shop', 'addToCart', 'removeProduct', 'changeQty']);
     }
 
-    public function initialize():void
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    public function initialize(): void
     {
         parent::initialize();
         $this->loadComponent('Cart');
     }
 
+    /**
+     * @param $id
+     * @return void
+     */
     public function shop($id = null)
     {
 
         $param = $_GET;
-        $sel = $param['sel']??'99';
+        $sel = $param['sel'] ?? '99';
 //        $this->loadModel('ProductImages');
         $brandsql = '';
         $stylesql = '';
         $meterialsql = '';
         $colorsql = '';
-        if (isset($param['brand']) and $param['brand']!=''){
-            $brandsql = ' brand="'.$param['brand'].'"';
+        if (isset($param['brand']) and $param['brand'] != '') {
+            $brandsql = ' brand="' . $param['brand'] . '"';
         }
-        if (isset($param['style']) and $param['style']!=''){
-            $stylesql = ' style="'.$param['style'].'"';
+        if (isset($param['style']) and $param['style'] != '') {
+            $stylesql = ' style="' . $param['style'] . '"';
         }
-        if (isset($param['material']) and $param['material']!=''){
-            $meterialsql = ' material="'.$param['material'].'"';
+        if (isset($param['material']) and $param['material'] != '') {
+            $meterialsql = ' material="' . $param['material'] . '"';
         }
-        if (isset($param['colour']) and $param['colour']!=''){
-            $colorsql = ' colour="'.$param['colour'].'"';
+        if (isset($param['colour']) and $param['colour'] != '') {
+            $colorsql = ' colour="' . $param['colour'] . '"';
         }
-         switch ($sel){
-             case 1:
-              $query = $this->Products->find('all')->orderAsc('sale_price');
-                 break;
-              case 2:
-            $query = $this->Products->find('all')->orderDesc('sale_price');
+        switch ($sel) {
+            case 1:
+                $query = $this->Products->find('all')->orderAsc('sale_price');
                 break;
-               case 3:
+            case 2:
+                $query = $this->Products->find('all')->orderDesc('sale_price');
+                break;
+            case 3:
                 $query = $this->Products->find('all')->orderAsc('name');
                 break;
-                case 4:
+            case 4:
                 $query = $this->Products->find('all')->orderDesc('name');
                 break;
-                 default:
-                     $query = $this->Products->find('all')->where($brandsql)->where($stylesql)
-                         ->where($meterialsql)->where($colorsql);
-                }
+            default:
+                $query = $this->Products->find('all')->where($brandsql)->where($stylesql)
+                    ->where($meterialsql)->where($colorsql);
+        }
 
         $products = $query->contain(['ProductImages']);
-        if($id == 1){
+        if ($id == 1) {
             $products = $products->where(['units_in_stock !=' => 0])->toArray();
-        }
-        elseif($id == 2){
+        } elseif ($id == 2) {
             $products = $products->where(['sale_price IS NOT' => null])->toArray();
-        }
-        else {
+        } else {
             $products = $products->toArray();
         }
 
@@ -104,7 +114,7 @@ class ProductsController extends AppController
             'contain' => ['Orders', 'OrdersProducts', 'Categories', 'ProductImages', 'ProductReviews'],
         ]);
 
-        $this->set(compact('product','productImages'));
+        $this->set(compact('product', 'productImages'));
     }
 
     /**
@@ -127,7 +137,11 @@ class ProductsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function addToCart(){
+    /**
+     * @return \Cake\Http\Response|null
+     */
+    public function addToCart()
+    {
         if ($this->request->is('post')) {
 
             $data = $this->request->getData();
@@ -137,7 +151,7 @@ class ProductsController extends AppController
             $product = $this->Products->get($id, [
                 'contain' => []
             ]);
-            if(empty($product)) {
+            if (empty($product)) {
                 $this->Flash->error('Invalid request');
             } else {
                 $this->Cart->add($id, $quantity);
@@ -150,9 +164,14 @@ class ProductsController extends AppController
         }
     }
 
-    public function removeProduct($id = null) {
+    /**
+     * @param $id
+     * @return \Cake\Http\Response|null
+     */
+    public function removeProduct($id = null)
+    {
         $product = $this->Cart->remove($id);
-        if(!empty($product)) {
+        if (!empty($product)) {
             $this->Flash->error($product['name'] . ' was removed from your shopping cart');
         }
         return $this->redirect(['action' => 'cart']);
@@ -160,18 +179,25 @@ class ProductsController extends AppController
 
 ////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * @return void
+     */
     public function cart()
     {
         $orderItems = $this->Cart->getcart();
         $user = $this->request->getSession()->read('Auth');
-        $this->set(compact('orderItems','user'));
+        $this->set(compact('orderItems', 'user'));
     }
 
 ////////////////////////////////////////////////////////////////////////////////
 
-    public function cartupdate() {
+    /**
+     * @return \Cake\Http\Response|null
+     */
+    public function cartupdate()
+    {
         if ($this->request->is('post')) {
-            foreach($this->request->getData() as $key => $value) {
+            foreach ($this->request->getData() as $key => $value) {
                 $a = explode('-', $key);
                 $b = explode('_', $a[1]);
                 $value = intval($value);
@@ -185,11 +211,15 @@ class ProductsController extends AppController
 
 ////////////////////////////////////////////////////////////////////////////////
 
-    public function itemupdate() {
+    /**
+     * @return void
+     */
+    public function itemupdate()
+    {
         if ($this->request->is('ajax')) {
             $id = $this->request->data['id'];
             $quantity = isset($this->request->data['quantity']) ? $this->request->data['quantity'] : 1;
-            if(isset($this->request->data['mods']) && ($this->request->data['mods'] > 0)) {
+            if (isset($this->request->data['mods']) && ($this->request->data['mods'] > 0)) {
                 $productmodId = $this->request->data['mods'];
             } else {
                 $productmodId = 0;
@@ -203,6 +233,9 @@ class ProductsController extends AppController
 
 ////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * @return \Cake\Http\Response|null
+     */
     public function clear()
     {
         $this->Cart->clear();
@@ -210,7 +243,14 @@ class ProductsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function changeQty($change, $id, $qty){
+    /**
+     * @param $change
+     * @param $id
+     * @param $qty
+     * @return \Cake\Http\Response|null
+     */
+    public function changeQty($change, $id, $qty)
+    {
         $value = intval($qty);
         $ID = intval($id);
         $this->Cart->qtyChange($ID, $value, $change);

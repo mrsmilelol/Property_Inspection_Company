@@ -5,8 +5,9 @@ namespace App\Controller\Admin;
 
 //use App\Controller\Wholesale\AppController;
 use Cake\Event\EventInterface;
-use function __;
 use Cake\Mailer\Mailer;
+use function __;
+
 /**
  * WholesaleRequests Controller
  *
@@ -15,7 +16,10 @@ use Cake\Mailer\Mailer;
  */
 class WholesaleRequestsController extends AppController
 {
-
+    /**
+     * @param EventInterface $event
+     * @return \Cake\Http\Response|void|null
+     */
     public function beforeFilter(EventInterface $event)
     {
         parent::beforeFilter($event);
@@ -23,6 +27,7 @@ class WholesaleRequestsController extends AppController
         // actions public, skipping the authentication check.
         $this->Authentication->addUnauthenticatedActions(['request','add']);
     }
+
     /**
      * Index method
      *
@@ -64,9 +69,8 @@ class WholesaleRequestsController extends AppController
         if ($this->request->is('post')) {
             $wholesaleRequest = $this->WholesaleRequests->patchEntity($wholesaleRequest, $this->request->getData());
             //updating the status
-            $wholesaleRequest->status = "Not Approved";
+            $wholesaleRequest->status = 'Not Approved';
             if ($this->WholesaleRequests->save($wholesaleRequest)) {
-
                 $mailer = new Mailer('default');
                 $mailer
                     ->setEmailFormat('html')
@@ -84,83 +88,43 @@ class WholesaleRequestsController extends AppController
                     'business_name' => $wholesaleRequest->business_name,
                     'abn' => $wholesaleRequest->abn,
                     'phone' => $wholesaleRequest->phone,
-                    'email'=> $wholesaleRequest->email
+                    'email' => $wholesaleRequest->email,
                 ]);
                 $mailer->deliver();
 
                 //$this->redirect(['controller'=>'Users','action'=>'addWholesale',$wholesaleRequest->id]);
                 $this->Flash->success(__('The wholesale request has been saved.'));
 
-                return $this->redirect(['controller'=>'WholesaleRequests','action' => 'index','prefix'=>'Admin']);
+                return $this->redirect(['controller' => 'WholesaleRequests','action' => 'index','prefix' => 'Admin']);
             }
             $this->Flash->error(__('The wholesale request could not be saved. Please, try again.'));
         }
         $this->set(compact('wholesaleRequest'));
     }
 
-    /*public function request()
+    /**
+     * @param $id
+     * @return \Cake\Http\Response|void|null
+     */
+    public function approve($id = null)
     {
-        $this->loadModel('WholesaleRequests');
-
-        $wholesaleRequest = $this->WholesaleRequests->newEmptyEntity();
-        if ($this->request->is('post')) {
-            $wholesaleRequest = $this->WholesaleRequests->patchEntity($wholesaleRequest, $this->request->getData());
-            //updating the status
-            $wholesaleRequest->status = "Not Approved";
-            if ($this->WholesaleRequests->save($wholesaleRequest)) {
-
-                $mailerRequest = new Mailer('default');
-                $mailerRequest
-                    ->setEmailFormat('html')
-                    ->setTo($wholesaleRequest->email)
-                    //->setTo('contactreceiver@billgong.monash-ie.me')
-                    ->setFrom('emailtestingfit3178@gmail.com')
-                    ->setSubject('Your wholesale application has been sent for review')
-                    ->viewBuilder()
-                    ->disableAutoLayout()
-                    ->setTemplate('wholesale_request');
-
-                $mailerRequest->setViewVars([
-                    'firstname' => $wholesaleRequest->first_name,
-                    'lastname' => $wholesaleRequest->last_name,
-                    'business_name' => $wholesaleRequest->business_name,
-                    'abn' => $wholesaleRequest->abn,
-                    'phone' => $wholesaleRequest->phone,
-                    'email'=> $wholesaleRequest->email
-                ]);
-                $mailerRequest->deliver();
-
-
-
-                //$this->redirect(['controller'=>'Users','action'=>'addWholesale',$wholesaleRequest->id]);
-                $this->Flash->success(__('The wholesale request has been saved.'));
-
-                return $this->redirect(['prefix'=>'Customer','controller'=>'Pages','action' => 'display','main']);
-            }
-            $this->Flash->error(__('The wholesale request could not be saved. Please, try again.'));
-        }
-        $this->set(compact('wholesaleRequest'));
-    }*/
-
-    public function approve($id=null){
         $wholesaleRequest = $this->WholesaleRequests->get($id, [
             'contain' => [],
         ]);
 
         $status = $wholesaleRequest->status;
-        if (strcmp($status, "Rejected")==0) {
+        if (strcmp($status, 'Rejected') == 0) {
             $this->Flash->error(__('The request has been rejected'));
-            return $this->redirect(['controller'=>'wholesaleRequests','action' => 'index']);
-        }
-        elseif (strcmp($status, "Approved")==0 ){
+
+            return $this->redirect(['controller' => 'wholesaleRequests','action' => 'index']);
+        } elseif (strcmp($status, 'Approved') == 0) {
             $this->Flash->error(__('The quote request has already been approved.'));
-            return $this->redirect(['controller'=>'wholesaleRequests','action' => 'index']);
-        }
-        else {
-            $wholesaleRequest->status = "Approved";
+
+            return $this->redirect(['controller' => 'wholesaleRequests','action' => 'index']);
+        } else {
+            $wholesaleRequest->status = 'Approved';
 
             if ($this->WholesaleRequests->save($wholesaleRequest)) {
-
                 $this->redirect(['controller' => 'Users', 'action' => 'addWholesale', $wholesaleRequest->id]);
                 $mailerApprove = new Mailer('default');
                 $mailerApprove
@@ -179,40 +143,44 @@ class WholesaleRequestsController extends AppController
                     'business_name' => $wholesaleRequest->business_name,
                     'abn' => $wholesaleRequest->abn,
                     'phone' => $wholesaleRequest->phone,
-                    'email'=> $wholesaleRequest->email
+                    'email' => $wholesaleRequest->email,
                 ]);
                 $this->Flash->success(__('The wholesale request has been approved.'));
                 $mailerApprove->deliver();
                 $session = $this->request->getSession();
                 $session->write('Wholesale.id', $id);
+
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The wholesale request could not be saved. Please, try again.'));
 
-            $wholesaleRequest->status = "Not Approved";
+            $wholesaleRequest->status = 'Not Approved';
         }
-
     }
 
-    public function reject($id=null){
+    /**
+     * @param $id
+     * @return \Cake\Http\Response|void|null
+     */
+    public function reject($id = null)
+    {
         $wholesaleRequest = $this->WholesaleRequests->get($id, [
             'contain' => [],
         ]);
         //$this->validate($wholesaleRequest->status);
         $status = $wholesaleRequest->status;
 
-        if (strcmp($status, "Rejected")==0) {
+        if (strcmp($status, 'Rejected') == 0) {
             $this->Flash->error(__('The request has been rejected'));
-            return $this->redirect(['controller'=>'wholesaleRequests','action' => 'index']);
-        }
-        elseif (strcmp($status, "Approved")==0 ){
-            $this->Flash->error(__('The quote request has already been approved.'));
-            return $this->redirect(['controller'=>'wholesaleRequests','action' => 'index']);;
-        }
-        else {
-            $wholesaleRequest->status = "Rejected";
-            if ($this->WholesaleRequests->save($wholesaleRequest)) {
 
+            return $this->redirect(['controller' => 'wholesaleRequests','action' => 'index']);
+        } elseif (strcmp($status, 'Approved') == 0) {
+            $this->Flash->error(__('The quote request has already been approved.'));
+
+            return $this->redirect(['controller' => 'wholesaleRequests','action' => 'index']);
+        } else {
+            $wholesaleRequest->status = 'Rejected';
+            if ($this->WholesaleRequests->save($wholesaleRequest)) {
                 $mailerReject = new Mailer('default');
                 $mailerReject
                     ->setEmailFormat('html')
@@ -236,47 +204,47 @@ class WholesaleRequestsController extends AppController
             }
             $this->Flash->error(__('The wholesale request could not be saved. Please, try again.'));
         }
-
-
-
     }
 
     /**
      * private validate method to validate the status before approve the quote
+     *
      * @param $status
      * @return \Cake\Http\Response|void|null renders view if validate unsuccessful.
      */
-    private function validate($status) {
-        if (strcmp($status, "Rejected")==0) {
+    private function validate($status)
+    {
+        if (strcmp($status, 'Rejected') == 0) {
             $this->Flash->error(__('The request has been rejected'));
-            return $this->redirect(['controller'=>'wholesaleRequests','action' => 'index']);
-        }
-        elseif (strcmp($status, "Approved")==0 ){
+
+            return $this->redirect(['controller' => 'wholesaleRequests','action' => 'index']);
+        } elseif (strcmp($status, 'Approved') == 0) {
             $this->Flash->error(__('The quote request has already been approved.'));
+
             return;
         }
-
     }
 
-    public function addUser($user_id=null){
-        $wholesale_id =$this->request->getSession()->read('Wholesale.id');
+    /**
+     * @param $user_id
+     * @return \Cake\Http\Response|null
+     */
+    public function addUser($user_id = null)
+    {
+        $wholesale_id = $this->request->getSession()->read('Wholesale.id');
         $this->loadModel('WholesaleRequests');
         $wholesaleRequest = $this->WholesaleRequests->get($wholesale_id, [
             'contain' => [],
         ]);
-        if($user_id != null) {
+        if ($user_id != null) {
             $wholesaleRequest->user_id = $user_id;
             $this->WholesaleRequests->save($wholesaleRequest);
-        }
-        else {
+        } else {
             $this->Flash->error(__('The user cannot be added.'));
         }
 
-
-        return $this->redirect(['action'=>'index']);
+        return $this->redirect(['action' => 'index']);
     }
-
-
 
     /**
      * Edit method
