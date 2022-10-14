@@ -126,6 +126,8 @@ class WholesaleRequestsController extends AppController
 
             if ($this->WholesaleRequests->save($wholesaleRequest)) {
                 $this->redirect(['controller' => 'Users', 'action' => 'addWholesale', $wholesaleRequest->id]);
+
+                //send confirmation email if the wholesale account application has been successfully saved
                 $mailerApprove = new Mailer('default');
                 $mailerApprove
                     ->setEmailFormat('html')
@@ -147,6 +149,8 @@ class WholesaleRequestsController extends AppController
                 ]);
                 $this->Flash->success(__('The wholesale request has been approved.'));
                 $mailerApprove->deliver();
+
+                //write the wholesale id into session which will be used later when adding the user_id to the wholesale application
                 $session = $this->request->getSession();
                 $session->write('Wholesale.id', $id);
 
@@ -167,9 +171,9 @@ class WholesaleRequestsController extends AppController
         $wholesaleRequest = $this->WholesaleRequests->get($id, [
             'contain' => [],
         ]);
-        //$this->validate($wholesaleRequest->status);
-        $status = $wholesaleRequest->status;
 
+        //check the status before perform the reject action
+        $status = $wholesaleRequest->status;
         if (strcmp($status, 'Rejected') == 0) {
             $this->Flash->error(__('The request has been rejected'));
 
@@ -206,24 +210,6 @@ class WholesaleRequestsController extends AppController
         }
     }
 
-    /**
-     * private validate method to validate the status before approve the quote
-     *
-     * @param $status
-     * @return \Cake\Http\Response|void|null renders view if validate unsuccessful.
-     */
-    private function validate($status)
-    {
-        if (strcmp($status, 'Rejected') == 0) {
-            $this->Flash->error(__('The request has been rejected'));
-
-            return $this->redirect(['controller' => 'wholesaleRequests','action' => 'index']);
-        } elseif (strcmp($status, 'Approved') == 0) {
-            $this->Flash->error(__('The quote request has already been approved.'));
-
-            return;
-        }
-    }
 
     /**
      * @param $user_id
@@ -231,6 +217,8 @@ class WholesaleRequestsController extends AppController
      */
     public function addUser($user_id = null)
     {
+
+        //read the wholesale id from the session and update the passed user_id
         $wholesale_id = $this->request->getSession()->read('Wholesale.id');
         $this->loadModel('WholesaleRequests');
         $wholesaleRequest = $this->WholesaleRequests->get($wholesale_id, [

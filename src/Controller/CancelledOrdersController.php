@@ -20,9 +20,12 @@ class CancelledOrdersController extends AppController
     public function cancel($id = null)
     {
         $cancelledOrder = $this->CancelledOrders->newEmptyEntity();
+
+        //find the associated order
         $order = $this->CancelledOrders->Orders->get($id, [
             'contain' => [],
         ]);
+        //find te user information
         $user = $this->fetchTable('Users')->get($order->user_id);
         $status = $order->status;
         if (strcmp($status, 'Cancel order requested') == 0) {
@@ -40,6 +43,8 @@ class CancelledOrdersController extends AppController
         } else {
             if ($this->request->is('post')) {
                 $cancelledOrder = $this->CancelledOrders->patchEntity($cancelledOrder, $this->request->getData());
+
+                //update the request status and order status
                 $cancelledOrder->status = 'Cancel order requested';
                 $cancelledOrder->order_id = $order->id;
                 $order->status = $cancelledOrder->status;
@@ -73,10 +78,6 @@ class CancelledOrdersController extends AppController
                 $this->Flash->error(__('The cancelled order could not be saved. Please, try again.'));
             }
         }
-        /*debug($cancelledOrder);
-        exit;*/
-
-        //$orders = $this->CancelledOrders->Orders->find('list', ['limit' => 200])->all();
         $this->set(compact('cancelledOrder', 'order'));
     }
 }

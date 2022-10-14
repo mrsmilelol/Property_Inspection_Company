@@ -66,6 +66,8 @@ class CancelledOrdersController extends AppController
     }
 
     /**
+     * Approve method
+     *
      * @param $id
      * @return \Cake\Http\Response|void|null
      */
@@ -126,6 +128,7 @@ class CancelledOrdersController extends AppController
     }
 
     /**
+     * Reject method
      * @param $id
      * @return \Cake\Http\Response|void|null
      */
@@ -139,8 +142,10 @@ class CancelledOrdersController extends AppController
             'contain' => [],
         ]);
 
+        //find the user by user id
         $user = $this->fetchTable('Users')->get($order->user_id);
 
+        //check the status before perform action
         $status = $cancelledorder->status;
         if (strcmp($status, 'Rejected') == 0) {
             $this->Flash->error(__('The cancel request has been rejected'));
@@ -151,6 +156,8 @@ class CancelledOrdersController extends AppController
 
             return $this->redirect(['controller' => 'CancelledOrders','action' => 'index']);
         } else {
+
+            //update both order and cancel order request status field
             $cancelledorder->status = 'Rejected';
             $order->status = 'Cancel request rejected';
             if ($this->CancelledOrders->save($cancelledorder) && $this->CancelledOrders->Orders->save($order)) {
@@ -159,7 +166,6 @@ class CancelledOrdersController extends AppController
                 $mailer
                     ->setEmailFormat('html')
                     ->setTo($user->email)
-                    //->setTo('contactreceiver@billgong.monash-ie.me')
                     ->setFrom('emailtestingfit3178@gmail.com')
                     ->setSubject('Your order has been cancelled by chelsea furniture')
                     ->viewBuilder()
@@ -170,6 +176,8 @@ class CancelledOrdersController extends AppController
                     'firstname' => $user->firstname,
                     'id' => $order->id,
                 ]);
+
+                //check the mail status and handle error messages
                 $requestStatus = $mailer->deliver();
                 if ($requestStatus) {
                     $this->Flash->success('An email has been sent to the customer regarding the order status');
