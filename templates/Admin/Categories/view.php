@@ -20,10 +20,10 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <th><?= __('Description') ?></th>
                     <td><?= h($category->description) ?></td>
                 </tr>
-                <tr>
-                    <th><?= __('ID') ?></th>
-                    <td><?= $this->Number->format($category->id) ?></td>
-                </tr>
+                <!--<tr>
+                    <th><?/*= __('ID') */?></th>
+                    <td><?/*= $this->Number->format($category->id) */?></td>
+                </tr>-->
                 <tr>
                     <th><?= __('Created at') ?></th>
                     <td><?= h($category->created_at) ?></td>
@@ -34,22 +34,22 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 </tr>
             </table>
             <div class="related">
-                <h4><?= __('Related subcategories') ?></h4>
                 <?php if (!empty($category->child_categories)) : ?>
+                <h4><?= __('Related subcategories') ?></h4>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="categoryTable" width="100%" cellspacing="0">
                     <tr>
-                            <th><?= __('ID') ?></th>
-                            <th><?= __('Parent ID') ?></th>
-                            <th><?= __('Description') ?></th>
+                            <!--<th><?/*= __('ID') */?></th>
+                            <th><?/*= __('Parent ID') */?></th>-->
+                            <th><?= __('Subcategory') ?></th>
                             <th><?= __('Created at') ?></th>
                             <th><?= __('Modified at') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($category->child_categories as $childCategories) : ?>
                         <tr>
-                            <td><?= h($childCategories->id) ?></td>
-                            <td><?= h($childCategories->parent_id) ?></td>
+                            <!--<td><?/*= h($childCategories->id) */?></td>
+                            <td><?/*= h($childCategories->parent_id) */?></td>-->
                             <td><?= h($childCategories->description) ?></td>
                             <td><?= h($childCategories->created_at) ?></td>
                             <td><?= h($childCategories->modified_at) ?></td>
@@ -69,12 +69,12 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             </div>
             <br>
             <div class="related">
-            <h4><?= __('Related products') ?></h4>
             <?php if (!empty($category->products)) : ?>
+                <h4><?= __('Related products') ?></h4>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="categoryTable" width="100%" cellspacing="0">
                         <tr>
-                            <th><?= __('ID') ?></th>
+                            <!--<th><?/*= __('ID') */?></th>-->
                             <th><?= __('Name') ?></th>
                             <th><?= __('Description') ?></th>
                             <th><?= __('Normal price') ?></th>
@@ -95,10 +95,10 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                         </tr>
                         <?php foreach ($category->products as $products) : ?>
                             <tr>
-                                <td><?= h($products->id) ?></td>
+                                <!--<td><?/*= h($products->id) */?></td>-->
                                 <td><?= h($products->name) ?></td>
                                 <td><?= h($products->description) ?></td>
-                                <td><?= h($products->price) ?></td>
+                                <td><?= $this->Number->format(h($products->price)) ?></td>
                                 <td><?= h($products->material) ?></td>
                                 <td><?= h($products->brand) ?></td>
                                 <td><?= h($products->style) ?></td>
@@ -107,8 +107,8 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                                 <td><?= h($products->size) ?></td>
                                 <td><?= h($products->weight) ?></td>
                                 <td><?= h($products->finish) ?></td>
-                                <td><?= h($products->sale_price) ?></td>
-                                <td><?= h($products->wholesale_price) ?></td>
+                                <td><?= $this->Number->format(h($products->sale_price)) ?></td>
+                                <td><?= $this->Number->format(h($products->wholesale_price)) ?></td>
                                 <td><?= h($products->manufacturing) ?></td>
                                 <td><?= h($products->created_at) ?></td>
                                 <td><?= h($products->modified_at) ?></td>

@@ -55,10 +55,15 @@ class UsersController extends AppController
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => ['UserTypes', 'ProductReviews', 'UserAddresses'],
+            'contain' => ['UserTypes', 'UserAddresses', 'Orders'],
         ]);
+        $state = array("VIC", "NSW", "SA","WA","NT","QLD","TAS");
+        foreach ($user->user_addresses as $user_address){
+            $state_str = $state[$user_address->state - 1];
+            $user_address->state = $state_str;
+        }
 
-        $this->set(compact('user'));
+        $this->set(compact('user', 'state'));
     }
 
     /**

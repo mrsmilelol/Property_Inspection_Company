@@ -57,6 +57,8 @@ echo $this->Html->script('//cdn.ckeditor.com/ckeditor5/35.2.0/classic/ckeditor.j
                     //echo $this->Form->control('modified_at');
                     ?>
         </table>
+        <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
+        <?= $this->Form->end() ?>
         <br>
         <br>
         <div class="related">
@@ -155,8 +157,6 @@ echo $this->Html->script('//cdn.ckeditor.com/ckeditor5/35.2.0/classic/ckeditor.j
                 </div>
             <?php endif; ?>
         </div>
-        <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
-        <?= $this->Form->end() ?>
     </div>
 </div>
 
