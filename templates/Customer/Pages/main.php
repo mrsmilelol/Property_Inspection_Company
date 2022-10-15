@@ -23,16 +23,26 @@ $this->layout = 'front';
 <div class="slider-area">
     <div class="bend niceties preview-1">
         <div id="ensign-nivoslider-3" class="slides">
-            <a><?= $this->Html->image('slider/MalibuCrest_BR_PanelBed-1000x700.png'); ?> </a>
-            <a><?= $this->Html->image('slider/MalibuCrest_LR2_UP.png'); ?> </a>
-            <a><?= $this->Html->image('slider/233142-2802_RS1-2.png'); ?> </a>
-            <a><?= $this->Html->image('slider/architrave-trestle-dining-table-2.png'); ?> </a>
-            <a><?= $this->Html->image('slider/4.png'); ?> </a>
-            <a><?= $this->Html->image('slider/passage-end-table-2.png'); ?> </a>
-            <a><?= $this->Html->image('slider/passage-sofa-media-console-table-2.png'); ?> </a>
-            <a><?= $this->Html->image('slider/6-1.png'); ?> </a>
-            <a><?= $this->Html->image('slider/old-world-2-1.png'); ?> </a>
-            <a><?= $this->Html->image('slider/passage-bedside-chest-2.png'); ?> </a>
+            <!--<a><?/*= $this->Html->image('slider/MalibuCrest_BR_PanelBed-1000x700.png'); */?> </a>
+            <a><?/*= $this->Html->image('slider/MalibuCrest_LR2_UP.png'); */?> </a>
+            <a><?/*= $this->Html->image('slider/233142-2802_RS1-2.png'); */?> </a>
+            <a><?/*= $this->Html->image('slider/architrave-trestle-dining-table-2.png'); */?> </a>
+            <a><?/*= $this->Html->image('slider/4.png'); */?> </a>
+            <a><?/*= $this->Html->image('slider/passage-end-table-2.png'); */?> </a>
+            <a><?/*= $this->Html->image('slider/passage-sofa-media-console-table-2.png'); */?> </a>
+            <a><?/*= $this->Html->image('slider/6-1.png'); */?> </a>
+            <a><?/*= $this->Html->image('slider/old-world-2-1.png'); */?> </a>
+            <a><?/*= $this->Html->image('slider/passage-bedside-chest-2.png'); */?> </a>-->
+            <a><?= $this->Html->image('slider/landing/scre1.png'); ?> </a>
+            <a><?= $this->Html->image('slider/landing/scre2.png'); ?> </a>
+            <a><?= $this->Html->image('slider/landing/scre3.png'); ?> </a>
+            <a><?= $this->Html->image('slider/landing/scre4.png'); ?> </a>
+            <a><?= $this->Html->image('slider/landing/scre5.png'); ?> </a>
+            <a><?= $this->Html->image('slider/landing/scre6.png'); ?> </a>
+            <a><?= $this->Html->image('slider/landing/scre7.png'); ?> </a>
+            <a><?= $this->Html->image('slider/landing/scre8.png'); ?> </a>
+            <a><?= $this->Html->image('slider/landing/scre9.png'); ?> </a>
+            <a><?= $this->Html->image('slider/landing/scre10.png'); ?> </a>
         </div>
     </div>
 </div>
