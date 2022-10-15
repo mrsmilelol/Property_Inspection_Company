@@ -32,50 +32,17 @@
                 </tr>
             </table>
             <div class="related">
-                <?php if (!empty($OrderProducts)) : ?>
-                <h4><?= __('Related ordered products') ?></h4>
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
-                            <tr>
-                                <th><?= __('Product ordered') ?></th>
-                                <th><?= __('Quantity') ?></th>
-                                <!--<th class="actions"><?/*= __('Actions') */?></th>-->
-                            </tr>
-                            <?php foreach ($OrderProducts as $OrderProduct) : ?>
-                                <tr>
-                                    <td><?= h($OrderProduct->product_id) ?></td>
-                                    <td><?= $this->Number->format(h($OrderProduct->quantity)) ?></td>
-                                    <!--<td class="actions">
-                                        <?/*= $this->Html->link(__('View'), ['controller' => 'CancelledOrders', 'action' => 'view', $cancelledOrders->id]) */?>
-                                        <?/*= $this->Html->link(__('Edit'), ['controller' => 'CancelledOrders', 'action' => 'edit', $cancelledOrders->id]) */?>
-                                        <?/*= $this->Form->postLink(__('Delete'), ['controller' => 'CancelledOrders', 'action' => 'delete', $cancelledOrders->id], ['confirm' => __('Are you sure you want to delete # {0}?', $cancelledOrders->id)]) */?>
-                                    </td>-->
-                                </tr>
-                            <?php endforeach; ?>
-                        </table>
-                    </div>
-                <?php endif; ?>
-            </div>
-            <div class="related">
                 <?php if (!empty($order->products)) : ?>
                     <h4><?= __('Related products') ?></h4>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                             <tr>
                                 <th><?= __('Name') ?></th>
-                                <th><?= __('Description') ?></th>
+                                <th><?= __('Quantity') ?></th>
                                 <th><?= __('Normal price') ?></th>
-                                <th><?= __('Material') ?></th>
-                                <th><?= __('Brand') ?></th>
-                                <th><?= __('Style') ?></th>
-                                <th><?= __('Colour') ?></th>
                                 <th><?= __('Units in stock') ?></th>
-                                <th><?= __('Size') ?></th>
-                                <th><?= __('Weight') ?></th>
-                                <th><?= __('Finish') ?></th>
-                                <th><?= __('Wholesale price') ?></th>
                                 <th><?= __('Sale price') ?></th>
-                                <th><?= __('Manufacturer') ?></th>
+                                <th><?= __('Wholesale price') ?></th>
                                 <th><?= __('Created at') ?></th>
                                 <th><?= __('Modified at') ?></th>
                                 <th class="actions"><?= __('Actions') ?></th>
@@ -83,19 +50,11 @@
                             <?php foreach ($order->products as $products) : ?>
                                 <tr>
                                     <td><?= h($products->name) ?></td>
-                                    <td><?= h($products->description) ?></td>
+                                    <td><?= h($products->qty) ?></td>
                                     <td><?= $this->Number->format(h($products->price)) ?></td>
-                                    <td><?= h($products->material) ?></td>
-                                    <td><?= h($products->brand) ?></td>
-                                    <td><?= h($products->style) ?></td>
-                                    <td><?= h($products->colour) ?></td>
                                     <td><?= $this->Number->format(h($products->units_in_stock)) ?></td>
-                                    <td><?= h($products->size) ?></td>
-                                    <td><?= h($products->weight) ?></td>
-                                    <td><?= h($products->finish) ?></td>
-                                    <td><?= $this->Number->format(h($products->wholesale_price)) ?></td>
                                     <td><?= $this->Number->format(h($products->sale_price)) ?></td>
-                                    <td><?= h($products->manufacturing) ?></td>
+                                    <td><?= $this->Number->format(h($products->wholesale_price)) ?></td>
                                     <td><?= h($products->created_at) ?></td>
                                     <td><?= h($products->modified_at) ?></td>
                                     <td class="actions">

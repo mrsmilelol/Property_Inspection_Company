@@ -42,10 +42,11 @@ class OrdersController extends AppController
         ]);
 
         $OrderProducts = $this->fetchTable('OrdersProducts')->find('all')->where(['OrdersProducts.order_id' => $order->id])->toArray();
-        foreach ($OrderProducts as $orderProduct){
-            foreach ($order->products as $checkProduct) {
-                if ($checkProduct->id === $orderProduct->product_id) {
-                    $orderProduct->product_id = $checkProduct->name;
+
+        foreach ($order->products as $checkProduct){
+            foreach ($OrderProducts as $orderProduct) {
+                if ($orderProduct->product_id === $checkProduct->id) {
+                    $checkProduct->qty = $orderProduct->quantity;
                 }
             }
         }
@@ -118,7 +119,7 @@ class OrdersController extends AppController
 
         //check the order status before perform action
         $status = $order->status;
-        if (strcmp($status, 'Submitted') == 0 || strcmp($status, 'Order is placed')) {
+        if (strcmp($status, 'Submitted') == 0 || strcmp($status, 'Order is placed') == 0) {
             $order->status = 'Order cancelled';
             if ($this->Orders->save($order)) {
                 //send the email to the user eamil address

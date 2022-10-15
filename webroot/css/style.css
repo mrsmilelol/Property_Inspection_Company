@@ -3955,6 +3955,16 @@ p.alert {
     margin: 0 0 10px;
     font-size: 1.25rem;
 }
+.myaccount-content h4 {
+    border-bottom:1px dashed #eee;
+    padding-bottom:10px;
+    margin-bottom:25px;
+    color: #252525;
+    font-weight: 500;
+    line-height: 1.25;
+    margin: 0 0 10px;
+    font-size: 1rem;
+}
 .myaccount-content .welcome a {
     color:#000;
 }
