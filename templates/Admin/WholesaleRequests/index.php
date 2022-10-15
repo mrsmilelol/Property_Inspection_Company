@@ -17,7 +17,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             <table class="table table-bordered" id="wholesaleRequests" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th data-visible="false"><?= h('ID') ?></th>
+                    <!--<th data-visible="false"><?/*= h('ID') */?></th>-->
                     <th><?= h('Account no.') ?></th>
                     <th><?= h('Business name') ?></th>
                     <th><?= h('Name of contact person') ?></th>
@@ -28,7 +28,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             <tbody>
                 <?php foreach ($wholesaleRequests as $wholesaleRequest): ?>
                 <tr>
-                    <td><?= $this->Number->format($wholesaleRequest->id) ?></td>
+                    <!--<td><?/*= $this->Number->format($wholesaleRequest->id) */?></td>-->
                     <td><?= $wholesaleRequest->user_id ?></td>
                     <td><?= h($wholesaleRequest->business_name) ?></td>
                     <td><?= h($wholesaleRequest->first_name)." ".h($wholesaleRequest->last_name) ?></td>

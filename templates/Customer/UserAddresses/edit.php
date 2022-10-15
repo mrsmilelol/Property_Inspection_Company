@@ -27,17 +27,21 @@ $this->layout = 'front';
                             <?php
                             echo $this->Form->control('user_id', ['type'=>'hidden', 'value'=>$user->id]);
                             echo $this->Form->control('address_line_1',
-                                ['label' => ['class' => 'required', 'text' =>'Address (line 1)'],
+                                ['label' => ['class' => 'required', 'text' =>'Address'],
                                     'id' => 'maxWidth']);
+                            ?>
+                            <br>
+                            <?php
                             echo $this->Form->control('address_line_2',
-                                ['label' => ['text' =>'Address (line 2)'],
-                                    'id' => 'maxWidth']);
+                                ['label' => false, 'id' => 'maxWidth']);
                             echo $this->Form->control('city',
                                 ['label' => ['class' => 'required'], 'id' => 'maxWidth']);
                             echo $this->Form->control('country',
-                                ['label' => ['class' => 'required'], 'id' => 'maxWidth']);
+                                ['label' => ['class' => 'required'], 'id' => 'maxWidth', 'type' => 'hidden']);
+                            $states = ['1' => 'VIC','2' => 'NSW','3' => 'SA','4' => 'WA','5' => 'NT','6' => 'QLD','7' => 'TAS'];
                             echo $this->Form->control('state',
-                                ['label' => ['class' => 'required'], 'id' => 'maxWidth']);
+                                ['options' => $states, 'label' => ['class' => 'required', 'text' => 'Select your state'],
+                                'id' => 'maxWidth']);
                             echo $this->Form->control('postcode',
                                 ['label' => ['class' => 'required'], 'id' => 'maxWidth']);
                             //echo $this->Form->control('created_at');

@@ -11,7 +11,7 @@
     <div class="card-body">
         <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
             <tr>
-                <th><?= __('Order') ?></th>
+                <th><?= __('Order no.') ?></th>
                 <td><?= $cancelledOrder->has('order') ? $this->Html->link($cancelledOrder->order->id, ['controller' => 'Orders', 'action' => 'view', $cancelledOrder->order->id]) : '' ?></td>
             </tr>
             <tr>
@@ -24,6 +24,7 @@
             </tr>
         </table>
 
+        <?php if (strcmp($cancelledOrder->status, 'Cancel order requested') == 0) : ?>
         <?= $this->Html->link(
             'Approve',
             ['controller' => 'CancelledOrders', 'action' => 'approve',$cancelledOrder->id],
@@ -36,5 +37,6 @@
             ['class' => 'btn btn-primary'],
         );
         ?>
+        <?php endif; ?>
     </div>
 </div>

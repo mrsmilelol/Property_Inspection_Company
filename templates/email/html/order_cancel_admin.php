@@ -373,7 +373,7 @@ endforeach;
                                 <tr>
                                     <td>
                                         <p>Hi <?= h($firstname.",") ?></p>
-                                        <p>I am sorry to inform that your order: <?= h($id)?> has been cancelled due to products availability </p>
+                                        <p>I am sorry to inform that your order: <?= h($id)?> has been cancelled due to products' unavailability. </p>
 
                                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                                             <tbody>

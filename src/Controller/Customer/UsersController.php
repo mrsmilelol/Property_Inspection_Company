@@ -65,13 +65,13 @@ class UsersController extends AppController
 
         $state = array("VIC", "NSW", "SA","WA","NT","QLD","TAS");
         foreach ($addresses as $address){
-            $state_str = $state[$address->state -1];
+            $state_str = $state[$address->state - 1];
             $address->state = $state_str;
         }
 
         $orders = $this->fetchTable('Orders')->find('all')->where(['Orders.user_id' => $the_user])->toArray();
 
-        $this->set(compact('addresses','orders','state'));
+        $this->set(compact('addresses','orders', 'state'));
     }
 
     /**

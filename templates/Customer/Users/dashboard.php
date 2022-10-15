@@ -59,7 +59,7 @@ $the_user = $this->request->getSession()->read('Auth');
                                 <table class="table-myaccount table-bordered">
                                     <thead>
                                     <tr>
-                                        <th><?= __('ID') ?></th>
+                                        <th><?= __('Order no.') ?></th>
                                         <th><?= __('Total') ?></th>
                                         <th><?= __('Status') ?></th>
                                         <th><?= __('Order date') ?></th>
@@ -74,15 +74,15 @@ $the_user = $this->request->getSession()->read('Auth');
                                                 <td><?= h($order->status) ?></td>
                                                 <td><?= h($order->created_at) ?></td>
                                                 <td>
-                                                    <!--<a href="<?= $this->Url->build(['controller' => 'Orders', 'action' => 'view', $order->id]) ?>" class="btn btn-round orders-btn-view">View</a>-->
+                                                    <a href="<?= $this->Url->build(['controller' => 'Orders', 'action' => 'view', $order->id]) ?>" class="btn btn-round orders-btn-view">View</a>
+                                                    <?php if (strcmp($order->status, 'Order is placed') == 0) : ?>
                                                     <a href="<?= $this->Url->build(['controller' => 'CancelledOrders', 'action' => 'cancel', $order->id]) ?>" class="btn btn-round orders-btn-view">Cancel</a>
+                                                    <?php endif; ?>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
                                     <?php else : ?>
                                     <p class="lhbigger">You currently have no orders. </p>
-                                    <a href="<?= $this->Url->build(['controller' => 'UserAddresses', 'action' => 'add', $the_user->id]) ?>" class="btn btn-round d-inline-block address-btn-edit">
-                                        <i class="fa fa-edit"></i> Add address </a>
                                 <?php endif; ?>
                                     </tbody>
                                 </table>

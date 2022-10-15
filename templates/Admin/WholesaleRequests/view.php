@@ -31,11 +31,11 @@
                     <td><?= h($wholesaleRequest->business_phone) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Address line 1') ?></th>
+                    <th><?= __('Address') ?></th>
                     <td><?= h($wholesaleRequest->address_line_1) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Address line 2') ?></th>
+                    <th><?= __('') ?></th>
                     <td><?= h($wholesaleRequest->address_line_2) ?></td>
                 </tr>
                 <tr>
@@ -66,10 +66,10 @@
                     <th><?= __('Status') ?></th>
                     <td><?= h($wholesaleRequest->status) ?></td>
                 </tr>
-                <tr>
-                    <th><?= __('ID') ?></th>
-                    <td><?= $this->Number->format($wholesaleRequest->id) ?></td>
-                </tr>
+                <!--<tr>
+                    <th><?/*= __('ID') */?></th>
+                    <td><?/*= $this->Number->format($wholesaleRequest->id) */?></td>
+                </tr>-->
                 <tr>
                     <th><?= __('Created at') ?></th>
                     <td><?= h($wholesaleRequest->created_at) ?></td>
@@ -79,6 +79,7 @@
                     <td><?= h($wholesaleRequest->modified_at) ?></td>
                 </tr>
             </table>
+        <?php if (strcmp($wholesaleRequest->status, 'Not approved') == 0) : ?>
         <?= $this->Html->link(
             'Approve',
             ['controller' => 'WholesaleRequests', 'action' => 'approve',$wholesaleRequest->id],
@@ -91,5 +92,6 @@
             ['class' => 'btn btn-primary'],
         );
         ?>
+        <?php endif; ?>
     </div>
 </div>
