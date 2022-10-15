@@ -3,6 +3,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\UserAddress $userAddress
  * @var \Cake\Collection\CollectionInterface|string[] $users
+ * @var array $state
  */
 $formTemplate = [
     'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
@@ -30,19 +31,22 @@ $this->layout = 'front';
                             <?php
                             echo $this->Form->control('user_id', ['type'=>'hidden', 'value'=>$user->id]);
                             echo $this->Form->control('address_line_1',
-                                ['label' => ['class' => 'required', 'text' =>'Address (line 1)'],
-                                    'id' => 'maxWidth']);
+                                ['label' => ['class' => 'required', 'text' =>'Address'],
+                                    'id' => 'maxWidth', 'placeholder'=>'e.g. 1680 Dandenong Rd']);
+                            ?>
+                            <br>
+                            <?php
                             echo $this->Form->control('address_line_2',
-                                ['label' => ['text' =>'Address (line 2)'],
-                                    'id' => 'maxWidth']);
+                                ['label' => false, 'placeholder'=>'e.g. Oakleigh East', 'id' => 'maxWidth']);
                             echo $this->Form->control('city',
-                                ['label' => ['class' => 'required'], 'id' => 'maxWidth']);
+                                ['label' => ['class' => 'required'], 'id' => 'maxWidth', 'placeholder' => 'e.g. Melbourne']);
                             echo $this->Form->control('country',
-                                ['label' => ['class' => 'required'], 'id' => 'maxWidth']);
+                                ['label' => ['class' => 'required'], 'id' => 'maxWidth', 'value' => 'Australia', 'type'=>'hidden']);
                             echo $this->Form->control('state',
-                                ['label' => ['class' => 'required'], 'id' => 'maxWidth']);
+                                ['options' => $state, 'label' => ['class' => 'required','text' => 'Select your state'],
+                                    'id' => 'maxWidth']);
                             echo $this->Form->control('postcode',
-                                ['label' => ['class' => 'required'], 'id' => 'maxWidth']);
+                                ['label' => ['class' => 'required'], 'id' => 'maxWidth', 'placeholder'=>'e.g. 3166']);
                             //echo $this->Form->control('created_at');
                             //echo $this->Form->control('modified_at');
                             ?>

@@ -53,17 +53,19 @@ class UserAddressesController extends AppController
     public function add()
     {
         $userAddress = $this->UserAddresses->newEmptyEntity();
+        $state = array("VIC", "NSW", "SA","WA","NT","QLD","TAS");
         if ($this->request->is('post')) {
             $userAddress = $this->UserAddresses->patchEntity($userAddress, $this->request->getData());
+            $userAddress->state = $userAddress->state + 1;
             if ($this->UserAddresses->save($userAddress)) {
-                $this->Flash->success(__('Your address has been saved. Please log out and login again to see your added address.'));
+                $this->Flash->success(__('Your address has been saved.'));
 
                 return $this->redirect(['controller' => 'Users', 'action' => 'dashboard']);
             }
             $this->Flash->error(__('Your address could not be saved. Please, try again.'));
         }
         $users = $this->UserAddresses->Users->find('list', ['limit' => 200])->all();
-        $this->set(compact('userAddress', 'users'));
+        $this->set(compact('userAddress', 'users', 'state'));
     }
 
     /**
@@ -81,7 +83,7 @@ class UserAddressesController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $userAddress = $this->UserAddresses->patchEntity($userAddress, $this->request->getData());
             if ($this->UserAddresses->save($userAddress)) {
-                $this->Flash->success(__('Your address has been saved. Please log out and login again to see your changes.'));
+                $this->Flash->success(__('Your address has been saved.'));
 
                 return $this->redirect(['controller' => 'Users', 'action' => 'dashboard']);
             }
