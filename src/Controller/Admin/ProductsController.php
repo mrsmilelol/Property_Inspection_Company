@@ -53,8 +53,17 @@ class ProductsController extends AppController
         $productImages = $this->ProductImages->findByProductId($id)->all()->toArray();
 
         $product = $this->Products->get($id, [
-            'contain' => ['OrdersProducts', 'ProductImages', 'ProductReviews', 'Orders', 'Categories'],
+            'contain' => ['OrdersProducts', 'ProductImages', 'Orders', 'Categories'],
         ]);
+
+        foreach ($product->orders as $order) {
+            $users = $this->fetchTable('Users')->find('all')->where(['Users.id' => $order->user_id])->toArray();
+            foreach ($users as $user) {
+                if ($user->id === $order->user_id) {
+                    $order->user_id = $user->username;
+                }
+            }
+        }
 
         $this->set(compact('product', 'productImages'));
     }
@@ -106,7 +115,7 @@ class ProductsController extends AppController
         $this->loadModel('ProductImages');
         $product = $this->Products->get($id, [
             'contain' => ['Orders', 'Categories', 'OrdersProducts',
-                'ProductImages', 'ProductReviews'],
+                'ProductImages'],
         ]);
         $productImages = $this->Products->get($id, [
             'contain' => ['ProductImages']])->toArray();
@@ -159,7 +168,7 @@ class ProductsController extends AppController
         $productImages = $this->ProductImages->findByProductId($id)->all()->toArray();
 
         $product = $this->Products->get($id, [
-            'contain' => ['Orders', 'OrdersProducts', 'Categories', 'ProductImages', 'ProductReviews'],
+            'contain' => ['Orders', 'OrdersProducts', 'Categories', 'ProductImages'],
         ]);
 
         $shop = $this->Cart->getcart();

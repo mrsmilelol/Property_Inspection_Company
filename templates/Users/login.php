@@ -35,8 +35,8 @@ $this->layout = 'front';
                             <?= $this->Form->control('password', ['id' => 'maxWidth']) ?>
                         </fieldset>
 
-                        <p class="lost-password form-group" >Dont have an account?
-                            <?= $this->Html->link('Sign Up', ['action' => 'sign_up'], ['class' => 'button float-right']) ?>
+                        <p class="lost-password form-group" >Don't have an account?
+                            <?= $this->Html->link('Sign up', ['action' => 'sign_up'], ['class' => 'button float-right']) ?>
                         </p>
                         <div class="form-row">
                             <div class="col-md-3 mb-3" style="padding-left: 0">

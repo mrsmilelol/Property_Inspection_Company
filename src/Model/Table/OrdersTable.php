@@ -54,6 +54,9 @@ class OrdersTable extends Table
         $this->hasMany('Payments', [
             'foreignKey' => 'order_id',
         ]);
+        $this->hasMany('OrdersProducts', [
+            'foreignKey' => 'order_id',
+        ]);
         $this->belongsToMany('Products', [
             'foreignKey' => 'order_id',
             'targetForeignKey' => 'product_id',

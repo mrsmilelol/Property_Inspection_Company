@@ -47,6 +47,9 @@ class UsersTable extends Table
         $this->belongsTo('UserTypes', [
             'foreignKey' => 'user_type_id',
         ]);
+        $this->hasMany('Orders', [
+            'foreignKey' => 'user_id',
+        ]);
         $this->hasMany('ProductReviews', [
             'foreignKey' => 'user_id',
         ]);

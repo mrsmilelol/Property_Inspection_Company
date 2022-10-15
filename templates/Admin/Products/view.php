@@ -50,10 +50,10 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <th><?= __('Manufacturer') ?></th>
                 <td><?= h($product->manufacturing) ?></td>
             </tr>
-            <tr>
-                <th><?= __('ID') ?></th>
-                <td><?= $this->Number->format($product->id) ?></td>
-            </tr>
+            <!--<tr>
+                <th><?/*= __('ID') */?></th>
+                <td><?/*= $this->Number->format($product->id) */?></td>
+            </tr>-->
             <tr>
                 <th><?= __('Normal price') ?></th>
                 <td><?= $this->Number->format($product->price) ?></td>
@@ -84,8 +84,40 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
         </table>
         <br>
         <div class="related">
-            <h4><?= __('Related order items') ?></h4>
+            <?php if (!empty($product->orders)) : ?>
+            <h4><?= __('Related orders') ?></h4>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
+                        <tr>
+                            <!--<th><?/*= __('ID') */?></th>-->
+                            <th><?= __('User') ?></th>
+                            <th><?= __('Total') ?></th>
+                            <th><?= __('Created at') ?></th>
+                            <th><?= __('Modified at') ?></th>
+                            <th class="actions"><?= __('Actions') ?></th>
+                        </tr>
+                        <?php foreach ($product->orders as $orders) : ?>
+                            <tr>
+                                <!--<td><?/*= h($orders->id) */?></td>-->
+                                <td><?= h($orders->user_id) ?></td>
+                                <td><?= $this->Number->format(h($orders->total)) ?></td>
+                                <td><?= h($orders->created_at) ?></td>
+                                <td><?= h($orders->modified_at) ?></td>
+                                <td class="actions">
+                                    <?= $this->Html->link(__('View'), ['controller' => 'Orders', 'action' => 'view', $orders->id]) ?>
+                                    <!--<?/*= $this->Html->link(__('Edit'), ['controller' => 'Orders', 'action' => 'edit', $orders->id]) */?>-->
+                                    <!--<?/*= $this->Form->postLink(__('Delete'), ['controller' => 'Orders', 'action' => 'delete', $orders->id], ['confirm' => __('Are you sure you want to delete # {0}?', $orders->id)]) */?>-->
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+            <?php endif; ?>
+        </div>
+        <br>
+        <div class="related">
             <?php if (!empty($product->order_items)) : ?>
+            <h4><?= __('Related order items') ?></h4>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <tr>
@@ -116,20 +148,20 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             <?php endif; ?>
         </div>
         <div class="related">
-            <h4><?= __('Related categories') ?></h4>
             <?php if (!empty($product->categories)) : ?>
+            <h4><?= __('Related categories') ?></h4>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <tr>
-                            <th data-visible="false"><?= __('ID') ?></th>
-                            <th><?= __('Parent ID') ?></th>
-                            <th><?= __('Description') ?></th>
+                            <!--<th data-visible="false"><?/*= __('ID') */?></th>
+                            <th><?/*= __('Parent ID') */?></th>-->
+                            <th><?= __('Category') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($product->categories as $categories) : ?>
                             <tr>
-                                <td><?= h($categories->id) ?></td>
-                                <td><?= h($categories->parent_id) ?></td>
+                                <!--<td><?/*= h($categories->id) */?></td>
+                                <td><?/*= h($categories->parent_id) */?></td>-->
                                 <td><?= h($categories->description) ?></td>
                                 <td class="actions">
                                     <?= $this->Html->link(__('View'), ['controller' => 'Categories', 'action' => 'view', $categories->id]) ?>

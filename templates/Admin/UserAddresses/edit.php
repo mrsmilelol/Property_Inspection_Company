@@ -31,7 +31,7 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
                 echo $this->Form->control('city', ['label' => ['class' => 'required']]);
                 echo $this->Form->control('country', ['label' => ['class' => 'required'], 'type' => 'hidden']);
                 $states = ['1' => 'VIC','2' => 'NSW','3' => 'SA','4' => 'WA','5' => 'NT','6' => 'QLD','7' => 'TAS'];
-                echo $this->Form->control('state', ['options' => $states, 'label' => 'Select your state']);
+                echo $this->Form->control('state', ['options' => $states, 'label' => ['class' => 'required', 'text' => 'Select your state']]);
                 echo $this->Form->control('postcode', ['label' => ['class' => 'required']]);
 
                 ?>

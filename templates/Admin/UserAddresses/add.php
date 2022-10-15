@@ -29,7 +29,7 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
                 <br>
                 <?php
                 echo $this->Form->control('address_line_2', ['label' => false, 'placeholder'=>'e.g. Oakleigh East']);
-                echo $this->Form->control('city', ['placeholder' => 'e.g. Melbourne']);
+                echo $this->Form->control('city', ['placeholder' => 'e.g. Melbourne', 'label'=> ['class' => 'required']]);
                // $countries = ['1' => 'Australia','2' => 'United States of America','3' => 'New Zealand'];
                 echo $this->Form->control('country', ['value' => 'Australia', 'type'=>'hidden']);
                 //$states = ['1' => 'VIC','2' => 'NSW','3' => 'SA','4' => 'WA','5' => 'NT','6' => 'QLD','7' => 'TAS'];

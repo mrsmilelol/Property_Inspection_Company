@@ -10,6 +10,8 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
 <div class="card shadow mb-4">
     <div class="d-sm-flex align-items-center justify-content-between card-header">
         <h1 class="h3 mb-0 text-gray-800"><?= h($userType->name) ?></h1>
+        <?php $userMaster = $this->request->getSession()->read('Auth.master') ?>
+        <?php $userID = $this->request->getSession()->read('Auth.id') ?>
     </div>
     <div class="card-body">
         <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
@@ -39,7 +41,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <tr>
                             <!--<th><?/*= __('ID') */?></th>-->
                             <th><?= __('Username') ?></th>
-                            <th><?= __('Password') ?></th>
                             <th><?= __('First name') ?></th>
                             <th><?= __('Last name') ?></th>
                             <th><?= __('Phone') ?></th>
@@ -53,7 +54,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                         <tr>
                             <!--<td><?/*= h($users->id) */?></td>-->
                             <td><?= h($users->username) ?></td>
-                            <td><?= h($users->password) ?></td>
                             <td><?= h($users->firstname) ?></td>
                             <td><?= h($users->lastname) ?></td>
                             <td><?= h($users->phone) ?></td>
@@ -63,7 +63,9 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                             <td><?= h($users->modified_at) ?></td>
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['controller' => 'Users', 'action' => 'view', $users->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'Users', 'action' => 'edit', $users->id]) ?>
+                                <?php if ($userMaster == 1 or $users->user_type_id != 1 or $users->id == $userID) : ?>
+                                    <?= $this->Html->link(__('Edit'), ['controller' => 'Users', 'action' => 'edit', $users->id]) ?>
+                                <?php endif; ?>
                                 <!--<?/*= $this->Form->postLink(__('Delete'), [
                                     'controller' => 'Users',
                                     'action' => 'delete', $users->id

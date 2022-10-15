@@ -14,7 +14,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
         <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
             <tr>
                     <th><?= __('User') ?></th>
-                    <td><?= $userAddress->has('user') ? $this->Html->link($userAddress->user->id, ['controller' => 'Users', 'action' => 'view', $userAddress->user->id]) : '' ?></td>
+                    <td><?= $userAddress->has('user') ? $this->Html->link($userAddress->user->username, ['controller' => 'Users', 'action' => 'view', $userAddress->user->id]) : '' ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Address') ?></th>

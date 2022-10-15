@@ -53,18 +53,18 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             <table class="table table-bordered" id="products2" width="100%" cellspacing="0">
                 <thead>
                 <tr>
-                    <th><?= h('ID') ?></th>
-                    <th><?= h('Parent category') ?></th>
+                    <!--<th><?/*= h('ID') */?></th>-->
                     <th><?= h('Subcategory') ?></th>
+                    <th><?= h('Parent category') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php foreach ($subcategories as $subcategory) : ?>
                     <tr>
-                        <td><?= $this->Number->format($subcategory->id) ?></td>
-                        <td><?= $subcategory->has('parent_category') ? $this->Html->link($subcategory->parent_category->description, ['controller' => 'Categories', 'action' => 'view', $subcategory->parent_category->id]) : '' ?></td>
+                        <!--<td><?/*= $this->Number->format($subcategory->id) */?></td>-->
                         <td><?= h($subcategory->description) ?></td>
+                        <td><?= $subcategory->has('parent_category') ? $this->Html->link($subcategory->parent_category->description, ['controller' => 'Categories', 'action' => 'view', $subcategory->parent_category->id]) : '' ?></td>
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $subcategory->id]) ?>
                             <?= $this->Html->link(__('Edit'), ['action' => 'editsub', $subcategory->id]) ?>

@@ -41,7 +41,16 @@ class OrdersController extends AppController
             'contain' => ['Users', 'Products', 'CancelledOrders', 'Payments'],
         ]);
 
-        $this->set(compact('order'));
+        $OrderProducts = $this->fetchTable('OrdersProducts')->find('all')->where(['OrdersProducts.order_id' => $order->id])->toArray();
+        foreach ($OrderProducts as $orderProduct){
+            foreach ($order->products as $checkProduct) {
+                if ($checkProduct->id === $orderProduct->product_id) {
+                    $orderProduct->product_id = $checkProduct->name;
+                }
+            }
+        }
+
+        $this->set(compact('order', 'OrderProducts'));
     }
 
     /**
