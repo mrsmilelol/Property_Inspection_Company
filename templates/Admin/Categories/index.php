@@ -53,7 +53,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             <table class="table table-bordered" id="products2" width="100%" cellspacing="0">
                 <thead>
                 <tr>
-                    <!--<th><?/*= h('ID') */?></th>-->
                     <th><?= h('Subcategory') ?></th>
                     <th><?= h('Parent category') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
@@ -62,7 +61,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <tbody>
                 <?php foreach ($subcategories as $subcategory) : ?>
                     <tr>
-                        <!--<td><?/*= $this->Number->format($subcategory->id) */?></td>-->
                         <td><?= h($subcategory->description) ?></td>
                         <td><?= $subcategory->has('parent_category') ? $this->Html->link($subcategory->parent_category->description, ['controller' => 'Categories', 'action' => 'view', $subcategory->parent_category->id]) : '' ?></td>
                         <td class="actions">
@@ -77,7 +75,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
         </div>
     </div>
 </div>
-    <!-- /.container-fluid -->
     <script>
         $(document).ready( function () {
             $('#products').DataTable();

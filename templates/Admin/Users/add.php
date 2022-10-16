@@ -18,20 +18,18 @@ $this->Form->setTemplates($formTemplate);
     <div class="card-body">
         <table class="table table-bordered" id="products" width="100%" cellspacing="0">
             <?= $this->Form->create($user) ?>
-                <?php
-                    echo $this->Form->control('user_type_id', [
-                        'label' => ['class' => 'required', 'text' => 'User type'],
-                        'options' => $userTypes,
-                        'empty' => true]);
-                    echo $this->Form->control('username', ['label' => ['class' => 'required']]);
-                    echo $this->Form->control('password', ['label' => ['class' => 'required']]);
-                    echo $this->Form->control('firstname', ['label' => ['class' => 'required', 'text' => 'First name']]);
-                    echo $this->Form->control('lastname', ['label' => ['class' => 'required', 'text' => 'Last name']]);
-                    echo $this->Form->control('phone', ['label' => ['class' => 'required']]);
-                    echo $this->Form->control('email', ['label' => ['class' => 'required']]);
-                    //echo $this->Form->control('created_at', ['type' => 'hidden']);
-                    //echo $this->Form->control('modified_at', ['type' => 'hidden']);
-                    ?>
+            <?php
+            echo $this->Form->control('user_type_id', [
+                'label' => ['class' => 'required', 'text' => 'User type'],
+                'options' => $userTypes,
+                'empty' => true]);
+            echo $this->Form->control('username', ['label' => ['class' => 'required']]);
+            echo $this->Form->control('password', ['label' => ['class' => 'required']]);
+            echo $this->Form->control('firstname', ['label' => ['class' => 'required', 'text' => 'First name']]);
+            echo $this->Form->control('lastname', ['label' => ['class' => 'required', 'text' => 'Last name']]);
+            echo $this->Form->control('phone', ['label' => ['class' => 'required']]);
+            echo $this->Form->control('email', ['label' => ['class' => 'required']]);
+            ?>
             <br>
             <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
             <?= $this->Form->end() ?>

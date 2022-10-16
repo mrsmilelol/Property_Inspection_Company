@@ -32,7 +32,9 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             <tr>
                 <th><?= __('Style') ?></th>
                 <td><?= h($product->style) ?></td>
-<!--                <td>--><!--<?//= $product->has('style') ? $this->Html->link($product->style->id, ['controller' => 'Styles', 'action' => 'view', $product->style->id]) : '' ?>--><!--</td>-->
+                <!--                <td>-->
+                <!--<? //= $product->has('style') ? $this->Html->link($product->style->id, ['controller' => 'Styles', 'action' => 'view', $product->style->id]) : '' ?>-->
+                <!--</td>-->
             </tr>
             <tr>
                 <th><?= __('Colour') ?></th>
@@ -51,8 +53,8 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <td><?= h($product->manufacturing) ?></td>
             </tr>
             <!--<tr>
-                <th><?/*= __('ID') */?></th>
-                <td><?/*= $this->Number->format($product->id) */?></td>
+                <th><? /*= __('ID') */ ?></th>
+                <td><? /*= $this->Number->format($product->id) */ ?></td>
             </tr>-->
             <tr>
                 <th><?= __('Normal price') ?></th>
@@ -77,7 +79,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             <tr>
                 <th><?= __('Images') ?></th>
                 <td><?php foreach ($productImages as $productImage) {
-                        echo $this->Html->image($productImage->description, ['alt' => 'CakePHP','class' => 'img-fluid','width' => 200, 'height' => 200]);
+                        echo $this->Html->image($productImage->description, ['alt' => 'CakePHP', 'class' => 'img-fluid', 'width' => 200, 'height' => 200]);
                     } ?></td>
             </tr>
 
@@ -85,11 +87,11 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
         <br>
         <div class="related">
             <?php if (!empty($product->orders)) : ?>
-            <h4><?= __('Related orders') ?></h4>
+                <h4><?= __('Related orders') ?></h4>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
                         <tr>
-                            <!--<th><?/*= __('ID') */?></th>-->
+                            <!--<th><? /*= __('ID') */ ?></th>-->
                             <th><?= __('User') ?></th>
                             <th><?= __('Total') ?></th>
                             <th><?= __('Created at') ?></th>
@@ -98,15 +100,15 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                         </tr>
                         <?php foreach ($product->orders as $orders) : ?>
                             <tr>
-                                <!--<td><?/*= h($orders->id) */?></td>-->
+                                <!--<td><? /*= h($orders->id) */ ?></td>-->
                                 <td><?= h($orders->user_id) ?></td>
                                 <td><?= $this->Number->format(h($orders->total)) ?></td>
                                 <td><?= h($orders->created_at) ?></td>
                                 <td><?= h($orders->modified_at) ?></td>
                                 <td class="actions">
                                     <?= $this->Html->link(__('View'), ['controller' => 'Orders', 'action' => 'view', $orders->id]) ?>
-                                    <!--<?/*= $this->Html->link(__('Edit'), ['controller' => 'Orders', 'action' => 'edit', $orders->id]) */?>-->
-                                    <!--<?/*= $this->Form->postLink(__('Delete'), ['controller' => 'Orders', 'action' => 'delete', $orders->id], ['confirm' => __('Are you sure you want to delete # {0}?', $orders->id)]) */?>-->
+                                    <!--<? /*= $this->Html->link(__('Edit'), ['controller' => 'Orders', 'action' => 'edit', $orders->id]) */ ?>-->
+                                    <!--<? /*= $this->Form->postLink(__('Delete'), ['controller' => 'Orders', 'action' => 'delete', $orders->id], ['confirm' => __('Are you sure you want to delete # {0}?', $orders->id)]) */ ?>-->
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -117,7 +119,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
         <br>
         <div class="related">
             <?php if (!empty($product->order_items)) : ?>
-            <h4><?= __('Related order items') ?></h4>
+                <h4><?= __('Related order items') ?></h4>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <tr>
@@ -136,10 +138,12 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                                 <td class="actions">
                                     <?= $this->Html->link(__('View'), ['controller' => 'OrderItems', 'action' => 'view', $orderItems->id]) ?>
                                     <?= $this->Html->link(__('Edit'), ['controller' => 'OrderItems', 'action' => 'edit', $orderItems->id]) ?>
-<!--                                    --><!--<?//= $this->Form->postLink(__('Delete'),
-//                                        ['controller' => 'OrderItems', 'action' => 'delete', $orderItems->id],
-//                                        ['confirm' => __('Are you sure you want to delete # {0}?', $orderItems->id)])
-//                                    ?>-->
+                                    <?= $this->Form->postLink(
+                                        __('Delete'),
+                                        ['controller' => 'OrderItems', 'action' => 'delete', $orderItems->id],
+                                        ['confirm' => __('Are you sure you want to delete # {0}?', $orderItems->id)]
+                                    )
+                                    ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -149,27 +153,22 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
         </div>
         <div class="related">
             <?php if (!empty($product->categories)) : ?>
-            <h4><?= __('Related categories') ?></h4>
+                <h4><?= __('Related categories') ?></h4>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <tr>
-                            <!--<th data-visible="false"><?/*= __('ID') */?></th>
-                            <th><?/*= __('Parent ID') */?></th>-->
+                            <!--<th data-visible="false"><? /*= __('ID') */ ?></th>
+                            <th><? /*= __('Parent ID') */ ?></th>-->
                             <th><?= __('Category') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($product->categories as $categories) : ?>
                             <tr>
-                                <!--<td><?/*= h($categories->id) */?></td>
-                                <td><?/*= h($categories->parent_id) */?></td>-->
                                 <td><?= h($categories->description) ?></td>
                                 <td class="actions">
                                     <?= $this->Html->link(__('View'), ['controller' => 'Categories', 'action' => 'view', $categories->id]) ?>
                                     <?= $this->Html->link(__('Edit'), ['controller' => 'Categories', 'action' => 'edit', $categories->id]) ?>
-<!--                                    --><!--<?//= $this->Form->postLink(__('Delete'),
-//                                        ['controller' => 'Categories', 'action' => 'delete', $categories->id],
-//                                        ['confirm' => __('Are you sure you want to delete # {0}?', $categories->id)])
-//                                    ?>-->
+                                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Categories', 'action' => 'delete', $categories->id], ['confirm' => __('Are you sure you want to delete # {0}?', $categories->id)]) ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -181,8 +180,8 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
 </div>
 
 <script>
-    $(document).ready( function () {
+    $(document).ready(function () {
         $('#productTable').DataTable();
-    } );
+    });
 </script>
 

@@ -5,7 +5,7 @@
  * @var string[]|\Cake\Collection\CollectionInterface $userTypes
  */
 
-$formTemplate= [
+$formTemplate = [
     'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
     'label' => '<label{{attrs}} class="form-label">{{text}}</label>',
     'input' => '<input type="{{type}}" name="{{name}}" class="form-control"{{attrs}}/>',
@@ -26,15 +26,13 @@ $this->Form->setTemplates($formTemplate);
                         'empty' => true]);
                     echo $this->Form->control('username', ['label' => ['class' => 'required']]);
                     echo $this->Form->control('password', ['label' => ['class' => 'required']]);
-                    echo $this->Form->control('firstname', ['label' => ['class' => 'required', 'text' =>'First name']]);
-                    echo $this->Form->control('lastname', ['label' => ['class' => 'required', 'text' =>'Last name']]);
+                    echo $this->Form->control('firstname', ['label' => ['class' => 'required', 'text' => 'First name']]);
+                    echo $this->Form->control('lastname', ['label' => ['class' => 'required', 'text' => 'Last name']]);
                     echo $this->Form->control('phone', ['label' => ['class' => 'required']]);
                     echo $this->Form->control('email', ['label' => ['class' => 'required']]);
-                    //echo $this->Form->control('created_at');
-                    //echo $this->Form->control('modified_at');
-                ?>
+                    ?>
                 <br>
-                <?= $this->Form->button(__('Submit'),['class' => 'btn btn-primary']) ?>
+                <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
                 <?= $this->Form->end() ?>
         </table>
     </div>

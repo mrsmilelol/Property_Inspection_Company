@@ -26,7 +26,7 @@ endforeach;
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <style>
         /* -------------------------------------
@@ -57,7 +57,9 @@ endforeach;
             border-collapse: separate;
             mso-table-lspace: 0pt;
             mso-table-rspace: 0pt;
-            width: 100%; }
+            width: 100%;
+        }
+
         table td {
             font-family: sans-serif;
             font-size: 14px;
@@ -117,6 +119,7 @@ endforeach;
             text-align: center;
             width: 100%;
         }
+
         .footer td,
         .footer p,
         .footer span,
@@ -157,6 +160,7 @@ endforeach;
             margin: 0;
             margin-bottom: 15px;
         }
+
         p li,
         ul li,
         ol li {
@@ -174,17 +178,23 @@ endforeach;
         ------------------------------------- */
         .btn {
             box-sizing: border-box;
-            width: 100%; }
+            width: 100%;
+        }
+
         .btn > tbody > tr > td {
-            padding-bottom: 15px; }
+            padding-bottom: 15px;
+        }
+
         .btn table {
             width: auto;
         }
+
         .btn table td {
             background-color: #ffffff;
             border-radius: 5px;
             text-align: center;
         }
+
         .btn a {
             background-color: #ffffff;
             border: solid 1px #3498db;
@@ -277,6 +287,7 @@ endforeach;
                 font-size: 28px !important;
                 margin-bottom: 10px !important;
             }
+
             table.body p,
             table.body ul,
             table.body ol,
@@ -285,28 +296,35 @@ endforeach;
             table.body a {
                 font-size: 16px !important;
             }
+
             table.body .wrapper,
             table.body .article {
                 padding: 10px !important;
             }
+
             table.body .content {
                 padding: 0 !important;
             }
+
             table.body .container {
                 padding: 0 !important;
                 width: 100% !important;
             }
+
             table.body .main {
                 border-left-width: 0 !important;
                 border-radius: 0 !important;
                 border-right-width: 0 !important;
             }
+
             table.body .btn table {
                 width: 100% !important;
             }
+
             table.body .btn a {
                 width: 100% !important;
             }
+
             table.body .img-responsive {
                 height: auto !important;
                 max-width: 100% !important;
@@ -321,6 +339,7 @@ endforeach;
             .ExternalClass {
                 width: 100%;
             }
+
             .ExternalClass,
             .ExternalClass p,
             .ExternalClass span,
@@ -329,6 +348,7 @@ endforeach;
             .ExternalClass div {
                 line-height: 100%;
             }
+
             .apple-link a {
                 color: inherit !important;
                 font-family: inherit !important;
@@ -337,6 +357,7 @@ endforeach;
                 line-height: inherit !important;
                 text-decoration: none !important;
             }
+
             #MessageViewBody a {
                 color: inherit;
                 text-decoration: none;
@@ -345,9 +366,11 @@ endforeach;
                 font-weight: inherit;
                 line-height: inherit;
             }
+
             .btn-primary table td:hover {
                 background-color: #34495e !important;
             }
+
             .btn-primary a:hover {
                 background-color: #34495e !important;
                 border-color: #34495e !important;
@@ -372,19 +395,23 @@ endforeach;
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <p>Hi <?= h($firstname.",") ?></p>
-                                        <p>Your recent request to cancel order: <?= h($id)?> has been approved </p>
+                                        <p>Hi <?= h($firstname . ',') ?></p>
+                                        <p>Your recent request to cancel order: <?= h($id) ?> has been approved </p>
                                         <p>We will process your refund within 5 business days </p>
                                         <p>Pleas login to your account to check the order status </p>
 
-                                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+                                        <table role="presentation" border="0" cellpadding="0" cellspacing="0"
+                                               class="btn btn-primary">
                                             <tbody>
                                             <tr>
                                                 <td align="left">
-                                                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                                    <table role="presentation" border="0" cellpadding="0"
+                                                           cellspacing="0">
                                                         <tbody>
                                                         <tr>
-                                                            <td> <a href="<?= $this->Url->build(['controller'=> 'Users', 'action'=>'login','prefix' => false], ['fullBase' => true]); ?>">Login to check your order</a> </td>
+                                                            <td>
+                                                                <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'login', 'prefix' => false], ['fullBase' => true]); ?>">Login
+                                                                    to check your order</a></td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
@@ -410,8 +437,7 @@ endforeach;
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                         <tr>
                             <td class="content-block">
-                                <span class="apple-link">Copyright <?= date("Y")?> Chelsea Fine Furnishings. All rights reserved</span>
-<!--                                <br> Don't like these emails? <a href="#">Unsubscribe</a>.-->
+                                <span class="apple-link">Copyright <?= date('Y') ?> Chelsea Fine Furnishings. All rights reserved</span>
                             </td>
                         </tr>
                     </table>

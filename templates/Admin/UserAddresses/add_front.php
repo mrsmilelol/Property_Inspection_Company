@@ -45,8 +45,8 @@ $this->layout = 'front';
     <link rel="stylesheet" href="css/owl.transitions.css">
     <!-- nivo slider CSS
     ============================================ -->
-    <link rel="stylesheet" href="lib/css/nivo-slider.css" type="text/css" />
-    <link rel="stylesheet" href="lib/css/preview.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="lib/css/nivo-slider.css" type="text/css"/>
+    <link rel="stylesheet" href="lib/css/preview.css" type="text/css" media="screen"/>
     <!-- jquery-ui CSS
     ============================================ -->
     <link rel="stylesheet" href="css/jquery-ui.css">
@@ -61,7 +61,7 @@ $this->layout = 'front';
     <link rel="stylesheet" href="css/jquery.bxslider.css">
     <!-- Venobox CSS
     ============================================ -->
-    <link rel="stylesheet" href="css/venobox.css" media="screen" />
+    <link rel="stylesheet" href="css/venobox.css" media="screen"/>
     <!-- normalize CSS
     ============================================ -->
     <link rel="stylesheet" href="css/normalize.css">
@@ -80,7 +80,8 @@ $this->layout = 'front';
 </head>
 <body>
 <!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
 <![endif]-->
 
 <!-- Add your site or application content here -->
@@ -124,15 +125,15 @@ $this->layout = 'front';
                                 <form action="#">
                                     <p class="form-row">
                                         <label>Username or email <span class="required">*</span></label>
-                                        <input type="text" />
+                                        <input type="text"/>
                                     </p>
                                     <p class="form-row">
-                                        <label>Password  <span class="required">*</span></label>
-                                        <input type="text" />
+                                        <label>Password <span class="required">*</span></label>
+                                        <input type="text"/>
                                     </p>
-                                    <p><input type="submit" value="Login" />
+                                    <p><input type="submit" value="Login"/>
                                         <label class="checbox-info">
-                                            <input type="checkbox" />
+                                            <input type="checkbox"/>
                                             Remember me
                                         </label>
                                     </p>
@@ -153,7 +154,7 @@ $this->layout = 'front';
                         <?= $this->Form->create($userAddress) ?>
                         <div class="col-md-6">
                             <p class="form-row">
-                                <?php echo $this->Form->control('user_id', ['options' => $users, 'empty' => true, 'label' => ['class' => 'required']]);?>
+                                <?php echo $this->Form->control('user_id', ['options' => $users, 'empty' => true, 'label' => ['class' => 'required']]); ?>
                             </p>
                         </div>
                         <div class="col-md-6">
@@ -163,27 +164,27 @@ $this->layout = 'front';
                         </div>
                         <div class="col-md-6">
                             <p class="form-row">
-                                <?php echo $this->Form->control('address_line_1', ['placeholder' => 'Street address','label' => ['class' => 'required', 'text' => 'Address line 1' ]]); ?>
+                                <?php echo $this->Form->control('address_line_1', ['placeholder' => 'Street address', 'label' => ['class' => 'required', 'text' => 'Address line 1']]); ?>
                             </p>
                         </div>
                         <div class="col-md-6">
                             <p class="form-row">
-                                <?php echo $this->Form->control('address_line_2', ['placeholder' => 'Apartment, suite, unit etc.','label' => 'Address line 2']);?>
+                                <?php echo $this->Form->control('address_line_2', ['placeholder' => 'Apartment, suite, unit etc.', 'label' => 'Address line 2']); ?>
                             </p>
                         </div>
                         <div class="col-md-6">
                             <p class="form-row">
-                                <?php echo $this->Form->control('Town/City', ['placeholder' => 'Town / City','label' => ['class' => 'required']]); ?>
+                                <?php echo $this->Form->control('Town/City', ['placeholder' => 'Town / City', 'label' => ['class' => 'required']]); ?>
                             </p>
                         </div>
                         <div class="col-md-6">
                             <p class="form-row">
-                                <?php echo $this->Form->control('state', ['placeholder' => 'VIC / NSW','label' => ['class' => 'required']]);?>
+                                <?php echo $this->Form->control('state', ['placeholder' => 'VIC / NSW', 'label' => ['class' => 'required']]); ?>
                             </p>
                         </div>
                         <div class="col-md-6">
                             <p class="form-row">
-                                <?php echo $this->Form->control('postcode', ['placeholder' => 'Postcode / Zip','label' => ['class' => 'required']]);?>
+                                <?php echo $this->Form->control('postcode', ['placeholder' => 'Postcode / Zip', 'label' => ['class' => 'required']]); ?>
                             </p>
                         </div>
                         <div class="col-md-12">
@@ -241,13 +242,13 @@ $this->layout = 'front';
                                 <td>
                                     <ul>
                                         <li>
-                                            <input type="radio" />
+                                            <input type="radio"/>
                                             <label>
                                                 Flat Rate: <span class="amount">£7.00</span>
                                             </label>
                                         </li>
                                         <li>
-                                            <input type="radio" />
+                                            <input type="radio"/>
                                             <label>Free Shipping:</label>
                                         </li>
                                         <li></li>
@@ -267,24 +268,28 @@ $this->layout = 'front';
                             <!-- ACCORDION START -->
                             <h3>Direct Bank Transfer</h3>
                             <div class="payment-content">
-                                <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+                                <p>Make your payment directly into our bank account. Please use your Order ID as the
+                                    payment reference. Your order won’t be shipped until the funds have cleared in our
+                                    account.</p>
                             </div>
                             <!-- ACCORDION END -->
                             <!-- ACCORDION START -->
                             <h3>Cheque Payment</h3>
                             <div class="payment-content">
-                                <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+                                <p>Please send your cheque to Store Name, Store Street, Store Town, Store State /
+                                    County, Store Postcode.</p>
                             </div>
                             <!-- ACCORDION END -->
                             <!-- ACCORDION START -->
-                            <h3>PayPal <img src="img/payment.png" alt="" /></h3>
+                            <h3>PayPal <img src="img/payment.png" alt=""/></h3>
                             <div class="payment-content">
-                                <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
+                                <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal
+                                    account.</p>
                             </div>
                             <!-- ACCORDION END -->
                         </div>
                         <div class="order-button-payment">
-                            <input type="submit" value="Place order" />
+                            <input type="submit" value="Place order"/>
                             <?= $this->Form->button(__('Submit'), ['class' => 'order-button-payment']) ?>
                         </div>
                         <?= $this->Form->end() ?>

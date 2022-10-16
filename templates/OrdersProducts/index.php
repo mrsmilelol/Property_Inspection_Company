@@ -10,18 +10,18 @@
     <div class="table-responsive">
         <table>
             <thead>
-                <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('order_id') ?></th>
-                    <th><?= $this->Paginator->sort('product_id') ?></th>
-                    <th><?= $this->Paginator->sort('quantity') ?></th>
-                    <th><?= $this->Paginator->sort('created_at') ?></th>
-                    <th><?= $this->Paginator->sort('modified_at') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
-                </tr>
+            <tr>
+                <th><?= $this->Paginator->sort('id') ?></th>
+                <th><?= $this->Paginator->sort('order_id') ?></th>
+                <th><?= $this->Paginator->sort('product_id') ?></th>
+                <th><?= $this->Paginator->sort('quantity') ?></th>
+                <th><?= $this->Paginator->sort('created_at') ?></th>
+                <th><?= $this->Paginator->sort('modified_at') ?></th>
+                <th class="actions"><?= __('Actions') ?></th>
+            </tr>
             </thead>
             <tbody>
-                <?php foreach ($ordersProducts as $ordersProduct): ?>
+            <?php foreach ($ordersProducts as $ordersProduct) : ?>
                 <tr>
                     <td><?= $this->Number->format($ordersProduct->id) ?></td>
                     <td><?= $ordersProduct->has('order') ? $this->Html->link($ordersProduct->order->id, ['controller' => 'Orders', 'action' => 'view', $ordersProduct->order->id]) : '' ?></td>
@@ -35,7 +35,7 @@
                         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $ordersProduct->id], ['confirm' => __('Are you sure you want to delete # {0}?', $ordersProduct->id)]) ?>
                     </td>
                 </tr>
-                <?php endforeach; ?>
+            <?php endforeach; ?>
             </tbody>
         </table>
     </div>

@@ -24,11 +24,11 @@
             <fieldset>
                 <legend><?= __('Edit Orders Product') ?></legend>
                 <?php
-                    echo $this->Form->control('order_id', ['options' => $orders, 'empty' => true]);
-                    echo $this->Form->control('product_id', ['options' => $products, 'empty' => true]);
-                    echo $this->Form->control('quantity');
-                    echo $this->Form->control('created_at');
-                    echo $this->Form->control('modified_at');
+                echo $this->Form->control('order_id', ['options' => $orders, 'empty' => true]);
+                echo $this->Form->control('product_id', ['options' => $products, 'empty' => true]);
+                echo $this->Form->control('quantity');
+                echo $this->Form->control('created_at');
+                echo $this->Form->control('modified_at');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

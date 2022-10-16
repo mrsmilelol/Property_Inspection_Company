@@ -58,7 +58,7 @@ if ($orderCheckout != []) {
     ]);
     $this->request->getSession()->write('pay_session', $session);
 } else {
-    $this->Url->build(['controller' => 'Products','action' => 'cart']);
+    $this->Url->build(['controller' => 'Products', 'action' => 'cart']);
 }
 ?>
 
@@ -92,8 +92,8 @@ if ($orderCheckout != []) {
     <link rel="stylesheet" href="css/owl.transitions.css">
     <!-- nivo slider CSS
     ============================================ -->
-    <link rel="stylesheet" href="lib/css/nivo-slider.css" type="text/css" />
-    <link rel="stylesheet" href="lib/css/preview.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="lib/css/nivo-slider.css" type="text/css"/>
+    <link rel="stylesheet" href="lib/css/preview.css" type="text/css" media="screen"/>
     <!-- jquery-ui CSS
     ============================================ -->
     <link rel="stylesheet" href="css/jquery-ui.css">
@@ -108,7 +108,7 @@ if ($orderCheckout != []) {
     <link rel="stylesheet" href="css/jquery.bxslider.css">
     <!-- Venobox CSS
     ============================================ -->
-    <link rel="stylesheet" href="css/venobox.css" media="screen" />
+    <link rel="stylesheet" href="css/venobox.css" media="screen"/>
     <!-- normalize CSS
     ============================================ -->
     <link rel="stylesheet" href="css/normalize.css">
@@ -127,7 +127,8 @@ if ($orderCheckout != []) {
 </head>
 <body>
 <!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
 <![endif]-->
 
 <!-- Add your site or application content here -->
@@ -139,12 +140,14 @@ if ($orderCheckout != []) {
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="breadcrumb-single">
                     <ul class="breadcrumbs">
-                        <li><a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'main'])?> "><i class="fa fa-home"></i>Home</a></li>
+                        <li><a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'main']) ?> "><i
+                                    class="fa fa-home"></i>Home</a></li>
                         <li>
                             <span>></span>
                         </li>
-                        <li><a href="<?= $this->Url->build(['controller' => 'products', 'action' => 'cart'])?> "><i class="fa fa-shopping-cart"></i>Shopping Cart</a></li>
-                            <span>></span>
+                        <li><a href="<?= $this->Url->build(['controller' => 'products', 'action' => 'cart']) ?> "><i
+                                    class="fa fa-shopping-cart"></i>Shopping Cart</a></li>
+                        <span>></span>
                         </li>
                         <li>Checkout</li>
                     </ul>
@@ -165,21 +168,21 @@ if ($orderCheckout != []) {
                 <div class="col-md-12">
                     <div class="coupon-accordion">
                         <!-- ACCORDION START -->
-<!--                        <h3>Returning customer? <span id="showlogin">Click here to login</span></h3>-->
+                        <!--                        <h3>Returning customer? <span id="showlogin">Click here to login</span></h3>-->
                         <div id="checkout-login" class="coupon-content">
                             <div class="coupon-info">
                                 <form action="#">
                                     <p class="form-row">
                                         <label>Username or email <span class="required">*</span></label>
-                                        <input type="text" />
+                                        <input type="text"/>
                                     </p>
                                     <p class="form-row">
-                                        <label>Password  <span class="required">*</span></label>
-                                        <input type="text" />
+                                        <label>Password <span class="required">*</span></label>
+                                        <input type="text"/>
                                     </p>
-                                    <p><input type="submit" value="Login" />
+                                    <p><input type="submit" value="Login"/>
                                         <label class="checbox-info">
-                                            <input type="checkbox" />
+                                            <input type="checkbox"/>
                                             Remember me
                                         </label>
                                     </p>
@@ -198,41 +201,40 @@ if ($orderCheckout != []) {
                     <h3 class="checkbox-title">Billing Details</h3>
                     <div class="row">
                         <?= $this->Form->create($userAddress) ?>
-                        <?php echo $this->Form->hidden('user_id', ['value' => $userID->id,'type' => 'text']);?>
+                        <?php echo $this->Form->hidden('user_id', ['value' => $userID->id, 'type' => 'text']); ?>
                         <div class="col-md-6">
                             <p class="form-row">
                                 <?php
-                                echo $this->Form->control('country', ['placeholder' => 'Australia', 'value' => 'Australia','label' => ['class' => 'required']]);
+                                echo $this->Form->control('country', ['placeholder' => 'Australia', 'value' => 'Australia', 'label' => ['class' => 'required']]);
                                 ?>
                             </p>
                         </div>
                         <div class="col-md-6">
                             <p class="form-row">
-                                <?php echo $this->Form->control('address_line_1', ['placeholder' => 'Street address','label' => ['class' => 'required', 'text' => 'Address line 1' ]]); ?>
+                                <?php echo $this->Form->control('address_line_1', ['placeholder' => 'Street address', 'label' => ['class' => 'required', 'text' => 'Address line 1']]); ?>
                             </p>
                         </div>
                         <div class="col-md-6">
                             <p class="form-row">
-                                <?php echo $this->Form->control('address_line_2', ['placeholder' => 'Apartment, suite, unit etc.','label' => 'Address line 2']);?>
+                                <?php echo $this->Form->control('address_line_2', ['placeholder' => 'Apartment, suite, unit etc.', 'label' => 'Address line 2']); ?>
                             </p>
                         </div>
                         <div class="col-md-6">
                             <p class="form-row">
-                                <?php echo $this->Form->control('city', ['placeholder' => 'Town / City','label' => ['class' => 'required']]); ?>
+                                <?php echo $this->Form->control('city', ['placeholder' => 'Town / City', 'label' => ['class' => 'required']]); ?>
                             </p>
                         </div>
                         <div class="col-md-6">
                             <p class="form-row">
                                 <?php
-                                $states = ['1' => 'VIC','2' => 'NSW','3' => 'SA','4' => 'WA','5' => 'NT','6' => 'QLD','7' => 'TAS'];
-                                if ($check == 1){
-                                    for ($i = 1; $i<sizeof($states)+1; $i++){
-                                        if ($states[$i] == $userAddress->state){
-                                            echo $this->Form->control('state', ['options' => $states, 'label' => 'Select your state','value'=>strval($i)]);
+                                $states = ['1' => 'VIC', '2' => 'NSW', '3' => 'SA', '4' => 'WA', '5' => 'NT', '6' => 'QLD', '7' => 'TAS'];
+                                if ($check == 1) {
+                                    for ($i = 1; $i < sizeof($states) + 1; $i++) {
+                                        if ($states[$i] == $userAddress->state) {
+                                            echo $this->Form->control('state', ['options' => $states, 'label' => 'Select your state', 'value' => strval($i)]);
                                         }
                                     }
-                                }
-                                else{
+                                } else {
                                     echo $this->Form->control('state', ['options' => $states, 'label' => 'Select your state']);
                                 }
                                 ?>
@@ -240,7 +242,7 @@ if ($orderCheckout != []) {
                         </div>
                         <div class="col-md-6">
                             <p class="form-row">
-                                <?php echo $this->Form->control('postcode', ['placeholder' => 'Postcode / Zip','label' => ['class' => 'required']]);?>
+                                <?php echo $this->Form->control('postcode', ['placeholder' => 'Postcode / Zip', 'label' => ['class' => 'required']]); ?>
                             </p>
                         </div>
                     </div>
@@ -251,30 +253,6 @@ if ($orderCheckout != []) {
                     <h3 class="checkbox-title">Your order</h3>
                     <div class="your-order-table table-responsive">
                         <table>
-<!--                            <thead>-->
-<!--                            <tr>-->
-<!--                                <th class="c-product-name">Product</th>-->
-<!--                                <th class="c-product-total">Total</th>-->
-<!--                            </tr>-->
-<!--                            </thead>-->
-<!--                            <tbody>-->
-<!--                            <tr class="cart_item">-->
-<!--                                <td class="c-product-name">-->
-<!--                                    Vestibulum suscipit <strong class="product-quantity"> × 1</strong>-->
-<!--                                </td>-->
-<!--                                <td class="c-product-total">-->
-<!--                                    <span class="amount">£165.00</span>-->
-<!--                                </td>-->
-<!--                            </tr>-->
-<!--                            <tr class="cart_item">-->
-<!--                                <td class="c-product-name">-->
-<!--                                    Vestibulum dictum magna <strong class="product-quantity"> × 1</strong>-->
-<!--                                </td>-->
-<!--                                <td class="c-product-total">-->
-<!--                                    <span class="amount">£50.00</span>-->
-<!--                                </td>-->
-<!--                            </tr>-->
-<!--                            </tbody>-->
                             <thead>
                             <tr>
                                 <th class="c-product-name">Product</th>
@@ -288,9 +266,11 @@ if ($orderCheckout != []) {
                                 if ($orderItems != null) :
                                     foreach ($orderItems['WholesaleOrderitems'] as $orderItem) : ?>
                             <tr class="cart_item">
-                                <td class="c-product-name"><a href="<?= $this->Url->build(['controller' => 'products', 'action' => 'detail',$orderItem['product_id']])?>"><?= $orderItem['name']?></a></td>
-                                <td  class="c-product-quantity"><?= $orderItem['quantity'] ?></td>
-                                <td class="c-product-total"><?=$this->Number->currency($orderItem['price'])?></td>
+                                <td class="c-product-name"><a
+                                        href="<?= $this->Url->build(['controller' => 'products', 'action' => 'detail', $orderItem['product_id']]) ?>"><?= $orderItem['name'] ?></a>
+                                </td>
+                                <td class="c-product-quantity"><?= $orderItem['quantity'] ?></td>
+                                <td class="c-product-total"><?= $this->Number->currency($orderItem['price']) ?></td>
                             </tr>
                             </tbody>
                                     <?php endforeach;
@@ -298,37 +278,18 @@ if ($orderCheckout != []) {
                             else :
                                 if ($orderItems != null) :
                                     foreach ($orderItems['Orderitems'] as $orderItem) : ?>
-                            <tr class="cart_item">
-                                <td class="c-product-name"><a href="<?= $this->Url->build(['controller' => 'products', 'action' => 'detail',$orderItem['product_id']])?>"><?= $orderItem['name']?></a></td>
-                                <td  class="c-product-quantity"><?= $orderItem['quantity'] ?></td>
-                                <td class="c-product-total"><?=$this->Number->currency($orderItem['price'])?></td>
-                            </tr>
-                            </tbody>
+                                        <tr class="cart_item">
+                                            <td class="c-product-name"><a
+                                                    href="<?= $this->Url->build(['controller' => 'products', 'action' => 'detail', $orderItem['product_id']]) ?>"><?= $orderItem['name'] ?></a>
+                                            </td>
+                                            <td class="c-product-quantity"><?= $orderItem['quantity'] ?></td>
+                                            <td class="c-product-total"><?= $this->Number->currency($orderItem['price']) ?></td>
+                                        </tr>
+                                        </tbody>
                                     <?php endforeach;
                                 endif;
-                            endif;?>
+                            endif; ?>
                             <tfoot>
-                            <!--<tr class="shipping">
-                                <th>7 day Shipping </th>
-                                <td>
-                                    <ul>
-                                        <li>
-                                            <input type="radio" />
-                                            <label>100$ Shipping</label>
-                                        </li>
-                                        <li></li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <ul>
-                                        <li>
-                                            <input type="radio" />
-                                            <label>Free Shipping</label>
-                                        </li>
-                                        <li></li>
-                                    </ul>
-                                </td>
-                            </tr>-->
                             <tr class="order-total">
                                 <?php $subtotal = 0;
                                 if ($user->user_type_id == 2) :
@@ -343,10 +304,12 @@ if ($orderCheckout != []) {
                                             $subtotal = $subtotal + $orderItem['price'] * $orderItem['quantity'];
                                         endforeach;
                                     endif;
-                                endif;?>
+                                endif; ?>
                                 <th>Order Total</th>
                                 <td><strong><span class="amount"></span></strong></td>
-                                <td><strong><span class="amount"><?= $this->Number->currency($subtotal) ?></span></strong></td>
+                                <td><strong><span
+                                            class="amount"><?= $this->Number->currency($subtotal) ?></span></strong>
+                                </td>
                             </tr>
                             </tfoot>
                         </table>
@@ -358,7 +321,7 @@ if ($orderCheckout != []) {
                                 'id' => 'checkout-button-main',
                                 'class' => 'order-button-payment',
                                 'escape' => 'false',
-                            ]);?>
+                            ]); ?>
                         </div>
                         <?= $this->Form->end() ?>
                     </div>
@@ -412,7 +375,7 @@ if ($orderCheckout != []) {
 <script>
     var stripe = Stripe('pk_test_51LkgUlGRmWCorjcXsDFRkKYqWTuPWk8mGeKtr6398t7o55wnltXdYpUjAqaDzSfHb426KyXxxCtfC2wWi6tV7IB700R4ElytR1');
     const btn = document.getElementById("checkout-button-main")
-    btn.addEventListener('click', function(e) {
+    btn.addEventListener('click', function (e) {
         e.preventDefault();
         stripe.redirectToCheckout({
             sessionId: "<?php echo $session->id; ?>"

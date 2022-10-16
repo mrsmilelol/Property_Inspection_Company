@@ -25,7 +25,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($orders as $order): ?>
+                <?php foreach ($orders as $order) : ?>
                 <tr>
                     <td><?= $this->Number->format($order->id) ?></td>
                     <td><?= $order->has('user') ? $this->Html->link($order->user->username, ['controller' => 'Users', 'action' => 'view', $order->user->id]) : '' ?></td>
@@ -35,8 +35,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $order->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $order->id]) ?>
-                        <?= $this->Form->postLink(__('Cancel'), ['prefix'=>'Admin','action' => 'cancel', $order->id], ['confirm' => __('Are you sure you want to cancel # {0}?', $order->id)])
-                        //$this->Html->link(__('Cancel'), ['controller'=>'CancelledOrders','action' => 'cancel', $order->id]) ?>
+                        <?= $this->Form->postLink(__('Cancel'), ['prefix' => 'Admin','action' => 'cancel', $order->id], ['confirm' => __('Are you sure you want to cancel # {0}?', $order->id)]) ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>
@@ -45,9 +44,8 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
     </div>
 
 </div>
-    <!-- /.container-fluid -->
-    <script>
-        $(document).ready( function () {
-            $('#orders').DataTable();
-        } );
-    </script>
+<script>
+    $(document).ready( function () {
+        $('#orders').DataTable();
+    } );
+</script>

@@ -17,16 +17,14 @@ $this->Form->setTemplates($formTemplate);
     <div class="card-body">
         <table class="table table-bordered" id="products" width="100%" cellspacing="0">
             <?= $this->Form->create($store) ?>
-                <?php
-                    echo $this->Form->control('address');
-                    echo $this->Form->control('suburb');
-                    echo $this->Form->control('city');
-                    echo $this->Form->control('country');
-                    echo $this->Form->control('state');
-                    echo $this->Form->control('post_code', ['label'=>'Postcode']);
-                    //echo $this->Form->control('created_at');
-                    //echo $this->Form->control('modified_at');
-                ?>
+            <?php
+            echo $this->Form->control('address');
+            echo $this->Form->control('suburb');
+            echo $this->Form->control('city');
+            echo $this->Form->control('country');
+            echo $this->Form->control('state');
+            echo $this->Form->control('post_code', ['label' => 'Postcode']);
+            ?>
             <br>
             <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
             <?= $this->Form->end() ?>

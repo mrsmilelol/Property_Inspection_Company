@@ -25,8 +25,6 @@ echo $this->Html->script('//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/sele
             echo $this->Form->control('description', [
                 'label' => ['class' => 'required', 'text' => 'Subcategory name']]);
             echo $this->Form->control('products._ids', ['options' => $products,'class' => 'category_select_main', 'id' => 'select_category_main', 'style' => 'width:600px',]);
-            //echo $this->Form->control('created_at');
-            //echo $this->Form->control('modified_at');
             ?>
             <br>
             <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
