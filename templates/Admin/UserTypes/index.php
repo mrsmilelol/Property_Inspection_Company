@@ -17,8 +17,8 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                 <tr>
                     <th data-visible="false"><?= h('id') ?></th>
                     <th><?= h('Role') ?></th>
-                    <th><?= h('Created at') ?></th>
-                    <th><?= h('Modified at') ?></th>
+                    <th><?= h('created_at') ?></th>
+                    <th><?= h('modified_at') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
                 </thead>

@@ -318,7 +318,7 @@ $this->layout = 'front';
                                                             'url' => ['controller' => 'Products', 'action' => 'detail', $c_product->id]]); ?> </a>
                                                 </a>
                                             </div>
-                                            <!--<span class="new-label">New</span>-->
+                                            <span class="new-label">New</span>
                                             <?php if ($this->Number->currency($c_product->wholesale_price) !== null and $this->Number->toPercentage($c_product->wholesale_price) > 0): ?>
                                                 <span class="sale-label">Sale!</span>
                                             <?php endif; ?>
