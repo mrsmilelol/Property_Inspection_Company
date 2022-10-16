@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,12 +14,16 @@
     <!-- Custom fonts for this template-->
     <?= $this->Html->css('/vendor/fontawesome-free/css/all.min.css') ?>
     <?= $this->Html->css('sb-admin-2.min.css') ?>
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </head>
 
@@ -34,18 +37,18 @@
         <div class="col-xl-10 col-lg-12 col-md-9">
 
 
-                <div class="card-body p-0">
-                    <!-- Main Content -->
-                    <div id="content">
-                        <!-- Begin Page Content -->
-                        <div class="container-fluid">
-                            <?= $this->Flash->render() ?>
-                            <?= $this->fetch('content') ?>
-                        </div>
-                        <!-- /.container-fluid -->
+            <div class="card-body p-0">
+                <!-- Main Content -->
+                <div id="content">
+                    <!-- Begin Page Content -->
+                    <div class="container-fluid">
+                        <?= $this->Flash->render() ?>
+                        <?= $this->fetch('content') ?>
                     </div>
-                    <!-- End of Main Content -->
+                    <!-- /.container-fluid -->
                 </div>
+                <!-- End of Main Content -->
+            </div>
         </div>
     </div>
     <!-- Footer -->
@@ -66,14 +69,6 @@
 <?= $this->Html->script('/vendor/jquery-easing/jquery.easing.min.js') ?>
 <!-- Custom scripts for all pages-->
 <?= $this->Html->script('sb-admin-2.min') ?>
-
-<!-- Page level plugins
-<script src="vendor/chart.js/Chart.min.js"></script>
--->
-<!-- Page level custom scripts
-<script src="js/demo/chart-area-demo.js"></script>
-<script src="js/demo/chart-pie-demo.js"></script>
- -->
 <?= $this->fetch('script') ?>
 
 </body>

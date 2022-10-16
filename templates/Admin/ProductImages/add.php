@@ -21,8 +21,6 @@ $this->Form->setTemplates($formTemplate);
                 <?php
                     echo $this->Form->control('product_id', ['options' => $products, 'empty' => true]);
                     echo $this->Form->control('description');
-                    //echo $this->Form->control('created_at');
-                    //echo $this->Form->control('modified_at');
                 ?>
                 <br>
                 <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>

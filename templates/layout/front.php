@@ -50,9 +50,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->css('owl.transitions.css') ?>
     <!-- nivo slider CSS
     ============================================ -->
-<!--    <link rel="stylesheet" href="lib/css/nivo-slider.css" type="text/css" />-->
+    <!--    <link rel="stylesheet" href="lib/css/nivo-slider.css" type="text/css" />-->
     <?= $this->Html->css('/lib/css/nivo-slider.css') ?>
-<!--    <link rel="stylesheet" href="lib/css/preview.css" type="text/css" media="screen" />-->
+    <!--    <link rel="stylesheet" href="lib/css/preview.css" type="text/css" media="screen" />-->
     <?= $this->Html->css('/lib/css/preview.css') ?>
     <!-- jquery-ui CSS
     ============================================ -->
@@ -90,7 +90,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </head>
 <body>
 <!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
 <![endif]-->
 
 <!-- Add your site or application content here -->
@@ -130,8 +131,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <?= $this->Html->script('owl.carousel.min.js') ?>
 <!-- Nivo slider js
 ============================================ -->
-<!--<script src="lib/js/jquery.nivo.slider.js" type="text/javascript"></script>-->
-<!--<script src="lib/home.js" type="text/javascript"></script>-->
 <?= $this->Html->script('/webroot/lib/js/jquery.nivo.slider.js') ?>
 <?= $this->Html->script('/webroot/lib/home.js') ?>
 <!-- scrollUp JS

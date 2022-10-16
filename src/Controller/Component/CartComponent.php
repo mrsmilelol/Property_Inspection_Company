@@ -11,53 +11,19 @@ class CartComponent extends Component {
         return $this->getController()->getRequest()->getSession()->read('Shop');
     }
 
-////////////////////////////////////////////////////////////////////////////////
-
-    public function cart()
-    {
-//        $shop = $this->getcart();
-//        // print_r($shop);
-//        $quantity = 0;
-//        $subtotal = 0;
-//        $total = 0;
-//        $order_item_count = 0;
-//        // $order = $shop['Order'];
-//        if (count($shop['Orderitems']) > 0) {
-//            foreach ($shop['Orderitems'] as $item) {
-//                $quantity += $item['quantity'];
-//                $subtotal += $item['subtotal'];
-//                $total += $item['subtotal'];
-//                $order_item_count++;
-//            }
-//            $order['order_item_count'] = $order_item_count;
-//            $order['quantity'] = $quantity;
-//            $order['subtotal'] = sprintf('%01.2f', $subtotal);
-//            $order['total'] = sprintf('%01.2f', $total);
-//
-//            $this->getController()->getRequest()->getSession()->write('Shop.Order', $order);
-//            return true;
-//        }
-//        else {
-//            $this->clear();
-//            return false;
-//        }
-    }
 
 ////////////////////////////////////////////////////////////////////////////////
 
     public function add($id, $quantity = 1)
     {
-
+        //Registering the controller from which the Component will be called
         $controller = $this->_registry->getController();
 
         if(!is_numeric($quantity) || $quantity < 1) {
             $quantity = 1;
         }
-
-//        $quantity = abs($quantity);
-//
         $data = [];
-
+        //Getting the product object by its ID
         $product = $controller->Products->get($id, [
             'contain' => []
         ]);
@@ -90,7 +56,7 @@ class CartComponent extends Component {
                 'price' => sprintf('%01.2f', $data['price'])
             ];
         }
-
+        //Inserting the values into the session
         $this->getController()->getRequest()->getSession()->write('Shop.Orderitems.' . $id, $data);
         $this->getController()->getRequest()->getSession()->write('Shop.WholesaleOrderitems.' . $id, $wholesale_data);
 
@@ -101,8 +67,11 @@ class CartComponent extends Component {
 ////////////////////////////////////////////////////////////////////////////////
 
     public function remove($id) {
+        //Check if the product exists in the Shop session
         if($this->getController()->getRequest()->getSession()->read('Shop.Orderitems.' . $id)) {
+            //Reading the product information from the Shop session by its ID
             $product = $this->getController()->getRequest()->getSession()->read('Shop.Orderitems.' . $id);
+            //Deleting the product from the Shop session
             $this->getController()->getRequest()->getSession()->delete('Shop.Orderitems.' . $id);
             $this->cart();
             return $product;
@@ -114,107 +83,136 @@ class CartComponent extends Component {
 
     public function clear()
     {
+        //Clearing the Shop session
         $this->getController()->getRequest()->getSession()->delete('Shop');
     }
 
     public function updateQty($id,$quantity){
+        //Registering the controller from which the Component will be called
         $controller = $this->_registry->getController();
+        //Reading the product information from the Shop and Auth session
         $cart = $this->getController()->getRequest()->getSession()->read('Shop');
         $user = $this->getController()->getRequest()->getSession()->read('Auth');
         $data = [];
+        //Getting the product object by its ID
         $product = $controller->Products->get($id, ['contain' => []]);
         if ($user->user_type_id == 2){
+            //Populating the data array with the product information for wholesale customers
             $data = [
                 'product_id' => $product->id,
                 'name' => $product->name,
                 'quantity' => $quantity,
                 'price' => sprintf('%01.2f', $product->wholesale_price)
             ];
+            ////Inserting the values into the session
             $this->getController()->getRequest()->getSession()->write('Shop.WholesaleOrderitems.' . $id, $data);
         }
         elseif ($product->sale_price != null){
+            //Populating the data array with the product information if there is sale price
             $data = [
                 'product_id' => $product->id,
                 'name' => $product->name,
                 'quantity' => $quantity,
                 'price' => sprintf('%01.2f', $product->sale_price)
             ];
+            //Inserting the values into the session
             $this->getController()->getRequest()->getSession()->write('Shop.Orderitems.' . $id, $data);
         }
         else{
+            //Populating the data array with the product information for regular customer
             $data = [
                 'product_id' => $product->id,
                 'name' => $product->name,
                 'quantity' => $quantity,
                 'price' => sprintf('%01.2f', $product->price)
             ];
+            //Inserting the values into the session
             $this->getController()->getRequest()->getSession()->write('Shop.Orderitems.' . $id, $data);
         }
     }
 
     public function qtyChange($id,$quantity,$change){
+        //Registering the controller from which the Component will be called
         $controller = $this->_registry->getController();
+        //Reading the product information from the Shop and Auth session
         $cart = $this->getController()->getRequest()->getSession()->read('Shop');
         $user = $this->getController()->getRequest()->getSession()->read('Auth');
         $data = [];
+        //Getting the product object by its ID
         $product = $controller->Products->get($id, ['contain' => []]);
+        //Check if the quantity needs to be decreased
         if ($change === 'minus') {
             $newquantity = $quantity - 1;
             if ($newquantity < 1) {$quantity = $quantity + 1;}
+            // Check if the user is Wholesale user
         if ($user !== null and $user->user_type_id == 2){
+            //Populating the data array with the product information for wholesale customers
             $data = [
                 'product_id' => $product->id,
                 'name' => $product->name,
                 'quantity' => $quantity - 1,
                 'price' => sprintf('%01.2f', $product->wholesale_price)
             ];
+            //Inserting the values into the session
             $this->getController()->getRequest()->getSession()->write('Shop.WholesaleOrderitems.' . $id, $data);
         }
         elseif ($product->sale_price != null){
+            //Populating the data array with the product information with sale price
             $data = [
                 'product_id' => $product->id,
                 'name' => $product->name,
                 'quantity' => $quantity - 1,
                 'price' => sprintf('%01.2f', $product->sale_price)
             ];
+            //Inserting the values into the session
             $this->getController()->getRequest()->getSession()->write('Shop.Orderitems.' . $id, $data);
         }
         else{
+            //Populating the data array with the product information for regular customer
             $data = [
                 'product_id' => $product->id,
                 'name' => $product->name,
                 'quantity' => $quantity - 1,
                 'price' => sprintf('%01.2f', $product->price)
             ];
+            //Inserting the values into the session
             $this->getController()->getRequest()->getSession()->write('Shop.Orderitems.' . $id, $data);
         }
         }
+        //If not decreasing then the quantity should be increased
         else {
+            //Check if the user is the Wholesale user
             if ($user !== null and $user->user_type_id == 2){
+                //Populating the data array with the product information for wholesale customer
                 $data = [
                     'product_id' => $product->id,
                     'name' => $product->name,
                     'quantity' => $quantity + 1,
                     'price' => sprintf('%01.2f', $product->wholesale_price)
                 ];
+                //Inserting the values into the session
                 $this->getController()->getRequest()->getSession()->write('Shop.WholesaleOrderitems.' . $id, $data);
             }
             elseif ($product->sale_price != null){
+                //Populating the data array with the product information if there is sale price
                 $data = [
                     'product_id' => $product->id,
                     'name' => $product->name,
                     'quantity' => $quantity + 1,
                     'price' => sprintf('%01.2f', $product->sale_price)
                 ];
+                //Inserting the values into the session
                 $this->getController()->getRequest()->getSession()->write('Shop.Orderitems.' . $id, $data);
             }
             else{
+                //Populating the data array with the product information for regular customer
                 $data = [
                     'product_id' => $product->id,
                     'name' => $product->name,
                     'quantity' => $quantity + 1,
                     'price' => sprintf('%01.2f', $product->price)
                 ];
+                //Inserting the values into the session
                 $this->getController()->getRequest()->getSession()->write('Shop.Orderitems.' . $id, $data);
             }
         }

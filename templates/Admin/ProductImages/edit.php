@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\ProductImage $productImage
  * @var string[]|\Cake\Collection\CollectionInterface $products
  */
-$formTemplate= [
+$formTemplate = [
     'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
     'label' => '<label{{attrs}} class="form-label">{{text}}</label>',
     'input' => '<input type="{{type}}" name="{{name}}" class="form-control"{{attrs}}/>',
@@ -16,9 +16,7 @@ $this->Form->setTemplates($formTemplate);
                     <?php
                     echo $this->Form->control('product_id', ['options' => $products, 'empty' => true]);
                     echo $this->Form->control('description');
-                    //echo $this->Form->control('created_at');
-                    //echo $this->Form->control('modified_at');
                     ?>
 <br>
-<?= $this->Form->button(__('Submit'),['class' => 'btn btn-primary']) ?>
+<?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
 <?= $this->Form->end() ?>

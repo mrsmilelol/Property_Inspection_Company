@@ -55,27 +55,51 @@ $this->layout = 'front';
                     <div id="content-eleyas">
                         <div id="my-tab-content" class="tab-content">
                             <div class="tab-pane active" id="view1">
-                                <a class="venobox" href="img/blog/single/1.jpg" data-gall="gallery" title=""><?= $this->Html->image('blog/single/1.jpg'); ?><span>View larger<i class="fa fa-search-plus"></i></span></a>
+                                <a class="venobox" href="img/blog/single/1.jpg" data-gall="gallery"
+                                   title=""><?= $this->Html->image('blog/single/1.jpg'); ?><span>View larger<i
+                                            class="fa fa-search-plus"></i></span></a>
                             </div>
                             <div class="tab-pane" id="view2">
-                                <a class="venobox" href="img/blog/single/2.jpg" data-gall="gallery" title=""><?= $this->Html->image('blog/single/2.jpg'); ?><span>View larger<i class="fa fa-search-plus"></i></span></a>
+                                <a class="venobox" href="img/blog/single/2.jpg" data-gall="gallery"
+                                   title=""><?= $this->Html->image('blog/single/2.jpg'); ?><span>View larger<i
+                                            class="fa fa-search-plus"></i></span></a>
                             </div>
                             <div class="tab-pane" id="view3">
-                                <a class="venobox" href="img/blog/single/3.jpg" data-gall="gallery" title=""><?= $this->Html->image('blog/single/3.jpg'); ?><span>View larger<i class="fa fa-search-plus"></i></span></a>
+                                <a class="venobox" href="img/blog/single/3.jpg" data-gall="gallery"
+                                   title=""><?= $this->Html->image('blog/single/3.jpg'); ?><span>View larger<i
+                                            class="fa fa-search-plus"></i></span></a>
                             </div>
                             <div class="tab-pane" id="view4">
-                                <a class="venobox" href="img/blog/single/4.jpg" data-gall="gallery" title=""><?= $this->Html->image('blog/single/4.jpg'); ?><span>View larger<i class="fa fa-search-plus"></i></span></a>
+                                <a class="venobox" href="img/blog/single/4.jpg" data-gall="gallery"
+                                   title=""><?= $this->Html->image('blog/single/4.jpg'); ?><span>View larger<i
+                                            class="fa fa-search-plus"></i></span></a>
                             </div>
                         </div>
                         <div id="viewproduct" class="nav nav-tabs product-view bxslider" data-tabs="tabs">
-                            <div class="pro-view active"><a href="#view1" data-toggle="tab"><?= $this->Html->image('blog/single/s1.jpg'); ?></a></div>
-                            <div class="pro-view"><a href="#view2" data-toggle="tab"><?= $this->Html->image('blog/single/s2.jpg'); ?></a></div>
-                            <div class="pro-view"><a href="#view3" data-toggle="tab"><?= $this->Html->image('blog/single/s3.jpg'); ?></a></div>
-                            <div class="pro-view"><a href="#view4" data-toggle="tab"><?= $this->Html->image('blog/single/s4.jpg'); ?></a></div>
-                            <div class="pro-view"><a href="#view1" data-toggle="tab"><?= $this->Html->image('blog/single/s1.jpg'); ?></a></div>
-                            <div class="pro-view"><a href="#view2" data-toggle="tab"><?= $this->Html->image('blog/single/s2.jpg'); ?></a></div>
-                            <div class="pro-view"><a href="#view3" data-toggle="tab"><?= $this->Html->image('blog/single/s3.jpg'); ?></a></div>
-                            <div class="pro-view"><a href="#view4" data-toggle="tab"><?= $this->Html->image('blog/single/s4.jpg'); ?></a></div>
+                            <div class="pro-view active"><a href="#view1"
+                                                            data-toggle="tab"><?= $this->Html->image('blog/single/s1.jpg'); ?></a>
+                            </div>
+                            <div class="pro-view"><a href="#view2"
+                                                     data-toggle="tab"><?= $this->Html->image('blog/single/s2.jpg'); ?></a>
+                            </div>
+                            <div class="pro-view"><a href="#view3"
+                                                     data-toggle="tab"><?= $this->Html->image('blog/single/s3.jpg'); ?></a>
+                            </div>
+                            <div class="pro-view"><a href="#view4"
+                                                     data-toggle="tab"><?= $this->Html->image('blog/single/s4.jpg'); ?></a>
+                            </div>
+                            <div class="pro-view"><a href="#view1"
+                                                     data-toggle="tab"><?= $this->Html->image('blog/single/s1.jpg'); ?></a>
+                            </div>
+                            <div class="pro-view"><a href="#view2"
+                                                     data-toggle="tab"><?= $this->Html->image('blog/single/s2.jpg'); ?></a>
+                            </div>
+                            <div class="pro-view"><a href="#view3"
+                                                     data-toggle="tab"><?= $this->Html->image('blog/single/s3.jpg'); ?></a>
+                            </div>
+                            <div class="pro-view"><a href="#view4"
+                                                     data-toggle="tab"><?= $this->Html->image('blog/single/s4.jpg'); ?></a>
+                            </div>
                         </div>
                         <!-- BX Slider Navigation -->
                         <div class="outside">
@@ -98,16 +122,16 @@ $this->layout = 'front';
                     </div>
 
                     <div class="product-attributes clearfix">
-								<span id="quantity-wanted-p" class="pull-left">
-									<span class="dec qtybutton">-</span>
-									<input type="text" class="cart-plus-minus-box" value="1">
-									<span class="inc qtybutton">+</span>
-								</span>
+                                <span id="quantity-wanted-p" class="pull-left">
+                                    <span class="dec qtybutton">-</span>
+                                    <input type="text" class="cart-plus-minus-box" value="1">
+                                    <span class="inc qtybutton">+</span>
+                                </span>
                         <span>
-									<a href="cart.html" class="cart-btn">
-									<i class="fa fa-shopping-cart"></i>
-									<span>Add to Cart</span></a>
-								</span>
+                                    <a href="cart.html" class="cart-btn">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span>Add to Cart</span></a>
+                                </span>
                     </div>
                 </div>
             </div>
@@ -116,15 +140,23 @@ $this->layout = 'front';
             <div class="col-md-12">
                 <div class="p-details-tab">
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#more-info" aria-controls="more-info" role="tab" data-toggle="tab">MORE INFO</a></li>
-                        <li role="presentation"><a href="#data" aria-controls="data" role="tab" data-toggle="tab">DATA SHEET</a></li>
-                        <li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">REVIEWS</a></li>
+                        <li role="presentation" class="active"><a href="#more-info" aria-controls="more-info" role="tab"
+                                                                  data-toggle="tab">MORE INFO</a></li>
+                        <li role="presentation"><a href="#data" aria-controls="data" role="tab" data-toggle="tab">DATA
+                                SHEET</a></li>
+                        <li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">REVIEWS</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="clearfix"></div>
                 <div class="tab-content review">
                     <div role="tabpanel" class="tab-pane active" id="more-info">
-                        <p>Fashion has been creating well-designed collections since 2010. The brand offers feminine designs delivering stylish separates and statement dresses which have since evolved into a full ready-to-wear collection in which every item is a vital part of a woman's wardrobe. The result? Cool, easy, chic looks with youthful elegance and unmistakable signature style. All the beautiful pieces are made in Italy and manufactured with the greatest attention. Now Fashion extends to a range of accessories including shoes, hats, belts and more!</p>
+                        <p>Fashion has been creating well-designed collections since 2010. The brand offers feminine
+                            designs delivering stylish separates and statement dresses which have since evolved into a
+                            full ready-to-wear collection in which every item is a vital part of a woman's wardrobe. The
+                            result? Cool, easy, chic looks with youthful elegance and unmistakable signature style. All
+                            the beautiful pieces are made in Italy and manufactured with the greatest attention. Now
+                            Fashion extends to a range of accessories including shoes, hats, belts and more!</p>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="data">
                         <table class="table-data-sheet">

@@ -36,57 +36,57 @@ $userType = $this->request->getSession()->read('Auth.user_type_id');
                 </div>
                 <br>
                 <?php if (!empty($order->products)) : ?>
-                <h4><?= __('Related products') ?></h4>
-                <div class="myaccount-table table-responsive">
-                    <table class="table-myaccount table-bordered">
-                        <tr>
-                            <th><?= __('Name') ?></th>
-                            <th><?= __('Quantity') ?></th>
-                            <th><?= __('Normal price') ?></th>
-                            <?php if ($userType === 3) : ?>
-                            <th><?= __('Sale price') ?></th>
-                            <?php endif; ?>
-                            <?php if ($userType === 2) : ?>
-                            <th><?= __('Wholesale price') ?></th>
-                            <?php endif; ?>
-                        </tr>
-                        <?php foreach ($order->products as $products) : ?>
+                    <h4><?= __('Related products') ?></h4>
+                    <div class="myaccount-table table-responsive">
+                        <table class="table-myaccount table-bordered">
                             <tr>
-                                <td><?= h($products->name) ?></td>
-                                <td><?= h($products->qty) ?></td>
-                                <td><?= $this->Number->format(h($products->price)) ?></td>
+                                <th><?= __('Name') ?></th>
+                                <th><?= __('Quantity') ?></th>
+                                <th><?= __('Normal price') ?></th>
                                 <?php if ($userType === 3) : ?>
-                                <td><?= $this->Number->format(h($products->sale_price)) ?></td>
+                                    <th><?= __('Sale price') ?></th>
                                 <?php endif; ?>
                                 <?php if ($userType === 2) : ?>
-                                <td><?= $this->Number->format(h($products->wholesale_price)) ?></td>
+                                    <th><?= __('Wholesale price') ?></th>
                                 <?php endif; ?>
                             </tr>
-                        <?php endforeach; ?>
-                    </table>
-                </div>
+                            <?php foreach ($order->products as $products) : ?>
+                                <tr>
+                                    <td><?= h($products->name) ?></td>
+                                    <td><?= h($products->qty) ?></td>
+                                    <td><?= $this->Number->format(h($products->price)) ?></td>
+                                    <?php if ($userType === 3) : ?>
+                                        <td><?= $this->Number->format(h($products->sale_price)) ?></td>
+                                    <?php endif; ?>
+                                    <?php if ($userType === 2) : ?>
+                                        <td><?= $this->Number->format(h($products->wholesale_price)) ?></td>
+                                    <?php endif; ?>
+                                </tr>
+                            <?php endforeach; ?>
+                        </table>
+                    </div>
                 <?php endif; ?>
                 <br>
                 <?php if (!empty($order->cancelled_orders)) : ?>
-                <h4><?= __('Related order cancellation requests') ?></h4>
-                <div class="myaccount-table table-responsive">
-                    <table class="table-myaccount table-bordered">
-                        <tr>
-                            <th><?= __('Request no.') ?></th>
-                            <th><?= __('Reason') ?></th>
-                            <th><?= __('Status') ?></th>
-                            <th><?= __('Requested at') ?></th>
-                        </tr>
-                        <?php foreach ($order->cancelled_orders as $cancelledOrders) : ?>
+                    <h4><?= __('Related order cancellation requests') ?></h4>
+                    <div class="myaccount-table table-responsive">
+                        <table class="table-myaccount table-bordered">
                             <tr>
-                                <td><?= h($cancelledOrders->id) ?></td>
-                                <td><?= h($cancelledOrders->reason) ?></td>
-                                <td><?= h($cancelledOrders->status) ?></td>
-                                <td><?= h($cancelledOrders->created_at) ?></td>
+                                <th><?= __('Request no.') ?></th>
+                                <th><?= __('Reason') ?></th>
+                                <th><?= __('Status') ?></th>
+                                <th><?= __('Requested at') ?></th>
                             </tr>
-                        <?php endforeach; ?>
-                    </table>
-                </div>
+                            <?php foreach ($order->cancelled_orders as $cancelledOrders) : ?>
+                                <tr>
+                                    <td><?= h($cancelledOrders->id) ?></td>
+                                    <td><?= h($cancelledOrders->reason) ?></td>
+                                    <td><?= h($cancelledOrders->status) ?></td>
+                                    <td><?= h($cancelledOrders->created_at) ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </table>
+                    </div>
                 <?php endif; ?>
             </div>
         </div>

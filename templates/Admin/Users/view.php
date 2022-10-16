@@ -58,7 +58,7 @@ $userID = $this->request->getSession()->read('Auth.id');
                 <h4><?= __('Related orders') ?></h4>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
-                    <tr>
+                        <tr>
                             <th><?= __('Order no.') ?></th>
                             <th><?= __('Total') ?></th>
                             <th><?= __('Created at') ?></th>
@@ -66,29 +66,29 @@ $userID = $this->request->getSession()->read('Auth.id');
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($user->orders as $orders) : ?>
-                        <tr>
-                            <td><?= h($orders->id) ?></td>
-                            <td><?= $this->Number->format(h($orders->total)) ?></td>
-                            <td><?= h($orders->created_at) ?></td>
-                            <td><?= h($orders->modified_at) ?></td>
-                            <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'Orders', 'action' => 'view', $orders->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'Orders', 'action' => 'edit', $orders->id]) ?>
-                                <!--<?= $this->Form->postLink(__('Delete'), ['controller' => 'Orders', 'action' => 'delete', $orders->id], ['confirm' => __('Are you sure you want to delete # {0}?', $orders->id)]) ?>-->
-                            </td>
-                        </tr>
+                            <tr>
+                                <td><?= h($orders->id) ?></td>
+                                <td><?= $this->Number->format(h($orders->total)) ?></td>
+                                <td><?= h($orders->created_at) ?></td>
+                                <td><?= h($orders->modified_at) ?></td>
+                                <td class="actions">
+                                    <?= $this->Html->link(__('View'), ['controller' => 'Orders', 'action' => 'view', $orders->id]) ?>
+                                    <?= $this->Html->link(__('Edit'), ['controller' => 'Orders', 'action' => 'edit', $orders->id]) ?>
+                                    <!--<?= $this->Form->postLink(__('Delete'), ['controller' => 'Orders', 'action' => 'delete', $orders->id], ['confirm' => __('Are you sure you want to delete # {0}?', $orders->id)]) ?>-->
+                                </td>
+                            </tr>
                         <?php endforeach; ?>
                     </table>
                 </div>
-                <?php endif; ?>
-            </div>
-            <br>
-            <div class="related">
-                <?php if (!empty($user->payments)) : ?>
+            <?php endif; ?>
+        </div>
+        <br>
+        <div class="related">
+            <?php if (!empty($user->payments)) : ?>
                 <h4><?= __('Related payments') ?></h4>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
-                    <tr>
+                        <tr>
                             <th><?= __('ID') ?></th>
                             <th><?= __('User ID') ?></th>
                             <th><?= __('Payment type') ?></th>
@@ -101,22 +101,22 @@ $userID = $this->request->getSession()->read('Auth.id');
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($user->payments as $payments) : ?>
-                        <tr>
-                            <td><?= h($payments->id) ?></td>
-                            <td><?= h($payments->user_id) ?></td>
-                            <td><?= h($payments->payment_type) ?></td>
-                            <td><?= h($payments->provider) ?></td>
-                            <td><?= h($payments->account_no) ?></td>
-                            <td><?= h($payments->security_no) ?></td>
-                            <td><?= h($payments->expiry_date) ?></td>
-                            <td><?= h($payments->created_at) ?></td>
-                            <td><?= h($payments->modified_at) ?></td>
-                            <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'Payments', 'action' => 'view', $payments->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'Payments', 'action' => 'edit', $payments->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Payments', 'action' => 'delete', $payments->id], ['confirm' => __('Are you sure you want to delete # {0}?', $payments->id)]) ?>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td><?= h($payments->id) ?></td>
+                                <td><?= h($payments->user_id) ?></td>
+                                <td><?= h($payments->payment_type) ?></td>
+                                <td><?= h($payments->provider) ?></td>
+                                <td><?= h($payments->account_no) ?></td>
+                                <td><?= h($payments->security_no) ?></td>
+                                <td><?= h($payments->expiry_date) ?></td>
+                                <td><?= h($payments->created_at) ?></td>
+                                <td><?= h($payments->modified_at) ?></td>
+                                <td class="actions">
+                                    <?= $this->Html->link(__('View'), ['controller' => 'Payments', 'action' => 'view', $payments->id]) ?>
+                                    <?= $this->Html->link(__('Edit'), ['controller' => 'Payments', 'action' => 'edit', $payments->id]) ?>
+                                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Payments', 'action' => 'delete', $payments->id], ['confirm' => __('Are you sure you want to delete # {0}?', $payments->id)]) ?>
+                                </td>
+                            </tr>
                         <?php endforeach; ?>
                     </table>
                 </div>
@@ -128,9 +128,7 @@ $userID = $this->request->getSession()->read('Auth.id');
                 <h4><?= __('Related user addresses') ?></h4>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
-                    <tr>
-                            <!--<th><?/*= __('ID') */?></th>
-                            <th><?/*= __('User ID') */?></th>-->
+                        <tr>
                             <th><?= __('Address line 1') ?></th>
                             <th><?= __('Address line 2') ?></th>
                             <th><?= __('City') ?></th>
@@ -164,12 +162,12 @@ $userID = $this->request->getSession()->read('Auth.id');
                         <?php endforeach; ?>
                     </table>
                 </div>
-                <?php endif; ?>
-            </div>
+            <?php endif; ?>
         </div>
     </div>
+</div>
 <script>
-    $(document).ready( function () {
+    $(document).ready(function () {
         $('#userTable').DataTable();
-    } );
+    });
 </script>

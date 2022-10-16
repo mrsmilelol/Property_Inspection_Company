@@ -37,6 +37,7 @@ class OrdersController extends AppController
      */
     public function view($id = null)
     {
+        //Getting the order object by its ID
         $order = $this->Orders->get($id, [
             'contain' => ['Users', 'Products', 'CancelledOrders', 'Payments'],
         ]);
@@ -50,7 +51,7 @@ class OrdersController extends AppController
                 }
             }
         }
-
+        //Passing variables into the template
         $this->set(compact('order', 'OrderProducts'));
     }
 }

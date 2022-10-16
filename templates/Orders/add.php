@@ -19,12 +19,12 @@
             <fieldset>
                 <legend><?= __('Add Order') ?></legend>
                 <?php
-                    echo $this->Form->control('total');
-                    echo $this->Form->control('status');
-                    echo $this->Form->control('user_id', ['options' => $users]);
-                    echo $this->Form->control('created_at');
-                    echo $this->Form->control('modified_at');
-                    echo $this->Form->control('products._ids', ['options' => $products]);
+                echo $this->Form->control('total');
+                echo $this->Form->control('status');
+                echo $this->Form->control('user_id', ['options' => $users]);
+                echo $this->Form->control('created_at');
+                echo $this->Form->control('modified_at');
+                echo $this->Form->control('products._ids', ['options' => $products]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

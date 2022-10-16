@@ -25,37 +25,32 @@ echo $this->Html->script('//cdn.ckeditor.com/ckeditor5/35.2.0/classic/ckeditor.j
     <div class="card-body">
         <table class="table table-bordered" id="products" width="100%" cellspacing="0">
             <?= $this->Form->create($product, ['type' => 'file']) ?>
-                <?php
-                    //echo $this->Form->control('category_id', ['options' => $categories, 'empty' => true]);
-                    //echo $this->Form->control('inventory_id', ['options' => $productInventories, 'empty' => true]);
-                    echo $this->Form->control('categories._ids', [
-                        'options' => $categories,
-                        'class' => 'category_select_main',
-                        'id' => 'select_category_main',
-                        'style' => 'width:600px',
-                        'label' => ['class' => 'required', 'text' => 'Categories']]);
-                    echo $this->Form->control('name', ['label' => ['class' => 'required']]);
-                    echo $this->Form->control('description', ['type' => 'text', 'id' => 'editor']);
-                    echo $this->Form->control('units_in_stock', ['label' => ['class' => 'required', 'text' => 'Units in stock']]);
-                    echo $this->Form->control('material', ['label' => ['class' => 'required']]);
-                    echo $this->Form->control('brand', ['label' => ['class' => 'required']]);
-                    echo $this->Form->control('style', ['label' => ['class' => 'required']]);
-                    //echo $this->Form->control('style_id', ['options' => $styles, 'empty' => true]);
-                    echo $this->Form->control('colour', ['label' => ['class' => 'required']]);
-                    echo $this->Form->control('size', ['label' => ['class' => 'required', 'text' => 'Size (cm) (e.g. w-122.682 x d-122.7 x h-45.72)']]);
-                    echo $this->Form->control('weight', ['label' => ['class' => 'required', 'text' => 'Weight (kg)']]);
-                    echo $this->Form->control('finish', ['label' => 'Finish (e.g. Natural Oak)']);
-                    echo $this->Form->control('manufacturing', ['label' => 'Manufacturer']);
-                    echo $this->Form->control('price', ['label' => ['class' => 'required', 'text' => 'Normal price']]);
-                    echo $this->Form->control('sale_price', ['label' => 'Sale price']);
-                    echo $this->Form->control('wholesale_price', ['label' => 'Wholesale price']);
-                    echo $this->Form->label('Product images', 'Product images', ['class' => 'required']);
-                    ?>
-                    <br>
-                    <?php echo $this->Form->file('image_file. ', ['type' => 'file', 'multiple' => 'multiple']);
-                    //echo $this->Form->control('created_at');
-                    //echo $this->Form->control('modified_at');
-                    ?>
+            <?php
+            echo $this->Form->control('categories._ids', [
+                'options' => $categories,
+                'class' => 'category_select_main',
+                'id' => 'select_category_main',
+                'style' => 'width:600px',
+                'label' => ['class' => 'required', 'text' => 'Categories']]);
+            echo $this->Form->control('name', ['label' => ['class' => 'required']]);
+            echo $this->Form->control('description', ['type' => 'text', 'id' => 'editor']);
+            echo $this->Form->control('units_in_stock', ['label' => ['class' => 'required', 'text' => 'Units in stock']]);
+            echo $this->Form->control('material', ['label' => ['class' => 'required']]);
+            echo $this->Form->control('brand', ['label' => ['class' => 'required']]);
+            echo $this->Form->control('style', ['label' => ['class' => 'required']]);
+            echo $this->Form->control('colour', ['label' => ['class' => 'required']]);
+            echo $this->Form->control('size', ['label' => ['class' => 'required', 'text' => 'Size (cm) (e.g. w-122.682 x d-122.7 x h-45.72)']]);
+            echo $this->Form->control('weight', ['label' => ['class' => 'required', 'text' => 'Weight (kg)']]);
+            echo $this->Form->control('finish', ['label' => 'Finish (e.g. Natural Oak)']);
+            echo $this->Form->control('manufacturing', ['label' => 'Manufacturer']);
+            echo $this->Form->control('price', ['label' => ['class' => 'required', 'text' => 'Normal price']]);
+            echo $this->Form->control('sale_price', ['label' => 'Sale price']);
+            echo $this->Form->control('wholesale_price', ['label' => 'Wholesale price']);
+            echo $this->Form->label('Product images', 'Product images', ['class' => 'required']);
+            ?>
+            <br>
+            <?php echo $this->Form->file('image_file. ', ['type' => 'file', 'multiple' => 'multiple']);
+            ?>
         </table>
         <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
         <?= $this->Form->end() ?>
@@ -66,7 +61,7 @@ echo $this->Html->script('//cdn.ckeditor.com/ckeditor5/35.2.0/classic/ckeditor.j
             <?php if (!empty($product->order_items)) : ?>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
-                     <tr>
+                        <tr>
                             <th data-visible="false"><?= __('ID') ?></th>
                             <th><?= __('Order ID') ?></th>
                             <th><?= __('Product ID') ?></th>
@@ -81,8 +76,10 @@ echo $this->Html->script('//cdn.ckeditor.com/ckeditor5/35.2.0/classic/ckeditor.j
                                 <td><?= h($orderItems->order_id) ?></td>
                                 <td><?= h($orderItems->product_id) ?></td>
                                 <td><?= h($orderItems->quantity) ?></td>
-                                <th data-visible="false"><?= h($orderItems->created_at) ?></td>
-                                <th data-visible="false"><?= h($orderItems->modified_at) ?></td>
+                                <th data-visible="false">
+                                <?= h($orderItems->created_at) ?></td>
+                                <th data-visible="false">
+                                <?= h($orderItems->modified_at) ?></td>
                                 <td class="actions">
                                     <?= $this->Html->link(__('View'), ['controller' => 'OrderItems', 'action' => 'view', $orderItems->id]) ?>
                                     <?= $this->Html->link(__('Edit'), ['controller' => 'OrderItems', 'action' => 'edit', $orderItems->id]) ?>
@@ -114,10 +111,12 @@ echo $this->Html->script('//cdn.ckeditor.com/ckeditor5/35.2.0/classic/ckeditor.j
                                 <td class="actions">
                                     <?= $this->Html->link(__('View'), ['controller' => 'Categories', 'action' => 'view', $categories->id]) ?>
                                     <?= $this->Html->link(__('Edit'), ['controller' => 'Categories', 'action' => 'edit', $categories->id]) ?>
-<!--                                    --><!--<?//= $this->Form->postLink(__('Delete'),
-//                                        ['controller' => 'Categories', 'action' => 'delete', $categories->id],
-//                                        ['confirm' => __('Are you sure you want to delete # {0}?', $categories->id)])
-//                                    ?>-->
+                                    <?= $this->Form->postLink(
+                                        __('Delete'),
+                                        ['controller' => 'Categories', 'action' => 'delete', $categories->id],
+                                        ['confirm' => __('Are you sure you want to delete # {0}?', $categories->id)]
+                                    )
+                                    ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -140,18 +139,18 @@ echo $this->Html->script('//cdn.ckeditor.com/ckeditor5/35.2.0/classic/ckeditor.j
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($product->product_images as $productImages) : ?>
-                        <tr>
-                            <td><?= h($productImages->id) ?></td>
-                            <td><?= h($productImages->product_id) ?></td>
-                            <td><?= $this->Html->image($productImages->description, ['alt' => 'CakePHP','class' => 'img-fluid','height' => '200','width' => '200']);?></td>
-                            <td><?= h($productImages->created_at) ?></td>
-                            <td><?= h($productImages->modified_at) ?></td>
-                            <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'ProductImages', 'action' => 'view', $productImages->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'ProductImages', 'action' => 'edit', $productImages->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'ProductImages', 'action' => 'delete', $productImages->id], ['confirm' => __('Are you sure you want to delete # {0}?', $productImages->id)]) ?>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td><?= h($productImages->id) ?></td>
+                                <td><?= h($productImages->product_id) ?></td>
+                                <td><?= $this->Html->image($productImages->description, ['alt' => 'CakePHP', 'class' => 'img-fluid', 'height' => '200', 'width' => '200']); ?></td>
+                                <td><?= h($productImages->created_at) ?></td>
+                                <td><?= h($productImages->modified_at) ?></td>
+                                <td class="actions">
+                                    <?= $this->Html->link(__('View'), ['controller' => 'ProductImages', 'action' => 'view', $productImages->id]) ?>
+                                    <?= $this->Html->link(__('Edit'), ['controller' => 'ProductImages', 'action' => 'edit', $productImages->id]) ?>
+                                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'ProductImages', 'action' => 'delete', $productImages->id], ['confirm' => __('Are you sure you want to delete # {0}?', $productImages->id)]) ?>
+                                </td>
+                            </tr>
                         <?php endforeach; ?>
                     </table>
                 </div>
@@ -161,13 +160,13 @@ echo $this->Html->script('//cdn.ckeditor.com/ckeditor5/35.2.0/classic/ckeditor.j
 </div>
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('.category_select_main').select2();
         ClassicEditor
-            .create( document.querySelector( '#editor' ) )
-            .catch( error => {
-                console.error( error );
-            } );
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
     });
 </script>
 <style>

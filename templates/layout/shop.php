@@ -26,7 +26,8 @@ $this->layout = 'front';
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="breadcrumb-single">
                     <ul class="breadcrumbs">
-                        <li><a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'main'])?>" title="Return to Home">
+                        <li><a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'main']) ?>"
+                               title="Return to Home">
                                 <i class="fa fa-home"></i>
                                 Home
                             </a></li>
@@ -78,7 +79,7 @@ $this->layout = 'front';
                             <div class="price-filter">
                                 <div class="price-slider-amount">
                                     <label>Range:</label>
-                                    <input type="text" id="amount" name="price"  placeholder="Add Your Price" />
+                                    <input type="text" id="amount" name="price" placeholder="Add Your Price"/>
                                 </div>
                                 <div id="slider-range"></div>
                             </div>
@@ -160,10 +161,12 @@ $this->layout = 'front';
                         <!-- Nav tabs -->
                         <ul class="tab-menu" role="tablist">
                             <li role="presentation" class="active">
-                                <a href="#grid" aria-controls="grid" role="tab" data-toggle="tab"><i class="fa fa-th-large"></i></a>
+                                <a href="#grid" aria-controls="grid" role="tab" data-toggle="tab"><i
+                                        class="fa fa-th-large"></i></a>
                             </li>
                             <li role="presentation">
-                                <a href="#list" aria-controls="list" role="tab" data-toggle="tab"><i class="fa fa-th-list"></i></a>
+                                <a href="#list" aria-controls="list" role="tab" data-toggle="tab"><i
+                                        class="fa fa-th-list"></i></a>
                             </li>
                         </ul>
                         <div class="shop-tab-selectors pull-right">
@@ -194,7 +197,8 @@ $this->layout = 'front';
                                 </div>
                                 <div class="single-shop-form pul-right">
                                     <button type="submit">
-                                        <span>Compare (<strong class="total-compare-val">0</strong>)<i class="fa fa-chevron-right right"></i></span>
+                                        <span>Compare (<strong class="total-compare-val">0</strong>)<i
+                                                class="fa fa-chevron-right right"></i></span>
                                     </button>
                                 </div>
                             </form>
@@ -207,13 +211,15 @@ $this->layout = 'front';
                         <!-- Product display -->
                         <div class="row">
                             <?= $this->fetch('content') ?>
-                            <div class="col-xs-12 col-sm-6 col-md-4 first-in-line first-item-of-tablet-line first-item-of-mobile-line">
+                            <div
+                                class="col-xs-12 col-sm-6 col-md-4 first-in-line first-item-of-tablet-line first-item-of-mobile-line">
                                 <div class="single-product">
                                     <!--product Content-->
                                     <div class="product-img-content">
                                         <!--Product Image-->
                                         <div class="product-img">
-                                            <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'product'])?>" title="Printed Dress">
+                                            <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'product']) ?>"
+                                               title="Printed Dress">
                                                 <a><?= $this->Html->image('featured/1.jpg'); ?> </a>
                                             </a>
                                         </div>
@@ -225,11 +231,14 @@ $this->layout = 'front';
                                             </a>
                                             <a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
                                             </a>
-                                            <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
+                                            <a href="#" title="Quick view" data-toggle="modal"
+                                               data-target="#productModal"><i class="fa fa-expand"></i></a>
                                         </div>
                                     </div>
                                     <div class="product-content">
-                                        <h5><a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'product'])?>" title="Printed Dress">Printed Dress</a></h5>
+                                        <h5>
+                                            <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'product']) ?>"
+                                               title="Printed Dress">Printed Dress</a></h5>
                                         <!--Product Rating-->
                                         <div class="rating-icon">
                                             <i class="fa fa-star"></i>
@@ -251,7 +260,8 @@ $this->layout = 'front';
                                     <div class="product-img-content">
                                         <!--Product Image-->
                                         <div class="product-img">
-                                            <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'product'])?>" title="Printed Summer Dress">
+                                            <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'product']) ?>"
+                                               title="Printed Summer Dress">
                                                 <a><?= $this->Html->image('featured/2.jpg'); ?> </a>
                                             </a>
                                         </div>
@@ -264,11 +274,14 @@ $this->layout = 'front';
                                             </a>
                                             <a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
                                             </a>
-                                            <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
+                                            <a href="#" title="Quick view" data-toggle="modal"
+                                               data-target="#productModal"><i class="fa fa-expand"></i></a>
                                         </div>
                                     </div>
                                     <div class="product-content">
-                                        <h5><a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'product'])?>" title="Printed Summer Dress">Printed Summer Dress</a></h5>
+                                        <h5>
+                                            <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'product']) ?>"
+                                               title="Printed Summer Dress">Printed Summer Dress</a></h5>
                                         <!--Product Rating-->
                                         <div class="rating-icon">
                                             <i class="fa fa-star"></i>
@@ -285,7 +298,8 @@ $this->layout = 'front';
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-6 col-md-4 last-in-line first-item-of-tablet-line last-item-of-mobile-line">
+                            <div
+                                class="col-xs-12 col-sm-6 col-md-4 last-in-line first-item-of-tablet-line last-item-of-mobile-line">
                                 <div class="single-product">
                                     <!--product Content-->
                                     <div class="product-img-content">
@@ -303,11 +317,14 @@ $this->layout = 'front';
                                             </a>
                                             <a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
                                             </a>
-                                            <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
+                                            <a href="#" title="Quick view" data-toggle="modal"
+                                               data-target="#productModal"><i class="fa fa-expand"></i></a>
                                         </div>
                                     </div>
                                     <div class="product-content">
-                                        <h5><a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'product'])?>" title="Printed Summer Dress">Printed Summer Dress</a></h5>
+                                        <h5>
+                                            <a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'product']) ?>"
+                                               title="Printed Summer Dress">Printed Summer Dress</a></h5>
                                         <!--Product Rating-->
                                         <div class="rating-icon">
                                             <i class="fa fa-star"></i>
@@ -323,7 +340,8 @@ $this->layout = 'front';
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-6 col-md-4 first-in-line last-line last-item-of-tablet-line first-item-of-mobile-line last-mobile-line">
+                            <div
+                                class="col-xs-12 col-sm-6 col-md-4 first-in-line last-line last-item-of-tablet-line first-item-of-mobile-line last-mobile-line">
                                 <div class="single-product">
                                     <!--product Content-->
                                     <div class="product-img-content">
@@ -341,11 +359,13 @@ $this->layout = 'front';
                                             </a>
                                             <a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
                                             </a>
-                                            <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
+                                            <a href="#" title="Quick view" data-toggle="modal"
+                                               data-target="#productModal"><i class="fa fa-expand"></i></a>
                                         </div>
                                     </div>
                                     <div class="product-content">
-                                        <h5><a href="product-simple.html" title="Printed Chiffon Dress">Printed Chiffon Dress</a></h5>
+                                        <h5><a href="product-simple.html" title="Printed Chiffon Dress">Printed Chiffon
+                                                Dress</a></h5>
                                         <!--Product Rating-->
                                         <div class="rating-icon">
                                             <i class="fa fa-star"></i>
@@ -362,7 +382,8 @@ $this->layout = 'front';
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-6 col-md-4 last-line first-item-of-tablet-line last-mobile-line">
+                            <div
+                                class="col-xs-12 col-sm-6 col-md-4 last-line first-item-of-tablet-line last-mobile-line">
                                 <div class="single-product">
                                     <!--product Content-->
                                     <div class="product-img-content">
@@ -380,7 +401,8 @@ $this->layout = 'front';
                                             </a>
                                             <a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
                                             </a>
-                                            <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
+                                            <a href="#" title="Quick view" data-toggle="modal"
+                                               data-target="#productModal"><i class="fa fa-expand"></i></a>
                                         </div>
                                     </div>
                                     <div class="product-content">
@@ -400,7 +422,8 @@ $this->layout = 'front';
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-6 col-md-4 last-in-line last-line last-item-of-tablet-line last-item-of-mobile-line last-mobile-line">
+                            <div
+                                class="col-xs-12 col-sm-6 col-md-4 last-in-line last-line last-item-of-tablet-line last-item-of-mobile-line last-mobile-line">
                                 <div class="single-product">
                                     <!--product Content-->
                                     <div class="product-img-content">
@@ -418,7 +441,8 @@ $this->layout = 'front';
                                             </a>
                                             <a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
                                             </a>
-                                            <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
+                                            <a href="#" title="Quick view" data-toggle="modal"
+                                               data-target="#productModal"><i class="fa fa-expand"></i></a>
                                         </div>
                                     </div>
                                     <div class="product-content">
@@ -455,7 +479,8 @@ $this->layout = 'front';
                                     </div>
                                     <div class="col-xs-12 col-sm-7 col-md-8">
                                         <div class="deal-product-content ">
-                                            <h5><a href="product-simple.html" title="Printed Summer Dress">Printed Summer Dress</a></h5>
+                                            <h5><a href="product-simple.html" title="Printed Summer Dress">Printed
+                                                    Summer Dress</a></h5>
                                             <!--Product Price-->
                                             <div class="product-price">
                                                 <span class="new-price">£ 34.78</span>
@@ -470,7 +495,9 @@ $this->layout = 'front';
                                                 <i class="fa fa-star"></i>
                                             </div>
                                             <!--Product Action-->
-                                            <p>Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!</p>
+                                            <p>Faded short sleeves t-shirt with high neckline. Soft and stretchy
+                                                material for a comfortable fit. Accessorize with a straw hat and you're
+                                                ready for summer!</p>
                                             <div class="availability">
                                                 <span>In stock</span>
                                             </div>
@@ -480,7 +507,8 @@ $this->layout = 'front';
                                                 </a>
                                                 <a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
                                                 </a>
-                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
+                                                <a href="#" title="Quick view" data-toggle="modal"
+                                                   data-target="#productModal"><i class="fa fa-expand"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -522,7 +550,8 @@ $this->layout = 'front';
                                                 </a>
                                                 <a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
                                                 </a>
-                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
+                                                <a href="#" title="Quick view" data-toggle="modal"
+                                                   data-target="#productModal"><i class="fa fa-expand"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -540,7 +569,8 @@ $this->layout = 'front';
                                     </div>
                                     <div class="col-xs-12 col-sm-7 col-md-8">
                                         <div class="deal-product-content ">
-                                            <h5><a href="product-simple.html" title="Printed Dress">Printed Dress</a></h5>
+                                            <h5><a href="product-simple.html" title="Printed Dress">Printed Dress</a>
+                                            </h5>
                                             <!--Product Price-->
                                             <div class="product-price">
                                                 <span class="new-price">£ 32.20 </span>
@@ -554,7 +584,8 @@ $this->layout = 'front';
                                                 <i class="fa fa-star"></i>
                                             </div>
                                             <!--Product Action-->
-                                            <p>100% cotton double printed dress. Black and white striped top and orange high waisted skater skirt bottom.</p>
+                                            <p>100% cotton double printed dress. Black and white striped top and orange
+                                                high waisted skater skirt bottom.</p>
                                             <div class="availability">
                                                 <span>In stock</span>
                                             </div>
@@ -564,7 +595,8 @@ $this->layout = 'front';
                                                 </a>
                                                 <a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
                                                 </a>
-                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
+                                                <a href="#" title="Quick view" data-toggle="modal"
+                                                   data-target="#productModal"><i class="fa fa-expand"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -582,7 +614,8 @@ $this->layout = 'front';
                                     </div>
                                     <div class="col-xs-12 col-sm-7 col-md-8">
                                         <div class="deal-product-content ">
-                                            <h5><a href="product-simple.html" title="Printed Summer Dress">Printed Summer Dress</a></h5>
+                                            <h5><a href="product-simple.html" title="Printed Summer Dress">Printed
+                                                    Summer Dress</a></h5>
                                             <!--Product Price-->
                                             <div class="product-price">
                                                 <span class="new-price">£ 34.61 </span>
@@ -597,7 +630,8 @@ $this->layout = 'front';
                                                 <i class="fa fa-star"></i>
                                             </div>
                                             <!--Product Action-->
-                                            <p>Long printed dress with thin adjustable straps. V-neckline and wiring under the bust with ruffles at the bottom of the dress.</p>
+                                            <p>Long printed dress with thin adjustable straps. V-neckline and wiring
+                                                under the bust with ruffles at the bottom of the dress.</p>
                                             <div class="availability">
                                                 <span>In stock</span>
                                             </div>
@@ -607,7 +641,8 @@ $this->layout = 'front';
                                                 </a>
                                                 <a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
                                                 </a>
-                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
+                                                <a href="#" title="Quick view" data-toggle="modal"
+                                                   data-target="#productModal"><i class="fa fa-expand"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -625,7 +660,8 @@ $this->layout = 'front';
                                     </div>
                                     <div class="col-xs-12 col-sm-7 col-md-8">
                                         <div class="deal-product-content ">
-                                            <h5><a href="product-simple.html" title="Printed Summer Dress">Printed Summer Dress</a></h5>
+                                            <h5><a href="product-simple.html" title="Printed Summer Dress">Printed
+                                                    Summer Dress</a></h5>
                                             <!--Product Price-->
                                             <div class="product-price">
                                                 <span class="new-price">£ 36.60</span>
@@ -639,7 +675,8 @@ $this->layout = 'front';
                                                 <i class="fa fa-star"></i>
                                             </div>
                                             <!--Product Action-->
-                                            <p>Sleeveless knee-length chiffon dress. V-neckline with elastic under the bust lining. </p>
+                                            <p>Sleeveless knee-length chiffon dress. V-neckline with elastic under the
+                                                bust lining. </p>
                                             <div class="availability">
                                                 <span>In stock</span>
                                             </div>
@@ -649,7 +686,8 @@ $this->layout = 'front';
                                                 </a>
                                                 <a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
                                                 </a>
-                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
+                                                <a href="#" title="Quick view" data-toggle="modal"
+                                                   data-target="#productModal"><i class="fa fa-expand"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -691,7 +729,8 @@ $this->layout = 'front';
                                                 </a>
                                                 <a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
                                                 </a>
-                                                <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
+                                                <a href="#" title="Quick view" data-toggle="modal"
+                                                   data-target="#productModal"><i class="fa fa-expand"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -777,7 +816,8 @@ $this->layout = 'front';
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
                     <div class="modal-product">
@@ -789,7 +829,8 @@ $this->layout = 'front';
                         <div class="product-info">
                             <h1>Diam quis cursus</h1>
                             <div class="price-box">
-                                <p class="price"><span class="special-price"><span class="amount">$132.00</span></span></p>
+                                <p class="price"><span class="special-price"><span class="amount">$132.00</span></span>
+                                </p>
                             </div>
                             <a href="product-details.html" class="see-all">See all features</a>
                             <div class="quick-add-to-cart">
@@ -801,17 +842,25 @@ $this->layout = 'front';
                                 </form>
                             </div>
                             <div class="quick-desc">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est
+                                tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis
+                                justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id
+                                nulla.
                             </div>
                             <div class="social-sharing">
                                 <div class="widget widget_socialsharing_widget">
                                     <h3 class="widget-title-modal">Share this product</h3>
                                     <ul class="social-icons">
-                                        <li><a target="_blank" title="Facebook" href="#" class="facebook social-icon"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a target="_blank" title="Twitter" href="#" class="twitter social-icon"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a target="_blank" title="Pinterest" href="#" class="pinterest social-icon"><i class="fa fa-pinterest"></i></a></li>
-                                        <li><a target="_blank" title="Google +" href="#" class="gplus social-icon"><i class="fa fa-google-plus"></i></a></li>
-                                        <li><a target="_blank" title="LinkedIn" href="#" class="linkedin social-icon"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a target="_blank" title="Facebook" href="#" class="facebook social-icon"><i
+                                                    class="fa fa-facebook"></i></a></li>
+                                        <li><a target="_blank" title="Twitter" href="#" class="twitter social-icon"><i
+                                                    class="fa fa-twitter"></i></a></li>
+                                        <li><a target="_blank" title="Pinterest" href="#" class="pinterest social-icon"><i
+                                                    class="fa fa-pinterest"></i></a></li>
+                                        <li><a target="_blank" title="Google +" href="#" class="gplus social-icon"><i
+                                                    class="fa fa-google-plus"></i></a></li>
+                                        <li><a target="_blank" title="LinkedIn" href="#" class="linkedin social-icon"><i
+                                                    class="fa fa-linkedin"></i></a></li>
                                     </ul>
                                 </div>
                             </div>

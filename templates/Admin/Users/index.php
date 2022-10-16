@@ -10,7 +10,8 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
 <div class="card shadow mb-4">
     <div class="d-sm-flex align-items-center justify-content-between card-header">
         <h1 class="h3 mb-0 text-gray-800"><?= __('Users') ?></h1>
-        <a href="<?= $this->Url->build(['action' => 'add']) ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+        <a href="<?= $this->Url->build(['action' => 'add']) ?>"
+           class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-plus fa-sm text-white-50"></i> Add new user</a>
     </div>
     <div class="card-body">
@@ -28,8 +29,8 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                     <?php $userMaster = $this->request->getSession()->read('Auth.master') ?>
                     <!-- Only displays Change access level button if user has access at top level -->
                     <?php if ($userMaster == 1) : ?>
-                    <th><?= h('Change status') ?></th>
-                    <th><?= h('Change access level') ?></th>
+                        <th><?= h('Change status') ?></th>
+                        <th><?= h('Change access level') ?></th>
                     <?php endif; ?>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
@@ -76,29 +77,57 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                         <?php if ($userMaster == 1) : ?>
                             <?php if ($user->user_type_id == 1 and $user->id !== $userID) : ?>
                             <td>
-                                <?php if ($user->master == 1) : ?>
+                                <?php if ($user->status == 1) : ?>
                                     <?= $this->Form->postLink(
-                                        __('Downgrade'),
-                                        ['action' => 'userMaster', $user->id, $user->master],
-                                        ['block' => true, 'confirm' => __('Are you sure you want to downgrade this user # {0}?', $user->username)]
+                                        __('Deactivate'),
+                                        ['action' => 'userStatus', $user->id, $user->status],
+                                        ['block' => true,
+                                            'confirm' => __(
+                                                'Are you sure you want to deactivate this user # {0}? This user will no longer be able to access the system.',
+                                                $user->username
+                                            )]
                                     ) ?>
                                 <?php else : ?>
                                     <?= $this->Form->postLink(
-                                        __('Upgrade'),
-                                        ['action' => 'userMaster', $user->id, $user->master],
-                                        ['block' => true, 'confirm' => __('Are you sure you want to upgrade this user # {0}?', $user->username)]
+                                        __('Activate'),
+                                        ['action' => 'userStatus', $user->id, $user->status],
+                                        ['block' => true,
+                                            'confirm' => __(
+                                                'Are you sure you want to activate this user # {0}? This user will now be able to access the system.',
+                                                $user->username
+                                            )]
                                     ) ?>
                                 <?php endif; ?>
                             </td>
+                        <?php endif; ?>
+
+                        <!-- Only displays if user has access at top level -->
+                        <?php if ($userMaster == 1) : ?>
+                            <?php if ($user->user_type_id == 1) : ?>
+                                <td>
+                                    <?php if ($user->master == 1) : ?>
+                                        <?= $this->Form->postLink(
+                                            __('Downgrade'),
+                                            ['action' => 'userMaster', $user->id, $user->master],
+                                            ['block' => true, 'confirm' => __('Are you sure you want to downgrade this user # {0}?', $user->username)]
+                                        ) ?>
+                                    <?php else : ?>
+                                        <?= $this->Form->postLink(
+                                            __('Upgrade'),
+                                            ['action' => 'userMaster', $user->id, $user->master],
+                                            ['block' => true, 'confirm' => __('Are you sure you want to upgrade this user # {0}?', $user->username)]
+                                        ) ?>
+                                    <?php endif; ?>
+                                </td>
                             <?php else : ?>
-                            <td></td>
+                                <td></td>
                             <?php endif; ?>
                         <?php endif; ?>
 
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
                             <?php if ($userMaster == 1 or $user->user_type_id != 1 or $user->id == $userID) : ?>
-                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
+                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
                             <?php endif; ?>
                         </td>
                     </tr>
@@ -112,7 +141,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
 </div>
 <!-- /.container-fluid -->
 <script>
-    $(document).ready( function () {
+    $(document).ready(function () {
         $('#products').DataTable();
-    } );
+    });
 </script>

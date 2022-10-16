@@ -30,41 +30,32 @@ echo $this->Html->script('//cdn.ckeditor.com/ckeditor5/35.2.0/classic/ckeditor.j
         <table class="table table-bordered" id="products" width="100%" cellspacing="0">
             <?= $this->Form->create($product, ['type' => 'file']) ?>
 
-                    <?php
-                        echo $this->Form->control('categories._ids', [
-                            'options' => $categories,
-                            'class' => 'category_select_main',
-                            'id' => 'select_category_main',
-                            'style' => 'width:600px',
-                            'label' => ['class' => 'required', 'text' => 'Categories']]);
-                        //echo $this->Form->control('categories._ids', ['options' => $categories->toArray(), 'class' => 'category_select_main', 'id' => 'select_category_main', 'style' => 'width:300px']);
-                        //echo $this->Form->control('categories._ids', ['options' => $subcategories->toArray(), 'class' => 'category_select_sub', 'id' => 'select_category_sub', 'style' => 'width:300px', 'label'=>'Sub Category']);
-                        //echo $this->Form->control('inventory_id', ['options' => $productInventories, 'empty' => true]);
-                        echo $this->Form->control('name', ['label' => ['class' => 'required']]);
-                        echo $this->Form->control('description', ['type' => 'text', 'id' => 'editor']);
-                        echo $this->Form->control('units_in_stock', ['label' => ['class' => 'required', 'text' => 'Units in stock']]);
-                        echo $this->Form->control('material', ['label' => ['class' => 'required']]);
-                        echo $this->Form->control('brand', ['label' => ['class' => 'required']]);
-                        echo $this->Form->control('style', ['label' => ['class' => 'required']]);
-                        //echo $this->Form->control('style_id', ['options' => $styles, 'empty' => true]);
-                        echo $this->Form->control('colour', ['label' => ['class' => 'required']]);
-                        echo $this->Form->control('size', ['label' => [
-                            'class' => 'required', 'text' => 'Size (cm) (e.g. w-122.682 x d-122.7 x h-45.72)']]);
-                        echo $this->Form->control('weight', ['label'=> ['class' => 'required', 'text' => 'Weight (kg)']]);
-                        echo $this->Form->control('finish', ['label'=>'Finish (e.g. Natural Oak)']);
-                        echo $this->Form->control('manufacturing', ['label' => 'Manufacturer']);
-                        echo $this->Form->control('price', [
-                            'label' => [
-                                'class' => 'required', 'text' => 'Normal price']]);
-                        echo $this->Form->control('sale_price', ['label' => 'Sale price']);
-                        echo $this->Form->control('wholesale_price', ['label' => 'Wholesale price']);
-                        echo $this->Form->label('Product images', 'Product images', ['class' => 'required']);
-                        ?>
-                        <br>
-                        <?php echo $this->Form->file('image_file. ', ['type' => 'file','multiple' => 'multiple','required'=>true]);
-                        //echo $this->Form->control('created_at');
-                        //echo $this->Form->control('modified_at');
-                        ?>
+            <?php
+            echo $this->Form->control('categories._ids', [
+                'options' => $categories,
+                'class' => 'category_select_main',
+                'id' => 'select_category_main',
+                'style' => 'width:600px',
+                'label' => ['class' => 'required', 'text' => 'Categories']]);
+            echo $this->Form->control('name', ['label' => ['class' => 'required']]);
+            echo $this->Form->control('description', ['type' => 'text', 'id' => 'editor']);
+            echo $this->Form->control('units_in_stock', ['label' => ['class' => 'required', 'text' => 'Units in stock']]);
+            echo $this->Form->control('material', ['label' => ['class' => 'required']]);
+            echo $this->Form->control('brand', ['label' => ['class' => 'required']]);
+            echo $this->Form->control('style', ['label' => ['class' => 'required']]);
+            echo $this->Form->control('colour', ['label' => ['class' => 'required']]);
+            echo $this->Form->control('size', ['label' => ['class' => 'required', 'text' => 'Size (cm) (e.g. w-122.682 x d-122.7 x h-45.72)']]);
+            echo $this->Form->control('weight', ['label' => ['class' => 'required', 'text' => 'Weight (kg)']]);
+            echo $this->Form->control('finish', ['label' => 'Finish (e.g. Natural Oak)']);
+            echo $this->Form->control('manufacturing', ['label' => 'Manufacturer']);
+            echo $this->Form->control('price', ['label' => ['class' => 'required', 'text' => 'Normal price']]);
+            echo $this->Form->control('sale_price', ['label' => 'Sale price']);
+            echo $this->Form->control('wholesale_price', ['label' => 'Wholesale price']);
+            echo $this->Form->label('Product images', 'Product images', ['class' => 'required']);
+            ?>
+            <br>
+            <?php echo $this->Form->file('image_file. ', ['type' => 'file', 'multiple' => 'multiple', 'required' => true]);
+            ?>
             <p><br></p>
             <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
             <?= $this->Form->end() ?>
@@ -72,14 +63,14 @@ echo $this->Html->script('//cdn.ckeditor.com/ckeditor5/35.2.0/classic/ckeditor.j
     </div>
 </div>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('.category_select_main').select2();
         $('.category_select_sub').select2();
         ClassicEditor
-            .create( document.querySelector( '#editor' ) )
-            .catch( error => {
-                console.error( error );
-            } );
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
     });
 </script>
 <style>

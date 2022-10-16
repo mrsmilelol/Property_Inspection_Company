@@ -21,13 +21,14 @@ $this->layout = 'front';
 ?>
 <!doctype html>
 <style>
-    label span{
+    label span {
         /*font-weight: 300;*/
         color: #000;
         font-size: 13px;
         font-weight: 400;
         line-height: 20px;
     }
+
     .widget-info li a {
         /*font-size: 12px;
         font-weight: 300;
@@ -46,7 +47,8 @@ $this->layout = 'front';
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="breadcrumb-single">
                     <ul class="breadcrumbs">
-                        <li><a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'main'])?>" title="Return to Home">
+                        <li><a href="<?= $this->Url->build(['controller' => 'pages', 'action' => 'main']) ?>"
+                               title="Return to Home">
                                 <i class="fa fa-home"></i>
                                 Home
                             </a></li>
@@ -75,10 +77,12 @@ $this->layout = 'front';
                         <div class="widget-info">
                             <ul>
                                 <li>
-                                    <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'shop',1])?>">In Stock</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'shop', 1]) ?>">In
+                                        Stock</a>
                                 </li>
                                 <li>
-                                    <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'shop',2])?>">On Sale</a>
+                                    <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'shop', 2]) ?>">On
+                                        Sale</a>
                                 </li>
                             </ul>
                         </div>
@@ -235,7 +239,10 @@ $this->layout = 'front';
                                 </ul>
                             </div>
                         </aside>
-                        <button type="submit" class="btn btn-primary" style="background-color: #c38748; border-radius: 0px; border: 0; width: 100%; text-transform: uppercase">Search</button>
+                        <button type="submit" class="btn btn-primary"
+                                style="background-color: #c38748; border-radius: 0px; border: 0; width: 100%; text-transform: uppercase">
+                            Search
+                        </button>
                     </form>
                 </div>
             </div>
@@ -259,9 +266,9 @@ $this->layout = 'front';
                                             <option value="2">Price: Highest first</option>
                                             <option value="3">Product Name: A to Z</option>
                                             <option value="4">Product Name: Z to A</option>
-<!--                                            <option>In stock</option>-->
-<!--                                            <option>Reference: Lowest first</option>-->
-<!--                                            <option>Reference: Highest first</option>-->
+                                            <!--                                            <option>In stock</option>-->
+                                            <!--                                            <option>Reference: Lowest first</option>-->
+                                            <!--                                            <option>Reference: Highest first</option>-->
                                         </select>
                                     </div>
                                 </div>
@@ -289,19 +296,21 @@ $this->layout = 'front';
                         <!-- Product Display -->
                         <div class="row-grid">
                             <?= $this->fetch('content') ?>
-                            <?php for ($x = 0; $x <= count($products)-1; $x++):?>
-                            <div class="col-xs-12 col-sm-6 col-md-4 mb-30">
-                                <div class="single-product">
-                                    <!--Product Content-->
-                                    <div class="product-img-content">
-                                        <!--Product Image-->
-                                        <div class="product-img">
-                                                <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$products[$x]->id])?>" title="Printed Dress">
-                                                    <a><?= $this->Html->image($products[$x]['product_images'][0]->description,[
-                                                        'alt' => 'CakePHP',
+                            <?php for ($x = 0; $x <= count($products) - 1; $x++): ?>
+                                <div class="col-xs-12 col-sm-6 col-md-4 mb-30">
+                                    <div class="single-product">
+                                        <!--Product Content-->
+                                        <div class="product-img-content">
+                                            <!--Product Image-->
+                                            <div class="product-img">
+                                                <a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail', $products[$x]->id]) ?>"
+                                                   title="Printed Dress">
+                                                    <a><?= $this->Html->image($products[$x]['product_images'][0]->description, [
+                                                            'alt' => 'CakePHP',
                                                             'class' => 'img-fluid',
-                                                            'url' => ['controller' => 'Products', 'action' => 'detail',$products[$x]->id]]);?> </a>
+                                                            'url' => ['controller' => 'Products', 'action' => 'detail', $products[$x]->id]]); ?> </a>
                                                 </a>
+                                            </div>
                                         </div>
 <!--                                        <span class="new-label">New</span>-->
                                         <?php if ($this->Number->currency($products[$x]->wholesale_price) !== null and $this->Number->toPercentage($products[$x]->wholesale_price) > 0): ?>
@@ -340,8 +349,7 @@ $this->layout = 'front';
                                         <?php endif; ?>
                                     </div>
                                 </div>
-                            </div>
-                            <?php endfor?>
+                            <?php endfor ?>
                         </div>
                     </div>
                 </div>
@@ -359,7 +367,8 @@ $this->layout = 'front';
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
                     <div class="modal-product">
@@ -371,7 +380,8 @@ $this->layout = 'front';
                         <div class="product-info">
                             <h1>Diam quis cursus</h1>
                             <div class="price-box">
-                                <p class="price"><span class="special-price"><span class="amount">$132.00</span></span></p>
+                                <p class="price"><span class="special-price"><span class="amount">$132.00</span></span>
+                                </p>
                             </div>
                             <a href="product-details.html" class="see-all">See all features</a>
                             <div class="quick-add-to-cart">
@@ -383,17 +393,25 @@ $this->layout = 'front';
                                 </form>
                             </div>
                             <div class="quick-desc">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est
+                                tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis
+                                justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id
+                                nulla.
                             </div>
                             <div class="social-sharing">
                                 <div class="widget widget_socialsharing_widget">
                                     <h3 class="widget-title-modal">Share this product</h3>
                                     <ul class="social-icons">
-                                        <li><a target="_blank" title="Facebook" href="#" class="facebook social-icon"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a target="_blank" title="Twitter" href="#" class="twitter social-icon"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a target="_blank" title="Pinterest" href="#" class="pinterest social-icon"><i class="fa fa-pinterest"></i></a></li>
-                                        <li><a target="_blank" title="Google +" href="#" class="gplus social-icon"><i class="fa fa-google-plus"></i></a></li>
-                                        <li><a target="_blank" title="LinkedIn" href="#" class="linkedin social-icon"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a target="_blank" title="Facebook" href="#" class="facebook social-icon"><i
+                                                    class="fa fa-facebook"></i></a></li>
+                                        <li><a target="_blank" title="Twitter" href="#" class="twitter social-icon"><i
+                                                    class="fa fa-twitter"></i></a></li>
+                                        <li><a target="_blank" title="Pinterest" href="#" class="pinterest social-icon"><i
+                                                    class="fa fa-pinterest"></i></a></li>
+                                        <li><a target="_blank" title="Google +" href="#" class="gplus social-icon"><i
+                                                    class="fa fa-google-plus"></i></a></li>
+                                        <li><a target="_blank" title="LinkedIn" href="#" class="linkedin social-icon"><i
+                                                    class="fa fa-linkedin"></i></a></li>
                                     </ul>
                                 </div>
                             </div>

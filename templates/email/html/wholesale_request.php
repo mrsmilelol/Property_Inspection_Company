@@ -372,11 +372,11 @@ endforeach;
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <p>Dear <?= h($firstname.",") ?></p>
+                                        <p>Dear <?= h($firstname . ',') ?></p>
                                         <p>Your wholesale account application for Chelsea Fine Furnishings has been sent for review - </p>
                                         <p><b>Business name: </b><?= h($business_name) ?></p>
                                         <p><b>ABN: </b><?= h($abn) ?></p>
-                                        <p><b>Contact person name: </b><?= h($firstname." ".$lastname) ?></p>
+                                        <p><b>Contact person name: </b><?= h($firstname . ' ' . $lastname) ?></p>
                                         <p><b>Contact person phone: </b><?= h($phone)?></p>
                                         <p>We will be contacting you shortly with the outcome of this application. </p>
 
@@ -400,8 +400,7 @@ endforeach;
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                         <tr>
                             <td class="content-block">
-                                <span class="apple-link">Copyright <?= date("Y")?> Chelsea Fine Furnishings. All rights reserved</span>
-<!--                                <br> Don't like these emails? <a href="#">Unsubscribe</a>.-->
+                                <span class="apple-link">Copyright <?= date('Y')?> Chelsea Fine Furnishings. All rights reserved</span>
                             </td>
                         </tr>
                     </table>

@@ -62,16 +62,10 @@ $this->layout = 'front';
                             echo $this->Form->control('message', [
                                 'label' => 'Additional information',
                                 'id' => 'maxWidth', 'type' => 'textarea', 'rows' => '5']);
-                            //echo $this->Form->control('status');
-                            //echo $this->Form->control('created_at');
-                            //echo $this->Form->control('modified_at');
                             ?>
                         </fieldset>
                         <br>
                         <p class="submit">
-                            <!--<button type="submit" id="submitlogin" name="SubmitLogin" class="">
-                                <span><i class="fa fa-lock"></i>Sign In</span>
-                            </button>-->
                             <?= $this->Form->button(__('Submit'), [
                                 'type' => 'submit',
                                 'id' => 'submitlogin',
@@ -90,7 +84,8 @@ $this->layout = 'front';
 </div>
 
 <style>
-    #maxWidth{max-width: 100%;
+    #maxWidth {
+        max-width: 100%;
     }
 </style>
 <!-- Account Area End -->

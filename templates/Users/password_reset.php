@@ -10,9 +10,6 @@ $this->layout = 'front';
 <div class="account-area section-padding2">
     <div class="container" style="display: flex; justify-content: center">
         <div class="row">
-            <!--<div class="col-md-12">
-                <h1 class="heading-title">Authentication</h1>
-            </div>-->
             <div class="account-details">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <form action="#" class="login-form" method="post">
@@ -30,7 +27,7 @@ $this->layout = 'front';
                                 'type' => 'submit',
                                 'id' => 'submitlogin',
                                 'name' => 'SubmitLogin',
-                                'class' => ''
+                                'class' => '',
                             ]); ?>
                         </p>
                         <?= $this->Form->end() ?>
@@ -41,25 +38,8 @@ $this->layout = 'front';
     </div>
 </div>
 <!-- Account Area End -->
-
-<!--<div class="card shadow mb-4">
-    <div class="d-sm-flex align-items-center justify-content-between card-header">
-        <h1 class="h3 mb-0 text-gray-800"><?/*= __('Please enter your email to receive a link to reset password') */?></h1>
-    </div>
-    <div class="card-body">
-        <table class="table table-bordered" id="products" width="100%" cellspacing="0">
-            <?/*= $this->Form->create() */?>
-            <fieldset>
-                <?php /*echo $this->Form->control('email'); */?>
-            </fieldset>
-            <br>
-            <?/*= $this->Form->button(__('Submit'), ['controller' => 'products', 'action' => 'index', 'class' => 'btn btn-primary'])*/?>
-            <?/*= $this->Form->end() */?>
-        </table>
-    </div>
-</div>-->
-
 <style>
-    #maxWidth{max-width: 100%;
+    #maxWidth {
+        max-width: 100%;
     }
 </style>

@@ -13,11 +13,11 @@ $this->layout = 'logged_out';
             <?= $this->Form->create() ?>
             <fieldset>
                 <?php
-                    echo $this->Form->control('password');
+                echo $this->Form->control('password');
                 ?>
             </fieldset>
             <br>
-            <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary','controller' => 'users','action' => 'login','prefix' => false]) ?>
+            <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary', 'controller' => 'users', 'action' => 'login', 'prefix' => false]) ?>
             <?= $this->Form->end() ?>
         </table>
     </div>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,12 +14,16 @@
     <!-- Custom fonts for this template-->
     <?= $this->Html->css('/vendor/fontawesome-free/css/all.min.css') ?>
     <?= $this->Html->css('sb-admin-2.min.css') ?>
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 </head>
@@ -34,7 +37,8 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display','main','prefix' => false]) ?>">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center"
+           href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display', 'main', 'prefix' => false]) ?>">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-toolbox"></i>
             </div>
@@ -46,7 +50,8 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'shop','prefix' => false]) ?>">
+            <a class="nav-link"
+               href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'shop', 'prefix' => false]) ?>">
                 <i class="fas fa-fw fa-store-alt"></i>
                 <span>Shop</span></a>
         </li>
@@ -69,13 +74,15 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Product menu:</h6>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Products','action' => 'index']) ?>">Products</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Categories','action' => 'index']) ?>">Categories</a>
+                    <a class="collapse-item"
+                       href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'index']) ?>">Products</a>
+                    <a class="collapse-item"
+                       href="<?= $this->Url->build(['controller' => 'Categories', 'action' => 'index']) ?>">Categories</a>
                 </div>
             </div>
         </li>
 
-<!--         Nav Item - Utilities Collapse Menu-->
+        <!--         Nav Item - Utilities Collapse Menu-->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePayments"
                aria-expanded="true" aria-controls="collapsePayments">
@@ -86,10 +93,17 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">User menu:</h6>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Users','action' => 'index']) ?>">Users</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'UserTypes','action' => 'index']) ?>">User Types</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'UserAddresses','action' => 'index']) ?>">User Addresses</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'WholesaleRequests','action' => 'index']) ?>">Wholesale Requests</a>
+                    <a class="collapse-item"
+                       href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'index']) ?>">Users</a>
+                    <a class="collapse-item"
+                       href="<?= $this->Url->build(['controller' => 'UserTypes', 'action' => 'index']) ?>">User
+                        Types</a>
+                    <a class="collapse-item"
+                       href="<?= $this->Url->build(['controller' => 'UserAddresses', 'action' => 'index']) ?>">User
+                        Addresses</a>
+                    <a class="collapse-item"
+                       href="<?= $this->Url->build(['controller' => 'WholesaleRequests', 'action' => 'index']) ?>">Wholesale
+                        Requests</a>
                 </div>
             </div>
         </li>
@@ -105,8 +119,11 @@
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Order menu:</h6>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'Orders','action' => 'index','prefix'=>'Admin']) ?>">Orders</a>
-                    <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'CancelledOrders','action' => 'index','prefix'=>'Admin']) ?>">Order Cancel Requests</a>
+                    <a class="collapse-item"
+                       href="<?= $this->Url->build(['controller' => 'Orders', 'action' => 'index', 'prefix' => 'Admin']) ?>">Orders</a>
+                    <a class="collapse-item"
+                       href="<?= $this->Url->build(['controller' => 'CancelledOrders', 'action' => 'index', 'prefix' => 'Admin']) ?>">Order
+                        Cancel Requests</a>
                 </div>
             </div>
         </li>
@@ -114,7 +131,7 @@
 
         <!--         Nav Item - Utilities Collapse Menu-->
         <!--<li class="nav-item">
-            <a class="nav-link collapsed" href="<?/*= $this->Url->build(['controller' => 'Stores','action' => 'index']) */?>"
+            <a class="nav-link collapsed" href="<? /*= $this->Url->build(['controller' => 'Stores','action' => 'index']) */ ?>"
                aria-expanded="true" aria-controls="collapseOrderss">
                 <i class="fas fa-fw fa-store"></i>
                 <span>Stores</span>
@@ -129,7 +146,6 @@
         <div class="text-center d-none d-md-inline">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
-
 
 
     </ul>
@@ -181,9 +197,9 @@
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin Profile</span>
-                            <?=$this->Html->image('undraw_profile.svg', ['class' => 'img-profile rounded-circle']) ?>
+                            <?= $this->Html->image('undraw_profile.svg', ['class' => 'img-profile rounded-circle']) ?>
                         </a>
-<!--                         Dropdown - User Information-->
+                        <!--                         Dropdown - User Information-->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -244,7 +260,8 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="<?= $this->Url->build(['controller' => 'users','action' => 'logout','prefix' => false]) ?>">Logout</a>
+                <a class="btn btn-primary"
+                   href="<?= $this->Url->build(['controller' => 'users', 'action' => 'logout', 'prefix' => false]) ?>">Logout</a>
 
             </div>
         </div>
@@ -257,14 +274,6 @@
 <?= $this->Html->script('/vendor/jquery-easing/jquery.easing.min.js') ?>
 <!-- Custom scripts for all pages-->
 <?= $this->Html->script('sb-admin-2.min') ?>
-
-<!-- Page level plugins
-<script src="vendor/chart.js/Chart.min.js"></script>
--->
-<!-- Page level custom scripts
-<script src="js/demo/chart-area-demo.js"></script>
-<script src="js/demo/chart-pie-demo.js"></script>
- -->
 <?= $this->fetch('script') ?>
 </body>
 

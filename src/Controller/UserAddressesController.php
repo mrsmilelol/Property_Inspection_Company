@@ -164,27 +164,35 @@ class UserAddressesController extends AppController
      */
     public function success()
     {
+        //Loading the necessary models
         $this->loadModel('Orders');
         $this->loadModel('OrdersProducts');
+        //Retrieving information from the shopping cart
         $sessionData = $this->Cart->getcart();
+        //Retrieving information from the user
         $user = $this->request->getSession()->read('Auth');
         $orderItems = $sessionData['Orderitems'];
         $wholesaleOrderItems = $sessionData['WholesaleOrderitems'];
         $userAddress = $sessionData['UserAddress'];
         $total = 0;
+        //Check if the user is Wholesale customer
         if ($user->user_type_id == 2) {
             foreach ($wholesaleOrderItems as $orderItem) {
+                //Calculating the total of the order
                 $total = $total + $orderItem['price'] * $orderItem['quantity'];
             }
+            //Creating the new record in the order
             $order = $this->Orders->newEntity([
                 'total' => intval($total),
                 'status' => 'Order is placed',
                 'user_id' => $user->id,
             ]);
         } else {
+            //Calculating the total of the order
             foreach ($orderItems as $orderItem) {
                 $total = $total + $orderItem['price'] * $orderItem['quantity'];
             }
+            //Creating the new record in the order
             $order = $this->Orders->newEntity([
                 'total' => intval($total),
                 'status' => 'Order is placed',
@@ -192,31 +200,40 @@ class UserAddressesController extends AppController
             ]);
         }
         if ($total > 0) {
+            //Saving the record
             $this->Orders->save($order);
         }
-
+        //Getting the order ID
         $orderID = $this->Orders->find()->select(['id'])->where(['user_id' => $user->id])->order(['id' => 'DESC'])->first();
+        //Check if the user is a Wholesale customer
         if ($user->user_type_id == 2) {
             foreach ($wholesaleOrderItems as $orderItem) {
+                //Creating the new record for order products
                 $orderProduct = $this->OrdersProducts->newEntity([
                     'order_id' => $orderID->id,
                     'product_id' => $orderItem['product_id'],
                     'quantity' => $orderItem['quantity'],
                 ]);
+                //Saving the record
                 $this->OrdersProducts->save($orderProduct);
             }
         } else {
             foreach ($orderItems as $orderItem) {
+                //Creating the new record for order products
                 $orderProduct = $this->OrdersProducts->newEntity([
                     'order_id' => $orderID->id,
                     'product_id' => $orderItem['product_id'],
                     'quantity' => $orderItem['quantity'],
                 ]);
+                //Saving the record
                 $this->OrdersProducts->save($orderProduct);
             }
         }
+        //Finding the user address by their user id
         $oldUserAddress = $this->UserAddresses->findByUserId($user->id)->first();
+        //Check if the user has not an address
         if($oldUserAddress == null){
+            //Creating a new record
             $newUserAddress = $this->UserAddresses->newEntity(['user_id' => $userAddress[$user->id]['user_id'],
                 'address_line_1' => $userAddress[$user->id]['address_line_1'],
                 'address_line_2' => $userAddress[$user->id]['address_line_2'],
@@ -224,9 +241,11 @@ class UserAddressesController extends AppController
                 'country' => $userAddress[$user->id]['country'],
                 'state' => $userAddress[$user->id]['state'],
                 'postcode' => $userAddress[$user->id]['postcode']]);
+            //Saving a record
             $this->UserAddresses->save($newUserAddress);
         }
         else{
+            //Updating the existing record
             $oldUserAddress = $this->UserAddresses->patchEntity($oldUserAddress,
                 ['user_id' => $userAddress[$user->id]['user_id'],
                     'address_line_1' => $userAddress[$user->id]['address_line_1'],
@@ -235,6 +254,7 @@ class UserAddressesController extends AppController
                     'country' => $userAddress[$user->id]['country'],
                     'state' => $userAddress[$user->id]['state'],
                     'postcode' => $userAddress[$user->id]['postcode']]);
+            //Saving the record
             $this->UserAddresses->save($oldUserAddress);
         }
         $this->Cart->clear();

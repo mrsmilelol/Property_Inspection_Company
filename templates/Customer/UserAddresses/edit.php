@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\UserAddress $userAddress
  * @var string[]|\Cake\Collection\CollectionInterface $users
  */
-$formTemplate= [
+$formTemplate = [
     'inputContainer' => '<div class="input {{type}}{{required}}">{{content}}</div>',
     'label' => '<label{{attrs}} class="form-label">{{text}}</label>',
     'input' => '<input type="{{type}}" name="{{name}}" class="form-control"{{attrs}}/>',
@@ -25,27 +25,17 @@ $this->layout = 'front';
                             <?= $this->Form->create($userAddress) ?>
                         <fieldset>
                             <?php
-                            echo $this->Form->control('user_id', ['type'=>'hidden', 'value'=>$user->id]);
-                            echo $this->Form->control('address_line_1',
-                                ['label' => ['class' => 'required', 'text' =>'Address'],
-                                    'id' => 'maxWidth']);
+                            echo $this->Form->control('user_id', ['type' => 'hidden', 'value' => $user->id]);
+                            echo $this->Form->control('address_line_1', ['label' => ['class' => 'required', 'text' => 'Address'], 'id' => 'maxWidth']);
                             ?>
                             <br>
                             <?php
-                            echo $this->Form->control('address_line_2',
-                                ['label' => false, 'id' => 'maxWidth']);
-                            echo $this->Form->control('city',
-                                ['label' => ['class' => 'required'], 'id' => 'maxWidth']);
-                            echo $this->Form->control('country',
-                                ['label' => ['class' => 'required'], 'id' => 'maxWidth', 'type' => 'hidden']);
-                            $states = ['1' => 'VIC','2' => 'NSW','3' => 'SA','4' => 'WA','5' => 'NT','6' => 'QLD','7' => 'TAS'];
-                            echo $this->Form->control('state',
-                                ['options' => $states, 'label' => ['class' => 'required', 'text' => 'Select your state'],
-                                'id' => 'maxWidth']);
-                            echo $this->Form->control('postcode',
-                                ['label' => ['class' => 'required'], 'id' => 'maxWidth']);
-                            //echo $this->Form->control('created_at');
-                            //echo $this->Form->control('modified_at');
+                            echo $this->Form->control('address_line_2', ['label' => false, 'id' => 'maxWidth']);
+                            echo $this->Form->control('city', ['label' => ['class' => 'required'], 'id' => 'maxWidth']);
+                            echo $this->Form->control('country', ['label' => ['class' => 'required'], 'id' => 'maxWidth', 'type' => 'hidden']);
+                            $states = ['1' => 'VIC', '2' => 'NSW', '3' => 'SA', '4' => 'WA', '5' => 'NT', '6' => 'QLD', '7' => 'TAS'];
+                            echo $this->Form->control('state', ['options' => $states, 'label' => ['class' => 'required', 'text' => 'Select your state'], 'id' => 'maxWidth']);
+                            echo $this->Form->control('postcode', ['label' => ['class' => 'required'], 'id' => 'maxWidth']);
                             ?>
                         </fieldset>
                         <br>
@@ -54,7 +44,7 @@ $this->layout = 'front';
                                 'type' => 'submit',
                                 'id' => 'submitlogin',
                                 'name' => 'SubmitLogin',
-                                'class' => ''
+                                'class' => '',
                             ]) ?>
                         </p>
                         <?= $this->Form->end() ?>

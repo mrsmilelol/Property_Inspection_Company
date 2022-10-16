@@ -264,27 +264,6 @@ class ProductsController extends AppController
         return $this->redirect(['action' => 'cart']);
     }
 
-////////////////////////////////////////////////////////////////////////////////
-
-    /**
-     * @return void
-     */
-    public function itemupdate()
-    {
-        if ($this->request->is('ajax')) {
-            $id = $this->request->data['id'];
-            $quantity = isset($this->request->data['quantity']) ? $this->request->data['quantity'] : 1;
-            if (isset($this->request->data['mods']) && ($this->request->data['mods'] > 0)) {
-                $productmodId = $this->request->data['mods'];
-            } else {
-                $productmodId = 0;
-            }
-            $product = $this->Cart->add($id, $quantity, $productmodId);
-        }
-        $cart = $this->Cart->getcart();
-        echo json_encode($cart);
-        die;
-    }
 
 ////////////////////////////////////////////////////////////////////////////////
 
