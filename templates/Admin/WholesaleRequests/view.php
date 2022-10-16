@@ -79,7 +79,7 @@
                 <td><?= h($wholesaleRequest->modified_at) ?></td>
             </tr>
         </table>
-        <?php if (strcmp($wholesaleRequest->status, 'Not approved') == 0) : ?>
+        <?php if (strcmp($wholesaleRequest->status, 'Not Approved') == 0) : ?>
             <?= $this->Html->link(
                 'Approve',
                 ['controller' => 'WholesaleRequests', 'action' => 'approve', $wholesaleRequest->id],
