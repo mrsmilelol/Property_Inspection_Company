@@ -311,6 +311,10 @@ $this->layout = 'front';
                                                             'url' => ['controller' => 'Products', 'action' => 'detail', $products[$x]->id]]); ?> </a>
                                                 </a>
                                             </div>
+                                            <!--<span class="new-label">New</span>-->
+                                            <?php if ($this->Number->currency($products[$x]->wholesale_price) !== null and $this->Number->toPercentage($products[$x]->wholesale_price) > 0): ?>
+                                                <span class="sale-label">Sale!</span>
+                                            <?php endif; ?>
                                         </div>
                                         <div class="product-content">
                                             <h5>
@@ -318,10 +322,19 @@ $this->layout = 'front';
                                                    title="product "><?= $products[$x]->name ?></a></h5>
                                             <!--Product Rating-->
                                             <!--Product Price-->
-                                            <div class="product-price">
-                                                <span
-                                                    class="new-price"><?= $this->Number->currency($products[$x]->wholesale_price) ?></span>
-                                            </div>
+                                            <?php if ($this->Number->currency($products[$x]->wholesale_price) !== null and $this->Number->toPercentage($products[$x]->wholesale_price) > 0) : ?>
+                                                <div class="product-price">
+                                                    <span
+                                                        class="new-price"><?= $this->Number->currency($products[$x]->wholesale_price) ?></span>
+                                                    <span
+                                                        class="old-price"><?= $this->Number->currency($products[$x]->price) ?></span>
+                                                </div>
+                                            <?php else : ?>
+                                                <div class="product-price">
+                                                    <span
+                                                        class="new-price"><?= $this->Number->currency($products[$x]->price) ?></span>
+                                                </div>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
                                 </div>

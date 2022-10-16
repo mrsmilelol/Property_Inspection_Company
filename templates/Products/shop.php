@@ -313,7 +313,7 @@ $this->layout = 'front';
                                                             'url' => ['controller' => 'Products', 'action' => 'detail', $products[$x]->id]]); ?> </a>
                                                 </a>
                                             </div>
-                                            <span class="new-label">New</span>
+                                            <!--<span class="new-label">New</span>-->
                                             <?php if ($this->Number->currency($products[$x]->sale_price) !== null and $this->Number->toPercentage($products[$x]->sale_price) > 0): ?>
                                                 <span class="sale-label">Sale!</span>
                                             <?php endif; ?>
