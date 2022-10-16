@@ -11,6 +11,8 @@ class CartComponent extends Component {
         return $this->getController()->getRequest()->getSession()->read('Shop');
     }
 
+    public function cart() {}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 

@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\User $user
  */
 echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
-echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
+echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js', ['block' => true]);
 $userMaster = $this->request->getSession()->read('Auth.master');
 $userID = $this->request->getSession()->read('Auth.id');
 ?>
@@ -16,46 +16,42 @@ $userID = $this->request->getSession()->read('Auth.id');
     <div class="card-body">
         <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
             <tr>
-                    <th><?= __('Username') ?></th>
-                    <td><?= h($user->username) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('First name') ?></th>
-                    <td><?= h($user->firstname) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Last name') ?></th>
-                    <td><?= h($user->lastname) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Phone') ?></th>
-                    <td><?= h($user->phone) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Email') ?></th>
-                    <td><?= h($user->email) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('User type') ?></th>
-                    <td><?= $user->has('user_type') ? $this->Html->link($user->user_type->name, ['controller' => 'UserTypes', 'action' => 'view', $user->user_type->id]) : '' ?></td>
-                </tr>
-                <!--<tr>
-                    <th><?/*= __('ID') */?></th>
-                    <td><?/*= $this->Number->format($user->id) */?></td>
-                </tr>-->
-                <tr>
-                    <th><?= __('Created at') ?></th>
-                    <td><?= h($user->created_at) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Modified at') ?></th>
-                    <td><?= h($user->modified_at) ?></td>
-                </tr>
-            </table>
-            <br>
-            <div class="related">
-                <?php if (!empty($user->orders)) : ?>
-                <h4><?= __('Related orders') ?></h4>
+                <th><?= __('Username') ?></th>
+                <td><?= h($user->username) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('First name') ?></th>
+                <td><?= h($user->firstname) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Last name') ?></th>
+                <td><?= h($user->lastname) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Phone') ?></th>
+                <td><?= h($user->phone) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Email') ?></th>
+                <td><?= h($user->email) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('User type') ?></th>
+                <td><?= $user->has('user_type') ? $this->Html->link($user->user_type->name, ['controller' => 'UserTypes', 'action' => 'view', $user->user_type->id]) : '' ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Created at') ?></th>
+                <td><?= h($user->created_at) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Modified at') ?></th>
+                <td><?= h($user->modified_at) ?></td>
+            </tr>
+        </table>
+        <br>
+        <div class="related">
+            <?php if (!empty($user->orders)) : ?>
+            <h4><?= __('Related orders') ?></h4>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
                         <tr>
@@ -120,12 +116,12 @@ $userID = $this->request->getSession()->read('Auth.id');
                         <?php endforeach; ?>
                     </table>
                 </div>
-                <?php endif; ?>
-            </div>
-            <br>
-            <div class="related">
-                <?php if (!empty($user->user_addresses)) : ?>
-                <h4><?= __('Related user addresses') ?></h4>
+            <?php endif; ?>
+        </div>
+        <br>
+        <div class="related">
+            <?php if (!empty($user->user_addresses)) : ?>
+            <h4><?= __('Related user addresses') ?></h4>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
                         <tr>
@@ -140,25 +136,23 @@ $userID = $this->request->getSession()->read('Auth.id');
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($user->user_addresses as $userAddresses) : ?>
-                        <tr>
-                            <!--<td><?/*= h($userAddresses->id) */?></td>
-                            <td><?/*= h($userAddresses->user_id) */?></td>-->
-                            <td><?= h($userAddresses->address_line_1) ?></td>
-                            <td><?= h($userAddresses->address_line_2) ?></td>
-                            <td><?= h($userAddresses->city) ?></td>
-                            <td><?= h($userAddresses->country) ?></td>
-                            <td><?= h($userAddresses->state) ?></td>
-                            <td><?= h($userAddresses->postcode) ?></td>
-                            <td><?= h($userAddresses->created_at) ?></td>
-                            <td><?= h($userAddresses->modified_at) ?></td>
-                            <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'UserAddresses', 'action' => 'view', $userAddresses->id]) ?>
-                                <?php if ($userMaster == 1 || $user->id == $userID || $user->user_type_id !== 1) : ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'UserAddresses', 'action' => 'edit', $userAddresses->id]) ?>
-                                <?php endif; ?>
-                                <!--<?= $this->Form->postLink(__('Delete'), ['controller' => 'UserAddresses', 'action' => 'delete', $userAddresses->id], ['confirm' => __('Are you sure you want to delete # {0}?', $userAddresses->id)]) ?>-->
-                            </td>
-                        </tr>
+                            <tr>
+                                <td><?= h($userAddresses->address_line_1) ?></td>
+                                <td><?= h($userAddresses->address_line_2) ?></td>
+                                <td><?= h($userAddresses->city) ?></td>
+                                <td><?= h($userAddresses->country) ?></td>
+                                <td><?= h($userAddresses->state) ?></td>
+                                <td><?= h($userAddresses->postcode) ?></td>
+                                <td><?= h($userAddresses->created_at) ?></td>
+                                <td><?= h($userAddresses->modified_at) ?></td>
+                                <td class="actions">
+                                    <?= $this->Html->link(__('View'), ['controller' => 'UserAddresses', 'action' => 'view', $userAddresses->id]) ?>
+                                    <?php if ($userMaster == 1 || $user->id == $userID || $user->user_type_id !== 1) : ?>
+                                    <?= $this->Html->link(__('Edit'), ['controller' => 'UserAddresses', 'action' => 'edit', $userAddresses->id]) ?>
+                                    <?php endif; ?>
+                                    <!--<?= $this->Form->postLink(__('Delete'), ['controller' => 'UserAddresses', 'action' => 'delete', $userAddresses->id], ['confirm' => __('Are you sure you want to delete # {0}?', $userAddresses->id)]) ?>-->
+                                </td>
+                            </tr>
                         <?php endforeach; ?>
                     </table>
                 </div>
