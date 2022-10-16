@@ -46,7 +46,9 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                         <td><?= $user->has('user_type') ? $this->Html->link($user->user_type->name, ['controller' => 'UserTypes', 'action' => 'view', $user->user_type->id]) : '' ?></td>
 
                         <!-- Only displays if user has access at top level -->
+                        <?php $userID = $this->request->getSession()->read('Auth.id') ?>
                         <?php if ($userMaster == 1) : ?>
+                        <?php if ($user->id !== $userID) : ?>
                         <td>
                             <?php if ($user->status == 1) : ?>
                                 <?= $this->Form->postLink(
@@ -66,11 +68,13 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                                 ) ?>
                             <?php endif; ?>
                         </td>
-                        <?php endif; ?>
+                        <?php else : ?>
+                        <td></td>
+                        <?php endif; endif;?>
 
                         <!-- Only displays if user has access at top level -->
                         <?php if ($userMaster == 1) : ?>
-                            <?php if ($user->user_type_id == 1) : ?>
+                            <?php if ($user->user_type_id == 1 and $user->id !== $userID) : ?>
                             <td>
                                 <?php if ($user->master == 1) : ?>
                                     <?= $this->Form->postLink(
@@ -91,7 +95,6 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                             <?php endif; ?>
                         <?php endif; ?>
 
-                        <?php $userID = $this->request->getSession()->read('Auth.id') ?>
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
                             <?php if ($userMaster == 1 or $user->user_type_id != 1 or $user->id == $userID) : ?>

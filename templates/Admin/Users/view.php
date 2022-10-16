@@ -5,6 +5,8 @@
  */
 echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
 echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js',['block' => true]);
+$userMaster = $this->request->getSession()->read('Auth.master');
+$userID = $this->request->getSession()->read('Auth.id');
 ?>
 
 <div class="card shadow mb-4">
@@ -52,8 +54,8 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             </table>
             <br>
             <div class="related">
-                <h4><?= __('Related orders') ?></h4>
                 <?php if (!empty($user->orders)) : ?>
+                <h4><?= __('Related orders') ?></h4>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
                     <tr>
@@ -122,8 +124,8 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             </div>
             <br>
             <div class="related">
-                <h4><?= __('Related user addresses') ?></h4>
                 <?php if (!empty($user->user_addresses)) : ?>
+                <h4><?= __('Related user addresses') ?></h4>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="userTable" width="100%" cellspacing="0">
                     <tr>
@@ -153,7 +155,9 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                             <td><?= h($userAddresses->modified_at) ?></td>
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['controller' => 'UserAddresses', 'action' => 'view', $userAddresses->id]) ?>
+                                <?php if ($userMaster == 1 || $user->id == $userID || $user->user_type_id !== 1) : ?>
                                 <?= $this->Html->link(__('Edit'), ['controller' => 'UserAddresses', 'action' => 'edit', $userAddresses->id]) ?>
+                                <?php endif; ?>
                                 <!--<?= $this->Form->postLink(__('Delete'), ['controller' => 'UserAddresses', 'action' => 'delete', $userAddresses->id], ['confirm' => __('Are you sure you want to delete # {0}?', $userAddresses->id)]) ?>-->
                             </td>
                         </tr>
