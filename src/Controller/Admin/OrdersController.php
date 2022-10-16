@@ -37,10 +37,11 @@ class OrdersController extends AppController
      */
     public function view($id = null)
     {
+        //Getting the order object by its ID
         $order = $this->Orders->get($id, [
             'contain' => ['Users', 'Products', 'CancelledOrders', 'Payments'],
         ]);
-
+        //Getting the products from the order by the order ID
         $OrderProducts = $this->fetchTable('OrdersProducts')->find('all')->where(['OrdersProducts.order_id' => $order->id])->toArray();
 
         foreach ($order->products as $checkProduct){
@@ -50,7 +51,7 @@ class OrdersController extends AppController
                 }
             }
         }
-
+        //Passing the variables to the template
         $this->set(compact('order', 'OrderProducts'));
     }
 
@@ -61,8 +62,11 @@ class OrdersController extends AppController
      */
     public function add()
     {
+        //Creating the empty entity
         $order = $this->Orders->newEmptyEntity();
+        //Check if the "Submit" button has been invoked
         if ($this->request->is('post')) {
+            //Populating the empty entity
             $order = $this->Orders->patchEntity($order, $this->request->getData());
             if ($this->Orders->save($order)) {
                 $this->Flash->success(__('The order has been saved.'));
@@ -73,6 +77,7 @@ class OrdersController extends AppController
         }
         $users = $this->Orders->Users->find('list', ['limit' => 200])->all();
         $products = $this->Orders->Products->find('list', ['limit' => 200])->all();
+        //Passing the variables to the template
         $this->set(compact('order', 'users', 'products'));
     }
 
@@ -85,10 +90,13 @@ class OrdersController extends AppController
      */
     public function edit($id = null)
     {
+        //Getting the order object by its ID
         $order = $this->Orders->get($id, [
             'contain' => ['Products'],
         ]);
+        //Check if the "Submit" button has been invoked
         if ($this->request->is(['patch', 'post', 'put'])) {
+            //Populating the order entity with updated values
             $order = $this->Orders->patchEntity($order, $this->request->getData());
             if ($this->Orders->save($order)) {
                 $this->Flash->success(__('The order has been saved.'));
@@ -99,6 +107,7 @@ class OrdersController extends AppController
         }
         $users = $this->Orders->Users->find('list', ['limit' => 200])->all();
         $products = $this->Orders->Products->find('list', ['limit' => 200])->all();
+        //Passing the variables to the template
         $this->set(compact('order', 'users', 'products'));
     }
 

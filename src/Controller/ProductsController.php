@@ -47,7 +47,6 @@ class ProductsController extends AppController
 
         $param = $_GET;
         $sel = $param['sel'] ?? '99';
-//        $this->loadModel('ProductImages');
         $brandsql = '';
         $stylesql = '';
         $meterialsql = '';
@@ -107,13 +106,16 @@ class ProductsController extends AppController
      */
     public function detail($id = null)
     {
+        //Loading the Product Images Model
         $this->loadModel('ProductImages');
+        //Finding the product images by their product_id
         $productImages = $this->ProductImages->findByProductId($id)->all()->toArray();
 
+        //Getting the product object by finding it from its ID
         $product = $this->Products->get($id, [
             'contain' => ['Orders', 'OrdersProducts', 'Categories', 'ProductImages'],
         ]);
-
+        //Passing the variables to the template
         $this->set(compact('product', 'productImages'));
     }
 
@@ -127,6 +129,7 @@ class ProductsController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
+        //Getting the product object by its ID
         $product = $this->Products->get($id);
         if ($this->Products->delete($product)) {
             $this->Flash->success(__('The product has been deleted.'));
@@ -138,22 +141,27 @@ class ProductsController extends AppController
     }
 
     /**
+     * Add the product into the cart
      * @return \Cake\Http\Response|null
      */
     public function addToCart()
     {
+        //Check if the "Submit" button was invoked
         if ($this->request->is('post')) {
 
             $data = $this->request->getData();
             $id = $data['id'];
             $quantity = 1;
 
+            //Getting the product object by its ID
             $product = $this->Products->get($id, [
                 'contain' => []
             ]);
+            //Check if the object is empty or not
             if (empty($product)) {
                 $this->Flash->error('Invalid request');
             } else {
+                //Add the product to Shop session
                 $this->Cart->add($id, $quantity);
                 $this->Flash->success($product->name . ' has been added to the shopping cart');
             }
@@ -170,6 +178,7 @@ class ProductsController extends AppController
      */
     public function removeProduct($id = null)
     {
+        //Removing the product from the Shop session
         $product = $this->Cart->remove($id);
         if (!empty($product)) {
             $this->Flash->error($product['name'] . ' was removed from your shopping cart');
@@ -180,11 +189,14 @@ class ProductsController extends AppController
 ////////////////////////////////////////////////////////////////////////////////
 
     /**
+     * Calling the shopping cart
      * @return void
      */
     public function cart()
     {
+        //Retrieving the data from Shop session
         $orderItems = $this->Cart->getcart();
+        //Retrieving the data from Auth session
         $user = $this->request->getSession()->read('Auth');
         $this->set(compact('orderItems', 'user'));
     }
@@ -192,6 +204,7 @@ class ProductsController extends AppController
 ////////////////////////////////////////////////////////////////////////////////
 
     /**
+     * Updating the whole shopping cart
      * @return \Cake\Http\Response|null
      */
     public function cartupdate()
@@ -212,32 +225,12 @@ class ProductsController extends AppController
 ////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * @return void
-     */
-    public function itemupdate()
-    {
-        if ($this->request->is('ajax')) {
-            $id = $this->request->data['id'];
-            $quantity = isset($this->request->data['quantity']) ? $this->request->data['quantity'] : 1;
-            if (isset($this->request->data['mods']) && ($this->request->data['mods'] > 0)) {
-                $productmodId = $this->request->data['mods'];
-            } else {
-                $productmodId = 0;
-            }
-            $product = $this->Cart->add($id, $quantity, $productmodId);
-        }
-        $cart = $this->Cart->getcart();
-        echo json_encode($cart);
-        die;
-    }
-
-////////////////////////////////////////////////////////////////////////////////
-
-    /**
+     * Clearing the cart
      * @return \Cake\Http\Response|null
      */
     public function clear()
     {
+        //Clearing the Shop session
         $this->Cart->clear();
         $this->Flash->success('The shopping cart is cleared');
         return $this->redirect(['action' => 'index']);

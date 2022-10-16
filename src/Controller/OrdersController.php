@@ -35,6 +35,7 @@ class OrdersController extends AppController
      */
     public function view($id = null)
     {
+        //Getting the order object by its ID
         $order = $this->Orders->get($id, [
             'contain' => ['Users', 'Products', 'CancelledOrders', 'Payments'],
         ]);
@@ -49,7 +50,9 @@ class OrdersController extends AppController
      */
     public function add()
     {
+        //Creating an empty entity
         $order = $this->Orders->newEmptyEntity();
+        //Check if the "Submit" button has been invoked
         if ($this->request->is('post')) {
             $order = $this->Orders->patchEntity($order, $this->request->getData());
             if ($this->Orders->save($order)) {
@@ -61,6 +64,7 @@ class OrdersController extends AppController
         }
         $users = $this->Orders->Users->find('list', ['limit' => 200])->all();
         $products = $this->Orders->Products->find('list', ['limit' => 200])->all();
+        //Passing the variables to the template
         $this->set(compact('order', 'users', 'products'));
     }
 
@@ -73,9 +77,11 @@ class OrdersController extends AppController
      */
     public function edit($id = null)
     {
+        //Getting the order object by its ID
         $order = $this->Orders->get($id, [
             'contain' => ['Products'],
         ]);
+        //Check if the "Submit" button has been invoked
         if ($this->request->is(['patch', 'post', 'put'])) {
             $order = $this->Orders->patchEntity($order, $this->request->getData());
             if ($this->Orders->save($order)) {
@@ -87,6 +93,7 @@ class OrdersController extends AppController
         }
         $users = $this->Orders->Users->find('list', ['limit' => 200])->all();
         $products = $this->Orders->Products->find('list', ['limit' => 200])->all();
+        //Passing the variables to the template
         $this->set(compact('order', 'users', 'products'));
     }
 
@@ -100,6 +107,7 @@ class OrdersController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
+        //Getting the order object by its ID
         $order = $this->Orders->get($id);
         if ($this->Orders->delete($order)) {
             $this->Flash->success(__('The order has been deleted.'));
