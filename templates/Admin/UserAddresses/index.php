@@ -5,6 +5,8 @@
  */
 echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
 echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js', ['block' => true]);
+$userMaster = $this->request->getSession()->read('Auth.master');
+$userID = $this->request->getSession()->read('Auth.id');
 ?>
 <div class="card shadow mb-4">
     <div class="d-sm-flex align-items-center justify-content-between card-header">
@@ -46,7 +48,9 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                         <td><?= h($userAddress->modified_at) ?></td>
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $userAddress->id]) ?>
+                            <?php if ($userMaster == 1 || $userAddress->user_id == $userID || $userAddress->user->user_type_id !== 1) : ?>
                             <?= $this->Html->link(__('Edit'), ['action' => 'edit', $userAddress->id]) ?>
+                            <?php endif; ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>

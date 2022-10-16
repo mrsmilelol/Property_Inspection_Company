@@ -318,6 +318,40 @@ $this->layout = 'front';
                                                             'class' => 'img-fluid',
                                                             'url' => ['controller' => 'Products', 'action' => 'detail', $c_product->id]]); ?> </a>
                                                 </a>
+                                        </div>
+                                        <!--<span class="new-label">New</span>-->
+                                        <?php if ($this->Number->currency($c_product->sale_price) !== null and $this->Number->toPercentage($c_product->sale_price) > 0): ?>
+                                            <span class="sale-label">Sale!</span>
+                                        <?php endif; ?>
+                                        <!--Product Action-->
+                                        <!--<div class="product-action">
+                                            <a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
+                                            <a href="#" title="Add to Wishlist"><i class="fa fa-star"></i>
+                                            </a>
+                                            <a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
+                                            </a>
+                                            <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
+                                        </div>-->
+                                    </div>
+                                    <div class="product-content">
+                                        <h5><a href="<?= $this->Url->build(['controller' => 'Products', 'action' => 'detail',$c_product->id])?>" title="product "><?= $c_product->name ?></a></h5>
+                                        <!--Product Rating-->
+                                        <!--<div class="rating-icon">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>-->
+                                        <!--Product Price-->
+                                        <?php if ($this->Number->currency($c_product->sale_price) !== null and $this->Number->toPercentage($c_product->sale_price) > 0): ?>
+                                            <div class="product-price">
+                                                <span class="new-price"><?=  $this->Number->currency($c_product->sale_price) ?></span>
+                                                <span class="old-price"><?=  $this->Number->currency($c_product->price) ?></span>
+                                            </div>
+                                        <?php else: ?>
+                                            <div class="product-price">
+                                                <span class="new-price"><?=  $this->Number->currency($c_product->price) ?></span>
                                             </div>
                                             <span class="new-label">New</span>
                                             <?php if ($this->Number->currency($c_product->sale_price) !== null and $this->Number->toPercentage($c_product->sale_price) > 0) : ?>
