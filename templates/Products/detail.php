@@ -24,6 +24,43 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 $this->layout = 'front';
 ?>
 <!doctype html>
+<style>
+    /*a.btn-cart-out {*/
+    /*    background: #ffffff none repeat scroll 0 0;*/
+    /*    border: 2px solid #c38749;*/
+    /*    color: #c38749;*/
+    /*    display: block;*/
+    /*    float: left;*/
+    /*    height: 40px;*/
+    /*    line-height: 38px;*/
+    /*    position: relative;*/
+    /*    text-transform: uppercase;*/
+    /*}*/
+    a.btn-cart-out input#btn-cart-out {
+        background: #C8C8C8 none repeat scroll 0 0;
+        border: 2px solid #C8C8C8;
+        color: #888888;
+        display: block;
+        float: left;
+        height: 40px;
+        line-height: 38px;
+        position: relative;
+        text-transform: uppercase;
+    }
+    a.btn-cart-out input#btn-cart-out i {
+        font-size: 20px;
+        left: 20px;
+        position: absolute;
+        top: 7px;
+    }
+    a.btn-cart-out input#btn-cart-out span {
+        font-size: 12px;
+        font-weight: 600;
+        padding: 10px 30px 6px 50px;
+        text-transform: uppercase;
+    }
+
+</style>
 <html class="no-js" lang="">
 <!-- Breadcrumbs Area Start -->
 <div class="breadcrumbs-area">
@@ -101,7 +138,7 @@ $this->layout = 'front';
                     <div class="pd-description">
                         <p><?= h($product->description) ?></p>
                     </div>
-
+                    <?php if ($product->units_in_stock > 0):?>
                     <div class="product-attributes clearfix">
                         <span>
                             <?php echo $this->Form->create(null, ['url' => ['controller' => 'products', 'action' => 'addToCart']]); ?>
@@ -118,6 +155,25 @@ $this->layout = 'front';
                             <?php echo $this->Form->end(); ?>
                         </span>
                     </div>
+                    <?php else:?>
+                    <div class="product-attributes clearfix">
+                        <span>
+                            <?php echo $this->Form->create(null, ['url' => ['controller' => 'products', 'action' => 'addToCart']]); ?>
+                            <?php echo $this->Form->hidden('id', ['type' => 'hidden', 'value' => $product->id]) ?>
+                            <a class="btn-cart-out">
+                                <?php echo $this->Form->submit('Out of stock', [
+                                    'type' => 'submit',
+                                    'id' => 'btn-cart-out',
+                                    'name' => 'btn-cart-out',
+                                    'class' => '',
+                                    'escape' => 'false',
+                                    'disabled'=>true
+                                ]); ?>
+                            </a>
+                            <?php echo $this->Form->end(); ?>
+                        </span>
+                    </div>
+                    <?php endif;?>
                 </div>
             </div>
         </div>
