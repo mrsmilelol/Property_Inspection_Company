@@ -221,7 +221,7 @@ class CartComponent extends Component {
 
     }
 
-    public function addUserAddress($userAddress){
+    /*public function addUserAddress($userAddress){
         $data = [];
         $states = ['1' => 'VIC','2' => 'NSW','3' => 'SA','4' => 'WA','5' => 'NT','6' => 'QLD','7' => 'TAS'];
         $id = $userAddress['user_id'];
@@ -248,5 +248,5 @@ class CartComponent extends Component {
             ];
         }
         $this->getController()->getRequest()->getSession()->write('Shop.UserAddress.' . $id, $data);
-    }
+    }*/
 }

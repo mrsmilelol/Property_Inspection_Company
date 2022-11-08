@@ -261,7 +261,43 @@ $this->layout = 'front';
 <script>
     (function ($) {
         "use strict";
+    /*----------------------------
+        Price Range
+    ------------------------------ */
+    /*$("#price-range").slider({
+        range: true,
+        min: 40,
+        max: 600,
+        values: [ 60, 570 ],
+        slide: function( event, ui ) {
+            $(".price-amount").text("Â£"+ui.values[0]+" - Â£"+ui.values[1]);
+        }
+    });
+    $(".price-amount").text("Â£"+$("#price-range").slider("values", 0)+" - Â£"+$("#price-range").slider("values", 1));
+*/
+    /*----------------------------
+        Input Plus Minus Button
+    ------------------------------ */
+    /*$(".qtybtn").on("click", function() {
+        var $btn = $(this),
+            $oldValue = $btn.parent().find("input").val();
+        if ($btn.text() == "+") {
+            var $newVal = parseFloat($oldValue) + 1;
+        } else {
+            // Don't allow decrementing below zero
+            if ($oldValue > 1) {
+                var $newVal = parseFloat($oldValue) - 1;
+            } else {
+                $newVal = 1;
+            }
+        }
+        $btn.parent().find("input").val($newVal);
+    });
+
+
+})(jQuery);*/
 </script>
+
 <?= $this->fetch('script') ?>
 
 </body>

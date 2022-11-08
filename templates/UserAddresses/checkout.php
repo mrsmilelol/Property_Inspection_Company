@@ -17,6 +17,8 @@ $formTemplate = [
 ];
 $this->Form->setTemplates($formTemplate);
 $this->layout = 'front';
+$individual_user = $this->request->getSession()->read('Auth');
+$userType = $this->request->getSession()->read('Auth.user_type_id');
 
 $successURL = 'https://' . $_SERVER['SERVER_NAME'] . '/team09-app_fit3048/user-addresses/success/{CHECKOUT_SESSION_ID}';
 $cancelURL = 'https://' . $_SERVER['SERVER_NAME'] . '/team09-app_fit3048/user-addresses/cancel';
@@ -200,51 +202,80 @@ if ($orderCheckout != []) {
                 <div class="checkbox-form">
                     <h3 class="checkbox-title">Billing Details</h3>
                     <div class="row">
-                        <?= $this->Form->create($userAddress) ?>
-                        <?php echo $this->Form->hidden('user_id', ['value' => $userID->id, 'type' => 'text']); ?>
-                        <div class="col-md-6">
-                            <p class="form-row">
-                                <?php
-                                echo $this->Form->control('country', ['placeholder' => 'Australia', 'value' => 'Australia', 'label' => ['class' => 'required']]);
-                                ?>
-                            </p>
-                        </div>
-                        <div class="col-md-6">
-                            <p class="form-row">
-                                <?php echo $this->Form->control('address_line_1', ['placeholder' => 'Street address', 'label' => ['class' => 'required', 'text' => 'Address line 1']]); ?>
-                            </p>
-                        </div>
-                        <div class="col-md-6">
-                            <p class="form-row">
-                                <?php echo $this->Form->control('address_line_2', ['placeholder' => 'Apartment, suite, unit etc.', 'label' => 'Address line 2']); ?>
-                            </p>
-                        </div>
-                        <div class="col-md-6">
-                            <p class="form-row">
-                                <?php echo $this->Form->control('city', ['placeholder' => 'Town / City', 'label' => ['class' => 'required']]); ?>
-                            </p>
-                        </div>
-                        <div class="col-md-6">
-                            <p class="form-row">
-                                <?php
-                                $states = ['1' => 'VIC', '2' => 'NSW', '3' => 'SA', '4' => 'WA', '5' => 'NT', '6' => 'QLD', '7' => 'TAS'];
-                                if ($check == 1) {
-                                    for ($i = 1; $i < sizeof($states) + 1; $i++) {
-                                        if ($states[$i] == $userAddress->state) {
-                                            echo $this->Form->control('state', ['options' => $states, 'label' => 'Select your state', 'value' => strval($i)]);
+                        <?php if (!empty($addresses)) : ?>
+                            <?php foreach ($addresses as $address) : ?>
+                                <?= $this->Form->create($userAddress) ?>
+                                <?php echo $this->Form->hidden('user_id', ['value' => $userID->id, 'type' => 'text']); ?>
+                                <div class="col-md-6">
+                                    <p class="form-row">
+                                        <?php
+                                        echo $this->Form->control('country', ['placeholder' => 'Australia', 'value' => 'Australia', 'label' => ['class' => 'required'], 'readonly'=>'readonly']);
+                                        ?>
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="form-row">
+                                        <?php echo $this->Form->control('address_line_1', ['placeholder' => 'Street address',
+                                            'label' => ['class' => 'required', 'text' => 'Address line 1'],
+                                            'readonly'=>'readonly', 'value' => $address->address_line_1]); ?>
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="form-row">
+                                        <?php echo $this->Form->control('address_line_2', ['placeholder' => 'Apartment, suite, unit etc.',
+                                            'label' => 'Address line 2', 'readonly'=>'readonly', 'value' => $address->address_line_2]); ?>
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="form-row">
+                                        <?php echo $this->Form->control('city', ['placeholder' => 'Town / City',
+                                            'label' => ['class' => 'required'], 'readonly'=>'readonly', 'value' => $address->city]); ?>
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="form-row">
+                                        <?php
+                                        $states = ['1' => 'VIC', '2' => 'NSW', '3' => 'SA', '4' => 'WA', '5' => 'NT', '6' => 'QLD', '7' => 'TAS'];
+                                        if ($check == 1) {
+                                            for ($i = 1; $i < sizeof($states) + 1; $i++) {
+                                                if ($states[$i] == $userAddress->state) {
+                                                    echo $this->Form->control('state', ['options' => $states, 'label' => 'Select your state', 'value' => strval($i), 'readonly'=>'readonly']);
+                                                }
+                                            }
+                                        } else {
+                                            echo $this->Form->control('state', ['options' => $states, 'label' => 'Select your state', 'readonly'=>'readonly']);
                                         }
-                                    }
-                                } else {
-                                    echo $this->Form->control('state', ['options' => $states, 'label' => 'Select your state']);
-                                }
-                                ?>
-                            </p>
-                        </div>
-                        <div class="col-md-6">
-                            <p class="form-row">
-                                <?php echo $this->Form->control('postcode', ['placeholder' => 'Postcode / Zip', 'label' => ['class' => 'required']]); ?>
-                            </p>
-                        </div>
+                                        ?>
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="form-row">
+                                        <?php echo $this->Form->control('postcode', ['placeholder' => 'Postcode / Zip', 'label' => ['class' => 'required'], 'readonly'=>'readonly']); ?>
+                                    </p>
+                                </div>
+                                <?php if ($userType == 2) : ?>
+                                <a href="<?= $this->Url->build(['prefix' => 'Wholesale', 'controller' => 'UserAddresses', 'action' => 'edit', $address->id]) ?>"
+                                   class="btn btn-round d-inline-block address-btn-edit">
+                                    <i class="fa fa-edit"></i> Edit address </a>
+                                <?php else : ?>
+                                    <a href="<?= $this->Url->build(['prefix' => 'Customer', 'controller' => 'UserAddresses', 'action' => 'edit', $address->id]) ?>"
+                                       class="btn btn-round d-inline-block address-btn-edit">
+                                        <i class="fa fa-edit"></i> Edit address </a>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <p class="lhbigger">You currently have no saved address. </p>
+                            <?php if ($userType == 2) : ?>
+                            <a href="<?= $this->Url->build(['prefix' => 'Wholesale', 'controller' => 'UserAddresses', 'action' => 'add', $individual_user->id]) ?>"
+                               class="btn btn-round d-inline-block address-btn-edit">
+                                <i class="fa fa-edit"></i> Add address </a>
+                            <?php else : ?>
+                            <a href="<?= $this->Url->build(['prefix' => 'Customer', 'controller' => 'UserAddresses', 'action' => 'add', $individual_user->id]) ?>"
+                               class="btn btn-round d-inline-block address-btn-edit">
+                                <i class="fa fa-edit"></i> Add address </a>
+                            <?php endif; ?>
+                            </address>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -321,6 +352,7 @@ if ($orderCheckout != []) {
                                 'id' => 'checkout-button-main',
                                 'class' => 'order-button-payment',
                                 'escape' => 'false',
+                                'onclick'=> 'submitForm();',
                             ]); ?>
                         </div>
                         <?= $this->Form->end() ?>
@@ -382,5 +414,7 @@ if ($orderCheckout != []) {
         });
     });
 </script>
-</body>
+
+
+    </body>
 </html>

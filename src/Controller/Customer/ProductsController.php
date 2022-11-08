@@ -109,7 +109,7 @@ class ProductsController extends AppController
         $this->loadModel('ProductImages');
         $product = $this->Products->get($id, [
             'contain' => ['Orders', 'Categories', 'OrdersProducts',
-                'ProductImages', 'ProductReviews'],
+                'ProductImages'],
         ]);
         $productImages = $this->Products->get($id, [
             'contain' => ['ProductImages']])->toArray();
@@ -210,7 +210,7 @@ class ProductsController extends AppController
         $productImages = $this->ProductImages->findByProductId($id)->all()->toArray();
         //Getting the product object by finding it from its ID
         $product = $this->Products->get($id, [
-            'contain' => ['Orders', 'OrdersProducts', 'Categories', 'ProductImages', 'ProductReviews'],
+            'contain' => ['Orders', 'OrdersProducts', 'Categories', 'ProductImages'],
         ]);
         //Passing the variables to the template
         $this->set(compact('product','productImages'));
