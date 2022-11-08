@@ -24,43 +24,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 $this->layout = 'front';
 ?>
 <!doctype html>
-<style>
-    /*a.btn-cart-out {*/
-    /*    background: #ffffff none repeat scroll 0 0;*/
-    /*    border: 2px solid #c38749;*/
-    /*    color: #c38749;*/
-    /*    display: block;*/
-    /*    float: left;*/
-    /*    height: 40px;*/
-    /*    line-height: 38px;*/
-    /*    position: relative;*/
-    /*    text-transform: uppercase;*/
-    /*}*/
-    a.btn-cart-out input#btn-cart-out {
-        background: #C8C8C8 none repeat scroll 0 0;
-        border: 2px solid #C8C8C8;
-        color: #888888;
-        display: block;
-        float: left;
-        height: 40px;
-        line-height: 38px;
-        position: relative;
-        text-transform: uppercase;
-    }
-    a.btn-cart-out input#btn-cart-out i {
-        font-size: 20px;
-        left: 20px;
-        position: absolute;
-        top: 7px;
-    }
-    a.btn-cart-out input#btn-cart-out span {
-        font-size: 12px;
-        font-weight: 600;
-        padding: 10px 30px 6px 50px;
-        text-transform: uppercase;
-    }
 
-</style>
 <html class="no-js" lang="">
 <!-- Breadcrumbs Area Start -->
 <div class="breadcrumbs-area">

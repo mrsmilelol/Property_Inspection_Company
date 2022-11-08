@@ -96,6 +96,7 @@ $this->layout = 'front';
                         <p><?= h($product->description) ?></p>
                     </div>
 
+                    <?php if ($product->units_in_stock > 0):?>
                     <div class="product-attributes clearfix">
                         <span>
                             <?php echo $this->Form->create(NULL, ['url' => ['controller' => 'products', 'action' => 'addToCart']]); ?>
@@ -112,6 +113,25 @@ $this->layout = 'front';
                             <?php echo $this->Form->end(); ?>
                         </span>
                     </div>
+                    <?php else:?>
+                        <div class="product-attributes clearfix">
+                        <span>
+                            <?php echo $this->Form->create(null, ['url' => ['controller' => 'products', 'action' => 'addToCart']]); ?>
+                            <?php echo $this->Form->hidden('id', ['type' => 'hidden', 'value' => $product->id]) ?>
+                            <a class="btn-cart-out">
+                                <?php echo $this->Form->submit('Out of stock', [
+                                    'type' => 'submit',
+                                    'id' => 'btn-cart-out',
+                                    'name' => 'btn-cart-out',
+                                    'class' => '',
+                                    'escape' => 'false',
+                                    'disabled'=>true
+                                ]); ?>
+                            </a>
+                            <?php echo $this->Form->end(); ?>
+                        </span>
+                        </div>
+                    <?php endif;?>
                 </div>
             </div>
         </div>
