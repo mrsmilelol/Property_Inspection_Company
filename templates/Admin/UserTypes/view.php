@@ -58,7 +58,7 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                                     <?php if ($userMaster == 1 or $users->user_type_id != 1 or $users->id == $userID) : ?>
                                         <?= $this->Html->link(__('Edit'), ['controller' => 'Users', 'action' => 'edit', $users->id]) ?>
                                     <?php endif; ?>
-                                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Users', 'action' => 'delete', $users->id], ['confirm' => __('Are you sure you want to delete # {0}?', $users->id)]) ?>
+                                    <!--<?= $this->Form->postLink(__('Delete'), ['controller' => 'Users', 'action' => 'delete', $users->id], ['confirm' => __('Are you sure you want to delete # {0}?', $users->id)]) ?>-->
                                 </td>
                             </tr>
                         <?php endforeach; ?>
