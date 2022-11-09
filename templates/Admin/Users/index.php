@@ -3,8 +3,12 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\User[]|\Cake\Collection\CollectionInterface $users
  */
+echo $this->Html->script('bootstrapModal', ['block' => true]);
 echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
 echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js', ['block' => true]);
+$this->Form->setTemplates([
+    'confirmJs' => 'addToModal("{{formName}}"); return false;'
+])
 ?>
 <!-- Page Heading -->
 <div class="card shadow mb-4">
@@ -57,9 +61,10 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                                         ['action' => 'userStatus', $user->id, $user->status],
                                         ['block' => true,
                                             'confirm' => __(
-                                                'Are you sure you want to deactivate this user # {0}? This user will no longer be able to access the system.',
+                                                'Are you sure you want to deactivate this user "{0}"? This user will no longer be able to access the system.',
                                                 $user->username
-                                            )]
+                                            ),
+                                            'data-toggle' => "modal", 'data-target' => "#bootstrapModal"],
                                     ) ?>
                                 <?php else : ?>
                                     <?= $this->Form->postLink(
@@ -67,9 +72,10 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                                         ['action' => 'userStatus', $user->id, $user->status],
                                         ['block' => true,
                                             'confirm' => __(
-                                                'Are you sure you want to activate this user # {0}? This user will now be able to access the system.',
+                                                'Are you sure you want to activate this user "{0}"? This user will now be able to access the system.',
                                                 $user->username
-                                            )]
+                                            ),
+                                            'data-toggle' => "modal", 'data-target' => "#bootstrapModal"]
                                     ) ?>
                                 <?php endif; ?>
                             </td>
@@ -85,13 +91,17 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                                         <?= $this->Form->postLink(
                                             __('Downgrade'),
                                             ['action' => 'userMaster', $user->id, $user->master],
-                                            ['block' => true, 'confirm' => __('Are you sure you want to downgrade this user # {0}?', $user->username)]
+                                            ['block' => true, 'confirm' => __('Are you sure you want to downgrade this user "{0}"? Downgrading would remove managerial privileges.', $user->username),
+                                                'data-toggle' => "modal", 'data-target' => "#bootstrapModal"]
                                         ) ?>
                                     <?php else : ?>
                                         <?= $this->Form->postLink(
                                             __('Upgrade'),
                                             ['action' => 'userMaster', $user->id, $user->master],
-                                            ['block' => true, 'confirm' => __('Are you sure you want to upgrade this user # {0}?', $user->username)]
+                                            ['block' => true,
+                                                'confirm' => __('Are you sure you want to upgrade this user "{0}"? Upgrading would allow full managerial privileges.',
+                                                    $user->username),
+                                                'data-toggle' => "modal", 'data-target' => "#bootstrapModal"]
                                         ) ?>
                                     <?php endif; ?>
                                 </td>
@@ -112,6 +122,26 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
             </table>
             <?= $this->Form->end() ?>
             <?= $this->fetch('postLink'); ?>
+        </div>
+    </div>
+
+    <div class="modal" id="bootstrapModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="confirmMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="ok">OK</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -352,7 +352,6 @@ if ($orderCheckout != []) {
                                 'id' => 'checkout-button-main',
                                 'class' => 'order-button-payment',
                                 'escape' => 'false',
-                                'onclick'=> 'submitForm();',
                             ]); ?>
                         </div>
                         <?= $this->Form->end() ?>

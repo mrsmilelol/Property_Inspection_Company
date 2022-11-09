@@ -57,8 +57,8 @@ echo $this->Html->script('//cdn.ckeditor.com/ckeditor5/35.2.0/classic/ckeditor.j
         <br>
         <br>
         <div class="related">
-            <h4><?= __('Related order items') ?></h4>
             <?php if (!empty($product->order_items)) : ?>
+                <h4><?= __('Related order items') ?></h4>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="productTable" width="100%" cellspacing="0">
                         <tr>
