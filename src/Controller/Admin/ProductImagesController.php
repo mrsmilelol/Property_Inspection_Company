@@ -102,12 +102,13 @@ class ProductImagesController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $productImage = $this->ProductImages->get($id);
+        $id_for_product = $productImage->product_id;
         if ($this->ProductImages->delete($productImage)) {
-            $this->Flash->success(__('The product image has been deleted.'));
+            return $this->redirect(['controller' => 'Products', 'action' => 'edit', $id_for_product]);
         } else {
             $this->Flash->error(__('The product image could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['controller' => 'Products', 'action' => 'index']);
     }
 }

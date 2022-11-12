@@ -3,9 +3,13 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Product[]|\Cake\Collection\CollectionInterface $products
  */
+echo $this->Html->script('bootstrapModal', ['block' => true]);
 echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
 echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js', ['block' => true]);
 
+$this->Form->setTemplates([
+    'confirmJs' => 'addToModal("{{formName}}"); return false;'
+])
 //echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet', ['block' => true]);
 //echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
 //echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
@@ -61,12 +65,34 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $product->id]) ?>
                             <?= $this->Html->link(__('Edit'), ['action' => 'edit', $product->id]) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $product->id], ['confirm' => __('Are you sure you want to delete # {0}?', $product->name)]) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $product->id], ['confirm' => __('Are you sure you want to delete product "{0}"?', $product->name),
+                                'data-toggle' => "modal", 'data-target' => "#bootstrapModal"
+                            ]) ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>
             </table>
+        </div>
+    </div>
+
+    <div class="modal" id="bootstrapModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="confirmMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="ok">Yes</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

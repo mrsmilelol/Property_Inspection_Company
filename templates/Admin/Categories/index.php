@@ -4,8 +4,12 @@
  * @var \App\Model\Entity\Category[]|\Cake\Collection\CollectionInterface $categories
  * @var \App\Model\Entity\Category[]|\Cake\Collection\CollectionInterface $subcategories
  */
+echo $this->Html->script('bootstrapModal', ['block' => true]);
 echo $this->Html->css('//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css', ['block' => true]);
 echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js', ['block' => true]);
+$this->Form->setTemplates([
+    'confirmJs' => 'addToModal("{{formName}}"); return false;'
+])
 ?>
     <!-- Page Heading -->
     <div class="card shadow mb-4">
@@ -32,7 +36,10 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['action' => 'view', $category->id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $category->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $category->id], ['confirm' => __('Are you sure you want to delete # {0}?', $category->description)]) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $category->id],
+                                    ['confirm' => __('Are you sure you want to delete parent category "{0}"?', $category->description),
+                                        'data-toggle' => "modal", 'data-target' => "#bootstrapModal"
+                                    ]) ?>
                             </td>
                         </tr>
                         <?php endforeach; ?>
@@ -66,12 +73,35 @@ echo $this->Html->script('//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.j
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $subcategory->id]) ?>
                             <?= $this->Html->link(__('Edit'), ['action' => 'editsub', $subcategory->id]) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $subcategory->id], ['confirm' => __('Are you sure you want to delete # {0}?', $subcategory->description)]) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $subcategory->id],
+                                ['confirm' => __('Are you sure you want to delete subcategory  "{0}"?', $subcategory->description),
+                                    'data-toggle' => "modal", 'data-target' => "#bootstrapModal"
+                                ]) ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>
             </table>
+        </div>
+    </div>
+
+    <div class="modal" id="bootstrapModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="confirmMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="ok">Yes</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
